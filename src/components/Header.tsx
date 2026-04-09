@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import logoLight from "@/assets/logo-lesco-light.svg";
 
 const navLinks = [
   { label: "Linhas", href: "/linhas" },
@@ -37,8 +38,8 @@ export function Header() {
       >
         <div className="container mx-auto flex items-center justify-between h-20 px-6 lg:px-8">
           {/* Logo */}
-          <Link to="/" className="font-display text-2xl font-medium tracking-tight text-primary-foreground">
-            LESCO
+          <Link to="/" className="flex items-center">
+            <img src={logoLight} alt="Lesco" className="h-8" />
           </Link>
 
           {/* Desktop Nav */}

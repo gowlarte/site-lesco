@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logoLight from "@/assets/logo-lesco-light.svg";
 
 export function Footer() {
   return (
@@ -10,7 +11,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Col 1 — Logo */}
           <div>
-            <span className="font-display text-2xl font-medium tracking-tight">LESCO</span>
+            <img src={logoLight} alt="Lesco" className="h-8" />
             <p className="mt-4 font-body text-sm text-primary-foreground/60 leading-relaxed max-w-[240px]">
               Arquitetura feita para o amanhã. Revestimentos premium que definem legados.
             </p>
@@ -22,8 +23,8 @@ export function Footer() {
             <ul className="space-y-3">
               {[
                 { label: "Altwood", href: "/altwood" },
-                { label: "Bambu", href: "/bambu", soon: true },
-                { label: "Pedra Flexível", href: "/pedra", soon: true },
+                { label: "Zhúzen", href: "/zhuzen", soon: true },
+                { label: "Italflex", href: "/italflex", soon: true },
                 { label: "Echotex", href: "/echotex", soon: true },
               ].map((item) => (
                 <li key={item.href}>
