@@ -8,6 +8,10 @@ import bambuImg from "@/assets/bambu-card.jpg";
 import pedraImg from "@/assets/pedra-card.jpg";
 import echotexImg from "@/assets/echotex-card.jpg";
 import caseArenaImg from "@/assets/case-arena.jpg";
+import logoAltwood from "@/assets/logo-altwood.svg";
+import logoZhuzen from "@/assets/logo-zhuzen.svg";
+import logoItalflex from "@/assets/logo-italflex.svg";
+import logoEchotex from "@/assets/logo-echotex.svg";
 
 const lines = [
   {
@@ -15,22 +19,25 @@ const lines = [
     tag: "Madeira Ecológica",
     href: "/altwood",
     image: altwoodImg,
+    logo: logoAltwood,
     bgClass: "bg-altwood-dark",
     soon: false,
   },
   {
-    name: "Bambu",
+    name: "Zhúzen",
     tag: "Fibra Natural",
-    href: "/bambu",
+    href: "/zhuzen",
     image: bambuImg,
+    logo: logoZhuzen,
     bgClass: "bg-bambu-dark",
     soon: true,
   },
   {
-    name: "Pedra Flexível",
+    name: "Italflex",
     tag: "Pedra Ecológica",
-    href: "/pedra",
+    href: "/italflex",
     image: pedraImg,
+    logo: logoItalflex,
     bgClass: "bg-pedra-dark",
     soon: true,
   },
@@ -39,6 +46,7 @@ const lines = [
     tag: "Tecido Acústico",
     href: "/echotex",
     image: echotexImg,
+    logo: logoEchotex,
     bgClass: "bg-echo-dark",
     soon: true,
   },
@@ -112,9 +120,11 @@ const Index = () => {
                       </span>
                     )}
                     <p className="text-caption text-primary-foreground/60 mb-2">{line.tag}</p>
-                    <h3 className="font-display text-3xl md:text-4xl font-light text-primary-foreground transition-transform duration-500 group-hover:-translate-y-2">
-                      {line.name}
-                    </h3>
+                    <img
+                      src={line.logo}
+                      alt={line.name}
+                      className="h-8 md:h-10 w-auto brightness-0 invert transition-transform duration-500 group-hover:-translate-y-2"
+                    />
                     <span className="flex items-center gap-2 mt-3 text-sm text-accent opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
                       Explorar <ArrowRight size={14} />
                     </span>
