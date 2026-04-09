@@ -5,10 +5,10 @@ import { cn } from "@/lib/utils";
 import logoLight from "@/assets/logo-lesco-light.svg";
 
 const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "Sobre Nós", href: "/sobre" },
   { label: "Linhas", href: "/linhas" },
-  { label: "Projetos", href: "/projetos" },
-  { label: "Sobre", href: "/sobre" },
-  { label: "Contato", href: "/contato" },
+  { label: "Catálogo", href: "/catalogo" },
 ];
 
 export function Header() {
@@ -30,9 +30,9 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-[400ms]",
           scrolled
-            ? "bg-[rgba(10,9,8,0.92)] backdrop-blur-md"
+            ? "bg-[rgba(17,17,16,0.92)] backdrop-blur-xl"
             : "bg-transparent"
         )}
       >
@@ -49,8 +49,8 @@ export function Header() {
                 key={link.href}
                 to={link.href}
                 className={cn(
-                  "text-subheading text-xs text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-300",
-                  location.pathname === link.href && "text-primary-foreground"
+                  "text-subheading text-foreground/70 hover:text-foreground transition-colors duration-300",
+                  location.pathname === link.href && "text-foreground"
                 )}
               >
                 {link.label}
@@ -60,15 +60,15 @@ export function Header() {
 
           {/* Desktop CTA */}
           <Link
-            to="/contato"
-            className="hidden md:inline-flex items-center px-5 py-2.5 bg-accent text-accent-foreground text-xs font-body uppercase tracking-[0.1em] hover:bg-accent/90 transition-colors duration-300"
+            to="/orcamento"
+            className="hidden md:inline-flex items-center px-4 py-2 rounded bg-[hsl(var(--accent-orange))] text-white text-[11px] font-body font-medium uppercase tracking-[0.08em] hover:opacity-90 transition-opacity duration-300"
           >
-            Falar com especialista
+            Orçamento
           </Link>
 
           {/* Mobile Hamburger */}
           <button
-            className="md:hidden text-primary-foreground"
+            className="md:hidden text-foreground"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Menu"
           >
@@ -88,16 +88,16 @@ export function Header() {
           <Link
             key={link.href}
             to={link.href}
-            className="font-display text-4xl font-light text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+            className="font-display text-4xl font-light text-foreground/80 hover:text-foreground transition-colors"
           >
             {link.label}
           </Link>
         ))}
         <Link
-          to="/contato"
-          className="mt-4 px-8 py-3 bg-accent text-accent-foreground font-body text-sm uppercase tracking-[0.1em]"
+          to="/orcamento"
+          className="mt-4 px-8 py-3 rounded bg-[hsl(var(--accent-orange))] text-white font-body text-sm uppercase tracking-[0.08em]"
         >
-          Falar com especialista
+          Orçamento
         </Link>
       </div>
     </>

@@ -4,53 +4,61 @@
 
 @layer base {
   :root {
-    /* Base palette */
-    --background: 36 33% 94%;       /* #F4F1EC off-white */
-    --foreground: 20 14% 4%;        /* #0A0908 quase-preto */
+    /* Base backgrounds */
+    --background: 40 10% 7%;          /* #111110 — dark hero/footer */
+    --background-light: 33 14% 93%;   /* #F0EDE8 — off-white linho */
+    --background-bone: 33 14% 88%;    /* #E8E4DC — alternado */
+    --foreground: 33 14% 93%;         /* #F0EDE8 — texto sobre escuro */
 
-    --card: 36 33% 94%;
-    --card-foreground: 20 14% 4%;
+    --card: 33 14% 93%;
+    --card-foreground: 40 10% 7%;
 
-    --popover: 36 33% 94%;
-    --popover-foreground: 20 14% 4%;
+    --popover: 33 14% 93%;
+    --popover-foreground: 40 10% 7%;
 
-    --primary: 20 14% 4%;           /* #0A0908 */
-    --primary-foreground: 36 33% 94%;
+    --primary: 40 10% 7%;             /* #111110 */
+    --primary-foreground: 33 14% 93%;
 
-    --secondary: 33 18% 88%;        /* #E8E2D9 bone */
-    --secondary-foreground: 20 14% 4%;
+    --secondary: 33 14% 88%;          /* #E8E4DC bone */
+    --secondary-foreground: 40 10% 7%;
 
-    --muted: 33 18% 88%;
-    --muted-foreground: 20 6% 52%;  /* #8C8480 */
+    --muted: 33 14% 88%;
+    --muted-foreground: 20 4% 40%;    /* #6B6560 */
 
-    --accent: 30 39% 59%;           /* #C49A6C warm accent */
-    --accent-foreground: 20 14% 4%;
+    --accent-green: 87 76% 58%;       /* #9EE44A */
+    --accent-orange: 15 76% 60%;      /* #E8714A */
+    --accent-warm: 30 39% 59%;        /* #C49A6C */
+    --accent: 30 39% 59%;
+    --accent-foreground: 40 10% 7%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 36 33% 94%;
+    --destructive-foreground: 33 14% 93%;
 
-    --border: 33 18% 85%;
-    --input: 33 18% 85%;
+    --border: 33 14% 85%;
+    --input: 33 14% 85%;
     --ring: 30 39% 59%;
 
     --radius: 0.25rem;
 
-    /* Lesco brand colors */
-    --lesco-black: 20 14% 4%;
-    --lesco-white: 36 33% 94%;
-    --lesco-bone: 33 18% 88%;
+    /* Dividers on dark bg */
+    --divider: 0 0% 100% / 0.12;
+
+    /* Lesco brand */
+    --lesco-black: 40 10% 7%;
+    --lesco-white: 33 14% 93%;
+    --lesco-bone: 33 14% 88%;
 
     /* Altwood */
     --altwood-dark: 22 50% 12%;
     --altwood-mid: 27 39% 34%;
     --altwood-warm: 30 39% 59%;
 
-    /* Bambu */
+    /* Bambu / Zhúzen */
     --bambu-dark: 106 28% 14%;
     --bambu-mid: 130 24% 33%;
     --bambu-light: 106 24% 69%;
 
-    /* Pedra */
+    /* Pedra / Italflex */
     --pedra-dark: 30 4% 16%;
     --pedra-mid: 15 5% 40%;
     --pedra-light: 24 8% 76%;
@@ -60,14 +68,14 @@
     --echo-mid: 240 17% 35%;
     --echo-light: 240 17% 78%;
 
-    /* Sidebar (unused but required) */
-    --sidebar-background: 36 33% 94%;
-    --sidebar-foreground: 20 14% 4%;
-    --sidebar-primary: 20 14% 4%;
-    --sidebar-primary-foreground: 36 33% 94%;
-    --sidebar-accent: 33 18% 88%;
-    --sidebar-accent-foreground: 20 14% 4%;
-    --sidebar-border: 33 18% 85%;
+    /* Sidebar (required by shadcn) */
+    --sidebar-background: 33 14% 93%;
+    --sidebar-foreground: 40 10% 7%;
+    --sidebar-primary: 40 10% 7%;
+    --sidebar-primary-foreground: 33 14% 93%;
+    --sidebar-accent: 33 14% 88%;
+    --sidebar-accent-foreground: 40 10% 7%;
+    --sidebar-border: 33 14% 85%;
     --sidebar-ring: 30 39% 59%;
   }
 }
@@ -82,18 +90,18 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-primary text-foreground antialiased;
     font-family: 'DM Sans', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Host Grotesk', serif;
+    font-family: 'Cormorant Garamond', serif;
   }
 }
 
 @layer utilities {
   .font-display {
-    font-family: 'Host Grotesk', serif;
+    font-family: 'Cormorant Garamond', serif;
   }
 
   .font-body {
@@ -105,11 +113,11 @@
   }
 
   .text-display-xl {
-    @apply font-display text-6xl md:text-7xl lg:text-8xl xl:text-[120px] font-light leading-[0.95] tracking-tight;
+    @apply font-display text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-light leading-[1.1] tracking-tight;
   }
 
   .text-display-l {
-    @apply font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal leading-[1.05] tracking-tight;
+    @apply font-display text-4xl md:text-5xl lg:text-[52px] font-normal leading-[1.15];
   }
 
   .text-heading {
@@ -117,18 +125,38 @@
   }
 
   .text-subheading {
-    @apply font-body text-sm md:text-base font-normal uppercase tracking-[0.15em];
+    @apply font-body text-[11px] font-medium uppercase tracking-[0.08em];
   }
 
   .text-body-lg {
-    @apply font-body text-base md:text-lg font-light leading-relaxed;
+    @apply font-body text-[15px] md:text-[17px] font-light leading-[1.65];
   }
 
   .text-caption {
-    @apply font-body text-xs font-normal uppercase tracking-[0.1em];
+    @apply font-body text-[11px] font-normal uppercase tracking-[0.12em];
   }
 
   .section-spacing {
     @apply py-24 md:py-32 lg:py-40;
+  }
+
+  .bg-dark {
+    background-color: hsl(var(--primary));
+  }
+
+  .bg-light {
+    background-color: hsl(var(--background-light));
+  }
+
+  .bg-bone {
+    background-color: hsl(var(--background-bone));
+  }
+
+  .text-dark {
+    color: hsl(var(--primary));
+  }
+
+  .text-light {
+    color: hsl(var(--foreground));
   }
 }
