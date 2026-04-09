@@ -1,234 +1,286 @@
+import { useState, useRef, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowDown, ArrowRight } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { AnimatedCounter } from "@/components/AnimatedCounter";
-import heroImg from "@/assets/hero-facade.jpg";
-import altwoodImg from "@/assets/altwood-card.jpg";
-import bambuImg from "@/assets/bambu-card.jpg";
-import pedraImg from "@/assets/pedra-card.jpg";
-import echotexImg from "@/assets/echotex-card.jpg";
-import caseArenaImg from "@/assets/case-arena.jpg";
-import logoAltwood from "@/assets/logo-altwood.svg";
-import logoZhuzen from "@/assets/logo-zhuzen.svg";
-import logoItalflex from "@/assets/logo-italflex.svg";
-import logoEchotex from "@/assets/logo-echotex.svg";
 
-const lines = [
+import heroAltwoodImg from "@/assets/hero-altwood.jpg";
+import heroZhuzenImg from "@/assets/hero-zhuzen.jpg";
+import heroEchotexImg from "@/assets/hero-echotex.jpg";
+import heroItalflexImg from "@/assets/hero-italflex.jpg";
+
+import projectCasaMansa from "@/assets/project-casa-mansa.jpg";
+import projectResidencialUrbano from "@/assets/project-residencial-urbano.jpg";
+import projectCasaAreia from "@/assets/project-casa-areia.jpg";
+import projectCasaUna from "@/assets/project-casa-una.jpg";
+
+const linhas = [
   {
-    name: "Altwood",
-    tag: "Madeira Ecológica",
+    nome: "AltWood",
+    descricao: "Madeira ecológica premium. Fachadas, brises, panels e decks.",
     href: "/altwood",
-    image: altwoodImg,
-    logo: logoAltwood,
-    bgClass: "bg-altwood-dark",
-    soon: false,
+    imagem: heroAltwoodImg,
   },
   {
-    name: "Zhúzen",
-    tag: "Fibra Natural",
+    nome: "Zhúzen",
+    descricao: "Revestimentos, forros, luminárias, decorativos, utilitários, e diversas soluções para espaços zen.",
     href: "/zhuzen",
-    image: bambuImg,
-    logo: logoZhuzen,
-    bgClass: "bg-bambu-dark",
-    soon: true,
+    imagem: heroZhuzenImg,
   },
   {
-    name: "Italflex",
-    tag: "Pedra Ecológica",
-    href: "/italflex",
-    image: pedraImg,
-    logo: logoItalflex,
-    bgClass: "bg-pedra-dark",
-    soon: true,
-  },
-  {
-    name: "Echotex",
-    tag: "Tecido Acústico",
+    nome: "Echotex",
+    descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais ou home cinemas.",
     href: "/echotex",
-    image: echotexImg,
-    logo: logoEchotex,
-    bgClass: "bg-echo-dark",
-    soon: true,
+    imagem: heroEchotexImg,
+  },
+  {
+    nome: "Italflex",
+    descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
+    href: "/italflex",
+    imagem: heroItalflexImg,
   },
 ];
 
+const projects = [
+  { nome: "Casa Mansa", imagem: projectCasaMansa, href: "/projetos/casa-mansa" },
+  { nome: "Residencial Urbano", imagem: projectResidencialUrbano, href: "/projetos/residencial-urbano" },
+  { nome: "Casa Areia", imagem: projectCasaAreia, href: "/projetos/casa-areia" },
+  { nome: "Casa Una", imagem: projectCasaUna, href: "/projetos/casa-una" },
+];
+
 const Index = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+  const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [imageOffset, setImageOffset] = useState(0);
+
+  const updateImagePosition = useCallback((index: number) => {
+    const row = rowRefs.current[index];
+    const section = sectionRef.current;
+    if (!row || !section) return;
+    const sectionRect = section.getBoundingClientRect();
+    const rowRect = row.getBoundingClientRect();
+    const rowCenter = rowRect.top - sectionRect.top + rowRect.height / 2;
+    setImageOffset(rowCenter);
+  }, []);
+
+  useEffect(() => {
+    updateImagePosition(activeIndex);
+  }, [activeIndex, updateImagePosition]);
+
+  // Recalculate on resize
+  useEffect(() => {
+    const handler = () => updateImagePosition(activeIndex);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, [activeIndex, updateImagePosition]);
+
   return (
     <main>
-      {/* ========== HERO ========== */}
-      <section className="relative h-screen w-full overflow-hidden">
-        <img
-          src={heroImg}
-          alt="Fachada com revestimento WPC Lesco"
-          className="absolute inset-0 w-full h-full object-cover"
-          width={1920}
-          height={1080}
-        />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,9,8,0.7)] via-[rgba(10,9,8,0.2)] to-transparent" />
+      {/* ========== HERO — LINE SELECTOR ========== */}
+      <section className="relative min-h-screen bg-primary flex items-center">
+        <div
+          ref={sectionRef}
+          className="container mx-auto px-6 lg:px-8 w-full pt-24 pb-16"
+        >
+          {/* 3-column grid: names | image | descriptions */}
+          <div className="relative">
+            {/* Central floating image — desktop only */}
+            <div
+              className="hidden lg:block absolute left-1/2 -translate-x-1/2 z-10 w-[340px] xl:w-[380px] transition-all duration-[450ms]"
+              style={{
+                top: imageOffset ? `${imageOffset}px` : "50%",
+                transform: `translate(-50%, -50%)`,
+              }}
+            >
+              {linhas.map((linha, i) => (
+                <img
+                  key={linha.nome}
+                  src={linha.imagem}
+                  alt={linha.nome}
+                  className="absolute inset-0 w-full h-[420px] xl:h-[480px] object-cover rounded-2xl transition-opacity duration-[350ms]"
+                  style={{
+                    opacity: activeIndex === i ? (isHovering ? 1 : 0.6) : 0,
+                  }}
+                  width={380}
+                  height={480}
+                />
+              ))}
+              {/* Spacer for layout */}
+              <div className="w-full h-[420px] xl:h-[480px]" />
+            </div>
 
-        {/* Content */}
-        <div className="relative z-10 h-full flex flex-col justify-between px-6 lg:px-12 py-8">
-          {/* Top label */}
-          <p className="font-mono-tech text-xs text-primary-foreground/60 tracking-[0.2em] uppercase pt-24">
-            Revestimentos Premium · Brasil
-          </p>
-
-          {/* Title */}
-          <div className="mb-32 max-w-4xl">
-            <h1 className="text-display-xl text-primary-foreground">
-              Superfícies que<br />definem legados.
-            </h1>
-          </div>
-
-          {/* Scroll hint */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-            <ArrowDown className="text-primary-foreground/50 animate-scroll-hint" size={24} />
-          </div>
-        </div>
-      </section>
-
-      {/* ========== AS LINHAS ========== */}
-      <section className="section-spacing bg-background">
-        <div className="container mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <p className="text-subheading text-muted-foreground mb-4">Nossas Linhas</p>
-            <h2 className="text-display-l text-foreground mb-16">Quatro materiais,<br />uma filosofia.</h2>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {lines.map((line, i) => (
-              <ScrollReveal key={line.name} delay={i * 0.1}>
-                <Link
-                  to={line.href}
-                  className="group relative block aspect-[4/3] overflow-hidden"
+            {/* Rows */}
+            {linhas.map((linha, i) => (
+              <Link
+                key={linha.nome}
+                to={linha.href}
+                className="block"
+              >
+                <div
+                  ref={(el) => { rowRefs.current[i] = el; }}
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_380px_1fr] xl:grid-cols-[1fr_420px_1fr] items-center border-t border-white/[0.12] py-10 lg:py-12 cursor-pointer group"
+                  onMouseEnter={() => {
+                    setActiveIndex(i);
+                    setIsHovering(true);
+                    updateImagePosition(i);
+                  }}
+                  onMouseLeave={() => setIsHovering(false)}
                 >
-                  <img
-                    src={line.image}
-                    alt={line.name}
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,9,8,0.75)] via-[rgba(10,9,8,0.2)] to-transparent" />
+                  {/* Name */}
+                  <h2
+                    className="font-display text-3xl md:text-4xl lg:text-[36px] font-light transition-colors duration-[350ms]"
+                    style={{
+                      color: activeIndex === i && isHovering
+                        ? "hsl(var(--accent-green))"
+                        : "rgba(240,237,232,0.25)",
+                    }}
+                  >
+                    {linha.nome}
+                  </h2>
 
-                  {/* Content */}
-                  <div className="relative z-10 h-full flex flex-col justify-end p-8">
-                    {line.soon && (
-                      <span className="absolute top-6 right-6 font-mono-tech text-[10px] text-accent tracking-[0.15em] uppercase bg-primary/60 px-3 py-1 backdrop-blur-sm">
-                        Em breve
-                      </span>
-                    )}
-                    <p className="text-caption text-primary-foreground/60 mb-2">{line.tag}</p>
-                    <img
-                      src={line.logo}
-                      alt={line.name}
-                      className="h-8 md:h-10 w-auto brightness-0 invert transition-transform duration-500 group-hover:-translate-y-2"
-                    />
-                    <span className="flex items-center gap-2 mt-3 text-sm text-accent opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
-                      Explorar <ArrowRight size={14} />
-                    </span>
-                  </div>
-                </Link>
-              </ScrollReveal>
+                  {/* Spacer for image column on desktop */}
+                  <div className="hidden lg:block" />
+
+                  {/* Description */}
+                  <p
+                    className="font-body text-[15px] font-light leading-[1.65] mt-2 md:mt-0 max-w-sm transition-colors duration-[350ms]"
+                    style={{
+                      color: activeIndex === i && isHovering
+                        ? "rgba(240,237,232,0.85)"
+                        : "rgba(240,237,232,0.3)",
+                    }}
+                  >
+                    {linha.descricao}
+                  </p>
+                </div>
+              </Link>
             ))}
+            {/* Bottom border */}
+            <div className="border-t border-white/[0.12]" />
           </div>
         </div>
       </section>
 
       {/* ========== MANIFESTO ========== */}
-      <section className="section-spacing bg-secondary">
+      <section className="bg-light section-spacing">
         <div className="container mx-auto px-6 lg:px-8">
           <ScrollReveal>
-            <div className="flex gap-8 max-w-4xl">
-              {/* Accent line */}
-              <div className="hidden md:block w-px bg-accent shrink-0 self-stretch" />
-              <div>
-                <blockquote className="font-display text-3xl md:text-4xl lg:text-5xl font-light text-foreground leading-[1.2]">
-                  "Não vendemos apenas revestimentos. Entregamos a matéria-prima da arquitetura que permanece."
-                </blockquote>
-                <p className="mt-8 text-body-lg text-muted-foreground max-w-xl">
-                  Pioneiros em Madeira Ecológica no Brasil há mais de 15 anos. Cada superfície que criamos é pensada para resistir ao tempo — e ao olhar.
+            <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 lg:gap-20 items-start">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-[52px] font-normal leading-[1.15] text-dark">
+                Não vendemos apenas revestimentos. Entregamos a matéria-prima da arquitetura que permanece.
+              </h2>
+              <div className="max-w-[320px]">
+                <p className="font-body text-[16px] font-light leading-[1.65] text-dark/70">
+                  Pioneiros em Madeira Ecológica no Brasil há mais de 15 anos. Cada superfície que criamos é pensada para resistir ao tempo, e ao olhar.
                 </p>
+                <Link
+                  to="/contato"
+                  className="inline-flex items-center mt-8 px-6 py-3 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary hover:text-foreground transition-colors duration-300"
+                >
+                  Fale com um especialista
+                </Link>
               </div>
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ========== CASE DE DESTAQUE ========== */}
-      <section className="section-spacing bg-background">
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
-            <ScrollReveal className="lg:col-span-3">
-              <div className="aspect-[16/10] overflow-hidden">
+      {/* ========== GALERIA DE PROJETOS ========== */}
+      <section>
+        {/* Top row — 2 equal columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+          {[projects[0], projects[1]].map((p) => (
+            <Link key={p.nome} to={p.href} className="group relative overflow-hidden">
+              <div className="aspect-[4/3]">
                 <img
-                  src={caseArenaImg}
-                  alt="Arena do Futuro — Rio 2016"
+                  src={p.imagem}
+                  alt={p.nome}
                   loading="lazy"
-                  className="w-full h-full object-cover"
-                  width={1920}
-                  height={1080}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                 />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
               </div>
-            </ScrollReveal>
-
-            <ScrollReveal className="lg:col-span-2" delay={0.2}>
-              <p className="text-caption text-muted-foreground mb-3">Case de Destaque</p>
-              <h3 className="text-heading text-foreground mb-4">
-                Arena do Futuro · Rio 2016
-              </h3>
-              <p className="text-body-lg text-muted-foreground mb-6">
-                Um dos maiores projetos de brise em madeira ecológica do mundo. Mais de 3.000m² de revestimento Lesco Green Brise, feito para resistir ao clima tropical e encantar o mundo.
+              <p className="absolute bottom-4 left-4 font-body text-[11px] font-light uppercase tracking-[0.1em] text-white/80">
+                {p.nome}
               </p>
-              <Link
-                to="/projetos"
-                className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent/80 transition-colors font-body uppercase tracking-[0.1em]"
-              >
-                Ver case <ArrowRight size={14} />
-              </Link>
-            </ScrollReveal>
-          </div>
+            </Link>
+          ))}
         </div>
-      </section>
 
-      {/* ========== NÚMEROS ========== */}
-      <section className="section-spacing bg-primary">
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 md:divide-x md:divide-primary-foreground/10">
-            {[
-              { value: 15, suffix: "+", label: "Anos de inovação" },
-              { value: 100, suffix: "%", label: "Produtos reciclados" },
-              { value: 1000, suffix: "+", label: "Cases realizados" },
-            ].map((stat) => (
-              <div key={stat.label} className="flex flex-col items-center text-center px-8">
-                <AnimatedCounter end={stat.value} suffix={stat.suffix} />
-                <p className="mt-4 text-caption text-primary-foreground/50">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+        {/* Bottom row — 2 small + 1 large */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
+          {/* Casa Areia small 1 */}
+          <Link to={projects[2].href} className="group relative overflow-hidden">
+            <div className="aspect-square">
+              <img
+                src={projects[2].imagem}
+                alt="Casa Areia"
+                loading="lazy"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
+            </div>
+            <p className="absolute bottom-4 left-4 font-body text-[11px] font-light uppercase tracking-[0.1em] text-white/80">
+              Casa Areia
+            </p>
+          </Link>
+
+          {/* Casa Areia small 2 */}
+          <Link to={projects[2].href} className="group relative overflow-hidden">
+            <div className="aspect-square">
+              <img
+                src={projects[2].imagem}
+                alt="Casa Areia"
+                loading="lazy"
+                className="w-full h-full object-cover object-right transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
+            </div>
+            <p className="absolute bottom-4 left-4 font-body text-[11px] font-light uppercase tracking-[0.1em] text-white/80">
+              Casa Areia
+            </p>
+          </Link>
+
+          {/* Casa Una large */}
+          <Link to={projects[3].href} className="group relative overflow-hidden col-span-2">
+            <div className="aspect-[4/3] md:aspect-auto md:h-full">
+              <img
+                src={projects[3].imagem}
+                alt="Casa Una"
+                loading="lazy"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
+            </div>
+            <p className="absolute bottom-4 left-4 font-body text-[11px] font-light uppercase tracking-[0.1em] text-white/80">
+              Casa Una
+            </p>
+          </Link>
         </div>
       </section>
 
       {/* ========== CTA FINAL ========== */}
-      <section className="section-spacing bg-background">
+      <section
+        className="py-24 md:py-32 lg:py-40"
+        style={{ background: "linear-gradient(135deg, #A8D9A0 0%, #F5C9A0 100%)" }}
+      >
         <div className="container mx-auto px-6 lg:px-8 text-center">
           <ScrollReveal>
-            <h2 className="text-display-l text-foreground mb-8">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-[52px] font-normal leading-[1.15] text-dark mb-10">
               Pronto para começar<br />um projeto?
             </h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                to="/contato"
-                className="inline-flex items-center px-8 py-4 bg-accent text-accent-foreground text-sm font-body uppercase tracking-[0.1em] hover:bg-accent/90 transition-colors"
+                to="/orcamento"
+                className="inline-flex items-center px-7 py-3.5 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary/[0.08] transition-colors duration-250"
               >
-                Falar com especialista
+                Solicite um orçamento
               </Link>
               <Link
                 to="/catalogo"
-                className="inline-flex items-center px-8 py-4 border border-foreground/20 text-foreground text-sm font-body uppercase tracking-[0.1em] hover:bg-foreground/5 transition-colors"
+                className="inline-flex items-center px-7 py-3.5 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary/[0.08] transition-colors duration-250"
               >
-                Baixar catálogo
+                Baixe nosso catálogo
               </Link>
             </div>
           </ScrollReveal>
