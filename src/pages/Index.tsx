@@ -20,24 +20,28 @@ import projectCasaUna from "@/assets/project-casa-una.jpg";
 const linhas = [
   {
     nome: "AltWood",
+    logo: linhaAltwoodLogo,
     descricao: "Madeira ecológica premium. Fachadas, brises, panels e decks.",
     href: "/altwood",
     imagem: heroAltwoodImg,
   },
   {
     nome: "Zhúzen",
+    logo: linhaZhuzenLogo,
     descricao: "Revestimentos, forros, luminárias, decorativos, utilitários feitas a partir do bambu.",
     href: "/zhuzen",
     imagem: heroZhuzenImg,
   },
   {
     nome: "Echotex",
+    logo: linhaEchotexLogo,
     descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais ou home cinemas.",
     href: "/echotex",
     imagem: heroEchotexImg,
   },
   {
     nome: "Italflex",
+    logo: linhaItalflexLogo,
     descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
     href: "/italflex",
     imagem: heroItalflexImg,
