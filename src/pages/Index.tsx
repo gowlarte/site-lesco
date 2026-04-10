@@ -7,6 +7,11 @@ import heroZhuzenImg from "@/assets/hero-zhuzen.jpg";
 import heroEchotexImg from "@/assets/hero-echotex.jpg";
 import heroItalflexImg from "@/assets/hero-italflex.jpg";
 
+import linhaAltwoodLogo from "@/assets/linha-altwood.svg";
+import linhaZhuzenLogo from "@/assets/linha-zhuzen.svg";
+import linhaEchotexLogo from "@/assets/linha-echotex.svg";
+import linhaItalflexLogo from "@/assets/linha-italflex.svg";
+
 import projectCasaMansa from "@/assets/project-casa-mansa.jpg";
 import projectResidencialUrbano from "@/assets/project-residencial-urbano.jpg";
 import projectCasaAreia from "@/assets/project-casa-areia.jpg";
