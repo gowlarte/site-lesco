@@ -51,28 +51,17 @@ const Index = () => {
   const [isHovering, setIsHovering] = useState(false);
   const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [imageOffset, setImageOffset] = useState(0);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  const updateImagePosition = useCallback((index: number) => {
-    const row = rowRefs.current[index];
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
     const section = sectionRef.current;
-    if (!row || !section) return;
-    const sectionRect = section.getBoundingClientRect();
-    const rowRect = row.getBoundingClientRect();
-    const rowCenter = rowRect.top - sectionRect.top + rowRect.height / 2;
-    setImageOffset(rowCenter);
+    if (!section) return;
+    const rect = section.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
   }, []);
-
-  useEffect(() => {
-    updateImagePosition(activeIndex);
-  }, [activeIndex, updateImagePosition]);
-
-  // Recalculate on resize
-  useEffect(() => {
-    const handler = () => updateImagePosition(activeIndex);
-    window.addEventListener("resize", handler);
-    return () => window.removeEventListener("resize", handler);
-  }, [activeIndex, updateImagePosition]);
 
   return (
     <main>
@@ -81,15 +70,20 @@ const Index = () => {
         <div
           ref={sectionRef}
           className="container mx-auto px-6 lg:px-8 w-full pt-24 pb-16"
+          onMouseMove={handleMouseMove}
         >
           {/* 3-column grid: names | image | descriptions */}
           <div className="relative">
-            {/* Central floating image — desktop only */}
+            {/* Central floating image — follows mouse, desktop only */}
             <div
-              className="hidden lg:block absolute left-1/2 -translate-x-1/2 z-10 w-[340px] xl:w-[380px] transition-all duration-[450ms]"
+              className="hidden lg:block absolute z-10 w-[340px] xl:w-[380px] pointer-events-none"
               style={{
-                top: imageOffset ? `${imageOffset}px` : "50%",
-                transform: `translate(-50%, -50%)`,
+                left: `${mousePos.x}px`,
+                top: `${mousePos.y}px`,
+                transform: "translate(-50%, -50%)",
+                transition: isHovering
+                  ? "left 0.15s ease-out, top 0.15s ease-out"
+                  : "opacity 0.3s ease",
               }}
             >
               {linhas.map((linha, i) => (
