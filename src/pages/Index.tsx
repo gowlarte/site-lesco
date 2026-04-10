@@ -21,7 +21,7 @@ const linhas = [
   },
   {
     nome: "Zhúzen",
-    descricao: "Revestimentos, forros, luminárias, decorativos, utilitários, e diversas soluções para espaços zen.",
+    descricao: "Revestimentos, forros, luminárias, decorativos, utilitários feitas a partir do bambu.",
     href: "/zhuzen",
     imagem: heroZhuzenImg,
   },
@@ -136,7 +136,7 @@ const Index = () => {
 
                   {/* Description */}
                   <p
-                    className="font-body text-[15px] font-light leading-[1.65] mt-2 md:mt-0 max-w-sm transition-colors duration-[350ms]"
+                    className="font-body font-light leading-[1.65] mt-2 md:mt-0 max-w-sm transition-colors duration-[350ms] text-xl"
                     style={{
                       color: activeIndex === i && isHovering
                         ? "rgba(240,237,232,0.85)"
