@@ -173,7 +173,7 @@ const Index = () => {
                 Não vendemos apenas revestimentos. Entregamos a matéria-prima da arquitetura que permanece.
               </h2>
               <div className="max-w-[320px]">
-                <p className="font-body text-[16px] font-light leading-[1.65] text-dark/70">
+                <p className="font-body text-[16px] font-light leading-[1.65] text-dark/70 text-primary">
                   Pioneiros em Madeira Ecológica no Brasil há mais de 15 anos. Cada superfície que criamos é pensada para resistir ao tempo, e ao olhar.
                 </p>
                 <Link
