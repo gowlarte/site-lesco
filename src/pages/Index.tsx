@@ -278,7 +278,7 @@ const Index = () => {
         <div className="container mx-auto px-6 lg:px-8 text-center">
           <ScrollReveal>
             <h2 className="font-display text-4xl md:text-5xl lg:text-[52px] font-normal leading-[1.15] text-dark mb-10">
-              Pronto para começar<br />um projeto?
+              Vamos iniciar<br />seu projeto?
             </h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
