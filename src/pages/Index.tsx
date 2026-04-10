@@ -13,9 +13,10 @@ import linhaEchotexLogo from "@/assets/linha-echotex.svg";
 import linhaItalflexLogo from "@/assets/linha-italflex.svg";
 
 import projectCasaMansa from "@/assets/project-casa-mansa.jpg";
-import projectResidencialUrbano from "@/assets/project-residencial-urbano.jpg";
+import projectResidencialUrbano from "@/assets/project-residencial-urbano.webp";
 import projectCasaAreia from "@/assets/project-casa-areia.jpg";
-import projectCasaUna from "@/assets/project-casa-una.jpg";
+import projectCasaUna from "@/assets/project-casa-una.png";
+import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 
 const linhas = [
   {
@@ -57,6 +58,7 @@ const projects = [
   { nome: "Residencial Urbano", imagem: projectResidencialUrbano, href: "/projetos/residencial-urbano" },
   { nome: "Casa Areia", imagem: projectCasaAreia, href: "/projetos/casa-areia" },
   { nome: "Casa Una", imagem: projectCasaUna, href: "/projetos/casa-una" },
+  { nome: "Deck Detail", imagem: projectDeckDetail, href: "/projetos/deck-detail" },
 ];
 
 const Index = () => {
