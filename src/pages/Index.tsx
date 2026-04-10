@@ -129,16 +129,17 @@ const Index = () => {
                   onMouseLeave={() => setIsHovering(false)}
                 >
                   {/* Name */}
-                  <h2
-                    className="font-display text-3xl md:text-4xl lg:text-[36px] font-light transition-colors duration-[350ms]"
+                  <img
+                    src={linha.logo}
+                    alt={linha.nome}
+                    className="h-8 md:h-10 lg:h-11 w-auto transition-all duration-[350ms]"
                     style={{
-                      color: activeIndex === i && isHovering
-                        ? "hsl(var(--accent-green))"
-                        : "rgba(240,237,232,0.25)",
+                      filter: activeIndex === i && isHovering
+                        ? "brightness(0) invert(0.85) sepia(0.3) saturate(2) hue-rotate(70deg)"
+                        : "brightness(0) invert(1) opacity(0.25)",
+                      opacity: activeIndex === i && isHovering ? 1 : 0.25,
                     }}
-                  >
-                    {linha.nome}
-                  </h2>
+                  />
 
                   {/* Spacer for image column on desktop */}
                   <div className="hidden lg:block" />
