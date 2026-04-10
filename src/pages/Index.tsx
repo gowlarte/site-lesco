@@ -99,7 +99,7 @@ const Index = () => {
                   alt={linha.nome}
                   className="absolute inset-0 w-full h-[420px] xl:h-[480px] object-cover rounded-2xl transition-opacity duration-[350ms]"
                   style={{
-                    opacity: activeIndex === i ? (isHovering ? 1 : 0.6) : 0,
+                    opacity: activeIndex === i && isHovering ? 1 : 0,
                   }}
                   width={380}
                   height={480}
