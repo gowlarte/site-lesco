@@ -24,6 +24,7 @@ const linhas = [
     descricao: "Madeira ecológica premium. Fachadas, brises, panels e decks.",
     href: "/altwood",
     imagem: heroAltwoodImg,
+    corHover: "#f7c39b",
   },
   {
     nome: "Zhúzen",
@@ -31,6 +32,7 @@ const linhas = [
     descricao: "Revestimentos, forros, luminárias, decorativos, utilitários feitas a partir do bambu.",
     href: "/zhuzen",
     imagem: heroZhuzenImg,
+    corHover: "#a3dba0",
   },
   {
     nome: "Echotex",
@@ -38,6 +40,7 @@ const linhas = [
     descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais ou home cinemas.",
     href: "/echotex",
     imagem: heroEchotexImg,
+    corHover: "#c6e1d7",
   },
   {
     nome: "Italflex",
@@ -45,6 +48,7 @@ const linhas = [
     descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
     href: "/italflex",
     imagem: heroItalflexImg,
+    corHover: "#f57d69",
   },
 ];
 
@@ -129,15 +133,19 @@ const Index = () => {
                   onMouseLeave={() => setIsHovering(false)}
                 >
                   {/* Name */}
-                  <img
-                    src={linha.logo}
-                    alt={linha.nome}
-                    className="h-8 md:h-10 lg:h-11 w-auto transition-all duration-[350ms]"
+                  <div
+                    className="h-8 md:h-10 lg:h-11 w-[200px] md:w-[240px] transition-all duration-[350ms]"
                     style={{
-                      filter: activeIndex === i && isHovering
-                        ? "brightness(0) invert(0.85) sepia(0.3) saturate(2) hue-rotate(70deg)"
-                        : "brightness(0) invert(1) opacity(0.25)",
-                      opacity: activeIndex === i && isHovering ? 1 : 0.25,
+                      maskImage: `url(${linha.logo})`,
+                      WebkitMaskImage: `url(${linha.logo})`,
+                      maskSize: "contain",
+                      WebkitMaskSize: "contain",
+                      maskRepeat: "no-repeat",
+                      WebkitMaskRepeat: "no-repeat",
+                      backgroundColor: activeIndex === i && isHovering
+                        ? linha.corHover
+                        : "rgba(255,255,255,0.3)",
+                      opacity: activeIndex === i && isHovering ? 1 : 0.5,
                     }}
                   />
 
