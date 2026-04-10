@@ -87,7 +87,7 @@ export default {
         },
       },
       fontFamily: {
-        display: ["Cormorant Garamond", "serif"],
+        display: ["PP Neue Machina", "sans-serif"],
         body: ["DM Sans", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
       },
