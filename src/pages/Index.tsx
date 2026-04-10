@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
@@ -116,7 +116,6 @@ const Index = () => {
                   onMouseEnter={() => {
                     setActiveIndex(i);
                     setIsHovering(true);
-                    updateImagePosition(i);
                   }}
                   onMouseLeave={() => setIsHovering(false)}
                 >
