@@ -13,9 +13,10 @@ import linhaEchotexLogo from "@/assets/linha-echotex.svg";
 import linhaItalflexLogo from "@/assets/linha-italflex.svg";
 
 import projectCasaMansa from "@/assets/project-casa-mansa.jpg";
-import projectResidencialUrbano from "@/assets/project-residencial-urbano.jpg";
+import projectResidencialUrbano from "@/assets/project-residencial-urbano.webp";
 import projectCasaAreia from "@/assets/project-casa-areia.jpg";
-import projectCasaUna from "@/assets/project-casa-una.jpg";
+import projectCasaUna from "@/assets/project-casa-una.png";
+import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 
 const linhas = [
   {
@@ -57,6 +58,7 @@ const projects = [
   { nome: "Residencial Urbano", imagem: projectResidencialUrbano, href: "/projetos/residencial-urbano" },
   { nome: "Casa Areia", imagem: projectCasaAreia, href: "/projetos/casa-areia" },
   { nome: "Casa Una", imagem: projectCasaUna, href: "/projetos/casa-una" },
+  { nome: "Deck Detail", imagem: projectDeckDetail, href: "/projetos/deck-detail" },
 ];
 
 const Index = () => {
@@ -218,55 +220,24 @@ const Index = () => {
           ))}
         </div>
 
-        {/* Bottom row — 2 small + 1 large */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
-          {/* Casa Areia small 1 */}
-          <Link to={projects[2].href} className="group relative overflow-hidden">
-            <div className="aspect-square">
-              <img
-                src={projects[2].imagem}
-                alt="Casa Areia"
-                loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
-            </div>
-            <p className="absolute bottom-4 left-4 font-body text-[11px] font-light uppercase tracking-[0.1em] text-white/80">
-              Casa Areia
-            </p>
-          </Link>
-
-          {/* Casa Areia small 2 */}
-          <Link to={projects[2].href} className="group relative overflow-hidden">
-            <div className="aspect-square">
-              <img
-                src={projects[2].imagem}
-                alt="Casa Areia"
-                loading="lazy"
-                className="w-full h-full object-cover object-right transition-transform duration-500 group-hover:scale-[1.02]"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
-            </div>
-            <p className="absolute bottom-4 left-4 font-body text-[11px] font-light uppercase tracking-[0.1em] text-white/80">
-              Casa Areia
-            </p>
-          </Link>
-
-          {/* Casa Una large */}
-          <Link to={projects[3].href} className="group relative overflow-hidden col-span-2">
-            <div className="aspect-[4/3] md:aspect-auto md:h-full">
-              <img
-                src={projects[3].imagem}
-                alt="Casa Una"
-                loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
-            </div>
-            <p className="absolute bottom-4 left-4 font-body text-[11px] font-light uppercase tracking-[0.1em] text-white/80">
-              Casa Una
-            </p>
-          </Link>
+        {/* Bottom row — 3 columns */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-1">
+          {[projects[2], projects[3], projects[4]].map((p) => (
+            <Link key={p.nome} to={p.href} className="group relative overflow-hidden">
+              <div className="aspect-square">
+                <img
+                  src={p.imagem}
+                  alt={p.nome}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
+              </div>
+              <p className="absolute bottom-4 left-4 font-body text-[11px] font-light uppercase tracking-[0.1em] text-white/80">
+                {p.nome}
+              </p>
+            </Link>
+          ))}
         </div>
       </section>
 
