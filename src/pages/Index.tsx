@@ -7,6 +7,11 @@ import heroZhuzenImg from "@/assets/hero-zhuzen.jpg";
 import heroEchotexImg from "@/assets/hero-echotex.jpg";
 import heroItalflexImg from "@/assets/hero-italflex.jpg";
 
+import linhaAltwoodLogo from "@/assets/linha-altwood.svg";
+import linhaZhuzenLogo from "@/assets/linha-zhuzen.svg";
+import linhaEchotexLogo from "@/assets/linha-echotex.svg";
+import linhaItalflexLogo from "@/assets/linha-italflex.svg";
+
 import projectCasaMansa from "@/assets/project-casa-mansa.jpg";
 import projectResidencialUrbano from "@/assets/project-residencial-urbano.jpg";
 import projectCasaAreia from "@/assets/project-casa-areia.jpg";
@@ -15,24 +20,28 @@ import projectCasaUna from "@/assets/project-casa-una.jpg";
 const linhas = [
   {
     nome: "AltWood",
+    logo: linhaAltwoodLogo,
     descricao: "Madeira ecológica premium. Fachadas, brises, panels e decks.",
     href: "/altwood",
     imagem: heroAltwoodImg,
   },
   {
     nome: "Zhúzen",
+    logo: linhaZhuzenLogo,
     descricao: "Revestimentos, forros, luminárias, decorativos, utilitários feitas a partir do bambu.",
     href: "/zhuzen",
     imagem: heroZhuzenImg,
   },
   {
     nome: "Echotex",
+    logo: linhaEchotexLogo,
     descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais ou home cinemas.",
     href: "/echotex",
     imagem: heroEchotexImg,
   },
   {
     nome: "Italflex",
+    logo: linhaItalflexLogo,
     descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
     href: "/italflex",
     imagem: heroItalflexImg,
@@ -120,16 +129,17 @@ const Index = () => {
                   onMouseLeave={() => setIsHovering(false)}
                 >
                   {/* Name */}
-                  <h2
-                    className="font-display text-3xl md:text-4xl lg:text-[36px] font-light transition-colors duration-[350ms]"
+                  <img
+                    src={linha.logo}
+                    alt={linha.nome}
+                    className="h-8 md:h-10 lg:h-11 w-auto transition-all duration-[350ms]"
                     style={{
-                      color: activeIndex === i && isHovering
-                        ? "hsl(var(--accent-green))"
-                        : "rgba(240,237,232,0.25)",
+                      filter: activeIndex === i && isHovering
+                        ? "brightness(0) invert(0.85) sepia(0.3) saturate(2) hue-rotate(70deg)"
+                        : "brightness(0) invert(1) opacity(0.25)",
+                      opacity: activeIndex === i && isHovering ? 1 : 0.25,
                     }}
-                  >
-                    {linha.nome}
-                  </h2>
+                  />
 
                   {/* Spacer for image column on desktop */}
                   <div className="hidden lg:block" />
