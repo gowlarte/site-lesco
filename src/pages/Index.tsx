@@ -156,8 +156,12 @@ const Index = () => {
                   onMouseEnter={() => {
                     setActiveIndex(i);
                     setIsHovering(true);
+                    startCycling();
                   }}
-                  onMouseLeave={() => setIsHovering(false)}
+                  onMouseLeave={() => {
+                    setIsHovering(false);
+                    stopCycling();
+                  }}
                 >
                   {/* Name */}
                   <div
