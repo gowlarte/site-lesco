@@ -27,7 +27,7 @@ const linhas = [
     logo: linhaAltwoodLogo,
     descricao: "Madeira ecológica premium. Fachadas, brises, panels e decks.",
     href: "/altwood",
-    imagem: heroAltwoodImg,
+    imagens: [altwoodProject1, altwoodProject2, altwoodProject3, altwoodProject4],
     corHover: "#f7c39b",
   },
   {
