@@ -199,12 +199,12 @@ const Index = () => {
       </section>
 
       {/* ========== GALERIA DE PROJETOS ========== */}
-      <section className="rounded-[10px] overflow-hidden">
+      <section className="flex flex-col gap-[10px]">
         {/* Top row — 2 equal columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
           {[projects[0], projects[1]].map((p) => (
-            <Link key={p.nome} to={p.href} className="group relative overflow-hidden">
-              <div className="aspect-[4/3]">
+            <Link key={p.nome} to={p.href} className="group">
+              <div className="aspect-[4/3] rounded-[10px] overflow-hidden relative">
                 <img
                   src={p.imagem}
                   alt={p.nome}
@@ -213,7 +213,7 @@ const Index = () => {
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
               </div>
-              <p className="absolute bottom-4 left-4 font-body text-[11px] font-light uppercase tracking-[0.1em] text-white/80">
+              <p className="font-body text-[11px] font-light uppercase tracking-[0.1em] text-dark mt-3 ml-1">
                 {p.nome}
               </p>
             </Link>
@@ -221,10 +221,10 @@ const Index = () => {
         </div>
 
         {/* Bottom row — 3 columns */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-1">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-[10px]">
           {[projects[2], projects[3], projects[4]].map((p) => (
-            <Link key={p.nome} to={p.href} className="group relative overflow-hidden">
-              <div className="aspect-square">
+            <Link key={p.nome} to={p.href} className="group">
+              <div className="aspect-square rounded-[10px] overflow-hidden relative">
                 <img
                   src={p.imagem}
                   alt={p.nome}
@@ -233,7 +233,7 @@ const Index = () => {
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
               </div>
-              <p className="absolute bottom-4 left-4 font-body text-[11px] font-light uppercase tracking-[0.1em] text-white/80">
+              <p className="font-body text-[11px] font-light uppercase tracking-[0.1em] text-dark mt-3 ml-1">
                 {p.nome}
               </p>
             </Link>
