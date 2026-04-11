@@ -180,12 +180,9 @@ const Index = () => {
                     }}
                   />
 
-                  {/* Spacer for image column on desktop */}
-                  <div className="hidden lg:block" />
-
                   {/* Description */}
                   <p
-                    className="font-body font-light leading-[1.65] mt-2 md:mt-0 max-w-sm transition-colors duration-[350ms] text-xl"
+                    className="font-body font-light leading-[1.65] mt-2 md:mt-0 max-w-sm transition-colors duration-[350ms] text-xl text-left"
                     style={{
                       color: activeIndex === i && isHovering
                         ? "rgba(240,237,232,0.85)"
