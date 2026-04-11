@@ -31,9 +31,7 @@ export function Header() {
       <header
         className={cn(
           "fixed top-[10px] left-[10px] right-[10px] z-50 transition-all duration-[400ms] rounded-[10px]",
-          scrolled
-            ? "bg-[rgba(17,17,16,0.92)] backdrop-blur-xl"
-            : "bg-transparent"
+          "bg-[rgba(17,17,16,0.92)] backdrop-blur-xl"
         )}
       >
         <div className="container mx-auto flex items-center justify-between h-20 px-6 lg:px-8 my-0">
