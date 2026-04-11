@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
@@ -123,19 +123,22 @@ const Index = () => {
                   : "opacity 0.3s ease",
               }}
             >
-              {linhas.map((linha, i) => (
-                <img
-                  key={linha.nome}
-                  src={linha.imagem}
-                  alt={linha.nome}
-                  className="absolute inset-0 w-full h-[420px] xl:h-[480px] object-cover rounded-2xl transition-opacity duration-[350ms]"
-                  style={{
-                    opacity: activeIndex === i && isHovering ? 1 : 0,
-                  }}
-                  width={380}
-                  height={480}
-                />
-              ))}
+              {linhas.map((linha, i) => {
+                const imgs = linha.imagens;
+                return imgs.map((src, imgIdx) => (
+                  <img
+                    key={`${linha.nome}-${imgIdx}`}
+                    src={src}
+                    alt={`${linha.nome} projeto ${imgIdx + 1}`}
+                    className="absolute inset-0 w-full h-[420px] xl:h-[480px] object-cover rounded-2xl transition-opacity duration-[600ms]"
+                    style={{
+                      opacity: activeIndex === i && isHovering && (imageFrame % imgs.length) === imgIdx ? 1 : 0,
+                    }}
+                    width={380}
+                    height={480}
+                  />
+                ));
+              })}
               {/* Spacer for layout */}
               <div className="w-full h-[420px] xl:h-[480px]" />
             </div>
