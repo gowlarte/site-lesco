@@ -79,7 +79,7 @@ const Index = () => {
   }, []);
 
   return (
-    <main className="px-[10px] pb-[10px] pt-[10px] flex flex-col gap-[10px]">
+    <main className="px-[10px] pb-[10px] pt-[100px] flex flex-col gap-[10px]">
       {/* ========== HERO — LINE SELECTOR ========== */}
       <section className="relative min-h-screen bg-primary flex items-center rounded-[10px]">
         <div
