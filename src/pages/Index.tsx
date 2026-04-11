@@ -1,8 +1,11 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
-import heroAltwoodImg from "@/assets/hero-altwood.jpg";
+import altwoodProject1 from "@/assets/altwood-project-1.jpg";
+import altwoodProject2 from "@/assets/altwood-project-2.jpg";
+import altwoodProject3 from "@/assets/altwood-project-3.jpg";
+import altwoodProject4 from "@/assets/altwood-project-4.jpg";
 import heroZhuzenImg from "@/assets/hero-zhuzen.jpg";
 import heroEchotexImg from "@/assets/hero-echotex.jpg";
 import heroItalflexImg from "@/assets/hero-italflex.jpg";
