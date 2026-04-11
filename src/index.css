@@ -130,8 +130,9 @@
   }
 
   body {
-    @apply bg-primary text-foreground antialiased;
+    @apply text-foreground antialiased;
     font-family: 'DM Sans', sans-serif;
+    background-color: #DBDBDB;
   }
 
   h1, h2, h3, h4, h5, h6 {

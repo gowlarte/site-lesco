@@ -79,9 +79,9 @@ const Index = () => {
   }, []);
 
   return (
-    <main>
+    <main className="px-[10px] pb-[10px] flex flex-col gap-[10px]">
       {/* ========== HERO — LINE SELECTOR ========== */}
-      <section className="relative min-h-screen bg-primary flex items-center">
+      <section className="relative min-h-screen bg-primary flex items-center rounded-[10px]">
         <div
           ref={sectionRef}
           className="container mx-auto px-6 lg:px-8 w-full pt-24 pb-16"
@@ -175,7 +175,7 @@ const Index = () => {
       </section>
 
       {/* ========== MANIFESTO ========== */}
-      <section className="bg-light section-spacing">
+      <section className="bg-light section-spacing rounded-[10px]">
         <div className="container mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 lg:gap-20 items-start">
@@ -199,7 +199,7 @@ const Index = () => {
       </section>
 
       {/* ========== GALERIA DE PROJETOS ========== */}
-      <section>
+      <section className="rounded-[10px] overflow-hidden">
         {/* Top row — 2 equal columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
           {[projects[0], projects[1]].map((p) => (
@@ -243,7 +243,7 @@ const Index = () => {
 
       {/* ========== CTA FINAL ========== */}
       <section
-        className="py-24 md:py-32 lg:py-40"
+        className="py-24 md:py-32 lg:py-40 rounded-[10px]"
         style={{ background: "linear-gradient(135deg, #A8D9A0 0%, #F5C9A0 100%)" }}
       >
         <div className="container mx-auto px-6 lg:px-8 text-center">
