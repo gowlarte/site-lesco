@@ -35,7 +35,7 @@ const linhas = [
     logo: linhaZhuzenLogo,
     descricao: "Revestimentos, forros, luminárias, decorativos, utilitários feitas a partir do bambu.",
     href: "/zhuzen",
-    imagem: heroZhuzenImg,
+    imagens: [heroZhuzenImg],
     corHover: "#a3dba0",
   },
   {
@@ -43,7 +43,7 @@ const linhas = [
     logo: linhaEchotexLogo,
     descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais ou home cinemas.",
     href: "/echotex",
-    imagem: heroEchotexImg,
+    imagens: [heroEchotexImg],
     corHover: "#c6e1d7",
   },
   {
@@ -51,7 +51,7 @@ const linhas = [
     logo: linhaItalflexLogo,
     descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
     href: "/italflex",
-    imagem: heroItalflexImg,
+    imagens: [heroItalflexImg],
     corHover: "#f57d69",
   },
 ];
