@@ -36,7 +36,7 @@ export function Header() {
             : "bg-transparent"
         )}
       >
-        <div className="container mx-auto flex items-center justify-between h-20 px-6 lg:px-8 my-0 bg-primary rounded">
+        <div className="container mx-auto flex items-center justify-between h-20 px-6 lg:px-8 my-0 bg-primary rounded-[10px]">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img src={logoLight} alt="Lesco" className="h-8" />
