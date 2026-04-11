@@ -152,7 +152,7 @@ const Index = () => {
               >
                 <div
                   ref={(el) => { rowRefs.current[i] = el; }}
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_380px_1fr] xl:grid-cols-[1fr_420px_1fr] items-center border-t border-white/[0.12] py-10 lg:py-12 cursor-pointer group"
+                  className="flex flex-wrap items-center justify-between border-t border-white/[0.12] py-10 lg:py-12 cursor-pointer group"
                   onMouseEnter={() => {
                     setActiveIndex(i);
                     setIsHovering(true);
@@ -180,12 +180,9 @@ const Index = () => {
                     }}
                   />
 
-                  {/* Spacer for image column on desktop */}
-                  <div className="hidden lg:block" />
-
                   {/* Description */}
                   <p
-                    className="font-body font-light leading-[1.65] mt-2 md:mt-0 max-w-sm transition-colors duration-[350ms] text-xl"
+                    className="font-body font-light leading-[1.65] mt-2 md:mt-0 max-w-sm transition-colors duration-[350ms] text-xl text-left"
                     style={{
                       color: activeIndex === i && isHovering
                         ? "rgba(240,237,232,0.85)"
