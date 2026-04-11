@@ -1,16 +1,14 @@
 
 
-## Problem
+## Plan: Adjust project gallery spacing and title positioning
 
-The header is `fixed` positioned, so it floats over the content. The hero section starts at the top of the page and slides behind the header. The `pt-[10px]` on `<main>` only adds 10px at the top, but the header is ~80px tall + 10px from top = 90px. So the visible gap between header and hero content is just 10px of page background, but the hero section itself starts under the header.
+### Changes in `src/pages/Index.tsx` (gallery section, lines 201-242)
 
-Looking at the reference image: the header and hero section are visually separate cards with the `#DBDBDB` background visible between them. The header sits at `top: 10px`, is ~80px tall, ending at ~90px. The hero section should start after that with a 10px gap, meaning `margin-top` of ~100px (10px top + 80px header + 10px gap).
+1. **Change gap from `gap-1` to `gap-[10px]`** on both grid rows (top 2-col and bottom 3-col), and add `gap-[10px]` between the two rows using a flex/gap wrapper or by adding spacing between them.
 
-## Plan
+2. **Move project titles outside the image container** — change from `absolute` positioned text overlaying the image to a static `<p>` below the image. Remove `absolute bottom-4 left-4` and `text-white/80`, use `text-dark` instead. The title sits below the rounded image card.
 
-1. **Add top margin to `<main>`** in `src/pages/Index.tsx`: Change `pt-[10px]` to `pt-[100px]` (or use `mt-[100px]`) to push content below the fixed header. This accounts for 10px header offset + 80px header height + 10px gap.
+3. **Add `rounded-[10px]` to each image container** so individual images have rounded corners matching the design system.
 
-2. **Remove `min-h-screen` from hero section** or keep it — depending on desired look. The hero already has internal padding, so it should be fine.
-
-This single change ensures the gray background (`#DBDBDB`) is visible between the header and the first section, matching the reference screenshot.
+4. **Remove `overflow-hidden` from the section wrapper** since individual items now have their own rounding, and the section background should be transparent (showing the `#DBDBDB` page background between items).
 
