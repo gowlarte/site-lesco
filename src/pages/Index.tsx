@@ -2,7 +2,10 @@ import { useState, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
-import heroAltwoodImg from "@/assets/hero-altwood.jpg";
+import altwoodProject1 from "@/assets/altwood-project-1.jpg";
+import altwoodProject2 from "@/assets/altwood-project-2.jpg";
+import altwoodProject3 from "@/assets/altwood-project-3.jpg";
+import altwoodProject4 from "@/assets/altwood-project-4.jpg";
 import heroZhuzenImg from "@/assets/hero-zhuzen.jpg";
 import heroEchotexImg from "@/assets/hero-echotex.jpg";
 import heroItalflexImg from "@/assets/hero-italflex.jpg";
@@ -24,7 +27,7 @@ const linhas = [
     logo: linhaAltwoodLogo,
     descricao: "Madeira ecológica premium. Fachadas, brises, panels e decks.",
     href: "/altwood",
-    imagem: heroAltwoodImg,
+    imagens: [altwoodProject1, altwoodProject2, altwoodProject3, altwoodProject4],
     corHover: "#f7c39b",
   },
   {
@@ -32,7 +35,7 @@ const linhas = [
     logo: linhaZhuzenLogo,
     descricao: "Revestimentos, forros, luminárias, decorativos, utilitários feitas a partir do bambu.",
     href: "/zhuzen",
-    imagem: heroZhuzenImg,
+    imagens: [heroZhuzenImg],
     corHover: "#a3dba0",
   },
   {
@@ -40,7 +43,7 @@ const linhas = [
     logo: linhaEchotexLogo,
     descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais ou home cinemas.",
     href: "/echotex",
-    imagem: heroEchotexImg,
+    imagens: [heroEchotexImg],
     corHover: "#c6e1d7",
   },
   {
@@ -48,7 +51,7 @@ const linhas = [
     logo: linhaItalflexLogo,
     descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
     href: "/italflex",
-    imagem: heroItalflexImg,
+    imagens: [heroItalflexImg],
     corHover: "#f57d69",
   },
 ];
@@ -61,12 +64,31 @@ const projects = [
   { nome: "Deck Detail", imagem: projectDeckDetail, href: "/projetos/deck-detail" },
 ];
 
+const CYCLE_INTERVAL = 1200; // ms between image switches
+
 const Index = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
+  const [imageFrame, setImageFrame] = useState(0);
   const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startCycling = useCallback(() => {
+    stopCycling();
+    setImageFrame(0);
+    intervalRef.current = setInterval(() => {
+      setImageFrame((prev) => prev + 1);
+    }, CYCLE_INTERVAL);
+  }, []);
+
+  const stopCycling = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, []);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     const section = sectionRef.current;
@@ -101,19 +123,22 @@ const Index = () => {
                   : "opacity 0.3s ease",
               }}
             >
-              {linhas.map((linha, i) => (
-                <img
-                  key={linha.nome}
-                  src={linha.imagem}
-                  alt={linha.nome}
-                  className="absolute inset-0 w-full h-[420px] xl:h-[480px] object-cover rounded-2xl transition-opacity duration-[350ms]"
-                  style={{
-                    opacity: activeIndex === i && isHovering ? 1 : 0,
-                  }}
-                  width={380}
-                  height={480}
-                />
-              ))}
+              {linhas.map((linha, i) => {
+                const imgs = linha.imagens;
+                return imgs.map((src, imgIdx) => (
+                  <img
+                    key={`${linha.nome}-${imgIdx}`}
+                    src={src}
+                    alt={`${linha.nome} projeto ${imgIdx + 1}`}
+                    className="absolute inset-0 w-full h-[420px] xl:h-[480px] object-cover rounded-2xl transition-opacity duration-[600ms]"
+                    style={{
+                      opacity: activeIndex === i && isHovering && (imageFrame % imgs.length) === imgIdx ? 1 : 0,
+                    }}
+                    width={380}
+                    height={480}
+                  />
+                ));
+              })}
               {/* Spacer for layout */}
               <div className="w-full h-[420px] xl:h-[480px]" />
             </div>
@@ -131,8 +156,12 @@ const Index = () => {
                   onMouseEnter={() => {
                     setActiveIndex(i);
                     setIsHovering(true);
+                    startCycling();
                   }}
-                  onMouseLeave={() => setIsHovering(false)}
+                  onMouseLeave={() => {
+                    setIsHovering(false);
+                    stopCycling();
+                  }}
                 >
                   {/* Name */}
                   <div
