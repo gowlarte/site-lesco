@@ -30,7 +30,7 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-[400ms]",
+          "fixed top-[10px] left-[10px] right-[10px] z-50 transition-all duration-[400ms] rounded-[10px]",
           scrolled
             ? "bg-[rgba(17,17,16,0.92)] backdrop-blur-xl"
             : "bg-transparent"
