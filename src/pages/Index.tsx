@@ -64,12 +64,31 @@ const projects = [
   { nome: "Deck Detail", imagem: projectDeckDetail, href: "/projetos/deck-detail" },
 ];
 
+const CYCLE_INTERVAL = 1200; // ms between image switches
+
 const Index = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
+  const [imageFrame, setImageFrame] = useState(0);
   const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startCycling = useCallback(() => {
+    stopCycling();
+    setImageFrame(0);
+    intervalRef.current = setInterval(() => {
+      setImageFrame((prev) => prev + 1);
+    }, CYCLE_INTERVAL);
+  }, []);
+
+  const stopCycling = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, []);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     const section = sectionRef.current;
