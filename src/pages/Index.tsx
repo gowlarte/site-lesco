@@ -84,7 +84,7 @@ const Index = () => {
       <section className="relative min-h-screen bg-primary flex items-center rounded-[10px]">
         <div
           ref={sectionRef}
-          className="container mx-auto px-6 lg:px-8 w-full pt-24 pb-16"
+          className="container px-6 lg:px-8 w-full pt-24 pb-16 py-[97px] my-0 mx-0"
           onMouseMove={handleMouseMove}
         >
           {/* 3-column grid: names | image | descriptions */}
