@@ -10,11 +10,6 @@ import heroZhuzenImg from "@/assets/hero-zhuzen.jpg";
 import heroEchotexImg from "@/assets/hero-echotex.jpg";
 import heroItalflexImg from "@/assets/hero-italflex.jpg";
 
-import linhaAltwoodLogo from "@/assets/linha-altwood.svg";
-import linhaZhuzenLogo from "@/assets/linha-zhuzen.svg";
-import linhaEchotexLogo from "@/assets/linha-echotex.svg";
-import linhaItalflexLogo from "@/assets/linha-italflex.svg";
-
 import projectCasaMansa from "@/assets/project-casa-mansa.jpg";
 import projectResidencialUrbano from "@/assets/project-residencial-urbano.webp";
 import projectCasaAreia from "@/assets/project-casa-areia.jpg";
@@ -24,7 +19,6 @@ import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 const linhas = [
   {
     nome: "AltWood",
-    logo: linhaAltwoodLogo,
     descricao: "Madeira ecológica premium. Fachadas, brises, panels e decks.",
     href: "/altwood",
     imagens: [altwoodProject1, altwoodProject2, altwoodProject3, altwoodProject4],
@@ -32,7 +26,6 @@ const linhas = [
   },
   {
     nome: "Zhúzen",
-    logo: linhaZhuzenLogo,
     descricao: "Revestimentos, forros, luminárias, decorativos, utilitários feitas a partir do bambu.",
     href: "/zhuzen",
     imagens: [heroZhuzenImg],
@@ -40,7 +33,6 @@ const linhas = [
   },
   {
     nome: "Echotex",
-    logo: linhaEchotexLogo,
     descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais ou home cinemas.",
     href: "/echotex",
     imagens: [heroEchotexImg],
@@ -48,7 +40,6 @@ const linhas = [
   },
   {
     nome: "Italflex",
-    logo: linhaItalflexLogo,
     descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
     href: "/italflex",
     imagens: [heroItalflexImg],
@@ -70,7 +61,9 @@ const Index = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [imageFrame, setImageFrame] = useState(0);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const startCycling = useCallback(() => {
     stopCycling();
@@ -87,21 +80,30 @@ const Index = () => {
     }
   }, []);
 
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  }, []);
+
   return (
     <main className="px-[10px] pb-[10px] pt-[100px] flex flex-col gap-[10px]">
       {/* ========== HERO — LINE SELECTOR ========== */}
-      <section className="relative min-h-screen bg-primary flex items-center rounded-[10px]">
-        <div className="container px-6 lg:px-8 w-full pt-24 pb-16 py-[97px] my-0 mx-0">
+      <section
+        ref={sectionRef}
+        className="relative min-h-screen bg-primary flex items-center rounded-[10px]"
+        onMouseMove={handleMouseMove}
+      >
+        <div className="w-full px-12 lg:px-20 pt-32 pb-20">
           <div className="relative">
             {/* Rows */}
             {linhas.map((linha, i) => {
               const isActive = activeIndex === i && isHovering;
-              const imgs = linha.imagens;
 
               return (
                 <Link key={linha.nome} to={linha.href} className="block">
                   <div
-                    className="grid grid-cols-1 lg:grid-cols-[25%_1fr_35%] items-start border-t border-white/[0.12] py-10 lg:py-12 cursor-pointer group"
+                    className="grid grid-cols-1 lg:grid-cols-[1fr_auto] items-start border-t border-white/[0.12] py-14 lg:py-20 cursor-pointer"
                     onMouseEnter={() => {
                       setActiveIndex(i);
                       setIsHovering(true);
@@ -114,21 +116,17 @@ const Index = () => {
                   >
                     {/* Left — Brand name + underline */}
                     <div className="self-start">
-                      <div
-                        className="h-8 md:h-10 lg:h-11 w-[200px] md:w-[240px] transition-all duration-[400ms]"
+                      <h3
+                        className="font-display font-light text-[48px] md:text-[72px] lg:text-[96px] leading-[1] tracking-[-0.02em] transition-colors duration-[400ms]"
                         style={{
-                          maskImage: `url(${linha.logo})`,
-                          WebkitMaskImage: `url(${linha.logo})`,
-                          maskSize: "contain",
-                          WebkitMaskSize: "contain",
-                          maskRepeat: "no-repeat",
-                          WebkitMaskRepeat: "no-repeat",
-                          backgroundColor: isActive ? linha.corHover : "#2E2E2E",
+                          color: isActive ? linha.corHover : "#2E2E2E",
                         }}
-                      />
+                      >
+                        {linha.nome}
+                      </h3>
                       {/* Decorative underline */}
                       <span
-                        className="block h-[1px] w-[80px] mt-2 transition-all duration-300 origin-left"
+                        className="block h-[1px] w-[80px] mt-3 transition-all duration-300 origin-left"
                         style={{
                           backgroundColor: linha.corHover,
                           transform: isActive ? "scaleX(1)" : "scaleX(0)",
@@ -137,34 +135,9 @@ const Index = () => {
                       />
                     </div>
 
-                    {/* Center — Image (desktop only) */}
-                    <div className="hidden lg:flex justify-center">
-                      <div
-                        className="relative w-[280px] xl:w-[320px] h-[350px] xl:h-[400px] rounded-xl overflow-hidden transition-all duration-[400ms]"
-                        style={{
-                          opacity: isActive ? 1 : 0,
-                          transform: isActive ? "translateY(0)" : "translateY(10px)",
-                        }}
-                      >
-                        {imgs.map((src, imgIdx) => (
-                          <img
-                            key={`${linha.nome}-${imgIdx}`}
-                            src={src}
-                            alt={`${linha.nome} projeto ${imgIdx + 1}`}
-                            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[600ms]"
-                            style={{
-                              opacity: isActive && (imageFrame % imgs.length) === imgIdx ? 1 : 0,
-                            }}
-                            width={320}
-                            height={400}
-                          />
-                        ))}
-                      </div>
-                    </div>
-
                     {/* Right — Description */}
                     <p
-                      className="font-display font-extralight leading-[1.65] mt-2 lg:mt-0 max-w-sm text-[15px] text-left self-start transition-colors duration-[400ms]"
+                      className="font-display font-extralight leading-[1.65] mt-4 lg:mt-2 max-w-[360px] text-[16px] lg:text-[18px] text-left self-start transition-colors duration-[400ms]"
                       style={{
                         color: isActive ? linha.corHover : "#525252",
                       }}
@@ -177,6 +150,37 @@ const Index = () => {
             })}
             {/* Bottom border */}
             <div className="border-t border-white/[0.12]" />
+
+            {/* Mouse-following image */}
+            <div
+              className="hidden lg:block pointer-events-none absolute z-10 w-[280px] xl:w-[320px] h-[350px] xl:h-[400px] rounded-2xl overflow-hidden transition-all duration-[250ms] ease-out"
+              style={{
+                left: mousePos.x,
+                top: mousePos.y,
+                transform: "translate(-50%, -50%)",
+                opacity: isHovering ? 1 : 0,
+                scale: isHovering ? "1" : "0.95",
+              }}
+            >
+              {linhas.map((linha, i) =>
+                linha.imagens.map((src, imgIdx) => (
+                  <img
+                    key={`${linha.nome}-${imgIdx}`}
+                    src={src}
+                    alt={`${linha.nome} projeto ${imgIdx + 1}`}
+                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[600ms]"
+                    style={{
+                      opacity:
+                        activeIndex === i && isHovering && (imageFrame % linha.imagens.length) === imgIdx
+                          ? 1
+                          : 0,
+                    }}
+                    width={320}
+                    height={400}
+                  />
+                ))
+              )}
+            </div>
           </div>
         </div>
       </section>
