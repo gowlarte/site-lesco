@@ -201,3 +201,9 @@
     color: hsl(var(--foreground));
   }
 }
+
+/* Inline SVG logos — fit container */
+[role="img"] > svg {
+  width: 100%;
+  height: 100%;
+}
