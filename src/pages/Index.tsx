@@ -28,7 +28,7 @@ const linhas = [
     descricao: "Madeira ecológica premium. Fachadas, brises, panels e decks.",
     href: "/altwood",
     imagens: [altwoodProject1, altwoodProject2, altwoodProject3, altwoodProject4],
-    corHover: "#C8956C",
+    corHover: "#b85e4f",
   },
   {
     nome: "Zhúzen",
@@ -36,7 +36,7 @@ const linhas = [
     descricao: "Revestimentos, forros, luminárias, decorativos, utilitários feitas a partir do bambu.",
     href: "/zhuzen",
     imagens: [heroZhuzenImg],
-    corHover: "#A8E063",
+    corHover: "#7aa478",
   },
   {
     nome: "Echotex",
@@ -44,7 +44,7 @@ const linhas = [
     descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais ou home cinemas.",
     href: "/echotex",
     imagens: [heroEchotexImg],
-    corHover: "#A0A0A0",
+    corHover: "#95a9a1",
   },
   {
     nome: "Italflex",
@@ -52,7 +52,7 @@ const linhas = [
     descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
     href: "/italflex",
     imagens: [heroItalflexImg],
-    corHover: "#D4A89A",
+    corHover: "#b99274",
   },
 ];
 
