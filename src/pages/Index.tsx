@@ -10,6 +10,11 @@ import heroZhuzenImg from "@/assets/hero-zhuzen.jpg";
 import heroEchotexImg from "@/assets/hero-echotex.jpg";
 import heroItalflexImg from "@/assets/hero-italflex.jpg";
 
+import logoAltwood from "@/assets/linha-altwood-2.svg";
+import logoZhuzen from "@/assets/linha-zhuzen-2.svg";
+import logoEchotex from "@/assets/linha-echotex-2.svg";
+import logoItalflex from "@/assets/linha-italflex-2.svg";
+
 import projectCasaMansa from "@/assets/project-casa-mansa.jpg";
 import projectResidencialUrbano from "@/assets/project-residencial-urbano.webp";
 import projectCasaAreia from "@/assets/project-casa-areia.jpg";
@@ -19,6 +24,7 @@ import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 const linhas = [
   {
     nome: "AltWood",
+    logo: logoAltwood,
     descricao: "Madeira ecológica premium. Fachadas, brises, panels e decks.",
     href: "/altwood",
     imagens: [altwoodProject1, altwoodProject2, altwoodProject3, altwoodProject4],
@@ -26,6 +32,7 @@ const linhas = [
   },
   {
     nome: "Zhúzen",
+    logo: logoZhuzen,
     descricao: "Revestimentos, forros, luminárias, decorativos, utilitários feitas a partir do bambu.",
     href: "/zhuzen",
     imagens: [heroZhuzenImg],
@@ -33,6 +40,7 @@ const linhas = [
   },
   {
     nome: "Echotex",
+    logo: logoEchotex,
     descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais ou home cinemas.",
     href: "/echotex",
     imagens: [heroEchotexImg],
@@ -40,6 +48,7 @@ const linhas = [
   },
   {
     nome: "Italflex",
+    logo: logoItalflex,
     descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
     href: "/italflex",
     imagens: [heroItalflexImg],
