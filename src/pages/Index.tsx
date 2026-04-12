@@ -10,6 +10,11 @@ import heroZhuzenImg from "@/assets/hero-zhuzen.jpg";
 import heroEchotexImg from "@/assets/hero-echotex.jpg";
 import heroItalflexImg from "@/assets/hero-italflex.jpg";
 
+import logoAltwood from "@/assets/linha-altwood-2.svg";
+import logoZhuzen from "@/assets/linha-zhuzen-2.svg";
+import logoEchotex from "@/assets/linha-echotex-2.svg";
+import logoItalflex from "@/assets/linha-italflex-2.svg";
+
 import projectCasaMansa from "@/assets/project-casa-mansa.jpg";
 import projectResidencialUrbano from "@/assets/project-residencial-urbano.webp";
 import projectCasaAreia from "@/assets/project-casa-areia.jpg";
@@ -19,6 +24,7 @@ import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 const linhas = [
   {
     nome: "AltWood",
+    logo: logoAltwood,
     descricao: "Madeira ecológica premium. Fachadas, brises, panels e decks.",
     href: "/altwood",
     imagens: [altwoodProject1, altwoodProject2, altwoodProject3, altwoodProject4],
@@ -26,6 +32,7 @@ const linhas = [
   },
   {
     nome: "Zhúzen",
+    logo: logoZhuzen,
     descricao: "Revestimentos, forros, luminárias, decorativos, utilitários feitas a partir do bambu.",
     href: "/zhuzen",
     imagens: [heroZhuzenImg],
@@ -33,6 +40,7 @@ const linhas = [
   },
   {
     nome: "Echotex",
+    logo: logoEchotex,
     descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais ou home cinemas.",
     href: "/echotex",
     imagens: [heroEchotexImg],
@@ -40,6 +48,7 @@ const linhas = [
   },
   {
     nome: "Italflex",
+    logo: logoItalflex,
     descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
     href: "/italflex",
     imagens: [heroItalflexImg],
@@ -114,16 +123,19 @@ const Index = () => {
                       stopCycling();
                     }}
                   >
-                    {/* Left — Brand name + underline */}
+                    {/* Left — Brand logo */}
                     <div className="self-start">
-                      <h3
-                        className="font-display font-light text-[48px] md:text-[72px] lg:text-[96px] leading-[1] tracking-[-0.02em] transition-colors duration-[400ms]"
+                      <img
+                        src={linha.logo}
+                        alt={linha.nome}
+                        className="h-[32px] md:h-[42px] lg:h-[52px] w-auto transition-all duration-[400ms]"
                         style={{
-                          color: isActive ? linha.corHover : "#2E2E2E",
+                          filter: isActive
+                            ? "brightness(0) saturate(100%)"
+                            : "brightness(0) saturate(100%) opacity(0.25)",
+                          opacity: isActive ? 1 : 0.35,
                         }}
-                      >
-                        {linha.nome}
-                      </h3>
+                      />
                       {/* Decorative underline */}
                       <span
                         className="block h-[1px] w-[80px] mt-3 transition-all duration-300 origin-left"
@@ -135,9 +147,9 @@ const Index = () => {
                       />
                     </div>
 
-                    {/* Right — Description */}
+                    {/* Right — Description (large editorial) */}
                     <p
-                      className="font-display font-extralight leading-[1.65] mt-4 lg:mt-2 max-w-[360px] text-[16px] lg:text-[18px] text-left self-start transition-colors duration-[400ms]"
+                      className="font-display font-extralight leading-[1.15] mt-4 lg:mt-0 max-w-[520px] text-[28px] md:text-[40px] lg:text-[48px] text-left self-start transition-colors duration-[400ms] tracking-[-0.02em]"
                       style={{
                         color: isActive ? linha.corHover : "#525252",
                       }}
