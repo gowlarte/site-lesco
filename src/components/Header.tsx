@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import logoLight from "@/assets/logo-lesco-light.svg";
+import logoDark from "@/assets/logo-lesco-dark-2.svg";
 
 const navLinks = [
   { label: "Home", href: "/" },
