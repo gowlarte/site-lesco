@@ -103,7 +103,7 @@ const Index = () => {
         className="relative min-h-screen bg-primary flex items-center rounded-[10px]"
         onMouseMove={handleMouseMove}
       >
-        <div className="w-full px-12 lg:px-20 pt-16 pb-20 bg-secondary">
+        <div className="w-full lg:px-20 bg-secondary px-[20px] py-[33px] my-0 pb-[9px] pt-[10px]">
           <div className="relative">
             {/* Rows */}
             {linhas.map((linha, i) => {
@@ -112,7 +112,7 @@ const Index = () => {
               return (
                 <Link key={linha.nome} to={linha.href} className="block">
                   <div
-                    className="grid grid-cols-1 lg:grid-cols-[1fr_auto] items-start py-10 lg:py-14 cursor-pointer"
+                    className="grid grid-cols-1 lg:grid-cols-[1fr_auto] items-start lg:py-14 cursor-pointer py-[24px]"
                     onMouseEnter={() => {
                       setActiveIndex(i);
                       setIsHovering(true);
