@@ -136,7 +136,7 @@ const Index = () => {
                         }}
                       />
                       <div
-                        className="h-[32px] md:h-[42px] lg:h-[52px] w-[200px] md:w-[260px] lg:w-[320px] transition-colors duration-[400ms]"
+                        className="mx-0 h-[32px] md:h-[42px] lg:h-[52px] w-[200px] md:w-[260px] lg:w-[320px] transition-colors duration-[400ms]"
                         style={{ color: isActive ? linha.corHover : "#525252" }}
                         dangerouslySetInnerHTML={{ __html: linha.logo }}
                         role="img"
