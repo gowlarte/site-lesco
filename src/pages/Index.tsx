@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
+import { X } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 import altwoodProject1 from "@/assets/altwood-project-1.jpg";
