@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logoDark from "@/assets/logo-lesco-dark-2.svg";
+import logoLight from "@/assets/logo-lesco-light.svg";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -27,18 +28,27 @@ export function Header() {
     setMenuOpen(false);
   }, [location]);
 
+  // At top: light bg, dark text, dark logo. Scrolled: dark bg, light text, light logo.
+  const isLight = !scrolled;
+
   return (
     <>
       <header
         className={cn(
           "fixed top-[10px] left-[10px] right-[10px] z-50 transition-all duration-[400ms] rounded-[10px]",
-          "bg-[rgba(17,17,16,0.92)] backdrop-blur-xl"
+          isLight
+            ? "bg-[#DBDBDB]"
+            : "bg-[rgba(17,17,16,0.92)] backdrop-blur-xl"
         )}
       >
-        <div className="container mx-auto flex items-center justify-between h-20 px-6 lg:px-8 my-0">
+        <div className="container mx-auto flex items-center justify-between h-14 px-6 lg:px-8">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={logoDark} alt="Lesco" className="w-[93px] h-[29px] object-contain" />
+            <img
+              src={isLight ? logoDark : logoLight}
+              alt="Lesco"
+              className="w-[93px] h-[29px] object-contain transition-all duration-300"
+            />
           </Link>
 
           {/* Desktop Nav */}
@@ -46,47 +56,59 @@ export function Header() {
             className="hidden md:flex items-center gap-10"
             onMouseLeave={() => setHoveredNav(null)}
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                onMouseEnter={() => setHoveredNav(link.href)}
-                className="font-display font-light text-[12px] uppercase tracking-[0.08em] transition-all duration-[350ms]"
-                style={{
-                  color:
-                    hoveredNav === link.href
-                      ? "#FFFFFF"
-                      : hoveredNav !== null
-                      ? "#525252"
-                      : location.pathname === link.href
-                      ? "#FFFFFF"
-                      : "#7F7F7F",
-                  filter:
-                    hoveredNav !== null && hoveredNav !== link.href
-                      ? "blur(0.5px)"
-                      : "blur(0px)",
-                }}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const baseColor = isLight ? "#303030" : "#7F7F7F";
+              const activeColor = isLight ? "#000000" : "#FFFFFF";
+              const dimColor = isLight ? "#A0A0A0" : "#525252";
+
+              return (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  onMouseEnter={() => setHoveredNav(link.href)}
+                  className="font-display font-light text-[12px] uppercase tracking-[0.08em] transition-all duration-[350ms]"
+                  style={{
+                    color:
+                      hoveredNav === link.href
+                        ? activeColor
+                        : hoveredNav !== null
+                        ? dimColor
+                        : location.pathname === link.href
+                        ? activeColor
+                        : baseColor,
+                    filter:
+                      hoveredNav !== null && hoveredNav !== link.href
+                        ? "blur(0.5px)"
+                        : "blur(0px)",
+                  }}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTA — gradient matching brand logo */}
           <Link
             to="/orcamento"
-            className="hidden md:inline-flex items-center px-4 py-2 rounded bg-[#F57D69] text-white font-display font-light text-[12px] uppercase tracking-[0.08em] hover:brightness-90 transition-all duration-300"
+            className="hidden md:inline-flex items-center px-4 py-1.5 rounded font-display font-light text-[12px] uppercase tracking-[0.08em] text-white hover:brightness-110 transition-all duration-300"
+            style={{
+              background: "linear-gradient(135deg, #a3dba0 2%, #c6e1d7 26%, #f7c39b 50%, #ed8d7b 80%)",
+            }}
           >
             Orçamento
           </Link>
 
           {/* Mobile Hamburger */}
           <button
-            className="md:hidden text-foreground"
+            className={cn(
+              "md:hidden transition-colors duration-300",
+              isLight ? "text-[#303030]" : "text-foreground"
+            )}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Menu"
           >
-            {menuOpen ? <X size={28} /> : <Menu size={28} />}
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </header>
@@ -109,7 +131,10 @@ export function Header() {
         ))}
         <Link
           to="/orcamento"
-          className="mt-4 px-8 py-3 rounded bg-[#F57D69] text-white font-display text-sm uppercase tracking-[0.08em]"
+          className="mt-4 px-8 py-3 rounded text-white font-display text-sm uppercase tracking-[0.08em]"
+          style={{
+            background: "linear-gradient(135deg, #a3dba0 2%, #c6e1d7 26%, #f7c39b 50%, #ed8d7b 80%)",
+          }}
         >
           Orçamento
         </Link>
