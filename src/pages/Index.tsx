@@ -127,7 +127,7 @@ const Index = () => {
                     <div className="self-start flex items-center gap-0">
                       {/* Decorative line — pushes content right on hover */}
                       <span
-                        className="block h-[2px] transition-all duration-300 ease-out flex-shrink-0"
+                        className="hidden lg:block h-[2px] transition-all duration-300 ease-out flex-shrink-0"
                         style={{
                           backgroundColor: linha.corHover,
                           width: isActive ? "40px" : "0px",
