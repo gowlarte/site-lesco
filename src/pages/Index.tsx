@@ -70,6 +70,7 @@ const CYCLE_INTERVAL = 1200;
 const Index = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<typeof projects[number] | null>(null);
   const [imageFrame, setImageFrame] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
