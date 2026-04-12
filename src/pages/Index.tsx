@@ -103,7 +103,7 @@ const Index = () => {
         className="relative min-h-screen bg-primary flex items-center rounded-[10px]"
         onMouseMove={handleMouseMove}
       >
-        <div className="w-full px-12 lg:px-20 pt-32 pb-20">
+        <div className="w-full px-12 lg:px-20 pt-16 pb-20">
           <div className="relative">
             {/* Rows */}
             {linhas.map((linha, i) => {
@@ -112,7 +112,7 @@ const Index = () => {
               return (
                 <Link key={linha.nome} to={linha.href} className="block">
                   <div
-                    className="grid grid-cols-1 lg:grid-cols-[1fr_auto] items-start border-t border-white/[0.12] py-14 lg:py-20 cursor-pointer"
+                    className="grid grid-cols-1 lg:grid-cols-[1fr_auto] items-start py-10 lg:py-14 cursor-pointer"
                     onMouseEnter={() => {
                       setActiveIndex(i);
                       setIsHovering(true);
@@ -123,27 +123,33 @@ const Index = () => {
                       stopCycling();
                     }}
                   >
-                    {/* Left — Brand logo */}
-                    <div className="self-start">
-                      <img
-                        src={linha.logo}
-                        alt={linha.nome}
-                        className="h-[32px] md:h-[42px] lg:h-[52px] w-auto transition-all duration-[400ms]"
-                        style={{
-                          filter: isActive
-                            ? "brightness(0) saturate(100%)"
-                            : "brightness(0) saturate(100%) opacity(0.25)",
-                          opacity: isActive ? 1 : 0.35,
-                        }}
-                      />
-                      {/* Decorative underline */}
+                    {/* Left — Brand logo with hover line */}
+                    <div className="self-start flex items-center gap-0">
+                      {/* Decorative line — pushes content right on hover */}
                       <span
-                        className="block h-[1px] w-[80px] mt-3 transition-all duration-300 origin-left"
+                        className="block h-[2px] transition-all duration-300 ease-out flex-shrink-0"
                         style={{
                           backgroundColor: linha.corHover,
-                          transform: isActive ? "scaleX(1)" : "scaleX(0)",
+                          width: isActive ? "40px" : "0px",
+                          marginRight: isActive ? "16px" : "0px",
                           opacity: isActive ? 1 : 0,
                         }}
+                      />
+                      <div
+                        className="h-[32px] md:h-[42px] lg:h-[52px] w-[200px] md:w-[260px] lg:w-[320px] transition-all duration-[400ms]"
+                        style={{
+                          backgroundColor: isActive ? linha.corHover : "#525252",
+                          maskImage: `url(${linha.logo})`,
+                          WebkitMaskImage: `url(${linha.logo})`,
+                          maskSize: "contain",
+                          WebkitMaskSize: "contain",
+                          maskRepeat: "no-repeat",
+                          WebkitMaskRepeat: "no-repeat",
+                          maskPosition: "left center",
+                          WebkitMaskPosition: "left center",
+                        }}
+                        role="img"
+                        aria-label={linha.nome}
                       />
                     </div>
 
@@ -160,8 +166,7 @@ const Index = () => {
                 </Link>
               );
             })}
-            {/* Bottom border */}
-            <div className="border-t border-white/[0.12]" />
+            {/* No bottom border */}
 
             {/* Mouse-following image */}
             <div
