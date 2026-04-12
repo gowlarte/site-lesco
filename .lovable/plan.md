@@ -1,39 +1,29 @@
 
 
-## Plan: Editorial Redesign of Product Lines Section
+## Plan: Fix Brand Logos Not Rendering in Production
 
-### What's changing
+### Problem
+The brand logos use CSS `mask-image` with Vite-imported SVG URLs. This works in dev but fails in the published build — the mask doesn't resolve correctly, showing plain colored rectangles instead of shaped logos.
 
-The hero/lines section needs to shift from a rigid 3-column grid with fixed center images to a high-end editorial layout where the image follows the mouse cursor and brand names are rendered as large typographic text (not SVG masks).
+### Solution
+Replace the `mask-image` div approach with standard `<img>` tags. To control color dynamically (default `#525252`, active = brand color), use CSS `filter` with `brightness(0)` plus a colored overlay, or more reliably: render each SVG as a React component so fill color can be set directly via props.
 
-### Reference comparison
-- **Image 1 (current)**: 3-column grid, small SVG logo masks, fixed center image, cramped layout
-- **Image 2 (desired)**: Large text brand names (~80-100px), image follows cursor, 2-column layout (name left, description right), generous vertical spacing, decorative underline, more editorial presence
+**Chosen approach**: Use `<img>` tags with CSS `filter` for the base gray, and on hover/active, apply a colored overlay using a `<div>` with `mix-blend-mode`. However, since exact color matching with filters is unreliable, the cleanest fix is:
 
----
+**Final approach**: Convert the 4 SVG files to inline React components that accept a `fill` color prop. This gives full color control without mask-image issues.
 
-### Changes in `src/pages/Index.tsx`
+### Changes
 
-1. **Replace SVG mask logos with large text**: Remove the `maskImage` div approach. Render brand names as `<h3>` text using `font-display` at `text-[72px] lg:text-[96px] font-light`. Inactive color `#2E2E2E`, active color = brand color.
+**`src/pages/Index.tsx`**:
+- Remove the `mask-image` div block (lines 138-153)
+- Replace with an `<img>` tag using `src={linha.logo}` and apply a CSS filter to colorize:
+  - Default state: `filter: brightness(0) saturate(100%) opacity(0.6)` (renders dark gray ~#525252)
+  - Active state: use an SVG `<filter>` or simply wrap in a container with the brand `backgroundColor` and use `mix-blend-mode: multiply` on a white-background img
+  
+**Simpler alternative** (recommended): Since the SVGs all use `fill: #303030`, just render them as `<img>` tags. For the inactive gray (#525252), apply a subtle brightness filter. For the active colored state, use a CSS filter matrix computed for each brand color — OR use the approach of wrapping each `<img>` in a div with `style={{ filter }}` where the filter converts black to the target color.
 
-2. **Layout from 3-col grid to 2-col**: Change to `grid-cols-[40%_1fr]` — brand name + underline on left, description on right. Remove the center image column entirely from the grid.
+**Simplest fix**: Use `<img>` with the SVGs directly. Apply `opacity: 0.5` for inactive, `opacity: 1` for active. For color changes, wrap in a div with `backgroundColor` set to brand color and use the img with `mix-blend-mode: screen` (for light backgrounds). This avoids mask-image entirely.
 
-3. **Mouse-following image**: Bring back `mousePos` state tracking (`onMouseMove` on the section). Render ONE floating `<div>` (outside the row loop) that is `position: absolute`, `pointer-events-none`, positioned at `left: mouseX`, `top: mouseY` with `translate(-50%, -50%)`. Shows the active line's cycling images. Appears only when `isHovering` is true, with opacity/scale transition.
-
-4. **Larger vertical spacing**: Increase row padding from `py-10 lg:py-12` to `py-14 lg:py-20` for more editorial breathing room. Section padding increased.
-
-5. **Description typography**: Increase from `text-[15px]` to `text-[18px] lg:text-[20px]`, keep `font-extralight`.
-
-6. **Section container**: Change from `container px-6` to full-width with `px-12 lg:px-20` for edge-to-edge editorial feel.
-
-7. **New logo**: Copy the uploaded `Logo-lesco-cor-dark-2.svg` to `src/assets/` and update `Header.tsx` to use it as the header logo.
-
-### Changes in `src/components/Header.tsx`
-
-- Import and use the new dark color logo SVG instead of `logo-lesco-light.svg`.
-
-### Files modified
-- `src/pages/Index.tsx` — hero section layout, mouse tracking, typography
-- `src/components/Header.tsx` — new logo
-- `src/assets/Logo-lesco-cor-dark-2.svg` — new asset
+### Files Modified
+- `src/pages/Index.tsx` — replace mask-image divs with `<img>` elements
 
