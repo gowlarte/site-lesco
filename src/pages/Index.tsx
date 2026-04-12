@@ -112,7 +112,7 @@ const Index = () => {
               return (
                 <Link key={linha.nome} to={linha.href} className="block">
                   <div
-                    className="grid grid-cols-1 lg:grid-cols-[1fr_auto] items-start py-10 lg:py-14 cursor-pointer"
+                    className="grid grid-cols-1 lg:grid-cols-[1fr_auto] items-start py-10 lg:py-14 cursor-none"
                     onMouseEnter={() => {
                       setActiveIndex(i);
                       setIsHovering(true);
