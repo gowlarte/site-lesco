@@ -10,10 +10,10 @@ import heroZhuzenImg from "@/assets/hero-zhuzen.jpg";
 import heroEchotexImg from "@/assets/hero-echotex.jpg";
 import heroItalflexImg from "@/assets/hero-italflex.jpg";
 
-import logoAltwood from "@/assets/linha-altwood-2.svg";
-import logoZhuzen from "@/assets/linha-zhuzen-2.svg";
-import logoEchotex from "@/assets/linha-echotex-2.svg";
-import logoItalflex from "@/assets/linha-italflex-2.svg";
+import logoAltwoodRaw from "@/assets/linha-altwood-2.svg?raw";
+import logoZhuzenRaw from "@/assets/linha-zhuzen-2.svg?raw";
+import logoEchotexRaw from "@/assets/linha-echotex-2.svg?raw";
+import logoItalflexRaw from "@/assets/linha-italflex-2.svg?raw";
 
 import projectCasaMansa from "@/assets/project-casa-mansa.jpg";
 import projectResidencialUrbano from "@/assets/project-residencial-urbano.webp";
@@ -24,7 +24,7 @@ import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 const linhas = [
   {
     nome: "AltWood",
-    logo: logoAltwood,
+    logo: logoAltwoodRaw,
     descricao: "Madeira ecológica premium. Fachadas, brises, panels e decks.",
     href: "/altwood",
     imagens: [altwoodProject1, altwoodProject2, altwoodProject3, altwoodProject4],
@@ -32,7 +32,7 @@ const linhas = [
   },
   {
     nome: "Zhúzen",
-    logo: logoZhuzen,
+    logo: logoZhuzenRaw,
     descricao: "Revestimentos, forros, luminárias, decorativos, utilitários feitas a partir do bambu.",
     href: "/zhuzen",
     imagens: [heroZhuzenImg],
@@ -40,7 +40,7 @@ const linhas = [
   },
   {
     nome: "Echotex",
-    logo: logoEchotex,
+    logo: logoEchotexRaw,
     descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais ou home cinemas.",
     href: "/echotex",
     imagens: [heroEchotexImg],
@@ -48,7 +48,7 @@ const linhas = [
   },
   {
     nome: "Italflex",
-    logo: logoItalflex,
+    logo: logoItalflexRaw,
     descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
     href: "/italflex",
     imagens: [heroItalflexImg],
@@ -136,18 +136,9 @@ const Index = () => {
                         }}
                       />
                       <div
-                        className="h-[32px] md:h-[42px] lg:h-[52px] w-[200px] md:w-[260px] lg:w-[320px] transition-all duration-[400ms]"
-                        style={{
-                          backgroundColor: isActive ? linha.corHover : "#525252",
-                          maskImage: `url(${linha.logo})`,
-                          WebkitMaskImage: `url(${linha.logo})`,
-                          maskSize: "contain",
-                          WebkitMaskSize: "contain",
-                          maskRepeat: "no-repeat",
-                          WebkitMaskRepeat: "no-repeat",
-                          maskPosition: "left center",
-                          WebkitMaskPosition: "left center",
-                        }}
+                        className="h-[32px] md:h-[42px] lg:h-[52px] w-[200px] md:w-[260px] lg:w-[320px] transition-colors duration-[400ms]"
+                        style={{ color: isActive ? linha.corHover : "#525252" }}
+                        dangerouslySetInnerHTML={{ __html: linha.logo }}
                         role="img"
                         aria-label={linha.nome}
                       />
