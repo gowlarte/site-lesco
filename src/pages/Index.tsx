@@ -220,46 +220,92 @@ const Index = () => {
       </section>
 
       {/* ========== GALERIA DE PROJETOS ========== */}
-      <section className="flex flex-col gap-[10px]">
-        {/* Top row — 2 equal columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
-          {[projects[0], projects[1]].map((p) => (
-            <Link key={p.nome} to={p.href} className="group">
-              <div className="aspect-[4/3] rounded-[10px] overflow-hidden relative">
+      <section className="relative flex flex-col gap-[10px] overflow-hidden">
+        {/* Inline project viewer */}
+        {selectedProject && (
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 rounded-[10px] overflow-hidden relative bg-secondary">
+            <button
+              onClick={() => setSelectedProject(null)}
+              className="absolute top-5 right-5 z-20 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center hover:bg-background transition-colors duration-200"
+              aria-label="Fechar"
+            >
+              <X className="w-5 h-5 text-foreground" />
+            </button>
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+              <div className="aspect-[4/3] lg:aspect-auto lg:min-h-[500px]">
                 <img
-                  src={p.imagem}
-                  alt={p.nome}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  src={selectedProject.imagem}
+                  alt={selectedProject.nome}
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
               </div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.1em] text-dark mt-3 ml-1">
-                {p.nome}
-              </p>
-            </Link>
-          ))}
-        </div>
+              <div className="flex flex-col justify-center p-10 lg:p-16">
+                <p className="font-body text-[11px] font-light uppercase tracking-[0.1em] text-foreground/50 mb-4">
+                  {selectedProject.linha}
+                </p>
+                <h3 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-foreground mb-6">
+                  {selectedProject.nome}
+                </h3>
+                <p className="font-body text-[16px] font-light leading-[1.65] text-foreground/70 max-w-[400px]">
+                  {selectedProject.descricao}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
-        {/* Bottom row — 3 columns */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-[10px]">
-          {[projects[2], projects[3], projects[4]].map((p) => (
-            <Link key={p.nome} to={p.href} className="group">
-              <div className="aspect-square rounded-[10px] overflow-hidden relative">
-                <img
-                  src={p.imagem}
-                  alt={p.nome}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
-              </div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.1em] text-dark mt-3 ml-1">
-                {p.nome}
-              </p>
-            </Link>
-          ))}
-        </div>
+        {/* Gallery grid — hidden when a project is open */}
+        {!selectedProject && (
+          <>
+            {/* Top row — 2 equal columns */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
+              {[projects[0], projects[1]].map((p) => (
+                <div
+                  key={p.nome}
+                  className="group cursor-zoom-in"
+                  onClick={() => setSelectedProject(p)}
+                >
+                  <div className="aspect-[4/3] rounded-[10px] overflow-hidden relative">
+                    <img
+                      src={p.imagem}
+                      alt={p.nome}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
+                  </div>
+                  <p className="font-body text-[11px] font-light uppercase tracking-[0.1em] text-foreground mt-3 ml-1">
+                    {p.nome}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Bottom row — 3 columns */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-[10px]">
+              {[projects[2], projects[3], projects[4]].map((p) => (
+                <div
+                  key={p.nome}
+                  className="group cursor-zoom-in"
+                  onClick={() => setSelectedProject(p)}
+                >
+                  <div className="aspect-square rounded-[10px] overflow-hidden relative">
+                    <img
+                      src={p.imagem}
+                      alt={p.nome}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
+                  </div>
+                  <p className="font-body text-[11px] font-light uppercase tracking-[0.1em] text-foreground mt-3 ml-1">
+                    {p.nome}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
       </section>
 
       {/* ========== CTA FINAL ========== */}
