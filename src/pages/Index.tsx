@@ -58,11 +58,11 @@ const linhas = [
 ];
 
 const projects = [
-  { nome: "Casa Mansa", imagem: projectCasaMansa, href: "/projetos/casa-mansa" },
-  { nome: "Residencial Urbano", imagem: projectResidencialUrbano, href: "/projetos/residencial-urbano" },
-  { nome: "Casa Areia", imagem: projectCasaAreia, href: "/projetos/casa-areia" },
-  { nome: "Casa Una", imagem: projectCasaUna, href: "/projetos/casa-una" },
-  { nome: "Deck Detail", imagem: projectDeckDetail, href: "/projetos/deck-detail" },
+  { nome: "Casa Mansa", imagem: projectCasaMansa, href: "/projetos/casa-mansa", descricao: "Integração total entre arquitetura e natureza com revestimentos AltWood.", linha: "AltWood" },
+  { nome: "Residencial Urbano", imagem: projectResidencialUrbano, href: "/projetos/residencial-urbano", descricao: "Fachada contemporânea com brises em madeira ecológica.", linha: "AltWood" },
+  { nome: "Casa Areia", imagem: projectCasaAreia, href: "/projetos/casa-areia", descricao: "Deck e pergolado em harmonia com a paisagem litorânea.", linha: "AltWood" },
+  { nome: "Casa Una", imagem: projectCasaUna, href: "/projetos/casa-una", descricao: "Revestimento externo que dialoga com a vegetação nativa.", linha: "Zhúzen" },
+  { nome: "Deck Detail", imagem: projectDeckDetail, href: "/projetos/deck-detail", descricao: "Detalhe de acabamento em deck de alta resistência.", linha: "AltWood" },
 ];
 
 const CYCLE_INTERVAL = 1200;
