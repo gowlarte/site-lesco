@@ -10,11 +10,6 @@ import heroZhuzenImg from "@/assets/hero-zhuzen.jpg";
 import heroEchotexImg from "@/assets/hero-echotex.jpg";
 import heroItalflexImg from "@/assets/hero-italflex.jpg";
 
-import linhaAltwoodLogo from "@/assets/linha-altwood.svg";
-import linhaZhuzenLogo from "@/assets/linha-zhuzen.svg";
-import linhaEchotexLogo from "@/assets/linha-echotex.svg";
-import linhaItalflexLogo from "@/assets/linha-italflex.svg";
-
 import projectCasaMansa from "@/assets/project-casa-mansa.jpg";
 import projectResidencialUrbano from "@/assets/project-residencial-urbano.webp";
 import projectCasaAreia from "@/assets/project-casa-areia.jpg";
@@ -24,7 +19,6 @@ import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 const linhas = [
   {
     nome: "AltWood",
-    logo: linhaAltwoodLogo,
     descricao: "Madeira ecológica premium. Fachadas, brises, panels e decks.",
     href: "/altwood",
     imagens: [altwoodProject1, altwoodProject2, altwoodProject3, altwoodProject4],
@@ -32,7 +26,6 @@ const linhas = [
   },
   {
     nome: "Zhúzen",
-    logo: linhaZhuzenLogo,
     descricao: "Revestimentos, forros, luminárias, decorativos, utilitários feitas a partir do bambu.",
     href: "/zhuzen",
     imagens: [heroZhuzenImg],
@@ -40,7 +33,6 @@ const linhas = [
   },
   {
     nome: "Echotex",
-    logo: linhaEchotexLogo,
     descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais ou home cinemas.",
     href: "/echotex",
     imagens: [heroEchotexImg],
@@ -48,7 +40,6 @@ const linhas = [
   },
   {
     nome: "Italflex",
-    logo: linhaItalflexLogo,
     descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
     href: "/italflex",
     imagens: [heroItalflexImg],
@@ -70,7 +61,9 @@ const Index = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [imageFrame, setImageFrame] = useState(0);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const startCycling = useCallback(() => {
     stopCycling();
@@ -85,6 +78,12 @@ const Index = () => {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
+  }, []);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
   }, []);
 
   return (
