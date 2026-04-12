@@ -38,7 +38,7 @@ export function Header() {
         <div className="container mx-auto flex items-center justify-between h-20 px-6 lg:px-8 my-0">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={logoLight} alt="Lesco" className="w-[93px] h-[29px] object-contain" />
+            <img src={logoDark} alt="Lesco" className="w-[93px] h-[29px] object-contain" />
           </Link>
 
           {/* Desktop Nav */}
