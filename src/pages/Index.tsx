@@ -239,7 +239,7 @@ const Index = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="flex flex-col justify-center p-10 lg:p-16">
+              <div className="flex flex-col justify-center p-10 lg:p-16 bg-primary">
                 <p className="font-body text-[11px] font-light uppercase tracking-[0.1em] text-foreground/50 mb-4">
                   {selectedProject.linha}
                 </p>
