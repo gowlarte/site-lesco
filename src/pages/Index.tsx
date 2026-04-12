@@ -123,16 +123,19 @@ const Index = () => {
                       stopCycling();
                     }}
                   >
-                    {/* Left — Brand name + underline */}
+                    {/* Left — Brand logo */}
                     <div className="self-start">
-                      <h3
-                        className="font-display font-light text-[48px] md:text-[72px] lg:text-[96px] leading-[1] tracking-[-0.02em] transition-colors duration-[400ms]"
+                      <img
+                        src={linha.logo}
+                        alt={linha.nome}
+                        className="h-[32px] md:h-[42px] lg:h-[52px] w-auto transition-all duration-[400ms]"
                         style={{
-                          color: isActive ? linha.corHover : "#2E2E2E",
+                          filter: isActive
+                            ? "brightness(0) saturate(100%)"
+                            : "brightness(0) saturate(100%) opacity(0.25)",
+                          opacity: isActive ? 1 : 0.35,
                         }}
-                      >
-                        {linha.nome}
-                      </h3>
+                      />
                       {/* Decorative underline */}
                       <span
                         className="block h-[1px] w-[80px] mt-3 transition-all duration-300 origin-left"
@@ -144,9 +147,9 @@ const Index = () => {
                       />
                     </div>
 
-                    {/* Right — Description */}
+                    {/* Right — Description (large editorial) */}
                     <p
-                      className="font-display font-extralight leading-[1.65] mt-4 lg:mt-2 max-w-[360px] text-[16px] lg:text-[18px] text-left self-start transition-colors duration-[400ms]"
+                      className="font-display font-extralight leading-[1.15] mt-4 lg:mt-0 max-w-[520px] text-[28px] md:text-[40px] lg:text-[48px] text-left self-start transition-colors duration-[400ms] tracking-[-0.02em]"
                       style={{
                         color: isActive ? linha.corHover : "#525252",
                       }}
