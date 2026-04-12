@@ -14,6 +14,7 @@ const navLinks = [
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [hoveredNav, setHoveredNav] = useState<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -37,19 +38,34 @@ export function Header() {
         <div className="container mx-auto flex items-center justify-between h-20 px-6 lg:px-8 my-0">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={logoLight} alt="Lesco" className="h-8" />
+            <img src={logoLight} alt="Lesco" className="w-[93px] h-[29px] object-contain" />
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-10">
+          <nav
+            className="hidden md:flex items-center gap-10"
+            onMouseLeave={() => setHoveredNav(null)}
+          >
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
-                className={cn(
-                  "text-subheading text-foreground/70 hover:text-foreground transition-colors duration-300",
-                  location.pathname === link.href && "text-foreground"
-                )}
+                onMouseEnter={() => setHoveredNav(link.href)}
+                className="font-display font-light text-[12px] uppercase tracking-[0.08em] transition-all duration-[350ms]"
+                style={{
+                  color:
+                    hoveredNav === link.href
+                      ? "#FFFFFF"
+                      : hoveredNav !== null
+                      ? "#525252"
+                      : location.pathname === link.href
+                      ? "#FFFFFF"
+                      : "#7F7F7F",
+                  filter:
+                    hoveredNav !== null && hoveredNav !== link.href
+                      ? "blur(0.5px)"
+                      : "blur(0px)",
+                }}
               >
                 {link.label}
               </Link>
@@ -59,7 +75,7 @@ export function Header() {
           {/* Desktop CTA */}
           <Link
             to="/orcamento"
-            className="hidden md:inline-flex items-center px-4 py-2 rounded bg-[hsl(var(--accent-orange))] text-white text-[11px] font-body font-medium uppercase tracking-[0.08em] hover:opacity-90 transition-opacity duration-300"
+            className="hidden md:inline-flex items-center px-4 py-2 rounded bg-[#F57D69] text-white font-display font-light text-[12px] uppercase tracking-[0.08em] hover:brightness-90 transition-all duration-300"
           >
             Orçamento
           </Link>
@@ -93,7 +109,7 @@ export function Header() {
         ))}
         <Link
           to="/orcamento"
-          className="mt-4 px-8 py-3 rounded bg-[hsl(var(--accent-orange))] text-white font-body text-sm uppercase tracking-[0.08em]"
+          className="mt-4 px-8 py-3 rounded bg-[#F57D69] text-white font-display text-sm uppercase tracking-[0.08em]"
         >
           Orçamento
         </Link>
