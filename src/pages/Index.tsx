@@ -136,18 +136,9 @@ const Index = () => {
                         }}
                       />
                       <div
-                        className="h-[32px] md:h-[42px] lg:h-[52px] w-[200px] md:w-[260px] lg:w-[320px] transition-all duration-[400ms]"
-                        style={{
-                          backgroundColor: isActive ? linha.corHover : "#525252",
-                          maskImage: `url(${linha.logo})`,
-                          WebkitMaskImage: `url(${linha.logo})`,
-                          maskSize: "contain",
-                          WebkitMaskSize: "contain",
-                          maskRepeat: "no-repeat",
-                          WebkitMaskRepeat: "no-repeat",
-                          maskPosition: "left center",
-                          WebkitMaskPosition: "left center",
-                        }}
+                        className="h-[32px] md:h-[42px] lg:h-[52px] w-[200px] md:w-[260px] lg:w-[320px] transition-colors duration-[400ms]"
+                        style={{ color: isActive ? linha.corHover : "#525252" }}
+                        dangerouslySetInnerHTML={{ __html: linha.logo }}
                         role="img"
                         aria-label={linha.nome}
                       />
