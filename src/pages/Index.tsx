@@ -135,16 +135,21 @@ const Index = () => {
                           opacity: isActive ? 1 : 0,
                         }}
                       />
-                      <img
-                        src={linha.logo}
-                        alt={linha.nome}
-                        className="h-[32px] md:h-[42px] lg:h-[52px] w-auto transition-all duration-[400ms]"
+                      <div
+                        className="h-[32px] md:h-[42px] lg:h-[52px] w-[200px] md:w-[260px] lg:w-[320px] transition-all duration-[400ms]"
                         style={{
-                          filter: isActive
-                            ? `brightness(0) saturate(100%) sepia(1) hue-rotate(0deg)`
-                            : "brightness(0) saturate(100%)",
-                          opacity: isActive ? 1 : 0.6,
+                          backgroundColor: isActive ? linha.corHover : "#525252",
+                          maskImage: `url(${linha.logo})`,
+                          WebkitMaskImage: `url(${linha.logo})`,
+                          maskSize: "contain",
+                          WebkitMaskSize: "contain",
+                          maskRepeat: "no-repeat",
+                          WebkitMaskRepeat: "no-repeat",
+                          maskPosition: "left center",
+                          WebkitMaskPosition: "left center",
                         }}
+                        role="img"
+                        aria-label={linha.nome}
                       />
                     </div>
 
