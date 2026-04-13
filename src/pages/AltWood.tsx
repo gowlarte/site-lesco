@@ -26,6 +26,9 @@ import projetoDeck2 from "@/assets/projeto-deck-2.png";
 import projetoDeck3 from "@/assets/projeto-deck-3.jpg";
 import projetoDeck4 from "@/assets/projeto-deck-4.jpg";
 import projetoDeck5 from "@/assets/projeto-deck-5.jpg";
+import projetoLine1 from "@/assets/projeto-line-1.png";
+import projetoLine2 from "@/assets/projeto-line-2.png";
+import projetoLine3 from "@/assets/projeto-line-3.png";
 
 const produtos = [
   {
@@ -82,6 +85,7 @@ const produtos = [
       { nome: "Urban Oak", corAproximada: "#7A7060" },
     ],
     href: "/altwood-line",
+    images: [projetoLine1, projetoLine2, projetoLine3],
   },
   {
     id: "panel",
