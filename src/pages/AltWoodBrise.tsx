@@ -29,6 +29,10 @@ import briseCla145x145 from "@/assets/brise-classic-145x145.png";
 import briseCla200x50 from "@/assets/brise-classic-200x50.png";
 import briseCla250x50 from "@/assets/brise-classic-250x50.png";
 import { CardProjeto } from "@/components/altwood/CardProjeto";
+import projetoBrise1 from "@/assets/projeto-brise-1.png";
+import projetoBrise2 from "@/assets/projeto-brise-2.png";
+import projetoBrise3 from "@/assets/projeto-brise-3.png";
+import projetoBrise4 from "@/assets/projeto-brise-4.png";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
 import swatchBlack from "@/assets/swatch-black.png";
@@ -92,13 +96,10 @@ const classicModelos = [
 ];
 
 const galeriaItems = [
-  { legenda: "Residência com brises verticais entre jardim e vidro", ratio: "4:3" as const },
-  { legenda: "Obra Pátio Estaleiro — Balneário Camboriú, SC · Brise 25x25 · Cor Teak", ratio: "3:4" as const },
-  { legenda: "Fachada comercial com brises verticais alinhados · Cor Teak", ratio: "4:3" as const },
-  { legenda: "Projeto com brises verticais em estrutura de aço", ratio: "3:4" as const },
-  { legenda: "Edifício alto — fachada completa com brises verticais", ratio: "4:3" as const },
-  { legenda: "Empreendimento residencial — brises em fachada e pergolado", ratio: "3:4" as const },
-  { legenda: "Fachada residencial — perspectiva plana", ratio: "4:3" as const },
+  { legenda: "Residência com brises verticais entre jardim e vidro", ratio: "4:3" as const, imageSrc: projetoBrise1 },
+  { legenda: "Fachada comercial com brises verticais alinhados · Cor Teak", ratio: "4:3" as const, imageSrc: projetoBrise2 },
+  { legenda: "Edifício alto — fachada completa com brises verticais", ratio: "4:3" as const, imageSrc: projetoBrise3 },
+  { legenda: "Empreendimento residencial — brises em fachada e pergolado", ratio: "4:3" as const, imageSrc: projetoBrise4 },
 ];
 
 const AltWoodBrise = () => {
@@ -259,7 +260,7 @@ const AltWoodBrise = () => {
         <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
           {galeriaItems.map((item, i) => (
             <div key={i} className="break-inside-avoid">
-              <CardProjeto legenda={item.legenda} ratio={item.ratio} />
+              <CardProjeto imageSrc={item.imageSrc} legenda={item.legenda} ratio={item.ratio} />
             </div>
           ))}
         </div>
