@@ -1,0 +1,220 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ChevronRight } from "lucide-react";
+import { HeroSection } from "@/components/altwood/HeroSection";
+import { SwatchCor } from "@/components/altwood/SwatchCor";
+import { CardModelo } from "@/components/altwood/CardModelo";
+import { CardProjeto } from "@/components/altwood/CardProjeto";
+import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
+
+const escovadasSwatches = [
+  { nome: "Black", corAproximada: "#1A1A1A" },
+  { nome: "Lily White", corAproximada: "#E8E0D5" },
+  { nome: "Ipê", corAproximada: "#6B4226" },
+  { nome: "Teak", corAproximada: "#8B5E3C" },
+  { nome: "Oak", corAproximada: "#A0784A" },
+  { nome: "Walnut", corAproximada: "#4A3728" },
+  { nome: "Red Cedar", corAproximada: "#7D3E2A" },
+  { nome: "Weatherwood", corAproximada: "#6B6560" },
+];
+
+const texturizadasSwatches = [
+  { nome: "Black", corAproximada: "#1A1A1A" },
+  { nome: "Lily White", corAproximada: "#E8E0D5" },
+  { nome: "Ipê", corAproximada: "#6B4226" },
+  { nome: "Teak", corAproximada: "#8B5E3C" },
+  { nome: "Oak", corAproximada: "#A0784A" },
+  { nome: "Walnut", corAproximada: "#4A3728" },
+  { nome: "Red Cedar", corAproximada: "#7D3E2A" },
+  { nome: "Weatherwood", corAproximada: "#6B6560" },
+];
+
+const modelos = [
+  { nome: "AltWood-Deck-97x22", medida: "97x22 mm", peso: "20,0 kg/m²" },
+  { nome: "AltWood-Deck-140x22", medida: "140x22 mm", peso: "28 kg/m²" },
+  { nome: "AltWood-Deck-150x22", medida: "150x22 mm", peso: "18,75 kg/m²" },
+];
+
+const galeriaItems = [
+  { legenda: "Deck residencial com vista para o mar — AltWood Deck em tom natural", ratio: "4:3" as const },
+  { legenda: "Área de piscina com deck em Ipê — projeto paisagístico completo", ratio: "3:4" as const },
+];
+
+const AltWoodDeck = () => {
+  const [selectedEscovada, setSelectedEscovada] = useState<string | null>(null);
+  const [selectedTexturizada, setSelectedTexturizada] = useState<string | null>(null);
+  const [specsOpen, setSpecsOpen] = useState(false);
+
+  return (
+    <div className="bg-[#0D0D0D] min-h-screen">
+      {/* Hero */}
+      <HeroSection
+        headline="AltWood Deck"
+        subtitulo="Sofisticação e conforto para os espaços ao ar livre."
+      />
+
+      {/* Breadcrumb */}
+      <div className="px-6 md:px-12 lg:px-20 py-4">
+        <nav className="flex items-center gap-1.5 text-xs">
+          <Link to="/" className="text-[#7F7F7F] hover:text-white transition-colors">Início</Link>
+          <ChevronRight className="w-3 h-3 text-[#525252]" />
+          <Link to="/altwood" className="text-[#7F7F7F] hover:text-white transition-colors">AltWood</Link>
+          <ChevronRight className="w-3 h-3 text-[#525252]" />
+          <span className="text-[#525252]">Deck</span>
+        </nav>
+      </div>
+
+      {/* Introdução */}
+      <div className="max-w-[760px] mx-auto px-6 py-20 text-center">
+        <div className="flex items-center gap-4 justify-center mb-8">
+          <span className="flex-1 h-px bg-[#1E1E1E]" />
+          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C8956C]">Deck</span>
+          <span className="flex-1 h-px bg-[#1E1E1E]" />
+        </div>
+        <p className="text-[17px] text-[#7F7F7F] leading-[1.7]">
+          Os decks de madeira ecológica representam uma escolha inteligente e elegante para aprimorar espaços externos. Eles são uma solução ideal para projetos residenciais, comerciais e públicos que buscam criar ambientes externos excepcionais que perduram ao longo do tempo.
+        </p>
+      </div>
+
+      {/* Paleta de Cores */}
+      <div className="px-6 md:px-12 lg:px-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+          {/* Cores Escovadas */}
+          <div>
+            <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-4">
+              Cores Escovadas
+            </span>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-4">
+              {escovadasSwatches.map((s) => (
+                <SwatchCor
+                  key={`esc-${s.nome}`}
+                  nome={s.nome}
+                  corAproximada={s.corAproximada}
+                  selected={selectedEscovada === s.nome}
+                  onClick={() => setSelectedEscovada(selectedEscovada === s.nome ? null : s.nome)}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Cores Texturizadas */}
+          <div>
+            <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-4">
+              Cores Texturizadas
+            </span>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-4">
+              {texturizadasSwatches.map((s) => (
+                <SwatchCor
+                  key={`tex-${s.nome}`}
+                  nome={s.nome}
+                  corAproximada={s.corAproximada}
+                  selected={selectedTexturizada === s.nome}
+                  onClick={() => setSelectedTexturizada(selectedTexturizada === s.nome ? null : s.nome)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Modelos */}
+        <div className="mb-12">
+          <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-6">
+            Modelos
+          </span>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {modelos.map((m) => (
+              <CardModelo key={m.nome} nome={m.nome} medida={m.medida} peso={m.peso} />
+            ))}
+          </div>
+        </div>
+
+        {/* Dados Técnicos */}
+        <div className="mt-12 mb-16">
+          <button
+            onClick={() => setSpecsOpen(!specsOpen)}
+            className="text-[#7F7F7F] hover:text-white text-sm transition-colors duration-300 cursor-pointer flex items-center gap-1"
+          >
+            Especificações técnicas {specsOpen ? "−" : "+"}
+          </button>
+
+          {specsOpen && (
+            <div className="mt-6 bg-[#141414] rounded-[12px] p-8 animate-fade-in">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Material</h4>
+                  <div className="h-px bg-[#1E1E1E] mb-4" />
+                  <div className="text-sm text-white font-mono space-y-1">
+                    <p>WPC — Wood-Plastic Composite</p>
+                    <p className="text-[#7F7F7F]">55% pó de madeira natural</p>
+                    <p className="text-[#7F7F7F]">35% HPDE reciclado</p>
+                    <p className="text-[#7F7F7F]">10% aditivos</p>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Resistência</h4>
+                  <div className="h-px bg-[#1E1E1E] mb-4" />
+                  <div className="text-sm text-white space-y-1">
+                    <p>✓ Anti-cupim</p>
+                    <p>✓ Hidrofóbico</p>
+                    <p>✓ Anti-mofo</p>
+                    <p>✓ Resistência UV</p>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Certificações</h4>
+                  <div className="h-px bg-[#1E1E1E] mb-4" />
+                  <p className="text-sm text-white">ISO 9001 · ISO 14001 · LEED · ESG</p>
+                </div>
+                <div>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Garantia</h4>
+                  <div className="h-px bg-[#1E1E1E] mb-4" />
+                  <p className="text-sm text-white">10 anos</p>
+                </div>
+                <div className="md:col-span-2">
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Subestrutura Recomendada</h4>
+                  <div className="h-px bg-[#1E1E1E] mb-4" />
+                  <div className="text-sm text-white font-mono space-y-1">
+                    <p>Espaçamento entre perfis: <span className="text-[#7F7F7F]">máximo 40 cm entre apoios</span></p>
+                    <p>Fixação: <span className="text-[#7F7F7F]">clip de fixação oculta ou parafuso autobrocante 4,2×19 mm</span></p>
+                    <p>Estrutura auxiliar: <span className="text-[#7F7F7F]">alumínio ou aço — 50×50 mm · 38×38 mm</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Galeria de Projetos */}
+      <div className="px-6 md:px-12 lg:px-20 py-24">
+        <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">Projetos</span>
+        <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com AltWood Deck</h2>
+
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
+          {galeriaItems.map((item, i) => (
+            <div key={i} className="break-inside-avoid">
+              <CardProjeto legenda={item.legenda} ratio={item.ratio} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Navegação entre produtos */}
+      <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-[#1E1E1E]">
+        <div className="flex justify-between items-center">
+          <Link to="/altwood-shield" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
+            ← Shield
+          </Link>
+          <Link to="/altwood-line" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
+            Line →
+          </Link>
+        </div>
+      </div>
+
+      {/* Orçamento */}
+      <SecaoOrcamento />
+    </div>
+  );
+};
+
+export default AltWoodDeck;
