@@ -78,6 +78,7 @@ const AltWoodBrise = () => {
     <div className="bg-[#0D0D0D] min-h-screen">
       {/* Hero */}
       <HeroSection
+        images={heroImages}
         headline="AltWood Brise"
         subtitulo="Um recurso artístico para a arquitetura contemporânea."
       />
