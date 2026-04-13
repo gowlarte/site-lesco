@@ -1,29 +1,41 @@
 
 
-## Plan: Fix Brand Logos Not Rendering in Production
+## Problema
 
-### Problem
-The brand logos use CSS `mask-image` with Vite-imported SVG URLs. This works in dev but fails in the published build — the mask doesn't resolve correctly, showing plain colored rectangles instead of shaped logos.
+Em telas acima de ~2500px, o hero com os logos das linhas e descrições fica "perdido" — os elementos têm tamanhos fixos (logos 320px, texto 48px, padding 10px) que não escalam, deixando muito espaço vazio.
 
-### Solution
-Replace the `mask-image` div approach with standard `<img>` tags. To control color dynamically (default `#525252`, active = brand color), use CSS `filter` with `brightness(0)` plus a colored overlay, or more reliably: render each SVG as a React component so fill color can be set directly via props.
+## Solução
 
-**Chosen approach**: Use `<img>` tags with CSS `filter` for the base gray, and on hover/active, apply a colored overlay using a `<div>` with `mix-blend-mode`. However, since exact color matching with filters is unreliable, the cleanest fix is:
+Adicionar um breakpoint `3xl` (min-width: 2500px) no Tailwind e escalar os elementos do hero proporcionalmente nessa faixa.
 
-**Final approach**: Convert the 4 SVG files to inline React components that accept a `fill` color prop. This gives full color control without mask-image issues.
+### Mudanças
 
-### Changes
+**1. `tailwind.config.ts`** — Adicionar breakpoint customizado:
+```js
+screens: {
+  "3xl": "2500px",
+}
+```
 
-**`src/pages/Index.tsx`**:
-- Remove the `mask-image` div block (lines 138-153)
-- Replace with an `<img>` tag using `src={linha.logo}` and apply a CSS filter to colorize:
-  - Default state: `filter: brightness(0) saturate(100%) opacity(0.6)` (renders dark gray ~#525252)
-  - Active state: use an SVG `<filter>` or simply wrap in a container with the brand `backgroundColor` and use `mix-blend-mode: multiply` on a white-background img
-  
-**Simpler alternative** (recommended): Since the SVGs all use `fill: #303030`, just render them as `<img>` tags. For the inactive gray (#525252), apply a subtle brightness filter. For the active colored state, use a CSS filter matrix computed for each brand color — OR use the approach of wrapping each `<img>` in a div with `style={{ filter }}` where the filter converts black to the target color.
+**2. `src/pages/Index.tsx`** — Escalar elementos no hero para `3xl`:
 
-**Simplest fix**: Use `<img>` with the SVGs directly. Apply `opacity: 0.5` for inactive, `opacity: 1` for active. For color changes, wrap in a div with `backgroundColor` set to brand color and use the img with `mix-blend-mode: screen` (for light backgrounds). This avoids mask-image entirely.
+- **Container wrapper** (linha 108): aumentar padding lateral
+  - De `pl-[10px] pr-[10px]` → adicionar `3xl:pl-[80px] 3xl:pr-[80px]`
 
-### Files Modified
-- `src/pages/Index.tsx` — replace mask-image divs with `<img>` elements
+- **Cada row do grid** (linha 117): aumentar padding vertical
+  - Adicionar `3xl:py-20`
+
+- **Logo container** (linha 141): aumentar dimensões
+  - De `lg:h-[52px] lg:w-[320px]` → adicionar `3xl:h-[72px] 3xl:w-[440px]`
+
+- **Decorative line** (linha 132): linha mais longa no hover
+  - Aumentar width de `40px` para `60px` via lógica condicional em 3xl (ou manter estático, já que é inline style)
+
+- **Descrição** (linha 151): aumentar fonte e max-width
+  - De `lg:text-[48px] max-w-[520px]` → adicionar `3xl:text-[64px] 3xl:max-w-[720px]`
+
+- **Mouse-following image** (linha 165): aumentar o card flutuante
+  - Adicionar `3xl:w-[400px] 3xl:h-[500px]`
+
+Estas mudanças são isoladas ao breakpoint `3xl`, sem impacto em resoluções menores.
 
