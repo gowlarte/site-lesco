@@ -17,6 +17,13 @@ import modelo202x25 from "@/assets/panel-modelo-202x25.png";
 import modelo182x15 from "@/assets/panel-modelo-182x15.png";
 import modelo119x14 from "@/assets/panel-modelo-119x14.png";
 import modelo150x14 from "@/assets/panel-modelo-150x14.png";
+import modelo180x14 from "@/assets/panel-modelo-180x14.png";
+import modelo268x20 from "@/assets/panel-modelo-268x20.png";
+import modelo204x35 from "@/assets/panel-modelo-204x35.png";
+import modelo158x10 from "@/assets/panel-modelo-158x10.png";
+import modelo153x12 from "@/assets/panel-modelo-153x12.png";
+import modelo59x34 from "@/assets/panel-modelo-59x34.png";
+import modelo45x35 from "@/assets/panel-modelo-45x35.png";
 
 const acetinadasSwatches = [
   { nome: "Golden Oak", corAproximada: "#C4944A" },
@@ -47,13 +54,13 @@ const modelos = [
   { nome: "AltWood-Panel-182x15", medida: "182x15 mm", peso: "4,90 kg/m²", imageSrc: modelo182x15 },
   { nome: "AltWood-Panel-119x14", medida: "119x14 mm", peso: "5,12 kg/m²", imageSrc: modelo119x14 },
   { nome: "AltWood-Panel-150x14", medida: "150x14 mm", peso: "5,20 kg/m²", imageSrc: modelo150x14 },
-  { nome: "AltWood-Panel-180x14", medida: "180x14 mm", peso: "5,40 kg/m²" },
-  { nome: "AltWood-Panel-268x20", medida: "268x20 mm", peso: "6,35 kg/m²" },
-  { nome: "AltWood-Panel-204x35", medida: "204x35 mm", peso: "7,80 kg/m²" },
-  { nome: "AltWood-Panel-158x10", medida: "158x10 mm", peso: "4,00 kg/m²" },
-  { nome: "AltWood-Panel-153x12", medida: "153x12 mm", peso: "4,20 kg/m²" },
-  { nome: "AltWood-Panel-59x34", medida: "59x34 mm", peso: "0,43 kg/m²" },
-  { nome: "AltWood-Panel-45x35", medida: "45x35 mm", peso: "0,28 kg/m²" },
+  { nome: "AltWood-Panel-180x14", medida: "180x14 mm", peso: "5,40 kg/m²", imageSrc: modelo180x14 },
+  { nome: "AltWood-Panel-268x20", medida: "268x20 mm", peso: "6,35 kg/m²", imageSrc: modelo268x20 },
+  { nome: "AltWood-Panel-204x35", medida: "204x35 mm", peso: "7,80 kg/m²", imageSrc: modelo204x35 },
+  { nome: "AltWood-Panel-158x10", medida: "158x10 mm", peso: "4,00 kg/m²", imageSrc: modelo158x10 },
+  { nome: "AltWood-Panel-153x12", medida: "153x12 mm", peso: "4,20 kg/m²", imageSrc: modelo153x12 },
+  { nome: "AltWood-Panel-59x34", medida: "59x34 mm", peso: "0,43 kg/m²", imageSrc: modelo59x34 },
+  { nome: "AltWood-Panel-45x35", medida: "45x35 mm", peso: "0,28 kg/m²", imageSrc: modelo45x35 },
 ];
 
 const galeriaItems: { imageSrc?: string; legenda: string; ratio: "4:3" | "3:4" }[] = [];
