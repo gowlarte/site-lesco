@@ -15,6 +15,12 @@ import prevBrise1 from "@/assets/preview-brise-1.png";
 import prevBrise2 from "@/assets/preview-brise-2.png";
 import prevBrise3 from "@/assets/preview-brise-3.png";
 import prevBrise4 from "@/assets/preview-brise-4.png";
+import projetoShield1 from "@/assets/projeto-shield-1.png";
+import projetoShield2 from "@/assets/projeto-shield-2.png";
+import projetoShield3 from "@/assets/projeto-shield-3.png";
+import projetoShield4 from "@/assets/projeto-shield-4.png";
+import projetoShield5 from "@/assets/projeto-shield-5.png";
+import projetoShield6 from "@/assets/projeto-shield-6.jpg";
 
 const produtos = [
   {
@@ -43,6 +49,7 @@ const produtos = [
       { nome: "Walnut", corAproximada: "#4A3728" },
     ],
     href: "/altwood-shield",
+    images: [projetoShield1, projetoShield2, projetoShield3, projetoShield4, projetoShield5, projetoShield6],
   },
   {
     id: "deck",
