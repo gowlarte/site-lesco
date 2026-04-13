@@ -9,10 +9,10 @@ interface SwatchCorProps {
 }
 
 export const SwatchCor = ({ nome, corAproximada, imageSrc, selected, onClick }: SwatchCorProps) => (
-  <button onClick={onClick} className="flex flex-col items-center gap-1.5 group cursor-pointer">
+  <button onClick={onClick} className="flex items-center gap-3 group cursor-pointer">
     <div
       className={cn(
-        "w-[80px] h-[56px] rounded-[var(--aw-radius-swatch)] transition-all duration-300 overflow-hidden",
+        "w-10 h-10 rounded-full transition-all duration-300 overflow-hidden shrink-0",
         selected ? "ring-2 ring-[#C8956C]" : "ring-1 ring-[#1E1E1E] group-hover:ring-[#525252]"
       )}
     >
@@ -23,7 +23,7 @@ export const SwatchCor = ({ nome, corAproximada, imageSrc, selected, onClick }: 
       )}
     </div>
     <span className={cn(
-      "text-[11px] uppercase tracking-[0.1em] transition-colors duration-300",
+      "text-[11px] uppercase tracking-[0.1em] transition-colors duration-300 whitespace-nowrap",
       selected ? "text-white" : "text-[#7F7F7F]"
     )}>
       {nome}
