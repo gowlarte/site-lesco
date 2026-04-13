@@ -1,4 +1,8 @@
 import { useState } from "react";
+import heroShield1 from "@/assets/hero-shield-1.png";
+import heroShield2 from "@/assets/hero-shield-2.png";
+import heroShield3 from "@/assets/hero-shield-3.jpg";
+import heroShield4 from "@/assets/hero-shield-4.png";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import { HeroSection } from "@/components/altwood/HeroSection";
