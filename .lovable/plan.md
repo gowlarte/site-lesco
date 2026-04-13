@@ -1,27 +1,36 @@
 
 
-## Fix: Logo compositing - lettering behind swoosh, not below it
+## Splash Screen: Swoosh centering + slide animation
 
 ### Problem
-The current implementation renders the swoosh and lettering as two separate SVGs stacked vertically. The user wants them composited as in the original logo SVG (`logo-lesco-light.svg`, viewBox `0 0 481.11 151.67`), where the lettering and swoosh overlap spatially, with the swoosh rendered ON TOP of the lettering (higher z-index).
+Currently the entire SVG (481x151 viewBox) is centered on screen, but only the swoosh is visible initially. Since the swoosh sits at the right side of the logo (x~330-481), it appears off-center. When the full logo is revealed, the swoosh's extra space to the right makes the logo look left-heavy.
 
 ### Solution
-Use a **single SVG** with the original logo's `viewBox="0 0 481.11 151.67"`. Render layers in this order:
-1. **Lettering (L, E, S, C, O globe)** - rendered first (back), fades in during "reveal" phase
-2. **Swoosh light** (gray outline) - rendered on top
-3. **Swoosh gradient** (color fill with clip-path sweep) - rendered on top
-4. **Swoosh trail gradient on O** - rendered last (front, on top of everything)
 
-The swoosh paths need to be repositioned to match the original logo coordinate space. In the standalone swoosh SVG the viewBox is `0 0 350.31 258.97`, but in the full logo SVG the swoosh trail path starts from the same coordinates as the lettering (the trail path `M480.95,24.2...` is already in the logo coordinate space).
+Add a CSS `translateX` transition to the SVG wrapper that shifts in two phases:
 
-### Key changes to `src/components/SplashScreen.tsx`:
-- Merge everything into one SVG with `viewBox="0 0 481.11 151.67"`
-- The swoosh in the logo coordinate space uses the trail path from the original logo (not the standalone swoosh SVG)
-- Lettering group gets the fade-in transition via `opacity` and `transform` attributes
-- Swoosh stays visible from the start with its gradient sweep animation
-- Remove `mt-4` vertical spacing and separate SVG elements
-- Tagline stays as a separate `<p>` element below
+**Phase 1 ("swoosh")**: Shift the SVG left so the swoosh's visual center (~x=405 in the 481-wide viewBox) aligns with the screen center. This is approximately `-34%` of SVG width.
 
-### Technical detail
-The standalone swoosh SVG (`lesco-swoosh-light.svg`) has different coordinates than the swoosh embedded in the full logo. The full logo already contains the swoosh trail path at the correct position relative to the lettering. We will use those coordinates directly from `logo-lesco-light.svg`.
+**Phase 2 ("reveal")**: Animate `translateX` to a small positive offset (~`+6%`) so the final logo is centered based on the typography baseline (L through C, ignoring the swoosh's rightward overshoot).
+
+### Changes to `src/components/SplashScreen.tsx`
+
+1. Add a `transition: transform 800ms cubic-bezier(0.25,0.46,0.45,0.94)` on the SVG element
+2. During `swoosh` phase: `transform: translateX(-34%)` (centers the swoosh on screen)
+3. During `reveal`/`fadeout` phase: `transform: translateX(3%)` (centers based on typography, slightly right)
+4. The lettering fade-in, tagline, and swoosh gradient sweep remain unchanged
+5. Tagline also inherits the translateX shift via the parent wrapper
+
+### Timeline
+
+```text
+0s ─── Swoosh centered on screen (translateX -34%)
+       Gradient sweep begins
+~2s ── Assets ready → phase: "reveal"
+       SVG slides right over 800ms to final position (translateX +3%)
+       Lettering fades in simultaneously
+       Tagline fades in 200ms later
+~3.5s  Fade-out begins
+~4s ── Splash removed
+```
 
