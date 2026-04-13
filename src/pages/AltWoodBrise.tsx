@@ -162,7 +162,7 @@ const AltWoodBrise = () => {
             </span>
             <div className="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
               {modelos.map((m) => (
-                <CardModelo key={m.nome} imageSrc={m.imageSrc} nome={m.nome} medida={m.medida} peso={m.peso} />
+                <CardModelo key={m.nome} imageSrc={'imageSrc' in m ? (m as any).imageSrc : undefined} nome={m.nome} medida={m.medida} peso={m.peso} />
               ))}
             </div>
           </div>
