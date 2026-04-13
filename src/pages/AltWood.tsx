@@ -29,6 +29,12 @@ import projetoDeck5 from "@/assets/projeto-deck-5.jpg";
 import projetoLine1 from "@/assets/projeto-line-1.png";
 import projetoLine2 from "@/assets/projeto-line-2.png";
 import projetoLine3 from "@/assets/projeto-line-3.png";
+import projetoPanel1 from "@/assets/projeto-panel-1.png";
+import projetoPanel2 from "@/assets/projeto-panel-2.png";
+import projetoPanel3 from "@/assets/projeto-panel-3.png";
+import projetoPanel4 from "@/assets/projeto-panel-4.png";
+import projetoPanel5 from "@/assets/projeto-panel-5.png";
+import projetoPanel6 from "@/assets/projeto-panel-6.png";
 
 const produtos = [
   {
@@ -99,6 +105,7 @@ const produtos = [
       { nome: "Urban Oak", corAproximada: "#7A7060" },
     ],
     href: "/altwood-panel",
+    images: [projetoPanel1, projetoPanel2, projetoPanel3, projetoPanel4, projetoPanel5, projetoPanel6],
   },
 ];
 

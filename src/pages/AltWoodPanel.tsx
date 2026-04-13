@@ -24,6 +24,14 @@ import modelo158x10 from "@/assets/panel-modelo-158x10.png";
 import modelo153x12 from "@/assets/panel-modelo-153x12.png";
 import modelo59x34 from "@/assets/panel-modelo-59x34.png";
 import modelo45x35 from "@/assets/panel-modelo-45x35.png";
+import projetoPanel1 from "@/assets/projeto-panel-1.png";
+import projetoPanel2 from "@/assets/projeto-panel-2.png";
+import projetoPanel3 from "@/assets/projeto-panel-3.png";
+import projetoPanel4 from "@/assets/projeto-panel-4.png";
+import projetoPanel5 from "@/assets/projeto-panel-5.png";
+import projetoPanel6 from "@/assets/projeto-panel-6.png";
+
+const heroImages = [projetoPanel1, projetoPanel2, projetoPanel3, projetoPanel4, projetoPanel5, projetoPanel6];
 
 const acetinadasSwatches = [
   { nome: "Golden Oak", corAproximada: "#C4944A" },
@@ -63,7 +71,14 @@ const modelos = [
   { nome: "AltWood-Panel-45x35", medida: "45x35 mm", peso: "0,28 kg/m²", imageSrc: modelo45x35 },
 ];
 
-const galeriaItems: { imageSrc?: string; legenda: string; ratio: "4:3" | "3:4" }[] = [];
+const galeriaItems = [
+  { imageSrc: projetoPanel1, legenda: "Fachada com ripado vertical em painel WPC", ratio: "3:4" as const },
+  { imageSrc: projetoPanel2, legenda: "Área gourmet com painéis contínuos em madeira ecológica", ratio: "4:3" as const },
+  { imageSrc: projetoPanel3, legenda: "Forro externo com paginação linear elegante", ratio: "3:4" as const },
+  { imageSrc: projetoPanel4, legenda: "Ambiente interno com revestimento e teto integrados", ratio: "3:4" as const },
+  { imageSrc: projetoPanel5, legenda: "Varanda contemporânea com painel e deck integrados", ratio: "4:3" as const },
+  { imageSrc: projetoPanel6, legenda: "Auditório com painéis laterais e acabamento técnico", ratio: "4:3" as const },
+];
 
 const AltWoodPanel = () => {
   const [selectedAcetinada, setSelectedAcetinada] = useState<string | null>(null);
@@ -74,6 +89,7 @@ const AltWoodPanel = () => {
     <div className="bg-[#0D0D0D] min-h-screen">
       {/* Hero */}
       <HeroSection
+        images={heroImages}
         headline="AltWood Panel"
         subtitulo="Ideal para interiores e fachadas ventiladas protegidas."
       />
