@@ -159,7 +159,7 @@ const AltWoodBrise = () => {
             <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-4">
               Cores disponíveis
             </span>
-            <div className={`flex flex-wrap gap-4 ${activeTab === "origens" ? "max-w-[720px]" : "max-w-[540px]"}`}>
+            <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-8 gap-4 w-full">
               {swatches.map((s) => (
                 <SwatchCor
                   key={s.nome}
