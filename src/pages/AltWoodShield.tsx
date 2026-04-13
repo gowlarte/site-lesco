@@ -7,6 +7,16 @@ import { CardModelo } from "@/components/altwood/CardModelo";
 import { CardProjeto } from "@/components/altwood/CardProjeto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
+import imgShield124x155 from "@/assets/shield-124x155.png";
+import imgShield124x20 from "@/assets/shield-124x20.png";
+import imgShield184x20 from "@/assets/shield-184x20.png";
+import imgShield149x20 from "@/assets/shield-149x20.png";
+import imgShield217x35 from "@/assets/shield-217x35.png";
+import imgShield169x25 from "@/assets/shield-169x25.png";
+import imgShield217x25 from "@/assets/shield-217x25.png";
+import imgShield219x385 from "@/assets/shield-219x385.png";
+import imgShield124x50 from "@/assets/shield-124x50.png";
+
 const escovadasSwatches = [
   { nome: "Black", corAproximada: "#1A1A1A" },
   { nome: "Lily White", corAproximada: "#E8E0D5" },
