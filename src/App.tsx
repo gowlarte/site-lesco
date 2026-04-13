@@ -51,18 +51,20 @@ const App = () => {
           >
             <ScrollToTop />
             <Header />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/altwood" element={<AltWood />} />
-              <Route path="/altwood-brise" element={<AltWoodBrise />} />
-              <Route path="/altwood-shield" element={<AltWoodShield />} />
-              <Route path="/altwood-deck" element={<AltWoodDeck />} />
-              <Route path="/altwood-line" element={<AltWoodLine />} />
-              <Route path="/altwood-panel" element={<AltWoodPanel />} />
-              <Route path="/sobre" element={<About />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <PageTransition>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/altwood" element={<AltWood />} />
+                <Route path="/altwood-brise" element={<AltWoodBrise />} />
+                <Route path="/altwood-shield" element={<AltWoodShield />} />
+                <Route path="/altwood-deck" element={<AltWoodDeck />} />
+                <Route path="/altwood-line" element={<AltWoodLine />} />
+                <Route path="/altwood-panel" element={<AltWoodPanel />} />
+                <Route path="/sobre" element={<About />} />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </PageTransition>
             <Footer />
           </div>
         </BrowserRouter>
