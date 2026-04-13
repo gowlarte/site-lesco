@@ -65,14 +65,14 @@ const origensModelos = [
 ];
 
 const classicModelos = [
-  { nome: "AltWood-Brise-50x30-Classic", medida: "50x30 mm", peso: "1,00 kg/mL" },
-  { nome: "AltWood-Brise-50x50-Classic", medida: "50x50 mm", peso: "1,40 kg/mL" },
-  { nome: "AltWood-Brise-100x30-Classic", medida: "100x30 mm", peso: "1,95 kg/mL" },
-  { nome: "AltWood-Brise-100x50-Classic", medida: "100x50 mm", peso: "2,70 kg/mL" },
-  { nome: "AltWood-Brise-150x50-Classic", medida: "150x50 mm", peso: "3,55 kg/mL" },
-  { nome: "AltWood-Brise-145x145-Classic", medida: "145x145 mm", peso: "6,20 kg/mL" },
-  { nome: "AltWood-Brise-200x50-Classic", medida: "200x50 mm", peso: "4,90 kg/mL" },
-  { nome: "AltWood-Brise-250x50-Classic", medida: "250x50 mm", peso: "6,50 kg/mL" },
+  { nome: "AltWood-Brise-50x30-Classic", medida: "50x30 mm", peso: "1,00 kg/mL", imageSrc: briseCla50x30 },
+  { nome: "AltWood-Brise-50x50-Classic", medida: "50x50 mm", peso: "1,40 kg/mL", imageSrc: briseCla50x50 },
+  { nome: "AltWood-Brise-100x30-Classic", medida: "100x30 mm", peso: "1,95 kg/mL", imageSrc: briseCla100x30 },
+  { nome: "AltWood-Brise-100x50-Classic", medida: "100x50 mm", peso: "2,70 kg/mL", imageSrc: briseCla100x50 },
+  { nome: "AltWood-Brise-150x50-Classic", medida: "150x50 mm", peso: "3,55 kg/mL", imageSrc: briseCla150x50 },
+  { nome: "AltWood-Brise-145x145-Classic", medida: "145x145 mm", peso: "6,20 kg/mL", imageSrc: briseCla145x145 },
+  { nome: "AltWood-Brise-200x50-Classic", medida: "200x50 mm", peso: "4,90 kg/mL", imageSrc: briseCla200x50 },
+  { nome: "AltWood-Brise-250x50-Classic", medida: "250x50 mm", peso: "6,50 kg/mL", imageSrc: briseCla250x50 },
 ];
 
 const galeriaItems = [
