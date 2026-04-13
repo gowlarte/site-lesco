@@ -1,3 +1,4 @@
+import { useState, useRef, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { SwatchCor } from "./SwatchCor";
 import { BotaoCTA } from "./BotaoCTA";
@@ -16,36 +17,73 @@ interface PreviewProdutoProps {
   swatches: SwatchData[];
   href: string;
   imageSrc?: string;
+  images?: string[];
 }
 
-export const PreviewProduto = ({ id, tag, titulo, descricao, swatches, href, imageSrc }: PreviewProdutoProps) => (
-  <section id={id} className="py-24 border-b border-[#1E1E1E] last:border-b-0">
-    <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-10 lg:gap-16 px-6 md:px-12 lg:px-20">
-      {/* Left — Photo */}
-      <div className="aspect-[3/2] rounded-[var(--aw-radius-card)] overflow-hidden">
-        {imageSrc ? (
-          <img src={imageSrc} alt={titulo} className="w-full h-full object-cover" />
-        ) : (
-          <div className="w-full h-full bg-[#141414] flex items-center justify-center">
-            <ImageIcon className="w-10 h-10 text-[#2A2A2A]" />
-          </div>
-        )}
-      </div>
+export const PreviewProduto = ({ id, tag, titulo, descricao, swatches, href, imageSrc, images }: PreviewProdutoProps) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const allImages = images && images.length > 0 ? images : imageSrc ? [imageSrc] : [];
+  const hasSlideshow = allImages.length > 1;
 
-      {/* Right — Info */}
-      <div className="flex flex-col justify-center gap-5">
-        <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C]">{tag}</span>
-        <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-semibold text-white leading-tight">{titulo}</h2>
-        <p className="text-[15px] text-[#7F7F7F] leading-relaxed max-w-md">{descricao}</p>
-        <div className="flex gap-3 flex-wrap">
-          {swatches.map((s) => (
-            <SwatchCor key={s.nome} nome={s.nome} corAproximada={s.corAproximada} />
-          ))}
+  const startSlideshow = useCallback(() => {
+    if (!hasSlideshow) return;
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % allImages.length);
+    }, 3000);
+  }, [hasSlideshow, allImages.length]);
+
+  const stopSlideshow = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+    setCurrentIndex(0);
+  }, []);
+
+  useEffect(() => () => { if (intervalRef.current) clearInterval(intervalRef.current); }, []);
+
+  return (
+    <section id={id} className="py-24 border-b border-[#1E1E1E] last:border-b-0">
+      <div
+        className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-10 lg:gap-16 px-6 md:px-12 lg:px-20"
+        onMouseEnter={startSlideshow}
+        onMouseLeave={stopSlideshow}
+      >
+        {/* Left — Photo */}
+        <div className="aspect-[3/2] rounded-[var(--aw-radius-card)] overflow-hidden relative">
+          {allImages.length > 0 ? (
+            allImages.map((src, i) => (
+              <img
+                key={src}
+                src={src}
+                alt={`${titulo} ${i + 1}`}
+                className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+                style={{ opacity: i === currentIndex ? 1 : 0 }}
+              />
+            ))
+          ) : (
+            <div className="w-full h-full bg-[#141414] flex items-center justify-center">
+              <ImageIcon className="w-10 h-10 text-[#2A2A2A]" />
+            </div>
+          )}
         </div>
-        <Link to={href}>
-          <BotaoCTA variant="ghost">Ver linha completa</BotaoCTA>
-        </Link>
+
+        {/* Right — Info */}
+        <div className="flex flex-col justify-center gap-5">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C]">{tag}</span>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-semibold text-white leading-tight">{titulo}</h2>
+          <p className="text-[15px] text-[#7F7F7F] leading-relaxed max-w-md">{descricao}</p>
+          <div className="flex gap-3 flex-wrap">
+            {swatches.map((s) => (
+              <SwatchCor key={s.nome} nome={s.nome} corAproximada={s.corAproximada} />
+            ))}
+          </div>
+          <Link to={href}>
+            <BotaoCTA variant="ghost">Ver linha completa</BotaoCTA>
+          </Link>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};

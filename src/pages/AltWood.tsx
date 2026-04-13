@@ -11,6 +11,10 @@ const heroImages = [heroImg1, heroImg2, heroImg3, heroImg4, heroImg5, heroImg6];
 import { FiltroProdutos } from "@/components/altwood/FiltroProdutos";
 import { PreviewProduto } from "@/components/altwood/PreviewProduto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
+import prevBrise1 from "@/assets/preview-brise-1.png";
+import prevBrise2 from "@/assets/preview-brise-2.png";
+import prevBrise3 from "@/assets/preview-brise-3.png";
+import prevBrise4 from "@/assets/preview-brise-4.png";
 
 const produtos = [
   {
@@ -25,6 +29,7 @@ const produtos = [
       { nome: "Oak", corAproximada: "#A0784A" },
     ],
     href: "/altwood-brise",
+    images: [prevBrise1, prevBrise2, prevBrise3, prevBrise4],
   },
   {
     id: "shield",
