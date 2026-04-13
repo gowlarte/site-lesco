@@ -173,7 +173,7 @@ const AltWoodLine = () => {
           <Link to="/altwood-deck" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
             ← Deck
           </Link>
-          <Link to="/altwood" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
+          <Link to="/altwood-panel" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
             Panel →
           </Link>
         </div>
