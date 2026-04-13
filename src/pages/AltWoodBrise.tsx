@@ -260,7 +260,7 @@ const AltWoodBrise = () => {
         <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
           {galeriaItems.map((item, i) => (
             <div key={i} className="break-inside-avoid">
-              <CardProjeto legenda={item.legenda} ratio={item.ratio} />
+              <CardProjeto imageSrc={item.imageSrc} legenda={item.legenda} ratio={item.ratio} />
             </div>
           ))}
         </div>
