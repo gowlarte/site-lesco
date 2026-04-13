@@ -86,13 +86,13 @@ const AltWoodShield = () => {
 
       {/* Paleta de Cores */}
       <div className="px-6 md:px-12 lg:px-20">
-        <div className="flex flex-col lg:flex-row gap-12 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
           {/* Cores Escovadas */}
           <div>
             <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-4">
               Cores Escovadas
             </span>
-            <div className="flex flex-nowrap gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-4">
               {escovadasSwatches.map((s) => (
                 <SwatchCor
                   key={`esc-${s.nome}`}
@@ -110,7 +110,7 @@ const AltWoodShield = () => {
             <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-4">
               Cores Texturizadas
             </span>
-            <div className="flex flex-nowrap gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-4">
               {texturizadasSwatches.map((s) => (
                 <SwatchCor
                   key={`tex-${s.nome}`}
