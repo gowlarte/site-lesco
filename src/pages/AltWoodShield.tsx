@@ -71,6 +71,7 @@ const AltWoodShield = () => {
     <div className="bg-[#0D0D0D] min-h-screen">
       {/* Hero */}
       <HeroSection
+        images={[heroShield1, heroShield2, heroShield3, heroShield4]}
         headline="AltWood Shield"
         subtitulo="Um novo paradigma de qualidade e sofisticação para aplicações internas e externas."
       />
