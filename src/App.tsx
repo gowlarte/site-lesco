@@ -7,6 +7,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import Index from "./pages/Index";
 import About from "./pages/About";
+import AltWood from "./pages/AltWood";
 import NotFound from "./pages/NotFound";
 
 
@@ -21,6 +22,7 @@ const App = () => (
         <Header />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/altwood" element={<AltWood />} />
           <Route path="/sobre" element={<About />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
