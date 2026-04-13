@@ -21,27 +21,31 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => {
+  const [contentVisible, setContentVisible] = useState(false);
   const [splashDone, setSplashDone] = useState(false);
-  const handleSplashComplete = useCallback(() => setSplashDone(true), []);
 
-  useEffect(() => {
-    if (splashDone) {
-      document.body.style.backgroundColor = '';
-    }
-  }, [splashDone]);
+  const handleFadeStart = useCallback(() => {
+    // Start showing content while splash fades out (crossfade)
+    document.body.style.backgroundColor = '';
+    setContentVisible(true);
+  }, []);
+
+  const handleSplashComplete = useCallback(() => {
+    setSplashDone(true);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        {!splashDone && <SplashScreen onComplete={handleSplashComplete} />}
+        {!splashDone && <SplashScreen onFadeStart={handleFadeStart} onComplete={handleSplashComplete} />}
         <BrowserRouter>
           <div
             className="transition-opacity duration-500"
             style={{
-              opacity: splashDone ? 1 : 0,
-              visibility: splashDone ? 'visible' : 'hidden',
+              opacity: contentVisible ? 1 : 0,
+              visibility: contentVisible ? 'visible' : 'hidden',
             }}
           >
             <ScrollToTop />
