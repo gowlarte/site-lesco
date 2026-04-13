@@ -1,5 +1,13 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { HeroSection } from "@/components/altwood/HeroSection";
+import heroImg1 from "@/assets/hero-altwood-1.webp";
+import heroImg2 from "@/assets/hero-altwood-2.jpg";
+import heroImg3 from "@/assets/hero-altwood-3.jpg";
+import heroImg4 from "@/assets/hero-altwood-4.jpg";
+import heroImg5 from "@/assets/hero-altwood-5.jpg";
+import heroImg6 from "@/assets/hero-altwood-6.jpg";
+
+const heroImages = [heroImg1, heroImg2, heroImg3, heroImg4, heroImg5, heroImg6];
 import { FiltroProdutos } from "@/components/altwood/FiltroProdutos";
 import { PreviewProduto } from "@/components/altwood/PreviewProduto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
@@ -110,6 +118,7 @@ const AltWood = () => {
   return (
     <div className="bg-[#0D0D0D] min-h-screen">
       <HeroSection
+        images={heroImages}
         headline="AltWood"
         subtitulo="Madeira ecológica premium. Fachadas, brises, panels e decks."
         ctaLabel="Explorar Produtos"
