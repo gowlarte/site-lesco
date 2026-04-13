@@ -13,6 +13,7 @@ import AltWoodBrise from "./pages/AltWoodBrise";
 import AltWoodShield from "./pages/AltWoodShield";
 import AltWoodDeck from "./pages/AltWoodDeck";
 import AltWoodLine from "./pages/AltWoodLine";
+import AltWoodPanel from "./pages/AltWoodPanel";
 import NotFound from "./pages/NotFound";
 
 
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/altwood-shield" element={<AltWoodShield />} />
           <Route path="/altwood-deck" element={<AltWoodDeck />} />
           <Route path="/altwood-line" element={<AltWoodLine />} />
+          <Route path="/altwood-panel" element={<AltWoodPanel />} />
           <Route path="/sobre" element={<About />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
