@@ -1,35 +1,51 @@
 
-Sim, é possível corrigir. O piscar não parece ser limitação do SVG; ele vem do sincronismo atual entre `SplashScreen` e `App`.
 
-Diagnóstico
-- Em `src/components/SplashScreen.tsx`, o effect `if (assetsReady && phase === "swoosh") setPhase("reveal")` antecipa o reveal assim que `document.fonts.ready` resolve. Como a tagline foi removida, esse gate de fontes não é mais necessário para o splash e pode fazer o logo “aparecer” antes do lwoosh terminar.
-- O handoff ainda é sequencial, não em crossfade: o `onComplete()` só roda no fim do `fadeout`, e em `src/App.tsx` esse mesmo callback desmonta o splash e só então libera a página. Resultado: o logo some e a página entra depois, o que é percebido como blink.
-- O reset de `document.body.style.backgroundColor = ''` acontece no mesmo momento da troca, o que pode acentuar o frame de transição.
-- O timeout de segurança de 5s ainda concorre com a timeline principal e deve ficar isolado para não cortar a animação normal.
+## Page Transition Loader with Swoosh Animation
 
-Plano de correção
-1. Refatorar a timeline do splash para um fluxo explícito: `swoosh` completo → `reveal` → `fadeout` → desmontagem.
-2. Remover do splash o reveal imediato baseado em `document.fonts.ready` (ou deixar isso apenas como fallback), já que o splash agora exibe só SVG.
-3. Separar em `src/App.tsx` dois estados diferentes:
-   - um para começar a mostrar a aplicação por baixo do splash
-   - outro para remover o splash do DOM  
-   Isso permite crossfade real, em vez de “some tudo / aparece depois”.
-4. Sincronizar a troca do fundo:
-   - manter o fundo escuro enquanto o splash cobre a tela
-   - trocar para o fundo da página junto com o início do fade-in do conteúdo, sem expor frame vazio
-5. Ajustar o timeout de segurança para não competir com os timers normais e garantir callback único.
+### Overview
+Create a lightweight loading overlay that appears when navigating between internal pages (excluding home `/`). It shows the animated swoosh (lwoosh) centered on screen while fonts and images load, then reveals the page content only when everything is ready.
 
-Arquivos envolvidos
-- `src/components/SplashScreen.tsx`
-- `src/App.tsx`
+### Components
 
-Detalhe técnico
-- A correção principal não é trocar o SVG, e sim corrigir a orquestração dos estados.
-- O ponto mais importante é que hoje `onComplete` está fazendo duas coisas ao mesmo tempo: finalizar a animação e desmontar o splash. Isso precisa ser dividido.
-- Se, depois disso, ainda existir micro-piscar no logo do header, aí sim vale um ajuste complementar no `Header` (preload ou SVG inline), mas isso não parece ser a causa principal agora.
+**1. `src/components/PageTransitionLoader.tsx`** (new)
+- Full-screen overlay with `#141414` background, z-index below splash but above content
+- Renders only the swoosh SVG (the colored gradient sweep paths from SplashScreen) centered on screen
+- Accepts `isLoading` prop to control visibility with fade-in/fade-out transitions
+- Swoosh plays the gradient sweep animation on loop while loading
 
-Resultado esperado
-- o lwoosh termina sem disparar reveal antes da hora
-- o logo não some entre splash e página
-- a página entra em crossfade suave
-- o blink deixa de acontecer de forma consistente
+**2. `src/hooks/usePageAssets.ts`** (new)
+- Custom hook that detects when a page's assets are ready
+- On route change: sets `loading = true`, then:
+  - Waits for `document.fonts.ready`
+  - Queries all `<img>` elements in the page container and waits for their `complete` property or `load` events
+  - Sets `loading = false` when both conditions are met
+- Includes a safety timeout (~4s) to prevent infinite loading
+- Returns `{ isLoading: boolean }`
+
+**3. `src/App.tsx`** (modified)
+- Wrap routes (except `/`) with the transition loader logic
+- Use `useLocation()` to detect route changes
+- On navigation to any non-home route: show `PageTransitionLoader`, hide page content (`opacity: 0`)
+- When assets ready: fade out loader, fade in content
+- Home route (`/`) bypasses this entirely — no loader on initial splash or home page
+
+### Animation Details
+- The swoosh SVG uses the same gradient and sweep animation as the splash screen
+- The clip-path sweep loops continuously (not a one-shot like the splash)
+- Fade-out transition: 400ms opacity when assets are loaded
+- Content fade-in: 300ms opacity, triggered simultaneously with loader fade-out
+
+### Flow
+```text
+User clicks link → route changes
+  → PageTransitionLoader appears (swoosh animating)
+  → New page renders hidden (opacity: 0)
+  → Hook monitors fonts + images
+  → All loaded → loader fades out, content fades in
+```
+
+### Files Changed
+- **New**: `src/components/PageTransitionLoader.tsx`
+- **New**: `src/hooks/usePageAssets.ts`
+- **Modified**: `src/App.tsx` — add loader orchestration around Routes
+
