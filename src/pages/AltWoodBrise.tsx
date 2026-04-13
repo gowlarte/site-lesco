@@ -20,6 +20,14 @@ import briseOri150x50 from "@/assets/brise-origens-150x50.png";
 import briseOri200x50 from "@/assets/brise-origens-200x50.png";
 import briseOri250x50 from "@/assets/brise-origens-250x50.png";
 import briseOri100x25 from "@/assets/brise-origens-100x25.png";
+import briseCla50x30 from "@/assets/brise-classic-50x30.png";
+import briseCla50x50 from "@/assets/brise-classic-50x50.png";
+import briseCla100x30 from "@/assets/brise-classic-100x30.png";
+import briseCla100x50 from "@/assets/brise-classic-100x50.png";
+import briseCla150x50 from "@/assets/brise-classic-150x50.png";
+import briseCla145x145 from "@/assets/brise-classic-145x145.png";
+import briseCla200x50 from "@/assets/brise-classic-200x50.png";
+import briseCla250x50 from "@/assets/brise-classic-250x50.png";
 import { CardProjeto } from "@/components/altwood/CardProjeto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
