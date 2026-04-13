@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import AltWood from "./pages/AltWood";
+import AltWoodBrise from "./pages/AltWoodBrise";
 import NotFound from "./pages/NotFound";
 
 
@@ -23,6 +24,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/altwood" element={<AltWood />} />
+          <Route path="/altwood-brise" element={<AltWoodBrise />} />
           <Route path="/sobre" element={<About />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

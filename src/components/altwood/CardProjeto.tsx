@@ -3,11 +3,11 @@ import { ImageIcon } from "lucide-react";
 interface CardProjetoProps {
   imageSrc?: string;
   legenda: string;
-  ratio?: "4:3" | "16:9";
+  ratio?: "4:3" | "16:9" | "3:4";
 }
 
 export const CardProjeto = ({ imageSrc, legenda, ratio = "4:3" }: CardProjetoProps) => {
-  const aspectClass = ratio === "16:9" ? "aspect-video" : "aspect-[4/3]";
+  const aspectClass = ratio === "16:9" ? "aspect-video" : ratio === "3:4" ? "aspect-[3/4]" : "aspect-[4/3]";
 
   return (
     <div className={`relative ${aspectClass} rounded-[var(--aw-radius-card)] overflow-hidden group cursor-pointer`}>
