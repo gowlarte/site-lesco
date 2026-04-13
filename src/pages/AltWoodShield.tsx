@@ -40,15 +40,15 @@ const texturizadasSwatches = [
 ];
 
 const modelos = [
-  { nome: "AltWood-Shield-124x15,5", medida: "124x15,5 mm", peso: "10,50 kg/m²" },
-  { nome: "AltWood-Shield-124x20", medida: "124x20 mm", peso: "13,50 kg/m²" },
-  { nome: "AltWood-Shield-184x20", medida: "184x20 mm", peso: "13,28 kg/m²" },
-  { nome: "AltWood-Shield-149x20", medida: "149x20 mm", peso: "14,30 kg/m²" },
-  { nome: "AltWood-Shield-217x35", medida: "217x35 mm", peso: "14,15 kg/m²" },
-  { nome: "AltWood-Shield-169x25", medida: "169x25 mm", peso: "14,60 kg/m²" },
-  { nome: "AltWood-Shield-217x25", medida: "217x25 mm", peso: "13,25 kg/m²" },
-  { nome: "AltWood-Shield-219x38,5", medida: "219x38,5 mm", peso: "15,60 kg/m²" },
-  { nome: "AltWood-Shield-124x50", medida: "124x50 mm", peso: "15,60 kg/m²" },
+  { nome: "AltWood-Shield-124x15,5", medida: "124x15,5 mm", peso: "10,50 kg/m²", imageSrc: imgShield124x155 },
+  { nome: "AltWood-Shield-124x20", medida: "124x20 mm", peso: "13,50 kg/m²", imageSrc: imgShield124x20 },
+  { nome: "AltWood-Shield-184x20", medida: "184x20 mm", peso: "13,28 kg/m²", imageSrc: imgShield184x20 },
+  { nome: "AltWood-Shield-149x20", medida: "149x20 mm", peso: "14,30 kg/m²", imageSrc: imgShield149x20 },
+  { nome: "AltWood-Shield-217x35", medida: "217x35 mm", peso: "14,15 kg/m²", imageSrc: imgShield217x35 },
+  { nome: "AltWood-Shield-169x25", medida: "169x25 mm", peso: "14,60 kg/m²", imageSrc: imgShield169x25 },
+  { nome: "AltWood-Shield-217x25", medida: "217x25 mm", peso: "13,25 kg/m²", imageSrc: imgShield217x25 },
+  { nome: "AltWood-Shield-219x38,5", medida: "219x38,5 mm", peso: "15,60 kg/m²", imageSrc: imgShield219x385 },
+  { nome: "AltWood-Shield-124x50", medida: "124x50 mm", peso: "15,60 kg/m²", imageSrc: imgShield124x50 },
 ];
 
 const galeriaItems = [
