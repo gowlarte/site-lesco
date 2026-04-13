@@ -1,0 +1,230 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ChevronRight } from "lucide-react";
+import { HeroSection } from "@/components/altwood/HeroSection";
+import { SwatchCor } from "@/components/altwood/SwatchCor";
+import { CardModelo } from "@/components/altwood/CardModelo";
+import { CardProjeto } from "@/components/altwood/CardProjeto";
+import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
+
+import modelo119x12 from "@/assets/panel-modelo-119x12.png";
+import modelo215x30 from "@/assets/panel-modelo-215x30.png";
+import modelo260x15 from "@/assets/panel-modelo-260x15.png";
+import modelo170x12 from "@/assets/panel-modelo-170x12.png";
+import modelo169x15 from "@/assets/panel-modelo-169x15.png";
+import modelo204x16 from "@/assets/panel-modelo-204x16.png";
+import modelo202x25 from "@/assets/panel-modelo-202x25.png";
+import modelo182x15 from "@/assets/panel-modelo-182x15.png";
+import modelo119x14 from "@/assets/panel-modelo-119x14.png";
+import modelo150x14 from "@/assets/panel-modelo-150x14.png";
+
+const acetinadasSwatches = [
+  { nome: "Golden Oak", corAproximada: "#C4944A" },
+  { nome: "Premium Oak", corAproximada: "#A07040" },
+  { nome: "Hickory", corAproximada: "#8B6238" },
+  { nome: "Tasmania Oak", corAproximada: "#7A5230" },
+  { nome: "Merbau", corAproximada: "#5C3420" },
+  { nome: "Urban Oak", corAproximada: "#6B5A4A" },
+];
+
+const foscasSwatches = [
+  { nome: "Golden Oak", corAproximada: "#C4944A" },
+  { nome: "Premium Oak", corAproximada: "#A07040" },
+  { nome: "Hickory", corAproximada: "#8B6238" },
+  { nome: "Tasmania Oak", corAproximada: "#7A5230" },
+  { nome: "Merbau", corAproximada: "#5C3420" },
+  { nome: "Urban Oak", corAproximada: "#6B5A4A" },
+];
+
+const modelos = [
+  { nome: "AltWood-Panel-119x12", medida: "119x12 mm", peso: "4,90 kg/m²", imageSrc: modelo119x12 },
+  { nome: "AltWood-Panel-215x30", medida: "215x30 mm", peso: "7,05 kg/m²", imageSrc: modelo215x30 },
+  { nome: "AltWood-Panel-260x15", medida: "260x15 mm", peso: "7,09 kg/m²", imageSrc: modelo260x15 },
+  { nome: "AltWood-Panel-170x12", medida: "170x12 mm", peso: "4,07 kg/m²", imageSrc: modelo170x12 },
+  { nome: "AltWood-Panel-169x15", medida: "169x15 mm", peso: "4,88 kg/m²", imageSrc: modelo169x15 },
+  { nome: "AltWood-Panel-204x16", medida: "204x16 mm", peso: "4,80 kg/m²", imageSrc: modelo204x16 },
+  { nome: "AltWood-Panel-202x25", medida: "202x25 mm", peso: "7,60 kg/m²", imageSrc: modelo202x25 },
+  { nome: "AltWood-Panel-182x15", medida: "182x15 mm", peso: "4,90 kg/m²", imageSrc: modelo182x15 },
+  { nome: "AltWood-Panel-119x14", medida: "119x14 mm", peso: "5,12 kg/m²", imageSrc: modelo119x14 },
+  { nome: "AltWood-Panel-150x14", medida: "150x14 mm", peso: "5,20 kg/m²", imageSrc: modelo150x14 },
+  { nome: "AltWood-Panel-180x14", medida: "180x14 mm", peso: "5,40 kg/m²" },
+  { nome: "AltWood-Panel-268x20", medida: "268x20 mm", peso: "6,35 kg/m²" },
+  { nome: "AltWood-Panel-204x35", medida: "204x35 mm", peso: "7,80 kg/m²" },
+  { nome: "AltWood-Panel-158x10", medida: "158x10 mm", peso: "4,00 kg/m²" },
+  { nome: "AltWood-Panel-153x12", medida: "153x12 mm", peso: "4,20 kg/m²" },
+  { nome: "AltWood-Panel-59x34", medida: "59x34 mm", peso: "0,43 kg/m²" },
+  { nome: "AltWood-Panel-45x35", medida: "45x35 mm", peso: "0,28 kg/m²" },
+];
+
+const galeriaItems: { imageSrc?: string; legenda: string; ratio: "4:3" | "3:4" }[] = [];
+
+const AltWoodPanel = () => {
+  const [selectedAcetinada, setSelectedAcetinada] = useState<string | null>(null);
+  const [selectedFosca, setSelectedFosca] = useState<string | null>(null);
+  const [specsOpen, setSpecsOpen] = useState(false);
+
+  return (
+    <div className="bg-[#0D0D0D] min-h-screen">
+      {/* Hero */}
+      <HeroSection
+        headline="AltWood Panel"
+        subtitulo="Ideal para interiores e fachadas ventiladas protegidas."
+      />
+
+      {/* Breadcrumb */}
+      <div className="px-6 md:px-12 lg:px-20 py-4">
+        <nav className="flex items-center gap-1.5 text-xs">
+          <Link to="/" className="text-[#7F7F7F] hover:text-white transition-colors">Início</Link>
+          <ChevronRight className="w-3 h-3 text-[#525252]" />
+          <Link to="/altwood" className="text-[#7F7F7F] hover:text-white transition-colors">AltWood</Link>
+          <ChevronRight className="w-3 h-3 text-[#525252]" />
+          <span className="text-[#525252]">Panel</span>
+        </nav>
+      </div>
+
+      {/* Introdução */}
+      <div className="max-w-[760px] mx-auto px-6 py-20 text-center">
+        <div className="flex items-center gap-4 justify-center mb-8">
+          <span className="flex-1 h-px bg-[#1E1E1E]" />
+          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C8956C]">Panel</span>
+          <span className="flex-1 h-px bg-[#1E1E1E]" />
+        </div>
+        <p className="text-[17px] text-[#7F7F7F] leading-[1.7]">
+          Essa categoria de produtos oferece uma opção sustentável e sofisticada para transformar o interior ou exterior de qualquer espaço. Fabricado a partir de uma combinação de fibras de madeira reciclada e resinas plásticas, este material apresenta uma estética natural e calorosa, sem comprometer a durabilidade e a resistência.
+        </p>
+      </div>
+
+      {/* Paleta de Cores */}
+      <div className="px-6 md:px-12 lg:px-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+          {/* Cores Acetinadas */}
+          <div>
+            <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-4">
+              Cores Acetinadas Sem Tratamento UV
+            </span>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-4">
+              {acetinadasSwatches.map((s) => (
+                <SwatchCor
+                  key={`ace-${s.nome}`}
+                  nome={s.nome}
+                  corAproximada={s.corAproximada}
+                  selected={selectedAcetinada === s.nome}
+                  onClick={() => setSelectedAcetinada(selectedAcetinada === s.nome ? null : s.nome)}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Cores Foscas */}
+          <div>
+            <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-4">
+              Cores Foscas Com Tratamento UV
+            </span>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-4">
+              {foscasSwatches.map((s) => (
+                <SwatchCor
+                  key={`fos-${s.nome}`}
+                  nome={s.nome}
+                  corAproximada={s.corAproximada}
+                  selected={selectedFosca === s.nome}
+                  onClick={() => setSelectedFosca(selectedFosca === s.nome ? null : s.nome)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Modelos */}
+        <div className="mb-12">
+          <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-6">
+            Modelos
+          </span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {modelos.map((m) => (
+              <CardModelo key={m.nome} nome={m.nome} medida={m.medida} peso={m.peso} imageSrc={m.imageSrc} />
+            ))}
+          </div>
+        </div>
+
+        {/* Dados Técnicos */}
+        <div className="mt-12 mb-16">
+          <button
+            onClick={() => setSpecsOpen(!specsOpen)}
+            className="text-[#7F7F7F] hover:text-white text-sm transition-colors duration-300 cursor-pointer flex items-center gap-1"
+          >
+            Especificações técnicas {specsOpen ? "−" : "+"}
+          </button>
+
+          {specsOpen && (
+            <div className="mt-6 bg-[#141414] rounded-[12px] p-8 animate-fade-in">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Material</h4>
+                  <div className="h-px bg-[#1E1E1E] mb-4" />
+                  <div className="text-sm text-white font-mono space-y-1">
+                    <p>WPC — Wood-Plastic Composite</p>
+                    <p className="text-[#7F7F7F]">55% pó de madeira natural</p>
+                    <p className="text-[#7F7F7F]">35% HPDE reciclado</p>
+                    <p className="text-[#7F7F7F]">10% aditivos</p>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Resistência</h4>
+                  <div className="h-px bg-[#1E1E1E] mb-4" />
+                  <div className="text-sm text-white space-y-1">
+                    <p>✓ Anti-cupim</p>
+                    <p>✓ Hidrofóbico</p>
+                    <p>✓ Anti-mofo</p>
+                    <p>✓ Resistência UV</p>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Certificações</h4>
+                  <div className="h-px bg-[#1E1E1E] mb-4" />
+                  <p className="text-sm text-white">ISO 9001 · ISO 14001 · LEED · ESG</p>
+                </div>
+                <div>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Garantia</h4>
+                  <div className="h-px bg-[#1E1E1E] mb-4" />
+                  <p className="text-sm text-white">10 anos</p>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Galeria de Projetos */}
+      {galeriaItems.length > 0 && (
+        <div className="px-6 md:px-12 lg:px-20 py-24">
+          <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">Projetos</span>
+          <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com AltWood Panel</h2>
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
+            {galeriaItems.map((item, i) => (
+              <div key={i} className="break-inside-avoid">
+                <CardProjeto imageSrc={item.imageSrc} legenda={item.legenda} ratio={item.ratio} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Navegação entre produtos */}
+      <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-[#1E1E1E]">
+        <div className="flex justify-between items-center">
+          <Link to="/altwood-line" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
+            ← Line
+          </Link>
+          <Link to="/altwood" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
+            AltWood →
+          </Link>
+        </div>
+      </div>
+
+      {/* Orçamento */}
+      <SecaoOrcamento />
+    </div>
+  );
+};
+
+export default AltWoodPanel;
