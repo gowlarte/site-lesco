@@ -59,7 +59,13 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
       }`}
       style={{ backgroundColor: "#141414" }}
     >
-      <div className="relative flex flex-col items-center">
+      <div
+        className="relative flex flex-col items-center"
+        style={{
+          transform: isRevealed ? "translateX(3%)" : "translateX(-34%)",
+          transition: "transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        }}
+      >
         {/* Single composited SVG - same viewBox as original logo */}
         <svg
           viewBox="0 0 481.11 151.67"
