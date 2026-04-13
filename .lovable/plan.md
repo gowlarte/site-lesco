@@ -1,58 +1,27 @@
-## Splash Screen / Loader com Lwoosh Animado
 
-### Objetivo
 
-Criar uma tela de carregamento premium que:
+## Fix: Logo compositing - lettering behind swoosh, not below it
 
-1. Exibe o swoosh (lwoosh) vazio no centro, que gradualmente se preenche com o degradê de cores da marca
-2. Aguarda fontes e imagens críticas carregarem antes de revelar o site
-3. Ao completar, revela o lettering "LESCO" formando o logo completo + tagline "ARQUITETURA FEITA PARA O AMANHÃ"
-4. Faz uma transição suave para o conteúdo do site
+### Problem
+The current implementation renders the swoosh and lettering as two separate SVGs stacked vertically. The user wants them composited as in the original logo SVG (`logo-lesco-light.svg`, viewBox `0 0 481.11 151.67`), where the lettering and swoosh overlap spatially, with the swoosh rendered ON TOP of the lettering (higher z-index).
 
-### Arquivos
+### Solution
+Use a **single SVG** with the original logo's `viewBox="0 0 481.11 151.67"`. Render layers in this order:
+1. **Lettering (L, E, S, C, O globe)** - rendered first (back), fades in during "reveal" phase
+2. **Swoosh light** (gray outline) - rendered on top
+3. **Swoosh gradient** (color fill with clip-path sweep) - rendered on top
+4. **Swoosh trail gradient on O** - rendered last (front, on top of everything)
 
-**1. Salvar os SVGs do swoosh**
+The swoosh paths need to be repositioned to match the original logo coordinate space. In the standalone swoosh SVG the viewBox is `0 0 350.31 258.97`, but in the full logo SVG the swoosh trail path starts from the same coordinates as the lettering (the trail path `M480.95,24.2...` is already in the logo coordinate space).
 
-- `src/assets/lesco-swoosh-light.svg` (versão vazia/contorno)
-- `src/assets/lesco-swoosh-cor.svg` (versão com degradê)
+### Key changes to `src/components/SplashScreen.tsx`:
+- Merge everything into one SVG with `viewBox="0 0 481.11 151.67"`
+- The swoosh in the logo coordinate space uses the trail path from the original logo (not the standalone swoosh SVG)
+- Lettering group gets the fade-in transition via `opacity` and `transform` attributes
+- Swoosh stays visible from the start with its gradient sweep animation
+- Remove `mt-4` vertical spacing and separate SVG elements
+- Tagline stays as a separate `<p>` element below
 
-**2. Criar `src/components/SplashScreen.tsx**`
+### Technical detail
+The standalone swoosh SVG (`lesco-swoosh-light.svg`) has different coordinates than the swoosh embedded in the full logo. The full logo already contains the swoosh trail path at the correct position relative to the lettering. We will use those coordinates directly from `logo-lesco-light.svg`.
 
-- Fundo `#141414` cobrindo toda a viewport (`fixed inset-0 z-50`)
-- Swoosh centralizado: o SVG vazio é exibido inicialmente, com o SVG colorido sobreposto usando `clip-path` ou `opacity` animado que revela progressivamente o degradê (animação de ~2s)
-- Ao detectar que fontes e imagens carregaram (`document.fonts.ready` + listener de imagens), dispara a fase de revelação:
-  - O lettering "LESCO" aparece ao lado do swoosh com fade-in suave (formando o logo completo)
-  - A tagline "ARQUITETURA FEITA PARA O AMANHÃ" aparece abaixo em PP Neue Machina com fade-in sequencial
-- Após ~1s da revelação completa, o splash inteiro faz fade-out e é removido do DOM
-- Timeout de segurança de ~5s para não bloquear o usuário indefinidamente
-
-**3. Editar `src/App.tsx**`
-
-- Importar e renderizar `<SplashScreen />` no topo do componente
-- Usar estado `isLoading` para controlar a visibilidade
-- Enquanto o splash estiver ativo, o conteúdo principal fica com `opacity: 0` para evitar flash
-
-**4. Editar `src/index.css**`
-
-- Adicionar keyframes para as animações do splash (fill do swoosh, fade-in do lettering, fade-out do overlay)
-
-### Detalhes da Animação
-
-```text
-Timeline:
-0s ─── Swoosh vazio aparece (fade-in rápido)
-0.3s ── Degradê começa a preencher o swoosh (sweep da esquerda para direita)
-2s ─── Swoosh totalmente preenchido + fontes/imagens prontas
-2.2s ── Lettering "LESCO" aparece (fade-in + leve slide up)
-2.5s ── Tagline aparece (fade-in)
-3.5s ── Splash inteiro faz fade-out
-4s ─── Splash removido, site visível
-```
-
-### Considerações Técnicas
-
-- O lettering do logo será reconstruído com o SVG do logo light (sem o swoosh) ou posicionando texto estilizado
-- A fonte PP Neue Machina será usada para a tagline com letter-spacing expandido como no print de referência
-- O conteúdo do site só se torna visível após o splash completar, garantindo que fontes e imagens não "pisquem"  
-  
-Utilizar o logo em svg versão light já existente no repositório, não tentar replicar o logo através de fontes do sistema.
