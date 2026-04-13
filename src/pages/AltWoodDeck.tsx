@@ -7,6 +7,17 @@ import { CardModelo } from "@/components/altwood/CardModelo";
 import { CardProjeto } from "@/components/altwood/CardProjeto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
+import modelo97 from "@/assets/deck-modelo-97x22.png";
+import modelo140 from "@/assets/deck-modelo-140x22.png";
+import modelo150 from "@/assets/deck-modelo-150x22.png";
+import projetoDeck1 from "@/assets/projeto-deck-1.jpg";
+import projetoDeck2 from "@/assets/projeto-deck-2.png";
+import projetoDeck3 from "@/assets/projeto-deck-3.jpg";
+import projetoDeck4 from "@/assets/projeto-deck-4.jpg";
+import projetoDeck5 from "@/assets/projeto-deck-5.jpg";
+
+const heroImages = [projetoDeck2, projetoDeck1, projetoDeck3, projetoDeck4, projetoDeck5];
+
 const escovadasSwatches = [
   { nome: "Black", corAproximada: "#1A1A1A" },
   { nome: "Lily White", corAproximada: "#E8E0D5" },
@@ -30,14 +41,17 @@ const texturizadasSwatches = [
 ];
 
 const modelos = [
-  { nome: "AltWood-Deck-97x22", medida: "97x22 mm", peso: "20,0 kg/m²" },
-  { nome: "AltWood-Deck-140x22", medida: "140x22 mm", peso: "28 kg/m²" },
-  { nome: "AltWood-Deck-150x22", medida: "150x22 mm", peso: "18,75 kg/m²" },
+  { nome: "AltWood-Deck-97x22", medida: "97x22 mm", peso: "20,0 kg/m²", imageSrc: modelo97 },
+  { nome: "AltWood-Deck-140x22", medida: "140x22 mm", peso: "28 kg/m²", imageSrc: modelo140 },
+  { nome: "AltWood-Deck-150x22", medida: "150x22 mm", peso: "18,75 kg/m²", imageSrc: modelo150 },
 ];
 
 const galeriaItems = [
-  { legenda: "Deck residencial com vista para o mar — AltWood Deck em tom natural", ratio: "4:3" as const },
-  { legenda: "Área de piscina com deck em Ipê — projeto paisagístico completo", ratio: "3:4" as const },
+  { imageSrc: projetoDeck1, legenda: "Deck paisagístico com iluminação noturna", ratio: "4:3" as const },
+  { imageSrc: projetoDeck2, legenda: "Residência contemporânea com deck frontal", ratio: "4:3" as const },
+  { imageSrc: projetoDeck3, legenda: "Passarela em deck com paisagismo integrado", ratio: "4:3" as const },
+  { imageSrc: projetoDeck4, legenda: "Deck em jardim zen com espelho d'água", ratio: "4:3" as const },
+  { imageSrc: projetoDeck5, legenda: "Projeto noturno com deck e paisagismo", ratio: "3:4" as const },
 ];
 
 const AltWoodDeck = () => {
@@ -49,6 +63,7 @@ const AltWoodDeck = () => {
     <div className="bg-[#0D0D0D] min-h-screen">
       {/* Hero */}
       <HeroSection
+        images={heroImages}
         headline="AltWood Deck"
         subtitulo="Sofisticação e conforto para os espaços ao ar livre."
       />
@@ -123,7 +138,7 @@ const AltWoodDeck = () => {
           </span>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {modelos.map((m) => (
-              <CardModelo key={m.nome} nome={m.nome} medida={m.medida} peso={m.peso} />
+              <CardModelo key={m.nome} nome={m.nome} medida={m.medida} peso={m.peso} imageSrc={m.imageSrc} />
             ))}
           </div>
         </div>
@@ -193,7 +208,7 @@ const AltWoodDeck = () => {
         <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
           {galeriaItems.map((item, i) => (
             <div key={i} className="break-inside-avoid">
-              <CardProjeto legenda={item.legenda} ratio={item.ratio} />
+              <CardProjeto imageSrc={item.imageSrc} legenda={item.legenda} ratio={item.ratio} />
             </div>
           ))}
         </div>
