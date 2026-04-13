@@ -10,6 +10,7 @@ import About from "./pages/About";
 import AltWood from "./pages/AltWood";
 import AltWoodBrise from "./pages/AltWoodBrise";
 import AltWoodShield from "./pages/AltWoodShield";
+import AltWoodDeck from "./pages/AltWoodDeck";
 import NotFound from "./pages/NotFound";
 
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/altwood" element={<AltWood />} />
           <Route path="/altwood-brise" element={<AltWoodBrise />} />
           <Route path="/altwood-shield" element={<AltWoodShield />} />
+          <Route path="/altwood-deck" element={<AltWoodDeck />} />
           <Route path="/sobre" element={<About />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
