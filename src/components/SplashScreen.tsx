@@ -131,19 +131,6 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
             />
           </g>
         </svg>
-
-        {/* Tagline */}
-        <p
-          className={`mt-5 font-display text-[10px] sm:text-[11px] md:text-[12px] font-light tracking-[0.25em] uppercase transition-all duration-[400ms] ease-out ${
-            isRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-          }`}
-          style={{
-            color: "#e9e9e9",
-            transitionDelay: isRevealed ? "200ms" : "0ms",
-          }}
-        >
-          Arquitetura feita para o amanhã
-        </p>
       </div>
     </div>
   );
