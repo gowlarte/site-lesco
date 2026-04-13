@@ -165,6 +165,7 @@ const AltWoodBrise = () => {
                   key={s.nome}
                   nome={s.nome}
                   corAproximada={s.corAproximada}
+                  imageSrc={'imageSrc' in s ? (s as any).imageSrc : undefined}
                   selected={selectedSwatch === s.nome}
                   onClick={() => setSelectedSwatch(selectedSwatch === s.nome ? null : s.nome)}
                 />
