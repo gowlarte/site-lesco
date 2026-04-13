@@ -9,6 +9,17 @@ import heroBrise3 from "@/assets/hero-brise-3.webp";
 const heroImages = [heroBrise1, heroBrise2, heroBrise3];
 import { SwatchCor } from "@/components/altwood/SwatchCor";
 import { CardModelo } from "@/components/altwood/CardModelo";
+
+import briseOri25x25 from "@/assets/brise-origens-25x25.png";
+import briseOri50x25 from "@/assets/brise-origens-50x25.png";
+import briseOri50x50 from "@/assets/brise-origens-50x50.png";
+import briseOri75x25 from "@/assets/brise-origens-75x25.png";
+import briseOri100x35 from "@/assets/brise-origens-100x35.png";
+import briseOri100x50 from "@/assets/brise-origens-100x50.png";
+import briseOri150x50 from "@/assets/brise-origens-150x50.png";
+import briseOri200x50 from "@/assets/brise-origens-200x50.png";
+import briseOri250x50 from "@/assets/brise-origens-250x50.png";
+import briseOri100x25 from "@/assets/brise-origens-100x25.png";
 import { CardProjeto } from "@/components/altwood/CardProjeto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
@@ -33,16 +44,16 @@ const classicSwatches = [
 ];
 
 const origensModelos = [
-  { nome: "AltWood-Brise-25x25-Origens", medida: "25x25 mm", peso: "0,43 kg/mL" },
-  { nome: "AltWood-Brise-50x25-Origens", medida: "50x25 mm", peso: "0,94 kg/mL" },
-  { nome: "AltWood-Brise-50x50-Origens", medida: "50x50 mm", peso: "1,31 kg/mL" },
-  { nome: "AltWood-Brise-75x25-Origens", medida: "75x25 mm", peso: "1,21 kg/mL" },
-  { nome: "AltWood-Brise-100x35-Origens", medida: "100x35 mm", peso: "1,83 kg/mL" },
-  { nome: "AltWood-Brise-100x50-Origens", medida: "100x50 mm", peso: "2,63 kg/mL" },
-  { nome: "AltWood-Brise-150x50-Origens", medida: "150x50 mm", peso: "2,90 kg/mL" },
-  { nome: "AltWood-Brise-200x50-Origens", medida: "200x50 mm", peso: "3,30 kg/mL" },
-  { nome: "AltWood-Brise-250x50-Origens", medida: "250x50 mm", peso: "3,90 kg/mL" },
-  { nome: "AltWood-Brise-100x25-Origens", medida: "100x25 mm", peso: "1,83 kg/mL" },
+  { nome: "AltWood-Brise-25x25-Origens", medida: "25x25 mm", peso: "0,43 kg/mL", imageSrc: briseOri25x25 },
+  { nome: "AltWood-Brise-50x25-Origens", medida: "50x25 mm", peso: "0,94 kg/mL", imageSrc: briseOri50x25 },
+  { nome: "AltWood-Brise-50x50-Origens", medida: "50x50 mm", peso: "1,31 kg/mL", imageSrc: briseOri50x50 },
+  { nome: "AltWood-Brise-75x25-Origens", medida: "75x25 mm", peso: "1,21 kg/mL", imageSrc: briseOri75x25 },
+  { nome: "AltWood-Brise-100x35-Origens", medida: "100x35 mm", peso: "1,83 kg/mL", imageSrc: briseOri100x35 },
+  { nome: "AltWood-Brise-100x50-Origens", medida: "100x50 mm", peso: "2,63 kg/mL", imageSrc: briseOri100x50 },
+  { nome: "AltWood-Brise-150x50-Origens", medida: "150x50 mm", peso: "2,90 kg/mL", imageSrc: briseOri150x50 },
+  { nome: "AltWood-Brise-200x50-Origens", medida: "200x50 mm", peso: "3,30 kg/mL", imageSrc: briseOri200x50 },
+  { nome: "AltWood-Brise-250x50-Origens", medida: "250x50 mm", peso: "3,90 kg/mL", imageSrc: briseOri250x50 },
+  { nome: "AltWood-Brise-100x25-Origens", medida: "100x25 mm", peso: "1,83 kg/mL", imageSrc: briseOri100x25 },
 ];
 
 const classicModelos = [
@@ -151,7 +162,7 @@ const AltWoodBrise = () => {
             </span>
             <div className="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
               {modelos.map((m) => (
-                <CardModelo key={m.nome} nome={m.nome} medida={m.medida} peso={m.peso} />
+                <CardModelo key={m.nome} imageSrc={'imageSrc' in m ? (m as any).imageSrc : undefined} nome={m.nome} medida={m.medida} peso={m.peso} />
               ))}
             </div>
           </div>
