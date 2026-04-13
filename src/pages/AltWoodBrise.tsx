@@ -31,15 +31,24 @@ import briseCla250x50 from "@/assets/brise-classic-250x50.png";
 import { CardProjeto } from "@/components/altwood/CardProjeto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
+import swatchBlack from "@/assets/swatch-black.png";
+import swatchLilyWhite from "@/assets/swatch-lily-white.png";
+import swatchIpe from "@/assets/swatch-ipe.png";
+import swatchTeak from "@/assets/swatch-teak.png";
+import swatchOak from "@/assets/swatch-oak.png";
+import swatchWalnut from "@/assets/swatch-walnut.png";
+import swatchRedCedar from "@/assets/swatch-red-cedar.png";
+import swatchWeatherwood from "@/assets/swatch-weatherwood.png";
+
 const origensSwatches = [
-  { nome: "Black", corAproximada: "#1A1A1A" },
-  { nome: "Lily White", corAproximada: "#E8E0D5" },
-  { nome: "Ipê", corAproximada: "#6B4226" },
-  { nome: "Teak", corAproximada: "#8B5E3C" },
-  { nome: "Oak", corAproximada: "#A0784A" },
-  { nome: "Walnut", corAproximada: "#4A3728" },
-  { nome: "Red Cedar", corAproximada: "#7D3E2A" },
-  { nome: "Weatherwood", corAproximada: "#6B6560" },
+  { nome: "Black", corAproximada: "#1A1A1A", imageSrc: swatchBlack },
+  { nome: "Lily White", corAproximada: "#E8E0D5", imageSrc: swatchLilyWhite },
+  { nome: "Ipê", corAproximada: "#6B4226", imageSrc: swatchIpe },
+  { nome: "Teak", corAproximada: "#8B5E3C", imageSrc: swatchTeak },
+  { nome: "Oak", corAproximada: "#A0784A", imageSrc: swatchOak },
+  { nome: "Walnut", corAproximada: "#4A3728", imageSrc: swatchWalnut },
+  { nome: "Red Cedar", corAproximada: "#7D3E2A", imageSrc: swatchRedCedar },
+  { nome: "Weatherwood", corAproximada: "#6B6560", imageSrc: swatchWeatherwood },
 ];
 
 const classicSwatches = [
@@ -156,6 +165,7 @@ const AltWoodBrise = () => {
                   key={s.nome}
                   nome={s.nome}
                   corAproximada={s.corAproximada}
+                  imageSrc={'imageSrc' in s ? (s as any).imageSrc : undefined}
                   selected={selectedSwatch === s.nome}
                   onClick={() => setSelectedSwatch(selectedSwatch === s.nome ? null : s.nome)}
                 />
