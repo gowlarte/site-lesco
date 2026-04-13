@@ -32,8 +32,11 @@ const App = () => {
         {!splashDone && <SplashScreen onComplete={handleSplashComplete} />}
         <BrowserRouter>
           <div
-            className="transition-opacity duration-500"
-            style={{ opacity: splashDone ? 1 : 0 }}
+            className="transition-all duration-500"
+            style={{
+              opacity: splashDone ? 1 : 0,
+              visibility: splashDone ? 'visible' : 'hidden',
+            }}
           >
             <ScrollToTop />
             <Header />
