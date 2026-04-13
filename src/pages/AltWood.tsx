@@ -118,6 +118,7 @@ const AltWood = () => {
   return (
     <div className="bg-[#0D0D0D] min-h-screen">
       <HeroSection
+        images={heroImages}
         headline="AltWood"
         subtitulo="Madeira ecológica premium. Fachadas, brises, panels e decks."
         ctaLabel="Explorar Produtos"
