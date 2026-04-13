@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/Header";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { Footer } from "@/components/Footer";
+import { PageTransition } from "@/components/PageTransition";
 import { SplashScreen } from "@/components/SplashScreen";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -50,18 +51,20 @@ const App = () => {
           >
             <ScrollToTop />
             <Header />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/altwood" element={<AltWood />} />
-              <Route path="/altwood-brise" element={<AltWoodBrise />} />
-              <Route path="/altwood-shield" element={<AltWoodShield />} />
-              <Route path="/altwood-deck" element={<AltWoodDeck />} />
-              <Route path="/altwood-line" element={<AltWoodLine />} />
-              <Route path="/altwood-panel" element={<AltWoodPanel />} />
-              <Route path="/sobre" element={<About />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <PageTransition>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/altwood" element={<AltWood />} />
+                <Route path="/altwood-brise" element={<AltWoodBrise />} />
+                <Route path="/altwood-shield" element={<AltWoodShield />} />
+                <Route path="/altwood-deck" element={<AltWoodDeck />} />
+                <Route path="/altwood-line" element={<AltWoodLine />} />
+                <Route path="/altwood-panel" element={<AltWoodPanel />} />
+                <Route path="/sobre" element={<About />} />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </PageTransition>
             <Footer />
           </div>
         </BrowserRouter>
