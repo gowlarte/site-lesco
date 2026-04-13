@@ -105,7 +105,7 @@ const Index = () => {
         className="relative min-h-screen bg-primary flex items-center rounded-[10px]"
         onMouseMove={handleMouseMove}
       >
-        <div className="w-full px-12 lg:px-20 bg-secondary py-[52px] pt-[10px] pb-[10px] pl-[10px] pr-[10px]">
+        <div className="w-full px-12 lg:px-20 bg-secondary py-[52px] pt-[10px] pb-[10px] pl-[10px] pr-[10px] 3xl:pl-[80px] 3xl:pr-[80px]">
           <div className="relative">
             {/* Rows */}
             {linhas.map((linha, i) => {
@@ -114,7 +114,7 @@ const Index = () => {
               return (
                 <Link key={linha.nome} to={linha.href} className="block">
                   <div
-                    className="grid grid-cols-1 lg:grid-cols-[1fr_auto] items-start py-10 lg:py-14 cursor-none"
+                    className="grid grid-cols-1 lg:grid-cols-[1fr_auto] items-start py-10 lg:py-14 3xl:py-20 cursor-none"
                     onMouseEnter={() => {
                       setActiveIndex(i);
                       setIsHovering(true);
@@ -138,7 +138,7 @@ const Index = () => {
                         }}
                       />
                       <div
-                        className="mx-0 h-[32px] md:h-[42px] lg:h-[52px] w-[200px] md:w-[260px] lg:w-[320px] transition-colors duration-[400ms] px-0 pl-[4px] pr-[120px]"
+                        className="mx-0 h-[32px] md:h-[42px] lg:h-[52px] 3xl:h-[72px] w-[200px] md:w-[260px] lg:w-[320px] 3xl:w-[440px] transition-colors duration-[400ms] px-0 pl-[4px] pr-[120px]"
                         style={{ color: isActive ? linha.corHover : "#525252" }}
                         dangerouslySetInnerHTML={{ __html: linha.logo }}
                         role="img"
@@ -148,7 +148,7 @@ const Index = () => {
 
                     {/* Right — Description (large editorial) */}
                     <p
-                      className="font-display font-extralight leading-[1.15] mt-4 lg:mt-0 max-w-[520px] text-[28px] md:text-[40px] lg:text-[48px] text-left self-start transition-colors duration-[400ms] tracking-[-0.02em]"
+                      className="font-display font-extralight leading-[1.15] mt-4 lg:mt-0 max-w-[520px] 3xl:max-w-[720px] text-[28px] md:text-[40px] lg:text-[48px] 3xl:text-[64px] text-left self-start transition-colors duration-[400ms] tracking-[-0.02em]"
                       style={{
                         color: isActive ? linha.corHover : "#525252",
                       }}
@@ -163,7 +163,7 @@ const Index = () => {
 
             {/* Mouse-following image */}
             <div
-              className="hidden lg:block pointer-events-none absolute z-10 w-[280px] xl:w-[320px] h-[350px] xl:h-[400px] rounded-2xl overflow-hidden transition-all duration-[250ms] ease-out"
+              className="hidden lg:block pointer-events-none absolute z-10 w-[280px] xl:w-[320px] 3xl:w-[400px] h-[350px] xl:h-[400px] 3xl:h-[500px] rounded-2xl overflow-hidden transition-all duration-[250ms] ease-out"
               style={{
                 left: mousePos.x,
                 top: mousePos.y,
