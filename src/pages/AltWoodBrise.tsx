@@ -2,6 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import { HeroSection } from "@/components/altwood/HeroSection";
+import heroBrise1 from "@/assets/hero-brise-1.jpg";
+import heroBrise2 from "@/assets/hero-brise-2.jpg";
+import heroBrise3 from "@/assets/hero-brise-3.webp";
+
+const heroImages = [heroBrise1, heroBrise2, heroBrise3];
 import { SwatchCor } from "@/components/altwood/SwatchCor";
 import { CardModelo } from "@/components/altwood/CardModelo";
 import { CardProjeto } from "@/components/altwood/CardProjeto";
