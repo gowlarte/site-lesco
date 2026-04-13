@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useRef } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -8,6 +8,8 @@ import { Header } from "@/components/Header";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { Footer } from "@/components/Footer";
 import { SplashScreen } from "@/components/SplashScreen";
+import { PageTransitionLoader } from "@/components/PageTransitionLoader";
+import { usePageAssets } from "@/hooks/usePageAssets";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import AltWood from "./pages/AltWood";
@@ -20,12 +22,39 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+const AppContent = () => {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const { isLoading } = usePageAssets(contentRef);
+
+  return (
+    <>
+      <PageTransitionLoader isLoading={isLoading} />
+      <ScrollToTop />
+      <Header />
+      <div ref={contentRef} style={{ opacity: isLoading ? 0 : 1, transition: "opacity 300ms ease" }}>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/altwood" element={<AltWood />} />
+          <Route path="/altwood-brise" element={<AltWoodBrise />} />
+          <Route path="/altwood-shield" element={<AltWoodShield />} />
+          <Route path="/altwood-deck" element={<AltWoodDeck />} />
+          <Route path="/altwood-line" element={<AltWoodLine />} />
+          <Route path="/altwood-panel" element={<AltWoodPanel />} />
+          <Route path="/sobre" element={<About />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+      <Footer />
+    </>
+  );
+};
+
 const App = () => {
   const [contentVisible, setContentVisible] = useState(false);
   const [splashDone, setSplashDone] = useState(false);
 
   const handleFadeStart = useCallback(() => {
-    // Start showing content while splash fades out (crossfade)
     document.body.style.backgroundColor = '';
     setContentVisible(true);
   }, []);
@@ -48,21 +77,7 @@ const App = () => {
               visibility: contentVisible ? 'visible' : 'hidden',
             }}
           >
-            <ScrollToTop />
-            <Header />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/altwood" element={<AltWood />} />
-              <Route path="/altwood-brise" element={<AltWoodBrise />} />
-              <Route path="/altwood-shield" element={<AltWoodShield />} />
-              <Route path="/altwood-deck" element={<AltWoodDeck />} />
-              <Route path="/altwood-line" element={<AltWoodLine />} />
-              <Route path="/altwood-panel" element={<AltWoodPanel />} />
-              <Route path="/sobre" element={<About />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-            <Footer />
+            <AppContent />
           </div>
         </BrowserRouter>
       </TooltipProvider>
