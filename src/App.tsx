@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -24,6 +24,12 @@ const App = () => {
   const [splashDone, setSplashDone] = useState(false);
   const handleSplashComplete = useCallback(() => setSplashDone(true), []);
 
+  useEffect(() => {
+    if (splashDone) {
+      document.body.style.backgroundColor = '';
+    }
+  }, [splashDone]);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -32,7 +38,7 @@ const App = () => {
         {!splashDone && <SplashScreen onComplete={handleSplashComplete} />}
         <BrowserRouter>
           <div
-            className="transition-all duration-500"
+            className="transition-opacity duration-500"
             style={{
               opacity: splashDone ? 1 : 0,
               visibility: splashDone ? 'visible' : 'hidden',
