@@ -96,13 +96,10 @@ const classicModelos = [
 ];
 
 const galeriaItems = [
-  { legenda: "Residência com brises verticais entre jardim e vidro", ratio: "4:3" as const },
-  { legenda: "Obra Pátio Estaleiro — Balneário Camboriú, SC · Brise 25x25 · Cor Teak", ratio: "3:4" as const },
-  { legenda: "Fachada comercial com brises verticais alinhados · Cor Teak", ratio: "4:3" as const },
-  { legenda: "Projeto com brises verticais em estrutura de aço", ratio: "3:4" as const },
-  { legenda: "Edifício alto — fachada completa com brises verticais", ratio: "4:3" as const },
-  { legenda: "Empreendimento residencial — brises em fachada e pergolado", ratio: "3:4" as const },
-  { legenda: "Fachada residencial — perspectiva plana", ratio: "4:3" as const },
+  { legenda: "Residência com brises verticais entre jardim e vidro", ratio: "4:3" as const, imageSrc: projetoBrise1 },
+  { legenda: "Fachada comercial com brises verticais alinhados · Cor Teak", ratio: "4:3" as const, imageSrc: projetoBrise2 },
+  { legenda: "Edifício alto — fachada completa com brises verticais", ratio: "4:3" as const, imageSrc: projetoBrise3 },
+  { legenda: "Empreendimento residencial — brises em fachada e pergolado", ratio: "4:3" as const, imageSrc: projetoBrise4 },
 ];
 
 const AltWoodBrise = () => {
