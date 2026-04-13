@@ -249,3 +249,14 @@
   from { transform: translateX(-100%); }
   to { transform: translateX(0%); }
 }
+
+/* Page Transition Loader — looping sweep */
+.loader-clip-rect {
+  animation: loader-sweep 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes loader-sweep {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(0%); }
+  100% { transform: translateX(100%); }
+}
