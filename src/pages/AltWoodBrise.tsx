@@ -44,16 +44,16 @@ const classicSwatches = [
 ];
 
 const origensModelos = [
-  { nome: "AltWood-Brise-25x25-Origens", medida: "25x25 mm", peso: "0,43 kg/mL" },
-  { nome: "AltWood-Brise-50x25-Origens", medida: "50x25 mm", peso: "0,94 kg/mL" },
-  { nome: "AltWood-Brise-50x50-Origens", medida: "50x50 mm", peso: "1,31 kg/mL" },
-  { nome: "AltWood-Brise-75x25-Origens", medida: "75x25 mm", peso: "1,21 kg/mL" },
-  { nome: "AltWood-Brise-100x35-Origens", medida: "100x35 mm", peso: "1,83 kg/mL" },
-  { nome: "AltWood-Brise-100x50-Origens", medida: "100x50 mm", peso: "2,63 kg/mL" },
-  { nome: "AltWood-Brise-150x50-Origens", medida: "150x50 mm", peso: "2,90 kg/mL" },
-  { nome: "AltWood-Brise-200x50-Origens", medida: "200x50 mm", peso: "3,30 kg/mL" },
-  { nome: "AltWood-Brise-250x50-Origens", medida: "250x50 mm", peso: "3,90 kg/mL" },
-  { nome: "AltWood-Brise-100x25-Origens", medida: "100x25 mm", peso: "1,83 kg/mL" },
+  { nome: "AltWood-Brise-25x25-Origens", medida: "25x25 mm", peso: "0,43 kg/mL", imageSrc: briseOri25x25 },
+  { nome: "AltWood-Brise-50x25-Origens", medida: "50x25 mm", peso: "0,94 kg/mL", imageSrc: briseOri50x25 },
+  { nome: "AltWood-Brise-50x50-Origens", medida: "50x50 mm", peso: "1,31 kg/mL", imageSrc: briseOri50x50 },
+  { nome: "AltWood-Brise-75x25-Origens", medida: "75x25 mm", peso: "1,21 kg/mL", imageSrc: briseOri75x25 },
+  { nome: "AltWood-Brise-100x35-Origens", medida: "100x35 mm", peso: "1,83 kg/mL", imageSrc: briseOri100x35 },
+  { nome: "AltWood-Brise-100x50-Origens", medida: "100x50 mm", peso: "2,63 kg/mL", imageSrc: briseOri100x50 },
+  { nome: "AltWood-Brise-150x50-Origens", medida: "150x50 mm", peso: "2,90 kg/mL", imageSrc: briseOri150x50 },
+  { nome: "AltWood-Brise-200x50-Origens", medida: "200x50 mm", peso: "3,30 kg/mL", imageSrc: briseOri200x50 },
+  { nome: "AltWood-Brise-250x50-Origens", medida: "250x50 mm", peso: "3,90 kg/mL", imageSrc: briseOri250x50 },
+  { nome: "AltWood-Brise-100x25-Origens", medida: "100x25 mm", peso: "1,83 kg/mL", imageSrc: briseOri100x25 },
 ];
 
 const classicModelos = [
