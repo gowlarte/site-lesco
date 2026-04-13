@@ -201,11 +201,11 @@ const Index = () => {
           <ScrollReveal>
             <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 lg:gap-20 items-start">
               <h2 className="font-display text-3xl md:text-4xl lg:text-[52px] font-normal leading-[1.15] text-dark">
-                Não vendemos apenas revestimentos. Entregamos a matéria-prima da arquitetura que permanece.
+                Pioneiros em Madeira Ecológica no Brasil, somos arquitetura feita para o amanhã.
               </h2>
               <div className="max-w-[320px]">
                 <p className="font-body text-[16px] font-light leading-[1.65] text-dark/70 text-primary">
-                  Pioneiros em Madeira Ecológica no Brasil há mais de 15 anos. Cada superfície que criamos é pensada para resistir ao tempo, e ao olhar.
+                  Acabamento premium para projetos de alto padrão, com garantia de até 10 anos. Cada superfície que criamos resiste ao tempo e agrada o olhar.
                 </p>
                 <Link
                   to="/contato"
