@@ -141,7 +141,7 @@ const AltWoodShield = () => {
           </span>
           <div className="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
             {modelos.map((m) => (
-              <CardModelo key={m.nome} nome={m.nome} medida={m.medida} peso={m.peso} />
+              <CardModelo key={m.nome} nome={m.nome} medida={m.medida} peso={m.peso} imageSrc={m.imageSrc} />
             ))}
           </div>
         </div>
