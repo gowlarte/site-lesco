@@ -1,36 +1,18 @@
 
 
-## Splash Screen: Swoosh centering + slide animation
+## Fix: Flash branco antes do splash screen
 
-### Problem
-Currently the entire SVG (481x151 viewBox) is centered on screen, but only the swoosh is visible initially. Since the swoosh sits at the right side of the logo (x~330-481), it appears off-center. When the full logo is revealed, the swoosh's extra space to the right makes the logo look left-heavy.
+### Problema
+Antes do React montar, o `<body>` e `<div id="root">` têm fundo branco por padrão. Há um breve frame onde o fundo branco é visível antes do SplashScreen renderizar com `#141414`.
 
-### Solution
+### Solução
 
-Add a CSS `translateX` transition to the SVG wrapper that shifts in two phases:
+1. **`index.html`**: Adicionar `style="background-color: #141414"` no `<body>` para que o fundo escuro esteja presente desde o primeiro frame, antes do JavaScript carregar.
 
-**Phase 1 ("swoosh")**: Shift the SVG left so the swoosh's visual center (~x=405 in the 481-wide viewBox) aligns with the screen center. This is approximately `-34%` of SVG width.
+2. **`src/App.tsx`**: Alterar a div que envolve o conteúdo para usar `visibility: hidden` em vez de `opacity: 0` enquanto o splash está ativo. Isso evita que elementos do site sejam brevemente renderizados (mesmo que transparentes) e causem layout shifts. Quando `splashDone` for true, muda para `visibility: visible` com a transição de opacidade.
 
-**Phase 2 ("reveal")**: Animate `translateX` to a small positive offset (~`+6%`) so the final logo is centered based on the typography baseline (L through C, ignoring the swoosh's rightward overshoot).
+### Mudanças
 
-### Changes to `src/components/SplashScreen.tsx`
-
-1. Add a `transition: transform 800ms cubic-bezier(0.25,0.46,0.45,0.94)` on the SVG element
-2. During `swoosh` phase: `transform: translateX(-34%)` (centers the swoosh on screen)
-3. During `reveal`/`fadeout` phase: `transform: translateX(3%)` (centers based on typography, slightly right)
-4. The lettering fade-in, tagline, and swoosh gradient sweep remain unchanged
-5. Tagline also inherits the translateX shift via the parent wrapper
-
-### Timeline
-
-```text
-0s ─── Swoosh centered on screen (translateX -34%)
-       Gradient sweep begins
-~2s ── Assets ready → phase: "reveal"
-       SVG slides right over 800ms to final position (translateX +3%)
-       Lettering fades in simultaneously
-       Tagline fades in 200ms later
-~3.5s  Fade-out begins
-~4s ── Splash removed
-```
+- **`index.html`** - `<body style="background-color: #141414">`
+- **`src/App.tsx`** - Trocar `opacity: 0` por `visibility: hidden` + `opacity: 0` enquanto splash roda, e adicionar transição suave quando revelar
 
