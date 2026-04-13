@@ -51,13 +51,20 @@ const origensSwatches = [
   { nome: "Weatherwood", corAproximada: "#6B6560", imageSrc: swatchWeatherwood },
 ];
 
+import swatchClassicBlack from "@/assets/swatch-classic-black.png";
+import swatchClassicCedro from "@/assets/swatch-classic-cedro.png";
+import swatchClassicGray from "@/assets/swatch-classic-gray.png";
+import swatchClassicSand from "@/assets/swatch-classic-sand.png";
+import swatchClassicNogal from "@/assets/swatch-classic-nogal.png";
+import swatchClassicTeka from "@/assets/swatch-classic-teka.png";
+
 const classicSwatches = [
-  { nome: "Black", corAproximada: "#1A1A1A" },
-  { nome: "Cedro", corAproximada: "#7A5C3A" },
-  { nome: "Gray", corAproximada: "#6A6A6A" },
-  { nome: "Sand", corAproximada: "#C4B89A" },
-  { nome: "Nogal", corAproximada: "#4E3520" },
-  { nome: "Teka", corAproximada: "#9C7040" },
+  { nome: "Black", corAproximada: "#1A1A1A", imageSrc: swatchClassicBlack },
+  { nome: "Cedro", corAproximada: "#7A5C3A", imageSrc: swatchClassicCedro },
+  { nome: "Gray", corAproximada: "#6A6A6A", imageSrc: swatchClassicGray },
+  { nome: "Sand", corAproximada: "#C4B89A", imageSrc: swatchClassicSand },
+  { nome: "Nogal", corAproximada: "#4E3520", imageSrc: swatchClassicNogal },
+  { nome: "Teka", corAproximada: "#9C7040", imageSrc: swatchClassicTeka },
 ];
 
 const origensModelos = [
