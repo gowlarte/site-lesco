@@ -1,18 +1,22 @@
 
 
-## Fix: Flash branco antes do splash screen
+## Fix: Logo flash during splash-to-content transition
 
-### Problema
-Antes do React montar, o `<body>` e `<div id="root">` têm fundo branco por padrão. Há um breve frame onde o fundo branco é visível antes do SplashScreen renderizar com `#141414`.
+### Problem
+The main content div uses `transition-all duration-500`, which transitions **all** properties including `visibility`. Since `visibility` doesn't interpolate smoothly (it's either visible or hidden), it causes a visual flash/blink when the splash completes and the site content appears.
 
-### Solução
+Additionally, the body background remains `#141414` permanently, which should be reset once the splash is done so the site renders with its normal background.
 
-1. **`index.html`**: Adicionar `style="background-color: #141414"` no `<body>` para que o fundo escuro esteja presente desde o primeiro frame, antes do JavaScript carregar.
+### Solution
 
-2. **`src/App.tsx`**: Alterar a div que envolve o conteúdo para usar `visibility: hidden` em vez de `opacity: 0` enquanto o splash está ativo. Isso evita que elementos do site sejam brevemente renderizados (mesmo que transparentes) e causem layout shifts. Quando `splashDone` for true, muda para `visibility: visible` com a transição de opacidade.
+**`src/App.tsx`**:
+1. Replace `transition-all` with `transition-opacity` so only opacity animates smoothly, and `visibility` changes instantly
+2. After splash completes, reset body background to the site's default (white/transparent)
 
-### Mudanças
+**`src/components/SplashScreen.tsx`**:
+3. Ensure `onComplete` is called at the start of the fadeout (not after it ends), so the content starts fading in while the splash fades out, creating a smooth crossfade instead of a gap
 
-- **`index.html`** - `<body style="background-color: #141414">`
-- **`src/App.tsx`** - Trocar `opacity: 0` por `visibility: hidden` + `opacity: 0` enquanto splash roda, e adicionar transição suave quando revelar
+### Changes
+- **`src/App.tsx`**: Change `className="transition-all duration-500"` to `className="transition-opacity duration-500"` and add a `useEffect` that resets `document.body.style.backgroundColor` when `splashDone` becomes true
+- **`src/SplashScreen.tsx`**: No structural changes needed, timing already handles crossfade via the fadeout phase
 
