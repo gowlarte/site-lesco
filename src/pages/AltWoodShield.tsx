@@ -7,6 +7,16 @@ import { CardModelo } from "@/components/altwood/CardModelo";
 import { CardProjeto } from "@/components/altwood/CardProjeto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
+import imgShield124x155 from "@/assets/shield-124x155.png";
+import imgShield124x20 from "@/assets/shield-124x20.png";
+import imgShield184x20 from "@/assets/shield-184x20.png";
+import imgShield149x20 from "@/assets/shield-149x20.png";
+import imgShield217x35 from "@/assets/shield-217x35.png";
+import imgShield169x25 from "@/assets/shield-169x25.png";
+import imgShield217x25 from "@/assets/shield-217x25.png";
+import imgShield219x385 from "@/assets/shield-219x385.png";
+import imgShield124x50 from "@/assets/shield-124x50.png";
+
 const escovadasSwatches = [
   { nome: "Black", corAproximada: "#1A1A1A" },
   { nome: "Lily White", corAproximada: "#E8E0D5" },
@@ -30,15 +40,15 @@ const texturizadasSwatches = [
 ];
 
 const modelos = [
-  { nome: "AltWood-Shield-124x15,5", medida: "124x15,5 mm", peso: "10,50 kg/m²" },
-  { nome: "AltWood-Shield-124x20", medida: "124x20 mm", peso: "13,50 kg/m²" },
-  { nome: "AltWood-Shield-184x20", medida: "184x20 mm", peso: "13,28 kg/m²" },
-  { nome: "AltWood-Shield-149x20", medida: "149x20 mm", peso: "14,30 kg/m²" },
-  { nome: "AltWood-Shield-217x35", medida: "217x35 mm", peso: "14,15 kg/m²" },
-  { nome: "AltWood-Shield-169x25", medida: "169x25 mm", peso: "14,60 kg/m²" },
-  { nome: "AltWood-Shield-217x25", medida: "217x25 mm", peso: "13,25 kg/m²" },
-  { nome: "AltWood-Shield-219x38,5", medida: "219x38,5 mm", peso: "15,60 kg/m²" },
-  { nome: "AltWood-Shield-124x50", medida: "124x50 mm", peso: "15,60 kg/m²" },
+  { nome: "AltWood-Shield-124x15,5", medida: "124x15,5 mm", peso: "10,50 kg/m²", imageSrc: imgShield124x155 },
+  { nome: "AltWood-Shield-124x20", medida: "124x20 mm", peso: "13,50 kg/m²", imageSrc: imgShield124x20 },
+  { nome: "AltWood-Shield-184x20", medida: "184x20 mm", peso: "13,28 kg/m²", imageSrc: imgShield184x20 },
+  { nome: "AltWood-Shield-149x20", medida: "149x20 mm", peso: "14,30 kg/m²", imageSrc: imgShield149x20 },
+  { nome: "AltWood-Shield-217x35", medida: "217x35 mm", peso: "14,15 kg/m²", imageSrc: imgShield217x35 },
+  { nome: "AltWood-Shield-169x25", medida: "169x25 mm", peso: "14,60 kg/m²", imageSrc: imgShield169x25 },
+  { nome: "AltWood-Shield-217x25", medida: "217x25 mm", peso: "13,25 kg/m²", imageSrc: imgShield217x25 },
+  { nome: "AltWood-Shield-219x38,5", medida: "219x38,5 mm", peso: "15,60 kg/m²", imageSrc: imgShield219x385 },
+  { nome: "AltWood-Shield-124x50", medida: "124x50 mm", peso: "15,60 kg/m²", imageSrc: imgShield124x50 },
 ];
 
 const galeriaItems = [
@@ -131,7 +141,7 @@ const AltWoodShield = () => {
           </span>
           <div className="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
             {modelos.map((m) => (
-              <CardModelo key={m.nome} nome={m.nome} medida={m.medida} peso={m.peso} />
+              <CardModelo key={m.nome} nome={m.nome} medida={m.medida} peso={m.peso} imageSrc={m.imageSrc} />
             ))}
           </div>
         </div>
