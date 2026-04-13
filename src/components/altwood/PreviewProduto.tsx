@@ -22,6 +22,7 @@ interface PreviewProdutoProps {
 
 export const PreviewProduto = ({ id, tag, titulo, descricao, swatches, href, imageSrc, images }: PreviewProdutoProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const allImages = images && images.length > 0 ? images : imageSrc ? [imageSrc] : [];
   const hasSlideshow = allImages.length > 1;
@@ -41,14 +42,25 @@ export const PreviewProduto = ({ id, tag, titulo, descricao, swatches, href, ima
     setCurrentIndex(0);
   }, []);
 
+  const handleMouseEnter = useCallback(() => {
+    setIsHovered(true);
+    startSlideshow();
+  }, [startSlideshow]);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsHovered(false);
+    stopSlideshow();
+  }, [stopSlideshow]);
+
   useEffect(() => () => { if (intervalRef.current) clearInterval(intervalRef.current); }, []);
 
   return (
     <section id={id} className="py-24 border-b border-[#1E1E1E] last:border-b-0">
-      <div
-        className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-10 lg:gap-16 px-6 md:px-12 lg:px-20"
-        onMouseEnter={startSlideshow}
-        onMouseLeave={stopSlideshow}
+      <Link
+        to={href}
+        className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-10 lg:gap-16 px-6 md:px-12 lg:px-20 group cursor-pointer"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         {/* Left — Photo */}
         <div className="aspect-[3/2] rounded-[var(--aw-radius-card)] overflow-hidden relative">
@@ -58,8 +70,11 @@ export const PreviewProduto = ({ id, tag, titulo, descricao, swatches, href, ima
                 key={src}
                 src={src}
                 alt={`${titulo} ${i + 1}`}
-                className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
-                style={{ opacity: i === currentIndex ? 1 : 0 }}
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-700"
+                style={{
+                  opacity: i === currentIndex ? (isHovered ? 0.85 : 1) : 0,
+                  transform: isHovered ? "scale(1.04)" : "scale(1)",
+                }}
               />
             ))
           ) : (
@@ -79,11 +94,9 @@ export const PreviewProduto = ({ id, tag, titulo, descricao, swatches, href, ima
               <SwatchCor key={s.nome} nome={s.nome} corAproximada={s.corAproximada} />
             ))}
           </div>
-          <Link to={href}>
-            <BotaoCTA variant="ghost">Ver linha completa</BotaoCTA>
-          </Link>
+          <BotaoCTA variant="ghost">Ver linha completa</BotaoCTA>
         </div>
-      </div>
+      </Link>
     </section>
   );
 };
