@@ -11,6 +11,13 @@ import { CardModelo } from "@/components/altwood/CardModelo";
 import { CardProjeto } from "@/components/altwood/CardProjeto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
+import projetoShield1 from "@/assets/projeto-shield-1.png";
+import projetoShield2 from "@/assets/projeto-shield-2.png";
+import projetoShield3 from "@/assets/projeto-shield-3.png";
+import projetoShield4 from "@/assets/projeto-shield-4.png";
+import projetoShield5 from "@/assets/projeto-shield-5.png";
+import projetoShield6 from "@/assets/projeto-shield-6.jpg";
+
 import imgShield124x155 from "@/assets/shield-124x155.png";
 import imgShield124x20 from "@/assets/shield-124x20.png";
 import imgShield184x20 from "@/assets/shield-184x20.png";
@@ -56,10 +63,12 @@ const modelos = [
 ];
 
 const galeriaItems = [
-  { legenda: "Fachada de arena/pavilhão — revestimento externo Shield", ratio: "4:3" as const },
-  { legenda: "Residência de luxo — fachada com Shield em tom natural", ratio: "3:4" as const },
-  { legenda: "Restaurante/terraço de hotel — teto em Shield, vista panorâmica", ratio: "4:3" as const },
-  { legenda: "Edifício corporativo — fachada Shield + estrutura metálica, contrapicado", ratio: "3:4" as const },
+  { imageSrc: projetoShield1, legenda: "Edifício comercial — revestimento Shield em fachada", ratio: "4:3" as const },
+  { imageSrc: projetoShield2, legenda: "Arena/pavilhão — fachada e cobertura Shield", ratio: "4:3" as const },
+  { imageSrc: projetoShield3, legenda: "Terraço e área gourmet — teto em Shield", ratio: "4:3" as const },
+  { imageSrc: projetoShield4, legenda: "Edifício corporativo — fachada Shield + estrutura metálica", ratio: "4:3" as const },
+  { imageSrc: projetoShield5, legenda: "Resort à beira-mar — revestimento Shield em varandas", ratio: "4:3" as const },
+  { imageSrc: projetoShield6, legenda: "Residência contemporânea — Shield e brise em fachada", ratio: "3:4" as const },
 ];
 
 const AltWoodShield = () => {
@@ -217,7 +226,7 @@ const AltWoodShield = () => {
         <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
           {galeriaItems.map((item, i) => (
             <div key={i} className="break-inside-avoid">
-              <CardProjeto legenda={item.legenda} ratio={item.ratio} />
+              <CardProjeto imageSrc={item.imageSrc} legenda={item.legenda} ratio={item.ratio} />
             </div>
           ))}
         </div>
