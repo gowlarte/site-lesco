@@ -9,6 +9,17 @@ import heroBrise3 from "@/assets/hero-brise-3.webp";
 const heroImages = [heroBrise1, heroBrise2, heroBrise3];
 import { SwatchCor } from "@/components/altwood/SwatchCor";
 import { CardModelo } from "@/components/altwood/CardModelo";
+
+import briseOri25x25 from "@/assets/brise-origens-25x25.png";
+import briseOri50x25 from "@/assets/brise-origens-50x25.png";
+import briseOri50x50 from "@/assets/brise-origens-50x50.png";
+import briseOri75x25 from "@/assets/brise-origens-75x25.png";
+import briseOri100x35 from "@/assets/brise-origens-100x35.png";
+import briseOri100x50 from "@/assets/brise-origens-100x50.png";
+import briseOri150x50 from "@/assets/brise-origens-150x50.png";
+import briseOri200x50 from "@/assets/brise-origens-200x50.png";
+import briseOri250x50 from "@/assets/brise-origens-250x50.png";
+import briseOri100x25 from "@/assets/brise-origens-100x25.png";
 import { CardProjeto } from "@/components/altwood/CardProjeto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
