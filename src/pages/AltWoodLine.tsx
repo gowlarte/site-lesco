@@ -10,6 +10,11 @@ import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 import modelo40x45 from "@/assets/line-modelo-40x45.png";
 import modelo40x100 from "@/assets/line-modelo-40x100.png";
 import modelo100x20 from "@/assets/line-modelo-100x20.png";
+import projetoLine1 from "@/assets/projeto-line-1.png";
+import projetoLine2 from "@/assets/projeto-line-2.png";
+import projetoLine3 from "@/assets/projeto-line-3.png";
+
+const heroImages = [projetoLine1, projetoLine2, projetoLine3];
 
 const coresSwatches = [
   { nome: "Golden Oak", corAproximada: "#C4944A" },
@@ -26,7 +31,11 @@ const modelos = [
   { nome: "AltWood-Line-100x20", medida: "100x20 mm", peso: "3 kg/m²", imageSrc: modelo100x20 },
 ];
 
-const galeriaItems: { imageSrc?: string; legenda: string; ratio: "4:3" | "3:4" }[] = [];
+const galeriaItems = [
+  { imageSrc: projetoLine1, legenda: "Forro WPC em espaço comercial amplo", ratio: "4:3" as const },
+  { imageSrc: projetoLine2, legenda: "Detalhe de ripado em forro contínuo", ratio: "4:3" as const },
+  { imageSrc: projetoLine3, legenda: "Forro WPC com iluminação pendente", ratio: "3:4" as const },
+];
 
 const AltWoodLine = () => {
   const [selectedCor, setSelectedCor] = useState<string | null>(null);
@@ -36,6 +45,7 @@ const AltWoodLine = () => {
     <div className="bg-[#0D0D0D] min-h-screen">
       {/* Hero */}
       <HeroSection
+        images={heroImages}
         headline="AltWood Line"
         subtitulo="Forros, sancas e superfícies contínuas com encaixe técnico."
       />
