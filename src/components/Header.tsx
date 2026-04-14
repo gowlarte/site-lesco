@@ -41,7 +41,7 @@ export function Header() {
             : "bg-[rgba(17,17,16,0.92)] backdrop-blur-xl"
         )}
       >
-        <div className="container mx-auto flex items-center justify-between h-14 px-6 lg:px-8">
+        <div className="flex items-center justify-between h-14 px-6 lg:px-8">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
