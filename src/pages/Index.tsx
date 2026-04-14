@@ -105,7 +105,7 @@ const Index = () => {
         className="relative min-h-screen bg-primary flex items-center rounded-[10px]"
         onMouseMove={handleMouseMove}
       >
-        <div className="w-full px-12 lg:px-20 py-[52px] pt-[10px] pb-[10px] pl-[10px] pr-[10px] 3xl:pl-[80px] 3xl:pr-[80px]">
+        <div className="w-full px-12 lg:px-20 py-[52px] pt-[10px] pb-[10px] pl-[10px] pr-[10px] 3xl:pl-[80px] 3xl:pr-[80px] bg-[#dbdbdb]">
           <div className="relative">
             {/* Rows */}
             {linhas.map((linha, i) => {
