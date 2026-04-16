@@ -110,7 +110,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-[#141414]/50 pointer-events-none" />
 
         {/* Header inside banner */}
-        <div className="relative z-20 p-[10px]">
+        <div className="relative z-20">
           <Header variant="overlay" />
         </div>
 
