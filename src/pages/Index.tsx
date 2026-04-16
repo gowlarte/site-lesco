@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, X } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -65,6 +65,39 @@ const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [selectedProject, setSelectedProject] = useState<typeof projects[number] | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartX = useRef<number | null>(null);
+  const dragDeltaX = useRef(0);
+
+  const goToSlide = useCallback((i: number) => {
+    setCurrentSlide(((i % linhas.length) + linhas.length) % linhas.length);
+  }, []);
+
+  const handleDragStart = (clientX: number) => {
+    dragStartX.current = clientX;
+    dragDeltaX.current = 0;
+    setIsDragging(true);
+    setIsPaused(true);
+  };
+
+  const handleDragMove = (clientX: number) => {
+    if (dragStartX.current === null) return;
+    dragDeltaX.current = clientX - dragStartX.current;
+  };
+
+  const handleDragEnd = () => {
+    if (dragStartX.current === null) return;
+    const threshold = 60;
+    if (dragDeltaX.current <= -threshold) {
+      goToSlide(currentSlide + 1);
+    } else if (dragDeltaX.current >= threshold) {
+      goToSlide(currentSlide - 1);
+    }
+    dragStartX.current = null;
+    dragDeltaX.current = 0;
+    setIsDragging(false);
+    setIsPaused(false);
+  };
 
   // Preload all hero images on mount so slide transitions are instant
   useEffect(() => {
@@ -82,16 +115,26 @@ const Index = () => {
     return () => clearInterval(t);
   }, [isPaused]);
 
-  const goToSlide = useCallback((i: number) => setCurrentSlide(i), []);
   const active = linhas[currentSlide];
 
   return (
     <main className="flex flex-col gap-[10px]">
       {/* ========== HERO BANNER — SLIDESHOW ========== */}
       <section
-        className="relative m-[10px] h-[calc(100vh-20px)] rounded-[10px] overflow-hidden"
+        className={`relative m-[10px] h-[calc(100vh-20px)] rounded-[10px] overflow-hidden select-none ${
+          isDragging ? "cursor-grabbing" : "cursor-grab"
+        }`}
         onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
+        onMouseLeave={() => {
+          setIsPaused(false);
+          if (isDragging) handleDragEnd();
+        }}
+        onMouseDown={(e) => handleDragStart(e.clientX)}
+        onMouseMove={(e) => isDragging && handleDragMove(e.clientX)}
+        onMouseUp={handleDragEnd}
+        onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
+        onTouchMove={(e) => handleDragMove(e.touches[0].clientX)}
+        onTouchEnd={handleDragEnd}
       >
         {/* Slides */}
         {linhas.map((linha, i) => (
