@@ -55,7 +55,7 @@ export const PreviewProduto = ({ id, tag, titulo, descricao, swatches, href, ima
   useEffect(() => () => { if (intervalRef.current) clearInterval(intervalRef.current); }, []);
 
   return (
-    <section id={id} className="py-24 border-b border-[#1E1E1E] last:border-b-0 mx-[10px] my-[10px]">
+    <section id={id} className="py-24 border-b border-[#1E1E1E] last:border-b-0 mx-[10px] my-[10px] border-0">
       <Link
         to={href}
         className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-10 lg:gap-16 px-6 md:px-12 lg:px-20 group cursor-pointer"
