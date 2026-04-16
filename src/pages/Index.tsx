@@ -66,6 +66,14 @@ const Index = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [selectedProject, setSelectedProject] = useState<typeof projects[number] | null>(null);
 
+  // Preload all hero images on mount so slide transitions are instant
+  useEffect(() => {
+    linhas.forEach((linha) => {
+      const img = new Image();
+      img.src = linha.imagem;
+    });
+  }, []);
+
   useEffect(() => {
     if (isPaused) return;
     const t = setInterval(() => {
@@ -94,7 +102,6 @@ const Index = () => {
             aria-hidden={currentSlide !== i}
           >
             <img
-              key={`${linha.nome}-${currentSlide === i ? "active" : "idle"}`}
               src={linha.imagem}
               alt={`${linha.nome} — fundo`}
               className={
