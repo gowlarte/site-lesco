@@ -148,7 +148,7 @@ const Index = () => {
 
                     {/* Right — Description (large editorial) */}
                     <p
-                      className="font-display font-extralight leading-[1.15] mt-4 lg:mt-0 max-w-[520px] 3xl:max-w-[720px] text-[28px] md:text-[40px] lg:text-[48px] 3xl:text-[64px] text-left self-start transition-colors duration-[400ms] tracking-[-0.02em]"
+                      className="font-display font-extralight leading-[1.15] mt-2 lg:mt-0 max-w-[520px] 3xl:max-w-[720px] text-[24px] md:text-[32px] lg:text-[38px] 3xl:text-[45px] text-left self-start transition-colors duration-[400ms] tracking-[-0.02em]"
                       style={{
                         color: isActive ? linha.corHover : "#525252",
                       }}
