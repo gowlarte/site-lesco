@@ -151,7 +151,7 @@ const AltWoodBrise = () => {
               onClick={() => { setActiveTab(tab); setSelectedSwatch(null); }}
               className={`px-6 py-3 text-[13px] font-medium uppercase tracking-[0.06em] transition-all duration-300 border-b-2 -mb-px cursor-pointer ${
                 activeTab === tab
-                  ? "text-white border-[#C8956C]"
+                  ? "text-primary border-[#C8956C]"
                   : "text-[#7F7F7F] border-transparent hover:text-white"
               }`}
             >
