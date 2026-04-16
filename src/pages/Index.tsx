@@ -97,8 +97,11 @@ const Index = () => {
         {linhas.map((linha, i) => (
           <div
             key={linha.nome}
-            className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
-            style={{ opacity: currentSlide === i ? 1 : 0 }}
+            className="absolute inset-0"
+            style={{
+              opacity: currentSlide === i ? 1 : 0,
+              transition: "opacity 1400ms cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+            }}
             aria-hidden={currentSlide !== i}
           >
             <img
