@@ -150,10 +150,11 @@ const Index = () => {
             <img
               src={linha.imagem}
               alt={`${linha.nome} — fundo`}
+              draggable={false}
               className={
                 currentSlide === i
-                  ? "hero-slide-img w-full h-full object-cover"
-                  : "w-full h-full object-cover"
+                  ? "hero-slide-img w-full h-full object-cover pointer-events-none"
+                  : "w-full h-full object-cover pointer-events-none"
               }
             />
           </div>
