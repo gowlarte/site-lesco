@@ -47,7 +47,7 @@
     /* Base backgrounds */
     --background: 40 10% 7%;          /* #111110 — dark hero/footer */
     --background-light: 33 14% 93%;   /* #F0EDE8 — off-white linho */
-    --background-bone: 33 14% 88%;    /* #E8E4DC — alternado */
+    --background-bone: 30 12% 87%;    /* #e5e1dc — alternado */
     --foreground: 33 14% 93%;         /* #F0EDE8 — texto sobre escuro */
 
     --card: 33 14% 93%;
@@ -59,7 +59,7 @@
     --primary: 40 10% 7%;             /* #111110 */
     --primary-foreground: 33 14% 93%;
 
-    --secondary: 33 14% 88%;          /* #E8E4DC bone */
+    --secondary: 30 12% 87%;          /* #e5e1dc */
     --secondary-foreground: 40 10% 7%;
 
     --muted: 33 14% 88%;
@@ -148,7 +148,7 @@
   body {
     @apply text-foreground antialiased;
     font-family: 'DM Sans', sans-serif;
-    background-color: #DBDBDB;
+    background-color: #e5e1dc;
   }
 
   h1, h2, h3, h4, h5, h6 {
