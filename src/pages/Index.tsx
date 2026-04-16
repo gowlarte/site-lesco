@@ -115,7 +115,7 @@ const Index = () => {
         </div>
 
         {/* Bottom-left: logo + descrição */}
-        <div className="absolute bottom-16 left-8 lg:left-12 z-10 max-w-[640px] text-white flex flex-col items-start">
+        <div className="absolute bottom-20 lg:bottom-16 left-8 lg:left-12 right-8 lg:right-auto z-10 max-w-[640px] text-white flex flex-col items-start">
           <div
             className="mb-5 transition-opacity duration-500 [&>svg]:h-[44px] md:[&>svg]:h-[56px] lg:[&>svg]:h-[68px] [&>svg]:w-auto"
             style={{ color: "#FFFFFF" }}
@@ -125,12 +125,20 @@ const Index = () => {
           <p className="font-display font-extralight text-[20px] md:text-[26px] lg:text-[30px] leading-[1.2] tracking-[-0.01em] text-white/95 max-w-[520px] text-left">
             {active.descricao}
           </p>
+          {/* CTA — mobile: below description, left-aligned */}
+          <Link
+            to={active.href}
+            className="lg:hidden mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300"
+          >
+            Ver linha completa
+            <ArrowUpRight size={16} />
+          </Link>
         </div>
 
-        {/* Bottom-right: CTA */}
+        {/* Bottom-right: CTA — desktop only */}
         <Link
           to={active.href}
-          className="absolute bottom-16 right-8 lg:right-12 z-10 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300"
+          className="hidden lg:inline-flex absolute bottom-16 right-8 lg:right-12 z-10 items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300"
         >
           Ver linha completa
           <ArrowUpRight size={16} />
