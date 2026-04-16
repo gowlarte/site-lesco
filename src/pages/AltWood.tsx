@@ -145,7 +145,7 @@ const AltWood = () => {
   }, []);
 
   return (
-    <div className="bg-[#0D0D0D] min-h-screen">
+    <div className="min-h-screen bg-[#e5e1dc]">
       <HeroSection
         images={heroImages}
         headline="AltWood"

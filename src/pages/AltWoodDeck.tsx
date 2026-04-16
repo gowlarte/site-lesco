@@ -60,7 +60,7 @@ const AltWoodDeck = () => {
   const [specsOpen, setSpecsOpen] = useState(false);
 
   return (
-    <div className="bg-[#0D0D0D] min-h-screen">
+    <div className="min-h-screen bg-[#e5e1dc]">
       {/* Hero */}
       <HeroSection
         images={heroImages}
