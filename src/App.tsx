@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -25,12 +25,14 @@ const queryClient = new QueryClient();
 const AppContent = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const { isLoading } = usePageAssets(contentRef);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   return (
     <>
       <PageTransitionLoader isLoading={isLoading} />
       <ScrollToTop />
-      <Header />
+      {!isHome && <Header />}
       <div ref={contentRef} style={{ opacity: isLoading ? 0 : 1, transition: "opacity 300ms ease" }}>
         <Routes>
           <Route path="/" element={<Index />} />
