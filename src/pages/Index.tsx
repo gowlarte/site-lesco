@@ -102,7 +102,6 @@ const Index = () => {
             aria-hidden={currentSlide !== i}
           >
             <img
-              key={`${linha.nome}-${currentSlide === i ? "active" : "idle"}`}
               src={linha.imagem}
               alt={`${linha.nome} — fundo`}
               className={
