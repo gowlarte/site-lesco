@@ -12,7 +12,11 @@ const navLinks = [
   { label: "Catálogo", href: "/catalogo" },
 ];
 
-export function Header() {
+interface HeaderProps {
+  variant?: "default" | "overlay";
+}
+
+export function Header({ variant = "default" }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [hoveredNav, setHoveredNav] = useState<string | null>(null);
@@ -28,17 +32,22 @@ export function Header() {
     setMenuOpen(false);
   }, [location]);
 
-  // At top: light bg, dark text, dark logo. Scrolled: dark bg, light text, light logo.
-  const isLight = !scrolled;
+  const isOverlay = variant === "overlay";
+  // overlay variant: always light text/logo, transparent bg, absolute (not fixed).
+  // default: dynamic on scroll.
+  const isLight = !isOverlay && !scrolled;
 
   return (
     <>
       <header
         className={cn(
-          "fixed top-[10px] left-[10px] right-[10px] z-50 transition-all duration-[400ms] rounded-[10px]",
-          isLight
-            ? "bg-[#e5e1dc]"
-            : "bg-[rgba(17,17,16,0.92)] backdrop-blur-xl"
+          "z-50 transition-all duration-[400ms] rounded-[10px]",
+          isOverlay
+            ? "absolute top-0 left-0 right-0 bg-transparent"
+            : cn(
+                "fixed top-[10px] left-[10px] right-[10px]",
+                isLight ? "bg-[#e5e1dc]" : "bg-[rgba(17,17,16,0.92)] backdrop-blur-xl"
+              )
         )}
       >
         <div className="flex items-center justify-between h-14 px-6 lg:px-8">
@@ -57,9 +66,9 @@ export function Header() {
             onMouseLeave={() => setHoveredNav(null)}
           >
             {navLinks.map((link) => {
-              const baseColor = isLight ? "#303030" : "#7F7F7F";
-              const activeColor = isLight ? "#000000" : "#FFFFFF";
-              const dimColor = isLight ? "#A0A0A0" : "#525252";
+              const baseColor = isOverlay ? "#FFFFFF" : isLight ? "#303030" : "#7F7F7F";
+              const activeColor = isOverlay ? "#FFFFFF" : isLight ? "#000000" : "#FFFFFF";
+              const dimColor = isOverlay ? "rgba(255,255,255,0.55)" : isLight ? "#A0A0A0" : "#525252";
 
               return (
                 <Link
@@ -103,7 +112,7 @@ export function Header() {
           <button
             className={cn(
               "md:hidden transition-colors duration-300",
-              isLight ? "text-[#303030]" : "text-foreground"
+              isOverlay ? "text-white" : isLight ? "text-[#303030]" : "text-foreground"
             )}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Menu"
