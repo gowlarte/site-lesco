@@ -144,7 +144,7 @@ const AltWoodBrise = () => {
 
       {/* Tabs */}
       <div className="px-6 md:px-12 lg:px-20">
-        <div className="flex gap-0 border-b border-[#1E1E1E]">
+        <div className="flex gap-0 border-b border-[#D0CBC5]">
           {(["origens", "classic"] as const).map((tab) => (
             <button
               key={tab}
@@ -152,7 +152,7 @@ const AltWoodBrise = () => {
               className={`px-6 py-3 text-[13px] font-medium uppercase tracking-[0.06em] transition-all duration-300 border-b-2 -mb-px cursor-pointer ${
                 activeTab === tab
                   ? "text-primary border-[#C8956C]"
-                  : "text-[#7F7F7F] border-transparent hover:text-white"
+                  : "text-[#9E9890] border-transparent hover:text-primary"
               }`}
             >
               AltWood {tab === "origens" ? "Origens" : "Classic"}
