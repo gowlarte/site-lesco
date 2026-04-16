@@ -9,7 +9,7 @@ interface CardModeloProps {
 }
 
 export const CardModelo = ({ imageSrc, nome, medida, peso, onOrcamento }: CardModeloProps) => (
-  <div className="bg-[#141414] rounded-[var(--aw-radius-card)] overflow-hidden transition-all duration-[350ms] hover:-translate-y-1 hover:border-[#C8956C] border border-[#1E1E1E] group"
+  <div className="bg-[#141414] rounded-[var(--aw-radius-card)] overflow-hidden transition-all duration-[350ms] hover:-translate-y-1 hover:border-[#C8956C] border border-[#1E1E1E] group shadow-none"
     style={{ boxShadow: "var(--aw-shadow-card)" }}
   >
     <div className="aspect-video bg-[#1A1A1A] flex items-center justify-center">
