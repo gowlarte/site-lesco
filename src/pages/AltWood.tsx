@@ -156,7 +156,7 @@ const AltWood = () => {
 
       <FiltroProdutos activeId={activeTab} onTabClick={handleTabClick} />
 
-      <div>
+      <div className="bg-secondary">
         {produtos.map((p) => (
           <PreviewProduto key={p.id} {...p} />
         ))}

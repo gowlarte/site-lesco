@@ -13,7 +13,7 @@ export const SecaoOrcamento = ({ imageSrc }: SecaoOrcamentoProps) => (
         <div className="absolute inset-0 bg-[rgba(13,13,13,0.75)]" />
       </>
     ) : (
-      <div className="absolute inset-0 bg-[#0F0F0F]" />
+      <div className="absolute inset-0 bg-[#0F0F0F] my-0 mx-0" />
     )}
     {/* Content */}
     <div className="relative z-10 flex flex-col items-center text-center px-6">

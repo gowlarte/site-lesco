@@ -55,7 +55,7 @@ export const PreviewProduto = ({ id, tag, titulo, descricao, swatches, href, ima
   useEffect(() => () => { if (intervalRef.current) clearInterval(intervalRef.current); }, []);
 
   return (
-    <section id={id} className="py-24 border-b border-[#1E1E1E] last:border-b-0">
+    <section id={id} className="py-24 border-b border-[#1E1E1E] last:border-b-0 mx-[10px] my-[10px]">
       <Link
         to={href}
         className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-10 lg:gap-16 px-6 md:px-12 lg:px-20 group cursor-pointer"
@@ -87,7 +87,7 @@ export const PreviewProduto = ({ id, tag, titulo, descricao, swatches, href, ima
         {/* Right — Info */}
         <div className="flex flex-col justify-center gap-5">
           <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C]">{tag}</span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-semibold text-white leading-tight">{titulo}</h2>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-semibold leading-tight text-primary">{titulo}</h2>
           <p className="text-[15px] text-[#7F7F7F] leading-relaxed max-w-md">{descricao}</p>
           <div className="flex gap-3 flex-wrap">
             {swatches.map((s) => (
