@@ -115,15 +115,14 @@ const Index = () => {
         </div>
 
         {/* Bottom-left: logo + descrição */}
-        <div className="absolute bottom-16 left-8 lg:left-12 z-10 max-w-[640px] text-white">
+        <div className="absolute bottom-16 left-8 lg:left-12 z-10 max-w-[640px] text-white flex flex-col items-start">
           <div
-            className="h-[44px] md:h-[56px] lg:h-[68px] w-auto max-w-[420px] mb-5 transition-opacity duration-500"
+            className="mb-5 transition-opacity duration-500 [&>svg]:h-[44px] md:[&>svg]:h-[56px] lg:[&>svg]:h-[68px] [&>svg]:w-auto"
             style={{ color: "#FFFFFF" }}
             dangerouslySetInnerHTML={{ __html: active.logo }}
-            role="img"
             aria-label={active.nome}
           />
-          <p className="font-display font-extralight text-[20px] md:text-[26px] lg:text-[30px] leading-[1.2] tracking-[-0.01em] text-white/95 max-w-[520px]">
+          <p className="font-display font-extralight text-[20px] md:text-[26px] lg:text-[30px] leading-[1.2] tracking-[-0.01em] text-white/95 max-w-[520px] text-left">
             {active.descricao}
           </p>
         </div>
