@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, X } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -65,6 +65,39 @@ const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [selectedProject, setSelectedProject] = useState<typeof projects[number] | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartX = useRef<number | null>(null);
+  const dragDeltaX = useRef(0);
+
+  const goToSlide = useCallback((i: number) => {
+    setCurrentSlide(((i % linhas.length) + linhas.length) % linhas.length);
+  }, []);
+
+  const handleDragStart = (clientX: number) => {
+    dragStartX.current = clientX;
+    dragDeltaX.current = 0;
+    setIsDragging(true);
+    setIsPaused(true);
+  };
+
+  const handleDragMove = (clientX: number) => {
+    if (dragStartX.current === null) return;
+    dragDeltaX.current = clientX - dragStartX.current;
+  };
+
+  const handleDragEnd = () => {
+    if (dragStartX.current === null) return;
+    const threshold = 60;
+    if (dragDeltaX.current <= -threshold) {
+      goToSlide(currentSlide + 1);
+    } else if (dragDeltaX.current >= threshold) {
+      goToSlide(currentSlide - 1);
+    }
+    dragStartX.current = null;
+    dragDeltaX.current = 0;
+    setIsDragging(false);
+    setIsPaused(false);
+  };
 
   // Preload all hero images on mount so slide transitions are instant
   useEffect(() => {
@@ -82,16 +115,26 @@ const Index = () => {
     return () => clearInterval(t);
   }, [isPaused]);
 
-  const goToSlide = useCallback((i: number) => setCurrentSlide(i), []);
   const active = linhas[currentSlide];
 
   return (
     <main className="flex flex-col gap-[10px]">
       {/* ========== HERO BANNER — SLIDESHOW ========== */}
       <section
-        className="relative m-[10px] h-[calc(100vh-20px)] rounded-[10px] overflow-hidden"
+        className={`relative m-[10px] h-[calc(100vh-20px)] rounded-[10px] overflow-hidden select-none ${
+          isDragging ? "cursor-grabbing" : "cursor-grab"
+        }`}
         onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
+        onMouseLeave={() => {
+          setIsPaused(false);
+          if (isDragging) handleDragEnd();
+        }}
+        onMouseDown={(e) => handleDragStart(e.clientX)}
+        onMouseMove={(e) => isDragging && handleDragMove(e.clientX)}
+        onMouseUp={handleDragEnd}
+        onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
+        onTouchMove={(e) => handleDragMove(e.touches[0].clientX)}
+        onTouchEnd={handleDragEnd}
       >
         {/* Slides */}
         {linhas.map((linha, i) => (
@@ -107,10 +150,11 @@ const Index = () => {
             <img
               src={linha.imagem}
               alt={`${linha.nome} — fundo`}
+              draggable={false}
               className={
                 currentSlide === i
-                  ? "hero-slide-img w-full h-full object-cover"
-                  : "w-full h-full object-cover"
+                  ? "hero-slide-img w-full h-full object-cover pointer-events-none"
+                  : "w-full h-full object-cover pointer-events-none"
               }
             />
           </div>
@@ -138,7 +182,8 @@ const Index = () => {
           {/* CTA — mobile: below description, left-aligned */}
           <Link
             to={active.href}
-            className="lg:hidden mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300"
+            onClick={(e) => { if (Math.abs(dragDeltaX.current) > 5) e.preventDefault(); }}
+            className="lg:hidden mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300 cursor-pointer"
           >
             Ver linha completa
             <ArrowUpRight size={16} />
@@ -148,7 +193,8 @@ const Index = () => {
         {/* Bottom-right: CTA — desktop only */}
         <Link
           to={active.href}
-          className="hidden lg:inline-flex absolute bottom-16 right-8 lg:right-12 z-10 items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300"
+          onClick={(e) => { if (Math.abs(dragDeltaX.current) > 5) e.preventDefault(); }}
+          className="hidden lg:inline-flex absolute bottom-16 right-8 lg:right-12 z-10 items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300 cursor-pointer"
         >
           Ver linha completa
           <ArrowUpRight size={16} />
@@ -162,7 +208,7 @@ const Index = () => {
               onClick={() => goToSlide(i)}
               aria-label={`Ir para slide ${i + 1} — ${linha.nome}`}
               aria-current={currentSlide === i}
-              className={`h-2 rounded-full transition-all duration-300 ${
+              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                 currentSlide === i ? "w-8 bg-white" : "w-2 bg-white/40 hover:bg-white/70"
               }`}
             />
