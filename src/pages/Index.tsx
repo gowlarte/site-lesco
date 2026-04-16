@@ -1,15 +1,13 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { X } from "lucide-react";
+import { ArrowUpRight, X } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { Header } from "@/components/Header";
 
-import altwoodProject1 from "@/assets/altwood-project-1.jpg";
-import altwoodProject2 from "@/assets/altwood-project-2.jpg";
-import altwoodProject3 from "@/assets/altwood-project-3.jpg";
-import altwoodProject4 from "@/assets/altwood-project-4.jpg";
-import heroZhuzenImg from "@/assets/hero-zhuzen.jpg";
-import heroEchotexImg from "@/assets/hero-echotex.jpg";
-import heroItalflexImg from "@/assets/hero-italflex.jpg";
+import heroAltwood from "@/assets/hero-home-altwood.webp";
+import heroZhuzen from "@/assets/hero-home-zhuzen.webp";
+import heroEchotex from "@/assets/hero-home-echotex.jpg";
+import heroItalflex from "@/assets/hero-home-italflex.webp";
 
 import logoAltwoodRaw from "@/assets/linha-altwood-2.svg?raw";
 import logoZhuzenRaw from "@/assets/linha-zhuzen-2.svg?raw";
@@ -28,32 +26,28 @@ const linhas = [
     logo: logoAltwoodRaw,
     descricao: "Madeira ecológica premium. Fachadas, brises, panels e decks.",
     href: "/altwood",
-    imagens: [altwoodProject1, altwoodProject2, altwoodProject3, altwoodProject4],
-    corHover: "#b85e4f",
+    imagem: heroAltwood,
   },
   {
     nome: "Zhúzen",
     logo: logoZhuzenRaw,
-    descricao: "Revestimentos, forros, luminárias, decorativos, utilitários feitas a partir do bambu.",
+    descricao: "Revestimentos, forros, luminárias e decorativos feitos a partir do bambu.",
     href: "/zhuzen",
-    imagens: [heroZhuzenImg],
-    corHover: "#7aa478",
+    imagem: heroZhuzen,
   },
   {
     nome: "Echotex",
     logo: logoEchotexRaw,
-    descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais ou home cinemas.",
+    descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais e home cinemas.",
     href: "/echotex",
-    imagens: [heroEchotexImg],
-    corHover: "#95a9a1",
+    imagem: heroEchotex,
   },
   {
     nome: "Italflex",
     logo: logoItalflexRaw,
     descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
     href: "/italflex",
-    imagens: [heroItalflexImg],
-    corHover: "#b99274",
+    imagem: heroItalflex,
   },
 ];
 
@@ -65,133 +59,97 @@ const projects = [
   { nome: "Deck Detail", imagem: projectDeckDetail, href: "/projetos/deck-detail", descricao: "Detalhe de acabamento em deck de alta resistência.", linha: "AltWood" },
 ];
 
-const CYCLE_INTERVAL = 1200;
+const SLIDE_INTERVAL = 6000;
 
 const Index = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isHovering, setIsHovering] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const [selectedProject, setSelectedProject] = useState<typeof projects[number] | null>(null);
-  const [imageFrame, setImageFrame] = useState(0);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const sectionRef = useRef<HTMLElement>(null);
 
-  const startCycling = useCallback(() => {
-    stopCycling();
-    setImageFrame(0);
-    intervalRef.current = setInterval(() => {
-      setImageFrame((prev) => prev + 1);
-    }, CYCLE_INTERVAL);
-  }, []);
+  useEffect(() => {
+    if (isPaused) return;
+    const t = setInterval(() => {
+      setCurrentSlide((s) => (s + 1) % linhas.length);
+    }, SLIDE_INTERVAL);
+    return () => clearInterval(t);
+  }, [isPaused]);
 
-  const stopCycling = useCallback(() => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  }, []);
-
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (!sectionRef.current) return;
-    const rect = sectionRef.current.getBoundingClientRect();
-    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  }, []);
+  const goToSlide = useCallback((i: number) => setCurrentSlide(i), []);
+  const active = linhas[currentSlide];
 
   return (
-    <main className="px-[10px] pb-[10px] pt-[100px] flex flex-col gap-[10px]">
-      {/* ========== HERO — LINE SELECTOR ========== */}
+    <main className="flex flex-col gap-[10px]">
+      {/* ========== HERO BANNER — SLIDESHOW ========== */}
       <section
-        ref={sectionRef}
-        className="relative min-h-screen bg-primary flex items-center rounded-[10px]"
-        onMouseMove={handleMouseMove}
+        className="relative m-[10px] h-[calc(100vh-20px)] rounded-[10px] overflow-hidden"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
       >
-        <div className="w-full px-12 lg:px-20 py-[52px] pt-[10px] pb-[10px] pl-[10px] pr-[10px] 3xl:pl-[80px] 3xl:pr-[80px] bg-[#e5e1dc]">
-          <div className="relative">
-            {/* Rows */}
-            {linhas.map((linha, i) => {
-              const isActive = activeIndex === i && isHovering;
-
-              return (
-                <Link key={linha.nome} to={linha.href} className="block">
-                  <div
-                    className="grid grid-cols-1 lg:grid-cols-[auto_1fr] lg:gap-x-[80px] items-start py-10 lg:py-14 3xl:py-20 cursor-none max-w-[1400px] mx-auto"
-                    onMouseEnter={() => {
-                      setActiveIndex(i);
-                      setIsHovering(true);
-                      startCycling();
-                    }}
-                    onMouseLeave={() => {
-                      setIsHovering(false);
-                      stopCycling();
-                    }}
-                  >
-                    {/* Left — Brand logo with hover line */}
-                    <div className="self-start flex items-center gap-0">
-                      {/* Decorative line — pushes content right on hover */}
-                      <span
-                        className="hidden lg:block h-[2px] transition-all duration-300 ease-out flex-shrink-0"
-                        style={{
-                          backgroundColor: linha.corHover,
-                          width: isActive ? "40px" : "0px",
-                          marginRight: isActive ? "16px" : "0px",
-                          opacity: isActive ? 1 : 0,
-                        }}
-                      />
-                      <div
-                        className="mx-0 h-[32px] md:h-[42px] lg:h-[52px] 3xl:h-[72px] w-[200px] md:w-[260px] lg:w-[320px] 3xl:w-[440px] transition-colors duration-[400ms] px-0 pl-[4px] pr-[120px]"
-                        style={{ color: isActive ? linha.corHover : "#525252" }}
-                        dangerouslySetInnerHTML={{ __html: linha.logo }}
-                        role="img"
-                        aria-label={linha.nome}
-                      />
-                    </div>
-
-                    {/* Right — Description (large editorial) */}
-                    <p
-                      className="font-display font-extralight leading-[1.15] mt-2 lg:mt-0 max-w-[520px] 3xl:max-w-[720px] text-[24px] md:text-[32px] lg:text-[38px] 3xl:text-[45px] text-left self-start transition-colors duration-[400ms] tracking-[-0.02em]"
-                      style={{
-                        color: isActive ? linha.corHover : "#525252",
-                      }}
-                    >
-                      {linha.descricao}
-                    </p>
-                  </div>
-                </Link>
-              );
-            })}
-            {/* No bottom border */}
-
-            {/* Mouse-following image */}
-            <div
-              className="hidden lg:block pointer-events-none absolute z-10 w-[280px] xl:w-[320px] 3xl:w-[400px] h-[350px] xl:h-[400px] 3xl:h-[500px] rounded-2xl overflow-hidden transition-all duration-[250ms] ease-out"
-              style={{
-                left: mousePos.x,
-                top: mousePos.y,
-                transform: "translate(-50%, -50%)",
-                opacity: isHovering ? 1 : 0,
-                scale: isHovering ? "1" : "0.95",
-              }}
-            >
-              {linhas.map((linha, i) =>
-                linha.imagens.map((src, imgIdx) => (
-                  <img
-                    key={`${linha.nome}-${imgIdx}`}
-                    src={src}
-                    alt={`${linha.nome} projeto ${imgIdx + 1}`}
-                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[600ms]"
-                    style={{
-                      opacity:
-                        activeIndex === i && isHovering && (imageFrame % linha.imagens.length) === imgIdx
-                          ? 1
-                          : 0,
-                    }}
-                    width={320}
-                    height={400}
-                  />
-                ))
-              )}
-            </div>
+        {/* Slides */}
+        {linhas.map((linha, i) => (
+          <div
+            key={linha.nome}
+            className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+            style={{ opacity: currentSlide === i ? 1 : 0 }}
+            aria-hidden={currentSlide !== i}
+          >
+            <img
+              key={`${linha.nome}-${currentSlide === i ? "active" : "idle"}`}
+              src={linha.imagem}
+              alt={`${linha.nome} — fundo`}
+              className={
+                currentSlide === i
+                  ? "hero-slide-img w-full h-full object-cover"
+                  : "w-full h-full object-cover"
+              }
+            />
           </div>
+        ))}
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-[#141414]/50 pointer-events-none" />
+
+        {/* Header inside banner */}
+        <div className="relative z-20 p-[10px]">
+          <Header variant="overlay" />
+        </div>
+
+        {/* Bottom-left: logo + descrição */}
+        <div className="absolute bottom-16 left-8 lg:left-12 z-10 max-w-[640px] text-white">
+          <div
+            className="h-[44px] md:h-[56px] lg:h-[68px] w-auto max-w-[420px] mb-5 transition-opacity duration-500"
+            style={{ color: "#FFFFFF" }}
+            dangerouslySetInnerHTML={{ __html: active.logo }}
+            role="img"
+            aria-label={active.nome}
+          />
+          <p className="font-display font-extralight text-[20px] md:text-[26px] lg:text-[30px] leading-[1.2] tracking-[-0.01em] text-white/95 max-w-[520px]">
+            {active.descricao}
+          </p>
+        </div>
+
+        {/* Bottom-right: CTA */}
+        <Link
+          to={active.href}
+          className="absolute bottom-16 right-8 lg:right-12 z-10 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300"
+        >
+          Ver linha completa
+          <ArrowUpRight size={16} />
+        </Link>
+
+        {/* Bullets — bottom center */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-3">
+          {linhas.map((linha, i) => (
+            <button
+              key={linha.nome}
+              onClick={() => goToSlide(i)}
+              aria-label={`Ir para slide ${i + 1} — ${linha.nome}`}
+              aria-current={currentSlide === i}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                currentSlide === i ? "w-8 bg-white" : "w-2 bg-white/40 hover:bg-white/70"
+              }`}
+            />
+          ))}
         </div>
       </section>
 
@@ -220,7 +178,7 @@ const Index = () => {
       </section>
 
       {/* ========== GALERIA DE PROJETOS ========== */}
-      <section className="relative flex flex-col gap-[10px] overflow-hidden">
+      <section className="relative flex flex-col gap-[10px] overflow-hidden px-[10px]">
         {/* Inline project viewer */}
         {selectedProject && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 rounded-[10px] overflow-hidden relative bg-secondary">
@@ -310,7 +268,7 @@ const Index = () => {
 
       {/* ========== CTA FINAL ========== */}
       <section
-        className="py-24 md:py-32 lg:py-40 rounded-[10px]"
+        className="py-24 md:py-32 lg:py-40 rounded-[10px] mx-[10px] mb-[10px]"
         style={{ background: "linear-gradient(135deg, #A8D9A0 0%, #F5C9A0 100%)" }}
       >
         <div className="container mx-auto px-6 lg:px-8 text-center">
