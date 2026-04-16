@@ -3,7 +3,7 @@ import logoLight from "@/assets/logo-lesco-light.svg";
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-foreground rounded-[10px] mx-[10px] mb-[10px]">
+    <footer className="bg-primary text-foreground rounded-[10px] mx-[10px] mb-[10px] my-[10px]">
       {/* Divider */}
       <div className="h-px bg-white/[0.12]" />
 
