@@ -182,7 +182,8 @@ const Index = () => {
           {/* CTA — mobile: below description, left-aligned */}
           <Link
             to={active.href}
-            className="lg:hidden mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300"
+            onClick={(e) => { if (Math.abs(dragDeltaX.current) > 5) e.preventDefault(); }}
+            className="lg:hidden mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300 cursor-pointer"
           >
             Ver linha completa
             <ArrowUpRight size={16} />
@@ -192,7 +193,8 @@ const Index = () => {
         {/* Bottom-right: CTA — desktop only */}
         <Link
           to={active.href}
-          className="hidden lg:inline-flex absolute bottom-16 right-8 lg:right-12 z-10 items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300"
+          onClick={(e) => { if (Math.abs(dragDeltaX.current) > 5) e.preventDefault(); }}
+          className="hidden lg:inline-flex absolute bottom-16 right-8 lg:right-12 z-10 items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300 cursor-pointer"
         >
           Ver linha completa
           <ArrowUpRight size={16} />
@@ -206,7 +208,7 @@ const Index = () => {
               onClick={() => goToSlide(i)}
               aria-label={`Ir para slide ${i + 1} — ${linha.nome}`}
               aria-current={currentSlide === i}
-              className={`h-2 rounded-full transition-all duration-300 ${
+              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                 currentSlide === i ? "w-8 bg-white" : "w-2 bg-white/40 hover:bg-white/70"
               }`}
             />
