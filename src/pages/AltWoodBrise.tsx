@@ -144,7 +144,7 @@ const AltWoodBrise = () => {
 
       {/* Tabs */}
       <div className="px-6 md:px-12 lg:px-20">
-        <div className="flex gap-0 border-b border-[#D0CBC5]">
+        <div className="flex gap-0">
           {(["origens", "classic"] as const).map((tab) => (
             <button
               key={tab}
