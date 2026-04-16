@@ -37,7 +37,7 @@ export function Header() {
         className={cn(
           "fixed top-[10px] left-[10px] right-[10px] z-50 transition-all duration-[400ms] rounded-[10px]",
           isLight
-            ? "bg-[#DBDBDB]"
+            ? "bg-[#e5e1dc]"
             : "bg-[rgba(17,17,16,0.92)] backdrop-blur-xl"
         )}
       >
