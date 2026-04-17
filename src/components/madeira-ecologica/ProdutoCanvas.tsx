@@ -26,6 +26,10 @@ export const ProdutoCanvas = forwardRef<ProdutoCanvasHandle, Props>(
     const pendingFrameRef = useRef<number>(0);
     const rafRef = useRef<number | null>(null);
     const [isReady, setIsReady] = useState(false);
+    const onReadyRef = useRef(onReady);
+    useEffect(() => {
+      onReadyRef.current = onReady;
+    }, [onReady]);
 
     useEffect(() => {
       let cancelled = false;
@@ -94,7 +98,7 @@ export const ProdutoCanvas = forwardRef<ProdutoCanvasHandle, Props>(
             lastFrameRef.current = 0;
           }
           setIsReady(true);
-          onReady?.(composed.length);
+          onReadyRef.current?.(composed.length);
         } catch (err) {
           // eslint-disable-next-line no-console
           console.error("[ProdutoCanvas] failed to load GIF", err);
@@ -106,7 +110,8 @@ export const ProdutoCanvas = forwardRef<ProdutoCanvasHandle, Props>(
         cancelled = true;
         if (rafRef.current) cancelAnimationFrame(rafRef.current);
       };
-    }, [onReady]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const draw = () => {
       rafRef.current = null;
