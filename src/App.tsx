@@ -18,6 +18,7 @@ import AltWoodShield from "./pages/AltWoodShield";
 import AltWoodDeck from "./pages/AltWoodDeck";
 import AltWoodLine from "./pages/AltWoodLine";
 import AltWoodPanel from "./pages/AltWoodPanel";
+import Linhas from "./pages/Linhas";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +44,7 @@ const AppContent = () => {
           <Route path="/altwood-line" element={<AltWoodLine />} />
           <Route path="/altwood-panel" element={<AltWoodPanel />} />
           <Route path="/sobre" element={<About />} />
+          <Route path="/linhas" element={<Linhas />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
