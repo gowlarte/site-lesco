@@ -1,73 +1,55 @@
 
 
-## Seção "Conheça Nossa Madeira Ecológica" — Plano final
+## Ajustes na seção "Madeira Ecológica"
 
-Decisões confirmadas: **GIF + gifuct-js**, asset enviado é o final, fundo `#DBDBDB`, posicionado **após a Galeria de Projetos** na Home.
+Três mudanças no `MadeiraEcologicaSection.tsx`:
 
-### Arquivos a criar
+### 1. Novo layout desktop: GIF à esquerda, ícones empilhados à direita
+
+Substituir o posicionamento absoluto atual (5 ícones espalhados em volta do canvas) por um layout flex de 2 colunas centralizado:
 
 ```text
-src/assets/madeira-ecologica/
-├── produto.gif                      Esquema-produtos-camadas.gif
-├── icon-anti-mofo.svg               Ativo_1.svg
-├── icon-hidrofobico.svg             Ativo_2.svg
-├── icon-resistente-pragas.svg       Ativo_3.svg
-├── icon-garantia.svg                Ativo_4.svg
-└── icon-reciclado.svg               Ativo_5.svg
-
-src/components/madeira-ecologica/
-├── MadeiraEcologicaSection.tsx      container 300vh + sticky stage + orquestração
-├── ProdutoCanvas.tsx                canvas + parse do GIF + scrub por scroll
-├── IconesOverlay.tsx                posicionamento dos 5 ícones (desktop)
-├── FeatureIcon.tsx                  ícone clicável + descrição expansível
-└── CalloutLines.tsx                 SVG com linhas animadas (stroke-dashoffset)
+┌─────────────────────────────────────────────┐
+│   Conheça nossa madeira ecológica           │
+│                                             │
+│   ┌──────────┐      • Anti-mofo             │
+│   │          │      • Hidrofóbico           │
+│   │  CANVAS  │      • Resistente a pragas   │
+│   │          │      • 10 anos de garantia   │
+│   └──────────┘      • 100% reciclado        │
+└─────────────────────────────────────────────┘
 ```
+
+- Wrapper interno `flex items-center justify-center gap-12 lg:gap-20 max-w-[1200px] mx-auto`.
+- Coluna esquerda: canvas com `w-[45%] max-w-[520px] aspect-square`.
+- Coluna direita: `flex flex-col gap-6` com os 5 `FeatureIcon` em sequência, `align="left"`.
+- Stagger de fade-in mantido (delays 0/150/300/450/600ms na ordem vertical).
+- Conjunto inteiro centralizado vertical e horizontalmente dentro do sticky.
+
+### 2. Mobile: já está empilhado, apenas confirmar
+
+O layout mobile atual já tem GIF em cima + grid 2 colunas de ícones embaixo. Vou trocar para **lista vertical** (1 coluna) para ficar consistente com o desktop e dar mais respiro:
+- `flex flex-col gap-6` em vez de `grid grid-cols-2`.
+- `align="left"` em cada `FeatureIcon`.
+
+### 3. Tolerância de scroll após ícones aparecerem
+
+Atualmente o sticky termina exatamente quando `progress = 1`. Vou aumentar o container para `h-[450vh]` e ajustar o cálculo de frame para que:
+- **0% – 60% do scroll** → anima o GIF (frame 0 → último frame).
+- **60% – 100% do scroll** → GIF congelado no último frame, ícones visíveis, tela permanece "presa" no sticky por mais ~150vh de rolagem.
+
+Implementação no `compute()`:
+```ts
+const animationProgress = Math.min(1, progress / 0.6);
+const frame = Math.floor(animationProgress * (total - 1));
+const complete = animationProgress >= 1; // ícones aparecem aos 60%
+```
+
+Isso dá ao usuário ~1.5 viewport inteira de scroll "calmo" para ler/clicar nos ícones antes de a seção liberar o scroll.
 
 ### Arquivos a editar
 
-- `src/pages/Index.tsx` — importar `<MadeiraEcologicaSection />` logo após a seção da Galeria de Projetos.
-- `package.json` — adicionar `gifuct-js`.
+- `src/components/madeira-ecologica/MadeiraEcologicaSection.tsx` — único arquivo. Reescreve o JSX desktop (remove posicionamento absoluto, usa flex 2 colunas), ajusta mobile para lista vertical, e altera a lógica de `compute()` + altura do container.
 
-### Comportamento técnico
-
-- **Container**: `h-[300vh]` envelope + filho `sticky top-0 h-screen` para o palco visual.
-- **Parse do GIF**: no mount, `fetch(produtoGif) → arrayBuffer → parseGIF → decompressFrames`. Cada frame vira `ImageData` cacheado em `useRef`.
-- **Scroll → frame**: `IntersectionObserver` ativa o listener; `progress = clamp((scrollY - sectionTop) / (sectionHeight - vh), 0, 1)`; `frame = floor(progress * (totalFrames - 1))`; redraw via `requestAnimationFrame` apenas quando `frame !== lastFrame`. Sem React state.
-- **Estado "completo"** (progress ≥ 0.95): dispara fade-in dos ícones com stagger 150ms; linhas SVG desenhadas via `stroke-dashoffset` animado (~600ms); labels surgem por último.
-- **Clique no ícone**: toggle de descrição abaixo (slide-down + fade); abrir um fecha o anterior. Estado em `useState<string | null>`.
-- **Mobile (<768px)**: sem sticky, sem scrub. Mostra **frame final estático** (último frame desenhado uma vez no canvas) + grid 2×3 de ícones com accordion. Sem linhas SVG.
-
-### Layout (desktop)
-
-```text
-┌──────────────────────────────────────────────┐
-│   Conheça nossa madeira ecológica            │  título centralizado
-│                                              │
-│  [Anti-mofo]──────╮         ╭──[Garantia]    │
-│                    ╲       ╱                 │
-│                  ┌──────────┐                │
-│                  │  CANVAS  │                │  GIF scrub
-│                  │ produto  │                │
-│                  └──────────┘                │
-│                    ╱       ╲                 │
-│  [Hidrofóbico]──╯           ╰──[Reciclado]   │
-│              [Resist. pragas]                │
-└──────────────────────────────────────────────┘
-```
-
-### Aderência ao design system
-
-- Fundo `#DBDBDB`, card com radius 10px e margens 10px laterais.
-- Título em PP Neue Machina, alinhado ao tamanho dos H2 do projeto (`text-3xl md:text-4xl lg:text-[52px]`).
-- Ícones e linhas em `#141414`; estado ativo do ícone em `#C8956C` (tom AltWood) com círculo de borda.
-- Descrições em DM Sans light, mesmo tom dos parágrafos do site.
-- SVGs dos ícones carregados como `?raw` para herdar `currentColor`.
-
-### Critérios de aceite (do PRD)
-
-Todos contemplados: scrub bidirecional, congela no último frame, ícones com stagger, linhas animadas, accordion de descrição, responsivo, ≥60fps via rAF + frames cacheados, IntersectionObserver para evitar trabalho fora da viewport.
-
-### Observação
-
-`gifuct-js` parseia o GIF inteiro no client (~uma vez no mount). Se o GIF final for grande (>2MB) ou tiver muitos frames, pode haver um pequeno delay inicial — nesse caso, mostro frame 0 estático até o parse terminar (sem bloquear a UI).
+Nenhuma mudança em `ProdutoCanvas.tsx` ou `FeatureIcon.tsx`.
 
