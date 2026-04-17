@@ -1,40 +1,73 @@
-## Ajustes no hover da página /linhas
-
-Dois problemas a resolver:
-
-### 1. Delay na aparição da imagem flutuante
-
-**Causa**: Hoje a `<img>` é renderizada apenas quando `activeIndex !== null` e o `src` muda dinamicamente para a imagem da linha ativa. Isso força o navegador a buscar/decodificar a imagem no momento do hover (mesmo que esteja em cache, há um pequeno delay de decode + fade-in da `transition-opacity`).
-
-**Solução**:
-
-- **Pré-carregar** todas as imagens via `useEffect` com `new Image()` na montagem (mesmo padrão já usado no Hero da Home).
-- **Renderizar todas as 4 imagens permanentemente** dentro do container flutuante, controlando visibilidade com `opacity: 0/1` por imagem. Assim o navegador já tem tudo decodificado e o switch é instantâneo.
-- **Remover a `transition-opacity**` do container flutuante (mantém só nas imagens internas, com 200ms para um crossfade sutil) e exibir o container o tempo todo, controlando só a opacidade conforme `activeIndex`.
-
-### 2. Cor do hover do logo = cor da linha
-
-Hoje todos os logos viram `#C8956C` (laranja AltWood) no hover. Cada linha precisa da sua própria cor de marca. Adicionar campo `cor` em cada item de `linhas`:
 
 
-| Linha    | Cor sugerida                       |
-| -------- | ---------------------------------- |
-| AltWood  | `#F7C39B`(laranja madeira — atual) |
-| Zhúzen   | `#A3DBA0`(verde bambu)             |
-| Echotex  | `#C6E1D7`(marrom tecido)           |
-| Italflex | `#F57D69`(bege pedra)              |
+## Seção "Conheça Nossa Madeira Ecológica" — Plano final
 
+Decisões confirmadas: **GIF + gifuct-js**, asset enviado é o final, fundo `#DBDBDB`, posicionado **após a Galeria de Projetos** na Home.
 
-Aplicar via `style={{ color: activeIndex === i ? linha.cor : "#141414" }}`.
+### Arquivos a criar
 
-> Posso ajustar essas cores se você tiver paletas oficiais para Zhúzen, Echotex e Italflex — me avise antes ou depois da implementação.
+```text
+src/assets/madeira-ecologica/
+├── produto.gif                      Esquema-produtos-camadas.gif
+├── icon-anti-mofo.svg               Ativo_1.svg
+├── icon-hidrofobico.svg             Ativo_2.svg
+├── icon-resistente-pragas.svg       Ativo_3.svg
+├── icon-garantia.svg                Ativo_4.svg
+└── icon-reciclado.svg               Ativo_5.svg
+
+src/components/madeira-ecologica/
+├── MadeiraEcologicaSection.tsx      container 300vh + sticky stage + orquestração
+├── ProdutoCanvas.tsx                canvas + parse do GIF + scrub por scroll
+├── IconesOverlay.tsx                posicionamento dos 5 ícones (desktop)
+├── FeatureIcon.tsx                  ícone clicável + descrição expansível
+└── CalloutLines.tsx                 SVG com linhas animadas (stroke-dashoffset)
+```
 
 ### Arquivos a editar
 
-- `src/pages/Linhas.tsx` — adicionar pré-carregamento, renderizar imagens permanentes com opacidade controlada, adicionar campo `cor` por linha.
+- `src/pages/Index.tsx` — importar `<MadeiraEcologicaSection />` logo após a seção da Galeria de Projetos.
+- `package.json` — adicionar `gifuct-js`.
 
-### Resumo do comportamento final
+### Comportamento técnico
 
-- Cursor sobre uma linha → imagem correspondente aparece **instantaneamente** seguindo o cursor (com crossfade de 200ms entre imagens ao trocar de linha).
-- Logo da linha em hover assume **a cor da própria marca**, não mais o laranja genérico.
-- Demais linhas continuam com fade para `opacity: 0.25`.
+- **Container**: `h-[300vh]` envelope + filho `sticky top-0 h-screen` para o palco visual.
+- **Parse do GIF**: no mount, `fetch(produtoGif) → arrayBuffer → parseGIF → decompressFrames`. Cada frame vira `ImageData` cacheado em `useRef`.
+- **Scroll → frame**: `IntersectionObserver` ativa o listener; `progress = clamp((scrollY - sectionTop) / (sectionHeight - vh), 0, 1)`; `frame = floor(progress * (totalFrames - 1))`; redraw via `requestAnimationFrame` apenas quando `frame !== lastFrame`. Sem React state.
+- **Estado "completo"** (progress ≥ 0.95): dispara fade-in dos ícones com stagger 150ms; linhas SVG desenhadas via `stroke-dashoffset` animado (~600ms); labels surgem por último.
+- **Clique no ícone**: toggle de descrição abaixo (slide-down + fade); abrir um fecha o anterior. Estado em `useState<string | null>`.
+- **Mobile (<768px)**: sem sticky, sem scrub. Mostra **frame final estático** (último frame desenhado uma vez no canvas) + grid 2×3 de ícones com accordion. Sem linhas SVG.
+
+### Layout (desktop)
+
+```text
+┌──────────────────────────────────────────────┐
+│   Conheça nossa madeira ecológica            │  título centralizado
+│                                              │
+│  [Anti-mofo]──────╮         ╭──[Garantia]    │
+│                    ╲       ╱                 │
+│                  ┌──────────┐                │
+│                  │  CANVAS  │                │  GIF scrub
+│                  │ produto  │                │
+│                  └──────────┘                │
+│                    ╱       ╲                 │
+│  [Hidrofóbico]──╯           ╰──[Reciclado]   │
+│              [Resist. pragas]                │
+└──────────────────────────────────────────────┘
+```
+
+### Aderência ao design system
+
+- Fundo `#DBDBDB`, card com radius 10px e margens 10px laterais.
+- Título em PP Neue Machina, alinhado ao tamanho dos H2 do projeto (`text-3xl md:text-4xl lg:text-[52px]`).
+- Ícones e linhas em `#141414`; estado ativo do ícone em `#C8956C` (tom AltWood) com círculo de borda.
+- Descrições em DM Sans light, mesmo tom dos parágrafos do site.
+- SVGs dos ícones carregados como `?raw` para herdar `currentColor`.
+
+### Critérios de aceite (do PRD)
+
+Todos contemplados: scrub bidirecional, congela no último frame, ícones com stagger, linhas animadas, accordion de descrição, responsivo, ≥60fps via rAF + frames cacheados, IntersectionObserver para evitar trabalho fora da viewport.
+
+### Observação
+
+`gifuct-js` parseia o GIF inteiro no client (~uma vez no mount). Se o GIF final for grande (>2MB) ou tiver muitos frames, pode haver um pequeno delay inicial — nesse caso, mostro frame 0 estático até o parse terminar (sem bloquear a UI).
+
