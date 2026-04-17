@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ProdutoCanvas, type ProdutoCanvasHandle } from "./ProdutoCanvas";
 import { FeatureIcon } from "./FeatureIcon";
-import { CalloutLines } from "./CalloutLines";
+
 
 import iconAntiMofo from "@/assets/madeira-ecologica/icon-anti-mofo.svg?raw";
 import iconHidrofobico from "@/assets/madeira-ecologica/icon-hidrofobico.svg?raw";
@@ -199,9 +199,8 @@ export const MadeiraEcologicaSection = () => {
           Conheça nossa madeira ecológica
         </h2>
 
-        {/* Stage: lines + icons + canvas */}
+        {/* Stage: icons + canvas */}
         <div className="relative flex-1 w-full max-w-[1400px] mx-auto px-8">
-          <CalloutLines show={isComplete} />
 
           {/* Canvas centralizado */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
