@@ -26,6 +26,10 @@ export const ProdutoCanvas = forwardRef<ProdutoCanvasHandle, Props>(
     const pendingFrameRef = useRef<number>(0);
     const rafRef = useRef<number | null>(null);
     const [isReady, setIsReady] = useState(false);
+    const onReadyRef = useRef(onReady);
+    useEffect(() => {
+      onReadyRef.current = onReady;
+    }, [onReady]);
 
     useEffect(() => {
       let cancelled = false;
