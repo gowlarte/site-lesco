@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, X } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Header } from "@/components/Header";
+import { MadeiraEcologicaSection } from "@/components/madeira-ecologica/MadeiraEcologicaSection";
 
 import heroAltwood from "@/assets/hero-home-altwood.webp";
 import heroZhuzen from "@/assets/hero-home-zhuzen.webp";
@@ -328,6 +329,9 @@ const Index = () => {
           </>
         )}
       </section>
+
+      {/* ========== MADEIRA ECOLÓGICA — SCROLL ANIMATION ========== */}
+      <MadeiraEcologicaSection />
 
       {/* ========== CTA FINAL ========== */}
       <section
