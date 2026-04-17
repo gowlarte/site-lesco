@@ -84,10 +84,13 @@ export const MadeiraEcologicaSection = () => {
       const scrolled = -rect.top;
       const progress = Math.max(0, Math.min(1, scrolled / Math.max(1, scrollable)));
 
-      const frame = Math.floor(progress * (total - 1));
+      // Anima o GIF apenas nos primeiros 60% do scroll;
+      // os 40% restantes mantêm a seção "presa" com ícones visíveis.
+      const animationProgress = Math.min(1, progress / 0.6);
+      const frame = Math.floor(animationProgress * (total - 1));
       canvasRef.current?.setFrame(frame);
 
-      const complete = progress >= 0.95;
+      const complete = animationProgress >= 1;
       setIsComplete((prev) => (prev !== complete ? complete : prev));
     };
 
@@ -169,7 +172,7 @@ export const MadeiraEcologicaSection = () => {
             className="w-full h-full object-contain"
           />
         </div>
-        <div className="grid grid-cols-2 gap-x-4 gap-y-8">
+        <div className="flex flex-col gap-6">
           {features.map((f) => (
             <FeatureIcon
               key={f.id}
@@ -180,7 +183,7 @@ export const MadeiraEcologicaSection = () => {
               isActive={activeId === f.id}
               isVisible
               onToggle={handleToggle}
-              align="center"
+              align="left"
             />
           ))}
         </div>
@@ -192,93 +195,43 @@ export const MadeiraEcologicaSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative mx-[10px] rounded-[10px] bg-[#DBDBDB] h-[300vh]"
+      className="relative mx-[10px] rounded-[10px] bg-[#DBDBDB] h-[450vh]"
     >
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col">
         <h2 className="font-display text-4xl lg:text-[52px] font-normal leading-[1.15] text-[#141414] text-center pt-16 lg:pt-20">
           Conheça nossa madeira ecológica
         </h2>
 
-        {/* Stage: icons + canvas */}
-        <div className="relative flex-1 w-full max-w-[1400px] mx-auto px-8">
-
-          {/* Canvas centralizado */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-[42%] max-w-[560px] aspect-square">
+        {/* Stage: canvas à esquerda + ícones empilhados à direita */}
+        <div className="flex-1 w-full flex items-center justify-center px-8">
+          <div className="w-full max-w-[1200px] flex items-center justify-center gap-12 lg:gap-20">
+            {/* Coluna esquerda: canvas */}
+            <div className="w-[45%] max-w-[520px] aspect-square shrink-0">
               <ProdutoCanvas
                 ref={canvasRef}
                 onReady={handleReady}
                 className="w-full h-full object-contain"
               />
             </div>
-          </div>
 
-          {/* Ícones — posicionados conforme layout do PRD */}
-          {/* Top-left: Anti-mofo */}
-          <FeatureIcon
-            id={features[0].id}
-            label={features[0].label}
-            description={features[0].description}
-            svgRaw={features[0].svg}
-            isActive={activeId === features[0].id}
-            isVisible={isComplete}
-            delayMs={0}
-            onToggle={handleToggle}
-            align="left"
-            className="absolute top-[10%] left-[6%]"
-          />
-          {/* Bottom-left: Hidrofóbico */}
-          <FeatureIcon
-            id={features[1].id}
-            label={features[1].label}
-            description={features[1].description}
-            svgRaw={features[1].svg}
-            isActive={activeId === features[1].id}
-            isVisible={isComplete}
-            delayMs={150}
-            onToggle={handleToggle}
-            align="left"
-            className="absolute bottom-[14%] left-[6%]"
-          />
-          {/* Bottom-center: Pragas */}
-          <FeatureIcon
-            id={features[2].id}
-            label={features[2].label}
-            description={features[2].description}
-            svgRaw={features[2].svg}
-            isActive={activeId === features[2].id}
-            isVisible={isComplete}
-            delayMs={300}
-            onToggle={handleToggle}
-            align="center"
-            className="absolute bottom-[4%] left-1/2 -translate-x-1/2"
-          />
-          {/* Top-right: Garantia */}
-          <FeatureIcon
-            id={features[3].id}
-            label={features[3].label}
-            description={features[3].description}
-            svgRaw={features[3].svg}
-            isActive={activeId === features[3].id}
-            isVisible={isComplete}
-            delayMs={450}
-            onToggle={handleToggle}
-            align="right"
-            className="absolute top-[10%] right-[6%]"
-          />
-          {/* Bottom-right: Reciclado */}
-          <FeatureIcon
-            id={features[4].id}
-            label={features[4].label}
-            description={features[4].description}
-            svgRaw={features[4].svg}
-            isActive={activeId === features[4].id}
-            isVisible={isComplete}
-            delayMs={600}
-            onToggle={handleToggle}
-            align="right"
-            className="absolute bottom-[14%] right-[6%]"
-          />
+            {/* Coluna direita: lista de ícones */}
+            <div className="flex flex-col gap-6 flex-1 max-w-[420px]">
+              {features.map((f, i) => (
+                <FeatureIcon
+                  key={f.id}
+                  id={f.id}
+                  label={f.label}
+                  description={f.description}
+                  svgRaw={f.svg}
+                  isActive={activeId === f.id}
+                  isVisible={isComplete}
+                  delayMs={i * 150}
+                  onToggle={handleToggle}
+                  align="left"
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
