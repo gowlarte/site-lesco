@@ -44,14 +44,14 @@ export const FeatureIcon = ({
         onClick={() => onToggle(id)}
         aria-pressed={isActive}
         aria-label={label}
-        className={`group flex items-center justify-center w-16 h-16 lg:w-[72px] lg:h-[72px] rounded-full border transition-all duration-300 cursor-pointer ${
+        className={`flex items-center justify-center transition-opacity duration-300 cursor-pointer ${
           isActive
-            ? "bg-[#C8956C] border-[#C8956C] text-[#141414]"
-            : "border-[#141414]/15 text-[#141414] hover:border-[#141414]/40 bg-primary-foreground"
+            ? "text-[#C8956C] opacity-100"
+            : "text-[#141414] opacity-70 hover:opacity-100"
         }`}
       >
         <span
-          className="block w-8 h-8 lg:w-9 lg:h-9 [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current"
+          className="block w-10 h-10 lg:w-12 lg:h-12 [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current"
           style={{ color: "currentColor" }}
           dangerouslySetInnerHTML={{ __html: svgRaw }}
         />
