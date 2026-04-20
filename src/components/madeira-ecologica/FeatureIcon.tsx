@@ -47,7 +47,7 @@ export const FeatureIcon = ({
         className={`flex items-center justify-center transition-opacity duration-300 cursor-pointer ${
           isActive
             ? "text-[#C8956C] opacity-100"
-            : "text-[#141414] opacity-70 hover:opacity-100"
+            : "text-[#141414] opacity-70 hover:opacity-100 border-black/0"
         }`}
       >
         <span
