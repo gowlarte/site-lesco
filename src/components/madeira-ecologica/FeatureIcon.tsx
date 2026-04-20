@@ -47,7 +47,7 @@ export const FeatureIcon = ({
         className={`group flex items-center justify-center w-16 h-16 lg:w-[72px] lg:h-[72px] rounded-full border transition-all duration-300 cursor-pointer ${
           isActive
             ? "bg-[#C8956C] border-[#C8956C] text-[#141414]"
-            : "bg-background/60 border-[#141414]/15 text-[#141414] hover:border-[#141414]/40 hover:bg-background"
+            : "border-[#141414]/15 text-[#141414] hover:border-[#141414]/40 bg-primary-foreground"
         }`}
       >
         <span
