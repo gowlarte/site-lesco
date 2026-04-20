@@ -203,10 +203,10 @@ export const MadeiraEcologicaSection = () => {
         </h2>
 
         {/* Stage: canvas à esquerda + ícones empilhados à direita */}
-        <div className="flex-1 w-full flex items-center justify-center px-8">
-          <div className="w-full max-w-[1200px] flex items-center justify-center gap-12 lg:gap-20">
+        <div className="flex-1 w-full flex items-center justify-center px-4 sm:px-8">
+          <div className="w-full flex items-center justify-center gap-8 lg:gap-16 xl:gap-24">
             {/* Coluna esquerda: canvas */}
-            <div className="w-[45%] max-w-[520px] aspect-square shrink-0">
+            <div className="w-[45%] max-w-[640px] aspect-square shrink-0">
               <ProdutoCanvas
                 ref={canvasRef}
                 onReady={handleReady}
@@ -215,7 +215,7 @@ export const MadeiraEcologicaSection = () => {
             </div>
 
             {/* Coluna direita: lista de ícones */}
-            <div className="flex flex-col gap-6 flex-1 max-w-[420px]">
+            <div className="flex flex-col gap-6 flex-1 max-w-[520px]">
               {features.map((f, i) => (
                 <FeatureIcon
                   key={f.id}
