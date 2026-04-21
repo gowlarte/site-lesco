@@ -242,7 +242,11 @@ const Index = () => {
       </section>
 
       {/* ========== GALERIA DE PROJETOS ========== */}
-      <section className="relative flex flex-col gap-[10px] overflow-hidden px-[10px]">
+      <section className="relative flex flex-col overflow-hidden px-[10px]">
+        <h2 className="font-display text-3xl md:text-4xl lg:text-[42px] font-normal leading-[1.15] text-primary mb-8 ml-1">
+          Projetos selecionados
+        </h2>
+
         {/* Inline project viewer */}
         {selectedProject && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 rounded-[10px] overflow-hidden relative bg-secondary">
@@ -278,40 +282,35 @@ const Index = () => {
 
         {/* Gallery grid — hidden when a project is open */}
         {!selectedProject && (
-          <>
-            {/* Top row — 2 equal columns */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
-              {[projects[0], projects[1]].map((p) => (
-                <div
-                  key={p.nome}
-                  className="group cursor-zoom-in"
-                  onClick={() => setSelectedProject(p)}
-                >
-                  <div className="aspect-[4/3] rounded-[10px] overflow-hidden relative">
-                    <img
-                      src={p.imagem}
-                      alt={p.nome}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
-                  </div>
-                  <p className="font-body text-[11px] font-light uppercase tracking-[0.1em] text-foreground mt-3 ml-1">
-                    {p.nome}
-                  </p>
-                </div>
-              ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
+            {/* Left — large featured image spanning full height */}
+            <div
+              className="group cursor-zoom-in"
+              onClick={() => setSelectedProject(projects[0])}
+            >
+              <div className="aspect-[4/3] md:aspect-auto md:h-full rounded-[10px] overflow-hidden relative">
+                <img
+                  src={projects[0].imagem}
+                  alt={projects[0].nome}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
+              </div>
+              <p className="font-body text-[11px] font-light uppercase tracking-[0.1em] text-foreground mt-3 ml-1">
+                {projects[0].nome}
+              </p>
             </div>
 
-            {/* Bottom row — 3 columns */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-[10px]">
-              {[projects[2], projects[3], projects[4]].map((p) => (
+            {/* Right — two stacked images */}
+            <div className="flex flex-col gap-[10px]">
+              {[projects[1], projects[2]].map((p) => (
                 <div
                   key={p.nome}
-                  className="group cursor-zoom-in"
+                  className="group cursor-zoom-in flex-1"
                   onClick={() => setSelectedProject(p)}
                 >
-                  <div className="aspect-square rounded-[10px] overflow-hidden relative">
+                  <div className="aspect-video rounded-[10px] overflow-hidden relative">
                     <img
                       src={p.imagem}
                       alt={p.nome}
@@ -326,7 +325,7 @@ const Index = () => {
                 </div>
               ))}
             </div>
-          </>
+          </div>
         )}
       </section>
 
