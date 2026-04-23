@@ -22,7 +22,7 @@ const Step1Identity = ({ data, onChange, errors }: Step1Props) => {
   return (
     <div className="space-y-6">
       <div>
-        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/50 mb-2">
+        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-2">
           Nome completo *
         </label>
         <input
@@ -30,13 +30,13 @@ const Step1Identity = ({ data, onChange, errors }: Step1Props) => {
           value={data.name}
           onChange={(e) => onChange("name", e.target.value)}
           placeholder="Seu nome"
-          className={`w-full bg-white/60 border ${errors.name ? "border-red-400" : "border-dark/10"} rounded-[10px] px-4 py-3.5 font-body text-[15px] text-dark placeholder:text-dark/30 focus:outline-none focus:border-dark/30 transition-colors`}
+          className={`w-full bg-white/60 border ${errors.name ? "border-red-400" : "border-dark/10"} rounded-[10px] px-4 py-3.5 font-body text-[15px] text-dark placeholder:text-dark/50 focus:outline-none focus:border-dark/30 transition-colors`}
         />
         {errors.name && <p className="text-red-500 text-xs mt-1.5 font-body">{errors.name}</p>}
       </div>
 
       <div>
-        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/50 mb-2">
+        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-2">
           Email *
         </label>
         <input
@@ -44,13 +44,13 @@ const Step1Identity = ({ data, onChange, errors }: Step1Props) => {
           value={data.email}
           onChange={(e) => onChange("email", e.target.value)}
           placeholder="seu@email.com"
-          className={`w-full bg-white/60 border ${errors.email ? "border-red-400" : "border-dark/10"} rounded-[10px] px-4 py-3.5 font-body text-[15px] text-dark placeholder:text-dark/30 focus:outline-none focus:border-dark/30 transition-colors`}
+          className={`w-full bg-white/60 border ${errors.email ? "border-red-400" : "border-dark/10"} rounded-[10px] px-4 py-3.5 font-body text-[15px] text-dark placeholder:text-dark/50 focus:outline-none focus:border-dark/30 transition-colors`}
         />
         {errors.email && <p className="text-red-500 text-xs mt-1.5 font-body">{errors.email}</p>}
       </div>
 
       <div>
-        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/50 mb-2">
+        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-2">
           Telefone *
         </label>
         <input
@@ -58,7 +58,7 @@ const Step1Identity = ({ data, onChange, errors }: Step1Props) => {
           value={data.phone}
           onChange={(e) => handlePhoneChange(e.target.value)}
           placeholder="(11) 91234-5678"
-          className={`w-full bg-white/60 border ${errors.phone ? "border-red-400" : "border-dark/10"} rounded-[10px] px-4 py-3.5 font-body text-[15px] text-dark placeholder:text-dark/30 focus:outline-none focus:border-dark/30 transition-colors`}
+          className={`w-full bg-white/60 border ${errors.phone ? "border-red-400" : "border-dark/10"} rounded-[10px] px-4 py-3.5 font-body text-[15px] text-dark placeholder:text-dark/50 focus:outline-none focus:border-dark/30 transition-colors`}
         />
         {errors.phone && <p className="text-red-500 text-xs mt-1.5 font-body">{errors.phone}</p>}
       </div>

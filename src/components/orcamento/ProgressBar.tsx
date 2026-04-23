@@ -11,7 +11,7 @@ const ProgressBar = ({ currentStep, totalSteps }: ProgressBarProps) => {
   return (
     <div className="mb-10">
       <div className="flex items-center justify-between mb-3">
-        <span className="font-display text-xs tracking-wider uppercase text-dark/50">
+        <span className="font-display text-xs tracking-wider uppercase text-dark/80">
           Etapa {currentStep} de {totalSteps}
         </span>
         <span className="font-display text-xs tracking-wider uppercase text-dark/80 font-medium">
