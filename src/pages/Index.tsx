@@ -396,7 +396,7 @@ const Index = () => {
                   <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.1] text-primary mb-6">
                     Te esperamos<br />para um<br />cafezinho!
                   </h2>
-                  <p className="font-body text-[15px] font-light leading-[1.65] text-foreground/70 max-w-[420px]">
+                  <p className="font-body text-[15px] font-light leading-[1.65] text-primary/80 max-w-[420px]">
                     Visite nosso espaço em São Paulo – SP e conheça nossos materiais. Converse com um representante e adquira o kit de amostras para seus próximos projetos.
                   </p>
                 </div>
@@ -406,7 +406,7 @@ const Index = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                     <span className="font-display text-[16px] font-medium text-primary">São Paulo</span>
                   </div>
-                  <p className="font-body text-[13px] font-light leading-[1.6] text-foreground/60 max-w-[320px] mb-6">
+                  <p className="font-body text-[13px] font-light leading-[1.6] text-primary/70 max-w-[320px] mb-6">
                     Avenida Nove de Julho, número 3147, sala 22 – Jardim Paulista – São Paulo – SP
                   </p>
                   <a
