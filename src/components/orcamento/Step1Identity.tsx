@@ -22,7 +22,7 @@ const Step1Identity = ({ data, onChange, errors }: Step1Props) => {
   return (
     <div className="space-y-6">
       <div>
-        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-2">
+        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-2 text-muted-foreground">
           Nome completo *
         </label>
         <input
@@ -36,7 +36,7 @@ const Step1Identity = ({ data, onChange, errors }: Step1Props) => {
       </div>
 
       <div>
-        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-2">
+        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-2 text-muted-foreground">
           Email *
         </label>
         <input
@@ -50,7 +50,7 @@ const Step1Identity = ({ data, onChange, errors }: Step1Props) => {
       </div>
 
       <div>
-        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-2">
+        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-2 text-muted-foreground">
           Telefone *
         </label>
         <input
