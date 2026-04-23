@@ -45,8 +45,9 @@ const Step3Products = ({ data, onChange, errors }: Step3Props) => {
           {PRODUCT_OPTIONS.map((product) => {
             const isChecked = data.products.includes(product);
             return (
-              <label
+              <div
                 key={product}
+                onClick={() => toggleProduct(product)}
                 className={`flex items-center gap-3 p-3.5 rounded-[10px] border cursor-pointer transition-all ${
                   isChecked
                     ? "border-dark/30 bg-dark/5"
@@ -65,7 +66,7 @@ const Step3Products = ({ data, onChange, errors }: Step3Props) => {
                   )}
                 </div>
                 <span className="font-body text-[15px] text-dark">{product}</span>
-              </label>
+              </div>
             );
           })}
         </div>
