@@ -368,8 +368,63 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ========== SHOWROOM ========== */}
+      <section className="mx-[10px] rounded-[10px] overflow-hidden bg-secondary">
+        <ScrollReveal>
+          <div className="max-w-[1400px] mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] min-h-[500px]">
+              {/* Left — Photo grid */}
+              <div className="grid grid-cols-[1fr_1.6fr] gap-[10px] p-[10px]">
+                {/* Small stacked images */}
+                <div className="flex flex-col gap-[10px]">
+                  <div className="flex-1 rounded-[10px] overflow-hidden">
+                    <img src={showroomDetail1} alt="Showroom detalhe" loading="lazy" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="flex-1 rounded-[10px] overflow-hidden">
+                    <img src={showroomDetail2} alt="Showroom detalhe" loading="lazy" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+                {/* Large image */}
+                <div className="rounded-[10px] overflow-hidden">
+                  <img src={showroomMain} alt="Showroom Lesco" loading="lazy" className="w-full h-full object-cover" />
+                </div>
+              </div>
 
-      <section
+              {/* Right — Content */}
+              <div className="flex flex-col justify-between p-8 md:p-12 lg:p-16">
+                <div>
+                  <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.1] text-primary mb-6">
+                    Te esperamos<br />para um<br />cafezinho!
+                  </h2>
+                  <p className="font-body text-[15px] font-light leading-[1.65] text-foreground/70 max-w-[420px]">
+                    Visite nosso espaço em São Paulo – SP e conheça nossos materiais. Converse com um representante e adquira o kit de amostras para seus próximos projetos.
+                  </p>
+                </div>
+
+                <div className="mt-10">
+                  <div className="flex items-center gap-2 mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span className="font-display text-[16px] font-medium text-primary">São Paulo</span>
+                  </div>
+                  <p className="font-body text-[13px] font-light leading-[1.6] text-foreground/60 max-w-[320px] mb-6">
+                    Avenida Nove de Julho, número 3147, sala 22 – Jardim Paulista – São Paulo – SP
+                  </p>
+                  <a
+                    href="https://wa.me/5511999999999"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-7 py-3 rounded-full bg-[hsl(10,50%,72%)] hover:bg-[hsl(10,50%,65%)] text-white font-body text-[13px] font-medium tracking-[0.04em] transition-colors duration-300"
+                  >
+                    Agende uma visita
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+      </section>
+
+
         className="py-24 md:py-32 lg:py-40 rounded-[10px] mx-[10px] mb-[10px]"
         style={{ background: "linear-gradient(135deg, #A8D9A0 0%, #F5C9A0 100%)" }}
       >
