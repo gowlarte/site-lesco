@@ -1,55 +1,47 @@
 
 
-## Ajustes na seção "Madeira Ecológica"
+## Seção interativa de galeria marquee (scroll-reactive)
 
-Três mudanças no `MadeiraEcologicaSection.tsx`:
+Nova seção entre "Madeira Ecológica" e o CTA final, com duas fileiras de imagens movendo-se em sentidos opostos, reativas ao scroll.
 
-### 1. Novo layout desktop: GIF à esquerda, ícones empilhados à direita
+### Comportamento
 
-Substituir o posicionamento absoluto atual (5 ícones espalhados em volta do canvas) por um layout flex de 2 colunas centralizado:
+- **Duas fileiras horizontais** de imagens, cada uma se movendo em direção oposta (row 1: direita-para-esquerda, row 2: esquerda-para-direita).
+- **Velocidade proporcional ao scroll**: quanto mais rápido o scroll, mais rápido as imagens se movem. Scroll parado = imagens paradas. Scroll para cima inverte a direção.
+- **Imagens em grayscale + opacidade reduzida** por padrão. Ao hover, a imagem individual fica colorida (filter none) e opacidade 100%.
+- **Sem links** — puramente estético.
+- **Loop infinito**: imagens duplicadas no DOM para criar efeito seamless (2x do array original).
+- **10 imagens** do usuário distribuídas nas 2 fileiras (5 + 5), copiadas para `src/assets/gallery/`.
 
-```text
-┌─────────────────────────────────────────────┐
-│   Conheça nossa madeira ecológica           │
-│                                             │
-│   ┌──────────┐      • Anti-mofo             │
-│   │          │      • Hidrofóbico           │
-│   │  CANVAS  │      • Resistente a pragas   │
-│   │          │      • 10 anos de garantia   │
-│   └──────────┘      • 100% reciclado        │
-└─────────────────────────────────────────────┘
-```
+### Implementação técnica
 
-- Wrapper interno `flex items-center justify-center gap-12 lg:gap-20 max-w-[1200px] mx-auto`.
-- Coluna esquerda: canvas com `w-[45%] max-w-[520px] aspect-square`.
-- Coluna direita: `flex flex-col gap-6` com os 5 `FeatureIcon` em sequência, `align="left"`.
-- Stagger de fade-in mantido (delays 0/150/300/450/600ms na ordem vertical).
-- Conjunto inteiro centralizado vertical e horizontalmente dentro do sticky.
+1. **Copiar as 10 imagens** do usuário para `src/assets/gallery/` com nomes curtos.
 
-### 2. Mobile: já está empilhado, apenas confirmar
+2. **Criar componente `src/components/ScrollMarqueeGallery.tsx`**:
+   - `useRef` para capturar o offset acumulado de cada fileira.
+   - `useEffect` com listener de `scroll` no `window` que calcula `deltaY` entre frames e aplica `translateX` via CSS transform diretamente no DOM (sem re-render React).
+   - Row 1: `translateX` diminui com scroll down (move para esquerda).
+   - Row 2: `translateX` aumenta com scroll down (move para direita).
+   - Cada imagem: `grayscale(100%) opacity-50` por padrão, `grayscale(0) opacity-100` no hover, com `transition duration-500`.
+   - Imagens com `rounded-[10px]`, gap de 10px, altura fixa (~220px desktop, ~140px mobile).
+   - O array de imagens é duplicado (`[...images, ...images]`) para seamless looping; quando offset ultrapassa metade da largura total, reseta silenciosamente.
 
-O layout mobile atual já tem GIF em cima + grid 2 colunas de ícones embaixo. Vou trocar para **lista vertical** (1 coluna) para ficar consistente com o desktop e dar mais respiro:
-- `flex flex-col gap-6` em vez de `grid grid-cols-2`.
-- `align="left"` em cada `FeatureIcon`.
+3. **Editar `src/pages/Index.tsx`**:
+   - Importar e renderizar `<ScrollMarqueeGallery />` entre `<MadeiraEcologicaSection />` e a seção CTA final.
+   - Seção com `overflow-hidden`, sem padding lateral (imagens sangram até a borda), `py-8` vertical.
 
-### 3. Tolerância de scroll após ícones aparecerem
+### Responsividade
 
-Atualmente o sticky termina exatamente quando `progress = 1`. Vou aumentar o container para `h-[450vh]` e ajustar o cálculo de frame para que:
-- **0% – 60% do scroll** → anima o GIF (frame 0 → último frame).
-- **60% – 100% do scroll** → GIF congelado no último frame, ícones visíveis, tela permanece "presa" no sticky por mais ~150vh de rolagem.
+- Desktop: imagens com `h-[220px]` e aspect-ratio natural (width auto).
+- Tablet: `h-[180px]`.
+- Mobile: `h-[140px]`.
+- Gap entre imagens: `gap-[10px]` (consistente com o sistema de layout).
 
-Implementação no `compute()`:
-```ts
-const animationProgress = Math.min(1, progress / 0.6);
-const frame = Math.floor(animationProgress * (total - 1));
-const complete = animationProgress >= 1; // ícones aparecem aos 60%
-```
+### Arquivos
 
-Isso dá ao usuário ~1.5 viewport inteira de scroll "calmo" para ler/clicar nos ícones antes de a seção liberar o scroll.
-
-### Arquivos a editar
-
-- `src/components/madeira-ecologica/MadeiraEcologicaSection.tsx` — único arquivo. Reescreve o JSX desktop (remove posicionamento absoluto, usa flex 2 colunas), ajusta mobile para lista vertical, e altera a lógica de `compute()` + altura do container.
-
-Nenhuma mudança em `ProdutoCanvas.tsx` ou `FeatureIcon.tsx`.
+| Acao | Arquivo |
+|------|---------|
+| Criar | `src/components/ScrollMarqueeGallery.tsx` |
+| Copiar | 10 imagens do usuário para `src/assets/gallery/` |
+| Editar | `src/pages/Index.tsx` (importar + renderizar o componente) |
 
