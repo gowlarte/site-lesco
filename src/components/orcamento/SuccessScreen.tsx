@@ -15,7 +15,7 @@ const SuccessScreen = ({ name }: SuccessScreenProps) => {
       <h2 className="font-display text-2xl md:text-3xl font-semibold text-dark mb-3">
         Obrigado, {firstName}!
       </h2>
-      <p className="font-body text-[15px] text-dark/60 leading-relaxed max-w-[400px] mx-auto">
+      <p className="font-body text-[15px] text-dark/70 leading-relaxed max-w-[400px] mx-auto">
         Recebemos sua solicitação de orçamento. Nossa equipe entrará em contato em breve para elaborar a melhor solução para o seu projeto.
       </p>
     </div>
