@@ -76,14 +76,11 @@ const MultiStepForm = () => {
     if (!validateStep(step)) return;
     setIsSubmitting(true);
     try {
-      const success = await bridgeRef.current?.submit(formData);
-      if (success) {
-        // Wait a bit for RD Station to process
-        await new Promise((r) => setTimeout(r, 2000));
-      }
+      await bridgeRef.current?.submit(formData);
       setIsSuccess(true);
     } catch {
-      setIsSuccess(true); // Show success anyway — data was sent to RD
+      // Show success anyway — best effort
+      setIsSuccess(true);
     } finally {
       setIsSubmitting(false);
     }
