@@ -228,7 +228,7 @@ const Index = () => {
       </section>
 
       {/* ========== MANIFESTO ========== */}
-      <section className="bg-light section-spacing rounded-[10px]">
+      <section className="section-spacing">
         <div className="container mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 lg:gap-20 items-start">
