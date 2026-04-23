@@ -424,7 +424,8 @@ const Index = () => {
         </ScrollReveal>
       </section>
 
-
+      {/* ========== CTA FINAL ========== */}
+      <section
         className="py-24 md:py-32 lg:py-40 rounded-[10px] mx-[10px] mb-[10px]"
         style={{ background: "linear-gradient(135deg, #A8D9A0 0%, #F5C9A0 100%)" }}
       >
