@@ -346,7 +346,7 @@ const Index = () => {
         <div className="container mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <div className="flex flex-col items-center">
-              <p className="font-display text-[15px] md:text-[17px] font-light text-foreground/70 mb-10 text-center">
+              <h3 className="font-display text-lg md:text-xl lg:text-2xl font-normal text-primary mb-10 text-center">
                 Nossos produtos em 3D para seu próximo projeto
               </p>
               <div className="flex items-center justify-center gap-10 md:gap-16 lg:gap-20 flex-wrap">
