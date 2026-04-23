@@ -11,6 +11,10 @@ import partnerLogo2 from "@/assets/partners/logo-2.png";
 import partnerLogo3 from "@/assets/partners/logo-3.png";
 import partnerLogo4 from "@/assets/partners/logo-4.png";
 
+import showroomMain from "@/assets/showroom/showroom-main.jpg";
+import showroomDetail1 from "@/assets/showroom/showroom-detail-1.jpg";
+import showroomDetail2 from "@/assets/showroom/showroom-detail-2.jpg";
+
 import heroAltwood from "@/assets/hero-home-altwood.webp";
 import heroZhuzen from "@/assets/hero-home-zhuzen.webp";
 import heroEchotex from "@/assets/hero-home-echotex.jpg";
