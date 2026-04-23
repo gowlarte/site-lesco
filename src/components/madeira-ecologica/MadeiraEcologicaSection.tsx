@@ -161,7 +161,7 @@ export const MadeiraEcologicaSection = () => {
   // ============ MOBILE LAYOUT ============
   if (isMobile) {
     return (
-      <section className="mx-[10px] py-16 px-5">
+      <section className="bg-[#DBDBDB] rounded-[10px] mx-[10px] py-16 px-5">
         <h2 className="font-display text-3xl font-normal leading-[1.15] text-[#141414] text-center mb-10">
           Conheça nossa<br />madeira ecológica
         </h2>
@@ -195,7 +195,7 @@ export const MadeiraEcologicaSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative mx-[10px] h-[450vh]"
+      className="relative bg-[#DBDBDB] rounded-[10px] mx-[10px] h-[450vh]"
     >
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col">
         <h2 className="font-display text-4xl lg:text-[52px] font-normal leading-[1.15] text-[#141414] text-center pt-16 lg:pt-20">
