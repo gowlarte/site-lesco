@@ -6,6 +6,11 @@ import { Header } from "@/components/Header";
 import { MadeiraEcologicaSection } from "@/components/madeira-ecologica/MadeiraEcologicaSection";
 import { ScrollMarqueeGallery } from "@/components/ScrollMarqueeGallery";
 
+import partnerLogo1 from "@/assets/partners/logo-1.png";
+import partnerLogo2 from "@/assets/partners/logo-2.png";
+import partnerLogo3 from "@/assets/partners/logo-3.png";
+import partnerLogo4 from "@/assets/partners/logo-4.png";
+
 import heroAltwood from "@/assets/hero-home-altwood.webp";
 import heroZhuzen from "@/assets/hero-home-zhuzen.webp";
 import heroEchotex from "@/assets/hero-home-echotex.jpg";
