@@ -348,7 +348,7 @@ const Index = () => {
             <div className="flex flex-col items-center">
               <h3 className="font-display text-lg md:text-xl lg:text-2xl font-normal text-primary mb-10 text-center">
                 Nossos produtos em 3D para seu próximo projeto
-              </p>
+              </h3>
               <div className="flex items-center justify-center gap-10 md:gap-16 lg:gap-20 flex-wrap">
                 {[partnerLogo1, partnerLogo2, partnerLogo3, partnerLogo4].map((logo, i) => (
                   <img
