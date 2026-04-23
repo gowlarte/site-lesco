@@ -12,7 +12,7 @@ const Step2Location = ({ data, onChange, errors }: Step2Props) => {
   return (
     <div className="space-y-6">
       <div>
-        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-2">
+        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-2 text-muted-foreground">
           Estado *
         </label>
         <select
@@ -41,7 +41,7 @@ const Step2Location = ({ data, onChange, errors }: Step2Props) => {
       />
 
       <div>
-        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-2">
+        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-2 text-muted-foreground">
           Seu perfil *
         </label>
         <select
