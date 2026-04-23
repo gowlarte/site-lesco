@@ -9,7 +9,7 @@ const Orcamento = () => {
           <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-dark mb-4">
             Solicite seu Orçamento
           </h1>
-          <p className="font-body text-[15px] md:text-[17px] text-dark/80 leading-relaxed max-w-[560px] mx-auto">
+          <p className="font-body text-[15px] md:text-[17px] text-dark/80 leading-relaxed max-w-[560px] mx-auto text-primary">
             Preencha o formulário abaixo e nossa equipe entrará em contato para elaborar a melhor solução para o seu projeto.
           </p>
         </div>
