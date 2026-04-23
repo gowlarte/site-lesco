@@ -19,7 +19,7 @@ const Step3Products = ({ data, onChange, errors }: Step3Props) => {
   return (
     <div className="space-y-6">
       <div>
-        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-2">
+        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-2 text-muted-foreground">
           Prazo do projeto *
         </label>
         <select
@@ -38,7 +38,7 @@ const Step3Products = ({ data, onChange, errors }: Step3Props) => {
       </div>
 
       <div>
-        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-3">
+        <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-3 text-muted-foreground">
           Produtos de interesse * <span className="normal-case text-dark/60">(selecione ao menos 1)</span>
         </label>
         <div className="space-y-3">

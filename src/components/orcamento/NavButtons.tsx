@@ -40,7 +40,7 @@ const NavButtons = ({ currentStep, totalSteps, onBack, onNext, onSubmit, isSubmi
               Enviando...
             </>
           ) : (
-            "Enviar Orçamento"
+            "Solicitar Orçamento"
           )}
         </button>
       ) : (
