@@ -11,8 +11,8 @@ import img08 from "@/assets/gallery/img-08.jpg";
 import img09 from "@/assets/gallery/img-09.jpeg";
 import img01b from "@/assets/gallery/img-01.webp";
 
-const row1Images = [img01, img02, img03, img04, img05];
-const row2Images = [img06, img07, img08, img09, img01b];
+const row1Images = [img01, img02, img03, img04, img05, img06, img07, img08, img09, img01b];
+const row2Images = [img06, img07, img08, img09, img01b, img01, img02, img03, img04, img05];
 
 const SPEED = 1.5;
 
