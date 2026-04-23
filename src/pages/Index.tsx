@@ -6,6 +6,11 @@ import { Header } from "@/components/Header";
 import { MadeiraEcologicaSection } from "@/components/madeira-ecologica/MadeiraEcologicaSection";
 import { ScrollMarqueeGallery } from "@/components/ScrollMarqueeGallery";
 
+import partnerLogo1 from "@/assets/partners/logo-1.png";
+import partnerLogo2 from "@/assets/partners/logo-2.png";
+import partnerLogo3 from "@/assets/partners/logo-3.png";
+import partnerLogo4 from "@/assets/partners/logo-4.png";
+
 import heroAltwood from "@/assets/hero-home-altwood.webp";
 import heroZhuzen from "@/assets/hero-home-zhuzen.webp";
 import heroEchotex from "@/assets/hero-home-echotex.jpg";
@@ -336,7 +341,30 @@ const Index = () => {
       {/* ========== SCROLL MARQUEE GALLERY ========== */}
       <ScrollMarqueeGallery />
 
-      {/* ========== CTA FINAL ========== */}
+      {/* ========== PARCEIROS 3D ========== */}
+      <section className="py-16 md:py-20 mx-[10px] rounded-[10px]">
+        <div className="container mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="flex flex-col items-center">
+              <p className="font-display text-[15px] md:text-[17px] font-light text-foreground/70 mb-10 text-center">
+                Nossos produtos em 3D para seu próximo projeto
+              </p>
+              <div className="flex items-center justify-center gap-10 md:gap-16 lg:gap-20 flex-wrap">
+                {[partnerLogo1, partnerLogo2, partnerLogo3, partnerLogo4].map((logo, i) => (
+                  <img
+                    key={i}
+                    src={logo}
+                    alt={`Parceiro ${i + 1}`}
+                    className="h-6 md:h-8 lg:h-9 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  />
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+
       <section
         className="py-24 md:py-32 lg:py-40 rounded-[10px] mx-[10px] mb-[10px]"
         style={{ background: "linear-gradient(135deg, #A8D9A0 0%, #F5C9A0 100%)" }}
