@@ -8,7 +8,7 @@ interface Step3Props {
 }
 
 const Step3Products = ({ data, onChange, errors }: Step3Props) => {
-  const toggleProduct = (product: string) => {
+  const _toggleProduct = (product: string) => {
     const current = data.products;
     const next = current.includes(product)
       ? current.filter((p) => p !== product)
