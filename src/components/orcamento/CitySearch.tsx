@@ -108,7 +108,7 @@ const CitySearch = ({ value, state, onChange, error }: CitySearchProps) => {
 
   return (
     <div ref={containerRef} className="relative">
-      <label className="block font-display text-[11px] tracking-wider uppercase text-dark/50 mb-2">
+      <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-2">
         Cidade *
       </label>
       <input
@@ -119,7 +119,7 @@ const CitySearch = ({ value, state, onChange, error }: CitySearchProps) => {
         onKeyDown={handleKeyDown}
         placeholder={state ? "Digite sua cidade" : "Selecione o estado primeiro"}
         disabled={!state}
-        className={`w-full bg-white/60 border ${error ? "border-red-400" : "border-dark/10"} rounded-[10px] px-4 py-3.5 font-body text-[15px] text-dark placeholder:text-dark/30 focus:outline-none focus:border-dark/30 transition-colors disabled:opacity-40`}
+        className={`w-full bg-white/60 border ${error ? "border-red-400" : "border-dark/10"} rounded-[10px] px-4 py-3.5 font-body text-[15px] text-dark placeholder:text-dark/50 focus:outline-none focus:border-dark/30 transition-colors disabled:opacity-40`}
       />
       {error && <p className="text-red-500 text-xs mt-1.5 font-body">{error}</p>}
 
