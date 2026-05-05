@@ -271,6 +271,11 @@ const BlogArtigo = () => {
           </div>
         </section>
 
+        {/* full-width image between sections */}
+        <div className="mt-12 relative aspect-[16/9] overflow-hidden rounded-[10px]">
+          <img src={extra1} alt="Detalhe do Parque da Cidade" className="absolute inset-0 w-full h-full object-cover" />
+        </div>
+
         {/* §4 */}
         <section className="mt-14">
           <H2>Escolha de ciclo de vida: WPC Lesco x madeira natural</H2>
@@ -282,6 +287,11 @@ const BlogArtigo = () => {
           </div>
           <ComparisonTable />
         </section>
+
+        {/* full-width image between sections */}
+        <div className="mt-12 relative aspect-[16/9] overflow-hidden rounded-[10px]">
+          <img src={extra2} alt="Vista do Parque da Cidade ao entardecer" className="absolute inset-0 w-full h-full object-cover" />
+        </div>
 
         {/* §5 */}
         <section className="mt-14">
