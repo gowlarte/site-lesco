@@ -21,7 +21,7 @@ const artigos = [
     data: "28 Fev 2026",
     leitura: "5 min",
     imagem:
-      "https://images.unsplash.com/photo-1528871287540-31d3a04f7e74?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1610016302534-6f67f1c968d8?auto=format&fit=crop&w=1600&q=80",
   },
   {
     slug: "acustica-em-home-cinemas",
