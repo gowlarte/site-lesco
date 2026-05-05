@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import heroImg from "@/assets/cop30/hero.jpg";
 import edificio1 from "@/assets/cop30/edificio-1.jpg";
 import edificio2 from "@/assets/cop30/edificio-2.jpg";
-import produtoWpc from "@/assets/cop30/produto-wpc.jpg";
+import produtoWpc from "@/assets/cop30/produto-wpc.png";
 import fachadaCop from "@/assets/cop30/fachada-cop30.jpg";
 import related1 from "@/assets/cop30/related-1.jpg";
 import related2 from "@/assets/cop30/related-2.jpg";
