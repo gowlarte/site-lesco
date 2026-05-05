@@ -158,7 +158,7 @@ const BlogArtigo = () => {
 
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px]">
-      <article className="bg-light rounded-[10px] mx-auto w-full max-w-[920px] px-6 sm:px-10 md:px-14 pt-10 md:pt-14 pb-14 md:pb-16">
+      <article className="mx-auto w-full max-w-[920px] px-6 sm:px-10 md:px-14 pt-10 md:pt-14 pb-14 md:pb-16">
         <Link
           to="/blog"
           className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-dark hover:opacity-70 transition-opacity mb-8"
