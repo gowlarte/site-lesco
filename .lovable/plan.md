@@ -1,30 +1,23 @@
+# Substituir logos das linhas
 
+Substituir o conteúdo dos 4 arquivos SVG de logo, mantendo os mesmos caminhos para não quebrar imports em `Linhas.tsx` e `Index.tsx`.
 
-## Criar Página de Orçamento com Formulário RD Station
+## Mapeamento
 
-Criar a página `/orcamento` que já está linkada no Header mas não existe, integrando o formulário RD Station via embed script.
+| Arquivo (mantém o nome) | Novo conteúdo | Linha |
+|---|---|---|
+| `src/assets/linha-altwood-2.svg` | logo Manto | madeira ecológica |
+| `src/assets/linha-zhuzen-2.svg` | logo Zhú | bambus |
+| `src/assets/linha-echotex-2.svg` | logo Echo | tecido acústico |
+| `src/assets/linha-italflex-2.svg` | logo Geo | pedra flexível |
 
-### Alterações
+## Ajuste de cor
 
-**Novo arquivo: `src/pages/Orcamento.tsx`**
-- Página com layout consistente com o site (100px top padding para o header fixo)
-- Seção hero compacta com título "Solicite seu Orçamento" e subtítulo descritivo
-- Container centralizado (`max-w-[800px]`) com o formulário RD Station
-- O formulário será carregado via `useEffect` que injeta os scripts do RD Station no DOM:
-  1. Cria a `div` com `id="solicite-orcamento-site-e1ebbbdda007b9fa6071"` e `role="main"`
-  2. Carrega o script `rdstation-forms.min.js` dinamicamente
-  3. Após o carregamento, executa `new RDStationForms('solicite-orcamento-site-e1ebbbdda007b9fa6071', 'UA-191702288-1').createForm()`
-  4. Cleanup no unmount para remover scripts
-- Estilização CSS para os campos do formulário RD Station via classes globais no `index.css`, adequando ao design system (cores, tipografia, border-radius)
-- Fundo dark (#0D0D0D) ou light (#DBDBDB) — seguindo o padrão geral do site
+Os SVGs enviados têm `fill: #303030` fixo via classe `.cls-1`. Em `Linhas.tsx` os logos são injetados via `dangerouslySetInnerHTML` e a cor é controlada por `style={{ color: ... }}` (cor da linha no hover, `#141414` em estado padrão). Para isso funcionar, cada novo SVG terá:
 
-**Arquivo: `src/App.tsx`**
-- Importar `Orcamento` e adicionar `<Route path="/orcamento" element={<Orcamento />} />`
+- bloco `<defs><style>.cls-1{fill:#303030}</style></defs>` removido
+- `class="cls-1"` substituída por `fill="currentColor"` em cada `<path>`/`<polygon>`
 
-**Arquivo: `src/index.css`**
-- Adicionar estilos globais para customizar os inputs gerados pelo RD Station Forms (que são injetados via JS e não controlados pelo React), como cores, fontes, padding e border-radius consistentes com o design system
+## Escopo
 
-### Detalhes técnicos
-- O RD Station Forms injeta HTML próprio no DOM — não é um componente React. A integração será feita via `useEffect` + `useRef` para controlar o container
-- Declaração de tipo para `RDStationForms` no `window` global para evitar erros TypeScript
-
+Apenas troca dos 4 arquivos SVG. Nomes textuais ("AltWood", "Zhúzen", "Echotex", "Italflex"), rotas (`/altwood`, `/zhuzen`, ...) e páginas internas permanecem inalterados — se quiser renomear tudo para Manto/Zhú/Echo/Geo, peça num próximo passo.
