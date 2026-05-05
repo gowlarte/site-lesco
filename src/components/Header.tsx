@@ -10,6 +10,7 @@ const navLinks = [
   { label: "Sobre Nós", href: "/sobre" },
   { label: "Linhas", href: "/linhas" },
   { label: "Catálogo", href: "/catalogo" },
+  { label: "Blog", href: "/blog" },
 ];
 
 interface HeaderProps {
