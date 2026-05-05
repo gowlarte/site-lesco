@@ -20,6 +20,7 @@ import AltWoodLine from "./pages/AltWoodLine";
 import AltWoodPanel from "./pages/AltWoodPanel";
 import Linhas from "./pages/Linhas";
 import Blog from "./pages/Blog";
+import BlogArtigo from "./pages/BlogArtigo";
 import Orcamento from "./pages/Orcamento";
 import NotFound from "./pages/NotFound";
 
@@ -48,6 +49,7 @@ const AppContent = () => {
           <Route path="/sobre" element={<About />} />
           <Route path="/linhas" element={<Linhas />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogArtigo />} />
           <Route path="/orcamento" element={<Orcamento />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
