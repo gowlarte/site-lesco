@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/cop30/hero.jpg";
 import edificio1 from "@/assets/cop30/edificio-1.jpg";
-import edificio2 from "@/assets/cop30/edificio-2.jpg";
+import edificio2 from "@/assets/cop30/edificio-2.webp";
 import produtoWpc from "@/assets/cop30/produto-wpc.png";
-import fachadaCop from "@/assets/cop30/fachada-cop30.jpg";
+import fachadaCop from "@/assets/cop30/fachada-cop30.webp";
+import extra1 from "@/assets/cop30/extra-1.webp";
+import extra2 from "@/assets/cop30/extra-2.jpg";
 import related1 from "@/assets/cop30/related-1.jpg";
 import related2 from "@/assets/cop30/related-2.jpg";
 
@@ -269,6 +271,11 @@ const BlogArtigo = () => {
           </div>
         </section>
 
+        {/* full-width image between sections */}
+        <div className="mt-12 relative aspect-[16/9] overflow-hidden rounded-[10px]">
+          <img src={extra1} alt="Detalhe do Parque da Cidade" className="absolute inset-0 w-full h-full object-cover" />
+        </div>
+
         {/* §4 */}
         <section className="mt-14">
           <H2>Escolha de ciclo de vida: WPC Lesco x madeira natural</H2>
@@ -280,6 +287,11 @@ const BlogArtigo = () => {
           </div>
           <ComparisonTable />
         </section>
+
+        {/* full-width image between sections */}
+        <div className="mt-12 relative aspect-[16/9] overflow-hidden rounded-[10px]">
+          <img src={extra2} alt="Vista do Parque da Cidade ao entardecer" className="absolute inset-0 w-full h-full object-cover" />
+        </div>
 
         {/* §5 */}
         <section className="mt-14">
