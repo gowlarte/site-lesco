@@ -1,5 +1,3 @@
-import { BotaoCTA } from "./BotaoCTA";
-
 interface CardModeloProps {
   imageSrc?: string;
   nome: string;
@@ -9,23 +7,33 @@ interface CardModeloProps {
 }
 
 export const CardModelo = ({ imageSrc, nome, medida, peso, onOrcamento }: CardModeloProps) => (
-  <div className="bg-[#141414] rounded-[var(--aw-radius-card)] overflow-hidden transition-all duration-[350ms] hover:-translate-y-1 hover:border-[#C8956C] border-[#1E1E1E] group shadow-none border-0">
-    <div className="aspect-video bg-[#1A1A1A] flex items-center justify-center">
+  <div className="flex flex-col group">
+    {/* Header: medida + peso */}
+    <div className="flex items-baseline justify-between gap-3 pb-2">
+      <span className="text-sm md:text-[15px] font-semibold text-primary tracking-tight">{medida}</span>
+      <span className="text-[11px] md:text-xs text-[#7F7F7F]">{peso}</span>
+    </div>
+    <div className="h-px bg-[#1E1E1E]/30" />
+
+    {/* Imagem sem caixa */}
+    <div className="h-44 md:h-52 flex items-center justify-center py-6">
       {imageSrc ? (
-        <img src={imageSrc} alt={nome} className="w-full h-full object-cover" />
+        <img
+          src={imageSrc}
+          alt={nome}
+          className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+        />
       ) : (
-        <span className="text-[#525252] text-sm">Imagem do produto</span>
+        <span className="text-[#9E9890] text-xs">Imagem do produto</span>
       )}
     </div>
-    <div className="p-5 flex flex-col gap-1 bg-[#c9c9c9]">
-      <h3 className="text-sm font-medium text-primary">{nome}</h3>
-      <p className="text-[#7F7F7F] text-xs">{medida}</p>
-      <p className="text-[#525252] text-xs">{peso}</p>
-      <div className="mt-3">
-        <BotaoCTA variant="primary" onClick={onOrcamento} className="w-full text-xs py-2.5">
-          Solicitar Orçamento
-        </BotaoCTA>
-      </div>
-    </div>
+
+    {/* Link sutil */}
+    <button
+      onClick={onOrcamento}
+      className="self-start text-xs text-[#525252] hover:text-primary underline underline-offset-4 decoration-[#9E9890] transition-colors cursor-pointer"
+    >
+      Solicitar orçamento
+    </button>
   </div>
 );
