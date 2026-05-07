@@ -40,21 +40,21 @@ const produtos = [
   {
     id: "brise",
     tag: "Brise",
-    titulo: "AltWood Brise",
-    descricao: "Perfis de WPC para fachadas, brises soleil e elementos de proteção solar. Disponível nas linhas AltWood Origens e AltWood Classic.",
+    titulo: "Manto Brise",
+    descricao: "Perfis de WPC para fachadas, brises soleil e elementos de proteção solar. Disponível nas linhas Manto Origens e Manto Classic.",
     swatches: [
       { nome: "Black", corAproximada: "#1A1A1A" },
       { nome: "Ipê", corAproximada: "#6B4226" },
       { nome: "Teak", corAproximada: "#8B5E3C" },
       { nome: "Oak", corAproximada: "#A0784A" },
     ],
-    href: "/altwood-brise",
+    href: "/manto-brise",
     images: [prevBrise1, prevBrise2, prevBrise3, prevBrise4],
   },
   {
     id: "shield",
     tag: "Shield",
-    titulo: "AltWood Shield",
+    titulo: "Manto Shield",
     descricao: "Revestimento de alta sofisticação para aplicações internas e externas. Acabamentos escovados e texturizados.",
     swatches: [
       { nome: "Black", corAproximada: "#1A1A1A" },
@@ -62,13 +62,13 @@ const produtos = [
       { nome: "Teak", corAproximada: "#8B5E3C" },
       { nome: "Walnut", corAproximada: "#4A3728" },
     ],
-    href: "/altwood-shield",
+    href: "/manto-shield",
     images: [projetoShield1, projetoShield2, projetoShield3, projetoShield4, projetoShield5, projetoShield6],
   },
   {
     id: "deck",
     tag: "Deck",
-    titulo: "AltWood Deck",
+    titulo: "Manto Deck",
     descricao: "Decks de madeira ecológica para espaços externos residenciais, comerciais e públicos. Fixação oculta por presilhas de aço inox.",
     swatches: [
       { nome: "Black", corAproximada: "#1A1A1A" },
@@ -76,13 +76,13 @@ const produtos = [
       { nome: "Teak", corAproximada: "#8B5E3C" },
       { nome: "Oak", corAproximada: "#A0784A" },
     ],
-    href: "/altwood-deck",
+    href: "/manto-deck",
     images: [projetoDeck2, projetoDeck1, projetoDeck3, projetoDeck4, projetoDeck5],
   },
   {
     id: "line",
     tag: "Line",
-    titulo: "AltWood Line",
+    titulo: "Manto Line",
     descricao: "Forros, sancas e superfícies contínuas com encaixe técnico. Acabamento acetinado com retardante ao fogo.",
     swatches: [
       { nome: "Golden Oak", corAproximada: "#C8972E" },
@@ -90,13 +90,13 @@ const produtos = [
       { nome: "Tasmania Oak", corAproximada: "#C4A882" },
       { nome: "Urban Oak", corAproximada: "#7A7060" },
     ],
-    href: "/altwood-line",
+    href: "/manto-line",
     images: [projetoLine1, projetoLine2, projetoLine3],
   },
   {
     id: "panel",
     tag: "Panel",
-    titulo: "AltWood Panel",
+    titulo: "Manto Panel",
     descricao: "Painéis para interiores e fachadas ventiladas protegidas. Disponível em acabamento acetinado e fosco com tratamento UV.",
     swatches: [
       { nome: "Golden Oak", corAproximada: "#C8972E" },
@@ -104,12 +104,12 @@ const produtos = [
       { nome: "Merbau", corAproximada: "#5C2E1A" },
       { nome: "Urban Oak", corAproximada: "#7A7060" },
     ],
-    href: "/altwood-panel",
+    href: "/manto-panel",
     images: [projetoPanel1, projetoPanel2, projetoPanel3, projetoPanel4, projetoPanel5, projetoPanel6],
   },
 ];
 
-const AltWood = () => {
+const Manto = () => {
   const [activeTab, setActiveTab] = useState("brise");
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
@@ -148,7 +148,7 @@ const AltWood = () => {
     <div className="min-h-screen bg-[#e5e1dc]">
       <HeroSection
         images={heroImages}
-        headline="AltWood"
+        headline="Manto"
         subtitulo="Madeira ecológica premium. Fachadas, brises, panels e decks."
         ctaLabel="Explorar Produtos"
         ctaAction={handleExplorar}
@@ -167,4 +167,4 @@ const AltWood = () => {
   );
 };
 
-export default AltWood;
+export default Manto;

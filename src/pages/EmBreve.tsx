@@ -6,10 +6,9 @@ const TOKEN_RDSTATION = "76788d5f5db5b8865e702fbe1fa5d416";
 const CONVERSION_URL = "https://cta-redirect.rdstation.com/v2/conversions";
 
 const linhasInfo: Record<string, { nome: string; descricao: string }> = {
-  zhuzen: { nome: "Zhúzen", descricao: "Revestimentos, forros e decorativos em bambu." },
-  echotex: { nome: "Echotex", descricao: "Tecido acústico moldado para estúdios e home cinemas." },
-  italflex: { nome: "Italflex", descricao: "Revestimento flexível para fachadas e ambientes internos." },
-  geo: { nome: "Geo", descricao: "Em breve." },
+  zhu: { nome: "Zhú", descricao: "Revestimentos, forros e decorativos em bambu." },
+  echo: { nome: "Echo", descricao: "Tecido acústico moldado para estúdios e home cinemas." },
+  geo: { nome: "Geo", descricao: "Revestimento flexível para fachadas e ambientes internos." },
 };
 
 const validateEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);

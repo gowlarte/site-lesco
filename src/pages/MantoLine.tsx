@@ -26,9 +26,9 @@ const coresSwatches = [
 ];
 
 const modelos = [
-  { nome: "AltWood-Line-40x45", medida: "40x45 mm", peso: "3,63 kg/m²", imageSrc: modelo40x45 },
-  { nome: "AltWood-Line-40x100", medida: "40x100 mm", peso: "6,63 kg/m²", imageSrc: modelo40x100 },
-  { nome: "AltWood-Line-100x20", medida: "100x20 mm", peso: "3 kg/m²", imageSrc: modelo100x20 },
+  { nome: "Manto-Line-40x45", medida: "40x45 mm", peso: "3,63 kg/m²", imageSrc: modelo40x45 },
+  { nome: "Manto-Line-40x100", medida: "40x100 mm", peso: "6,63 kg/m²", imageSrc: modelo40x100 },
+  { nome: "Manto-Line-100x20", medida: "100x20 mm", peso: "3 kg/m²", imageSrc: modelo100x20 },
 ];
 
 const galeriaItems = [
@@ -37,7 +37,7 @@ const galeriaItems = [
   { imageSrc: projetoLine3, legenda: "Forro WPC com iluminação pendente", ratio: "3:4" as const },
 ];
 
-const AltWoodLine = () => {
+const MantoLine = () => {
   const [selectedCor, setSelectedCor] = useState<string | null>(null);
   const [specsOpen, setSpecsOpen] = useState(false);
 
@@ -46,7 +46,7 @@ const AltWoodLine = () => {
       {/* Hero */}
       <HeroSection
         images={heroImages}
-        headline="AltWood Line"
+        headline="Manto Line"
         subtitulo="Forros, sancas e superfícies contínuas com encaixe técnico."
       />
 
@@ -55,7 +55,7 @@ const AltWoodLine = () => {
         <nav className="flex items-center gap-1.5 text-xs">
           <Link to="/" className="text-[#7F7F7F] hover:text-white transition-colors">Início</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
-          <Link to="/altwood" className="text-[#7F7F7F] hover:text-white transition-colors">AltWood</Link>
+          <Link to="/manto" className="text-[#7F7F7F] hover:text-white transition-colors">Manto</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
           <span className="text-[#525252]">Line</span>
         </nav>
@@ -156,7 +156,7 @@ const AltWoodLine = () => {
       {galeriaItems.length > 0 && (
         <div className="px-6 md:px-12 lg:px-20 py-24">
           <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">Projetos</span>
-          <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com AltWood Line</h2>
+          <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com Manto Line</h2>
           <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
             {galeriaItems.map((item, i) => (
               <div key={i} className="break-inside-avoid">
@@ -170,10 +170,10 @@ const AltWoodLine = () => {
       {/* Navegação entre produtos */}
       <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-[#1E1E1E]">
         <div className="flex justify-between items-center">
-          <Link to="/altwood-deck" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
+          <Link to="/manto-deck" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
             ← Deck
           </Link>
-          <Link to="/altwood-panel" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
+          <Link to="/manto-panel" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
             Panel →
           </Link>
         </div>
@@ -185,4 +185,4 @@ const AltWoodLine = () => {
   );
 };
 
-export default AltWoodLine;
+export default MantoLine;

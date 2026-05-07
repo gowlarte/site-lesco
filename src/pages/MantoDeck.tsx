@@ -1,8 +1,4 @@
 import { useState } from "react";
-import heroShield1 from "@/assets/hero-shield-1.png";
-import heroShield2 from "@/assets/hero-shield-2.png";
-import heroShield3 from "@/assets/hero-shield-3.jpg";
-import heroShield4 from "@/assets/hero-shield-4.png";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import { HeroSection } from "@/components/altwood/HeroSection";
@@ -11,22 +7,16 @@ import { CardModelo } from "@/components/altwood/CardModelo";
 import { CardProjeto } from "@/components/altwood/CardProjeto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
-import projetoShield1 from "@/assets/projeto-shield-1.png";
-import projetoShield2 from "@/assets/projeto-shield-2.png";
-import projetoShield3 from "@/assets/projeto-shield-3.png";
-import projetoShield4 from "@/assets/projeto-shield-4.png";
-import projetoShield5 from "@/assets/projeto-shield-5.png";
-import projetoShield6 from "@/assets/projeto-shield-6.jpg";
+import modelo97 from "@/assets/deck-modelo-97x22.png";
+import modelo140 from "@/assets/deck-modelo-140x22.png";
+import modelo150 from "@/assets/deck-modelo-150x22.png";
+import projetoDeck1 from "@/assets/projeto-deck-1.jpg";
+import projetoDeck2 from "@/assets/projeto-deck-2.png";
+import projetoDeck3 from "@/assets/projeto-deck-3.jpg";
+import projetoDeck4 from "@/assets/projeto-deck-4.jpg";
+import projetoDeck5 from "@/assets/projeto-deck-5.jpg";
 
-import imgShield124x155 from "@/assets/shield-124x155.png";
-import imgShield124x20 from "@/assets/shield-124x20.png";
-import imgShield184x20 from "@/assets/shield-184x20.png";
-import imgShield149x20 from "@/assets/shield-149x20.png";
-import imgShield217x35 from "@/assets/shield-217x35.png";
-import imgShield169x25 from "@/assets/shield-169x25.png";
-import imgShield217x25 from "@/assets/shield-217x25.png";
-import imgShield219x385 from "@/assets/shield-219x385.png";
-import imgShield124x50 from "@/assets/shield-124x50.png";
+const heroImages = [projetoDeck2, projetoDeck1, projetoDeck3, projetoDeck4, projetoDeck5];
 
 const escovadasSwatches = [
   { nome: "Black", corAproximada: "#1A1A1A" },
@@ -51,27 +41,20 @@ const texturizadasSwatches = [
 ];
 
 const modelos = [
-  { nome: "AltWood-Shield-124x15,5", medida: "124x15,5 mm", peso: "10,50 kg/m²", imageSrc: imgShield124x155 },
-  { nome: "AltWood-Shield-124x20", medida: "124x20 mm", peso: "13,50 kg/m²", imageSrc: imgShield124x20 },
-  { nome: "AltWood-Shield-184x20", medida: "184x20 mm", peso: "13,28 kg/m²", imageSrc: imgShield184x20 },
-  { nome: "AltWood-Shield-149x20", medida: "149x20 mm", peso: "14,30 kg/m²", imageSrc: imgShield149x20 },
-  { nome: "AltWood-Shield-217x35", medida: "217x35 mm", peso: "14,15 kg/m²", imageSrc: imgShield217x35 },
-  { nome: "AltWood-Shield-169x25", medida: "169x25 mm", peso: "14,60 kg/m²", imageSrc: imgShield169x25 },
-  { nome: "AltWood-Shield-217x25", medida: "217x25 mm", peso: "13,25 kg/m²", imageSrc: imgShield217x25 },
-  { nome: "AltWood-Shield-219x38,5", medida: "219x38,5 mm", peso: "15,60 kg/m²", imageSrc: imgShield219x385 },
-  { nome: "AltWood-Shield-124x50", medida: "124x50 mm", peso: "15,60 kg/m²", imageSrc: imgShield124x50 },
+  { nome: "Manto-Deck-97x22", medida: "97x22 mm", peso: "20,0 kg/m²", imageSrc: modelo97 },
+  { nome: "Manto-Deck-140x22", medida: "140x22 mm", peso: "28 kg/m²", imageSrc: modelo140 },
+  { nome: "Manto-Deck-150x22", medida: "150x22 mm", peso: "18,75 kg/m²", imageSrc: modelo150 },
 ];
 
 const galeriaItems = [
-  { imageSrc: projetoShield1, legenda: "Edifício comercial — revestimento Shield em fachada", ratio: "4:3" as const },
-  { imageSrc: projetoShield2, legenda: "Arena/pavilhão — fachada e cobertura Shield", ratio: "4:3" as const },
-  { imageSrc: projetoShield3, legenda: "Terraço e área gourmet — teto em Shield", ratio: "4:3" as const },
-  { imageSrc: projetoShield4, legenda: "Edifício corporativo — fachada Shield + estrutura metálica", ratio: "4:3" as const },
-  { imageSrc: projetoShield5, legenda: "Resort à beira-mar — revestimento Shield em varandas", ratio: "4:3" as const },
-  { imageSrc: projetoShield6, legenda: "Residência contemporânea — Shield e brise em fachada", ratio: "3:4" as const },
+  { imageSrc: projetoDeck1, legenda: "Deck paisagístico com iluminação noturna", ratio: "4:3" as const },
+  { imageSrc: projetoDeck2, legenda: "Residência contemporânea com deck frontal", ratio: "4:3" as const },
+  { imageSrc: projetoDeck3, legenda: "Passarela em deck com paisagismo integrado", ratio: "4:3" as const },
+  { imageSrc: projetoDeck4, legenda: "Deck em jardim zen com espelho d'água", ratio: "4:3" as const },
+  { imageSrc: projetoDeck5, legenda: "Projeto noturno com deck e paisagismo", ratio: "3:4" as const },
 ];
 
-const AltWoodShield = () => {
+const MantoDeck = () => {
   const [selectedEscovada, setSelectedEscovada] = useState<string | null>(null);
   const [selectedTexturizada, setSelectedTexturizada] = useState<string | null>(null);
   const [specsOpen, setSpecsOpen] = useState(false);
@@ -80,9 +63,9 @@ const AltWoodShield = () => {
     <div className="min-h-screen bg-[#e5e1dc]">
       {/* Hero */}
       <HeroSection
-        images={[heroShield1, heroShield2, heroShield3, heroShield4]}
-        headline="AltWood Shield"
-        subtitulo="Um novo paradigma de qualidade e sofisticação para aplicações internas e externas."
+        images={heroImages}
+        headline="Manto Deck"
+        subtitulo="Sofisticação e conforto para os espaços ao ar livre."
       />
 
       {/* Breadcrumb */}
@@ -90,9 +73,9 @@ const AltWoodShield = () => {
         <nav className="flex items-center gap-1.5 text-xs">
           <Link to="/" className="text-[#7F7F7F] hover:text-white transition-colors">Início</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
-          <Link to="/altwood" className="text-[#7F7F7F] hover:text-white transition-colors">AltWood</Link>
+          <Link to="/manto" className="text-[#7F7F7F] hover:text-white transition-colors">Manto</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
-          <span className="text-[#525252]">Shield</span>
+          <span className="text-[#525252]">Deck</span>
         </nav>
       </div>
 
@@ -100,11 +83,11 @@ const AltWoodShield = () => {
       <div className="max-w-[760px] mx-auto px-6 py-20 text-center">
         <div className="flex items-center gap-4 justify-center mb-8">
           <span className="flex-1 h-px bg-[#1E1E1E]" />
-          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C8956C]">Shield</span>
+          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C8956C]">Deck</span>
           <span className="flex-1 h-px bg-[#1E1E1E]" />
         </div>
         <p className="text-[17px] text-[#7F7F7F] leading-[1.7]">
-          Os revestimentos Lesco representam um paradigma de qualidade e sofisticação para aplicações tanto internas quanto externas. Ele combina tecnologia e durabilidade do plástico com a beleza estética da madeira, criando um material de alta resistência e durabilidade, sem perder o aspecto natural.
+          Os decks de madeira ecológica representam uma escolha inteligente e elegante para aprimorar espaços externos. Eles são uma solução ideal para projetos residenciais, comerciais e públicos que buscam criar ambientes externos excepcionais que perduram ao longo do tempo.
         </p>
       </div>
 
@@ -153,7 +136,7 @@ const AltWoodShield = () => {
           <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-6">
             Modelos
           </span>
-          <div className="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {modelos.map((m) => (
               <CardModelo key={m.nome} nome={m.nome} medida={m.medida} peso={m.peso} imageSrc={m.imageSrc} />
             ))}
@@ -206,10 +189,9 @@ const AltWoodShield = () => {
                   <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Subestrutura Recomendada</h4>
                   <div className="h-px bg-[#1E1E1E] mb-4" />
                   <div className="text-sm text-white font-mono space-y-1">
-                    <p>Aplicação em parede: <span className="text-[#7F7F7F]">espaçamento 80 cm entre estruturas</span></p>
-                    <p>Aplicação em teto: <span className="text-[#7F7F7F]">espaçamento 60 cm entre estruturas</span></p>
-                    <p>Fixação: <span className="text-[#7F7F7F]">parafuso Philips autobrocante flangeado ou cabeça panela 4,2×19 mm</span></p>
-                    <p>Estrutura auxiliar: <span className="text-[#7F7F7F]">alumínio ou aço — 50×50 mm · 38×38 mm · 50×25 mm</span></p>
+                    <p>Espaçamento entre perfis: <span className="text-[#7F7F7F]">máximo 40 cm entre apoios</span></p>
+                    <p>Fixação: <span className="text-[#7F7F7F]">clip de fixação oculta ou parafuso autobrocante 4,2×19 mm</span></p>
+                    <p>Estrutura auxiliar: <span className="text-[#7F7F7F]">alumínio ou aço — 50×50 mm · 38×38 mm</span></p>
                   </div>
                 </div>
               </div>
@@ -221,7 +203,7 @@ const AltWoodShield = () => {
       {/* Galeria de Projetos */}
       <div className="px-6 md:px-12 lg:px-20 py-24">
         <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">Projetos</span>
-        <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com AltWood Shield</h2>
+        <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com Manto Deck</h2>
 
         <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
           {galeriaItems.map((item, i) => (
@@ -235,11 +217,11 @@ const AltWoodShield = () => {
       {/* Navegação entre produtos */}
       <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-[#1E1E1E]">
         <div className="flex justify-between items-center">
-          <Link to="/altwood-brise" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
-            ← Brise
+          <Link to="/manto-shield" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
+            ← Shield
           </Link>
-          <Link to="/altwood-deck" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
-            Deck →
+          <Link to="/manto-line" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
+            Line →
           </Link>
         </div>
       </div>
@@ -250,4 +232,4 @@ const AltWoodShield = () => {
   );
 };
 
-export default AltWoodShield;
+export default MantoDeck;

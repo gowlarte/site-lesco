@@ -12,12 +12,12 @@ import { PageTransitionLoader } from "@/components/PageTransitionLoader";
 import { usePageAssets } from "@/hooks/usePageAssets";
 import Index from "./pages/Index";
 import About from "./pages/About";
-import AltWood from "./pages/AltWood";
-import AltWoodBrise from "./pages/AltWoodBrise";
-import AltWoodShield from "./pages/AltWoodShield";
-import AltWoodDeck from "./pages/AltWoodDeck";
-import AltWoodLine from "./pages/AltWoodLine";
-import AltWoodPanel from "./pages/AltWoodPanel";
+import Manto from "./pages/Manto";
+import MantoBrise from "./pages/MantoBrise";
+import MantoShield from "./pages/MantoShield";
+import MantoDeck from "./pages/MantoDeck";
+import MantoLine from "./pages/MantoLine";
+import MantoPanel from "./pages/MantoPanel";
 import Linhas from "./pages/Linhas";
 import Blog from "./pages/Blog";
 import BlogArtigo from "./pages/BlogArtigo";
@@ -42,21 +42,21 @@ const AppContent = () => {
       <div ref={contentRef} style={{ opacity: isLoading ? 0 : 1, transition: "opacity 300ms ease" }}>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/altwood" element={<AltWood />} />
-          <Route path="/altwood-brise" element={<AltWoodBrise />} />
-          <Route path="/altwood-shield" element={<AltWoodShield />} />
-          <Route path="/altwood-deck" element={<AltWoodDeck />} />
-          <Route path="/altwood-line" element={<AltWoodLine />} />
-          <Route path="/altwood-panel" element={<AltWoodPanel />} />
+          <Route path="/manto" element={<Manto />} />
+          <Route path="/manto-brise" element={<MantoBrise />} />
+          <Route path="/manto-shield" element={<MantoShield />} />
+          <Route path="/manto-deck" element={<MantoDeck />} />
+          <Route path="/manto-line" element={<MantoLine />} />
+          <Route path="/manto-panel" element={<MantoPanel />} />
           <Route path="/sobre" element={<About />} />
           <Route path="/linhas" element={<Linhas />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogArtigo />} />
           <Route path="/orcamento" element={<Orcamento />} />
           <Route path="/catalogo" element={<Catalogo />} />
-          <Route path="/zhuzen" element={<EmBreve />} />
-          <Route path="/echotex" element={<EmBreve />} />
-          <Route path="/italflex" element={<EmBreve />} />
+          <Route path="/zhu" element={<EmBreve />} />
+          <Route path="/echo" element={<EmBreve />} />
+          <Route path="/geo" element={<EmBreve />} />
           <Route path="/geo" element={<EmBreve />} />
           <Route path="/em-breve/:linha" element={<EmBreve />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
