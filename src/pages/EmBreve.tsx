@@ -62,7 +62,7 @@ const EmBreve = () => {
           <h1 className="font-display font-light text-[40px] md:text-[56px] leading-[1.05] tracking-[-0.02em] text-dark mb-5">
             Em breve.
           </h1>
-          <p className="font-body text-[16px] md:text-[17px] text-dark/70 leading-relaxed mb-10">
+          <p className="font-body text-[16px] md:text-[17px] text-[#303030] leading-relaxed mb-10">
             Página em construção. Preencha seu e-mail e seja notificado quando lançarmos esta linha.
           </p>
 
