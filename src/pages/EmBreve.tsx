@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import { Loader2, Mail, ArrowLeft } from "lucide-react";
 
 const TOKEN_RDSTATION = "76788d5f5db5b8865e702fbe1fa5d416";
@@ -15,8 +15,10 @@ const linhasInfo: Record<string, { nome: string; descricao: string }> = {
 const validateEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
 
 const EmBreve = () => {
-  const { linha } = useParams<{ linha: string }>();
-  const info = linhasInfo[linha ?? ""] ?? { nome: "Esta linha", descricao: "" };
+  const params = useParams<{ linha: string }>();
+  const location = useLocation();
+  const key = params.linha ?? location.pathname.replace(/^\//, "");
+  const info = linhasInfo[key] ?? { nome: "Esta linha", descricao: "" };
 
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
