@@ -23,6 +23,7 @@ import Blog from "./pages/Blog";
 import BlogArtigo from "./pages/BlogArtigo";
 import Orcamento from "./pages/Orcamento";
 import Catalogo from "./pages/Catalogo";
+import EmBreve from "./pages/EmBreve";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -53,6 +54,11 @@ const AppContent = () => {
           <Route path="/blog/:slug" element={<BlogArtigo />} />
           <Route path="/orcamento" element={<Orcamento />} />
           <Route path="/catalogo" element={<Catalogo />} />
+          <Route path="/zhuzen" element={<EmBreve />} />
+          <Route path="/echotex" element={<EmBreve />} />
+          <Route path="/italflex" element={<EmBreve />} />
+          <Route path="/geo" element={<EmBreve />} />
+          <Route path="/em-breve/:linha" element={<EmBreve />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
