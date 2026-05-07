@@ -36,7 +36,7 @@ const EmBreve = () => {
     try {
       const body = new URLSearchParams();
       body.append("token_rdstation", TOKEN_RDSTATION);
-      body.append("conversion_identifier", `lancamento-${linha}`);
+      body.append("conversion_identifier", `lancamento-${key}`);
       body.append("email", email);
       body.append("cf_url_conversao", window.location.href);
       body.append("cf_linha_interesse", info.nome);
