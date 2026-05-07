@@ -15,15 +15,15 @@ import showroomMain from "@/assets/showroom/showroom-main.jpg";
 import showroomDetail1 from "@/assets/showroom/showroom-detail-1.jpg";
 import showroomDetail2 from "@/assets/showroom/showroom-detail-2.jpg";
 
-import heroAltwood from "@/assets/hero-home-altwood.webp";
+import heroManto from "@/assets/hero-home-altwood.webp";
 import heroZhuzen from "@/assets/hero-home-zhuzen.webp";
-import heroEchotex from "@/assets/hero-home-echotex.jpg";
-import heroItalflex from "@/assets/hero-home-italflex.webp";
+import heroEcho from "@/assets/hero-home-echotex.jpg";
+import heroGeo from "@/assets/hero-home-italflex.webp";
 
-import logoAltwoodRaw from "@/assets/linha-altwood-2.svg?raw";
+import logoMantoRaw from "@/assets/linha-altwood-2.svg?raw";
 import logoZhuzenRaw from "@/assets/linha-zhuzen-2.svg?raw";
-import logoEchotexRaw from "@/assets/linha-echotex-2.svg?raw";
-import logoItalflexRaw from "@/assets/linha-italflex-2.svg?raw";
+import logoEchoRaw from "@/assets/linha-echotex-2.svg?raw";
+import logoGeoRaw from "@/assets/linha-italflex-2.svg?raw";
 
 import projectCasaMansa from "@/assets/project-casa-mansa.jpg";
 import projectResidencialUrbano from "@/assets/project-residencial-urbano.webp";
@@ -33,41 +33,41 @@ import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 
 const linhas = [
   {
-    nome: "AltWood",
-    logo: logoAltwoodRaw,
+    nome: "Manto",
+    logo: logoMantoRaw,
     descricao: "Madeira ecológica premium. Fachadas, brises, panels e decks.",
-    href: "/altwood",
-    imagem: heroAltwood,
+    href: "/manto",
+    imagem: heroManto,
   },
   {
-    nome: "Zhúzen",
+    nome: "Zhú",
     logo: logoZhuzenRaw,
     descricao: "Revestimentos, forros, luminárias e decorativos feitos a partir do bambu.",
-    href: "/zhuzen",
+    href: "/zhu",
     imagem: heroZhuzen,
   },
   {
-    nome: "Echotex",
-    logo: logoEchotexRaw,
+    nome: "Echo",
+    logo: logoEchoRaw,
     descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais e home cinemas.",
-    href: "/echotex",
-    imagem: heroEchotex,
+    href: "/echo",
+    imagem: heroEcho,
   },
   {
-    nome: "Italflex",
-    logo: logoItalflexRaw,
+    nome: "Geo",
+    logo: logoGeoRaw,
     descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
-    href: "/italflex",
-    imagem: heroItalflex,
+    href: "/geo",
+    imagem: heroGeo,
   },
 ];
 
 const projects = [
-  { nome: "Casa Mansa", imagem: projectCasaMansa, href: "/projetos/casa-mansa", descricao: "Integração total entre arquitetura e natureza com revestimentos AltWood.", linha: "AltWood" },
-  { nome: "Residencial Urbano", imagem: projectResidencialUrbano, href: "/projetos/residencial-urbano", descricao: "Fachada contemporânea com brises em madeira ecológica.", linha: "AltWood" },
-  { nome: "Casa Areia", imagem: projectCasaAreia, href: "/projetos/casa-areia", descricao: "Deck e pergolado em harmonia com a paisagem litorânea.", linha: "AltWood" },
-  { nome: "Casa Una", imagem: projectCasaUna, href: "/projetos/casa-una", descricao: "Revestimento externo que dialoga com a vegetação nativa.", linha: "Zhúzen" },
-  { nome: "Deck Detail", imagem: projectDeckDetail, href: "/projetos/deck-detail", descricao: "Detalhe de acabamento em deck de alta resistência.", linha: "AltWood" },
+  { nome: "Casa Mansa", imagem: projectCasaMansa, href: "/projetos/casa-mansa", descricao: "Integração total entre arquitetura e natureza com revestimentos Manto.", linha: "Manto" },
+  { nome: "Residencial Urbano", imagem: projectResidencialUrbano, href: "/projetos/residencial-urbano", descricao: "Fachada contemporânea com brises em madeira ecológica.", linha: "Manto" },
+  { nome: "Casa Areia", imagem: projectCasaAreia, href: "/projetos/casa-areia", descricao: "Deck e pergolado em harmonia com a paisagem litorânea.", linha: "Manto" },
+  { nome: "Casa Una", imagem: projectCasaUna, href: "/projetos/casa-una", descricao: "Revestimento externo que dialoga com a vegetação nativa.", linha: "Zhú" },
+  { nome: "Deck Detail", imagem: projectDeckDetail, href: "/projetos/deck-detail", descricao: "Detalhe de acabamento em deck de alta resistência.", linha: "Manto" },
 ];
 
 const SLIDE_INTERVAL = 6000;

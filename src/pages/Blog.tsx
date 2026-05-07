@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const artigos = [
   {
     slug: "madeira-ecologica-arquitetura",
-    categoria: "AltWood",
+    categoria: "Manto",
     titulo: "Madeira ecológica: o futuro das fachadas sustentáveis",
     resumo:
       "Como a madeira plástica de alta performance está redefinindo brises, decks e revestimentos em projetos contemporâneos.",
@@ -14,7 +14,7 @@ const artigos = [
   },
   {
     slug: "bambu-na-arquitetura",
-    categoria: "Zhúzen",
+    categoria: "Zhú",
     titulo: "Bambu: o material milenar que voltou a ser tendência",
     resumo:
       "Forros, luminárias e revestimentos em bambu trazem aconchego e identidade aos interiores de alto padrão.",
@@ -25,7 +25,7 @@ const artigos = [
   },
   {
     slug: "acustica-em-home-cinemas",
-    categoria: "Echotex",
+    categoria: "Echo",
     titulo: "Acústica perfeita: tecidos moldados para home cinemas",
     resumo:
       "Entenda como o tratamento acústico transforma a experiência sonora em estúdios e salas residenciais.",
@@ -36,7 +36,7 @@ const artigos = [
   },
   {
     slug: "pedra-flexivel-fachadas",
-    categoria: "Italflex",
+    categoria: "Geo",
     titulo: "Pedra flexível: leveza e resistência em fachadas",
     resumo:
       "A revolução das pedras naturais ultrafinas para revestimentos internos e externos.",
@@ -58,7 +58,7 @@ const artigos = [
   },
   {
     slug: "deck-area-externa",
-    categoria: "AltWood",
+    categoria: "Manto",
     titulo: "Como escolher o deck ideal para sua área externa",
     resumo:
       "Durabilidade, estética e manutenção: tudo o que você precisa avaliar antes de instalar um deck.",

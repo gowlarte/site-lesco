@@ -1,47 +1,47 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import heroAltwood from "@/assets/hero-home-altwood.webp";
+import heroManto from "@/assets/hero-home-altwood.webp";
 import heroZhuzen from "@/assets/hero-home-zhuzen.webp";
-import heroEchotex from "@/assets/hero-home-echotex.jpg";
-import heroItalflex from "@/assets/hero-home-italflex.webp";
+import heroEcho from "@/assets/hero-home-echotex.jpg";
+import heroGeo from "@/assets/hero-home-italflex.webp";
 
-import logoAltwoodRaw from "@/assets/linha-altwood-2.svg?raw";
+import logoMantoRaw from "@/assets/linha-altwood-2.svg?raw";
 import logoZhuzenRaw from "@/assets/linha-zhuzen-2.svg?raw";
-import logoEchotexRaw from "@/assets/linha-echotex-2.svg?raw";
-import logoItalflexRaw from "@/assets/linha-italflex-2.svg?raw";
+import logoEchoRaw from "@/assets/linha-echotex-2.svg?raw";
+import logoGeoRaw from "@/assets/linha-italflex-2.svg?raw";
 
 const linhas = [
   {
-    nome: "AltWood",
-    logo: logoAltwoodRaw,
+    nome: "Manto",
+    logo: logoMantoRaw,
     descricao: "Madeira ecológica premium. Fachadas, brises, panels e decks.",
-    href: "/altwood",
-    imagem: heroAltwood,
+    href: "/manto",
+    imagem: heroManto,
     cor: "#F7C39B",
   },
   {
-    nome: "Zhúzen",
+    nome: "Zhú",
     logo: logoZhuzenRaw,
     descricao: "Revestimentos, forros, luminárias, decorativos e utilitários feitas a partir do bambu.",
-    href: "/zhuzen",
+    href: "/zhu",
     imagem: heroZhuzen,
     cor: "#A3DBA0",
   },
   {
-    nome: "Echotex",
-    logo: logoEchotexRaw,
+    nome: "Echo",
+    logo: logoEchoRaw,
     descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais e home cinemas.",
-    href: "/echotex",
-    imagem: heroEchotex,
+    href: "/echo",
+    imagem: heroEcho,
     cor: "#C6E1D7",
   },
   {
-    nome: "Italflex",
-    logo: logoItalflexRaw,
+    nome: "Geo",
+    logo: logoGeoRaw,
     descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
-    href: "/italflex",
-    imagem: heroItalflex,
+    href: "/geo",
+    imagem: heroGeo,
     cor: "#F57D69",
   },
 ];
