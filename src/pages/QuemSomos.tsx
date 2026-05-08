@@ -10,7 +10,7 @@ const certifications = [
   "Green Building Council",
 ];
 
-const About = () => {
+const QuemSomos = () => {
   return (
     <main>
       {/* Hero */}
@@ -145,4 +145,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default QuemSomos;
