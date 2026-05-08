@@ -33,10 +33,10 @@ import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 
 const linhas = [
   {
-    nome: "Madeira Ecológica",
+    nome: "Madeira Ecológica Lesco",
     logo: logoMantoRaw,
     descricao: "Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto.",
-    href: "/manto",
+    href: "/madeira-ecologica-lesco",
     imagem: heroManto,
   },
   {
@@ -63,11 +63,11 @@ const linhas = [
 ];
 
 const projects = [
-  { nome: "Casa Mansa", imagem: projectCasaMansa, href: "/projetos/casa-mansa", descricao: "Integração total entre arquitetura e natureza com revestimentos em madeira ecológica.", linha: "Madeira Ecológica" },
-  { nome: "Residencial Urbano", imagem: projectResidencialUrbano, href: "/projetos/residencial-urbano", descricao: "Fachada contemporânea com brises em madeira ecológica.", linha: "Madeira Ecológica" },
-  { nome: "Casa Areia", imagem: projectCasaAreia, href: "/projetos/casa-areia", descricao: "Deck e pergolado em harmonia com a paisagem litorânea.", linha: "Madeira Ecológica" },
+  { nome: "Casa Mansa", imagem: projectCasaMansa, href: "/projetos/casa-mansa", descricao: "Integração total entre arquitetura e natureza com revestimentos em madeira ecológica.", linha: "Madeira Ecológica Lesco" },
+  { nome: "Residencial Urbano", imagem: projectResidencialUrbano, href: "/projetos/residencial-urbano", descricao: "Fachada contemporânea com brises em madeira ecológica.", linha: "Madeira Ecológica Lesco" },
+  { nome: "Casa Areia", imagem: projectCasaAreia, href: "/projetos/casa-areia", descricao: "Deck e pergolado em harmonia com a paisagem litorânea.", linha: "Madeira Ecológica Lesco" },
   { nome: "Casa Una", imagem: projectCasaUna, href: "/projetos/casa-una", descricao: "Revestimento externo que dialoga com a vegetação nativa.", linha: "Zhú" },
-  { nome: "Deck Detail", imagem: projectDeckDetail, href: "/projetos/deck-detail", descricao: "Detalhe de acabamento em deck de alta resistência.", linha: "Madeira Ecológica" },
+  { nome: "Deck Detail", imagem: projectDeckDetail, href: "/projetos/deck-detail", descricao: "Detalhe de acabamento em deck de alta resistência.", linha: "Madeira Ecológica Lesco" },
 ];
 
 const SLIDE_INTERVAL = 6000;
@@ -181,12 +181,21 @@ const Index = () => {
 
         {/* Bottom-left: logo + descrição */}
         <div className="absolute bottom-20 lg:bottom-16 left-8 lg:left-12 right-8 lg:right-auto z-10 max-w-[640px] text-white flex flex-col items-start">
-          <div
-            className="mb-5 transition-opacity duration-500 [&>svg]:h-[44px] md:[&>svg]:h-[56px] lg:[&>svg]:h-[68px] [&>svg]:w-auto"
-            style={{ color: "#FFFFFF" }}
-            dangerouslySetInnerHTML={{ __html: active.logo }}
-            aria-label={active.nome}
-          />
+          {/* Logo da linha — Manto/"Madeira Ecológica Lesco" oculto via PRD §5.2; mostra wordmark em texto */}
+          {active.nome === "Madeira Ecológica Lesco" ? (
+            <h1
+              className="mb-5 font-display font-light text-[44px] md:text-[56px] lg:text-[68px] leading-none tracking-[-0.02em] text-white"
+            >
+              {active.nome}
+            </h1>
+          ) : (
+            <div
+              className="mb-5 transition-opacity duration-500 [&>svg]:h-[44px] md:[&>svg]:h-[56px] lg:[&>svg]:h-[68px] [&>svg]:w-auto"
+              style={{ color: "#FFFFFF" }}
+              dangerouslySetInnerHTML={{ __html: active.logo }}
+              aria-label={active.nome}
+            />
+          )}
           <p className="font-display font-extralight text-[20px] md:text-[26px] lg:text-[30px] leading-[1.2] tracking-[-0.01em] text-white/95 max-w-[520px] text-left">
             {active.descricao}
           </p>
@@ -233,7 +242,7 @@ const Index = () => {
           <ScrollReveal>
             <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 lg:gap-20 items-start">
               <h2 className="font-display text-3xl md:text-4xl lg:text-[52px] font-normal leading-[1.15] text-dark">
-                Pioneiros em Madeira Ecológica no Brasil, somos arquitetura feita para o amanhã.
+                Pioneiros em Madeira Ecológica Lesco no Brasil, somos arquitetura feita para o amanhã.
               </h2>
               <div className="max-w-[320px]">
                 <p className="font-body text-[16px] font-light leading-[1.65] text-dark/70 text-primary">
@@ -442,7 +451,7 @@ const Index = () => {
                 Solicite um orçamento
               </Link>
               <Link
-                to="/catalogo"
+                to="/catalogo-lesco"
                 className="inline-flex items-center px-7 py-3.5 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary/[0.08] transition-colors duration-250"
               >
                 Baixe nosso catálogo

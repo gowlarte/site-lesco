@@ -72,27 +72,27 @@ const classicSwatches = [
 ];
 
 const origensModelos = [
-  { nome: "Madeira Ecológica-Brise-25x25-Origens", medida: "25x25 mm", peso: "0,43 kg/mL", imageSrc: briseOri25x25 },
-  { nome: "Madeira Ecológica-Brise-50x25-Origens", medida: "50x25 mm", peso: "0,94 kg/mL", imageSrc: briseOri50x25 },
-  { nome: "Madeira Ecológica-Brise-50x50-Origens", medida: "50x50 mm", peso: "1,31 kg/mL", imageSrc: briseOri50x50 },
-  { nome: "Madeira Ecológica-Brise-75x25-Origens", medida: "75x25 mm", peso: "1,21 kg/mL", imageSrc: briseOri75x25 },
-  { nome: "Madeira Ecológica-Brise-100x35-Origens", medida: "100x35 mm", peso: "1,83 kg/mL", imageSrc: briseOri100x35 },
-  { nome: "Madeira Ecológica-Brise-100x50-Origens", medida: "100x50 mm", peso: "2,63 kg/mL", imageSrc: briseOri100x50 },
-  { nome: "Madeira Ecológica-Brise-150x50-Origens", medida: "150x50 mm", peso: "2,90 kg/mL", imageSrc: briseOri150x50 },
-  { nome: "Madeira Ecológica-Brise-200x50-Origens", medida: "200x50 mm", peso: "3,30 kg/mL", imageSrc: briseOri200x50 },
-  { nome: "Madeira Ecológica-Brise-250x50-Origens", medida: "250x50 mm", peso: "3,90 kg/mL", imageSrc: briseOri250x50 },
-  { nome: "Madeira Ecológica-Brise-100x25-Origens", medida: "100x25 mm", peso: "1,83 kg/mL", imageSrc: briseOri100x25 },
+  { nome: "Madeira Ecológica Lesco-Brise-25x25-Origens", medida: "25x25 mm", peso: "0,43 kg/mL", imageSrc: briseOri25x25 },
+  { nome: "Madeira Ecológica Lesco-Brise-50x25-Origens", medida: "50x25 mm", peso: "0,94 kg/mL", imageSrc: briseOri50x25 },
+  { nome: "Madeira Ecológica Lesco-Brise-50x50-Origens", medida: "50x50 mm", peso: "1,31 kg/mL", imageSrc: briseOri50x50 },
+  { nome: "Madeira Ecológica Lesco-Brise-75x25-Origens", medida: "75x25 mm", peso: "1,21 kg/mL", imageSrc: briseOri75x25 },
+  { nome: "Madeira Ecológica Lesco-Brise-100x35-Origens", medida: "100x35 mm", peso: "1,83 kg/mL", imageSrc: briseOri100x35 },
+  { nome: "Madeira Ecológica Lesco-Brise-100x50-Origens", medida: "100x50 mm", peso: "2,63 kg/mL", imageSrc: briseOri100x50 },
+  { nome: "Madeira Ecológica Lesco-Brise-150x50-Origens", medida: "150x50 mm", peso: "2,90 kg/mL", imageSrc: briseOri150x50 },
+  { nome: "Madeira Ecológica Lesco-Brise-200x50-Origens", medida: "200x50 mm", peso: "3,30 kg/mL", imageSrc: briseOri200x50 },
+  { nome: "Madeira Ecológica Lesco-Brise-250x50-Origens", medida: "250x50 mm", peso: "3,90 kg/mL", imageSrc: briseOri250x50 },
+  { nome: "Madeira Ecológica Lesco-Brise-100x25-Origens", medida: "100x25 mm", peso: "1,83 kg/mL", imageSrc: briseOri100x25 },
 ];
 
 const classicModelos = [
-  { nome: "Madeira Ecológica-Brise-50x30-Classic", medida: "50x30 mm", peso: "1,00 kg/mL", imageSrc: briseCla50x30 },
-  { nome: "Madeira Ecológica-Brise-50x50-Classic", medida: "50x50 mm", peso: "1,40 kg/mL", imageSrc: briseCla50x50 },
-  { nome: "Madeira Ecológica-Brise-100x30-Classic", medida: "100x30 mm", peso: "1,95 kg/mL", imageSrc: briseCla100x30 },
-  { nome: "Madeira Ecológica-Brise-100x50-Classic", medida: "100x50 mm", peso: "2,70 kg/mL", imageSrc: briseCla100x50 },
-  { nome: "Madeira Ecológica-Brise-150x50-Classic", medida: "150x50 mm", peso: "3,55 kg/mL", imageSrc: briseCla150x50 },
-  { nome: "Madeira Ecológica-Brise-145x145-Classic", medida: "145x145 mm", peso: "6,20 kg/mL", imageSrc: briseCla145x145 },
-  { nome: "Madeira Ecológica-Brise-200x50-Classic", medida: "200x50 mm", peso: "4,90 kg/mL", imageSrc: briseCla200x50 },
-  { nome: "Madeira Ecológica-Brise-250x50-Classic", medida: "250x50 mm", peso: "6,50 kg/mL", imageSrc: briseCla250x50 },
+  { nome: "Madeira Ecológica Lesco-Brise-50x30-Classic", medida: "50x30 mm", peso: "1,00 kg/mL", imageSrc: briseCla50x30 },
+  { nome: "Madeira Ecológica Lesco-Brise-50x50-Classic", medida: "50x50 mm", peso: "1,40 kg/mL", imageSrc: briseCla50x50 },
+  { nome: "Madeira Ecológica Lesco-Brise-100x30-Classic", medida: "100x30 mm", peso: "1,95 kg/mL", imageSrc: briseCla100x30 },
+  { nome: "Madeira Ecológica Lesco-Brise-100x50-Classic", medida: "100x50 mm", peso: "2,70 kg/mL", imageSrc: briseCla100x50 },
+  { nome: "Madeira Ecológica Lesco-Brise-150x50-Classic", medida: "150x50 mm", peso: "3,55 kg/mL", imageSrc: briseCla150x50 },
+  { nome: "Madeira Ecológica Lesco-Brise-145x145-Classic", medida: "145x145 mm", peso: "6,20 kg/mL", imageSrc: briseCla145x145 },
+  { nome: "Madeira Ecológica Lesco-Brise-200x50-Classic", medida: "200x50 mm", peso: "4,90 kg/mL", imageSrc: briseCla200x50 },
+  { nome: "Madeira Ecológica Lesco-Brise-250x50-Classic", medida: "250x50 mm", peso: "6,50 kg/mL", imageSrc: briseCla250x50 },
 ];
 
 const galeriaItems = [
@@ -115,7 +115,7 @@ const MantoBrise = () => {
       {/* Hero */}
       <HeroSection
         images={heroImages}
-        headline="Madeira Ecológica Brise"
+        headline="Madeira Ecológica Lesco Brise"
         subtitulo="Um recurso artístico para a arquitetura contemporânea."
       />
 
@@ -124,7 +124,7 @@ const MantoBrise = () => {
         <nav className="flex items-center gap-1.5 text-xs">
           <Link to="/" className="text-[#7F7F7F] hover:text-white transition-colors">Início</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
-          <Link to="/manto" className="text-[#7F7F7F] hover:text-white transition-colors">Madeira Ecológica</Link>
+          <Link to="/madeira-ecologica-lesco" className="text-[#7F7F7F] hover:text-white transition-colors">Madeira Ecológica Lesco</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
           <span className="text-[#525252]">Brise</span>
         </nav>
@@ -155,7 +155,7 @@ const MantoBrise = () => {
                   : "text-[#9E9890] border-transparent hover:text-primary"
               }`}
             >
-              Madeira Ecológica {tab === "origens" ? "Origens" : "Classic"}
+              Madeira Ecológica Lesco {tab === "origens" ? "Origens" : "Classic"}
             </button>
           ))}
         </div>
@@ -255,7 +255,7 @@ const MantoBrise = () => {
       {/* Galeria de Projetos */}
       <div className="px-6 md:px-12 lg:px-20 py-24">
         <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">Projetos</span>
-        <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com Madeira Ecológica Brise</h2>
+        <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com Madeira Ecológica Lesco Brise</h2>
 
         <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
           {galeriaItems.map((item, i) => (
@@ -269,10 +269,10 @@ const MantoBrise = () => {
       {/* Navegação entre produtos */}
       <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-[#1E1E1E]">
         <div className="flex justify-between items-center">
-          <Link to="/manto" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
-            ← Madeira Ecológica
+          <Link to="/madeira-ecologica-lesco" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
+            ← Madeira Ecológica Lesco
           </Link>
-          <Link to="/manto-shield" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
+          <Link to="/madeira-ecologica-para-fachada" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
             Shield →
           </Link>
         </div>

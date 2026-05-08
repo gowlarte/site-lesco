@@ -1,38 +1,80 @@
-## Substituição dos logos Lesco
+## Plano — Ajustes do Site Lesco (PRD v1.0)
 
-Trocar todos os logos da Lesco (light e dark) pelas novas versões anexadas, com os degradês atualizados. A troca abrange tanto os arquivos SVG estáticos quanto os SVGs inline usados em animações.
+### 1. Renomear linha "Madeira Ecológica" → "Madeira Ecológica Lesco"
 
-### Arquivos SVG a substituir (sobrescrita direta)
+Substituir o nome em todos os pontos visíveis (Linhas, Manto hub, sub-páginas Brise/Shield/Deck/Line/Panel, Footer, breadcrumbs, hero subtítulos, meta tags). O identificador interno e os logos permanecem; somente o texto exibido muda.
 
-Copiar os uploads sobre os assets existentes — todos os imports em Header e Footer continuarão funcionando sem mudança de código:
+### 2. Novos slugs (rotas) — produtos na raiz
 
-- `src/assets/logo-lesco-dark.svg` ← `Lesco-logo-Dark.svg`
-- `src/assets/logo-lesco-dark-2.svg` ← `Lesco-logo-Dark.svg`
-- `src/assets/logo-lesco-light.svg` ← `Lesco-logo-Light.svg`
-- `src/assets/lesco-swoosh-cor.svg` ← extrair apenas o swoosh do novo Dark (manter o uso atual desse asset)
 
-### SVGs inline a atualizar
+| Página                | Slug atual      | Novo slug                         |
+| --------------------- | --------------- | --------------------------------- |
+| Hub Madeira Ecológica | `/manto`        | `/madeira-ecologica-lesco`        |
+| Shield                | `/manto-shield` | `/madeira-ecologica-para-fachada` |
+| Panel                 | `/manto-panel`  | `/placa-wpc-interior`             |
+| Brise                 | `/manto-brise`  | `/brise-madeira-ecologica`        |
+| Line                  | `/manto-line`   | `/forro-wpc`                      |
+| Deck                  | `/manto-deck`   | `/madeira-ecologica-para-deck`    |
+| Sobre/Quem somos      | `/sobre`        | `/quem-somos`                     |
+| Sustentabilidade      | (n/a)           | `/revestimento-sustentavel`       |
+| Madeira WPC           | (n/a)           | `/madeira-wpc`                    |
+| Catálogo              | `/catalogo`     | `/catalogo-lesco`                 |
+| Biblioteca            | (n/a)           | `/biblioteca`                     |
+| Portfólio             | (n/a)           | `/portfolio`                      |
+| Orçamento             | `/orcamento`    | mantém                            |
+| Blog                  | `/blog`         | mantém                            |
 
-Reescrever os paths e os stops do gradiente para refletir o novo logo:
 
-1. **`src/components/SplashScreen.tsx`**
-   - Atualizar `viewBox` para `0 0 618.91 195.11`
-   - Substituir os 4 paths das letras "LESC" e os 2 paths do "O" (swoosh light + swoosh colorido) pelos paths do novo SVG Dark
-   - Atualizar `<linearGradient id="splash-grad">`:
-     - coordenadas: `x1="671.05" y1="-3.62" x2="376.39" y2="185.71"`
-     - stops: `#728ea0` (.25) → `#c0c9bf` (.56) → `#d6aa98` (.74) → `#efdcc5` (.9)
-   - Atualizar o `<rect>` do `clipPath` para `width="618.91" height="195.11"`
+Em `src/App.tsx`: registrar novas rotas e adicionar **redirects internos** (`<Navigate replace>`) das antigas para as novas — equivalente SPA do 301. Atualizar todos os `<Link to="...">` correspondentes (Linhas, Footer, Manto hub, sub-páginas, breadcrumbs, navegação cruzada).
 
-2. **`src/components/PageTransitionLoader.tsx`**
-   - Mesma atualização de stops e (se houver paths inline) substituir paths/viewBox pela nova versão
+### 3. Header — novo menu com dropdowns
 
-3. **`src/components/Header.tsx` (linha 143 — CTA do menu mobile)**
-   - Substituir o `linear-gradient` antigo pelos novos stops da versão Dark:
-     `linear-gradient(135deg, #728ea0 25%, #c0c9bf 56%, #d6aa98 74%, #efdcc5 90%)`
-   - (O CTA desktop já é cinza neutro; permanece como está.)
+Reescrever `src/components/Header.tsx` para suportar itens com submenu (hover/click). Hierarquia:
 
-### Observações técnicas
+- Home → `/`
+- Sobre ▾ → Quem somos `/quem-somos`, Madeira WPC `/madeira-wpc`, Sustentabilidade `/revestimento-sustentavel`
+- Produtos ▾ → Lesco Shield, Lesco Panel, Lesco Brise, Lesco Line, Lesco Deck (slugs novos)
+- Catálogo → `/catalogo-lesco`
+- Biblioteca → `/biblioteca`
+- Orçamento → `/orcamento` (continua também como CTA à direita)
+- Material ▾ → Blog `/blog`, Portfólio `/portfolio`
 
-- Aspect ratio do novo logo (~3.17) é praticamente idêntico ao atual (~3.18), então as classes `w-[93px] h-[29px]` no Header e `h-8` no Footer não precisam ser ajustadas.
-- A cor base sólida nos novos arquivos é `#1f1f1f` (Dark) e `#fffbf3` (Light) — preservada por vir direto dos arquivos.
-- Nenhuma mudança de rotas, nomenclatura ou layout — apenas troca de assets visuais.
+Mobile: menu fullscreen com seções expandíveis.
+
+### 4. Páginas novas (placeholder)
+
+Criar com estrutura mínima (H1, parágrafo, CTA Orçamento, meta tags via `<title>`/`<meta>` no `<head>` usando React 19 metadata):
+
+- `src/pages/QuemSomos.tsx` — reaproveitar conteúdo atual de `About.tsx` (renomear arquivo) e atualizar rota.
+- `src/pages/MadeiraWPC.tsx`
+- `src/pages/Sustentabilidade.tsx`
+- `src/pages/Biblioteca.tsx`
+- `src/pages/Portfolio.tsx`
+
+Visual: seguir tokens existentes (bg `#DBDBDB`, cards flutuantes 10px, header offset 100px, tipografia PP Neue Machina/DM Sans).
+
+### 5. Ocultar logo da linha Manto
+
+Em `src/pages/Linhas.tsx` (e em qualquer outro local que renderize o logo Manto via `linha-altwood-2.svg`), envolver a renderização com `{false && ...}` ou `className="hidden"` mantendo import e arquivo. Comentário explicativo: "Logo oculto temporariamente — reativar quando linha for relançada".
+
+### 6. Linhas Geo / Zhú / Echo
+
+Permanecem como estão (`/geo`, `/zhu`, `/echo` → `EmBreve`). Apenas remover a rota duplicada `/geo` em `App.tsx`.
+
+### 7. Footer
+
+Atualizar links da seção "Linhas" e "Institucional" para os novos slugs. Ajustar label "Madeira Ecológica" → "Madeira Ecológica Lesco". Trocar `/projetos` por `/portfolio`.
+
+### 8. SEO
+
+Cada página nova/ajustada recebe `<title>` e `<meta name="description">` específicos via tags React inline no topo do componente. Single H1 por página, alt text em imagens. Slugs PT-BR mantidos exatamente como no PRD.
+
+### Fora de escopo (PRD §09)
+
+Sem redesign visual, sem conteúdo definitivo, sem lançamento de Geo/Zhú/Echo, sem integrações novas.
+
+### Detalhes técnicos
+
+- Redirects: `<Route path="/manto" element={<Navigate to="/madeira-ecologica" replace />} />` (e equivalentes para todos os slugs antigos).
+- Dropdowns no Header: estado local `openDropdown`, fechamento on `mouseleave` desktop, accordion no mobile.
+- Renomear arquivos de páginas via rename (manter histórico): `About.tsx` → `QuemSomos.tsx`; manter componentes `Manto*.tsx` (não renomear arquivos para evitar churn) e apenas trocar texto/rotas.

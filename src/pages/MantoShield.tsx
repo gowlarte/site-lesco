@@ -51,15 +51,15 @@ const texturizadasSwatches = [
 ];
 
 const modelos = [
-  { nome: "Madeira Ecológica-Shield-124x15,5", medida: "124x15,5 mm", peso: "10,50 kg/m²", imageSrc: imgShield124x155 },
-  { nome: "Madeira Ecológica-Shield-124x20", medida: "124x20 mm", peso: "13,50 kg/m²", imageSrc: imgShield124x20 },
-  { nome: "Madeira Ecológica-Shield-184x20", medida: "184x20 mm", peso: "13,28 kg/m²", imageSrc: imgShield184x20 },
-  { nome: "Madeira Ecológica-Shield-149x20", medida: "149x20 mm", peso: "14,30 kg/m²", imageSrc: imgShield149x20 },
-  { nome: "Madeira Ecológica-Shield-217x35", medida: "217x35 mm", peso: "14,15 kg/m²", imageSrc: imgShield217x35 },
-  { nome: "Madeira Ecológica-Shield-169x25", medida: "169x25 mm", peso: "14,60 kg/m²", imageSrc: imgShield169x25 },
-  { nome: "Madeira Ecológica-Shield-217x25", medida: "217x25 mm", peso: "13,25 kg/m²", imageSrc: imgShield217x25 },
-  { nome: "Madeira Ecológica-Shield-219x38,5", medida: "219x38,5 mm", peso: "15,60 kg/m²", imageSrc: imgShield219x385 },
-  { nome: "Madeira Ecológica-Shield-124x50", medida: "124x50 mm", peso: "15,60 kg/m²", imageSrc: imgShield124x50 },
+  { nome: "Madeira Ecológica Lesco-Shield-124x15,5", medida: "124x15,5 mm", peso: "10,50 kg/m²", imageSrc: imgShield124x155 },
+  { nome: "Madeira Ecológica Lesco-Shield-124x20", medida: "124x20 mm", peso: "13,50 kg/m²", imageSrc: imgShield124x20 },
+  { nome: "Madeira Ecológica Lesco-Shield-184x20", medida: "184x20 mm", peso: "13,28 kg/m²", imageSrc: imgShield184x20 },
+  { nome: "Madeira Ecológica Lesco-Shield-149x20", medida: "149x20 mm", peso: "14,30 kg/m²", imageSrc: imgShield149x20 },
+  { nome: "Madeira Ecológica Lesco-Shield-217x35", medida: "217x35 mm", peso: "14,15 kg/m²", imageSrc: imgShield217x35 },
+  { nome: "Madeira Ecológica Lesco-Shield-169x25", medida: "169x25 mm", peso: "14,60 kg/m²", imageSrc: imgShield169x25 },
+  { nome: "Madeira Ecológica Lesco-Shield-217x25", medida: "217x25 mm", peso: "13,25 kg/m²", imageSrc: imgShield217x25 },
+  { nome: "Madeira Ecológica Lesco-Shield-219x38,5", medida: "219x38,5 mm", peso: "15,60 kg/m²", imageSrc: imgShield219x385 },
+  { nome: "Madeira Ecológica Lesco-Shield-124x50", medida: "124x50 mm", peso: "15,60 kg/m²", imageSrc: imgShield124x50 },
 ];
 
 const galeriaItems = [
@@ -81,7 +81,7 @@ const MantoShield = () => {
       {/* Hero */}
       <HeroSection
         images={[heroShield1, heroShield2, heroShield3, heroShield4]}
-        headline="Madeira Ecológica Shield"
+        headline="Madeira Ecológica Lesco Shield"
         subtitulo="Um novo paradigma de qualidade e sofisticação para aplicações internas e externas."
       />
 
@@ -90,7 +90,7 @@ const MantoShield = () => {
         <nav className="flex items-center gap-1.5 text-xs">
           <Link to="/" className="text-[#7F7F7F] hover:text-white transition-colors">Início</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
-          <Link to="/manto" className="text-[#7F7F7F] hover:text-white transition-colors">Madeira Ecológica</Link>
+          <Link to="/madeira-ecologica-lesco" className="text-[#7F7F7F] hover:text-white transition-colors">Madeira Ecológica Lesco</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
           <span className="text-[#525252]">Shield</span>
         </nav>
@@ -221,7 +221,7 @@ const MantoShield = () => {
       {/* Galeria de Projetos */}
       <div className="px-6 md:px-12 lg:px-20 py-24">
         <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">Projetos</span>
-        <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com Madeira Ecológica Shield</h2>
+        <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com Madeira Ecológica Lesco Shield</h2>
 
         <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
           {galeriaItems.map((item, i) => (
@@ -235,10 +235,10 @@ const MantoShield = () => {
       {/* Navegação entre produtos */}
       <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-[#1E1E1E]">
         <div className="flex justify-between items-center">
-          <Link to="/manto-brise" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
+          <Link to="/brise-madeira-ecologica" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
             ← Brise
           </Link>
-          <Link to="/manto-deck" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
+          <Link to="/madeira-ecologica-para-deck" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
             Deck →
           </Link>
         </div>
