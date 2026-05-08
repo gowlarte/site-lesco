@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const artigos = [
   {
     slug: "madeira-ecologica-arquitetura",
-    categoria: "Manto",
+    categoria: "Madeira Ecológica",
     titulo: "Madeira ecológica: o futuro das fachadas sustentáveis",
     resumo:
       "Como a madeira plástica de alta performance está redefinindo brises, decks e revestimentos em projetos contemporâneos.",
@@ -58,7 +58,7 @@ const artigos = [
   },
   {
     slug: "deck-area-externa",
-    categoria: "Manto",
+    categoria: "Madeira Ecológica",
     titulo: "Como escolher o deck ideal para sua área externa",
     resumo:
       "Durabilidade, estética e manutenção: tudo o que você precisa avaliar antes de instalar um deck.",
