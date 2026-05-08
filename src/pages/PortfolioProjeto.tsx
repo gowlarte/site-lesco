@@ -69,30 +69,30 @@ const PortfolioProjeto = () => {
         <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-16 md:py-20 grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2 space-y-10">
             <div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4">
+              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4 text-gray-950">
                 Sobre o projeto
               </p>
-              <p className="font-body text-base md:text-lg leading-[1.7] text-dark/80">
+              <p className="font-body text-base md:text-lg leading-[1.7] text-dark/80 text-slate-500">
                 {projeto.descricao}
               </p>
             </div>
             <div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4">
+              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4 text-gray-950">
                 Desafio
               </p>
-              <p className="font-body text-base leading-[1.7] text-dark/80">{projeto.desafio}</p>
+              <p className="font-body text-base leading-[1.7] text-dark/80 text-gray-500">{projeto.desafio}</p>
             </div>
             <div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4">
+              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4 text-gray-950">
                 Solução
               </p>
-              <p className="font-body text-base leading-[1.7] text-dark/80">{projeto.solucao}</p>
+              <p className="font-body text-base leading-[1.7] text-dark/80 text-gray-500">{projeto.solucao}</p>
             </div>
           </div>
 
           <aside className="space-y-8">
             <div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4">
+              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4 text-gray-950">
                 Ficha técnica
               </p>
               <dl className="space-y-3">
@@ -105,7 +105,7 @@ const PortfolioProjeto = () => {
               </dl>
             </div>
             <div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4">
+              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4 text-gray-950">
                 Produtos aplicados
               </p>
               <ul className="space-y-2">
