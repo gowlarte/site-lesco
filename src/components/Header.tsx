@@ -267,15 +267,16 @@ export function Header({ variant = "default" }: HeaderProps) {
           );
         })}
 
-        <Link
-          to="/orcamento"
-          className="mt-6 px-8 py-3 rounded text-white font-display text-sm uppercase tracking-[0.08em]"
-          style={{
-            background: "linear-gradient(135deg, #728ea0 25%, #c0c9bf 56%, #d6aa98 74%, #efdcc5 90%)",
-          }}
-        >
-          Orçamento
-        </Link>
+        {(() => {
+          const emBreve = ["/zhu", "/echo", "/geo"].includes(location.pathname);
+          const mobileClass = "mt-6 px-8 py-3 rounded text-white font-display text-sm uppercase tracking-[0.08em]";
+          const mobileStyle = { background: "linear-gradient(135deg, #728ea0 25%, #c0c9bf 56%, #d6aa98 74%, #efdcc5 90%)" };
+          return emBreve ? (
+            <span className={mobileClass} style={mobileStyle}>Lançamento em breve</span>
+          ) : (
+            <Link to="/orcamento" className={mobileClass} style={mobileStyle}>Orçamento</Link>
+          );
+        })()}
       </div>
     </>
   );
