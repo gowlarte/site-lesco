@@ -13,7 +13,7 @@ import logoGeoRaw from "@/assets/linha-italflex-2.svg?raw";
 
 const linhas = [
   {
-    nome: "Madeira Ecológica Lesco",
+    nome: "Madeira Ecológica",
     logo: logoMantoRaw,
     descricao: "Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto.",
     href: "/madeira-ecologica-lesco",
@@ -104,10 +104,10 @@ const Linhas = () => {
                 className="group grid grid-cols-1 md:grid-cols-[40%_60%] items-center gap-6 md:gap-12 px-8 md:px-16 lg:px-24 py-14 md:py-20 lg:py-24 transition-colors duration-500"
               >
                 {/* Logo — left.
-                    NOTE: o logo da linha "Madeira Ecológica Lesco" (ex-Manto) está
+                    NOTE: o logo da linha "Madeira Ecológica" (ex-Manto) está
                     temporariamente OCULTO conforme PRD §5.2; reativar trocando
-                    `linha.nome === "Madeira Ecológica Lesco"` por `false`. */}
-                {linha.nome === "Madeira Ecológica Lesco" ? (
+                    `linha.nome === "Madeira Ecológica"` por `false`. */}
+                {linha.nome === "Madeira Ecológica" ? (
                   <h2
                     className="font-display font-light text-[44px] md:text-[64px] lg:text-[80px] leading-none tracking-[-0.02em] transition-all duration-500"
                     style={{

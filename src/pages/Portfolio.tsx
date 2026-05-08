@@ -6,11 +6,11 @@ import projectCasaUna from "@/assets/project-casa-una.png";
 import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 
 const projetos = [
-  { nome: "Casa Mansa", imagem: projectCasaMansa, linha: "Madeira Ecológica Lesco" },
-  { nome: "Residencial Urbano", imagem: projectResidencialUrbano, linha: "Madeira Ecológica Lesco" },
-  { nome: "Casa Areia", imagem: projectCasaAreia, linha: "Madeira Ecológica Lesco" },
-  { nome: "Casa Una", imagem: projectCasaUna, linha: "Madeira Ecológica Lesco" },
-  { nome: "Deck Detail", imagem: projectDeckDetail, linha: "Madeira Ecológica Lesco" },
+  { nome: "Casa Mansa", imagem: projectCasaMansa, linha: "Madeira Ecológica" },
+  { nome: "Residencial Urbano", imagem: projectResidencialUrbano, linha: "Madeira Ecológica" },
+  { nome: "Casa Areia", imagem: projectCasaAreia, linha: "Madeira Ecológica" },
+  { nome: "Casa Una", imagem: projectCasaUna, linha: "Madeira Ecológica" },
+  { nome: "Deck Detail", imagem: projectDeckDetail, linha: "Madeira Ecológica" },
 ];
 
 const Portfolio = () => {

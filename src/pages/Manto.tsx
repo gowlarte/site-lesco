@@ -40,8 +40,8 @@ const produtos = [
   {
     id: "brise",
     tag: "Brise",
-    titulo: "Madeira Ecológica Lesco Brise",
-    descricao: "Perfis de WPC para fachadas, brises soleil e elementos de proteção solar. Disponível nas linhas Madeira Ecológica Lesco Origens e Madeira Ecológica Lesco Classic.",
+    titulo: "Madeira Ecológica Brise",
+    descricao: "Perfis de WPC para fachadas, brises soleil e elementos de proteção solar. Disponível nas linhas Madeira Ecológica Origens e Madeira Ecológica Classic.",
     swatches: [
       { nome: "Black", corAproximada: "#1A1A1A" },
       { nome: "Ipê", corAproximada: "#6B4226" },
@@ -54,7 +54,7 @@ const produtos = [
   {
     id: "shield",
     tag: "Shield",
-    titulo: "Madeira Ecológica Lesco Shield",
+    titulo: "Madeira Ecológica Shield",
     descricao: "Revestimento de alta sofisticação para aplicações internas e externas. Acabamentos escovados e texturizados.",
     swatches: [
       { nome: "Black", corAproximada: "#1A1A1A" },
@@ -68,7 +68,7 @@ const produtos = [
   {
     id: "deck",
     tag: "Deck",
-    titulo: "Madeira Ecológica Lesco Deck",
+    titulo: "Madeira Ecológica Deck",
     descricao: "Decks de madeira ecológica para espaços externos residenciais, comerciais e públicos. Fixação oculta por presilhas de aço inox.",
     swatches: [
       { nome: "Black", corAproximada: "#1A1A1A" },
@@ -82,7 +82,7 @@ const produtos = [
   {
     id: "line",
     tag: "Line",
-    titulo: "Madeira Ecológica Lesco Line",
+    titulo: "Madeira Ecológica Line",
     descricao: "Forros, sancas e superfícies contínuas com encaixe técnico. Acabamento acetinado com retardante ao fogo.",
     swatches: [
       { nome: "Golden Oak", corAproximada: "#C8972E" },
@@ -96,7 +96,7 @@ const produtos = [
   {
     id: "panel",
     tag: "Panel",
-    titulo: "Madeira Ecológica Lesco Panel",
+    titulo: "Madeira Ecológica Panel",
     descricao: "Painéis para interiores e fachadas ventiladas protegidas. Disponível em acabamento acetinado e fosco com tratamento UV.",
     swatches: [
       { nome: "Golden Oak", corAproximada: "#C8972E" },
@@ -147,7 +147,7 @@ const Manto = () => {
     <div className="min-h-screen bg-[#e5e1dc]">
       <HeroSection
         images={heroImages}
-        headline="Madeira Ecológica Lesco"
+        headline="Madeira Ecológica"
         subtitulo="Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto."
         ctaLabel="Explorar Produtos"
         ctaAction={handleExplorar}
