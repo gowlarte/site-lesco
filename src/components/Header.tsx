@@ -147,27 +147,29 @@ export function Header({ variant = "default" }: HeaderProps) {
                     </button>
 
                     {isOpen && (
-                      <div
-                        className={cn(
-                          "absolute top-full left-1/2 -translate-x-1/2 mt-3 min-w-[220px] rounded-[10px] py-2 shadow-2xl",
-                          isLight ? "bg-[#e5e1dc] border border-dark/10" : "bg-[rgba(17,17,16,0.96)] backdrop-blur-xl"
-                        )}
-                      >
-                        {link.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            to={child.href}
-                            className={cn(
-                              "block px-5 py-2.5 font-display font-light text-[12px] uppercase tracking-[0.08em] transition-colors duration-200",
-                              isLight
-                                ? "text-[#303030] hover:text-black hover:bg-black/5"
-                                : "text-white/70 hover:text-white hover:bg-white/5",
-                              location.pathname === child.href && (isLight ? "text-black" : "text-white")
-                            )}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50">
+                        <div
+                          className={cn(
+                            "min-w-[220px] rounded-[10px] py-2 shadow-2xl",
+                            isLight ? "bg-[#e5e1dc] border border-dark/10" : "bg-[rgba(17,17,16,0.96)] backdrop-blur-xl"
+                          )}
+                        >
+                          {link.children.map((child) => (
+                            <Link
+                              key={child.href}
+                              to={child.href}
+                              className={cn(
+                                "block px-5 py-2.5 font-display font-light text-[12px] uppercase tracking-[0.08em] transition-colors duration-200",
+                                isLight
+                                  ? "text-[#303030] hover:text-black hover:bg-black/5"
+                                  : "text-white/70 hover:text-white hover:bg-white/5",
+                                location.pathname === child.href && (isLight ? "text-black" : "text-white")
+                              )}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
                     )}
                   </div>
