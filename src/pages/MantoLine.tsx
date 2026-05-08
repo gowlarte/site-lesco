@@ -46,8 +46,8 @@ const MantoLine = () => {
       {/* Hero */}
       <HeroSection
         images={heroImages}
-        headline="Madeira Ecológica Line"
-        subtitulo="Forros, sancas e superfícies contínuas com encaixe técnico."
+        headline="LESCO LINE"
+        subtitulo=""
       />
 
       {/* Breadcrumb */}
@@ -62,7 +62,7 @@ const MantoLine = () => {
       </div>
 
       {/* Introdução */}
-      <div className="max-w-[760px] mx-auto px-6 py-20 text-center">
+      <div className="px-6 md:px-12 lg:px-20 py-20 text-center">
         <div className="flex items-center gap-4 justify-center mb-8">
           <span className="flex-1 h-px bg-[#1E1E1E]" />
           <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C8956C]">Line</span>
@@ -156,7 +156,7 @@ const MantoLine = () => {
       {galeriaItems.length > 0 && (
         <div className="px-6 md:px-12 lg:px-20 py-24">
           <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">Projetos</span>
-          <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com Madeira Ecológica Line</h2>
+          <h2 className="font-display text-3xl md:text-4xl font-semibold mb-10 text-gray-950">Realizações com LESCO LINE</h2>
           <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
             {galeriaItems.map((item, i) => (
               <div key={i} className="break-inside-avoid">
