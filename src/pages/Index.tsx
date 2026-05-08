@@ -33,9 +33,9 @@ import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 
 const linhas = [
   {
-    nome: "Manto",
+    nome: "Madeira Ecológica",
     logo: logoMantoRaw,
-    descricao: "Madeira ecológica premium. Fachadas, brises, panels e decks.",
+    descricao: "Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto.",
     href: "/manto",
     imagem: heroManto,
   },
@@ -63,11 +63,11 @@ const linhas = [
 ];
 
 const projects = [
-  { nome: "Casa Mansa", imagem: projectCasaMansa, href: "/projetos/casa-mansa", descricao: "Integração total entre arquitetura e natureza com revestimentos Manto.", linha: "Manto" },
-  { nome: "Residencial Urbano", imagem: projectResidencialUrbano, href: "/projetos/residencial-urbano", descricao: "Fachada contemporânea com brises em madeira ecológica.", linha: "Manto" },
-  { nome: "Casa Areia", imagem: projectCasaAreia, href: "/projetos/casa-areia", descricao: "Deck e pergolado em harmonia com a paisagem litorânea.", linha: "Manto" },
+  { nome: "Casa Mansa", imagem: projectCasaMansa, href: "/projetos/casa-mansa", descricao: "Integração total entre arquitetura e natureza com revestimentos em madeira ecológica.", linha: "Madeira Ecológica" },
+  { nome: "Residencial Urbano", imagem: projectResidencialUrbano, href: "/projetos/residencial-urbano", descricao: "Fachada contemporânea com brises em madeira ecológica.", linha: "Madeira Ecológica" },
+  { nome: "Casa Areia", imagem: projectCasaAreia, href: "/projetos/casa-areia", descricao: "Deck e pergolado em harmonia com a paisagem litorânea.", linha: "Madeira Ecológica" },
   { nome: "Casa Una", imagem: projectCasaUna, href: "/projetos/casa-una", descricao: "Revestimento externo que dialoga com a vegetação nativa.", linha: "Zhú" },
-  { nome: "Deck Detail", imagem: projectDeckDetail, href: "/projetos/deck-detail", descricao: "Detalhe de acabamento em deck de alta resistência.", linha: "Manto" },
+  { nome: "Deck Detail", imagem: projectDeckDetail, href: "/projetos/deck-detail", descricao: "Detalhe de acabamento em deck de alta resistência.", linha: "Madeira Ecológica" },
 ];
 
 const SLIDE_INTERVAL = 6000;

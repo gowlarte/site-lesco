@@ -41,9 +41,9 @@ const texturizadasSwatches = [
 ];
 
 const modelos = [
-  { nome: "Manto-Deck-97x22", medida: "97x22 mm", peso: "20,0 kg/m²", imageSrc: modelo97 },
-  { nome: "Manto-Deck-140x22", medida: "140x22 mm", peso: "28 kg/m²", imageSrc: modelo140 },
-  { nome: "Manto-Deck-150x22", medida: "150x22 mm", peso: "18,75 kg/m²", imageSrc: modelo150 },
+  { nome: "Madeira Ecológica-Deck-97x22", medida: "97x22 mm", peso: "20,0 kg/m²", imageSrc: modelo97 },
+  { nome: "Madeira Ecológica-Deck-140x22", medida: "140x22 mm", peso: "28 kg/m²", imageSrc: modelo140 },
+  { nome: "Madeira Ecológica-Deck-150x22", medida: "150x22 mm", peso: "18,75 kg/m²", imageSrc: modelo150 },
 ];
 
 const galeriaItems = [
@@ -64,7 +64,7 @@ const MantoDeck = () => {
       {/* Hero */}
       <HeroSection
         images={heroImages}
-        headline="Manto Deck"
+        headline="Madeira Ecológica Deck"
         subtitulo="Sofisticação e conforto para os espaços ao ar livre."
       />
 
@@ -73,7 +73,7 @@ const MantoDeck = () => {
         <nav className="flex items-center gap-1.5 text-xs">
           <Link to="/" className="text-[#7F7F7F] hover:text-white transition-colors">Início</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
-          <Link to="/manto" className="text-[#7F7F7F] hover:text-white transition-colors">Manto</Link>
+          <Link to="/manto" className="text-[#7F7F7F] hover:text-white transition-colors">Madeira Ecológica</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
           <span className="text-[#525252]">Deck</span>
         </nav>
@@ -203,7 +203,7 @@ const MantoDeck = () => {
       {/* Galeria de Projetos */}
       <div className="px-6 md:px-12 lg:px-20 py-24">
         <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">Projetos</span>
-        <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com Manto Deck</h2>
+        <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com Madeira Ecológica Deck</h2>
 
         <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
           {galeriaItems.map((item, i) => (

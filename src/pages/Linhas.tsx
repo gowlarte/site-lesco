@@ -13,9 +13,9 @@ import logoGeoRaw from "@/assets/linha-italflex-2.svg?raw";
 
 const linhas = [
   {
-    nome: "Manto",
+    nome: "Madeira Ecológica",
     logo: logoMantoRaw,
-    descricao: "Madeira ecológica premium. Fachadas, brises, panels e decks.",
+    descricao: "Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto.",
     href: "/manto",
     imagem: heroManto,
     cor: "#F7C39B",
