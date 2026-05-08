@@ -172,7 +172,7 @@ export const MadeiraEcologicaSection = () => {
             className="w-full h-full object-contain"
           />
         </div>
-        <div className="flex flex-col gap-6">
+        <div className="grid grid-cols-3 gap-x-4 gap-y-8">
           {features.map((f) => (
             <FeatureIcon
               key={f.id}
@@ -183,7 +183,7 @@ export const MadeiraEcologicaSection = () => {
               isActive={activeId === f.id}
               isVisible
               onToggle={handleToggle}
-              align="left"
+              align="center"
             />
           ))}
         </div>
