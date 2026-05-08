@@ -249,7 +249,7 @@ const Index = () => {
                   Acabamento premium para projetos de alto padrão, com garantia de até 10 anos. Cada superfície que criamos resiste ao tempo e agrada o olhar.
                 </p>
                 <Link
-                  to="/contato"
+                  to="/orcamento"
                   className="inline-flex items-center mt-8 px-6 py-3 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary hover:text-foreground transition-colors duration-300"
                 >
                   Fale com um especialista
