@@ -101,7 +101,7 @@ const Blog = () => {
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/60 mb-6">
           Blog Lesco
         </p>
-        <h1 className="font-display font-extralight text-[40px] md:text-[64px] lg:text-[88px] leading-[0.95] tracking-[-0.02em] text-dark max-w-[1100px]">
+        <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-dark max-w-4xl">
           Ideias, materiais e inspiração para a arquitetura do amanhã.
         </h1>
       </section>

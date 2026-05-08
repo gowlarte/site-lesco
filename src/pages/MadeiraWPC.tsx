@@ -50,7 +50,7 @@ const MadeiraWPC = () => {
           <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-[#141414]/55 mb-4">
             Tecnologia
           </p>
-          <h1 className="font-display text-3xl md:text-5xl lg:text-[72px] font-normal leading-[1.05] tracking-[0.02em] text-[#141414] uppercase">
+          <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-[#141414] max-w-4xl">
             Wood Polymer<br />Composite
           </h1>
         </section>

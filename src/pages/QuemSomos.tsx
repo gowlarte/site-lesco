@@ -17,7 +17,7 @@ const QuemSomos = () => {
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-primary">
         <div className="container mx-auto px-6 lg:px-8">
           <p className="text-caption text-primary-foreground/40 mb-6">Sobre a Lesco</p>
-          <h1 className="text-display-xl text-primary-foreground max-w-5xl">
+          <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-primary-foreground max-w-4xl">
             Arquitetura feita<br />para o amanhã.
           </h1>
         </div>

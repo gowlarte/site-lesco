@@ -58,7 +58,7 @@ const EmBreve = () => {
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-6">
             {info.nome}
           </p>
-          <h1 className="font-display font-light text-[40px] md:text-[56px] leading-[1.05] tracking-[-0.02em] text-dark mb-5">
+          <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-dark max-w-4xl mx-auto mb-5">
             Em breve.
           </h1>
           <p className="font-body text-[16px] md:text-[17px] text-[#303030] leading-relaxed mb-10">
