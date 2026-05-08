@@ -38,7 +38,7 @@ const Sustentabilidade = () => {
             {pilares.map((p) => (
               <div key={p.titulo}>
                 <h3 className="font-display text-xl md:text-2xl font-normal text-dark mb-3">{p.titulo}</h3>
-                <p className="font-body text-[15px] font-light leading-[1.65] text-dark/70">{p.texto}</p>
+                <p className="font-body text-[15px] font-light leading-[1.65] text-dark/70 text-gray-950">{p.texto}</p>
               </div>
             ))}
           </div>
