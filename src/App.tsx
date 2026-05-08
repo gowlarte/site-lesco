@@ -52,7 +52,7 @@ const AppContent = () => {
           <Route path="/madeira-wpc" element={<MadeiraWPC />} />
           <Route path="/revestimento-sustentavel" element={<Sustentabilidade />} />
 
-          {/* Madeira Ecológica Lesco — hub e produtos (na raiz) */}
+          {/* Madeira Ecológica — hub e produtos (na raiz) */}
           <Route path="/madeira-ecologica-lesco" element={<Manto />} />
           <Route path="/brise-madeira-ecologica" element={<MantoBrise />} />
           <Route path="/madeira-ecologica-para-fachada" element={<MantoShield />} />

@@ -52,23 +52,23 @@ const foscasSwatches = [
 ];
 
 const modelos = [
-  { nome: "Madeira Ecológica Lesco-Panel-119x12", medida: "119x12 mm", peso: "4,90 kg/m²", imageSrc: modelo119x12 },
-  { nome: "Madeira Ecológica Lesco-Panel-215x30", medida: "215x30 mm", peso: "7,05 kg/m²", imageSrc: modelo215x30 },
-  { nome: "Madeira Ecológica Lesco-Panel-260x15", medida: "260x15 mm", peso: "7,09 kg/m²", imageSrc: modelo260x15 },
-  { nome: "Madeira Ecológica Lesco-Panel-170x12", medida: "170x12 mm", peso: "4,07 kg/m²", imageSrc: modelo170x12 },
-  { nome: "Madeira Ecológica Lesco-Panel-169x15", medida: "169x15 mm", peso: "4,88 kg/m²", imageSrc: modelo169x15 },
-  { nome: "Madeira Ecológica Lesco-Panel-204x16", medida: "204x16 mm", peso: "4,80 kg/m²", imageSrc: modelo204x16 },
-  { nome: "Madeira Ecológica Lesco-Panel-202x25", medida: "202x25 mm", peso: "7,60 kg/m²", imageSrc: modelo202x25 },
-  { nome: "Madeira Ecológica Lesco-Panel-182x15", medida: "182x15 mm", peso: "4,90 kg/m²", imageSrc: modelo182x15 },
-  { nome: "Madeira Ecológica Lesco-Panel-119x14", medida: "119x14 mm", peso: "5,12 kg/m²", imageSrc: modelo119x14 },
-  { nome: "Madeira Ecológica Lesco-Panel-150x14", medida: "150x14 mm", peso: "5,20 kg/m²", imageSrc: modelo150x14 },
-  { nome: "Madeira Ecológica Lesco-Panel-180x14", medida: "180x14 mm", peso: "5,40 kg/m²", imageSrc: modelo180x14 },
-  { nome: "Madeira Ecológica Lesco-Panel-268x20", medida: "268x20 mm", peso: "6,35 kg/m²", imageSrc: modelo268x20 },
-  { nome: "Madeira Ecológica Lesco-Panel-204x35", medida: "204x35 mm", peso: "7,80 kg/m²", imageSrc: modelo204x35 },
-  { nome: "Madeira Ecológica Lesco-Panel-158x10", medida: "158x10 mm", peso: "4,00 kg/m²", imageSrc: modelo158x10 },
-  { nome: "Madeira Ecológica Lesco-Panel-153x12", medida: "153x12 mm", peso: "4,20 kg/m²", imageSrc: modelo153x12 },
-  { nome: "Madeira Ecológica Lesco-Panel-59x34", medida: "59x34 mm", peso: "0,43 kg/m²", imageSrc: modelo59x34 },
-  { nome: "Madeira Ecológica Lesco-Panel-45x35", medida: "45x35 mm", peso: "0,28 kg/m²", imageSrc: modelo45x35 },
+  { nome: "Madeira Ecológica-Panel-119x12", medida: "119x12 mm", peso: "4,90 kg/m²", imageSrc: modelo119x12 },
+  { nome: "Madeira Ecológica-Panel-215x30", medida: "215x30 mm", peso: "7,05 kg/m²", imageSrc: modelo215x30 },
+  { nome: "Madeira Ecológica-Panel-260x15", medida: "260x15 mm", peso: "7,09 kg/m²", imageSrc: modelo260x15 },
+  { nome: "Madeira Ecológica-Panel-170x12", medida: "170x12 mm", peso: "4,07 kg/m²", imageSrc: modelo170x12 },
+  { nome: "Madeira Ecológica-Panel-169x15", medida: "169x15 mm", peso: "4,88 kg/m²", imageSrc: modelo169x15 },
+  { nome: "Madeira Ecológica-Panel-204x16", medida: "204x16 mm", peso: "4,80 kg/m²", imageSrc: modelo204x16 },
+  { nome: "Madeira Ecológica-Panel-202x25", medida: "202x25 mm", peso: "7,60 kg/m²", imageSrc: modelo202x25 },
+  { nome: "Madeira Ecológica-Panel-182x15", medida: "182x15 mm", peso: "4,90 kg/m²", imageSrc: modelo182x15 },
+  { nome: "Madeira Ecológica-Panel-119x14", medida: "119x14 mm", peso: "5,12 kg/m²", imageSrc: modelo119x14 },
+  { nome: "Madeira Ecológica-Panel-150x14", medida: "150x14 mm", peso: "5,20 kg/m²", imageSrc: modelo150x14 },
+  { nome: "Madeira Ecológica-Panel-180x14", medida: "180x14 mm", peso: "5,40 kg/m²", imageSrc: modelo180x14 },
+  { nome: "Madeira Ecológica-Panel-268x20", medida: "268x20 mm", peso: "6,35 kg/m²", imageSrc: modelo268x20 },
+  { nome: "Madeira Ecológica-Panel-204x35", medida: "204x35 mm", peso: "7,80 kg/m²", imageSrc: modelo204x35 },
+  { nome: "Madeira Ecológica-Panel-158x10", medida: "158x10 mm", peso: "4,00 kg/m²", imageSrc: modelo158x10 },
+  { nome: "Madeira Ecológica-Panel-153x12", medida: "153x12 mm", peso: "4,20 kg/m²", imageSrc: modelo153x12 },
+  { nome: "Madeira Ecológica-Panel-59x34", medida: "59x34 mm", peso: "0,43 kg/m²", imageSrc: modelo59x34 },
+  { nome: "Madeira Ecológica-Panel-45x35", medida: "45x35 mm", peso: "0,28 kg/m²", imageSrc: modelo45x35 },
 ];
 
 const galeriaItems = [
@@ -90,7 +90,7 @@ const MantoPanel = () => {
       {/* Hero */}
       <HeroSection
         images={heroImages}
-        headline="Madeira Ecológica Lesco Panel"
+        headline="Madeira Ecológica Panel"
         subtitulo="Ideal para interiores e fachadas ventiladas protegidas."
       />
 
@@ -99,7 +99,7 @@ const MantoPanel = () => {
         <nav className="flex items-center gap-1.5 text-xs">
           <Link to="/" className="text-[#7F7F7F] hover:text-white transition-colors">Início</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
-          <Link to="/madeira-ecologica-lesco" className="text-[#7F7F7F] hover:text-white transition-colors">Madeira Ecológica Lesco</Link>
+          <Link to="/madeira-ecologica-lesco" className="text-[#7F7F7F] hover:text-white transition-colors">Madeira Ecológica</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
           <span className="text-[#525252]">Panel</span>
         </nav>
@@ -221,7 +221,7 @@ const MantoPanel = () => {
       {galeriaItems.length > 0 && (
         <div className="px-6 md:px-12 lg:px-20 py-24">
           <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">Projetos</span>
-          <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com Madeira Ecológica Lesco Panel</h2>
+          <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com Madeira Ecológica Panel</h2>
           <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
             {galeriaItems.map((item, i) => (
               <div key={i} className="break-inside-avoid">
@@ -239,7 +239,7 @@ const MantoPanel = () => {
             ← Line
           </Link>
           <Link to="/madeira-ecologica-lesco" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
-            Madeira Ecológica Lesco →
+            Madeira Ecológica →
           </Link>
         </div>
       </div>

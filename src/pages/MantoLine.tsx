@@ -26,9 +26,9 @@ const coresSwatches = [
 ];
 
 const modelos = [
-  { nome: "Madeira Ecológica Lesco-Line-40x45", medida: "40x45 mm", peso: "3,63 kg/m²", imageSrc: modelo40x45 },
-  { nome: "Madeira Ecológica Lesco-Line-40x100", medida: "40x100 mm", peso: "6,63 kg/m²", imageSrc: modelo40x100 },
-  { nome: "Madeira Ecológica Lesco-Line-100x20", medida: "100x20 mm", peso: "3 kg/m²", imageSrc: modelo100x20 },
+  { nome: "Madeira Ecológica-Line-40x45", medida: "40x45 mm", peso: "3,63 kg/m²", imageSrc: modelo40x45 },
+  { nome: "Madeira Ecológica-Line-40x100", medida: "40x100 mm", peso: "6,63 kg/m²", imageSrc: modelo40x100 },
+  { nome: "Madeira Ecológica-Line-100x20", medida: "100x20 mm", peso: "3 kg/m²", imageSrc: modelo100x20 },
 ];
 
 const galeriaItems = [
@@ -46,7 +46,7 @@ const MantoLine = () => {
       {/* Hero */}
       <HeroSection
         images={heroImages}
-        headline="Madeira Ecológica Lesco Line"
+        headline="Madeira Ecológica Line"
         subtitulo="Forros, sancas e superfícies contínuas com encaixe técnico."
       />
 
@@ -55,7 +55,7 @@ const MantoLine = () => {
         <nav className="flex items-center gap-1.5 text-xs">
           <Link to="/" className="text-[#7F7F7F] hover:text-white transition-colors">Início</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
-          <Link to="/madeira-ecologica-lesco" className="text-[#7F7F7F] hover:text-white transition-colors">Madeira Ecológica Lesco</Link>
+          <Link to="/madeira-ecologica-lesco" className="text-[#7F7F7F] hover:text-white transition-colors">Madeira Ecológica</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
           <span className="text-[#525252]">Line</span>
         </nav>
@@ -156,7 +156,7 @@ const MantoLine = () => {
       {galeriaItems.length > 0 && (
         <div className="px-6 md:px-12 lg:px-20 py-24">
           <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">Projetos</span>
-          <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com Madeira Ecológica Lesco Line</h2>
+          <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com Madeira Ecológica Line</h2>
           <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
             {galeriaItems.map((item, i) => (
               <div key={i} className="break-inside-avoid">

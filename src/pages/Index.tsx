@@ -33,7 +33,7 @@ import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 
 const linhas = [
   {
-    nome: "Madeira Ecológica Lesco",
+    nome: "Madeira Ecológica",
     logo: logoMantoRaw,
     descricao: "Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto.",
     href: "/madeira-ecologica-lesco",
@@ -63,11 +63,11 @@ const linhas = [
 ];
 
 const projects = [
-  { nome: "Casa Mansa", imagem: projectCasaMansa, href: "/projetos/casa-mansa", descricao: "Integração total entre arquitetura e natureza com revestimentos em madeira ecológica.", linha: "Madeira Ecológica Lesco" },
-  { nome: "Residencial Urbano", imagem: projectResidencialUrbano, href: "/projetos/residencial-urbano", descricao: "Fachada contemporânea com brises em madeira ecológica.", linha: "Madeira Ecológica Lesco" },
-  { nome: "Casa Areia", imagem: projectCasaAreia, href: "/projetos/casa-areia", descricao: "Deck e pergolado em harmonia com a paisagem litorânea.", linha: "Madeira Ecológica Lesco" },
+  { nome: "Casa Mansa", imagem: projectCasaMansa, href: "/projetos/casa-mansa", descricao: "Integração total entre arquitetura e natureza com revestimentos em madeira ecológica.", linha: "Madeira Ecológica" },
+  { nome: "Residencial Urbano", imagem: projectResidencialUrbano, href: "/projetos/residencial-urbano", descricao: "Fachada contemporânea com brises em madeira ecológica.", linha: "Madeira Ecológica" },
+  { nome: "Casa Areia", imagem: projectCasaAreia, href: "/projetos/casa-areia", descricao: "Deck e pergolado em harmonia com a paisagem litorânea.", linha: "Madeira Ecológica" },
   { nome: "Casa Una", imagem: projectCasaUna, href: "/projetos/casa-una", descricao: "Revestimento externo que dialoga com a vegetação nativa.", linha: "Zhú" },
-  { nome: "Deck Detail", imagem: projectDeckDetail, href: "/projetos/deck-detail", descricao: "Detalhe de acabamento em deck de alta resistência.", linha: "Madeira Ecológica Lesco" },
+  { nome: "Deck Detail", imagem: projectDeckDetail, href: "/projetos/deck-detail", descricao: "Detalhe de acabamento em deck de alta resistência.", linha: "Madeira Ecológica" },
 ];
 
 const SLIDE_INTERVAL = 6000;
@@ -181,8 +181,8 @@ const Index = () => {
 
         {/* Bottom-left: logo + descrição */}
         <div className="absolute bottom-20 lg:bottom-16 left-8 lg:left-12 right-8 lg:right-auto z-10 max-w-[640px] text-white flex flex-col items-start">
-          {/* Logo da linha — Manto/"Madeira Ecológica Lesco" oculto via PRD §5.2; mostra wordmark em texto */}
-          {active.nome === "Madeira Ecológica Lesco" ? (
+          {/* Logo da linha — Manto/"Madeira Ecológica" oculto via PRD §5.2; mostra wordmark em texto */}
+          {active.nome === "Madeira Ecológica" ? (
             <h1
               className="mb-5 font-display font-light text-[44px] md:text-[56px] lg:text-[68px] leading-none tracking-[-0.02em] text-white"
             >
@@ -242,7 +242,7 @@ const Index = () => {
           <ScrollReveal>
             <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 lg:gap-20 items-start">
               <h2 className="font-display text-3xl md:text-4xl lg:text-[52px] font-normal leading-[1.15] text-dark">
-                Pioneiros em Madeira Ecológica Lesco no Brasil, somos arquitetura feita para o amanhã.
+                Pioneiros em Madeira Ecológica no Brasil, somos arquitetura feita para o amanhã.
               </h2>
               <div className="max-w-[320px]">
                 <p className="font-body text-[16px] font-light leading-[1.65] text-dark/70 text-primary">
