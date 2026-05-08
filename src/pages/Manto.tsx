@@ -22,7 +22,7 @@ import projetoShield4 from "@/assets/projeto-shield-4.png";
 import projetoShield5 from "@/assets/projeto-shield-5.png";
 import projetoShield6 from "@/assets/projeto-shield-6.jpg";
 import projetoDeck1 from "@/assets/projeto-deck-1.jpg";
-import projetoDeck2 from "@/assets/projeto-deck-2.png";
+import projetoDeck2 from "@/assets/preview-deck-2.png";
 import projetoDeck3 from "@/assets/projeto-deck-3.jpg";
 import projetoDeck4 from "@/assets/projeto-deck-4.jpg";
 import projetoDeck5 from "@/assets/projeto-deck-5.jpg";
@@ -42,15 +42,107 @@ const produtos = [
     tag: "Brise",
     titulo: "Madeira Ecológica Brise",
     descricao: "Perfis de WPC para fachadas, brises soleil e elementos de proteção solar. Disponível nas linhas Madeira Ecológica Origens e Madeira Ecológica Classic.",
-...
+    swatches: [
+      { nome: "Black", corAproximada: "#1A1A1A" },
+      { nome: "Ipê", corAproximada: "#6B4226" },
+      { nome: "Teak", corAproximada: "#8B5E3C" },
+      { nome: "Oak", corAproximada: "#A0784A" },
+    ],
+    href: "/manto-brise",
+    images: [prevBrise1, prevBrise2, prevBrise3, prevBrise4],
+  },
+  {
+    id: "shield",
+    tag: "Shield",
     titulo: "Madeira Ecológica Shield",
-...
+    descricao: "Revestimento de alta sofisticação para aplicações internas e externas. Acabamentos escovados e texturizados.",
+    swatches: [
+      { nome: "Black", corAproximada: "#1A1A1A" },
+      { nome: "Ipê", corAproximada: "#6B4226" },
+      { nome: "Teak", corAproximada: "#8B5E3C" },
+      { nome: "Walnut", corAproximada: "#4A3728" },
+    ],
+    href: "/manto-shield",
+    images: [projetoShield1, projetoShield2, projetoShield3, projetoShield4, projetoShield5, projetoShield6],
+  },
+  {
+    id: "deck",
+    tag: "Deck",
     titulo: "Madeira Ecológica Deck",
-...
+    descricao: "Decks de madeira ecológica para espaços externos residenciais, comerciais e públicos. Fixação oculta por presilhas de aço inox.",
+    swatches: [
+      { nome: "Black", corAproximada: "#1A1A1A" },
+      { nome: "Ipê", corAproximada: "#6B4226" },
+      { nome: "Teak", corAproximada: "#8B5E3C" },
+      { nome: "Oak", corAproximada: "#A0784A" },
+    ],
+    href: "/manto-deck",
+    images: [projetoDeck2, projetoDeck1, projetoDeck3, projetoDeck4, projetoDeck5],
+  },
+  {
+    id: "line",
+    tag: "Line",
     titulo: "Madeira Ecológica Line",
-...
+    descricao: "Forros, sancas e superfícies contínuas com encaixe técnico. Acabamento acetinado com retardante ao fogo.",
+    swatches: [
+      { nome: "Golden Oak", corAproximada: "#C8972E" },
+      { nome: "Hickory", corAproximada: "#9E7B4F" },
+      { nome: "Tasmania Oak", corAproximada: "#C4A882" },
+      { nome: "Urban Oak", corAproximada: "#7A7060" },
+    ],
+    href: "/manto-line",
+    images: [projetoLine1, projetoLine2, projetoLine3],
+  },
+  {
+    id: "panel",
+    tag: "Panel",
     titulo: "Madeira Ecológica Panel",
-...
+    descricao: "Painéis para interiores e fachadas ventiladas protegidas. Disponível em acabamento acetinado e fosco com tratamento UV.",
+    swatches: [
+      { nome: "Golden Oak", corAproximada: "#C8972E" },
+      { nome: "Hickory", corAproximada: "#9E7B4F" },
+      { nome: "Merbau", corAproximada: "#5C2E1A" },
+      { nome: "Urban Oak", corAproximada: "#7A7060" },
+    ],
+    href: "/manto-panel",
+    images: [projetoPanel1, projetoPanel2, projetoPanel3, projetoPanel4, projetoPanel5, projetoPanel6],
+  },
+];
+
+const Manto = () => {
+  const [activeTab, setActiveTab] = useState("brise");
+  const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
+
+  const handleTabClick = useCallback((id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
+
+  const handleExplorar = useCallback(() => {
+    const el = document.getElementById("filtro");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveTab(entry.target.id);
+          }
+        }
+      },
+      { rootMargin: "-56px 0px -60% 0px", threshold: 0.1 }
+    );
+
+    produtos.forEach((p) => {
+      const el = document.getElementById(p.id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#e5e1dc]">
       <HeroSection
