@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import heroFloresta from "@/assets/sustentabilidade/hero-floresta.jpg";
 import esgBadge from "@/assets/certifications/esg.png";
 import gbcBadge from "@/assets/certifications/gbc.png";
 import leedBadge from "@/assets/certifications/leed.png";
