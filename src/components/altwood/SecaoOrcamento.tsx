@@ -22,7 +22,7 @@ export const SecaoOrcamento = ({ imageSrc }: SecaoOrcamentoProps) => (
       </h2>
       <BotaoCTA variant="primary" className="mb-8">Falar com um especialista</BotaoCTA>
       <p className="text-[13px] text-[#7F7F7F] leading-relaxed">
-        Florianópolis, SC &middot; São Paulo, SP<br />
+        Itajaí, SC &middot; São Paulo, SP<br />
         @lesco_br &middot; lesco.com.br &middot; (11) 94844-9044
       </p>
     </div>
