@@ -82,7 +82,7 @@ const MantoShield = () => {
       <HeroSection
         images={[heroShield1, heroShield2, heroShield3, heroShield4]}
         headline="LESCO SHIELD"
-        subtitulo="\n"
+        subtitulo=""
       />
 
       {/* Breadcrumb */}
