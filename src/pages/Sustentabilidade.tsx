@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import heroFloresta from "@/assets/sustentabilidade/hero-floresta.jpg";
 import esgBadge from "@/assets/certifications/esg.png";
 import gbcBadge from "@/assets/certifications/gbc.png";
 import leedBadge from "@/assets/certifications/leed.png";
@@ -29,18 +30,28 @@ const Sustentabilidade = () => {
         content="Compromisso ambiental da Lesco: revestimentos premium feitos com material reciclado, longa vida útil e certificações reconhecidas internacionalmente."
       />
       <main className="min-h-screen pt-[110px] pb-[10px] px-[10px] flex flex-col gap-[10px]">
-        <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 md:py-28">
-          <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-6">
-            Sustentabilidade
-          </p>
-          <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-dark max-w-4xl">
-            Arquitetura responsável, do design ao descarte.
-          </h1>
-          <p className="mt-8 max-w-2xl font-body text-[16px] md:text-[18px] font-light leading-[1.65] text-dark/75">
-            Acreditamos que o revestimento certo precisa ser bonito, durável e responsável
-            — ao mesmo tempo. Cada produto Lesco nasce de uma cadeia produtiva que respeita
-            o ciclo da matéria.
-          </p>
+        <section
+          className="relative overflow-hidden rounded-[10px] px-8 md:px-16 lg:px-24 py-20 md:py-28 min-h-[60vh] flex flex-col justify-end"
+        >
+          <img
+            src={heroFloresta}
+            alt="Casa minimalista entre pinheiros, refletindo arquitetura responsável"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+          <div className="relative z-10">
+            <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-white/80 mb-6">
+              Sustentabilidade
+            </p>
+            <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-white max-w-4xl">
+              Arquitetura responsável, do design ao descarte.
+            </h1>
+            <p className="mt-8 max-w-2xl font-body text-[16px] md:text-[18px] font-light leading-[1.65] text-white/85">
+              Acreditamos que o revestimento certo precisa ser bonito, durável e responsável
+              — ao mesmo tempo. Cada produto Lesco nasce de uma cadeia produtiva que respeita
+              o ciclo da matéria.
+            </p>
+          </div>
         </section>
 
         <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 md:py-24">
