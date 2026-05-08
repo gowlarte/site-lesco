@@ -30,7 +30,7 @@ const QuemSomos = () => {
             <div className="flex gap-8">
               <div className="hidden md:block w-px bg-accent shrink-0 self-stretch" />
               <div className="space-y-8">
-                <p className="font-display text-2xl md:text-3xl lg:text-4xl font-light text-foreground leading-[1.3]">
+                <p className="font-display text-2xl md:text-3xl lg:text-4xl font-light text-foreground leading-[1.3] text-gray-950">
                   A Lesco nasceu da convicção de que a arquitetura pode ser bonita, durável e responsável — ao mesmo tempo.
                 </p>
                 <p className="text-body-lg text-muted-foreground">
