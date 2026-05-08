@@ -202,7 +202,7 @@ export const MadeiraEcologicaSection = () => {
   // ============ MOBILE LAYOUT ============
   if (isMobile) {
     return (
-      <section className="bg-[#DBDBDB] rounded-[10px] mx-[10px] py-16 px-5">
+      <section ref={sectionRef} className="bg-[#DBDBDB] rounded-[10px] mx-[10px] py-16 px-5">
         <h2 className="font-display text-3xl font-normal leading-[1.15] text-[#141414] text-center mb-10">
           Conheça nossa<br />madeira ecológica
         </h2>
