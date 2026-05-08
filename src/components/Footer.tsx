@@ -22,7 +22,7 @@ export function Footer() {
             <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-muted-foreground mb-5">Linhas</h4>
             <ul className="space-y-3">
               {[
-                { label: "Manto", href: "/manto" },
+                { label: "Madeira Ecológica", href: "/manto" },
                 { label: "Geo", href: "/geo" },
                 { label: "Zhú", href: "/zhu" },
                 { label: "Echo", href: "/echo" },
