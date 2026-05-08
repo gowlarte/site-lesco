@@ -181,12 +181,21 @@ const Index = () => {
 
         {/* Bottom-left: logo + descrição */}
         <div className="absolute bottom-20 lg:bottom-16 left-8 lg:left-12 right-8 lg:right-auto z-10 max-w-[640px] text-white flex flex-col items-start">
-          <div
-            className="mb-5 transition-opacity duration-500 [&>svg]:h-[44px] md:[&>svg]:h-[56px] lg:[&>svg]:h-[68px] [&>svg]:w-auto"
-            style={{ color: "#FFFFFF" }}
-            dangerouslySetInnerHTML={{ __html: active.logo }}
-            aria-label={active.nome}
-          />
+          {/* Logo da linha — Manto/"Madeira Ecológica Lesco" oculto via PRD §5.2; mostra wordmark em texto */}
+          {active.nome === "Madeira Ecológica Lesco" ? (
+            <h1
+              className="mb-5 font-display font-light text-[44px] md:text-[56px] lg:text-[68px] leading-none tracking-[-0.02em] text-white"
+            >
+              {active.nome}
+            </h1>
+          ) : (
+            <div
+              className="mb-5 transition-opacity duration-500 [&>svg]:h-[44px] md:[&>svg]:h-[56px] lg:[&>svg]:h-[68px] [&>svg]:w-auto"
+              style={{ color: "#FFFFFF" }}
+              dangerouslySetInnerHTML={{ __html: active.logo }}
+              aria-label={active.nome}
+            />
+          )}
           <p className="font-display font-extralight text-[20px] md:text-[26px] lg:text-[30px] leading-[1.2] tracking-[-0.01em] text-white/95 max-w-[520px] text-left">
             {active.descricao}
           </p>
