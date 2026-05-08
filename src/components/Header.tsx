@@ -194,12 +194,16 @@ export function Header({ variant = "default" }: HeaderProps) {
           </nav>
 
           {/* Desktop CTA */}
-          <Link
-            to="/orcamento"
-            className="hidden md:inline-flex items-center px-4 py-1.5 rounded font-display font-light text-[12px] uppercase tracking-[0.08em] text-[#303030] bg-[#DBDBDB] hover:bg-[#cfcfcf] transition-all duration-300"
-          >
-            Orçamento
-          </Link>
+          {(() => {
+            const emBreve = ["/zhu", "/echo", "/geo"].includes(location.pathname);
+            const ctaLabel = emBreve ? "Lançamento em breve" : "Orçamento";
+            const ctaClass = "hidden md:inline-flex items-center px-4 py-1.5 rounded font-display font-light text-[12px] uppercase tracking-[0.08em] text-[#303030] bg-[#DBDBDB] hover:bg-[#cfcfcf] transition-all duration-300";
+            return emBreve ? (
+              <span className={cn(ctaClass, "cursor-default hover:bg-[#DBDBDB]")}>{ctaLabel}</span>
+            ) : (
+              <Link to="/orcamento" className={ctaClass}>{ctaLabel}</Link>
+            );
+          })()}
 
           {/* Mobile Hamburger */}
           <button
@@ -263,15 +267,16 @@ export function Header({ variant = "default" }: HeaderProps) {
           );
         })}
 
-        <Link
-          to="/orcamento"
-          className="mt-6 px-8 py-3 rounded text-white font-display text-sm uppercase tracking-[0.08em]"
-          style={{
-            background: "linear-gradient(135deg, #728ea0 25%, #c0c9bf 56%, #d6aa98 74%, #efdcc5 90%)",
-          }}
-        >
-          Orçamento
-        </Link>
+        {(() => {
+          const emBreve = ["/zhu", "/echo", "/geo"].includes(location.pathname);
+          const mobileClass = "mt-6 px-8 py-3 rounded text-white font-display text-sm uppercase tracking-[0.08em]";
+          const mobileStyle = { background: "linear-gradient(135deg, #728ea0 25%, #c0c9bf 56%, #d6aa98 74%, #efdcc5 90%)" };
+          return emBreve ? (
+            <span className={mobileClass} style={mobileStyle}>Lançamento em breve</span>
+          ) : (
+            <Link to="/orcamento" className={mobileClass} style={mobileStyle}>Orçamento</Link>
+          );
+        })()}
       </div>
     </>
   );
