@@ -1,4 +1,10 @@
-import projectCasaMansa from "@/assets/project-casa-mansa.jpg";
+import projectCasaMansa from "@/assets/projetos/casa-mansa-hero.jpg";
+import casaMansa2 from "@/assets/projetos/casa-mansa-2.jpg";
+import casaMansa3 from "@/assets/projetos/casa-mansa-3.jpg";
+import casaMansa4 from "@/assets/projetos/casa-mansa-4.jpg";
+import casaMansa5 from "@/assets/projetos/casa-mansa-5.jpg";
+import casaMansa6 from "@/assets/projetos/casa-mansa-6.jpg";
+import casaMansa7 from "@/assets/projetos/casa-mansa-7.jpg";
 import projectResidencialUrbano from "@/assets/project-residencial-urbano.webp";
 import projectCasaAreia from "@/assets/project-casa-areia.jpg";
 import projectCasaUna from "@/assets/project-casa-una.png";
@@ -23,21 +29,24 @@ export type Projeto = {
 export const projetos: Projeto[] = [
   {
     slug: "casa-mansa",
-    nome: "Casa Mansa",
+    nome: "Elegância e Resistência com Materiais Ecológicos de Alto Desempenho",
     imagem: projectCasaMansa,
     linha: "Madeira Ecológica",
-    local: "Trancoso, BA",
+    local: "Xangri-Lá, RS",
     ano: "2024",
     area: "420 m²",
-    arquitetura: "Estúdio Litoral",
-    produtos: ["AltWood Shield", "AltWood Deck"],
+    arquitetura: "Stemmer Rodrigues",
+    produtos: [
+      "Lesco Green Panel 215,5×30 Tasmania Oak",
+      "Lesco Green Brise 100×50 Red Cedar",
+    ],
     descricao:
-      "Residência litorânea integrada à mata nativa, onde a fachada em madeira ecológica dialoga com o entorno e amplia a sensação de continuidade entre o construído e o natural.",
+      "Essa categoria de produtos oferece uma opção sustentável e sofisticada para transformar o interior ou exterior de qualquer espaço. Fabricado a partir de uma combinação de fibras de madeira reciclada e resinas plásticas, este material apresenta uma estética natural e calorosa, sem comprometer a durabilidade e a resistência.",
     desafio:
       "Desenvolver um envelope contínuo, resistente à maresia e à alta umidade, sem perder a textura e o calor da madeira natural.",
     solucao:
       "Aplicação de Shield em fachada ventilada e Deck em todo o pavimento térreo externo, garantindo unidade visual, baixa manutenção e desempenho técnico.",
-    galeria: [projectCasaMansa, projectDeckDetail, projectCasaAreia],
+    galeria: [casaMansa2, casaMansa3, casaMansa4, casaMansa5, casaMansa6, casaMansa7],
   },
   {
     slug: "residencial-urbano",
