@@ -7,7 +7,7 @@ interface CardModeloProps {
 }
 
 export const CardModelo = ({ imageSrc, nome, medida, peso, onOrcamento }: CardModeloProps) => (
-  <div className="flex flex-col group py-[20px] px-[20px] bg-white gap-[10px] rounded-md">
+  <div className="flex flex-col group py-[20px] px-[20px] bg-white gap-[10px] rounded-md text-gray-950">
     {/* Header: medida + peso */}
     <div className="flex items-baseline justify-between gap-3 pb-2">
       <span className="text-sm md:text-[15px] font-semibold text-primary tracking-tight">{medida}</span>
