@@ -116,7 +116,7 @@ const QuemSomos = () => {
               {certifications.map((cert) => (
                 <div
                   key={cert}
-                  className="px-6 py-3 border border-border bg-secondary text-foreground font-mono-tech text-sm tracking-wider"
+                  className="px-6 py-3 border border-border bg-secondary text-foreground font-mono-tech text-sm tracking-wider text-gray-950"
                 >
                   {cert}
                 </div>
