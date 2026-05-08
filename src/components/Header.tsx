@@ -210,7 +210,7 @@ export function Header({ variant = "default" }: HeaderProps) {
           <button
             className={cn(
               "md:hidden transition-colors duration-300",
-              isOverlay ? "text-white" : isLight ? "text-[#303030]" : "text-foreground"
+              overlayTransparent ? "text-white" : isLight ? "text-[#303030]" : "text-foreground"
             )}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Menu"
