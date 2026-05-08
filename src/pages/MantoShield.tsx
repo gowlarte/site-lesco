@@ -81,8 +81,8 @@ const MantoShield = () => {
       {/* Hero */}
       <HeroSection
         images={[heroShield1, heroShield2, heroShield3, heroShield4]}
-        headline="Madeira Ecológica Shield"
-        subtitulo="Um novo paradigma de qualidade e sofisticação para aplicações internas e externas."
+        headline="LESCO SHIELD"
+        subtitulo="\n"
       />
 
       {/* Breadcrumb */}
@@ -103,8 +103,13 @@ const MantoShield = () => {
           <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C8956C]">Shield</span>
           <span className="flex-1 h-px bg-[#1E1E1E]" />
         </div>
-        <p className="text-[17px] text-[#7F7F7F] leading-[1.7]">
+        <p className="text-[17px] text-[#7F7F7F] leading-[1.7] whitespace-pre-line">
           Os revestimentos Lesco representam um paradigma de qualidade e sofisticação para aplicações tanto internas quanto externas. Ele combina tecnologia e durabilidade do plástico com a beleza estética da madeira, criando um material de alta resistência e durabilidade, sem perder o aspecto natural.
+
+          Explore as características e benefícios desses perfis, que destacam suas aplicações versáteis e seu potencial para aprimorar tanto o desempenho quanto a aparência de uma variedade de estruturas.
+
+          Aplicações: fachadas e painéis verticais.
+          Garantia: 10 anos.
         </p>
       </div>
 
@@ -221,7 +226,7 @@ const MantoShield = () => {
       {/* Galeria de Projetos */}
       <div className="px-6 md:px-12 lg:px-20 py-24">
         <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">Projetos</span>
-        <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com Madeira Ecológica Shield</h2>
+        <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com LESCO SHIELD</h2>
 
         <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
           {galeriaItems.map((item, i) => (
