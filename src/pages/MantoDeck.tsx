@@ -64,8 +64,8 @@ const MantoDeck = () => {
       {/* Hero */}
       <HeroSection
         images={heroImages}
-        headline="Madeira Ecológica Deck"
-        subtitulo="Sofisticação e conforto para os espaços ao ar livre."
+        headline="LESCO DECK"
+        subtitulo=""
       />
 
       {/* Breadcrumb */}
@@ -80,7 +80,7 @@ const MantoDeck = () => {
       </div>
 
       {/* Introdução */}
-      <div className="max-w-[760px] mx-auto px-6 py-20 text-center">
+      <div className="px-6 md:px-12 lg:px-20 py-20 text-center">
         <div className="flex items-center gap-4 justify-center mb-8">
           <span className="flex-1 h-px bg-[#1E1E1E]" />
           <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C8956C]">Deck</span>
@@ -203,7 +203,7 @@ const MantoDeck = () => {
       {/* Galeria de Projetos */}
       <div className="px-6 md:px-12 lg:px-20 py-24">
         <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">Projetos</span>
-        <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com Madeira Ecológica Deck</h2>
+        <h2 className="font-display text-3xl md:text-4xl font-semibold mb-10 text-gray-950">Realizações com LESCO DECK</h2>
 
         <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
           {galeriaItems.map((item, i) => (

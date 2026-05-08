@@ -115,8 +115,8 @@ const MantoBrise = () => {
       {/* Hero */}
       <HeroSection
         images={heroImages}
-        headline="Madeira Ecológica Brise"
-        subtitulo="Um recurso artístico para a arquitetura contemporânea."
+        headline="LESCO BRISE"
+        subtitulo=""
       />
 
       {/* Breadcrumb */}
@@ -255,7 +255,7 @@ const MantoBrise = () => {
       {/* Galeria de Projetos */}
       <div className="px-6 md:px-12 lg:px-20 py-24">
         <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">Projetos</span>
-        <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-10">Realizações com Madeira Ecológica Brise</h2>
+        <h2 className="font-display text-3xl md:text-4xl font-semibold mb-10 text-gray-950">Realizações com LESCO BRISE</h2>
 
         <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
           {galeriaItems.map((item, i) => (
