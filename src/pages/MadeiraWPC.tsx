@@ -1,4 +1,40 @@
 import { Link } from "react-router-dom";
+import esquemaCamadas from "@/assets/madeira-wpc/esquema-camadas.png";
+
+const composicaoWPC = [
+  { label: "55% Pó de madeira", color: "#8B5E3C", text: "#FFFFFF" },
+  { label: "35% HDPE", color: "#C8956C", text: "#3A2A1E" },
+  { label: "10% Aditivos", color: "#D9D9D9", text: "#3A2A1E" },
+];
+
+const composicaoPVC = [
+  { label: "35% Pó de madeira", color: "#8B5E3C", text: "#FFFFFF" },
+  { label: "50% PVC", color: "#C8B59A", text: "#3A2A1E" },
+  { label: "10% Composto reciclado", color: "#9BA08F", text: "#FFFFFF" },
+  { label: "5% Aditivos", color: "#D9D9D9", text: "#3A2A1E" },
+];
+
+const features = [
+  "10 anos de garantia",
+  "Material 100% reciclado",
+  "Resistente a cupim",
+  "Hidrofóbico",
+  "Anti-mofo",
+];
+
+const Bar = ({ items }: { items: { label: string; color: string; text: string }[] }) => (
+  <div className="flex flex-col gap-2">
+    {items.map((it) => (
+      <div
+        key={it.label}
+        className="px-5 py-4 rounded-[6px] font-display text-[12px] md:text-[13px] uppercase tracking-[0.08em]"
+        style={{ background: it.color, color: it.text }}
+      >
+        {it.label}
+      </div>
+    ))}
+  </div>
+);
 
 const MadeiraWPC = () => {
   return (
@@ -6,41 +42,98 @@ const MadeiraWPC = () => {
       <title>Madeira WPC — Lesco</title>
       <meta
         name="description"
-        content="Conheça a tecnologia WPC (Wood-Plastic Composite) da Lesco — um compósito sustentável de madeira e polímeros reciclados para revestimentos de alta performance."
+        content="Wood Polymer Composite — entenda a composição da madeira ecológica Lesco e como ela se aplica nas linhas Brise, Shield, Deck, Panel e Line."
       />
       <main className="min-h-screen pt-[110px] pb-[10px] px-[10px]">
-        <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 md:py-28 lg:py-32">
-          <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-6">
+        {/* HERO / TÍTULO */}
+        <section className="bg-[#DBDBDB] rounded-[10px] px-6 md:px-12 lg:px-20 pt-16 md:pt-20 pb-10">
+          <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-[#141414]/55 mb-4">
             Tecnologia
           </p>
-          <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-dark max-w-4xl mb-10">
-            Madeira WPC: o material do futuro.
+          <h1 className="font-display text-3xl md:text-5xl lg:text-[72px] font-normal leading-[1.05] tracking-[0.02em] text-[#141414] uppercase">
+            Wood Polymer<br />Composite
           </h1>
-          <div className="max-w-3xl space-y-6 font-body text-[16px] md:text-[18px] font-light leading-[1.65] text-dark/75">
-            <p>
-              WPC (Wood-Plastic Composite) é um compósito de pó de madeira natural,
-              polímeros reciclados e aditivos. Resulta em um revestimento que une a
-              estética da madeira ao desempenho técnico de materiais de engenharia —
-              resistente à água, anti-cupim, anti-mofo e com retardância ao fogo.
-            </p>
-            <p>
-              Cada superfície da Lesco é desenvolvida para resistir ao tempo e dispensar
-              manutenção complexa, mantendo a aparência por décadas em ambientes externos
-              e internos.
-            </p>
+        </section>
+
+        {/* COMPOSIÇÃO */}
+        <section className="bg-[#DBDBDB] rounded-[10px] mt-[10px] px-6 md:px-12 lg:px-20 py-16 md:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-center">
+            {/* Imagem do esquema de camadas */}
+            <div className="flex items-center justify-center">
+              <img
+                src={esquemaCamadas}
+                alt="Esquema das camadas da madeira ecológica WPC"
+                className="w-full max-w-[640px] h-auto object-contain"
+              />
+            </div>
+
+            {/* Composições + textos */}
+            <div className="flex flex-col gap-12">
+              {/* WPC */}
+              <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-6 md:gap-8">
+                <Bar items={composicaoWPC} />
+                <div>
+                  <p className="font-body text-[14px] md:text-[15px] font-light leading-[1.65] text-[#141414]/80">
+                    O WPC, por ter madeira em sua composição, tende a apresentar
+                    um visual mais natural, semelhante à madeira, enquanto o PVC
+                    tem um acabamento mais liso e uniforme.
+                  </p>
+                  <p className="mt-6 font-display text-[11px] uppercase tracking-[0.12em] text-[#141414]/60">
+                    Aplicado em
+                  </p>
+                  <p className="mt-2 font-display text-[14px] tracking-[0.08em] text-[#141414]">
+                    Brise · Shield · Deck
+                  </p>
+                </div>
+              </div>
+
+              {/* PVC */}
+              <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-6 md:gap-8">
+                <Bar items={composicaoPVC} />
+                <div>
+                  <p className="font-body text-[14px] md:text-[15px] font-light leading-[1.65] text-[#141414]/80">
+                    O PVC (cloreto de polivinila) é um plástico puro, enquanto o
+                    WPC (Wood Plastic Composite) é um composto de fibras de
+                    madeira e plástico.
+                  </p>
+                  <p className="mt-6 font-display text-[11px] uppercase tracking-[0.12em] text-[#141414]/60">
+                    Aplicado em
+                  </p>
+                  <p className="mt-2 font-display text-[14px] tracking-[0.08em] text-[#141414]">
+                    Panel · Line
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="mt-12 flex flex-wrap gap-4">
-            <Link
-              to="/orcamento"
-              className="inline-flex items-center px-6 py-3 rounded bg-dark text-white font-display text-[13px] uppercase tracking-[0.08em] hover:opacity-90 transition-opacity duration-300"
-            >
+          {/* Features */}
+          <div className="mt-16 md:mt-20 pt-10 border-t border-[#141414]/10">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4">
+              {features.map((f) => (
+                <div key={f} className="flex flex-col items-center text-center">
+                  <div className="w-12 h-12 rounded-full border border-[#141414]/30 flex items-center justify-center mb-3">
+                    <span className="block w-2 h-2 rounded-full bg-[#141414]/60" />
+                  </div>
+                  <p className="font-display text-[11px] uppercase tracking-[0.1em] text-[#141414] leading-tight max-w-[140px]">
+                    {f}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="bg-[#0D0D0D] rounded-[10px] mt-[10px] px-6 md:px-12 lg:px-20 py-16 md:py-20 text-center">
+          <h2 className="font-display text-2xl md:text-4xl font-normal text-white leading-[1.15] mb-8">
+            Conheça as linhas em WPC.
+          </h2>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link to="/orcamento" className="inline-flex items-center px-6 py-3 rounded-[6px] bg-[#d5b89f] text-[#141414] font-display text-[12px] uppercase tracking-[0.1em] hover:brightness-95 transition">
               Solicitar orçamento
             </Link>
-            <Link
-              to="/madeira-ecologica-lesco"
-              className="inline-flex items-center px-6 py-3 rounded border border-dark text-dark font-display text-[13px] uppercase tracking-[0.08em] hover:bg-dark hover:text-white transition-colors duration-300"
-            >
+            <Link to="/altwood" className="inline-flex items-center px-6 py-3 rounded-[6px] border border-white/40 text-white font-display text-[12px] uppercase tracking-[0.1em] hover:bg-white/10 transition">
               Ver linha de produtos
             </Link>
           </div>
