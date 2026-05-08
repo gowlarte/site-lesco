@@ -64,11 +64,12 @@ export function Header({ variant = "default" }: HeaderProps) {
   }, [location]);
 
   const isOverlay = variant === "overlay";
+  const overlayTransparent = isOverlay && !scrolled;
   const isLight = !isOverlay && !scrolled;
 
-  const baseColor = isOverlay ? "#FFFFFF" : isLight ? "#303030" : "#7F7F7F";
-  const activeColor = isOverlay ? "#FFFFFF" : isLight ? "#000000" : "#FFFFFF";
-  const dimColor = isOverlay ? "rgba(255,255,255,0.55)" : isLight ? "#A0A0A0" : "#525252";
+  const baseColor = overlayTransparent ? "#FFFFFF" : isLight ? "#303030" : "#7F7F7F";
+  const activeColor = overlayTransparent ? "#FFFFFF" : isLight ? "#000000" : "#FFFFFF";
+  const dimColor = overlayTransparent ? "rgba(255,255,255,0.55)" : isLight ? "#A0A0A0" : "#525252";
 
   const isActive = (item: NavItem) => {
     if (item.href && location.pathname === item.href) return true;
@@ -81,7 +82,7 @@ export function Header({ variant = "default" }: HeaderProps) {
       <header
         className={cn(
           "z-50 transition-all duration-[400ms] rounded-[10px]",
-          isOverlay
+          overlayTransparent
             ? "absolute top-0 left-0 right-0 bg-transparent"
             : cn(
                 "fixed top-[10px] left-[10px] right-[10px]",
