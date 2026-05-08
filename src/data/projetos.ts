@@ -6,6 +6,15 @@ import casaMansa5 from "@/assets/projetos/casa-mansa-5.jpg";
 import casaMansa6 from "@/assets/projetos/casa-mansa-6.jpg";
 import casaMansa7 from "@/assets/projetos/casa-mansa-7.jpg";
 import projectResidencialUrbano from "@/assets/project-residencial-urbano.webp";
+import casaNhHero from "@/assets/projetos/casa-nh-hero.jpg";
+import casaNh2 from "@/assets/projetos/casa-nh-2.jpg";
+import casaNh3 from "@/assets/projetos/casa-nh-3.jpg";
+import casaNh4 from "@/assets/projetos/casa-nh-4.jpg";
+import casaNh5 from "@/assets/projetos/casa-nh-5.jpg";
+import casaNh6 from "@/assets/projetos/casa-nh-6.jpg";
+import casaNh7 from "@/assets/projetos/casa-nh-7.jpg";
+import casaNh8 from "@/assets/projetos/casa-nh-8.jpg";
+import casaNh9 from "@/assets/projetos/casa-nh-9.jpg";
 import projectCasaAreia from "@/assets/project-casa-areia.jpg";
 import projectCasaUna from "@/assets/project-casa-una.png";
 import projectDeckDetail from "@/assets/project-deck-detail.jpg";
@@ -50,21 +59,21 @@ export const projetos: Projeto[] = [
   },
   {
     slug: "residencial-urbano",
-    nome: "Residencial Urbano",
-    imagem: projectResidencialUrbano,
+    nome: "Casa NH",
+    imagem: casaNhHero,
     linha: "Madeira Ecológica",
-    local: "São Paulo, SP",
+    local: "São Paulo",
     ano: "2023",
-    area: "1.860 m²",
-    arquitetura: "MAB Arquitetura",
-    produtos: ["AltWood Brise", "AltWood Shield"],
+    area: "—",
+    arquitetura: "Atelier Daniel Corsi e Dani Hirano",
+    produtos: ["Lesco Green Shield 50×25 OAK"],
     descricao:
-      "Edifício residencial multifamiliar com fachada ritmada por brises verticais, oferecendo privacidade aos apartamentos e identidade ao edifício no skyline urbano.",
+      "Um projeto realizado por Atelier Daniel Corsi + Dani Hirano, a Casa NH revela paisagens, convidando à contemplação e à introspecção. Buscamos aqui criar uma diversidade de ambientes que proporcionem experiências sensoriais únicas, permitindo que seus habitantes desfrutem da beleza da geografia circundante e fortaleçam seus laços com o entorno.",
     desafio:
-      "Atender requisitos de conforto térmico e acústico em uma fachada exposta ao oeste, mantendo elegância e leveza visual.",
+      "A luz natural se revela como um elemento onipresente, destacando uma arquitetura que valoriza toda a natureza em torno do projeto.",
     solucao:
-      "Brises modulares combinados com painéis Shield, criando uma pele técnica que filtra a radiação solar e qualifica os ambientes internos.",
-    galeria: [projectResidencialUrbano, projectCasaUna, projectCasaMansa],
+      "Aplicação do Lesco Green Shield 50×25 OAK no envelope da residência, garantindo continuidade visual, ritmo vertical e diálogo entre madeira ecológica, concreto e paisagem.",
+    galeria: [casaNh2, casaNh3, casaNh4, casaNh5, casaNh6, casaNh7, casaNh8, casaNh9],
   },
   {
     slug: "casa-areia",
