@@ -27,10 +27,10 @@ export const PageTransitionLoader = ({ isLoading }: PageTransitionLoaderProps) =
             x1="0" y1="129.48" x2="350.31" y2="129.48"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset=".02" stopColor="#a3dba0" />
-            <stop offset=".26" stopColor="#c6e1d7" />
-            <stop offset=".5" stopColor="#f7c39b" />
-            <stop offset=".8" stopColor="#ed8d7b" />
+            <stop offset=".25" stopColor="#728ea0" />
+            <stop offset=".56" stopColor="#c0c9bf" />
+            <stop offset=".74" stopColor="#d6aa98" />
+            <stop offset=".9" stopColor="#efdcc5" />
           </linearGradient>
           <clipPath id="loader-sweep">
             <rect x="0" y="0" width="350.31" height="258.97" className="loader-clip-rect" />
