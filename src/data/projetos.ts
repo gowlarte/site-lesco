@@ -24,6 +24,14 @@ import casaNh15 from "@/assets/projetos/casa-nh-15.jpg";
 import casaNh16 from "@/assets/projetos/casa-nh-16.jpg";
 import casaNh17 from "@/assets/projetos/casa-nh-17.jpg";
 import casaNh18 from "@/assets/projetos/casa-nh-18.jpg";
+import casaNh19 from "@/assets/projetos/casa-nh-19.jpg";
+import casaNh20 from "@/assets/projetos/casa-nh-20.jpg";
+import casaNh21 from "@/assets/projetos/casa-nh-21.jpg";
+import casaNh22 from "@/assets/projetos/casa-nh-22.jpg";
+import casaNh23 from "@/assets/projetos/casa-nh-23.jpg";
+import casaNh24 from "@/assets/projetos/casa-nh-24.jpg";
+import casaNh25 from "@/assets/projetos/casa-nh-25.jpg";
+import casaNh26 from "@/assets/projetos/casa-nh-26.jpg";
 import projectCasaAreia from "@/assets/project-casa-areia.jpg";
 import projectCasaUna from "@/assets/project-casa-una.png";
 import projectDeckDetail from "@/assets/project-deck-detail.jpg";
@@ -100,6 +108,14 @@ export const projetos: Projeto[] = [
       casaNh16,
       casaNh17,
       casaNh18,
+      casaNh19,
+      casaNh20,
+      casaNh21,
+      casaNh22,
+      casaNh23,
+      casaNh24,
+      casaNh25,
+      casaNh26,
     ],
   },
   {
