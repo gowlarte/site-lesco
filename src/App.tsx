@@ -16,6 +16,7 @@ import MadeiraWPC from "./pages/MadeiraWPC";
 import Sustentabilidade from "./pages/Sustentabilidade";
 import Biblioteca from "./pages/Biblioteca";
 import Portfolio from "./pages/Portfolio";
+import PortfolioProjeto from "./pages/PortfolioProjeto";
 import Manto from "./pages/Manto";
 import MantoBrise from "./pages/MantoBrise";
 import MantoShield from "./pages/MantoShield";
@@ -65,6 +66,7 @@ const AppContent = () => {
           <Route path="/biblioteca" element={<Biblioteca />} />
           <Route path="/orcamento" element={<Orcamento />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/portfolio/:slug" element={<PortfolioProjeto />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogArtigo />} />
           <Route path="/linhas" element={<Linhas />} />

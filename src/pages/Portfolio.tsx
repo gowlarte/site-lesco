@@ -1,17 +1,5 @@
 import { Link } from "react-router-dom";
-import projectCasaMansa from "@/assets/project-casa-mansa.jpg";
-import projectResidencialUrbano from "@/assets/project-residencial-urbano.webp";
-import projectCasaAreia from "@/assets/project-casa-areia.jpg";
-import projectCasaUna from "@/assets/project-casa-una.png";
-import projectDeckDetail from "@/assets/project-deck-detail.jpg";
-
-const projetos = [
-  { nome: "Casa Mansa", imagem: projectCasaMansa, linha: "Madeira Ecológica" },
-  { nome: "Residencial Urbano", imagem: projectResidencialUrbano, linha: "Madeira Ecológica" },
-  { nome: "Casa Areia", imagem: projectCasaAreia, linha: "Madeira Ecológica" },
-  { nome: "Casa Una", imagem: projectCasaUna, linha: "Madeira Ecológica" },
-  { nome: "Deck Detail", imagem: projectDeckDetail, linha: "Madeira Ecológica" },
-];
+import { projetos } from "@/data/projetos";
 
 const Portfolio = () => {
   return (
@@ -34,7 +22,7 @@ const Portfolio = () => {
         <section className="px-0">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[10px]">
             {projetos.map((p) => (
-              <div key={p.nome} className="group">
+              <Link to={`/portfolio/${p.slug}`} key={p.slug} className="group block">
                 <div className="aspect-[4/3] rounded-[10px] overflow-hidden">
                   <img
                     src={p.imagem}
@@ -46,8 +34,10 @@ const Portfolio = () => {
                 <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/60 mt-3 ml-1">
                   {p.linha}
                 </p>
-                <h3 className="font-display text-lg font-normal text-dark ml-1">{p.nome}</h3>
-              </div>
+                <h3 className="font-display text-lg font-normal text-dark ml-1 group-hover:opacity-70 transition-opacity">
+                  {p.nome}
+                </h3>
+              </Link>
             ))}
           </div>
         </section>
