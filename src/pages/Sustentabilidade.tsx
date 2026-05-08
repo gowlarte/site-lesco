@@ -82,5 +82,10 @@ const Sustentabilidade = () => {
             Falar com um especialista
           </Link>
         </section>
+      </main>
+    </>
+  );
+};
 
 export default Sustentabilidade;
+
