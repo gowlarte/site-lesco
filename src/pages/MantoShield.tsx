@@ -103,8 +103,13 @@ const MantoShield = () => {
           <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C8956C]">Shield</span>
           <span className="flex-1 h-px bg-[#1E1E1E]" />
         </div>
-        <p className="text-[17px] text-[#7F7F7F] leading-[1.7]">
+        <p className="text-[17px] text-[#7F7F7F] leading-[1.7] whitespace-pre-line">
           Os revestimentos Lesco representam um paradigma de qualidade e sofisticação para aplicações tanto internas quanto externas. Ele combina tecnologia e durabilidade do plástico com a beleza estética da madeira, criando um material de alta resistência e durabilidade, sem perder o aspecto natural.
+
+          Explore as características e benefícios desses perfis, que destacam suas aplicações versáteis e seu potencial para aprimorar tanto o desempenho quanto a aparência de uma variedade de estruturas.
+
+          Aplicações: fachadas e painéis verticais.
+          Garantia: 10 anos.
         </p>
       </div>
 
