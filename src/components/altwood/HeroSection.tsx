@@ -52,7 +52,7 @@ export const HeroSection = ({ imageSrc, images, headline, subtitulo, ctaLabel, c
       <div className="absolute inset-0 bg-[rgba(13,13,13,0.6)]" />
       {/* Content */}
       <div className="absolute inset-0 flex flex-col justify-end p-10 md:p-16 lg:p-20">
-        <h1 className="font-display text-6xl md:text-7xl lg:text-8xl xl:text-[96px] font-bold uppercase tracking-[-0.02em] text-white leading-none mb-4">
+        <h1 className="font-display text-6xl md:text-7xl lg:text-8xl xl:text-[96px] uppercase tracking-[-0.02em] text-white leading-none mb-4 font-light">
           {headline}
         </h1>
         {subtitulo?.trim() && (
