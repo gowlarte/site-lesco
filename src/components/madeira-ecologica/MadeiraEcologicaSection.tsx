@@ -131,23 +131,64 @@ export const MadeiraEcologicaSection = () => {
     };
   }, [isMobile]);
 
-  // Mobile: jump to last frame once loaded; ícones sempre visíveis
+  // Mobile: play animation once when section enters viewport
   useEffect(() => {
     if (!isMobile) return;
-    setIsComplete(true);
-    const tryJump = () => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    let played = false;
+    let rafId: number | null = null;
+    let waitInterval: ReturnType<typeof setInterval> | null = null;
+    const DURATION = 2200;
+
+    const play = () => {
       const total = totalFramesRef.current;
-      if (total > 0) {
-        canvasRef.current?.setFrame(total - 1);
-        return true;
-      }
-      return false;
+      if (!total) return;
+      played = true;
+      const start = performance.now();
+      const step = (now: number) => {
+        const t = Math.min(1, (now - start) / DURATION);
+        const frame = Math.floor(t * (total - 1));
+        canvasRef.current?.setFrame(frame);
+        if (t < 1) {
+          rafId = requestAnimationFrame(step);
+        } else {
+          setIsComplete(true);
+        }
+      };
+      rafId = requestAnimationFrame(step);
     };
-    if (tryJump()) return;
-    const id = setInterval(() => {
-      if (tryJump()) clearInterval(id);
-    }, 100);
-    return () => clearInterval(id);
+
+    const tryStart = () => {
+      if (played) return;
+      if (totalFramesRef.current > 0) {
+        play();
+      } else {
+        waitInterval = setInterval(() => {
+          if (totalFramesRef.current > 0) {
+            if (waitInterval) clearInterval(waitInterval);
+            play();
+          }
+        }, 100);
+      }
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && !played) tryStart();
+        }
+      },
+      { threshold: 0.3 },
+    );
+    io.observe(section);
+
+    return () => {
+      io.disconnect();
+      if (rafId) cancelAnimationFrame(rafId);
+      if (waitInterval) clearInterval(waitInterval);
+    };
   }, [isMobile]);
 
   const handleReady = (n: number) => {
