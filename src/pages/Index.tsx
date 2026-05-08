@@ -241,7 +241,7 @@ const Index = () => {
         <div className="container mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 lg:gap-20 items-start">
-              <h2 className="font-display text-3xl md:text-4xl lg:text-[52px] font-normal leading-[1.15] text-dark">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-[52px] font-normal leading-[1.4] text-dark">
                 Pioneiros em Madeira Ecológica no Brasil, somos arquitetura feita para o amanhã.
               </h2>
               <div className="max-w-[320px]">
