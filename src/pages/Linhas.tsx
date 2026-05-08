@@ -13,10 +13,10 @@ import logoGeoRaw from "@/assets/linha-italflex-2.svg?raw";
 
 const linhas = [
   {
-    nome: "Madeira Ecológica",
+    nome: "Madeira Ecológica Lesco",
     logo: logoMantoRaw,
     descricao: "Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto.",
-    href: "/manto",
+    href: "/madeira-ecologica-lesco",
     imagem: heroManto,
     cor: "#F7C39B",
   },

@@ -7,9 +7,9 @@ import logoLight from "@/assets/logo-lesco-light.svg";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Sobre Nós", href: "/sobre" },
+  { label: "Sobre Nós", href: "/quem-somos" },
   { label: "Linhas", href: "/linhas" },
-  { label: "Catálogo", href: "/catalogo" },
+  { label: "Catálogo", href: "/catalogo-lesco" },
   { label: "Blog", href: "/blog" },
 ];
 

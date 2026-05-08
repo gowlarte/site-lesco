@@ -42,18 +42,18 @@ const AppContent = () => {
       <div ref={contentRef} style={{ opacity: isLoading ? 0 : 1, transition: "opacity 300ms ease" }}>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/manto" element={<Manto />} />
-          <Route path="/manto-brise" element={<MantoBrise />} />
-          <Route path="/manto-shield" element={<MantoShield />} />
-          <Route path="/manto-deck" element={<MantoDeck />} />
-          <Route path="/manto-line" element={<MantoLine />} />
-          <Route path="/manto-panel" element={<MantoPanel />} />
-          <Route path="/sobre" element={<About />} />
+          <Route path="/madeira-ecologica-lesco" element={<Manto />} />
+          <Route path="/brise-madeira-ecologica" element={<MantoBrise />} />
+          <Route path="/madeira-ecologica-para-fachada" element={<MantoShield />} />
+          <Route path="/madeira-ecologica-para-deck" element={<MantoDeck />} />
+          <Route path="/forro-wpc" element={<MantoLine />} />
+          <Route path="/placa-wpc-interior" element={<MantoPanel />} />
+          <Route path="/quem-somos" element={<About />} />
           <Route path="/linhas" element={<Linhas />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogArtigo />} />
           <Route path="/orcamento" element={<Orcamento />} />
-          <Route path="/catalogo" element={<Catalogo />} />
+          <Route path="/catalogo-lesco" element={<Catalogo />} />
           <Route path="/zhu" element={<EmBreve />} />
           <Route path="/echo" element={<EmBreve />} />
           <Route path="/geo" element={<EmBreve />} />
