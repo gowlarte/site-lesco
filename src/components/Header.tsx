@@ -194,12 +194,16 @@ export function Header({ variant = "default" }: HeaderProps) {
           </nav>
 
           {/* Desktop CTA */}
-          <Link
-            to="/orcamento"
-            className="hidden md:inline-flex items-center px-4 py-1.5 rounded font-display font-light text-[12px] uppercase tracking-[0.08em] text-[#303030] bg-[#DBDBDB] hover:bg-[#cfcfcf] transition-all duration-300"
-          >
-            Orçamento
-          </Link>
+          {(() => {
+            const emBreve = ["/zhu", "/echo", "/geo"].includes(location.pathname);
+            const ctaLabel = emBreve ? "Lançamento em breve" : "Orçamento";
+            const ctaClass = "hidden md:inline-flex items-center px-4 py-1.5 rounded font-display font-light text-[12px] uppercase tracking-[0.08em] text-[#303030] bg-[#DBDBDB] hover:bg-[#cfcfcf] transition-all duration-300";
+            return emBreve ? (
+              <span className={cn(ctaClass, "cursor-default hover:bg-[#DBDBDB]")}>{ctaLabel}</span>
+            ) : (
+              <Link to="/orcamento" className={ctaClass}>{ctaLabel}</Link>
+            );
+          })()}
 
           {/* Mobile Hamburger */}
           <button
