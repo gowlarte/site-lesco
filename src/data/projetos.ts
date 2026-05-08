@@ -15,6 +15,15 @@ import casaNh6 from "@/assets/projetos/casa-nh-6.jpg";
 import casaNh7 from "@/assets/projetos/casa-nh-7.jpg";
 import casaNh8 from "@/assets/projetos/casa-nh-8.jpg";
 import casaNh9 from "@/assets/projetos/casa-nh-9.jpg";
+import casaNh10 from "@/assets/projetos/casa-nh-10.jpg";
+import casaNh11 from "@/assets/projetos/casa-nh-11.jpg";
+import casaNh12 from "@/assets/projetos/casa-nh-12.jpg";
+import casaNh13 from "@/assets/projetos/casa-nh-13.jpg";
+import casaNh14 from "@/assets/projetos/casa-nh-14.jpg";
+import casaNh15 from "@/assets/projetos/casa-nh-15.jpg";
+import casaNh16 from "@/assets/projetos/casa-nh-16.jpg";
+import casaNh17 from "@/assets/projetos/casa-nh-17.jpg";
+import casaNh18 from "@/assets/projetos/casa-nh-18.jpg";
 import projectCasaAreia from "@/assets/project-casa-areia.jpg";
 import projectCasaUna from "@/assets/project-casa-una.png";
 import projectDeckDetail from "@/assets/project-deck-detail.jpg";
@@ -73,7 +82,25 @@ export const projetos: Projeto[] = [
       "A luz natural se revela como um elemento onipresente, destacando uma arquitetura que valoriza toda a natureza em torno do projeto.",
     solucao:
       "Aplicação do Lesco Green Shield 50×25 OAK no envelope da residência, garantindo continuidade visual, ritmo vertical e diálogo entre madeira ecológica, concreto e paisagem.",
-    galeria: [casaNh2, casaNh3, casaNh4, casaNh5, casaNh6, casaNh7, casaNh8, casaNh9],
+    galeria: [
+      casaNh2,
+      casaNh3,
+      casaNh4,
+      casaNh5,
+      casaNh6,
+      casaNh7,
+      casaNh8,
+      casaNh9,
+      casaNh10,
+      casaNh11,
+      casaNh12,
+      casaNh13,
+      casaNh14,
+      casaNh15,
+      casaNh16,
+      casaNh17,
+      casaNh18,
+    ],
   },
   {
     slug: "casa-areia",
