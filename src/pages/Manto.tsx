@@ -40,116 +40,23 @@ const produtos = [
   {
     id: "brise",
     tag: "Brise",
-    titulo: "Manto Brise",
-    descricao: "Perfis de WPC para fachadas, brises soleil e elementos de proteção solar. Disponível nas linhas Manto Origens e Manto Classic.",
-    swatches: [
-      { nome: "Black", corAproximada: "#1A1A1A" },
-      { nome: "Ipê", corAproximada: "#6B4226" },
-      { nome: "Teak", corAproximada: "#8B5E3C" },
-      { nome: "Oak", corAproximada: "#A0784A" },
-    ],
-    href: "/manto-brise",
-    images: [prevBrise1, prevBrise2, prevBrise3, prevBrise4],
-  },
-  {
-    id: "shield",
-    tag: "Shield",
-    titulo: "Manto Shield",
-    descricao: "Revestimento de alta sofisticação para aplicações internas e externas. Acabamentos escovados e texturizados.",
-    swatches: [
-      { nome: "Black", corAproximada: "#1A1A1A" },
-      { nome: "Ipê", corAproximada: "#6B4226" },
-      { nome: "Teak", corAproximada: "#8B5E3C" },
-      { nome: "Walnut", corAproximada: "#4A3728" },
-    ],
-    href: "/manto-shield",
-    images: [projetoShield1, projetoShield2, projetoShield3, projetoShield4, projetoShield5, projetoShield6],
-  },
-  {
-    id: "deck",
-    tag: "Deck",
-    titulo: "Manto Deck",
-    descricao: "Decks de madeira ecológica para espaços externos residenciais, comerciais e públicos. Fixação oculta por presilhas de aço inox.",
-    swatches: [
-      { nome: "Black", corAproximada: "#1A1A1A" },
-      { nome: "Ipê", corAproximada: "#6B4226" },
-      { nome: "Teak", corAproximada: "#8B5E3C" },
-      { nome: "Oak", corAproximada: "#A0784A" },
-    ],
-    href: "/manto-deck",
-    images: [projetoDeck2, projetoDeck1, projetoDeck3, projetoDeck4, projetoDeck5],
-  },
-  {
-    id: "line",
-    tag: "Line",
-    titulo: "Manto Line",
-    descricao: "Forros, sancas e superfícies contínuas com encaixe técnico. Acabamento acetinado com retardante ao fogo.",
-    swatches: [
-      { nome: "Golden Oak", corAproximada: "#C8972E" },
-      { nome: "Hickory", corAproximada: "#9E7B4F" },
-      { nome: "Tasmania Oak", corAproximada: "#C4A882" },
-      { nome: "Urban Oak", corAproximada: "#7A7060" },
-    ],
-    href: "/manto-line",
-    images: [projetoLine1, projetoLine2, projetoLine3],
-  },
-  {
-    id: "panel",
-    tag: "Panel",
-    titulo: "Manto Panel",
-    descricao: "Painéis para interiores e fachadas ventiladas protegidas. Disponível em acabamento acetinado e fosco com tratamento UV.",
-    swatches: [
-      { nome: "Golden Oak", corAproximada: "#C8972E" },
-      { nome: "Hickory", corAproximada: "#9E7B4F" },
-      { nome: "Merbau", corAproximada: "#5C2E1A" },
-      { nome: "Urban Oak", corAproximada: "#7A7060" },
-    ],
-    href: "/manto-panel",
-    images: [projetoPanel1, projetoPanel2, projetoPanel3, projetoPanel4, projetoPanel5, projetoPanel6],
-  },
-];
-
-const Manto = () => {
-  const [activeTab, setActiveTab] = useState("brise");
-  const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
-
-  const handleTabClick = useCallback((id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, []);
-
-  const handleExplorar = useCallback(() => {
-    const el = document.getElementById("filtro");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  }, []);
-
-  // Intersection Observer for active tab
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveTab(entry.target.id);
-          }
-        }
-      },
-      { rootMargin: "-56px 0px -60% 0px", threshold: 0.1 }
-    );
-
-    produtos.forEach((p) => {
-      const el = document.getElementById(p.id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
+    titulo: "Madeira Ecológica Brise",
+    descricao: "Perfis de WPC para fachadas, brises soleil e elementos de proteção solar. Disponível nas linhas Madeira Ecológica Origens e Madeira Ecológica Classic.",
+...
+    titulo: "Madeira Ecológica Shield",
+...
+    titulo: "Madeira Ecológica Deck",
+...
+    titulo: "Madeira Ecológica Line",
+...
+    titulo: "Madeira Ecológica Panel",
+...
   return (
     <div className="min-h-screen bg-[#e5e1dc]">
       <HeroSection
         images={heroImages}
-        headline="Manto"
-        subtitulo="Madeira ecológica premium. Fachadas, brises, panels e decks."
+        headline="Madeira Ecológica"
+        subtitulo="Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto."
         ctaLabel="Explorar Produtos"
         ctaAction={handleExplorar}
       />
