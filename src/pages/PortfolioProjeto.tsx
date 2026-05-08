@@ -41,25 +41,29 @@ const PortfolioProjeto = () => {
       <title>{`${projeto.nome} — Portfólio Lesco`}</title>
       <meta name="description" content={projeto.descricao.slice(0, 155)} />
       <main className="min-h-screen pt-[110px] pb-[10px] px-[10px] flex flex-col gap-[10px]">
-        <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-16 md:py-20">
-          <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-6">
-            <Link to="/portfolio" className="hover:text-dark transition-colors">
-              Portfólio
-            </Link>
-            <span className="mx-2">/</span>
-            {projeto.linha}
-          </p>
-          <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-dark max-w-4xl">
-            {projeto.nome}
-          </h1>
-        </section>
-
-        <section className="rounded-[10px] overflow-hidden">
+        <section
+          className="relative rounded-[10px] overflow-hidden min-h-[60vh] md:min-h-[75vh] flex items-end"
+        >
           <img
             src={projeto.imagem}
             alt={projeto.nome}
-            className="w-full h-auto max-h-[80vh] object-cover"
+            className="absolute inset-0 w-full h-full object-cover"
           />
+          {/* Overlay para contraste */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+
+          <div className="relative z-10 w-full px-8 md:px-16 lg:px-24 py-16 md:py-20">
+            <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-white/80 mb-6">
+              <Link to="/portfolio" className="hover:text-white transition-colors">
+                Portfólio
+              </Link>
+              <span className="mx-2">/</span>
+              {projeto.linha}
+            </p>
+            <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-white max-w-4xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]">
+              {projeto.nome}
+            </h1>
+          </div>
         </section>
 
         <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-16 md:py-20 grid grid-cols-1 lg:grid-cols-3 gap-12">
