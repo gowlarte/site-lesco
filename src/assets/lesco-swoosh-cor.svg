@@ -8,10 +8,10 @@
       }
     </style>
     <linearGradient id="Gradiente_sem_nome_228" data-name="Gradiente sem nome 228" x1="0" y1="129.48" x2="350.31" y2="129.48" gradientUnits="userSpaceOnUse">
-      <stop offset=".02" stop-color="#a3dba0"/>
-      <stop offset=".26" stop-color="#c6e1d7"/>
-      <stop offset=".5" stop-color="#f7c39b"/>
-      <stop offset=".8" stop-color="#ed8d7b"/>
+      <stop offset=".25" stop-color="#728ea0"/>
+      <stop offset=".56" stop-color="#c0c9bf"/>
+      <stop offset=".74" stop-color="#d6aa98"/>
+      <stop offset=".9" stop-color="#efdcc5"/>
     </linearGradient>
   </defs>
   <g id="Camada_1-2" data-name="Camada 1">
