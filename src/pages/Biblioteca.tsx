@@ -38,8 +38,8 @@ const Biblioteca = () => {
                 className="rounded-[10px] border border-dark/10 p-8 bg-white/40 hover:bg-white transition-colors duration-300"
               >
                 <h3 className="font-display text-xl font-normal text-dark mb-3">{r.titulo}</h3>
-                <p className="font-body text-[14px] font-light leading-[1.6] text-dark/70 mb-6">{r.desc}</p>
-                <span className="font-body text-[11px] uppercase tracking-[0.12em] text-dark/50">
+                <p className="font-body text-[14px] font-light leading-[1.6] text-dark/70 mb-6 text-slate-950">{r.desc}</p>
+                <span className="font-body text-[11px] uppercase tracking-[0.12em] text-dark/50 text-gray-950">
                   Em breve
                 </span>
               </div>
