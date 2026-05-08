@@ -22,7 +22,7 @@ import projetoShield4 from "@/assets/projeto-shield-4.png";
 import projetoShield5 from "@/assets/projeto-shield-5.png";
 import projetoShield6 from "@/assets/projeto-shield-6.jpg";
 import projetoDeck1 from "@/assets/projeto-deck-1.jpg";
-import projetoDeck2 from "@/assets/preview-deck-2.png";
+import projetoDeck2 from "@/assets/projeto-deck-2.png";
 import projetoDeck3 from "@/assets/projeto-deck-3.jpg";
 import projetoDeck4 from "@/assets/projeto-deck-4.jpg";
 import projetoDeck5 from "@/assets/projeto-deck-5.jpg";
