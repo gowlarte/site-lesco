@@ -416,10 +416,10 @@ const Index = () => {
                     <span className="font-display text-[16px] font-medium text-primary">São Paulo</span>
                   </div>
                   <p className="font-body text-[13px] font-light leading-[1.6] text-primary/70 max-w-[320px] mb-6">
-                    Avenida Nove de Julho, número 3147, sala 22 – Jardim Paulista – São Paulo – SP
+                    Avenida Nove de Julho, número 3147, CJ 22 – Jardim Paulista – São Paulo – SP
                   </p>
                   <a
-                    href="https://wa.me/5511999999999"
+                    href="https://wa.me/5511948449044"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-7 py-3 rounded-full bg-[hsl(10,50%,72%)] hover:bg-[hsl(10,50%,65%)] text-white font-body text-[13px] font-medium tracking-[0.04em] transition-colors duration-300"
