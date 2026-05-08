@@ -80,7 +80,7 @@ const galeriaItems = [
   { imageSrc: projetoPanel6, legenda: "Auditório com painéis laterais e acabamento técnico", ratio: "4:3" as const },
 ];
 
-const Madeira EcológicaPanel = () => {
+const MantoPanel = () => {
   const [selectedAcetinada, setSelectedAcetinada] = useState<string | null>(null);
   const [selectedFosca, setSelectedFosca] = useState<string | null>(null);
   const [specsOpen, setSpecsOpen] = useState(false);
@@ -250,4 +250,4 @@ const Madeira EcológicaPanel = () => {
   );
 };
 
-export default Madeira EcológicaPanel;
+export default MantoPanel;

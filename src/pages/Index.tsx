@@ -15,12 +15,12 @@ import showroomMain from "@/assets/showroom/showroom-main.jpg";
 import showroomDetail1 from "@/assets/showroom/showroom-detail-1.jpg";
 import showroomDetail2 from "@/assets/showroom/showroom-detail-2.jpg";
 
-import heroMadeira Ecológica from "@/assets/hero-home-altwood.webp";
+import heroManto from "@/assets/hero-home-altwood.webp";
 import heroZhuzen from "@/assets/hero-home-zhuzen.webp";
 import heroEcho from "@/assets/hero-home-echotex.jpg";
 import heroGeo from "@/assets/hero-home-italflex.webp";
 
-import logoMadeira EcológicaRaw from "@/assets/linha-altwood-2.svg?raw";
+import logoMantoRaw from "@/assets/linha-altwood-2.svg?raw";
 import logoZhuzenRaw from "@/assets/linha-zhuzen-2.svg?raw";
 import logoEchoRaw from "@/assets/linha-echotex-2.svg?raw";
 import logoGeoRaw from "@/assets/linha-italflex-2.svg?raw";
@@ -34,10 +34,10 @@ import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 const linhas = [
   {
     nome: "Madeira Ecológica",
-    logo: logoMadeira EcológicaRaw,
+    logo: logoMantoRaw,
     descricao: "Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto.",
     href: "/manto",
-    imagem: heroMadeira Ecológica,
+    imagem: heroManto,
   },
   {
     nome: "Zhú",

@@ -71,7 +71,7 @@ const galeriaItems = [
   { imageSrc: projetoShield6, legenda: "Residência contemporânea — Shield e brise em fachada", ratio: "3:4" as const },
 ];
 
-const Madeira EcológicaShield = () => {
+const MantoShield = () => {
   const [selectedEscovada, setSelectedEscovada] = useState<string | null>(null);
   const [selectedTexturizada, setSelectedTexturizada] = useState<string | null>(null);
   const [specsOpen, setSpecsOpen] = useState(false);
@@ -250,4 +250,4 @@ const Madeira EcológicaShield = () => {
   );
 };
 
-export default Madeira EcológicaShield;
+export default MantoShield;

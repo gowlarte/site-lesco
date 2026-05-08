@@ -102,7 +102,7 @@ const galeriaItems = [
   { legenda: "Empreendimento residencial — brises em fachada e pergolado", ratio: "4:3" as const, imageSrc: projetoBrise4 },
 ];
 
-const Madeira EcológicaBrise = () => {
+const MantoBrise = () => {
   const [activeTab, setActiveTab] = useState<"origens" | "classic">("origens");
   const [selectedSwatch, setSelectedSwatch] = useState<string | null>(null);
   const [specsOpen, setSpecsOpen] = useState(false);
@@ -284,4 +284,4 @@ const Madeira EcológicaBrise = () => {
   );
 };
 
-export default Madeira EcológicaBrise;
+export default MantoBrise;

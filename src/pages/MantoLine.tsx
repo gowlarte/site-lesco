@@ -37,7 +37,7 @@ const galeriaItems = [
   { imageSrc: projetoLine3, legenda: "Forro WPC com iluminação pendente", ratio: "3:4" as const },
 ];
 
-const Madeira EcológicaLine = () => {
+const MantoLine = () => {
   const [selectedCor, setSelectedCor] = useState<string | null>(null);
   const [specsOpen, setSpecsOpen] = useState(false);
 
@@ -185,4 +185,4 @@ const Madeira EcológicaLine = () => {
   );
 };
 
-export default Madeira EcológicaLine;
+export default MantoLine;

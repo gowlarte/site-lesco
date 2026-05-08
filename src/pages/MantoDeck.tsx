@@ -54,7 +54,7 @@ const galeriaItems = [
   { imageSrc: projetoDeck5, legenda: "Projeto noturno com deck e paisagismo", ratio: "3:4" as const },
 ];
 
-const Madeira EcológicaDeck = () => {
+const MantoDeck = () => {
   const [selectedEscovada, setSelectedEscovada] = useState<string | null>(null);
   const [selectedTexturizada, setSelectedTexturizada] = useState<string | null>(null);
   const [specsOpen, setSpecsOpen] = useState(false);
@@ -232,4 +232,4 @@ const Madeira EcológicaDeck = () => {
   );
 };
 
-export default Madeira EcológicaDeck;
+export default MantoDeck;
