@@ -55,7 +55,9 @@ export const HeroSection = ({ imageSrc, images, headline, subtitulo, ctaLabel, c
         <h1 className="font-display text-6xl md:text-7xl lg:text-8xl xl:text-[96px] font-bold uppercase tracking-[-0.02em] text-white leading-none mb-4">
           {headline}
         </h1>
-        <p className="text-[#B0B0B0] text-lg md:text-xl max-w-lg mb-8 whitespace-pre-line">{subtitulo}</p>
+        {subtitulo?.trim() && (
+          <p className="text-[#B0B0B0] text-lg md:text-xl max-w-lg mb-8 whitespace-pre-line">{subtitulo}</p>
+        )}
         {ctaLabel && (
           <div>
             <BotaoCTA variant="secondary" onClick={ctaAction}>
