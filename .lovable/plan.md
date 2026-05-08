@@ -1,42 +1,38 @@
-# Ajuste do layout dos modelos AltWood
+## Substituição dos logos Lesco
 
-Refatorar o componente `CardModelo` e os dados das páginas AltWood para seguir o padrão editorial do catálogo enviado.
+Trocar todos os logos da Lesco (light e dark) pelas novas versões anexadas, com os degradês atualizados. A troca abrange tanto os arquivos SVG estáticos quanto os SVGs inline usados em animações.
 
-## Mudanças no `src/components/altwood/CardModelo.tsx`
+### Arquivos SVG a substituir (sobrescrita direta)
 
-Remover a "caixa" que envolve o produto. Novo layout vertical, sem fundo, sem bordas:
+Copiar os uploads sobre os assets existentes — todos os imports em Header e Footer continuarão funcionando sem mudança de código:
 
-```
-25x25 mm                    0,43 kg/m²
-─────────────────────────────────────
-                                       
-         [imagem do produto              
-          sem recorte, fundo              
-          transparente / herda            
-          o fundo da página]              
-                                       
-Solicitar orçamento
-─────────
-```
+- `src/assets/logo-lesco-dark.svg` ← `Lesco-logo-Dark.svg`
+- `src/assets/logo-lesco-dark-2.svg` ← `Lesco-logo-Dark.svg`
+- `src/assets/logo-lesco-light.svg` ← `Lesco-logo-Light.svg`
+- `src/assets/lesco-swoosh-cor.svg` ← extrair apenas o swoosh do novo Dark (manter o uso atual desse asset)
 
-Estrutura:
-- Topo: linha com **medida** (esquerda, peso da fonte semibold) e **peso** (direita, cinza claro)
-- Régua horizontal fina logo abaixo
-- Imagem do produto em `object-contain` (não `object-cover`), sem caixa de fundo, com bastante respiro vertical
-- Link "Solicitar orçamento" no fim, em texto pequeno com `underline underline-offset-4`, cor sutil — sem botão, sem fundo
+### SVGs inline a atualizar
 
-## Mudanças nos dados (`src/pages/AltWoodBrise.tsx`, e demais páginas AltWood que usam `CardModelo`)
+Reescrever os paths e os stops do gradiente para refletir o novo logo:
 
-- Remover prefixo `AltWood-Brise-…-Origens/Classic` da prop `nome`. A medida passa a ser o título principal exibido no card (já vem em `medida`), então o `nome` deixa de ser renderizado visualmente — manter apenas como `alt` da imagem para acessibilidade.
-- Aplicar a mesma simplificação em: `AltWoodShield.tsx`, `AltWoodDeck.tsx`, `AltWoodLine.tsx`, `AltWoodPanel.tsx` (ajustar onde houver nomenclatura "AltWood-…").
+1. **`src/components/SplashScreen.tsx`**
+   - Atualizar `viewBox` para `0 0 618.91 195.11`
+   - Substituir os 4 paths das letras "LESC" e os 2 paths do "O" (swoosh light + swoosh colorido) pelos paths do novo SVG Dark
+   - Atualizar `<linearGradient id="splash-grad">`:
+     - coordenadas: `x1="671.05" y1="-3.62" x2="376.39" y2="185.71"`
+     - stops: `#728ea0` (.25) → `#c0c9bf` (.56) → `#d6aa98` (.74) → `#efdcc5` (.9)
+   - Atualizar o `<rect>` do `clipPath` para `width="618.91" height="195.11"`
 
-## Detalhes técnicos
+2. **`src/components/PageTransitionLoader.tsx`**
+   - Mesma atualização de stops e (se houver paths inline) substituir paths/viewBox pela nova versão
 
-- `CardModelo`: remover `bg-[#141414]`, `rounded`, `border`, `aspect-video`, e o `<div>` interno `bg-[#c9c9c9]`. Imagem em container com altura fixa (ex.: `h-48 md:h-56`) e `object-contain`.
-- Substituir `BotaoCTA primary` por um `<button>` / `<a>` com classes: `text-xs text-[#525252] hover:text-primary underline underline-offset-4 decoration-[#9E9890]`.
-- Manter a prop `nome` na interface (usada como `alt`); deixar de exibir no JSX.
-- Não alterar lógica de seleção de swatch, abas ou orçamento.
+3. **`src/components/Header.tsx` (linha 143 — CTA do menu mobile)**
+   - Substituir o `linear-gradient` antigo pelos novos stops da versão Dark:
+     `linear-gradient(135deg, #728ea0 25%, #c0c9bf 56%, #d6aa98 74%, #efdcc5 90%)`
+   - (O CTA desktop já é cinza neutro; permanece como está.)
 
-## Verificação
+### Observações técnicas
 
-Após editar, conferir visualmente a página `/altwood-brise` (abas Origens e Classic) e ao menos uma das outras páginas AltWood para garantir que o grid continua responsivo e que nenhuma página depende do `nome` exibido.
+- Aspect ratio do novo logo (~3.17) é praticamente idêntico ao atual (~3.18), então as classes `w-[93px] h-[29px]` no Header e `h-8` no Footer não precisam ser ajustadas.
+- A cor base sólida nos novos arquivos é `#1f1f1f` (Dark) e `#fffbf3` (Light) — preservada por vir direto dos arquivos.
+- Nenhuma mudança de rotas, nomenclatura ou layout — apenas troca de assets visuais.
