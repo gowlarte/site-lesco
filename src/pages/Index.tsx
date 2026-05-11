@@ -79,7 +79,6 @@ const SLIDE_INTERVAL = 6000;
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [fading, setFading] = useState(false);
   const [selectedProject, setSelectedProject] = useState<typeof projects[number] | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const dragStartX = useRef<number | null>(null);
@@ -126,15 +125,11 @@ const Index = () => {
   useEffect(() => {
     if (isPaused) return;
     const t = setInterval(() => {
-      setFading(true);
-      setTimeout(() => {
-        setCurrentSlide((s) => {
-          const next = s + 1;
-          // After last slide, loop back to slide 1 (Zhú), skipping slide 0
-          return next >= linhas.length ? 1 : next;
-        });
-        setFading(false);
-      }, 700);
+      setCurrentSlide((s) => {
+        const next = s + 1;
+        // After last slide, loop back to slide 1 (Zhú), skipping slide 0
+        return next >= linhas.length ? 1 : next;
+      });
     }, SLIDE_INTERVAL);
     return () => clearInterval(t);
   }, [isPaused]);
@@ -187,13 +182,6 @@ const Index = () => {
 
         {/* Overlay tom */}
         <div className="absolute inset-0 bg-[#141414]/50 pointer-events-none" />
-
-        {/* Fade-to-black overlay (slide-out) */}
-        <div
-          className={`absolute inset-0 bg-black z-30 pointer-events-none transition-opacity duration-[700ms] ease-in ${
-            fading ? "opacity-100" : "opacity-0"
-          }`}
-        />
 
         {/* Header inside banner */}
         <div className="relative z-20">
