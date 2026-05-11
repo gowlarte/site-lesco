@@ -174,9 +174,9 @@ const Index = () => {
               alt={`${linha.nome} — fundo`}
               draggable={false}
               className={
-                currentSlide === i
-                  ? "hero-bg-in hero-slide-img w-full h-full object-cover pointer-events-none"
-                  : "w-full h-full object-cover pointer-events-none"
+                (currentSlide === i ? "hero-bg-in hero-slide-img " : "") +
+                "w-full h-full object-cover pointer-events-none" +
+                (linha.bw ? " grayscale" : "")
               }
               key={`${linha.nome}-bg-${currentSlide === i ? "active" : "inactive"}`}
             />
