@@ -47,6 +47,7 @@ const linhas = [
     slogan: "Arquitetura em Bambu",
     href: "/zhu",
     imagem: heroZhuzen,
+    bw: true,
   },
   {
     nome: "Echo",
@@ -55,6 +56,7 @@ const linhas = [
     slogan: "Acústica Sensorial",
     href: "/echo",
     imagem: heroEcho,
+    bw: true,
   },
   {
     nome: "Geo",
@@ -63,6 +65,7 @@ const linhas = [
     slogan: "Revestimento de Pedra Flexível",
     href: "/geo",
     imagem: heroGeo,
+    bw: true,
   },
 ];
 
@@ -171,9 +174,9 @@ const Index = () => {
               alt={`${linha.nome} — fundo`}
               draggable={false}
               className={
-                currentSlide === i
-                  ? "hero-bg-in hero-slide-img w-full h-full object-cover pointer-events-none"
-                  : "w-full h-full object-cover pointer-events-none"
+                (currentSlide === i ? "hero-bg-in hero-slide-img " : "") +
+                "w-full h-full object-cover pointer-events-none" +
+                (linha.bw ? " grayscale" : "")
               }
               key={`${linha.nome}-bg-${currentSlide === i ? "active" : "inactive"}`}
             />
