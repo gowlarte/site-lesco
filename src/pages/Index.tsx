@@ -36,6 +36,7 @@ const linhas = [
     nome: "Madeira Ecológica",
     logo: logoMantoRaw,
     descricao: "Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto.",
+    slogan: "",
     href: "/madeira-ecologica-lesco",
     imagem: heroManto,
   },
@@ -43,6 +44,7 @@ const linhas = [
     nome: "Zhú",
     logo: logoZhuzenRaw,
     descricao: "Revestimentos, forros, luminárias e decorativos feitos a partir do bambu.",
+    slogan: "Arquitetura em Bambu",
     href: "/zhu",
     imagem: heroZhuzen,
   },
@@ -50,6 +52,7 @@ const linhas = [
     nome: "Echo",
     logo: logoEchoRaw,
     descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais e home cinemas.",
+    slogan: "Acústica Sensorial",
     href: "/echo",
     imagem: heroEcho,
   },
@@ -57,6 +60,7 @@ const linhas = [
     nome: "Geo",
     logo: logoGeoRaw,
     descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
+    slogan: "Revestimento de Pedra Flexível",
     href: "/geo",
     imagem: heroGeo,
   },
@@ -75,6 +79,7 @@ const SLIDE_INTERVAL = 6000;
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [fading, setFading] = useState(false);
   const [selectedProject, setSelectedProject] = useState<typeof projects[number] | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const dragStartX = useRef<number | null>(null);
@@ -121,7 +126,15 @@ const Index = () => {
   useEffect(() => {
     if (isPaused) return;
     const t = setInterval(() => {
-      setCurrentSlide((s) => (s + 1) % linhas.length);
+      setFading(true);
+      setTimeout(() => {
+        setCurrentSlide((s) => {
+          const next = s + 1;
+          // After last slide, loop back to slide 1 (Zhú), skipping slide 0
+          return next >= linhas.length ? 1 : next;
+        });
+        setFading(false);
+      }, 700);
     }, SLIDE_INTERVAL);
     return () => clearInterval(t);
   }, [isPaused]);
@@ -164,15 +177,23 @@ const Index = () => {
               draggable={false}
               className={
                 currentSlide === i
-                  ? "hero-slide-img w-full h-full object-cover pointer-events-none"
+                  ? "hero-bg-in hero-slide-img w-full h-full object-cover pointer-events-none"
                   : "w-full h-full object-cover pointer-events-none"
               }
+              key={`${linha.nome}-bg-${currentSlide === i ? "active" : "inactive"}`}
             />
           </div>
         ))}
 
-        {/* Overlay */}
+        {/* Overlay tom */}
         <div className="absolute inset-0 bg-[#141414]/50 pointer-events-none" />
+
+        {/* Fade-to-black overlay (slide-out) */}
+        <div
+          className={`absolute inset-0 bg-black z-30 pointer-events-none transition-opacity duration-[700ms] ease-in ${
+            fading ? "opacity-100" : "opacity-0"
+          }`}
+        />
 
         {/* Header inside banner */}
         <div className="relative z-20">
@@ -209,19 +230,30 @@ const Index = () => {
           </>
         ) : (
           /* Centered "em breve" composition — Echo / Geo / Zhú */
-          <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none px-6">
-            <div className="w-full max-w-[900px] flex flex-col items-center">
-              <div className="w-full h-px bg-white/70" />
+          <div
+            key={`hero-center-${active.nome}-${currentSlide}`}
+            className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none px-6 text-white"
+          >
+            {/* Logo + dot + slogan, all on one line */}
+            <div className="flex items-center justify-center gap-5 md:gap-7 lg:gap-9 max-w-[1200px]">
               <div
-                className="my-10 md:my-14 [&>svg]:h-[70px] md:[&>svg]:h-[100px] lg:[&>svg]:h-[120px] [&>svg]:w-auto text-white"
+                className="hero-logo-in [&>svg]:h-[44px] md:[&>svg]:h-[64px] lg:[&>svg]:h-[80px] [&>svg]:w-auto text-white"
                 dangerouslySetInnerHTML={{ __html: active.logo }}
                 aria-label={active.nome}
               />
-              <div className="w-full h-px bg-white/70" />
-              <span className="mt-10 md:mt-14 font-display font-light text-white text-[12px] md:text-[14px] tracking-[0.4em] uppercase">
-                Nova linha em breve
+              <span
+                aria-hidden="true"
+                className="hero-circle-in inline-block w-2 h-2 md:w-2.5 md:h-2.5 lg:w-3 lg:h-3 rounded-full bg-white shrink-0"
+              />
+              <span className="hero-slogan-in font-display font-light text-white text-[14px] md:text-[20px] lg:text-[26px] leading-none tracking-[-0.01em] whitespace-nowrap">
+                {active.slogan}
               </span>
             </div>
+
+            {/* Static label below */}
+            <span className="hero-label-in mt-8 md:mt-10 font-display font-light text-white text-[11px] md:text-[13px] tracking-[0.4em] uppercase">
+              Nova linha em breve
+            </span>
           </div>
         )}
 
