@@ -189,16 +189,18 @@ const Index = () => {
               {active.nome}
             </h1>
           ) : (
-            <div
-              className="mb-5 transition-opacity duration-500 [&>svg]:h-[44px] md:[&>svg]:h-[56px] lg:[&>svg]:h-[68px] [&>svg]:w-auto"
-              style={{ color: "#FFFFFF" }}
-              dangerouslySetInnerHTML={{ __html: active.logo }}
-              aria-label={active.nome}
-            />
+            <div className="mb-5 flex items-center gap-4">
+              <div
+                className="transition-opacity duration-500 [&>svg]:h-[44px] md:[&>svg]:h-[56px] lg:[&>svg]:h-[68px] [&>svg]:w-auto"
+                style={{ color: "#FFFFFF" }}
+                dangerouslySetInnerHTML={{ __html: active.logo }}
+                aria-label={active.nome}
+              />
+              <span className="font-display font-light text-[#141414] bg-white rounded-full px-3 py-1.5 text-[10px] md:text-[11px] tracking-[0.15em] uppercase whitespace-nowrap leading-tight">
+                Lançamento<br />em breve
+              </span>
+            </div>
           )}
-          <p className="font-display font-extralight text-[20px] md:text-[26px] lg:text-[30px] leading-[1.2] tracking-[-0.01em] text-white/95 max-w-[520px] text-left">
-            {active.descricao}
-          </p>
           {/* CTA — mobile: below description, left-aligned */}
           <Link
             to={active.href}

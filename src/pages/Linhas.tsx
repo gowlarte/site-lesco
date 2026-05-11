@@ -119,25 +119,22 @@ const Linhas = () => {
                   </h2>
                 ) : (
                   <div
-                    className="transition-all duration-500 [&>svg]:h-[44px] md:[&>svg]:h-[64px] lg:[&>svg]:h-[80px] [&>svg]:w-auto"
+                    className="flex items-center gap-4 transition-all duration-500"
                     style={{
-                      color: activeIndex === i ? linha.cor : "#141414",
                       opacity: activeIndex !== null && activeIndex !== i ? 0.25 : 1,
                     }}
-                    dangerouslySetInnerHTML={{ __html: linha.logo }}
-                    aria-label={linha.nome}
-                  />
+                  >
+                    <div
+                      className="[&>svg]:h-[44px] md:[&>svg]:h-[64px] lg:[&>svg]:h-[80px] [&>svg]:w-auto transition-colors duration-500"
+                      style={{ color: activeIndex === i ? linha.cor : "#141414" }}
+                      dangerouslySetInnerHTML={{ __html: linha.logo }}
+                      aria-label={linha.nome}
+                    />
+                    <span className="font-display font-light text-white bg-[#141414] rounded-full px-3 py-1.5 text-[10px] md:text-[11px] tracking-[0.15em] uppercase whitespace-nowrap">
+                      Lançamento<br />em breve
+                    </span>
+                  </div>
                 )}
-
-                {/* Descrição — right */}
-                <p
-                  className="font-display font-extralight text-[20px] md:text-[26px] lg:text-[32px] leading-[1.2] tracking-[-0.01em] text-dark text-left transition-opacity duration-500"
-                  style={{
-                    opacity: activeIndex !== null && activeIndex !== i ? 0.25 : 1,
-                  }}
-                >
-                  {linha.descricao}
-                </p>
               </Link>
             </li>
           ))}
