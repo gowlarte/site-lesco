@@ -179,48 +179,51 @@ const Index = () => {
           <Header variant="overlay" />
         </div>
 
-        {/* Bottom-left: logo + descrição */}
-        <div className="absolute bottom-20 lg:bottom-16 left-8 lg:left-12 right-8 lg:right-auto z-10 max-w-[640px] text-white flex flex-col items-start">
-          {/* Logo da linha — Manto/"Madeira Ecológica" oculto via PRD §5.2; mostra wordmark em texto */}
-          {active.nome === "Madeira Ecológica" ? (
-            <h1
-              className="mb-5 font-display font-light text-[44px] md:text-[56px] lg:text-[68px] leading-none tracking-[-0.02em] text-white"
+        {active.nome === "Madeira Ecológica" ? (
+          <>
+            {/* Bottom-left: título */}
+            <div className="absolute bottom-20 lg:bottom-16 left-8 lg:left-12 right-8 lg:right-auto z-10 max-w-[640px] text-white flex flex-col items-start">
+              <h1 className="mb-5 font-display font-light text-[44px] md:text-[56px] lg:text-[68px] leading-none tracking-[-0.02em] text-white">
+                {active.nome}
+              </h1>
+              {/* CTA — mobile */}
+              <Link
+                to={active.href}
+                onClick={(e) => { if (Math.abs(dragDeltaX.current) > 5) e.preventDefault(); }}
+                className="lg:hidden mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300 cursor-pointer"
+              >
+                Ver linha completa
+                <ArrowUpRight size={16} />
+              </Link>
+            </div>
+
+            {/* Bottom-right: CTA — desktop only */}
+            <Link
+              to={active.href}
+              onClick={(e) => { if (Math.abs(dragDeltaX.current) > 5) e.preventDefault(); }}
+              className="hidden lg:inline-flex absolute bottom-16 right-8 lg:right-12 z-10 items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300 cursor-pointer"
             >
-              {active.nome}
-            </h1>
-          ) : (
-            <div className="mb-5 flex items-center gap-4">
+              Ver linha completa
+              <ArrowUpRight size={16} />
+            </Link>
+          </>
+        ) : (
+          /* Centered "em breve" composition — Echo / Geo / Zhú */
+          <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none px-6">
+            <div className="w-full max-w-[900px] flex flex-col items-center">
+              <div className="w-full h-px bg-white/70" />
               <div
-                className="transition-opacity duration-500 [&>svg]:h-[44px] md:[&>svg]:h-[56px] lg:[&>svg]:h-[68px] [&>svg]:w-auto"
-                style={{ color: "#FFFFFF" }}
+                className="my-10 md:my-14 [&>svg]:h-[70px] md:[&>svg]:h-[100px] lg:[&>svg]:h-[120px] [&>svg]:w-auto text-white"
                 dangerouslySetInnerHTML={{ __html: active.logo }}
                 aria-label={active.nome}
               />
-              <span className="font-display font-light text-[#141414] bg-white rounded-full px-3 py-1.5 text-[10px] md:text-[11px] tracking-[0.15em] uppercase whitespace-nowrap leading-tight">
-                Lançamento<br />em breve
+              <div className="w-full h-px bg-white/70" />
+              <span className="mt-10 md:mt-14 font-display font-light text-white text-[12px] md:text-[14px] tracking-[0.4em] uppercase">
+                Nova linha em breve
               </span>
             </div>
-          )}
-          {/* CTA — mobile: below description, left-aligned */}
-          <Link
-            to={active.href}
-            onClick={(e) => { if (Math.abs(dragDeltaX.current) > 5) e.preventDefault(); }}
-            className="lg:hidden mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300 cursor-pointer"
-          >
-            Ver linha completa
-            <ArrowUpRight size={16} />
-          </Link>
-        </div>
-
-        {/* Bottom-right: CTA — desktop only */}
-        <Link
-          to={active.href}
-          onClick={(e) => { if (Math.abs(dragDeltaX.current) > 5) e.preventDefault(); }}
-          className="hidden lg:inline-flex absolute bottom-16 right-8 lg:right-12 z-10 items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300 cursor-pointer"
-        >
-          Ver linha completa
-          <ArrowUpRight size={16} />
-        </Link>
+          </div>
+        )}
 
         {/* Bullets — bottom center */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-3">
