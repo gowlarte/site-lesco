@@ -79,7 +79,6 @@ const SLIDE_INTERVAL = 6000;
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [fading, setFading] = useState(false);
   const [selectedProject, setSelectedProject] = useState<typeof projects[number] | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const dragStartX = useRef<number | null>(null);
