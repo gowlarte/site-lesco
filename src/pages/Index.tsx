@@ -36,6 +36,7 @@ const linhas = [
     nome: "Madeira Ecológica",
     logo: logoMantoRaw,
     descricao: "Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto.",
+    slogan: "",
     href: "/madeira-ecologica-lesco",
     imagem: heroManto,
   },
@@ -43,6 +44,7 @@ const linhas = [
     nome: "Zhú",
     logo: logoZhuzenRaw,
     descricao: "Revestimentos, forros, luminárias e decorativos feitos a partir do bambu.",
+    slogan: "Arquitetura em Bambu",
     href: "/zhu",
     imagem: heroZhuzen,
   },
@@ -50,6 +52,7 @@ const linhas = [
     nome: "Echo",
     logo: logoEchoRaw,
     descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais e home cinemas.",
+    slogan: "Acústica Sensorial",
     href: "/echo",
     imagem: heroEcho,
   },
@@ -57,6 +60,7 @@ const linhas = [
     nome: "Geo",
     logo: logoGeoRaw,
     descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
+    slogan: "Revestimento de Pedra Flexível",
     href: "/geo",
     imagem: heroGeo,
   },
@@ -75,6 +79,7 @@ const SLIDE_INTERVAL = 6000;
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [fading, setFading] = useState(false);
   const [selectedProject, setSelectedProject] = useState<typeof projects[number] | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const dragStartX = useRef<number | null>(null);
@@ -121,7 +126,15 @@ const Index = () => {
   useEffect(() => {
     if (isPaused) return;
     const t = setInterval(() => {
-      setCurrentSlide((s) => (s + 1) % linhas.length);
+      setFading(true);
+      setTimeout(() => {
+        setCurrentSlide((s) => {
+          const next = s + 1;
+          // After last slide, loop back to slide 1 (Zhú), skipping slide 0
+          return next >= linhas.length ? 1 : next;
+        });
+        setFading(false);
+      }, 700);
     }, SLIDE_INTERVAL);
     return () => clearInterval(t);
   }, [isPaused]);
