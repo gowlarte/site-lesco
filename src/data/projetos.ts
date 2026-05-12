@@ -192,7 +192,7 @@ export const projetos: Projeto[] = [
       "Conceber uma fachada contemporânea que dialogue com o entorno nobre de Curitiba, oferecendo identidade marcante e desempenho técnico em altura.",
     solucao:
       "Aplicação do Lesco Green Shield 184×20 Red Cedar nos volumes superiores, criando ritmo vertical, calor visual e contraste com os elementos em concreto e vidro.",
-    galeria: [vazBatel2, vazBatel3, vazBatel4, vazBatel5, vazBatel6],
+    galeria: [vazBatel2, vazBatel3, vazBatel4, vazBatel5, vazBatel6, vazBatel7, vazBatel8, vazBatel9, vazBatel10, vazBatel11, vazBatel12],
   },
   {
     slug: "casa-una",
