@@ -82,7 +82,6 @@ import jhaCorporate6 from "@/assets/projetos/jha-corporate-6.png";
 import jhaCorporate7 from "@/assets/projetos/jha-corporate-7.png";
 import jhaCorporate8 from "@/assets/projetos/jha-corporate-8.png";
 import projectCasaUna from "@/assets/project-casa-una.png";
-import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 
 export type Projeto = {
   slug: string;
@@ -237,24 +236,6 @@ export const projetos: Projeto[] = [
     solucao:
       "Combinação de Panel em ambientes internos e Shield na fachada, especificados na mesma cartela para máxima continuidade.",
     galeria: [projectCasaUna, projectResidencialUrbano, casaAreia2],
-  },
-  {
-    slug: "deck-detail",
-    nome: "Deck Detail",
-    imagem: projectDeckDetail,
-    linha: "Madeira Ecológica",
-    local: "Florianópolis, SC",
-    ano: "2024",
-    area: "180 m²",
-    arquitetura: "Studio Atlântico",
-    produtos: ["AltWood Deck"],
-    descricao:
-      "Detalhamento de área externa com deck modular ao redor de piscina, explorando a precisão das juntas e o acabamento textural da madeira ecológica.",
-    desafio:
-      "Compatibilizar drenagem, fixação oculta e desenho de bordas em uma área de uso intenso e contato direto com a água.",
-    solucao:
-      "Sistema de clipes ocultos, ripado de borda em meia-esquadria e estrutura ventilada que prolonga a vida útil do deck.",
-    galeria: [projectDeckDetail, casaAreia2, projectCasaMansa],
   },
 ];
 
