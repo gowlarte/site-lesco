@@ -78,6 +78,9 @@ import jhaCorporate2 from "@/assets/projetos/jha-corporate-2.png";
 import jhaCorporate3 from "@/assets/projetos/jha-corporate-3.png";
 import jhaCorporate4 from "@/assets/projetos/jha-corporate-4.png";
 import jhaCorporate5 from "@/assets/projetos/jha-corporate-5.png";
+import jhaCorporate6 from "@/assets/projetos/jha-corporate-6.png";
+import jhaCorporate7 from "@/assets/projetos/jha-corporate-7.png";
+import jhaCorporate8 from "@/assets/projetos/jha-corporate-8.png";
 import projectCasaUna from "@/assets/project-casa-una.png";
 import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 
@@ -215,7 +218,7 @@ export const projetos: Projeto[] = [
       "Conceber uma fachada corporativa contemporânea que combine inovação arquitetônica e eficiência funcional, com identidade marcante em uma região estratégica de São Paulo.",
     solucao:
       "Aplicação do Lesco Green Shield 124×15,5 Oak em forros e elementos de fachada, trazendo calor visual e contraste com os volumes em vidro e estrutura metálica.",
-    galeria: [jhaCorporate2, jhaCorporate3, jhaCorporate4, jhaCorporate5],
+    galeria: [jhaCorporate2, jhaCorporate3, jhaCorporate4, jhaCorporate5, jhaCorporate6, jhaCorporate7, jhaCorporate8],
   },
   {
     slug: "casa-una",
