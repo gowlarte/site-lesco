@@ -67,6 +67,12 @@ import vazBatel3 from "@/assets/projetos/vaz-batel-3.png";
 import vazBatel4 from "@/assets/projetos/vaz-batel-4.png";
 import vazBatel5 from "@/assets/projetos/vaz-batel-5.png";
 import vazBatel6 from "@/assets/projetos/vaz-batel-6.png";
+import vazBatel7 from "@/assets/projetos/vaz-batel-7.png";
+import vazBatel8 from "@/assets/projetos/vaz-batel-8.png";
+import vazBatel9 from "@/assets/projetos/vaz-batel-9.png";
+import vazBatel10 from "@/assets/projetos/vaz-batel-10.png";
+import vazBatel11 from "@/assets/projetos/vaz-batel-11.png";
+import vazBatel12 from "@/assets/projetos/vaz-batel-12.png";
 import projectCasaUna from "@/assets/project-casa-una.png";
 import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 
