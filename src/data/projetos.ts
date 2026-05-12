@@ -172,7 +172,7 @@ export const projetos: Projeto[] = [
   },
   {
     slug: "vaz-batel",
-    nome: "Arquitetura moderna em um dos bairros mais nobres de Curitiba, PR",
+    nome: "Casa Areia",
     imagem: vazBatel1,
     linha: "Madeira Ecológica",
     local: "Curitiba, PR",
