@@ -51,6 +51,16 @@ import casaAreia16 from "@/assets/projetos/casa-areia-16.webp";
 import casaAreia17 from "@/assets/projetos/casa-areia-17.webp";
 import casaAreia18 from "@/assets/projetos/casa-areia-18.webp";
 import casaAreia19 from "@/assets/projetos/casa-areia-19.webp";
+import casaAreia20 from "@/assets/projetos/casa-areia-20.webp";
+import casaAreia21 from "@/assets/projetos/casa-areia-21.webp";
+import casaAreia22 from "@/assets/projetos/casa-areia-22.webp";
+import casaAreia23 from "@/assets/projetos/casa-areia-23.webp";
+import casaAreia24 from "@/assets/projetos/casa-areia-24.webp";
+import casaAreia25 from "@/assets/projetos/casa-areia-25.webp";
+import casaAreia26 from "@/assets/projetos/casa-areia-26.webp";
+import casaAreia27 from "@/assets/projetos/casa-areia-27.webp";
+import casaAreia28 from "@/assets/projetos/casa-areia-28.webp";
+import casaAreia29 from "@/assets/projetos/casa-areia-29.webp";
 import projectCasaUna from "@/assets/project-casa-una.png";
 import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 
@@ -152,7 +162,7 @@ export const projetos: Projeto[] = [
       "Garantir continuidade visual entre piso interno, deck externo e forro, com resistência à exposição solar intensa.",
     solucao:
       "Especificação coordenada de Deck e Line em tonalidades complementares, com instalação técnica que respeita dilatações e drenagem.",
-    galeria: [casaAreia1, casaAreia3, casaAreia4, casaAreia5, casaAreia6, casaAreia7, casaAreia8, casaAreia9, casaAreia10, casaAreia11, casaAreia12, casaAreia13, casaAreia14, casaAreia15, casaAreia16, casaAreia17, casaAreia18, casaAreia19],
+    galeria: [casaAreia1, casaAreia3, casaAreia4, casaAreia5, casaAreia6, casaAreia7, casaAreia8, casaAreia9, casaAreia10, casaAreia11, casaAreia12, casaAreia13, casaAreia14, casaAreia15, casaAreia16, casaAreia17, casaAreia18, casaAreia19, casaAreia20, casaAreia21, casaAreia22, casaAreia23, casaAreia24, casaAreia25, casaAreia26, casaAreia27, casaAreia28, casaAreia29],
   },
   {
     slug: "casa-una",
