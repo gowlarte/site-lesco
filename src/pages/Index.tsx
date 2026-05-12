@@ -48,6 +48,7 @@ const linhas = [
     href: "/zhu",
     imagem: heroZhuzen,
     bw: true,
+    sloganOffset: "translate-y-[8px] md:translate-y-[10px] lg:translate-y-[14px]",
   },
   {
     nome: "Echo",
@@ -57,6 +58,7 @@ const linhas = [
     href: "/echo",
     imagem: heroEcho,
     bw: true,
+    sloganOffset: "translate-y-[6px] md:translate-y-[8px] lg:translate-y-[10px]",
   },
   {
     nome: "Geo",
