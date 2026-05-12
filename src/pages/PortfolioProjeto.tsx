@@ -98,7 +98,7 @@ const PortfolioProjeto = () => {
               <dl className="space-y-3">
                 {ficha.map(([k, v]) => (
                   <div key={k} className="flex justify-between border-b border-dark/10 pb-2">
-                    <dt className="font-body text-sm text-dark/60">{k}</dt>
+                    <dt className="font-body text-sm text-dark/60 text-gray-950">{k}</dt>
                     <dd className="font-display text-sm text-dark text-right">{v}</dd>
                   </div>
                 ))}
