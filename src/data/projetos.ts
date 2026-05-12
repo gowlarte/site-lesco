@@ -73,6 +73,8 @@ import vazBatel9 from "@/assets/projetos/vaz-batel-9.png";
 import vazBatel10 from "@/assets/projetos/vaz-batel-10.png";
 import vazBatel11 from "@/assets/projetos/vaz-batel-11.png";
 import vazBatel12 from "@/assets/projetos/vaz-batel-12.png";
+import jhaCorporate1 from "@/assets/projetos/jha-corporate-1.jpg";
+import jhaCorporate2 from "@/assets/projetos/jha-corporate-2.png";
 import projectCasaUna from "@/assets/project-casa-una.png";
 import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 
@@ -193,6 +195,24 @@ export const projetos: Projeto[] = [
     solucao:
       "Aplicação do Lesco Green Shield 184×20 Red Cedar nos volumes superiores, criando ritmo vertical, calor visual e contraste com os elementos em concreto e vidro.",
     galeria: [vazBatel2, vazBatel3, vazBatel4, vazBatel5, vazBatel6, vazBatel7, vazBatel8, vazBatel9, vazBatel10, vazBatel11, vazBatel12],
+  },
+  {
+    slug: "jha-corporate-boutique",
+    nome: "JHA Corporate Boutique",
+    imagem: jhaCorporate1,
+    linha: "Madeira Ecológica",
+    local: "São Paulo, SP",
+    ano: "—",
+    area: "—",
+    arquitetura: "PSA Arquitetura",
+    produtos: ["Lesco Green Shield 124×15,5 Oak"],
+    descricao:
+      "O JHA Corporate Boutique é um edifício corporativo projetado pelo escritório PSA, destacando-se pela sua combinação de inovação arquitetônica e eficiência funcional. Localizado em uma região estratégica da cidade de São Paulo, o projeto foi desenvolvido para atender às demandas contemporâneas de ambientes empresariais, oferecendo soluções práticas e avançadas.",
+    desafio:
+      "Conceber uma fachada corporativa contemporânea que combine inovação arquitetônica e eficiência funcional, com identidade marcante em uma região estratégica de São Paulo.",
+    solucao:
+      "Aplicação do Lesco Green Shield 124×15,5 Oak em forros e elementos de fachada, trazendo calor visual e contraste com os volumes em vidro e estrutura metálica.",
+    galeria: [jhaCorporate2],
   },
   {
     slug: "casa-una",
