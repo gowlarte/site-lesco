@@ -25,11 +25,7 @@ import logoZhuzenRaw from "@/assets/linha-zhuzen-2.svg?raw";
 import logoEchoRaw from "@/assets/linha-echotex-2.svg?raw";
 import logoGeoRaw from "@/assets/linha-italflex-2.svg?raw";
 
-import projectCasaMansa from "@/assets/project-casa-mansa.jpg";
-import projectResidencialUrbano from "@/assets/project-residencial-urbano.webp";
-import projectCasaAreia from "@/assets/project-casa-areia.jpg";
-import projectCasaUna from "@/assets/project-casa-una.png";
-import projectDeckDetail from "@/assets/project-deck-detail.jpg";
+import { projetos } from "@/data/projetos";
 
 const linhas = [
   {
@@ -71,13 +67,16 @@ const linhas = [
   },
 ];
 
-const projects = [
-  { nome: "Casa Mansa", imagem: projectCasaMansa, href: "/projetos/casa-mansa", descricao: "Integração total entre arquitetura e natureza com revestimentos em madeira ecológica.", linha: "Madeira Ecológica" },
-  { nome: "Residencial Urbano", imagem: projectResidencialUrbano, href: "/projetos/residencial-urbano", descricao: "Fachada contemporânea com brises em madeira ecológica.", linha: "Madeira Ecológica" },
-  { nome: "Casa Areia", imagem: projectCasaAreia, href: "/projetos/casa-areia", descricao: "Deck e pergolado em harmonia com a paisagem litorânea.", linha: "Madeira Ecológica" },
-  { nome: "Casa Una", imagem: projectCasaUna, href: "/projetos/casa-una", descricao: "Revestimento externo que dialoga com a vegetação nativa.", linha: "Zhú" },
-  { nome: "Deck Detail", imagem: projectDeckDetail, href: "/projetos/deck-detail", descricao: "Detalhe de acabamento em deck de alta resistência.", linha: "Madeira Ecológica" },
-];
+const FEATURED_SLUGS = ["casa-mansa", "vaz-batel", "casa-areia"] as const;
+const projects = FEATURED_SLUGS.map(
+  (slug) => projetos.find((p) => p.slug === slug)!,
+).map((p) => ({
+  nome: p.nome,
+  imagem: p.imagem,
+  href: `/portfolio/${p.slug}`,
+  descricao: p.descricao,
+  linha: p.linha,
+}));
 
 const SLIDE_INTERVAL = 6000;
 
@@ -333,9 +332,9 @@ const Index = () => {
         {!selectedProject && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
             {/* Left — large featured image spanning full height */}
-            <div
-              className="group cursor-zoom-in"
-              onClick={() => setSelectedProject(projects[0])}
+            <Link
+              to={projects[0].href}
+              className="group cursor-pointer"
             >
               <div className="aspect-[4/3] md:aspect-auto md:h-full rounded-[10px] overflow-hidden relative">
                 <img
@@ -349,15 +348,15 @@ const Index = () => {
               <p className="font-body text-[11px] font-light uppercase tracking-[0.1em] text-foreground mt-3 ml-1 text-gray-950">
                 {projects[0].nome}
               </p>
-            </div>
+            </Link>
 
             {/* Right — two stacked images */}
             <div className="flex flex-col gap-[10px]">
               {[projects[1], projects[2]].map((p) => (
-                <div
+                <Link
+                  to={p.href}
                   key={p.nome}
-                  className="group cursor-zoom-in flex-1"
-                  onClick={() => setSelectedProject(p)}
+                  className="group cursor-pointer flex-1"
                 >
                   <div className="aspect-video rounded-[10px] overflow-hidden relative">
                     <img
@@ -371,7 +370,7 @@ const Index = () => {
                   <p className="font-body text-[11px] font-light uppercase tracking-[0.1em] text-foreground mt-3 ml-1 text-gray-950">
                     {p.nome}
                   </p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
