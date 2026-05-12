@@ -334,9 +334,9 @@ const Index = () => {
             {/* Left — large featured image spanning full height */}
             <Link
               to={projects[0].href}
-              className="group cursor-pointer"
+              className="group cursor-pointer flex flex-col"
             >
-              <div className="aspect-[4/3] md:aspect-auto md:h-full rounded-[10px] overflow-hidden relative">
+              <div className="aspect-[4/3] md:aspect-auto md:flex-1 rounded-[10px] overflow-hidden relative">
                 <img
                   src={projects[0].imagem}
                   alt={projects[0].nome}
