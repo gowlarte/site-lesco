@@ -102,7 +102,7 @@ export type Projeto = {
 export const projetos: Projeto[] = [
   {
     slug: "casa-mansa",
-    nome: "Elegância e Resistência com Materiais Ecológicos de Alto Desempenho",
+    nome: "Casa Mansa",
     imagem: projectCasaMansa,
     linha: "Madeira Ecológica",
     local: "Xangri-Lá, RS",
