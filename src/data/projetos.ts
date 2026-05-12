@@ -152,7 +152,7 @@ export const projetos: Projeto[] = [
       "Garantir continuidade visual entre piso interno, deck externo e forro, com resistência à exposição solar intensa.",
     solucao:
       "Especificação coordenada de Deck e Line em tonalidades complementares, com instalação técnica que respeita dilatações e drenagem.",
-    galeria: [casaAreia1, casaAreia3, casaAreia4, casaAreia5, casaAreia6, casaAreia7, casaAreia8, casaAreia9],
+    galeria: [casaAreia1, casaAreia3, casaAreia4, casaAreia5, casaAreia6, casaAreia7, casaAreia8, casaAreia9, casaAreia10, casaAreia11, casaAreia12, casaAreia13, casaAreia14, casaAreia15, casaAreia16, casaAreia17, casaAreia18, casaAreia19],
   },
   {
     slug: "casa-una",
