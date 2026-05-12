@@ -86,6 +86,9 @@ import casaUna2 from "@/assets/projetos/casa-una-2.png";
 import casaUna3 from "@/assets/projetos/casa-una-3.png";
 import casaUna4 from "@/assets/projetos/casa-una-4.png";
 import casaUna5 from "@/assets/projetos/casa-una-5.png";
+import casaUna6 from "@/assets/projetos/casa-una-6.png";
+import casaUna7 from "@/assets/projetos/casa-una-7.png";
+import casaUna8 from "@/assets/projetos/casa-una-8.png";
 
 export type Projeto = {
   slug: string;
@@ -239,7 +242,7 @@ export const projetos: Projeto[] = [
       "Integrar a residência à exuberante paisagem tropical do litoral paulista, mantendo linhas retas e formas geométricas marcantes em diálogo com o entorno natural.",
     solucao:
       "Aplicação do Lesco Green Brise 25×25 Walnut em treliças e elementos de fachada, criando filtros de luz, ventilação natural e calor visual em harmonia com a vegetação.",
-    galeria: [casaUna2, casaUna3, casaUna4, casaUna5],
+    galeria: [casaUna2, casaUna3, casaUna4, casaUna5, casaUna6, casaUna7, casaUna8],
   },
 ];
 
