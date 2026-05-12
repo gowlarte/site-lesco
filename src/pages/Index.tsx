@@ -73,7 +73,7 @@ const projects = FEATURED_SLUGS.map(
 ).map((p) => ({
   nome: p.nome,
   imagem: p.imagem,
-  href: `/portfolio/${p.slug}`,
+  href: `/projetos/${p.slug}`,
   descricao: p.descricao,
   linha: p.linha,
 }));

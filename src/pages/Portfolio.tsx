@@ -22,7 +22,7 @@ const Portfolio = () => {
         <section className="px-0">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[10px]">
             {projetos.map((p) => (
-              <Link to={`/portfolio/${p.slug}`} key={p.slug} className="group block">
+              <Link to={`/projetos/${p.slug}`} key={p.slug} className="group block">
                 <div className="aspect-[4/3] rounded-[10px] overflow-hidden">
                   <img
                     src={p.imagem}
