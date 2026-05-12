@@ -16,7 +16,7 @@ interface FiltroProdutosProps {
 export const FiltroProdutos = ({ activeId, onTabClick }: FiltroProdutosProps) => (
   <nav
     id="filtro"
-    className="sticky top-0 z-[100] bg-[#0D0D0D]/95 backdrop-blur-xl border-b border-[#1E1E1E] overflow-x-auto"
+    className="relative bg-[#0D0D0D]/95 backdrop-blur-xl border-b border-[#1E1E1E] overflow-x-auto"
   >
     <div className="flex items-center h-14 px-6 md:px-12 gap-1 whitespace-nowrap">
       {tabs.map((tab) => (
