@@ -149,7 +149,7 @@ const PortfolioProjeto = () => {
               Ver portfólio
             </Link>
             <Link
-              to={`/portfolio/${proximo.slug}`}
+              to={`/projetos/${proximo.slug}`}
               className="inline-flex items-center px-6 py-3 rounded bg-dark text-white font-display text-[13px] uppercase tracking-[0.08em] hover:opacity-90 transition-opacity"
             >
               Próximo
