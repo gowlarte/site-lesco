@@ -73,6 +73,8 @@ import vazBatel9 from "@/assets/projetos/vaz-batel-9.png";
 import vazBatel10 from "@/assets/projetos/vaz-batel-10.png";
 import vazBatel11 from "@/assets/projetos/vaz-batel-11.png";
 import vazBatel12 from "@/assets/projetos/vaz-batel-12.png";
+import jhaCorporate1 from "@/assets/projetos/jha-corporate-1.jpg";
+import jhaCorporate2 from "@/assets/projetos/jha-corporate-2.png";
 import projectCasaUna from "@/assets/project-casa-una.png";
 import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 
