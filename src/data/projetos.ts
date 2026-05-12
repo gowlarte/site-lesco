@@ -172,7 +172,7 @@ export const projetos: Projeto[] = [
   },
   {
     slug: "vaz-batel",
-    nome: "Casa Areia",
+    nome: "Vaz Batel",
     imagem: vazBatel1,
     linha: "Madeira Ecológica",
     local: "Curitiba, PR",
