@@ -61,6 +61,12 @@ import casaAreia26 from "@/assets/projetos/casa-areia-26.webp";
 import casaAreia27 from "@/assets/projetos/casa-areia-27.webp";
 import casaAreia28 from "@/assets/projetos/casa-areia-28.webp";
 import casaAreia29 from "@/assets/projetos/casa-areia-29.webp";
+import vazBatel1 from "@/assets/projetos/vaz-batel-1.webp";
+import vazBatel2 from "@/assets/projetos/vaz-batel-2.png";
+import vazBatel3 from "@/assets/projetos/vaz-batel-3.png";
+import vazBatel4 from "@/assets/projetos/vaz-batel-4.png";
+import vazBatel5 from "@/assets/projetos/vaz-batel-5.png";
+import vazBatel6 from "@/assets/projetos/vaz-batel-6.png";
 import projectCasaUna from "@/assets/project-casa-una.png";
 import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 
@@ -163,6 +169,24 @@ export const projetos: Projeto[] = [
     solucao:
       "Especificação coordenada de Deck e Line em tonalidades complementares, com instalação técnica que respeita dilatações e drenagem.",
     galeria: [casaAreia1, casaAreia3, casaAreia4, casaAreia5, casaAreia6, casaAreia7, casaAreia8, casaAreia9, casaAreia10, casaAreia11, casaAreia12, casaAreia13, casaAreia14, casaAreia15, casaAreia16, casaAreia17, casaAreia18, casaAreia19, casaAreia20, casaAreia21, casaAreia22, casaAreia23, casaAreia24, casaAreia25, casaAreia26, casaAreia27, casaAreia28, casaAreia29],
+  },
+  {
+    slug: "vaz-batel",
+    nome: "Arquitetura moderna em um dos bairros mais nobres de Curitiba, PR",
+    imagem: vazBatel1,
+    linha: "Madeira Ecológica",
+    local: "Curitiba, PR",
+    ano: "—",
+    area: "53 a 125 m² (privativa)",
+    arquitetura: "Triptyque Architecture e Architectsoffice",
+    produtos: ["Lesco Green Shield 184×20 Red Cedar"],
+    descricao:
+      "O VAZ Batel se destaca com uma proposta moderna, alinhada às exigências contemporâneas, sob o projeto arquitetônico de Greg Bousquet (Triptyque Architecture) e interiores de Guilherme Torres. O edifício possui uma torre de dez pavimentos e ático, com 63 apartamentos versáteis de 53 a 125 m² de área privativa. As opções vão desde unidades de 53 m², com uma suíte, até duplex de até 125 m², com uma ou duas vagas de garagem. O pé-direito alto de 2,65 metros nas áreas sociais e dormitórios oferece maior sensação de amplitude e conforto.",
+    desafio:
+      "Conceber uma fachada contemporânea que dialogue com o entorno nobre de Curitiba, oferecendo identidade marcante e desempenho técnico em altura.",
+    solucao:
+      "Aplicação do Lesco Green Shield 184×20 Red Cedar nos volumes superiores, criando ritmo vertical, calor visual e contraste com os elementos em concreto e vidro.",
+    galeria: [vazBatel2, vazBatel3, vazBatel4, vazBatel5, vazBatel6],
   },
   {
     slug: "casa-una",
