@@ -61,6 +61,12 @@ import casaAreia26 from "@/assets/projetos/casa-areia-26.webp";
 import casaAreia27 from "@/assets/projetos/casa-areia-27.webp";
 import casaAreia28 from "@/assets/projetos/casa-areia-28.webp";
 import casaAreia29 from "@/assets/projetos/casa-areia-29.webp";
+import vazBatel1 from "@/assets/projetos/vaz-batel-1.webp";
+import vazBatel2 from "@/assets/projetos/vaz-batel-2.png";
+import vazBatel3 from "@/assets/projetos/vaz-batel-3.png";
+import vazBatel4 from "@/assets/projetos/vaz-batel-4.png";
+import vazBatel5 from "@/assets/projetos/vaz-batel-5.png";
+import vazBatel6 from "@/assets/projetos/vaz-batel-6.png";
 import projectCasaUna from "@/assets/project-casa-una.png";
 import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 
