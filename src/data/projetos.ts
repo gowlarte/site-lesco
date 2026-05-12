@@ -67,6 +67,12 @@ import vazBatel3 from "@/assets/projetos/vaz-batel-3.png";
 import vazBatel4 from "@/assets/projetos/vaz-batel-4.png";
 import vazBatel5 from "@/assets/projetos/vaz-batel-5.png";
 import vazBatel6 from "@/assets/projetos/vaz-batel-6.png";
+import vazBatel7 from "@/assets/projetos/vaz-batel-7.png";
+import vazBatel8 from "@/assets/projetos/vaz-batel-8.png";
+import vazBatel9 from "@/assets/projetos/vaz-batel-9.png";
+import vazBatel10 from "@/assets/projetos/vaz-batel-10.png";
+import vazBatel11 from "@/assets/projetos/vaz-batel-11.png";
+import vazBatel12 from "@/assets/projetos/vaz-batel-12.png";
 import projectCasaUna from "@/assets/project-casa-una.png";
 import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 
@@ -186,7 +192,7 @@ export const projetos: Projeto[] = [
       "Conceber uma fachada contemporânea que dialogue com o entorno nobre de Curitiba, oferecendo identidade marcante e desempenho técnico em altura.",
     solucao:
       "Aplicação do Lesco Green Shield 184×20 Red Cedar nos volumes superiores, criando ritmo vertical, calor visual e contraste com os elementos em concreto e vidro.",
-    galeria: [vazBatel2, vazBatel3, vazBatel4, vazBatel5, vazBatel6],
+    galeria: [vazBatel2, vazBatel3, vazBatel4, vazBatel5, vazBatel6, vazBatel7, vazBatel8, vazBatel9, vazBatel10, vazBatel11, vazBatel12],
   },
   {
     slug: "casa-una",
