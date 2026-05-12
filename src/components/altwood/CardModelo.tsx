@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface CardModeloProps {
   imageSrc?: string;
   nome: string;
@@ -29,11 +31,12 @@ export const CardModelo = ({ imageSrc, nome, medida, peso, onOrcamento }: CardMo
     </div>
 
     {/* Link sutil */}
-    <button
+    <Link
+      to="/orcamento"
       onClick={onOrcamento}
       className="self-start text-xs text-[#525252] hover:text-primary underline underline-offset-4 decoration-[#9E9890] transition-colors cursor-pointer"
     >
       Solicitar orçamento
-    </button>
+    </Link>
   </div>
 );
