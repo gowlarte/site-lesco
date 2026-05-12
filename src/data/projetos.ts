@@ -228,7 +228,7 @@ export const projetos: Projeto[] = [
   },
   {
     slug: "casa-una",
-    nome: "Uma arquitetura rústica no litoral de SP",
+    nome: "Casa Una",
     imagem: casaUna1,
     linha: "Madeira Ecológica",
     local: "Litoral SP",
