@@ -129,7 +129,7 @@ export const projetos: Projeto[] = [
   {
     slug: "casa-areia",
     nome: "Casa Areia",
-    imagem: projectCasaAreia,
+    imagem: casaAreia2,
     linha: "Madeira Ecológica",
     local: "Búzios, RJ",
     ano: "2024",
@@ -142,7 +142,7 @@ export const projetos: Projeto[] = [
       "Garantir continuidade visual entre piso interno, deck externo e forro, com resistência à exposição solar intensa.",
     solucao:
       "Especificação coordenada de Deck e Line em tonalidades complementares, com instalação técnica que respeita dilatações e drenagem.",
-    galeria: [projectCasaAreia, projectDeckDetail, projectCasaMansa],
+    galeria: [casaAreia1, casaAreia3, casaAreia4, casaAreia5, casaAreia6, casaAreia7, casaAreia8, casaAreia9],
   },
   {
     slug: "casa-una",
@@ -160,7 +160,7 @@ export const projetos: Projeto[] = [
       "Integrar revestimento interno e externo de mesma família visual, mantendo coerência cromática e de textura.",
     solucao:
       "Combinação de Panel em ambientes internos e Shield na fachada, especificados na mesma cartela para máxima continuidade.",
-    galeria: [projectCasaUna, projectResidencialUrbano, projectCasaAreia],
+    galeria: [projectCasaUna, projectResidencialUrbano, casaAreia2],
   },
   {
     slug: "deck-detail",
@@ -178,7 +178,7 @@ export const projetos: Projeto[] = [
       "Compatibilizar drenagem, fixação oculta e desenho de bordas em uma área de uso intenso e contato direto com a água.",
     solucao:
       "Sistema de clipes ocultos, ripado de borda em meia-esquadria e estrutura ventilada que prolonga a vida útil do deck.",
-    galeria: [projectDeckDetail, projectCasaAreia, projectCasaMansa],
+    galeria: [projectDeckDetail, casaAreia2, projectCasaMansa],
   },
 ];
 
