@@ -345,9 +345,12 @@ const Index = () => {
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
               </div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.1em] text-foreground mt-3 ml-1 text-gray-950">
-                {projects[0].nome}
+              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/60 mt-3 ml-1">
+                {projects[0].linha}
               </p>
+              <h3 className="font-display text-lg font-normal text-dark ml-1 group-hover:opacity-70 transition-opacity">
+                {projects[0].nome}
+              </h3>
             </Link>
 
             {/* Right — two stacked images */}
@@ -367,9 +370,12 @@ const Index = () => {
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
                   </div>
-                  <p className="font-body text-[11px] font-light uppercase tracking-[0.1em] text-foreground mt-3 ml-1 text-gray-950">
-                    {p.nome}
+                  <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/60 mt-3 ml-1">
+                    {p.linha}
                   </p>
+                  <h3 className="font-display text-lg font-normal text-dark ml-1 group-hover:opacity-70 transition-opacity">
+                    {p.nome}
+                  </h3>
                 </Link>
               ))}
             </div>
