@@ -58,7 +58,7 @@ const linhas = [
     href: "/echo",
     imagem: heroEcho,
     bw: true,
-    sloganOffset: "translate-y-[21px] md:translate-y-[23px] lg:translate-y-[25px]",
+    sloganOffset: "mt-[15px]",
   },
   {
     nome: "Geo",
