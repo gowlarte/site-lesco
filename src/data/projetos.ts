@@ -81,7 +81,11 @@ import jhaCorporate5 from "@/assets/projetos/jha-corporate-5.png";
 import jhaCorporate6 from "@/assets/projetos/jha-corporate-6.png";
 import jhaCorporate7 from "@/assets/projetos/jha-corporate-7.png";
 import jhaCorporate8 from "@/assets/projetos/jha-corporate-8.png";
-import projectCasaUna from "@/assets/project-casa-una.png";
+import casaUna1 from "@/assets/projetos/casa-una-1.png";
+import casaUna2 from "@/assets/projetos/casa-una-2.png";
+import casaUna3 from "@/assets/projetos/casa-una-3.png";
+import casaUna4 from "@/assets/projetos/casa-una-4.png";
+import casaUna5 from "@/assets/projetos/casa-una-5.png";
 
 export type Projeto = {
   slug: string;
@@ -221,21 +225,21 @@ export const projetos: Projeto[] = [
   },
   {
     slug: "casa-una",
-    nome: "Casa Una",
-    imagem: projectCasaUna,
+    nome: "Uma arquitetura rústica no litoral de SP",
+    imagem: casaUna1,
     linha: "Madeira Ecológica",
-    local: "Belo Horizonte, MG",
-    ano: "2023",
-    area: "540 m²",
-    arquitetura: "Oficina UNA",
-    produtos: ["AltWood Panel", "AltWood Shield"],
+    local: "Litoral SP",
+    ano: "—",
+    area: "—",
+    arquitetura: "Gui Mattos",
+    produtos: ["Lesco Green Brise 25×25 Walnut"],
     descricao:
-      "Residência contemporânea de volumetria pura, em que o revestimento em madeira ecológica define a identidade dos ambientes internos e da fachada principal.",
+      "A Casa Una, situada na praiana Barra do Una, é um exemplo notável de arquitetura contemporânea. Desenhado pelo Arquitetura Gui Mattos, o projeto se integra de forma fluida à paisagem tropical ao redor. Seu desenho se destaca pelas linhas retas e presença marcante de formas geométricas, trazendo sofisticação e modernidade ao design.",
     desafio:
-      "Integrar revestimento interno e externo de mesma família visual, mantendo coerência cromática e de textura.",
+      "Integrar a residência à exuberante paisagem tropical do litoral paulista, mantendo linhas retas e formas geométricas marcantes em diálogo com o entorno natural.",
     solucao:
-      "Combinação de Panel em ambientes internos e Shield na fachada, especificados na mesma cartela para máxima continuidade.",
-    galeria: [projectCasaUna, projectResidencialUrbano, casaAreia2],
+      "Aplicação do Lesco Green Brise 25×25 Walnut em treliças e elementos de fachada, criando filtros de luz, ventilação natural e calor visual em harmonia com a vegetação.",
+    galeria: [casaUna2, casaUna3, casaUna4, casaUna5],
   },
 ];
 
