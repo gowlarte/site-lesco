@@ -32,7 +32,15 @@ import casaNh23 from "@/assets/projetos/casa-nh-23.jpg";
 import casaNh24 from "@/assets/projetos/casa-nh-24.jpg";
 import casaNh25 from "@/assets/projetos/casa-nh-25.jpg";
 import casaNh26 from "@/assets/projetos/casa-nh-26.jpg";
-import projectCasaAreia from "@/assets/project-casa-areia.jpg";
+import casaAreia1 from "@/assets/projetos/casa-areia-1.webp";
+import casaAreia2 from "@/assets/projetos/casa-areia-2.webp";
+import casaAreia3 from "@/assets/projetos/casa-areia-3.webp";
+import casaAreia4 from "@/assets/projetos/casa-areia-4.webp";
+import casaAreia5 from "@/assets/projetos/casa-areia-5.webp";
+import casaAreia6 from "@/assets/projetos/casa-areia-6.webp";
+import casaAreia7 from "@/assets/projetos/casa-areia-7.webp";
+import casaAreia8 from "@/assets/projetos/casa-areia-8.webp";
+import casaAreia9 from "@/assets/projetos/casa-areia-9.webp";
 import projectCasaUna from "@/assets/project-casa-una.png";
 import projectDeckDetail from "@/assets/project-deck-detail.jpg";
 
