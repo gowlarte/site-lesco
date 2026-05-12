@@ -238,7 +238,7 @@ const Index = () => {
                 aria-hidden="true"
                 className="hero-circle-in inline-block w-2 h-2 md:w-2.5 md:h-2.5 lg:w-3 lg:h-3 rounded-full bg-white shrink-0"
               />
-              <span className="hero-slogan-in font-display font-light text-white text-[14px] md:text-[20px] lg:text-[26px] leading-none tracking-[-0.01em] whitespace-nowrap">
+              <span className={`hero-slogan-in font-display font-light text-white text-[14px] md:text-[20px] lg:text-[26px] leading-none tracking-[-0.01em] whitespace-nowrap ${(active as any).sloganOffset ?? ""}`}>
                 {active.slogan}
               </span>
             </div>
