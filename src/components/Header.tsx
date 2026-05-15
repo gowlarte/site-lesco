@@ -180,6 +180,12 @@ export function Header({ variant = "default" }: HeaderProps) {
                     setHoveredNav(link.label);
                     setOpenDropdown(null);
                   }}
+                  onClick={(e) => {
+                    if (link.href === "/" && location.pathname === "/") {
+                      e.preventDefault();
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                  }}
                   className={sharedClass}
                   style={sharedStyle}
                 >
