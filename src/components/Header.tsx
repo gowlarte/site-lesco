@@ -30,13 +30,8 @@ const navLinks: NavItem[] = [
   },
   { label: "Catálogo", href: "/catalogo-lesco" },
   { label: "Biblioteca", href: "/biblioteca" },
-  {
-    label: "Material",
-    children: [
-      { label: "Blog", href: "/blog" },
-      { label: "Portfólio", href: "/portfolio" },
-    ],
-  },
+  { label: "Blog", href: "/blog" },
+  { label: "Portfólio", href: "/portfolio" },
 ];
 
 interface HeaderProps {
