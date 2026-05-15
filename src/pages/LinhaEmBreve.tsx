@@ -79,7 +79,7 @@ const LinhaEmBreve = () => {
             </h2>
           </div>
           <div>
-            <p className="font-body text-[16px] md:text-[17px] text-dark/75 leading-[1.7]">
+            <p className="font-body text-[16px] md:text-[17px] text-dark/75 leading-[1.7] text-gray-950">
               {linha.sobreTexto}
             </p>
           </div>
@@ -98,7 +98,7 @@ const LinhaEmBreve = () => {
           {linha.aplicacoes.map((a) => (
             <div key={a.titulo} className="bg-white/50 rounded-[10px] p-8">
               <h3 className="font-display text-xl text-dark mb-3 font-normal">{a.titulo}</h3>
-              <p className="font-body text-[14px] text-dark/70 leading-relaxed">{a.descricao}</p>
+              <p className="font-body text-[14px] text-dark/70 leading-relaxed text-gray-950">{a.descricao}</p>
             </div>
           ))}
         </div>
@@ -117,9 +117,9 @@ const LinhaEmBreve = () => {
           </div>
           <ul className="divide-y divide-dark/10">
             {linha.diferenciais.map((d, i) => (
-              <li key={i} className="py-5 flex gap-4 items-start">
-                <span className="font-mono text-[12px] text-dark/40 pt-1">0{i + 1}</span>
-                <span className="font-body text-[16px] md:text-[17px] text-dark/80 leading-relaxed">{d}</span>
+              <li key={i} className="py-5 flex gap-4 items-start text-gray-950">
+                <span className="font-mono text-[12px] text-dark/40 pt-1 text-gray-950">0{i + 1}</span>
+                <span className="font-body text-[16px] md:text-[17px] text-dark/80 leading-relaxed text-gray-950">{d}</span>
               </li>
             ))}
           </ul>
