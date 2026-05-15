@@ -180,6 +180,12 @@ export function Header({ variant = "default" }: HeaderProps) {
                     setHoveredNav(link.label);
                     setOpenDropdown(null);
                   }}
+                  onClick={(e) => {
+                    if (link.href === "/" && location.pathname === "/") {
+                      e.preventDefault();
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                  }}
                   className={sharedClass}
                   style={sharedStyle}
                 >
@@ -256,6 +262,12 @@ export function Header({ variant = "default" }: HeaderProps) {
             <Link
               key={link.href}
               to={link.href!}
+              onClick={(e) => {
+                if (link.href === "/" && location.pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
               className="font-display text-3xl font-light text-foreground/80 hover:text-foreground transition-colors py-3"
             >
               {link.label}
