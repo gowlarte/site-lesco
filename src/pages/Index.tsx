@@ -226,8 +226,8 @@ const Index = () => {
             key={`hero-center-${active.nome}-${currentSlide}`}
             className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none px-6 text-white"
           >
-            {/* Logo + dot + slogan, all on one line */}
-            <div className="flex items-center justify-center gap-5 md:gap-7 lg:gap-9 max-w-[1200px]">
+            {/* Logo + dot + slogan */}
+            <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-7 lg:gap-9 max-w-[1200px]">
               <div
                 className="hero-logo-in [&>svg]:h-[44px] md:[&>svg]:h-[64px] lg:[&>svg]:h-[80px] [&>svg]:w-auto text-white"
                 dangerouslySetInnerHTML={{ __html: active.logo }}
@@ -235,9 +235,9 @@ const Index = () => {
               />
               <span
                 aria-hidden="true"
-                className={`hero-circle-in inline-block w-2 h-2 md:w-2.5 md:h-2.5 lg:w-3 lg:h-3 rounded-full bg-white shrink-0 ${(active as any).sloganOffset ?? ""}`}
+                className={`hero-circle-in hidden md:inline-block w-2 h-2 md:w-2.5 md:h-2.5 lg:w-3 lg:h-3 rounded-full bg-white shrink-0 ${(active as any).sloganOffset ?? ""}`}
               />
-              <span className={`hero-slogan-in font-display font-light text-white text-[14px] md:text-[20px] lg:text-[26px] leading-none tracking-[-0.01em] whitespace-nowrap ${(active as any).sloganOffset ?? ""}`}>
+              <span className={`hero-slogan-in font-display font-light text-white text-[14px] md:text-[20px] lg:text-[26px] leading-none tracking-[-0.01em] md:whitespace-nowrap ${(active as any).sloganOffset ?? ""}`}>
                 {active.slogan}
               </span>
             </div>
