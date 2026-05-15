@@ -246,6 +246,16 @@ const Index = () => {
             <span className="hero-label-in mt-8 md:mt-10 font-display font-light text-white text-[11px] md:text-[13px] tracking-[0.4em] uppercase">
               Nova linha em breve
             </span>
+
+            {/* CTA "Saiba mais" */}
+            <Link
+              to={active.href}
+              onClick={(e) => { if (Math.abs(dragDeltaX.current) > 5) e.preventDefault(); }}
+              className="hero-label-in pointer-events-auto mt-6 md:mt-7 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300 cursor-pointer"
+            >
+              Saiba mais
+              <ArrowUpRight size={16} />
+            </Link>
           </div>
         )}
 
