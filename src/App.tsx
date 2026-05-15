@@ -28,7 +28,7 @@ import Blog from "./pages/Blog";
 import BlogArtigo from "./pages/BlogArtigo";
 import Orcamento from "./pages/Orcamento";
 import Catalogo from "./pages/Catalogo";
-import EmBreve from "./pages/EmBreve";
+import LinhaEmBreve from "./pages/LinhaEmBreve";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -72,10 +72,10 @@ const AppContent = () => {
           <Route path="/linhas" element={<Linhas />} />
 
           {/* Linhas em breve */}
-          <Route path="/zhu" element={<EmBreve />} />
-          <Route path="/echo" element={<EmBreve />} />
-          <Route path="/geo" element={<EmBreve />} />
-          <Route path="/em-breve/:linha" element={<EmBreve />} />
+          <Route path="/zhu" element={<LinhaEmBreve />} />
+          <Route path="/echo" element={<LinhaEmBreve />} />
+          <Route path="/geo" element={<LinhaEmBreve />} />
+          <Route path="/em-breve/:linha" element={<LinhaEmBreve />} />
 
           {/* Redirects (SPA equivalente de 301) — slugs antigos */}
           <Route path="/manto" element={<Navigate to="/madeira-ecologica-lesco" replace />} />
