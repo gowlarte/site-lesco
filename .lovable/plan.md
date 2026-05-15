@@ -1,121 +1,58 @@
-## Animações do Hero Slideshow (slides Geo / Zhú / Echo)
+# CTA "Saiba mais" e landing pages das linhas em breve
 
-Aplicar fielmente o PRD nos slides 1+ do hero em `src/pages/Index.tsx`. Slide 0 ("Madeira Ecológica") permanece intocado.
+## Objetivo
 
-### 1. Substituir SVGs dos logos
+Nos slides do hero da home das linhas Zhú, Echo e Geo (rotuladas como "Nova linha em breve"), adicionar um botão "Saiba mais" centralizado abaixo dessa frase. O botão leva à página da própria linha, que deixa de ser apenas um formulário genérico e passa a ser uma landing page completa — hero com formulário de cadastro de newsletter no topo, seguido por seções explicativas (conteúdo placeholder que o usuário editará depois).
 
-Os arquivos enviados (`ECHO-3.svg`, `GEO-3.svg`, `ZHU-3.svg`) contêm logo + círculo + slogan baked como paths. Vamos **extrair apenas o wordmark** (logo da linha) de cada SVG, descartando o círculo e o slogan — eles serão renderizados como HTML separado conforme o PRD.
+## Mudanças
 
-Substituir conteúdo de:
+### 1. Home — hero slides (`src/pages/Index.tsx`)
+- Abaixo do label "Nova linha em breve", adicionar um CTA centralizado com o texto "Saiba mais".
+- O CTA usa o mesmo estilo do botão "Ver linha completa" (pill branco, font-display, uppercase) para coerência visual.
+- O `href` aponta para `active.href` (já configurado: `/zhu`, `/echo`, `/geo`).
 
-- `src/assets/linha-echotex-2.svg` → wordmark "echo"
-- `src/assets/linha-italflex-2.svg` → wordmark "geo"
-- `src/assets/linha-zhuzen-2.svg` → wordmark "zhú"
+### 2. Substituir `EmBreve.tsx` por uma landing page padrão por linha
 
-Manter `fill="currentColor"` para herdar a cor branca atual.
+Hoje as três rotas (`/zhu`, `/echo`, `/geo`) renderizam o mesmo componente genérico `EmBreve.tsx` (apenas formulário centralizado). Substituir por uma landing page única e parametrizada, mantendo as rotas atuais.
 
-### 2. Adicionar slogans (do PRD) ao array `linhas`
+Estrutura da landing page (mesma para todas, conteúdo varia por linha):
 
-Em `src/pages/Index.tsx`:
+1. **Hero com formulário** (lado a lado em desktop, empilhado em mobile)
+   - Esquerda: nome da linha (logo SVG), tagline curta, parágrafo de introdução.
+   - Direita: card com título "Seja avisado no lançamento", campo de email + botão "Notifique-me" (lógica RD Station já existente em `EmBreve.tsx` é reaproveitada).
+   - Imagem de fundo da linha (já existe: `heroZhuzen`, `heroEcho`, `heroGeo`).
 
-- Zhú → "Arquitetura em Bambu"
-- Echo → "Acústica Sensorial"
-- Geo → "Revestimento de Pedra Flexível"
+2. **Seção "Sobre a linha"** — bloco editorial com texto placeholder explicando o conceito da linha.
 
-### 3. Reestruturar o bloco central dos slides "em breve"
+3. **Seção "Aplicações"** — grid de 3 cards genéricos (ícone/imagem + título + descrição curta) com usos típicos.
 
-```
-┌─────────────────────────────────────┐
-│      [LOGO]  •  Slogan da linha     |                                                                          NOVA LINHA EM BREVE                   │  ← anima na entrada do slide
-│                                     │
-│                                     │  ← animados em sequência
-└─────────────────────────────────────┘
-```
+4. **Seção "Materiais e diferenciais"** — lista de 3 a 4 bullets de características (placeholder).
 
-[LOGO]   •   Slogan da linha  ← Anima no início do slide  
-NOVA LINHA EM BREVE  ← Animado em sequência
+5. **CTA final** — repete o formulário ou link âncora de volta ao formulário do topo.
 
-&nbsp;
+6. **Footer** — já vem do layout global.
 
-Layout: flex horizontal (logo à esquerda, círculo `<span>` no meio, slogan à direita), centralizado. "NOVA LINHA EM BREVE" abaixo.
+Todo o conteúdo textual é placeholder genérico marcado de forma fácil de identificar para o usuário substituir depois.
 
-### 4. Animações por slide (PRD)
+### 3. Dados das linhas
 
-Adicionar keyframes em `src/index.css`:
+Centralizar os dados das três linhas em um arquivo `src/data/linhas-em-breve.ts` com: `slug`, `nome`, `logo` (SVG raw), `imagem` hero, `tagline`, `intro`, `sobre`, `aplicacoes[]`, `diferenciais[]`. A landing page lê pelo slug da rota.
 
-```css
-@keyframes heroFadeSlideUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes heroPopIn {
-  from { opacity: 0; transform: scale(0); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes heroBgFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-```
+### 4. Roteamento
 
-Classes utilitárias aplicadas só no slide ativo:
+Manter as rotas atuais `/zhu`, `/echo`, `/geo` apontando para o novo componente (ex.: `LinhaEmBreve.tsx`). Manter também `/em-breve/:linha` como fallback.
 
-- `.hero-bg-in` → `heroBgFadeIn 800ms ease-in both`
-- `.hero-logo-in` → `heroFadeSlideUp 600ms ease-out 400ms both`
-- `.hero-circle-in` → `heroPopIn 500ms cubic-bezier(0.34,1.56,0.64,1) 550ms both`
-- `.hero-slogan-in` → `heroFadeSlideUp 600ms ease-out 700ms both`
+## Detalhes técnicos
 
-Usar `key={`${linha.nome}-${currentSlide}`}` para reiniciar animações a cada troca.
+- Reaproveitar a lógica de submit RD Station de `EmBreve.tsx` em um componente compartilhado `NewsletterLancamentoForm` para não duplicar código.
+- Manter a estética editorial do projeto: cards flutuantes com `rounded-[10px]`, margens de 10px, tipografia PP Neue Machina + DM Sans, paleta clara padrão (`bg-light`).
+- O hero da landing usa imagem de fundo com overlay escuro suave (semelhante a `HeroSection` do AltWood) para garantir legibilidade do conteúdo sobreposto.
+- Sem dependências novas.
 
-### 5. Fade-to-black de saída (overlay único)
+## Arquivos afetados
 
-Substituir o crossfade atual por overlay preto sincronizado:
-
-```ts
-const [fading, setFading] = useState(false);
-useEffect(() => {
-  if (isPaused) return;
-  const t = setInterval(() => {
-    setFading(true);
-    setTimeout(() => {
-      setCurrentSlide((s) => {
-        const next = s + 1;
-        return next >= linhas.length ? 1 : next; // loop sem voltar ao slide 0
-      });
-      setFading(false);
-    }, 700);
-  }, SLIDE_INTERVAL);
-  return () => clearInterval(t);
-}, [isPaused]);
-```
-
-Overlay: `<div className={`absolute inset-0 bg-black z-30 pointer-events-none transition-opacity duration-[700ms] ease-in ${fading ? 'opacity-100' : 'opacity-0'}`} />` acima dos slides, abaixo de bullets/header.
-
-### 6. Loop sem slide 0
-
-Auto-avanço pula o slide 0 após o último (volta ao slide 1 — Zhú). Bullets e drag continuam navegando livremente.
-
-### 7. Slide 0 intocado
-
-A branch `active.nome === "Madeira Ecológica"` mantém estrutura, conteúdo e transição atuais.
-
----
-
-### Arquivos alterados
-
-- `src/pages/Index.tsx` — slogans, bloco central, fade-to-black, loop
-- `src/index.css` — keyframes + classes
-- `src/assets/linha-echotex-2.svg` — wordmark "echo"
-- `src/assets/linha-italflex-2.svg` — wordmark "geo"
-- `src/assets/linha-zhuzen-2.svg` — wordmark "zhú"
-
-### Critérios de aceite (PRD)
-
-- Slide 0 inalterado
-- Fundo: `opacity 0→1` 800ms ease-in
-- Logo: fadeSlideUp 600ms ease-out, delay 400ms
-- Círculo (HTML `<span>`): popIn 500ms com overshoot, delay 550ms
-- Slogan: fadeSlideUp 600ms ease-out, delay 700ms
-- "NOVA LINHA EM BREVE" anima com fade in
-- Saída: overlay preto único 700ms ease-in
-- Loop volta ao slide 1, não ao 0
+- `src/pages/Index.tsx` — adicionar CTA "Saiba mais" no slide.
+- `src/pages/EmBreve.tsx` — substituído pelo novo `LinhaEmBreve.tsx` (ou refatorado no mesmo arquivo).
+- `src/components/NewsletterLancamentoForm.tsx` — novo, extraído da lógica atual.
+- `src/data/linhas-em-breve.ts` — novo, conteúdo placeholder por linha.
+- `src/App.tsx` — apontar `/zhu`, `/echo`, `/geo` (e `/em-breve/:linha`) para o novo componente.
