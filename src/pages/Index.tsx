@@ -242,8 +242,14 @@ const Index = () => {
               </span>
             </div>
 
+            {/* Dot — mobile only, between slogan and label */}
+            <span
+              aria-hidden="true"
+              className="hero-circle-in md:hidden inline-block w-2 h-2 rounded-full bg-white mt-5"
+            />
+
             {/* Static label below */}
-            <span className="hero-label-in mt-8 md:mt-10 font-display font-light text-white text-[11px] md:text-[13px] tracking-[0.4em] uppercase">
+            <span className="hero-label-in mt-5 md:mt-10 font-display font-light text-white text-[11px] md:text-[13px] tracking-[0.4em] uppercase">
               Nova linha em breve
             </span>
 
