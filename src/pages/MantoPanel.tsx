@@ -143,6 +143,7 @@ const MantoPanel = () => {
                   key={`ace-${s.nome}`}
                   nome={s.nome}
                   corAproximada={s.corAproximada}
+                  imageSrc={s.imageSrc}
                   selected={selectedAcetinada === s.nome}
                   onClick={() => setSelectedAcetinada(selectedAcetinada === s.nome ? null : s.nome)}
                 />
