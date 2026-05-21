@@ -155,6 +155,7 @@ const MantoPanel = () => {
                   key={`fos-${s.nome}`}
                   nome={s.nome}
                   corAproximada={s.corAproximada}
+                  imageSrc={s.imageSrc}
                   selected={selectedFosca === s.nome}
                   onClick={() => setSelectedFosca(selectedFosca === s.nome ? null : s.nome)}
                 />
