@@ -90,7 +90,7 @@ const MantoPanel = () => {
       {/* Hero */}
       <HeroSection
         images={heroImages}
-        headline="LESCO PANEL"
+        headline="Lesco Panel"
         subtitulo=""
       />
 
