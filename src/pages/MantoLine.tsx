@@ -46,7 +46,7 @@ const MantoLine = () => {
       {/* Hero */}
       <HeroSection
         images={heroImages}
-        headline="LESCO LINE"
+        headline="Lesco Line"
         subtitulo=""
       />
 
