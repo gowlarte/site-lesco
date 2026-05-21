@@ -115,7 +115,7 @@ const MantoBrise = () => {
       {/* Hero */}
       <HeroSection
         images={heroImages}
-        headline="LESCO BRISE"
+        headline="Lesco Brise"
         subtitulo=""
       />
 
