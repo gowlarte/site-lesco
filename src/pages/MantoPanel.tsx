@@ -24,6 +24,12 @@ import modelo158x10 from "@/assets/panel-modelo-158x10.png";
 import modelo153x12 from "@/assets/panel-modelo-153x12.png";
 import modelo59x34 from "@/assets/panel-modelo-59x34.png";
 import modelo45x35 from "@/assets/panel-modelo-45x35.png";
+import swUvGoldenOak from "@/assets/swatch-uv-golden-oak.png";
+import swUvPremiumOak from "@/assets/swatch-uv-premium-oak.png";
+import swUvHickory from "@/assets/swatch-uv-hickory.png";
+import swUvTasmaniaOak from "@/assets/swatch-uv-tasmania-oak.png";
+import swUvMerbau from "@/assets/swatch-uv-merbau.png";
+import swUvUrbanOak from "@/assets/swatch-uv-urban-oak.png";
 import projetoPanel1 from "@/assets/projeto-panel-1.png";
 import projetoPanel2 from "@/assets/projeto-panel-2.png";
 import projetoPanel3 from "@/assets/projeto-panel-3.png";
@@ -43,12 +49,12 @@ const acetinadasSwatches = [
 ];
 
 const foscasSwatches = [
-  { nome: "Golden Oak", corAproximada: "#C4944A" },
-  { nome: "Premium Oak", corAproximada: "#A07040" },
-  { nome: "Hickory", corAproximada: "#8B6238" },
-  { nome: "Tasmania Oak", corAproximada: "#7A5230" },
-  { nome: "Merbau", corAproximada: "#5C3420" },
-  { nome: "Urban Oak", corAproximada: "#6B5A4A" },
+  { nome: "Golden Oak", corAproximada: "#C4944A", imageSrc: swUvGoldenOak as string },
+  { nome: "Premium Oak", corAproximada: "#A07040", imageSrc: swUvPremiumOak as string },
+  { nome: "Hickory", corAproximada: "#8B6238", imageSrc: swUvHickory as string },
+  { nome: "Tasmania Oak", corAproximada: "#7A5230", imageSrc: swUvTasmaniaOak as string },
+  { nome: "Merbau", corAproximada: "#5C3420", imageSrc: swUvMerbau as string },
+  { nome: "Urban Oak", corAproximada: "#6B5A4A", imageSrc: swUvUrbanOak as string },
 ];
 
 const modelos = [
