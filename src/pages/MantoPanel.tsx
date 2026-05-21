@@ -30,6 +30,12 @@ import swUvHickory from "@/assets/swatch-uv-hickory.png";
 import swUvTasmaniaOak from "@/assets/swatch-uv-tasmania-oak.png";
 import swUvMerbau from "@/assets/swatch-uv-merbau.png";
 import swUvUrbanOak from "@/assets/swatch-uv-urban-oak.png";
+import swSemUvGoldenOak from "@/assets/swatch-semuv-golden-oak.png";
+import swSemUvPremiumOak from "@/assets/swatch-semuv-premium-oak.png";
+import swSemUvHickory from "@/assets/swatch-semuv-hickory.png";
+import swSemUvTasmaniaOak from "@/assets/swatch-semuv-tasmania-oak.png";
+import swSemUvMerbau from "@/assets/swatch-semuv-merbau.png";
+import swSemUvUrbanOak from "@/assets/swatch-semuv-urban-oak.png";
 import projetoPanel1 from "@/assets/projeto-panel-1.png";
 import projetoPanel2 from "@/assets/projeto-panel-2.png";
 import projetoPanel3 from "@/assets/projeto-panel-3.png";
@@ -40,12 +46,12 @@ import projetoPanel6 from "@/assets/projeto-panel-6.png";
 const heroImages = [projetoPanel1, projetoPanel2, projetoPanel3, projetoPanel4, projetoPanel5, projetoPanel6];
 
 const acetinadasSwatches = [
-  { nome: "Golden Oak", corAproximada: "#C4944A" },
-  { nome: "Premium Oak", corAproximada: "#A07040" },
-  { nome: "Hickory", corAproximada: "#8B6238" },
-  { nome: "Tasmania Oak", corAproximada: "#7A5230" },
-  { nome: "Merbau", corAproximada: "#5C3420" },
-  { nome: "Urban Oak", corAproximada: "#6B5A4A" },
+  { nome: "Golden Oak", corAproximada: "#C4944A", imageSrc: swSemUvGoldenOak as string },
+  { nome: "Premium Oak", corAproximada: "#A07040", imageSrc: swSemUvPremiumOak as string },
+  { nome: "Hickory", corAproximada: "#8B6238", imageSrc: swSemUvHickory as string },
+  { nome: "Tasmania Oak", corAproximada: "#7A5230", imageSrc: swSemUvTasmaniaOak as string },
+  { nome: "Merbau", corAproximada: "#5C3420", imageSrc: swSemUvMerbau as string },
+  { nome: "Urban Oak", corAproximada: "#6B5A4A", imageSrc: swSemUvUrbanOak as string },
 ];
 
 const foscasSwatches = [
