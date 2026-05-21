@@ -210,9 +210,14 @@ const MantoBrise = () => {
               Modelos
             </span>
             <div className="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
-              {modelos.map((m) => (
-                <CardModelo key={m.nome} imageSrc={m.imageSrc} nome={m.nome} medida={m.medida} peso={m.peso} />
-              ))}
+              {modelos.map((m) => {
+                const variant = activeTab === "origens" && selectedSwatch
+                  ? origensColorVariants[m.medida]?.[selectedSwatch]
+                  : undefined;
+                return (
+                  <CardModelo key={m.nome} imageSrc={variant ?? m.imageSrc} nome={m.nome} medida={m.medida} peso={m.peso} />
+                );
+              })}
             </div>
           </div>
         </div>
