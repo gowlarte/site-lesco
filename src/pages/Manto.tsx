@@ -96,7 +96,7 @@ const produtos = [
   {
     id: "panel",
     tag: "Panel",
-    titulo: "Madeira Ecológica Panel",
+    titulo: "Lesco Panel",
     descricao: "Painéis para interiores e fachadas ventiladas protegidas. Disponível em acabamento acetinado e fosco com tratamento UV.",
     swatches: [
       { nome: "Golden Oak", corAproximada: "#C8972E" },
