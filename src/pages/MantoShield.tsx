@@ -37,6 +37,7 @@ import swEscWalnut from "@/assets/swatch-walnut.png";
 import swEscRedCedar from "@/assets/swatch-red-cedar.png";
 import swEscWeatherwood from "@/assets/swatch-weatherwood.png";
 
+import swTexLilyWhite from "@/assets/swatch-texturizado-lily-white.png";
 import swTexIpe from "@/assets/swatch-texturizado-ipe.png";
 import swTexTeak from "@/assets/swatch-texturizado-teak.png";
 import swTexOak from "@/assets/swatch-texturizado-oak.png";
