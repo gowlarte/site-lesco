@@ -37,6 +37,7 @@ import swEscWalnut from "@/assets/swatch-walnut.png";
 import swEscRedCedar from "@/assets/swatch-red-cedar.png";
 import swEscWeatherwood from "@/assets/swatch-weatherwood.png";
 
+import swTexLilyWhite from "@/assets/swatch-texturizado-lily-white.png";
 import swTexIpe from "@/assets/swatch-texturizado-ipe.png";
 import swTexTeak from "@/assets/swatch-texturizado-teak.png";
 import swTexOak from "@/assets/swatch-texturizado-oak.png";
@@ -57,7 +58,7 @@ const escovadasSwatches = [
 
 const texturizadasSwatches = [
   { nome: "Black", corAproximada: "#1A1A1A", imageSrc: undefined as string | undefined },
-  { nome: "Lily White", corAproximada: "#E8E0D5", imageSrc: undefined as string | undefined },
+  { nome: "Lily White", corAproximada: "#E8E0D5", imageSrc: swTexLilyWhite as string | undefined },
   { nome: "Ipê", corAproximada: "#6B4226", imageSrc: swTexIpe },
   { nome: "Teak", corAproximada: "#8B5E3C", imageSrc: swTexTeak },
   { nome: "Oak", corAproximada: "#A0784A", imageSrc: swTexOak },
