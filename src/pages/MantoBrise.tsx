@@ -44,6 +44,29 @@ import swatchWalnut from "@/assets/swatch-walnut.png";
 import swatchRedCedar from "@/assets/swatch-red-cedar.png";
 import swatchWeatherwood from "@/assets/swatch-weatherwood.png";
 
+import briseOri25x25Black from "@/assets/brise-origens-25x25-black.png";
+import briseOri25x25LilyWhite from "@/assets/brise-origens-25x25-lily-white.png";
+import briseOri25x25Ipe from "@/assets/brise-origens-25x25-ipe.png";
+import briseOri25x25Teak from "@/assets/brise-origens-25x25-teak.png";
+import briseOri25x25Oak from "@/assets/brise-origens-25x25-oak.png";
+import briseOri25x25Walnut from "@/assets/brise-origens-25x25-walnut.png";
+import briseOri25x25RedCedar from "@/assets/brise-origens-25x25-red-cedar.png";
+import briseOri25x25Weatherwood from "@/assets/brise-origens-25x25-weatherwood.png";
+
+// Variantes de cor por modelo (origens). Chave: medida -> cor -> imagem
+const origensColorVariants: Record<string, Record<string, string>> = {
+  "25x25 mm": {
+    "Black": briseOri25x25Black,
+    "Lily White": briseOri25x25LilyWhite,
+    "Ipê": briseOri25x25Ipe,
+    "Teak": briseOri25x25Teak,
+    "Oak": briseOri25x25Oak,
+    "Walnut": briseOri25x25Walnut,
+    "Red Cedar": briseOri25x25RedCedar,
+    "Weatherwood": briseOri25x25Weatherwood,
+  },
+};
+
 const origensSwatches = [
   { nome: "Black", corAproximada: "#1A1A1A", imageSrc: swatchBlack },
   { nome: "Lily White", corAproximada: "#E8E0D5", imageSrc: swatchLilyWhite },
