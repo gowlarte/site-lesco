@@ -40,7 +40,7 @@ const produtos = [
   {
     id: "brise",
     tag: "Brise",
-    titulo: "Lesco Panel",
+    titulo: "Lesco Brise",
     descricao: "Perfis de WPC para fachadas, brises soleil e elementos de proteção solar. Disponível nas linhas Madeira Ecológica Origens e Madeira Ecológica Classic.",
     swatches: [
       { nome: "Black", corAproximada: "#1A1A1A" },
