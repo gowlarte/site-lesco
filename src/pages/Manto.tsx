@@ -82,7 +82,7 @@ const produtos = [
   {
     id: "line",
     tag: "Line",
-    titulo: "Madeira Ecológica Line",
+    titulo: "Lesco Line",
     descricao: "Forros, sancas e superfícies contínuas com encaixe técnico. Acabamento acetinado com retardante ao fogo.",
     swatches: [
       { nome: "Golden Oak", corAproximada: "#C8972E" },
