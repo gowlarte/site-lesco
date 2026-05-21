@@ -54,7 +54,7 @@ const produtos = [
   {
     id: "shield",
     tag: "Shield",
-    titulo: "LESCO SHIELD",
+    titulo: "Lesco Shield",
     descricao: "Revestimento de alta sofisticação para aplicações internas e externas. Acabamentos escovados e texturizados.",
     swatches: [
       { nome: "Black", corAproximada: "#1A1A1A" },
