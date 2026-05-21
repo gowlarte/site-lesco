@@ -81,7 +81,7 @@ const MantoShield = () => {
       {/* Hero */}
       <HeroSection
         images={[heroShield1, heroShield2, heroShield3, heroShield4]}
-        headline="Lesco Panel"
+        headline="Lesco Shield"
         subtitulo=""
       />
 
