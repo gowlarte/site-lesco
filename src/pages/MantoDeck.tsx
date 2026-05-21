@@ -41,9 +41,9 @@ const texturizadasSwatches = [
 ];
 
 const modelos = [
-  { nome: "Madeira Ecológica-Deck-97x22", medida: "97x22 mm", peso: "20,0 kg/m²", imageSrc: modelo97 },
-  { nome: "Madeira Ecológica-Deck-140x22", medida: "140x22 mm", peso: "28 kg/m²", imageSrc: modelo140 },
-  { nome: "Madeira Ecológica-Deck-150x22", medida: "150x22 mm", peso: "18,75 kg/m²", imageSrc: modelo150 },
+  { nome: "Lesco Deck-97x22", medida: "97x22 mm", peso: "20,0 kg/m²", imageSrc: modelo97 },
+  { nome: "Lesco Deck-140x22", medida: "140x22 mm", peso: "28 kg/m²", imageSrc: modelo140 },
+  { nome: "Lesco Deck-150x22", medida: "150x22 mm", peso: "18,75 kg/m²", imageSrc: modelo150 },
 ];
 
 const galeriaItems = [
