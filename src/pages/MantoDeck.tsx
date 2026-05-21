@@ -64,7 +64,7 @@ const MantoDeck = () => {
       {/* Hero */}
       <HeroSection
         images={heroImages}
-        headline="LESCO DECK"
+        headline="Lesco Deck"
         subtitulo=""
       />
 
