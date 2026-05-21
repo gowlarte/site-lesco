@@ -26,9 +26,9 @@ const coresSwatches = [
 ];
 
 const modelos = [
-  { nome: "Madeira Ecológica-Line-40x45", medida: "40x45 mm", peso: "3,63 kg/m²", imageSrc: modelo40x45 },
-  { nome: "Madeira Ecológica-Line-40x100", medida: "40x100 mm", peso: "6,63 kg/m²", imageSrc: modelo40x100 },
-  { nome: "Madeira Ecológica-Line-100x20", medida: "100x20 mm", peso: "3 kg/m²", imageSrc: modelo100x20 },
+  { nome: "Lesco Line-40x45", medida: "40x45 mm", peso: "3,63 kg/m²", imageSrc: modelo40x45 },
+  { nome: "Lesco Line-40x100", medida: "40x100 mm", peso: "6,63 kg/m²", imageSrc: modelo40x100 },
+  { nome: "Lesco Line-100x20", medida: "100x20 mm", peso: "3 kg/m²", imageSrc: modelo100x20 },
 ];
 
 const galeriaItems = [
