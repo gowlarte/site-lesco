@@ -91,6 +91,7 @@ const MantoLine = () => {
                 key={s.nome}
                 nome={s.nome}
                 corAproximada={s.corAproximada}
+                imageSrc={s.imageSrc}
                 selected={selectedCor === s.nome}
                 onClick={() => setSelectedCor(selectedCor === s.nome ? null : s.nome)}
               />
