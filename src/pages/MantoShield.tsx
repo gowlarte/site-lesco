@@ -28,26 +28,42 @@ import imgShield217x25 from "@/assets/shield-217x25.png";
 import imgShield219x385 from "@/assets/shield-219x385.png";
 import imgShield124x50 from "@/assets/shield-124x50.png";
 
+import swEscBlack from "@/assets/swatch-black.png";
+import swEscLilyWhite from "@/assets/swatch-lily-white.png";
+import swEscIpe from "@/assets/swatch-ipe.png";
+import swEscTeak from "@/assets/swatch-teak.png";
+import swEscOak from "@/assets/swatch-oak.png";
+import swEscWalnut from "@/assets/swatch-walnut.png";
+import swEscRedCedar from "@/assets/swatch-red-cedar.png";
+import swEscWeatherwood from "@/assets/swatch-weatherwood.png";
+
+import swTexIpe from "@/assets/swatch-texturizado-ipe.png";
+import swTexTeak from "@/assets/swatch-texturizado-teak.png";
+import swTexOak from "@/assets/swatch-texturizado-oak.png";
+import swTexWalnut from "@/assets/swatch-texturizado-walnut.png";
+import swTexRedCedar from "@/assets/swatch-texturizado-red-cedar.png";
+import swTexWeatherwood from "@/assets/swatch-texturizado-weatherwood.png";
+
 const escovadasSwatches = [
-  { nome: "Black", corAproximada: "#1A1A1A" },
-  { nome: "Lily White", corAproximada: "#E8E0D5" },
-  { nome: "Ipê", corAproximada: "#6B4226" },
-  { nome: "Teak", corAproximada: "#8B5E3C" },
-  { nome: "Oak", corAproximada: "#A0784A" },
-  { nome: "Walnut", corAproximada: "#4A3728" },
-  { nome: "Red Cedar", corAproximada: "#7D3E2A" },
-  { nome: "Weatherwood", corAproximada: "#6B6560" },
+  { nome: "Black", corAproximada: "#1A1A1A", imageSrc: swEscBlack },
+  { nome: "Lily White", corAproximada: "#E8E0D5", imageSrc: swEscLilyWhite },
+  { nome: "Ipê", corAproximada: "#6B4226", imageSrc: swEscIpe },
+  { nome: "Teak", corAproximada: "#8B5E3C", imageSrc: swEscTeak },
+  { nome: "Oak", corAproximada: "#A0784A", imageSrc: swEscOak },
+  { nome: "Walnut", corAproximada: "#4A3728", imageSrc: swEscWalnut },
+  { nome: "Red Cedar", corAproximada: "#7D3E2A", imageSrc: swEscRedCedar },
+  { nome: "Weatherwood", corAproximada: "#6B6560", imageSrc: swEscWeatherwood },
 ];
 
 const texturizadasSwatches = [
-  { nome: "Black", corAproximada: "#1A1A1A" },
-  { nome: "Lily White", corAproximada: "#E8E0D5" },
-  { nome: "Ipê", corAproximada: "#6B4226" },
-  { nome: "Teak", corAproximada: "#8B5E3C" },
-  { nome: "Oak", corAproximada: "#A0784A" },
-  { nome: "Walnut", corAproximada: "#4A3728" },
-  { nome: "Red Cedar", corAproximada: "#7D3E2A" },
-  { nome: "Weatherwood", corAproximada: "#6B6560" },
+  { nome: "Black", corAproximada: "#1A1A1A", imageSrc: undefined as string | undefined },
+  { nome: "Lily White", corAproximada: "#E8E0D5", imageSrc: undefined as string | undefined },
+  { nome: "Ipê", corAproximada: "#6B4226", imageSrc: swTexIpe },
+  { nome: "Teak", corAproximada: "#8B5E3C", imageSrc: swTexTeak },
+  { nome: "Oak", corAproximada: "#A0784A", imageSrc: swTexOak },
+  { nome: "Walnut", corAproximada: "#4A3728", imageSrc: swTexWalnut },
+  { nome: "Red Cedar", corAproximada: "#7D3E2A", imageSrc: swTexRedCedar },
+  { nome: "Weatherwood", corAproximada: "#6B6560", imageSrc: swTexWeatherwood },
 ];
 
 const modelos = [
@@ -127,6 +143,7 @@ const MantoShield = () => {
                   key={`esc-${s.nome}`}
                   nome={s.nome}
                   corAproximada={s.corAproximada}
+                  imageSrc={s.imageSrc}
                   selected={selectedEscovada === s.nome}
                   onClick={() => setSelectedEscovada(selectedEscovada === s.nome ? null : s.nome)}
                 />
@@ -145,6 +162,7 @@ const MantoShield = () => {
                   key={`tex-${s.nome}`}
                   nome={s.nome}
                   corAproximada={s.corAproximada}
+                  imageSrc={s.imageSrc}
                   selected={selectedTexturizada === s.nome}
                   onClick={() => setSelectedTexturizada(selectedTexturizada === s.nome ? null : s.nome)}
                 />
