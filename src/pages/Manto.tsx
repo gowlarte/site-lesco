@@ -68,7 +68,7 @@ const produtos = [
   {
     id: "deck",
     tag: "Deck",
-    titulo: "Madeira Ecológica Deck",
+    titulo: "Lesco Deck",
     descricao: "Decks de madeira ecológica para espaços externos residenciais, comerciais e públicos. Fixação oculta por presilhas de aço inox.",
     swatches: [
       { nome: "Black", corAproximada: "#1A1A1A" },
