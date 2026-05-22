@@ -100,7 +100,7 @@ export function Header({ variant = "default" }: HeaderProps) {
             <img
               src={isLight ? logoDark : logoLight}
               alt="Lesco"
-              className="w-[93px] h-[29px] object-contain transition-all duration-300"
+              className="w-[93px] h-[29px] object-contain transition-all duration-300 mt-[10px]"
             />
           </Link>
 
