@@ -204,6 +204,47 @@ export function Header({ variant = "default" }: HeaderProps) {
             })}
           </nav>
 
+          {/* Lançamentos pill */}
+          <div
+            className={cn(
+              "hidden lg:flex items-center gap-3 px-3 py-1.5 rounded-full border transition-colors duration-300",
+              overlayTransparent
+                ? "bg-white/10 border-white/20"
+                : isLight
+                ? "bg-black/[0.05] border-black/10"
+                : "bg-white/[0.06] border-white/10"
+            )}
+            onMouseLeave={() => setHoveredNav(null)}
+          >
+            {lancamentos.map((l) => {
+              const hovered = hoveredNav === `lanc-${l.label}`;
+              const color = hovered
+                ? activeColor
+                : hoveredNav !== null
+                ? dimColor
+                : baseColor;
+              return (
+                <Link
+                  key={l.href}
+                  to={l.href}
+                  onMouseEnter={() => setHoveredNav(`lanc-${l.label}`)}
+                  className="flex items-center transition-transform duration-300 hover:scale-105"
+                  style={{ color }}
+                  aria-label={l.label}
+                  dangerouslySetInnerHTML={{ __html: l.svg }}
+                />
+              );
+            })}
+            <span className="w-px h-3 bg-current opacity-30" style={{ color: dimColor }} />
+            <span
+              className="font-display font-light text-[10px] uppercase tracking-[0.08em] whitespace-nowrap"
+              style={{ color: dimColor }}
+            >
+              Lançamentos
+            </span>
+          </div>
+
+
           {/* Desktop CTA */}
           {(() => {
             const emBreve = ["/zhu", "/echo", "/geo"].includes(location.pathname);
