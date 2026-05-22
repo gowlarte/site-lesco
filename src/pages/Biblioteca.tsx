@@ -1,59 +1,47 @@
-import { Link } from "react-router-dom";
-
-const recursos = [
-  { titulo: "Catálogo geral", desc: "PDF com a linha completa de produtos e especificações." },
-  { titulo: "Fichas técnicas", desc: "Documentação técnica por produto." },
-  { titulo: "Blocos 3D", desc: "Arquivos para SketchUp, Revit e AutoCAD." },
-  { titulo: "Imagens HD", desc: "Banco de imagens para apresentações de projeto." },
-];
+import { useEffect } from "react";
 
 const Biblioteca = () => {
-  return (
-    <>
-      <title>Biblioteca de Recursos — Lesco</title>
-      <meta
-        name="description"
-        content="Acesse catálogos, fichas técnicas, blocos 3D e materiais de apoio para arquitetos e especificadores."
-      />
-      <main className="min-h-screen pt-[110px] pb-[10px] px-[10px] flex flex-col gap-[10px]">
-        <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 md:py-28">
-          <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-6">
-            Biblioteca
-          </p>
-          <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-dark max-w-4xl">
-            Recursos para arquitetos e especificadores.
-          </h1>
-          <p className="mt-8 max-w-2xl font-body text-[16px] md:text-[18px] font-light leading-[1.65] text-dark/75">
-            Em breve você poderá baixar catálogos, fichas técnicas e blocos 3D
-            diretamente desta página. Enquanto isso, fale com nosso time para
-            receber o material por e-mail.
-          </p>
-        </section>
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://link.msgsndr.com/js/form_embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
-        <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-16 md:py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[10px]">
-            {recursos.map((r) => (
-              <div
-                key={r.titulo}
-                className="rounded-[10px] border border-dark/10 p-8 bg-white/40 hover:bg-white transition-colors duration-300"
-              >
-                <h3 className="font-display text-xl font-normal text-dark mb-3">{r.titulo}</h3>
-                <p className="font-body text-[14px] font-light leading-[1.6] text-dark/70 mb-6 text-slate-950">{r.desc}</p>
-                <span className="font-body text-[11px] uppercase tracking-[0.12em] text-dark/50 text-gray-950">
-                  Em breve
-                </span>
-              </div>
-            ))}
-          </div>
-          <Link
-            to="/orcamento"
-            className="inline-flex items-center mt-12 px-6 py-3 rounded bg-dark text-white font-display text-[13px] uppercase tracking-[0.08em] hover:opacity-90 transition-opacity duration-300"
-          >
-            Solicitar materiais
-          </Link>
-        </section>
-      </main>
-    </>
+  return (
+    <div className="min-h-screen pt-[100px] pb-24" style={{ backgroundColor: "#DBDBDB" }}>
+      <div className="max-w-[600px] mx-auto px-6">
+        <div className="text-center mb-12">
+          <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-dark max-w-4xl mb-4">
+            Acesse a Biblioteca
+          </h1>
+          <p className="font-body text-[15px] md:text-[17px] text-dark/80 leading-relaxed max-w-[560px] mx-auto text-primary">
+            Preencha o formulário abaixo para ter acesso a catálogos, fichas técnicas, blocos 3D e imagens HD da Lesco.
+          </p>
+        </div>
+
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/RWTy3Nwtw9O1iGmxd3wT"
+          style={{ width: "100%", height: "862px", border: "none", borderRadius: "3px" }}
+          id="inline-RWTy3Nwtw9O1iGmxd3wT"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="[01] [FORM] [ACESSAR BIBLIOTECA]"
+          data-height="862"
+          data-layout-iframe-id="inline-RWTy3Nwtw9O1iGmxd3wT"
+          data-form-id="RWTy3Nwtw9O1iGmxd3wT"
+          title="[01] [FORM] [ACESSAR BIBLIOTECA]"
+        />
+      </div>
+    </div>
   );
 };
 
