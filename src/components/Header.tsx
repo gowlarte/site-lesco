@@ -207,7 +207,7 @@ export function Header({ variant = "default" }: HeaderProps) {
           {/* Lançamentos pill */}
           <div
             className={cn(
-              "hidden lg:flex items-center gap-3 px-3 py-1.5 rounded-full border transition-colors duration-300",
+              "hidden lg:flex items-center gap-8 px-5 py-2.5 rounded-full border transition-colors duration-300",
               overlayTransparent
                 ? "bg-white/10 border-white/20"
                 : isLight
@@ -228,7 +228,10 @@ export function Header({ variant = "default" }: HeaderProps) {
                   key={l.href}
                   to={l.href}
                   onMouseEnter={() => setHoveredNav(`lanc-${l.label}`)}
-                  className="flex items-center transition-transform duration-300 hover:scale-105 [&_svg]:h-4 [&_svg]:w-auto [&_svg]:fill-current [&_svg_*]:fill-current"
+                  className={cn(
+                    "flex items-center transition-transform duration-300 hover:scale-105 [&_svg]:w-auto [&_svg]:fill-current [&_svg_*]:fill-current",
+                    l.svgClass
+                  )}
                   style={{ color }}
                   aria-label={l.label}
                   dangerouslySetInnerHTML={{ __html: l.svg }}
@@ -236,9 +239,9 @@ export function Header({ variant = "default" }: HeaderProps) {
 
               );
             })}
-            <span className="w-px h-3 bg-current opacity-30" style={{ color: dimColor }} />
+            <span className="w-px h-4 bg-current opacity-30 ml-2" style={{ color: dimColor }} />
             <span
-              className="font-display font-light text-[10px] uppercase tracking-[0.08em] whitespace-nowrap"
+              className="font-display font-light text-[12px] uppercase tracking-[0.08em] whitespace-nowrap ml-1"
               style={{ color: dimColor }}
             >
               Lançamentos
