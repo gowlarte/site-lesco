@@ -228,11 +228,12 @@ export function Header({ variant = "default" }: HeaderProps) {
                   key={l.href}
                   to={l.href}
                   onMouseEnter={() => setHoveredNav(`lanc-${l.label}`)}
-                  className="flex items-center transition-transform duration-300 hover:scale-105"
+                  className="flex items-center transition-transform duration-300 hover:scale-105 [&_svg]:h-4 [&_svg]:w-auto [&_svg]:fill-current [&_svg_*]:fill-current"
                   style={{ color }}
                   aria-label={l.label}
                   dangerouslySetInnerHTML={{ __html: l.svg }}
                 />
+
               );
             })}
             <span className="w-px h-3 bg-current opacity-30" style={{ color: dimColor }} />
