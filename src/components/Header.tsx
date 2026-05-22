@@ -10,7 +10,7 @@ import linhaZhuzenRaw from "@/assets/linha-zhuzen-2.svg?raw";
 
 const lancamentos = [
   { label: "Echo", href: "/echo", svg: linhaEchotexRaw, svgClass: "[&_svg]:h-5" },
-  { label: "Geo", href: "/geo", svg: linhaItalflexRaw, svgClass: "[&_svg]:h-[26px]" },
+  { label: "Geo", href: "/geo", svg: linhaItalflexRaw, svgClass: "[&_svg]:h-[22px] [&_svg]:-mb-[6px]" },
   { label: "Zhú", href: "/zhu", svg: linhaZhuzenRaw, svgClass: "[&_svg]:h-6" },
 ];
 
