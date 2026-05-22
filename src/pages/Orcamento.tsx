@@ -24,9 +24,9 @@ const Orcamento = () => {
         </div>
 
         <iframe
-          src="https://api.leadconnectorhq.com/widget/form/lr26Z8p5zKyXXMvt1CKn"
-          style={{ width: "100%", height: "862px", border: "none", borderRadius: "3px" }}
-          id="inline-lr26Z8p5zKyXXMvt1CKn"
+          src="https://api.leadconnectorhq.com/widget/form/GTcMRzSzlRyI4MLLuFYJ"
+          style={{ width: "100%", height: "1141px", border: "none", borderRadius: "3px" }}
+          id="inline-GTcMRzSzlRyI4MLLuFYJ"
           data-layout="{'id':'INLINE'}"
           data-trigger-type="alwaysShow"
           data-trigger-value=""
@@ -34,11 +34,11 @@ const Orcamento = () => {
           data-activation-value=""
           data-deactivation-type="neverDeactivate"
           data-deactivation-value=""
-          data-form-name="[01] [FORM] [DOWNLOAD CATALOGO]"
-          data-height="862"
-          data-layout-iframe-id="inline-lr26Z8p5zKyXXMvt1CKn"
-          data-form-id="lr26Z8p5zKyXXMvt1CKn"
-          title="[01] [FORM] [DOWNLOAD CATALOGO]"
+          data-form-name="[02] [FORM] [ORCAMENTO]"
+          data-height="1141"
+          data-layout-iframe-id="inline-GTcMRzSzlRyI4MLLuFYJ"
+          data-form-id="GTcMRzSzlRyI4MLLuFYJ"
+          title="[02] [FORM] [ORCAMENTO]"
         />
       </div>
     </div>
