@@ -326,6 +326,26 @@ export function Header({ variant = "default" }: HeaderProps) {
           );
         })}
 
+        {/* Lançamentos mobile */}
+        <div className="mt-6 flex flex-col items-center gap-3 text-foreground/80">
+          <span className="font-display font-light text-[11px] uppercase tracking-[0.12em] text-foreground/50">
+            Lançamentos
+          </span>
+          <div className="flex items-center gap-6">
+            {lancamentos.map((l) => (
+              <Link
+                key={l.href}
+                to={l.href}
+                aria-label={l.label}
+                className="flex items-center [&_svg]:h-6 [&_svg]:w-auto [&_svg]:fill-current [&_svg_*]:fill-current hover:text-foreground transition-colors"
+                dangerouslySetInnerHTML={{ __html: l.svg }}
+              />
+            ))}
+          </div>
+        </div>
+
+
+
         {(() => {
           const emBreve = ["/zhu", "/echo", "/geo"].includes(location.pathname);
           const mobileClass = "mt-6 px-8 py-3 rounded text-white font-display text-sm uppercase tracking-[0.08em]";
