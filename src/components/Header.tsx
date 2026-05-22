@@ -94,7 +94,7 @@ export function Header({ variant = "default" }: HeaderProps) {
               )
         )}
       >
-        <div className="flex items-center justify-between h-14 px-6 lg:px-8">
+        <div className={cn("flex items-center justify-between h-14 px-6 lg:px-8", !overlayTransparent && "mt-[20px]")}>
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
