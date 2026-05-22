@@ -4,6 +4,15 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logoDark from "@/assets/logo-lesco-dark-2.svg";
 import logoLight from "@/assets/logo-lesco-light.svg";
+import linhaEchotexRaw from "@/assets/linha-echotex-2.svg?raw";
+import linhaItalflexRaw from "@/assets/linha-italflex-2.svg?raw";
+import linhaZhuzenRaw from "@/assets/linha-zhuzen-2.svg?raw";
+
+const lancamentos = [
+  { label: "Echo", href: "/echo", svg: linhaEchotexRaw },
+  { label: "Geo", href: "/geo", svg: linhaItalflexRaw },
+  { label: "Zhú", href: "/zhu", svg: linhaZhuzenRaw },
+];
 
 type NavChild = { label: string; href: string };
 type NavItem = { label: string; href?: string; children?: NavChild[] };
