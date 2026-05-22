@@ -4,6 +4,15 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logoDark from "@/assets/logo-lesco-dark-2.svg";
 import logoLight from "@/assets/logo-lesco-light.svg";
+import linhaEchotexRaw from "@/assets/linha-echotex-2.svg?raw";
+import linhaItalflexRaw from "@/assets/linha-italflex-2.svg?raw";
+import linhaZhuzenRaw from "@/assets/linha-zhuzen-2.svg?raw";
+
+const lancamentos = [
+  { label: "Echo", href: "/echo", svg: linhaEchotexRaw },
+  { label: "Geo", href: "/geo", svg: linhaItalflexRaw },
+  { label: "Zhú", href: "/zhu", svg: linhaZhuzenRaw },
+];
 
 type NavChild = { label: string; href: string };
 type NavItem = { label: string; href?: string; children?: NavChild[] };
@@ -195,6 +204,48 @@ export function Header({ variant = "default" }: HeaderProps) {
             })}
           </nav>
 
+          {/* Lançamentos pill */}
+          <div
+            className={cn(
+              "hidden lg:flex items-center gap-3 px-3 py-1.5 rounded-full border transition-colors duration-300",
+              overlayTransparent
+                ? "bg-white/10 border-white/20"
+                : isLight
+                ? "bg-black/[0.05] border-black/10"
+                : "bg-white/[0.06] border-white/10"
+            )}
+            onMouseLeave={() => setHoveredNav(null)}
+          >
+            {lancamentos.map((l) => {
+              const hovered = hoveredNav === `lanc-${l.label}`;
+              const color = hovered
+                ? activeColor
+                : hoveredNav !== null
+                ? dimColor
+                : baseColor;
+              return (
+                <Link
+                  key={l.href}
+                  to={l.href}
+                  onMouseEnter={() => setHoveredNav(`lanc-${l.label}`)}
+                  className="flex items-center transition-transform duration-300 hover:scale-105 [&_svg]:h-4 [&_svg]:w-auto [&_svg]:fill-current [&_svg_*]:fill-current"
+                  style={{ color }}
+                  aria-label={l.label}
+                  dangerouslySetInnerHTML={{ __html: l.svg }}
+                />
+
+              );
+            })}
+            <span className="w-px h-3 bg-current opacity-30" style={{ color: dimColor }} />
+            <span
+              className="font-display font-light text-[10px] uppercase tracking-[0.08em] whitespace-nowrap"
+              style={{ color: dimColor }}
+            >
+              Lançamentos
+            </span>
+          </div>
+
+
           {/* Desktop CTA */}
           {(() => {
             const emBreve = ["/zhu", "/echo", "/geo"].includes(location.pathname);
@@ -274,6 +325,26 @@ export function Header({ variant = "default" }: HeaderProps) {
             </Link>
           );
         })}
+
+        {/* Lançamentos mobile */}
+        <div className="mt-6 flex flex-col items-center gap-3 text-foreground/80">
+          <span className="font-display font-light text-[11px] uppercase tracking-[0.12em] text-foreground/50">
+            Lançamentos
+          </span>
+          <div className="flex items-center gap-6">
+            {lancamentos.map((l) => (
+              <Link
+                key={l.href}
+                to={l.href}
+                aria-label={l.label}
+                className="flex items-center [&_svg]:h-6 [&_svg]:w-auto [&_svg]:fill-current [&_svg_*]:fill-current hover:text-foreground transition-colors"
+                dangerouslySetInnerHTML={{ __html: l.svg }}
+              />
+            ))}
+          </div>
+        </div>
+
+
 
         {(() => {
           const emBreve = ["/zhu", "/echo", "/geo"].includes(location.pathname);

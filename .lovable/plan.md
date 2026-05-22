@@ -1,58 +1,43 @@
-# CTA "Saiba mais" e landing pages das linhas em breve
+# Grupo "Lançamentos" no menu do topo
 
 ## Objetivo
 
-Nos slides do hero da home das linhas Zhú, Echo e Geo (rotuladas como "Nova linha em breve"), adicionar um botão "Saiba mais" centralizado abaixo dessa frase. O botão leva à página da própria linha, que deixa de ser apenas um formulário genérico e passa a ser uma landing page completa — hero com formulário de cadastro de newsletter no topo, seguido por seções explicativas (conteúdo placeholder que o usuário editará depois).
+No `Header` (usado em todas as páginas, incluindo overlay na home), adicionar um agrupamento visual à direita do menu com as 3 linhas em pré-lançamento — Echo, Geo e Zhú — representadas pelos seus próprios logos SVG, seguidas de um rótulo "Lançamentos", tudo dentro de uma pílula única, como no print.
 
-## Mudanças
+## Onde entra no header
 
-### 1. Home — hero slides (`src/pages/Index.tsx`)
-- Abaixo do label "Nova linha em breve", adicionar um CTA centralizado com o texto "Saiba mais".
-- O CTA usa o mesmo estilo do botão "Ver linha completa" (pill branco, font-display, uppercase) para coerência visual.
-- O `href` aponta para `active.href` (já configurado: `/zhu`, `/echo`, `/geo`).
+A pílula fica entre a navegação principal e o botão "Orçamento":
 
-### 2. Substituir `EmBreve.tsx` por uma landing page padrão por linha
+```
+[LESCO]   HOME · SOBRE · PRODUTOS · CATÁLOGO · BIBLIOTECA · BLOG · PORTFÓLIO   [ ((echo)) geo zhú | Lançamentos ]   [ ORÇAMENTO ]
+```
 
-Hoje as três rotas (`/zhu`, `/echo`, `/geo`) renderizam o mesmo componente genérico `EmBreve.tsx` (apenas formulário centralizado). Substituir por uma landing page única e parametrizada, mantendo as rotas atuais.
+Em telas menores que `lg` a pílula é ocultada (`hidden lg:flex`) para não competir com o menu; no menu mobile fullscreen é exibida como uma seção "Lançamentos" listando os 3 itens.
 
-Estrutura da landing page (mesma para todas, conteúdo varia por linha):
+## Estrutura da pílula (desktop)
 
-1. **Hero com formulário** (lado a lado em desktop, empilhado em mobile)
-   - Esquerda: nome da linha (logo SVG), tagline curta, parágrafo de introdução.
-   - Direita: card com título "Seja avisado no lançamento", campo de email + botão "Notifique-me" (lógica RD Station já existente em `EmBreve.tsx` é reaproveitada).
-   - Imagem de fundo da linha (já existe: `heroZhuzen`, `heroEcho`, `heroGeo`).
+- Container `rounded-full` com fundo translúcido que se adapta às 3 variações já existentes do header:
+  - overlay transparente (home, topo): `bg-white/10 border border-white/20`
+  - claro (rolado fora do overlay): `bg-black/[0.06] border border-black/10`
+  - escuro (rolado em páginas internas): `bg-white/[0.06] border border-white/10`
+- Três `<Link>` (um por linha) com o logo SVG da linha renderizado via `dangerouslySetInnerHTML` (padrão já usado no projeto via `?raw`) com `currentColor` herdando a cor do texto atual do header (mesma lógica de `baseColor`/`activeColor`).
+- Divisor vertical sutil (`w-px h-3 bg-current/30`) entre os logos e o rótulo.
+- Rótulo "Lançamentos" em `font-display font-light text-[11px] uppercase tracking-[0.08em]` com cor dim (`dimColor`).
+- Hover em cada logo: cor passa a `activeColor` e leve `scale-105`. Mantém a mesma lógica de blur/dim dos outros itens (`hoveredNav`).
 
-2. **Seção "Sobre a linha"** — bloco editorial com texto placeholder explicando o conceito da linha.
+Reaproveitar `linhaZhuzen2Raw`, `linhaEchotex2Raw`, `linhaItalflex2Raw` (já importados em outros lugares do projeto) — importar como `?raw` no Header.
 
-3. **Seção "Aplicações"** — grid de 3 cards genéricos (ícone/imagem + título + descrição curta) com usos típicos.
+Rotas: `/echo`, `/geo`, `/zhu` (já existentes em `App.tsx`).
 
-4. **Seção "Materiais e diferenciais"** — lista de 3 a 4 bullets de características (placeholder).
+## Mobile fullscreen
 
-5. **CTA final** — repete o formulário ou link âncora de volta ao formulário do topo.
+Logo abaixo dos demais itens e antes do botão Orçamento, adicionar:
 
-6. **Footer** — já vem do layout global.
-
-Todo o conteúdo textual é placeholder genérico marcado de forma fácil de identificar para o usuário substituir depois.
-
-### 3. Dados das linhas
-
-Centralizar os dados das três linhas em um arquivo `src/data/linhas-em-breve.ts` com: `slug`, `nome`, `logo` (SVG raw), `imagem` hero, `tagline`, `intro`, `sobre`, `aplicacoes[]`, `diferenciais[]`. A landing page lê pelo slug da rota.
-
-### 4. Roteamento
-
-Manter as rotas atuais `/zhu`, `/echo`, `/geo` apontando para o novo componente (ex.: `LinhaEmBreve.tsx`). Manter também `/em-breve/:linha` como fallback.
-
-## Detalhes técnicos
-
-- Reaproveitar a lógica de submit RD Station de `EmBreve.tsx` em um componente compartilhado `NewsletterLancamentoForm` para não duplicar código.
-- Manter a estética editorial do projeto: cards flutuantes com `rounded-[10px]`, margens de 10px, tipografia PP Neue Machina + DM Sans, paleta clara padrão (`bg-light`).
-- O hero da landing usa imagem de fundo com overlay escuro suave (semelhante a `HeroSection` do AltWood) para garantir legibilidade do conteúdo sobreposto.
-- Sem dependências novas.
+- Pequeno rótulo "Lançamentos" em pp neue machina, cor dim.
+- Linha horizontal com os 3 logos renderizados maiores (altura ~28px), espaçados, cada um linkando para a respectiva rota. Mesmo padrão de renderização SVG raw com `currentColor`.
 
 ## Arquivos afetados
 
-- `src/pages/Index.tsx` — adicionar CTA "Saiba mais" no slide.
-- `src/pages/EmBreve.tsx` — substituído pelo novo `LinhaEmBreve.tsx` (ou refatorado no mesmo arquivo).
-- `src/components/NewsletterLancamentoForm.tsx` — novo, extraído da lógica atual.
-- `src/data/linhas-em-breve.ts` — novo, conteúdo placeholder por linha.
-- `src/App.tsx` — apontar `/zhu`, `/echo`, `/geo` (e `/em-breve/:linha`) para o novo componente.
+- `src/components/Header.tsx` — adiciona o novo grupo "Lançamentos" no desktop (entre nav e CTA) e no mobile (após os links principais). Importa os 3 SVGs `?raw`.
+
+Sem mudanças em rotas, dados ou outros componentes.
