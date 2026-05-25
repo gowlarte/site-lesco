@@ -207,7 +207,7 @@ export function Header({ variant = "default" }: HeaderProps) {
           {/* Lançamentos pill */}
           <div
             className={cn(
-              "hidden lg:flex items-center gap-8 px-5 py-2.5 rounded-full border transition-colors duration-300",
+              "hidden lg:flex items-center px-5 py-2.5 rounded-full border transition-colors duration-300 gap-[5px]",
               overlayTransparent
                 ? "bg-white/10 border-white/20"
                 : isLight
