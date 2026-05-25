@@ -94,7 +94,7 @@ export function Header({ variant = "default" }: HeaderProps) {
               )
         )}
       >
-        <div className="flex items-center justify-between h-14 px-6 lg:px-8 py-[40px] pb-[40px]">
+        <div className="flex items-center h-14 px-6 lg:px-8 py-[40px] pb-[40px] gap-6">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
