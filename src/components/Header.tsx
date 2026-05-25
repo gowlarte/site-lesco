@@ -248,12 +248,7 @@ export function Header({ variant = "default" }: HeaderProps) {
           {/* Lançamentos pill */}
           <div
             className={cn(
-              "hidden lg:flex items-center px-5 py-2.5 rounded-full border-0 transition-colors duration-300",
-              overlayTransparent
-                ? "gap-[25px]"
-                : isLight
-                ? "gap-[25px]"
-                : "gap-[25px]"
+              "hidden lg:flex items-center px-5 rounded-full border-0 transition-colors duration-300 gap-[25px] py-0"
             )}
             onMouseLeave={() => setHoveredNav(null)}
           >
