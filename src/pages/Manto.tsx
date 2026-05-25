@@ -147,7 +147,7 @@ const Manto = () => {
     <div className="min-h-screen bg-[#e5e1dc]">
       <HeroSection
         images={heroImages}
-        headline="Madeira Ecológica"
+        headline="Arquitetura feita para o amanhã"
         subtitulo="Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto."
         ctaLabel="Explorar Produtos"
         ctaAction={handleExplorar}
