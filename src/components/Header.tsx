@@ -207,12 +207,12 @@ export function Header({ variant = "default" }: HeaderProps) {
           {/* Lançamentos pill */}
           <div
             className={cn(
-              "hidden lg:flex items-center px-5 py-2.5 rounded-full border transition-colors duration-300 gap-[5px]",
+              "hidden lg:flex items-center px-5 py-2.5 rounded-full border transition-colors duration-300",
               overlayTransparent
-                ? "bg-white/10 border-white/20"
+                ? "bg-white/10 border-white/20 gap-[10px]"
                 : isLight
-                ? "bg-black/[0.05] border-black/10"
-                : "bg-white/[0.06] border-white/10"
+                ? "bg-black/[0.05] border-black/10 gap-[10px]"
+                : "bg-white/[0.06] border-white/10 gap-[10px]"
             )}
             onMouseLeave={() => setHoveredNav(null)}
           >
