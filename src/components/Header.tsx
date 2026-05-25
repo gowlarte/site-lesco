@@ -239,9 +239,8 @@ export function Header({ variant = "default" }: HeaderProps) {
 
               );
             })}
-            <span className="w-px h-4 bg-current opacity-30 ml-2" style={{ color: dimColor }} />
             <span
-              className="font-display font-light text-[12px] uppercase tracking-[0.08em] whitespace-nowrap ml-1"
+              className="font-display font-light text-[12px] uppercase tracking-[0.08em] whitespace-nowrap"
               style={{ color: dimColor }}
             >
               Lançamentos
