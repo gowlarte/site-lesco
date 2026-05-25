@@ -94,7 +94,7 @@ export function Header({ variant = "default" }: HeaderProps) {
               )
         )}
       >
-        <div className="flex items-center justify-between h-14 px-6 lg:px-8 py-[40px] pb-[40px]">
+        <div className="flex items-center h-14 px-6 lg:px-8 py-[40px] pb-[40px] gap-6">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
@@ -106,7 +106,7 @@ export function Header({ variant = "default" }: HeaderProps) {
 
           {/* Desktop Nav */}
           <nav
-            className="hidden md:flex items-center gap-8 lg:gap-10"
+            className="hidden md:flex items-center gap-8 lg:gap-10 ml-auto"
             onMouseLeave={() => {
               setHoveredNav(null);
               setOpenDropdown(null);
@@ -202,6 +202,17 @@ export function Header({ variant = "default" }: HeaderProps) {
                 </Link>
               );
             })}
+            {/* Desktop CTA (dentro do nav, após Portfólio) */}
+            {(() => {
+              const emBreve = ["/zhu", "/echo", "/geo"].includes(location.pathname);
+              const ctaLabel = emBreve ? "Lançamento em breve" : "Orçamento";
+              const ctaClass = "hidden md:inline-flex items-center px-4 py-1.5 rounded font-display font-light text-[12px] uppercase tracking-[0.08em] text-[#303030] bg-[#DBDBDB] hover:bg-[#cfcfcf] transition-all duration-300 ml-2";
+              return emBreve ? (
+                <span className={cn(ctaClass, "cursor-default hover:bg-[#DBDBDB]")}>{ctaLabel}</span>
+              ) : (
+                <Link to="/orcamento" className={ctaClass}>{ctaLabel}</Link>
+              );
+            })()}
           </nav>
 
           {/* Lançamentos pill */}
@@ -247,18 +258,6 @@ export function Header({ variant = "default" }: HeaderProps) {
             </span>
           </div>
 
-
-          {/* Desktop CTA */}
-          {(() => {
-            const emBreve = ["/zhu", "/echo", "/geo"].includes(location.pathname);
-            const ctaLabel = emBreve ? "Lançamento em breve" : "Orçamento";
-            const ctaClass = "hidden md:inline-flex items-center px-4 py-1.5 rounded font-display font-light text-[12px] uppercase tracking-[0.08em] text-[#303030] bg-[#DBDBDB] hover:bg-[#cfcfcf] transition-all duration-300";
-            return emBreve ? (
-              <span className={cn(ctaClass, "cursor-default hover:bg-[#DBDBDB]")}>{ctaLabel}</span>
-            ) : (
-              <Link to="/orcamento" className={ctaClass}>{ctaLabel}</Link>
-            );
-          })()}
 
           {/* Mobile Hamburger */}
           <button
