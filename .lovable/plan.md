@@ -1,14 +1,17 @@
-## Igualar o link "Orçamento" aos demais links do nav
+## Ajustes no Header para igualar ao print
 
-Atualmente, em `src/components/Header.tsx`, o "Orçamento" dentro do `<nav>` é renderizado como um botão com fundo `bg-[#DBDBDB]`, padding maior e cantos arredondados, destoando dos outros links (que usam apenas tipografia uppercase 12px com estado de hover/dim).
+Alterações em `src/components/Header.tsx`:
 
-### Mudança em `src/components/Header.tsx`
+1. **Adicionar traço separador** entre o nav e o bloco de Lançamentos
+   - Inserir um elemento `<span>` vertical (linha `|` ou `<div>` com `w-px h-4`) entre `</nav>` e o bloco `Lançamentos pill`.
+   - Cor: usar `dimColor` para ficar sutil como no print.
 
-1. Trocar a classe do CTA dentro do nav para usar o mesmo `sharedClass` dos demais links:
-   - `font-display font-light text-[12px] uppercase tracking-[0.08em] transition-all duration-[350ms] flex items-center gap-1`
-   - Cor seguindo o mesmo esquema dinâmico (`baseColor`/`activeColor`/`dimColor`) com estado de hover usando `hoveredNav === "Orçamento"`.
-2. Remover `bg-[#DBDBDB]`, `rounded`, `px-4 py-1.5`, `hover:bg-[#cfcfcf]` e `ml-2`. O espaçamento passa a ser o mesmo `gap-8 lg:gap-10` do `<nav>`.
-3. Manter o comportamento de "Lançamento em breve" nas rotas `/zhu`, `/echo`, `/geo` (continua como `<span>` não clicável, apenas com o estilo de link).
-4. Manter visibilidade desktop (`hidden md:flex` herdada do nav).
+2. **Reduzir o tamanho dos logos de lançamentos** (Echo, Geo, Zhú)
+   - Atualmente: Echo `h-[23px]`, Geo `h-[22px]`, Zhú `h-6` (~24px).
+   - Reduzir para algo em torno de `h-[18px]` (Echo/Zhú) e `h-[17px]` (Geo), mantendo proporções relativas, para equilibrar com o texto 12px do restante.
 
-A pílula "Lançamentos" e o restante do header permanecem inalterados.
+3. **Cor do texto "Lançamentos"**
+   - Atualmente usa `dimColor` (mais apagado).
+   - Trocar para `baseColor` (mesma cor dos demais links do nav).
+
+Nenhuma outra mudança no layout, espaçamentos ou comportamento.

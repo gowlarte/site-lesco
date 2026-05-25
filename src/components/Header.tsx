@@ -9,9 +9,9 @@ import linhaItalflexRaw from "@/assets/linha-italflex-2.svg?raw";
 import linhaZhuzenRaw from "@/assets/linha-zhuzen-2.svg?raw";
 
 const lancamentos = [
-  { label: "Echo", href: "/echo", svg: linhaEchotexRaw, svgClass: "[&_svg]:h-[23px]" },
-  { label: "Geo", href: "/geo", svg: linhaItalflexRaw, svgClass: "[&_svg]:h-[22px] [&_svg]:-mb-[6px] [&_svg]:mt-[4px]" },
-  { label: "Zhú", href: "/zhu", svg: linhaZhuzenRaw, svgClass: "[&_svg]:h-6" },
+  { label: "Echo", href: "/echo", svg: linhaEchotexRaw, svgClass: "[&_svg]:h-[18px]" },
+  { label: "Geo", href: "/geo", svg: linhaItalflexRaw, svgClass: "[&_svg]:h-[17px] [&_svg]:-mb-[5px] [&_svg]:mt-[3px]" },
+  { label: "Zhú", href: "/zhu", svg: linhaZhuzenRaw, svgClass: "[&_svg]:h-[18px]" },
 ];
 
 type NavChild = { label: string; href: string };
@@ -238,6 +238,13 @@ export function Header({ variant = "default" }: HeaderProps) {
 
           </nav>
 
+          {/* Separator */}
+          <span
+            className="hidden lg:block w-px h-4 self-center"
+            style={{ backgroundColor: dimColor }}
+            aria-hidden="true"
+          />
+
           {/* Lançamentos pill */}
           <div
             className={cn(
@@ -275,7 +282,7 @@ export function Header({ variant = "default" }: HeaderProps) {
             })}
             <span
               className="font-display font-light text-[12px] uppercase tracking-[0.08em] whitespace-nowrap"
-              style={{ color: dimColor }}
+              style={{ color: baseColor }}
             >
               Lançamentos
             </span>
