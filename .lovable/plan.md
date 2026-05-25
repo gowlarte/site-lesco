@@ -1,21 +1,30 @@
-# Ajustar tamanho e espaçamento da pílula "Lançamentos"
+## Reordenar elementos do header desktop
 
-Os logos atualmente usam altura uniforme `h-4` (16px) e `gap-3` (12px). Os viewBoxes têm proporções bem diferentes (echo 3.43:1, geo 3.48:1, zhú 2.33:1), o que faz com que, na mesma altura, as larguras fiquem desbalanceadas e os logos pareçam pequenos demais comparados ao print.
+No print, a ordem da esquerda para a direita é:
 
-## Mudanças em `src/components/Header.tsx` (pílula desktop, lg)
+```
+[Logo]   [HOME SOBRE PRODUTOS CATÁLOGO BIBLIOTECA BLOG PORTFÓLIO  ORÇAMENTO]   [echo geo zhú  Lançamentos]
+```
 
-1. **Pílula**: aumentar respiro — `px-5 py-2.5` no lugar de `px-3 py-1.5`. Manter `rounded-full`.
-2. **Gap entre logos**: trocar `gap-3` por `gap-8` (32px) para reproduzir o espaçamento generoso do print.
-3. **Alturas por logo (ajuste óptico)** — em vez de aplicar `h-4` a todos, definir altura por item para igualar o tamanho óptico do wordmark:
-   - Echo: `h-5` (20px)
-   - Geo: `h-[18px]`
-   - Zhú: `h-6` (24px, compensa o acento que ocupa parte do viewBox)
-   Implementado passando uma classe específica por item no array `lancamentos` (`svgClass`) e aplicando via seletor `[&_svg]:` no `<Link>`.
-4. **Divisor**: aumentar para `h-4` e `ml-2` para combinar com a nova altura.
-5. **Label "Lançamentos"**: subir para `text-[12px]` com `ml-1`, mantendo família/tracking atuais.
+Hoje o código em `src/components/Header.tsx` renderiza:
 
-A versão mobile (fora da pílula) permanece como está, pois já usa tamanhos próprios.
+```
+[Logo]   [Nav links]   [Pílula Lançamentos]   [CTA Orçamento]
+```
 
-## Arquivo afetado
+Ou seja, o CTA "Orçamento" precisa ser movido para dentro/junto do grupo de navegação (ficando logo após "Portfólio"), e a pílula "Lançamentos" passa a ser o último elemento à direita.
 
-- `src/components/Header.tsx` — único arquivo editado.
+### Mudança em `src/components/Header.tsx`
+
+1. Mover o bloco do CTA "Orçamento" (atualmente após a pílula Lançamentos) para **dentro do `<nav>` desktop**, como último item depois de "Portfólio". Mantém todo o comportamento atual (estado "Lançamento em breve" nas rotas `/zhu`, `/echo`, `/geo`, mesma classe visual `bg-[#DBDBDB]`).
+2. Manter a pílula "Lançamentos" como o elemento final à direita (sem alterar seu conteúdo, gaps ou estilo já definidos).
+3. Ajustar o container principal:
+  - O `<nav>` ganha um espaçamento próprio entre os links e o CTA (ex.: `ml-2`/`gap` no CTA) para reproduzir o respiro visto no print entre "Portfólio" e o botão.
+  - Continua usando `justify-between` no wrapper para que Logo fique à esquerda, Nav+CTA no centro/agrupado e Lançamentos à direita.
+4. Mobile permanece inalterado (CTA continua dentro do menu fullscreen como hoje).
+
+Nenhum outro arquivo é tocado. Sem mudança de cores, fontes ou tokens — apenas reordenação de elementos para bater com o print.  
+  
+5. O conjunto deve ser: [Logo]----------[HOME SOBRE PRODUTOS CATÁLOGO BIBLIOTECA BLOG PORTFÓLIO  ORÇAMENTO] [echo geo zhú  Lançamentos]   
+e não  
+[Logo]-----------------[HOME SOBRE PRODUTOS CATÁLOGO BIBLIOTECA BLOG PORTFÓLIO  ORÇAMENTO]-----------------[echo geo zhú  Lançamentos]

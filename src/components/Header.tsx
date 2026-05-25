@@ -106,7 +106,7 @@ export function Header({ variant = "default" }: HeaderProps) {
 
           {/* Desktop Nav */}
           <nav
-            className="hidden md:flex items-center gap-8 lg:gap-10"
+            className="hidden md:flex items-center gap-8 lg:gap-10 ml-auto"
             onMouseLeave={() => {
               setHoveredNav(null);
               setOpenDropdown(null);
