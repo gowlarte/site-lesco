@@ -239,6 +239,14 @@ export function Header({ variant = "default" }: HeaderProps) {
           </nav>
 
           {/* Lançamentos pill */}
+          {/* Separator */}
+          <span
+            className="hidden lg:block w-px h-4 self-center"
+            style={{ backgroundColor: dimColor }}
+            aria-hidden="true"
+          />
+
+          {/* Lançamentos pill */}
           <div
             className={cn(
               "hidden lg:flex items-center px-5 py-2.5 rounded-full border-0 transition-colors duration-300",
