@@ -282,7 +282,7 @@ export function Header({ variant = "default" }: HeaderProps) {
             })}
             <span
               className="font-display font-light text-[12px] uppercase tracking-[0.08em] whitespace-nowrap"
-              style={{ color: dimColor }}
+              style={{ color: baseColor }}
             >
               Lançamentos
             </span>
