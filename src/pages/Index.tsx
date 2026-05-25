@@ -29,7 +29,7 @@ import { projetos } from "@/data/projetos";
 
 const linhas = [
   {
-    nome: "Madeira Ecológica",
+    nome: "Arquitetura feita para o amanhã",
     logo: logoMantoRaw,
     descricao: "Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto.",
     slogan: "",
@@ -192,7 +192,7 @@ const Index = () => {
           <Header variant="overlay" />
         </div>
 
-        {active.nome === "Madeira Ecológica" ? (
+        {active.nome === "Arquitetura feita para o amanhã" ? (
           <>
             {/* Bottom-left: título */}
             <div className="absolute bottom-20 lg:bottom-16 left-8 lg:left-12 right-8 lg:right-auto z-10 max-w-[640px] text-white flex flex-col items-start">
