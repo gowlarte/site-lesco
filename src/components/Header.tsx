@@ -204,49 +204,37 @@ export function Header({ variant = "default" }: HeaderProps) {
             })}
           </nav>
 
-          {/* Lançamentos pill */}
-          <div
-            className={cn(
-              "hidden lg:flex items-center gap-8 px-5 py-2.5 rounded-full border transition-colors duration-300",
-              overlayTransparent
-                ? "bg-white/10 border-white/20"
-                : isLight
-                ? "bg-black/[0.05] border-black/10"
-                : "bg-white/[0.06] border-white/10"
-            )}
-            onMouseLeave={() => setHoveredNav(null)}
-          >
-            {lancamentos.map((l) => {
-              const hovered = hoveredNav === `lanc-${l.label}`;
-              const color = hovered
-                ? activeColor
-                : hoveredNav !== null
-                ? dimColor
-                : baseColor;
-              return (
-                <Link
-                  key={l.href}
-                  to={l.href}
-                  onMouseEnter={() => setHoveredNav(`lanc-${l.label}`)}
-                  className={cn(
-                    "flex items-center transition-transform duration-300 hover:scale-105 [&_svg]:w-auto [&_svg]:fill-current [&_svg_*]:fill-current",
-                    l.svgClass
-                  )}
-                  style={{ color }}
-                  aria-label={l.label}
-                  dangerouslySetInnerHTML={{ __html: l.svg }}
-                />
+          {/* Lançamentos */}
+          {lancamentos.map((l) => {
+            const hovered = hoveredNav === `lanc-${l.label}`;
+            const color = hovered
+              ? activeColor
+              : hoveredNav !== null
+              ? dimColor
+              : baseColor;
+            return (
+              <Link
+                key={l.href}
+                to={l.href}
+                onMouseEnter={() => setHoveredNav(`lanc-${l.label}`)}
+                className={cn(
+                  "hidden lg:flex items-center transition-transform duration-300 hover:scale-105 [&_svg]:w-auto [&_svg]:fill-current [&_svg_*]:fill-current",
+                  l.svgClass
+                )}
+                style={{ color }}
+                aria-label={l.label}
+                dangerouslySetInnerHTML={{ __html: l.svg }}
+              />
 
-              );
-            })}
-            <span className="w-px h-4 bg-current opacity-30 ml-2" style={{ color: dimColor }} />
-            <span
-              className="font-display font-light text-[12px] uppercase tracking-[0.08em] whitespace-nowrap ml-1"
-              style={{ color: dimColor }}
-            >
-              Lançamentos
-            </span>
-          </div>
+            );
+          })}
+          <span className="hidden lg:inline-block w-px h-4 bg-current opacity-30 ml-2" style={{ color: dimColor }} />
+          <span
+            className="hidden lg:inline-block font-display font-light text-[12px] uppercase tracking-[0.08em] whitespace-nowrap ml-1"
+            style={{ color: dimColor }}
+          >
+            Lançamentos
+          </span>
 
 
           {/* Desktop CTA */}
