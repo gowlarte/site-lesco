@@ -202,17 +202,40 @@ export function Header({ variant = "default" }: HeaderProps) {
                 </Link>
               );
             })}
-            {/* Desktop CTA (dentro do nav, após Portfólio) */}
+            {/* Desktop CTA (dentro do nav, após Portfólio) - estilo igual aos demais links */}
             {(() => {
               const emBreve = ["/zhu", "/echo", "/geo"].includes(location.pathname);
               const ctaLabel = emBreve ? "Lançamento em breve" : "Orçamento";
-              const ctaClass = "hidden md:inline-flex items-center px-4 py-1.5 rounded font-display font-light text-[12px] uppercase tracking-[0.08em] text-[#303030] bg-[#DBDBDB] hover:bg-[#cfcfcf] transition-all duration-300 ml-2";
+              const label = "Orçamento";
+              const color =
+                hoveredNav === label
+                  ? activeColor
+                  : hoveredNav !== null
+                  ? dimColor
+                  : baseColor;
+              const linkClass =
+                "font-display font-light text-[12px] uppercase tracking-[0.08em] transition-all duration-[350ms] flex items-center gap-1";
+              const linkStyle = {
+                color,
+                filter: hoveredNav !== null && hoveredNav !== label ? "blur(0.5px)" : "blur(0px)",
+              };
               return emBreve ? (
-                <span className={cn(ctaClass, "cursor-default hover:bg-[#DBDBDB]")}>{ctaLabel}</span>
+                <span className={linkClass} style={linkStyle}>{ctaLabel}</span>
               ) : (
-                <Link to="/orcamento" className={ctaClass}>{ctaLabel}</Link>
+                <Link
+                  to="/orcamento"
+                  onMouseEnter={() => {
+                    setHoveredNav(label);
+                    setOpenDropdown(null);
+                  }}
+                  className={linkClass}
+                  style={linkStyle}
+                >
+                  {ctaLabel}
+                </Link>
               );
             })()}
+
           </nav>
 
           {/* Lançamentos pill */}
