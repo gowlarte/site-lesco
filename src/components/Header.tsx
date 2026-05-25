@@ -238,7 +238,6 @@ export function Header({ variant = "default" }: HeaderProps) {
 
           </nav>
 
-          {/* Lançamentos pill */}
           {/* Separator */}
           <span
             className="hidden lg:block w-px h-4 self-center"
