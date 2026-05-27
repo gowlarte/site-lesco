@@ -287,7 +287,7 @@ export function Header({ variant = "default" }: HeaderProps) {
           {/* Mobile Hamburger */}
           <button
             className={cn(
-              "md:hidden transition-colors duration-300",
+              "md:hidden ml-auto transition-colors duration-300",
               overlayTransparent ? "text-white" : isLight ? "text-[#303030]" : "text-foreground"
             )}
             onClick={() => setMenuOpen(!menuOpen)}
