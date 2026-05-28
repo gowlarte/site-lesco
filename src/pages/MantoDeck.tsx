@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import { HeroSection } from "@/components/altwood/HeroSection";
@@ -78,6 +79,11 @@ const MantoDeck = () => {
 
   return (
     <div className="min-h-screen bg-[#e5e1dc]">
+      <SEO
+        title="Deck de Madeira Ecológica — AltWood Lesco"
+        description="Deck externo em WPC com núcleo horizontal: resistente, antiderrapante e de baixa manutenção para áreas externas, piscinas e varandas."
+        path="/madeira-ecologica-para-deck"
+      />
       {/* Hero */}
       <HeroSection
         images={heroImages}

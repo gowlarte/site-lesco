@@ -2,6 +2,7 @@ import { useParams, useLocation, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { linhasEmBreve } from "@/data/linhas-em-breve";
 import { NewsletterLancamentoForm } from "@/components/NewsletterLancamentoForm";
+import { SEO } from "@/components/SEO";
 
 const LinhaEmBreve = () => {
   const params = useParams<{ linha: string }>();
@@ -26,6 +27,12 @@ const LinhaEmBreve = () => {
 
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px] space-y-[10px]">
+      <SEO
+        title={`${linha.nome} — Lançamento em breve | Lesco`}
+        description={linha.intro}
+        path={`/${linha.slug}`}
+        image={linha.imagem}
+      />
       {/* HERO + FORM */}
       <section className="relative rounded-[10px] overflow-hidden min-h-[calc(100vh-120px)] flex items-center">
         <img

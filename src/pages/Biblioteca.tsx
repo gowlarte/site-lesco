@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { SEO } from "@/components/SEO";
 
 const Biblioteca = () => {
   useEffect(() => {
@@ -13,6 +14,11 @@ const Biblioteca = () => {
 
   return (
     <div className="min-h-screen pt-[100px] pb-24" style={{ backgroundColor: "#DBDBDB" }}>
+      <SEO
+        title="Biblioteca — Lesco"
+        description="Acesse catálogos, fichas técnicas, blocos 3D e imagens HD da Lesco para incluir nossos revestimentos no seu projeto."
+        path="/biblioteca"
+      />
       <div className="max-w-[600px] mx-auto px-6">
         <div className="text-center mb-12">
           <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-dark max-w-4xl mb-4">

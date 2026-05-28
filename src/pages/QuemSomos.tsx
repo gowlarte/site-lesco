@@ -1,6 +1,7 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { Check } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const certifications = [
   "ISO 9001",
@@ -13,6 +14,11 @@ const certifications = [
 const QuemSomos = () => {
   return (
     <main>
+      <SEO
+        title="Quem Somos — Lesco"
+        description="Conheça a Lesco: arquitetura feita para o amanhã. Sobre nossa história, valores e certificações."
+        path="/quem-somos"
+      />
       {/* Hero */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-primary">
         <div className="container mx-auto px-6 lg:px-8">

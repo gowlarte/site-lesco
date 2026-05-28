@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import { HeroSection } from "@/components/altwood/HeroSection";
@@ -99,6 +100,11 @@ const MantoPanel = () => {
 
   return (
     <div className="min-h-screen bg-[#e5e1dc]">
+      <SEO
+        title="Placa WPC Interior — AltWood Panel Lesco"
+        description="Placa WPC para revestimento interno: 17 modelos em acabamentos acetinado e fosco, ideais para residências, comerciais e hotelaria."
+        path="/placa-wpc-interior"
+      />
       {/* Hero */}
       <HeroSection
         images={heroImages}

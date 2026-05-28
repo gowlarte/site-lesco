@@ -21,13 +21,15 @@ const certificacoes = [
   { src: iso14001Badge, alt: "Selo ISO 14001 — Environmental Management System Certified" },
 ];
 
+import { SEO } from "@/components/SEO";
+
 const Sustentabilidade = () => {
   return (
     <>
-      <title>Revestimento Sustentável — Lesco</title>
-      <meta
-        name="description"
-        content="Compromisso ambiental da Lesco: revestimentos premium feitos com material reciclado, longa vida útil e certificações reconhecidas internacionalmente."
+      <SEO
+        title="Revestimento Sustentável — Lesco"
+        description="Compromisso ambiental da Lesco: revestimentos premium feitos com material reciclado, longa vida útil e certificações reconhecidas internacionalmente."
+        path="/revestimento-sustentavel"
       />
       <main className="min-h-screen pt-[110px] pb-[10px] px-[10px] flex flex-col gap-[10px]">
         <section

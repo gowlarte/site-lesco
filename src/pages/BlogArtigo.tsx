@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 import heroImg from "@/assets/cop30/hero.jpg";
 import edificio1 from "@/assets/cop30/edificio-1.jpg";
 import edificio2 from "@/assets/cop30/edificio-2.webp";
@@ -160,6 +161,12 @@ const BlogArtigo = () => {
 
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px]">
+      <SEO
+        title="O Brasil que constrói para o mundo: Lesco e a COP30 — Blog Lesco"
+        description="Como a madeira ecológica Lesco assina a fachada do Parque da Cidade, o palco da COP30 em Belém — sustentabilidade, técnica e identidade brasileira."
+        path="/blog/cop30-parque-da-cidade"
+        type="article"
+      />
       <article className="mx-auto w-full max-w-[920px] px-6 sm:px-10 md:px-14 pt-10 md:pt-14 pb-14 md:pb-16">
         <Link
           to="/blog"

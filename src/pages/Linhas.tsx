@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 
 import heroManto from "@/assets/hero-home-altwood.webp";
 import heroZhuzen from "@/assets/hero-home-zhuzen.webp";
@@ -67,6 +68,11 @@ const Linhas = () => {
 
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px]">
+      <SEO
+        title="Nossas Linhas — Lesco"
+        description="Conheça as linhas Lesco: AltWood (madeira ecológica), Zhú (bambu), Echo (acústica) e Geo (pedra flexível) para projetos premium."
+        path="/linhas"
+      />
       <section
         ref={sectionRef}
         onMouseMove={handleMouseMove}

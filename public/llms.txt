@@ -1,0 +1,39 @@
+# Lesco
+
+> Revestimentos premium para arquitetura: madeira ecológica (WPC), bambu, pedra flexível e tecido acústico, para projetos de alto padrão no Brasil.
+
+A Lesco desenvolve e comercializa revestimentos arquitetônicos premium. A linha principal AltWood é feita em WPC (Wood Polymer Composite), com formatos para brises, fachadas, decks, forros e placas internas. Outras linhas (Zhú, Echo, Geo) estão em lançamento.
+
+## Pages
+
+- [Home](/): visão geral da marca e linhas
+- [Quem Somos](/quem-somos): institucional, manifesto e certificações
+- [Nossas Linhas](/linhas): seletor visual das linhas Lesco
+- [Madeira WPC](/madeira-wpc): tecnologia e composição do material
+- [Revestimento Sustentável](/revestimento-sustentavel): compromisso ambiental e certificações
+- [Portfólio](/portfolio): cases reais com revestimentos Lesco
+
+## AltWood (Madeira Ecológica)
+
+- [Madeira Ecológica Lesco](/madeira-ecologica-lesco): hub da linha AltWood
+- [Brise](/brise-madeira-ecologica): brises Origens e Classic em WPC
+- [Shield](/madeira-ecologica-para-fachada): revestimento para fachadas
+- [Deck](/madeira-ecologica-para-deck): deck externo em WPC
+- [Line](/forro-wpc): forros em WPC
+- [Panel](/placa-wpc-interior): placas internas em WPC
+
+## Conversão
+
+- [Catálogo](/catalogo-lesco): download do catálogo completo
+- [Biblioteca](/biblioteca): catálogos, fichas técnicas, blocos 3D e imagens HD
+- [Orçamento](/orcamento): solicitar orçamento para o seu projeto
+
+## Blog
+
+- [Blog](/blog): ideias, materiais e inspiração para arquitetura
+
+## Lançamentos
+
+- [Zhú](/zhu): revestimentos em bambu (em breve)
+- [Echo](/echo): tecido acústico moldado (em breve)
+- [Geo](/geo): revestimento de pedra flexível (em breve)

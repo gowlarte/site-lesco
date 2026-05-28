@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import { HeroSection } from "@/components/altwood/HeroSection";
@@ -49,6 +50,11 @@ const MantoLine = () => {
 
   return (
     <div className="min-h-screen bg-[#e5e1dc]">
+      <SEO
+        title="Forro WPC — AltWood Line Lesco"
+        description="Forros em WPC com acabamento acetinado: 3 modelos para áreas externas e internas, com instalação rápida e mínima manutenção."
+        path="/forro-wpc"
+      />
       {/* Hero */}
       <HeroSection
         images={heroImages}
