@@ -80,8 +80,8 @@ const MantoDeck = () => {
   return (
     <div className="min-h-screen bg-[#e5e1dc]">
       <SEO
-        title="Deck de Madeira Ecológica — AltWood Lesco"
-        description="Deck externo em WPC com núcleo horizontal: resistente, antiderrapante e de baixa manutenção para áreas externas, piscinas e varandas."
+        title="Madeira Ecológica para Deck | Lesco Deck"
+        description="Madeira ecológica para decks, piscinas e áreas externas. Solução ideal para projetos residenciais, comerciais e públicos que buscam criar ambientes externos sofisticados e duráveis."
         path="/madeira-ecologica-para-deck"
       />
       {/* Hero */}
