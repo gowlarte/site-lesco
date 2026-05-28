@@ -14,6 +14,11 @@ const Catalogo = () => {
 
   return (
     <div className="min-h-screen pt-[100px] pb-24" style={{ backgroundColor: "#DBDBDB" }}>
+      <SEO
+        title="Catálogo Lesco — Baixe o catálogo completo"
+        description="Receba o catálogo completo da Lesco com todas as linhas, modelos e especificações técnicas dos nossos revestimentos premium."
+        path="/catalogo-lesco"
+      />
       <div className="max-w-[600px] mx-auto px-6">
         <div className="text-center mb-12">
           <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-dark max-w-4xl mb-4">

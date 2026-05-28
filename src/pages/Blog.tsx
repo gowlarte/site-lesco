@@ -97,6 +97,11 @@ const Blog = () => {
 
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px]">
+      <SEO
+        title="Blog — Lesco"
+        description="Ideias, materiais e inspiração para a arquitetura do amanhã. Artigos sobre madeira ecológica, sustentabilidade e tendências de projeto."
+        path="/blog"
+      />
       {/* Header editorial */}
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-16 md:py-24 mb-[10px]">
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/60 mb-6">

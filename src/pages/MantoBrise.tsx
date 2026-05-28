@@ -136,6 +136,11 @@ const MantoBrise = () => {
 
   return (
     <div className="min-h-screen bg-[#e5e1dc]">
+      <SEO
+        title="Brise de Madeira Ecológica — AltWood Lesco"
+        description="Brises em WPC nas linhas Origens e Classic. Soluções para fachadas e divisórias com durabilidade, baixa manutenção e estética premium."
+        path="/brise-madeira-ecologica"
+      />
       {/* Hero */}
       <HeroSection
         images={heroImages}

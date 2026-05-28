@@ -96,6 +96,11 @@ const MantoShield = () => {
 
   return (
     <div className="min-h-screen bg-[#e5e1dc]">
+      <SEO
+        title="Shield para Fachada — AltWood Lesco"
+        description="Revestimento Shield em WPC para fachadas: acabamentos Escovado e Texturizado, 9 modelos com fixação oculta e alta durabilidade."
+        path="/madeira-ecologica-para-fachada"
+      />
       {/* Hero */}
       <HeroSection
         images={[heroShield1, heroShield2, heroShield3, heroShield4]}

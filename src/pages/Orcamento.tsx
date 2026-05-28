@@ -14,6 +14,11 @@ const Orcamento = () => {
 
   return (
     <div className="min-h-screen pt-[100px] pb-24" style={{ backgroundColor: "#DBDBDB" }}>
+      <SEO
+        title="Solicitar Orçamento — Lesco"
+        description="Solicite um orçamento personalizado para seu projeto. Nossa equipe entrará em contato para elaborar a melhor solução em revestimentos Lesco."
+        path="/orcamento"
+      />
       <div className="max-w-[600px] mx-auto px-6">
         <div className="text-center mb-12">
           <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-dark max-w-4xl mx-auto mb-4">
