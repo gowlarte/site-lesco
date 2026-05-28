@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { HeroSection } from "@/components/altwood/HeroSection";
+import { SEO } from "@/components/SEO";
 import heroImg1 from "@/assets/hero-altwood-1.webp";
 import heroImg2 from "@/assets/hero-altwood-2.jpg";
 import heroImg3 from "@/assets/hero-altwood-3.jpg";
