@@ -143,6 +143,17 @@ const Index = () => {
 
   return (
     <main className="flex flex-col gap-[10px]">
+      <SEO
+        title="Lesco · Revestimentos Premium para Arquitetura"
+        description="Lesco — superfícies que definem legados. Revestimentos premium em madeira ecológica, bambu, pedra flexível e tecido acústico para projetos arquitetônicos de alto padrão."
+        path="/"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Lesco",
+          url: "https://eco-essence-project.lovable.app",
+        }}
+      />
       {/* ========== HERO BANNER — SLIDESHOW ========== */}
       <section
         className={`relative m-[10px] h-[calc(100vh-20px)] rounded-[10px] overflow-hidden select-none ${
