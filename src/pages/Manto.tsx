@@ -145,6 +145,11 @@ const Manto = () => {
 
   return (
     <div className="min-h-screen bg-[#e5e1dc]">
+      <SEO
+        title="Madeira Ecológica Lesco — AltWood"
+        description="Revestimentos premium em WPC: Brises, Panels, Decks, Forros e Shields para projetos arquitetônicos de alto padrão."
+        path="/madeira-ecologica-lesco"
+      />
       <HeroSection
         images={heroImages}
         headline="Arquitetura feita para o amanhã"
