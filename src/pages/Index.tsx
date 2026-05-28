@@ -144,8 +144,8 @@ const Index = () => {
   return (
     <main className="flex flex-col gap-[10px]">
       <SEO
-        title="Lesco · Revestimentos Premium para Arquitetura"
-        description="Lesco — superfícies que definem legados. Revestimentos premium em madeira ecológica, bambu, pedra flexível e tecido acústico para projetos arquitetônicos de alto padrão."
+        title="Revestimentos em Madeira Ecológica | Lesco"
+        description="Transforme cada ambiente em uma expressão de elegância natural com nossos revestimentos em madeira ecológica. Acabamentos únicos e personalizados."
         path="/"
         jsonLd={{
           "@context": "https://schema.org",

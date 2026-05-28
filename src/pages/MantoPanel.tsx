@@ -101,8 +101,8 @@ const MantoPanel = () => {
   return (
     <div className="min-h-screen bg-[#e5e1dc]">
       <SEO
-        title="Placa WPC Interior — AltWood Panel Lesco"
-        description="Placa WPC para revestimento interno: 17 modelos em acabamentos acetinado e fosco, ideais para residências, comerciais e hotelaria."
+        title="Placa WPC Interior | Lesco Panel"
+        description="Placas WPC para interiores fabricadas a partir da combinação de fibras de madeira reciclada e resinas plásticas, oferecendo resistência, estética sofisticada e sustentabilidade."
         path="/placa-wpc-interior"
       />
       {/* Hero */}
