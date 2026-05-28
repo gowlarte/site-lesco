@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { projetos } from "@/data/projetos";
+import { SEO } from "@/components/SEO";
 
 const Portfolio = () => {
   return (
     <>
-      <title>Portfólio de Projetos — Lesco</title>
-      <meta
-        name="description"
-        content="Cases reais com revestimentos Lesco: residências, projetos comerciais e instalações premium em madeira ecológica."
+      <SEO
+        title="Portfólio de Projetos — Lesco"
+        description="Cases reais com revestimentos Lesco: residências, projetos comerciais e instalações premium em madeira ecológica."
+        path="/portfolio"
       />
       <main className="min-h-screen pt-[110px] pb-[10px] px-[10px] flex flex-col gap-[10px]">
         <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 md:py-28">

@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { getProjetoBySlug, projetos } from "@/data/projetos";
+import { SEO } from "@/components/SEO";
 
 const PortfolioProjeto = () => {
   const { slug } = useParams();
@@ -38,8 +39,13 @@ const PortfolioProjeto = () => {
 
   return (
     <>
-      <title>{`${projeto.nome} — Portfólio Lesco`}</title>
-      <meta name="description" content={projeto.descricao.slice(0, 155)} />
+      <SEO
+        title={`${projeto.nome} — Portfólio Lesco`}
+        description={projeto.descricao.slice(0, 155)}
+        path={`/projetos/${projeto.slug}`}
+        image={projeto.imagem}
+        type="article"
+      />
       <main className="min-h-screen pt-[110px] pb-[10px] px-[10px] flex flex-col gap-[10px]">
         <section
           className="relative rounded-[10px] overflow-hidden min-h-[60vh] md:min-h-[75vh] flex items-end"

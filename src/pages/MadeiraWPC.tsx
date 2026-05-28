@@ -36,13 +36,15 @@ const Bar = ({ items }: { items: { label: string; color: string; text: string }[
   </div>
 );
 
+import { SEO } from "@/components/SEO";
+
 const MadeiraWPC = () => {
   return (
     <>
-      <title>Madeira WPC — Lesco</title>
-      <meta
-        name="description"
-        content="Wood Polymer Composite — entenda a composição da madeira ecológica Lesco e como ela se aplica nas linhas Brise, Shield, Deck, Panel e Line."
+      <SEO
+        title="Madeira WPC — Lesco"
+        description="Wood Polymer Composite — entenda a composição da madeira ecológica Lesco e como ela se aplica nas linhas Brise, Shield, Deck, Panel e Line."
+        path="/madeira-wpc"
       />
       <main className="min-h-screen pt-[110px] pb-[10px] px-[10px]">
         {/* HERO / TÍTULO */}
