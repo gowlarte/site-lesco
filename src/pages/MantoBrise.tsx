@@ -137,8 +137,8 @@ const MantoBrise = () => {
   return (
     <div className="min-h-screen bg-[#e5e1dc]">
       <SEO
-        title="Brise de Madeira Ecológica — AltWood Lesco"
-        description="Brises em WPC nas linhas Origens e Classic. Soluções para fachadas e divisórias com durabilidade, baixa manutenção e estética premium."
+        title="Brise Madeira Ecológica | Lesco Brise"
+        description="Nossa madeira ecológica para brises e fachadas oferece uma solução sustentável que combina a durabilidade do plástico com a estética natural da madeira."
         path="/brise-madeira-ecologica"
       />
       {/* Hero */}
