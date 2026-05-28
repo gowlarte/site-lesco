@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 import heroImg from "@/assets/cop30/hero.jpg";
 import edificio1 from "@/assets/cop30/edificio-1.jpg";
 import edificio2 from "@/assets/cop30/edificio-2.webp";

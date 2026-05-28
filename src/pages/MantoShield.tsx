@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { SEO } from "@/components/SEO";
 import heroShield1 from "@/assets/hero-shield-1.png";
 import heroShield2 from "@/assets/hero-shield-2.png";
 import heroShield3 from "@/assets/hero-shield-3.jpg";

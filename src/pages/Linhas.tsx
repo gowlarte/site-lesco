@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 
 import heroManto from "@/assets/hero-home-altwood.webp";
 import heroZhuzen from "@/assets/hero-home-zhuzen.webp";

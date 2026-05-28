@@ -2,6 +2,7 @@ import { useParams, useLocation, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { linhasEmBreve } from "@/data/linhas-em-breve";
 import { NewsletterLancamentoForm } from "@/components/NewsletterLancamentoForm";
+import { SEO } from "@/components/SEO";
 
 const LinhaEmBreve = () => {
   const params = useParams<{ linha: string }>();
