@@ -84,22 +84,11 @@ const Orcamento = () => {
 
           {/* Direita — formulário (iframe atual) */}
           <div className="rounded-[10px] overflow-hidden">
-            <iframe
-              src="https://api.leadconnectorhq.com/widget/form/GTcMRzSzlRyI4MLLuFYJ"
-              style={{ width: "100%", height: "1141px", border: "none", borderRadius: "3px" }}
-              id="inline-GTcMRzSzlRyI4MLLuFYJ"
-              data-layout="{'id':'INLINE'}"
-              data-trigger-type="alwaysShow"
-              data-trigger-value=""
-              data-activation-type="alwaysActivated"
-              data-activation-value=""
-              data-deactivation-type="neverDeactivate"
-              data-deactivation-value=""
-              data-form-name="[02] [FORM] [ORCAMENTO]"
-              data-height="1141"
-              data-layout-iframe-id="inline-GTcMRzSzlRyI4MLLuFYJ"
-              data-form-id="GTcMRzSzlRyI4MLLuFYJ"
+            <GhlForm
+              formId="GTcMRzSzlRyI4MLLuFYJ"
+              formName="[02] [FORM] [ORCAMENTO]"
               title="[02] [FORM] [ORCAMENTO]"
+              height={1141}
             />
           </div>
         </div>
