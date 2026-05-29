@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { Loader2, Mail } from "lucide-react";
 
-const TOKEN_RDSTATION = "76788d5f5db5b8865e702fbe1fa5d416";
-const CONVERSION_URL = "https://cta-redirect.rdstation.com/v2/conversions";
-
 const validateEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
 
 interface Props {
