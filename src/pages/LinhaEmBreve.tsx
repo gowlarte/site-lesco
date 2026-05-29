@@ -144,9 +144,18 @@ const LinhaEmBreve = () => {
         <p className="font-body text-[15px] text-white/70 leading-relaxed mb-10 max-w-xl mx-auto">
           Cadastre seu e-mail e seja notificado assim que a linha {linha.nome} estiver disponível.
         </p>
-        <div className="max-w-[520px] mx-auto">
-          <NewsletterLancamentoForm slug={linha.slug} nomeLinha={linha.nome} variant="dark" />
-        </div>
+        {linha.formId && (
+          <div className="max-w-[520px] mx-auto">
+            <NewsletterLancamentoForm
+              slug={linha.slug}
+              nomeLinha={linha.nome}
+              variant="dark"
+              formId={linha.formId}
+              formName={linha.formName}
+              formHeight={linha.formHeight}
+            />
+          </div>
+        )}
 
         <Link
           to="/linhas"
