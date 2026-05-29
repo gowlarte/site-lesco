@@ -27,8 +27,6 @@ const PortfolioProjeto = () => {
     );
   }
 
-  const indexAtual = projetos.findIndex((p) => p.slug === projeto.slug);
-  const proximo = projetos[(indexAtual + 1) % projetos.length];
 
   const ficha: Array<[string, string]> = [
     ["Local", projeto.local],
@@ -138,30 +136,6 @@ const PortfolioProjeto = () => {
           ))}
         </section>
 
-        <section className="bg-light rounded-[10px] px-8 md:px-16 py-16 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-2">
-              Próximo projeto
-            </p>
-            <h2 className="font-display text-2xl md:text-3xl font-normal text-dark">
-              {proximo.nome}
-            </h2>
-          </div>
-          <div className="flex gap-3">
-            <Link
-              to="/portfolio"
-              className="inline-flex items-center px-6 py-3 rounded border border-dark/20 text-dark font-display text-[13px] uppercase tracking-[0.08em] hover:bg-dark hover:text-white transition-colors"
-            >
-              Ver portfólio
-            </Link>
-            <Link
-              to={`/projetos/${proximo.slug}`}
-              className="inline-flex items-center px-6 py-3 rounded bg-dark text-white font-display text-[13px] uppercase tracking-[0.08em] hover:opacity-90 transition-opacity"
-            >
-              Próximo
-            </Link>
-          </div>
-        </section>
       </main>
     </>
   );
