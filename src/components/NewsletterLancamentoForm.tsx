@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { buildGhlFormUrl } from "@/lib/utm";
 
 interface Props {
   slug: string;
