@@ -31,6 +31,7 @@ import Orcamento from "./pages/Orcamento";
 import Catalogo from "./pages/Catalogo";
 import ObrigadoOrcamento from "./pages/ObrigadoOrcamento";
 import LinhaEmBreve from "./pages/LinhaEmBreve";
+import NotFound from "./pages/NotFound";
 import ObrigadoCatalogo from "./pages/ObrigadoCatalogo";
 
 const queryClient = new QueryClient();
