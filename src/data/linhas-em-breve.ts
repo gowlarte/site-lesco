@@ -92,5 +92,8 @@ export const linhasEmBreve: Record<string, LinhaEmBreve> = {
       "Resistente à umidade e à variação térmica",
       "Acabamento contínuo, sem juntas aparentes",
     ],
+    formId: "A7iX7TMKzhNq1vXwMiVy",
+    formName: "[05] [FORM] [GEO]",
+    formHeight: 675,
   },
 };
