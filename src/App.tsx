@@ -8,6 +8,7 @@ import { Header } from "@/components/Header";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { Footer } from "@/components/Footer";
 import { SplashScreen } from "@/components/SplashScreen";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { PageTransitionLoader } from "@/components/PageTransitionLoader";
 import { usePageAssets } from "@/hooks/usePageAssets";
 import Index from "./pages/Index";
@@ -92,7 +93,9 @@ const AppContent = () => {
         </Routes>
       </div>
       <Footer />
+      <WhatsAppButton />
     </>
+
   );
 };
 
