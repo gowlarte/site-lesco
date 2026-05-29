@@ -107,11 +107,7 @@ const Catalogo = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[10px]">
             {diferenciais.map((d) => (
               <div key={d.label} className="bg-white/50 rounded-[10px] p-8">
-                <div
-                  className="[&>svg]:h-10 [&>svg]:w-10 text-dark mb-5"
-                  dangerouslySetInnerHTML={{ __html: d.svg }}
-                  aria-hidden
-                />
+                <img src={d.svg} alt="" aria-hidden className="h-10 w-10 mb-5 object-contain" />
                 <h3 className="font-display text-xl text-dark mb-3 font-normal">{d.label}</h3>
                 <p className="font-body text-[14px] text-dark/70 leading-relaxed text-slate-950">{d.description}</p>
               </div>
