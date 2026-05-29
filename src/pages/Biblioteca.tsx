@@ -72,22 +72,11 @@ const Biblioteca = () => {
 
           {/* Direita — formulário (iframe atual da biblioteca) */}
           <div className="rounded-[10px] overflow-hidden">
-            <iframe
-              src="https://api.leadconnectorhq.com/widget/form/RWTy3Nwtw9O1iGmxd3wT"
-              style={{ width: "100%", height: "862px", border: "none", borderRadius: "3px" }}
-              id="inline-RWTy3Nwtw9O1iGmxd3wT"
-              data-layout="{'id':'INLINE'}"
-              data-trigger-type="alwaysShow"
-              data-trigger-value=""
-              data-activation-type="alwaysActivated"
-              data-activation-value=""
-              data-deactivation-type="neverDeactivate"
-              data-deactivation-value=""
-              data-form-name="[01] [FORM] [ACESSAR BIBLIOTECA]"
-              data-height="862"
-              data-layout-iframe-id="inline-RWTy3Nwtw9O1iGmxd3wT"
-              data-form-id="RWTy3Nwtw9O1iGmxd3wT"
+            <GhlForm
+              formId="RWTy3Nwtw9O1iGmxd3wT"
+              formName="[01] [FORM] [ACESSAR BIBLIOTECA]"
               title="[01] [FORM] [ACESSAR BIBLIOTECA]"
+              height={862}
             />
           </div>
         </div>
