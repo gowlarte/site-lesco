@@ -41,7 +41,7 @@ export default function ObrigadoCatalogo() {
           <img src={logoLight} alt="Lesco" className="h-12 md:h-14 mx-auto" />
 
           <h1 className="mt-8 font-heading text-2xl md:text-4xl font-bold text-white">
-            Obrigado! Baixe Agora Mesmo
+            Obrigado! Acesse Agora Mesmo
             <br />
             seu Catálogo Técnico Lesco.
           </h1>
@@ -52,7 +52,7 @@ export default function ObrigadoCatalogo() {
             rel="noopener noreferrer"
             className="mt-8 inline-block font-heading text-base md:text-lg font-bold text-black bg-white rounded-[10px] px-8 py-4 hover:bg-white/90 transition-colors"
           >
-            Download do Catálogo
+            Acessar Catálogo
           </a>
 
           <p className="mt-6 font-body text-base md:text-lg text-white/90 leading-relaxed">
