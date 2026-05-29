@@ -123,17 +123,15 @@ const App = () => {
         <Toaster />
         <Sonner />
         {!splashDone && <SplashScreen onFadeStart={handleFadeStart} onComplete={handleSplashComplete} />}
-        <BrowserRouter>
-          <div
-            className="transition-opacity duration-500"
-            style={{
-              opacity: contentVisible ? 1 : 0,
-              visibility: contentVisible ? 'visible' : 'hidden',
-            }}
-          >
-            <AppContent />
-          </div>
-        </BrowserRouter>
+        <div
+          className="transition-opacity duration-500"
+          style={{
+            opacity: contentVisible ? 1 : 0,
+            visibility: contentVisible ? 'visible' : 'hidden',
+          }}
+        >
+          <AppContent />
+        </div>
       </TooltipProvider>
     </QueryClientProvider>
   );
