@@ -46,6 +46,9 @@ export const linhasEmBreve: Record<string, LinhaEmBreve> = {
       "Aplicação versátil em interiores e mobiliário",
       "Fabricação artesanal com controle de qualidade",
     ],
+    formId: "A7iX7TMKzhNq1vXwMiVy",
+    formName: "[05] [FORM] [LANÇAMENTOS]",
+    formHeight: 461,
   },
   echo: {
     slug: "echo",
