@@ -224,7 +224,7 @@ const Index = () => {
             {/* Bottom-left: título */}
             <div className="absolute bottom-20 lg:bottom-16 left-8 lg:left-12 right-8 lg:right-auto z-10 max-w-[640px] text-white flex flex-col items-start">
               <h1 className="mb-5 font-display font-light text-[44px] md:text-[56px] lg:text-[68px] leading-none tracking-[-0.02em] text-white">
-                {active.nome}
+                Arquitetura feita para o amanhã
               </h1>
               {/* CTA — mobile */}
               <Link
