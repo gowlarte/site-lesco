@@ -80,7 +80,9 @@ const LinhaEmBreve = () => {
               />
             </div>
           )}
+        </div>
       </section>
+
 
       {/* SOBRE */}
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28">
