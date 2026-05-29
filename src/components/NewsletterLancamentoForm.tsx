@@ -18,11 +18,26 @@ export const NewsletterLancamentoForm = ({ slug, nomeLinha, variant = "light" }:
     document.body.appendChild(script);
   }, []);
 
+  const isDark = variant === "dark";
+
   return (
-    <div>
+    <div
+      className={`overflow-hidden rounded-[10px] transition-all duration-500 ${
+        isDark
+          ? "bg-white/95 border border-white/15"
+          : "bg-white border border-dark/10"
+      }`}
+      style={{ transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
+    >
       <iframe
         src="https://api.leadconnectorhq.com/widget/form/FLL85sGNM6yfwV3gPYcV"
-        style={{ width: "100%", height: "434px", border: "none", borderRadius: "10px" }}
+        style={{
+          width: "100%",
+          height: "434px",
+          border: "none",
+          borderRadius: "10px",
+          display: "block",
+        }}
         id="inline-FLL85sGNM6yfwV3gPYcV"
         data-layout="{'id':'INLINE'}"
         data-trigger-type="alwaysShow"
