@@ -98,7 +98,7 @@ const QuemSomos = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 md:divide-x md:divide-primary-foreground/10">
             {[
               { value: 15, suffix: "+", label: "Anos de inovação" },
-              { value: 100, suffix: "%", label: "Produtos reciclados" },
+              { value: 100, suffix: "%", label: "Produtos recicláveis" },
               { value: 1000, suffix: "+", label: "Cases realizados" },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col items-center text-center px-8">
