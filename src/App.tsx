@@ -29,6 +29,7 @@ import Blog from "./pages/Blog";
 import BlogArtigo from "./pages/BlogArtigo";
 import Orcamento from "./pages/Orcamento";
 import Catalogo from "./pages/Catalogo";
+import ObrigadoOrcamento from "./pages/ObrigadoOrcamento";
 import LinhaEmBreve from "./pages/LinhaEmBreve";
 import NotFound from "./pages/NotFound";
 
