@@ -10,6 +10,7 @@ interface SEOProps {
   image?: string;
   type?: "website" | "article";
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
+  noindex?: boolean;
 }
 
 /** Turn a possibly-relative image path into an absolute URL (required by
