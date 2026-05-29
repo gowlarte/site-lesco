@@ -4,7 +4,862 @@
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/a-madeira-evoluiu-e-o-seu-projeto-tambem-pode",
+      "destination": "https://blog.lesco.com.br/a-madeira-evoluiu-e-o-seu-projeto-tambem-pode/",
+      "permanent": true
+    },
+    {
+      "source": "/a-revolucao-dos-revestimentos-como-o-wpc-acelera-cronogramas-e-reduz-desperdicios",
+      "destination": "https://blog.lesco.com.br/a-revolucao-dos-revestimentos-como-o-wpc-acelera-cronogramas-e-reduz-desperdicios/",
+      "permanent": true
+    },
+    {
+      "source": "/acabamento-wpc-acabamento-wpc-acabamento-impecavel-wpc",
+      "destination": "https://blog.lesco.com.br/acabamento-wpc-acabamento-wpc-acabamento-impecavel-wpc/",
+      "permanent": true
+    },
+    {
+      "source": "/acabamento",
+      "destination": "https://blog.lesco.com.br/acabamento/",
+      "permanent": true
+    },
+    {
+      "source": "/acabamentos-inteligentes-eliminam-retrabalho",
+      "destination": "https://blog.lesco.com.br/acabamentos-inteligentes-eliminam-retrabalho/",
+      "permanent": true
+    },
+    {
+      "source": "/aluminio-wpc-comparativo-especificacao",
+      "destination": "https://blog.lesco.com.br/aluminio-wpc-comparativo-especificacao/",
+      "permanent": true
+    },
+    {
+      "source": "/areas-externas-diferenciais-venda",
+      "destination": "https://blog.lesco.com.br/areas-externas-diferenciais-venda/",
+      "permanent": true
+    },
+    {
+      "source": "/arena-do-futuro",
+      "destination": "https://blog.lesco.com.br/arena-do-futuro/",
+      "permanent": true
+    },
+    {
+      "source": "/arquitetos-estao-falando-wpc-lesco-cop30",
+      "destination": "https://blog.lesco.com.br/arquitetos-estao-falando-wpc-lesco-cop30/",
+      "permanent": true
+    },
+    {
+      "source": "/arquitetos-madeira-wpc",
+      "destination": "https://blog.lesco.com.br/arquitetos-madeira-wpc/",
+      "permanent": true
+    },
+    {
+      "source": "/arquitetura-biofilica-wpc-materiais-2",
+      "destination": "https://blog.lesco.com.br/arquitetura-biofilica-wpc-materiais-2/",
+      "permanent": true
+    },
+    {
+      "source": "/arquitetura-biofilica-wpc-materiais",
+      "destination": "https://blog.lesco.com.br/arquitetura-biofilica-wpc-materiais/",
+      "permanent": true
+    },
+    {
+      "source": "/arquitetura-sensorial-madeira-ecologica",
+      "destination": "https://blog.lesco.com.br/arquitetura-sensorial-madeira-ecologica/",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "https://blog.lesco.com.br/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/brises-ecologicos",
+      "destination": "https://blog.lesco.com.br/brises-ecologicos/",
+      "permanent": true
+    },
+    {
+      "source": "/brises-forros-ou-decks-qual-modelo-de-wpc-usar-em-cada-situacao-2wpc-modelos-aplicacoes",
+      "destination": "https://blog.lesco.com.br/brises-forros-ou-decks-qual-modelo-de-wpc-usar-em-cada-situacao-2wpc-modelos-aplicacoes/",
+      "permanent": true
+    },
+    {
+      "source": "/brises-forros-ou-decks-qual-modelo-de-wpc-usar-em-cada-situacao",
+      "destination": "https://blog.lesco.com.br/brises-forros-ou-decks-qual-modelo-de-wpc-usar-em-cada-situacao/",
+      "permanent": true
+    },
+    {
+      "source": "/brises-wpc-eficiencia-energetica",
+      "destination": "https://blog.lesco.com.br/brises-wpc-eficiencia-energetica/",
+      "permanent": true
+    },
+    {
+      "source": "/certificacoes-ambientais-materiais-ecologicos",
+      "destination": "https://blog.lesco.com.br/certificacoes-ambientais-materiais-ecologicos/",
+      "permanent": true
+    },
+    {
+      "source": "/certificacoes-leed-esg-construcao",
+      "destination": "https://blog.lesco.com.br/certificacoes-leed-esg-construcao/",
+      "permanent": true
+    },
+    {
+      "source": "/ciclo-vida-madeira-ecologica",
+      "destination": "https://blog.lesco.com.br/ciclo-vida-madeira-ecologica/",
+      "permanent": true
+    },
+    {
+      "source": "/coextrusao-tecnologia-wpc-2",
+      "destination": "https://blog.lesco.com.br/coextrusao-tecnologia-wpc-2/",
+      "permanent": true
+    },
+    {
+      "source": "/coextrusao-tecnologia-wpc",
+      "destination": "https://blog.lesco.com.br/coextrusao-tecnologia-wpc/",
+      "permanent": true
+    },
+    {
+      "source": "/como-incorporar-o-design-biofilico-ao-projeto",
+      "destination": "https://blog.lesco.com.br/como-incorporar-o-design-biofilico-ao-projeto/",
+      "permanent": true
+    },
+    {
+      "source": "/como-usar-wpc-licitacoes",
+      "destination": "https://blog.lesco.com.br/como-usar-wpc-licitacoes/",
+      "permanent": true
+    },
+    {
+      "source": "/conforto-termico-nos-projetos",
+      "destination": "https://blog.lesco.com.br/conforto-termico-nos-projetos/",
+      "permanent": true
+    },
+    {
+      "source": "/construcao-modular-sustentavel",
+      "destination": "https://blog.lesco.com.br/construcao-modular-sustentavel/",
+      "permanent": true
+    },
+    {
+      "source": "/construcao-sustentavel-materiais-reciclados",
+      "destination": "https://blog.lesco.com.br/construcao-sustentavel-materiais-reciclados/",
+      "permanent": true
+    },
+    {
+      "source": "/construcao-sustentavel-wpc-lesco-2",
+      "destination": "https://blog.lesco.com.br/construcao-sustentavel-wpc-lesco-2/",
+      "permanent": true
+    },
+    {
+      "source": "/construcao-sustentavel-wpc-lesco",
+      "destination": "https://blog.lesco.com.br/construcao-sustentavel-wpc-lesco/",
+      "permanent": true
+    },
+    {
+      "source": "/construcao-sustentavel-wpc",
+      "destination": "https://blog.lesco.com.br/construcao-sustentavel-wpc/",
+      "permanent": true
+    },
+    {
+      "source": "/construtoras-sustentabilidade-premium",
+      "destination": "https://blog.lesco.com.br/construtoras-sustentabilidade-premium/",
+      "permanent": true
+    },
+    {
+      "source": "/construtoras-utilizam-wpc",
+      "destination": "https://blog.lesco.com.br/construtoras-utilizam-wpc/",
+      "permanent": true
+    },
+    {
+      "source": "/cop30-bastidores-fachada-parque-da-cidade",
+      "destination": "https://blog.lesco.com.br/cop30-bastidores-fachada-parque-da-cidade/",
+      "permanent": true
+    },
+    {
+      "source": "/cop30-legado-arquitetura-lesco-parque-da-cidade-belem",
+      "destination": "https://blog.lesco.com.br/cop30-legado-arquitetura-lesco-parque-da-cidade-belem/",
+      "permanent": true
+    },
+    {
+      "source": "/cop30-parque-da-cidade-fachada-wpc-lesco-green-shield",
+      "destination": "https://blog.lesco.com.br/cop30-parque-da-cidade-fachada-wpc-lesco-green-shield/",
+      "permanent": true
+    },
+    {
+      "source": "/custo-beneficio-real-o-que-arquitetos-precisam-saber-sobre-o-ciclo-de-vida-da-madeira-ecologica",
+      "destination": "https://blog.lesco.com.br/custo-beneficio-real-o-que-arquitetos-precisam-saber-sobre-o-ciclo-de-vida-da-madeira-ecologica/",
+      "permanent": true
+    },
+    {
+      "source": "/de-belem-para-o-mundo-material-brasileiro-palco-cop30",
+      "destination": "https://blog.lesco.com.br/de-belem-para-o-mundo-material-brasileiro-palco-cop30/",
+      "permanent": true
+    },
+    {
+      "source": "/deck-de-madeira-plastica",
+      "destination": "https://blog.lesco.com.br/deck-de-madeira-plastica/",
+      "permanent": true
+    },
+    {
+      "source": "/deck-ecologico-manutencao-2",
+      "destination": "https://blog.lesco.com.br/deck-ecologico-manutencao-2/",
+      "permanent": true
+    },
+    {
+      "source": "/deck-ecologico-manutencao",
+      "destination": "https://blog.lesco.com.br/deck-ecologico-manutencao/",
+      "permanent": true
+    },
+    {
+      "source": "/deck-wpc-custo-beneficio",
+      "destination": "https://blog.lesco.com.br/deck-wpc-custo-beneficio/",
+      "permanent": true
+    },
+    {
+      "source": "/deck-wpc-lesco-obra",
+      "destination": "https://blog.lesco.com.br/deck-wpc-lesco-obra/",
+      "permanent": true
+    },
+    {
+      "source": "/decks-hoteis-resorts-lazer",
+      "destination": "https://blog.lesco.com.br/decks-hoteis-resorts-lazer/",
+      "permanent": true
+    },
+    {
+      "source": "/decks-wpc-versus-madeira",
+      "destination": "https://blog.lesco.com.br/decks-wpc-versus-madeira/",
+      "permanent": true
+    },
+    {
+      "source": "/design-arquitetonico-madeira-wpc",
+      "destination": "https://blog.lesco.com.br/design-arquitetonico-madeira-wpc/",
+      "permanent": true
+    },
+    {
+      "source": "/design-e-sustentabilidade",
+      "destination": "https://blog.lesco.com.br/design-e-sustentabilidade/",
+      "permanent": true
+    },
+    {
+      "source": "/design-sustentavel-alto-padrao-2",
+      "destination": "https://blog.lesco.com.br/design-sustentavel-alto-padrao-2/",
+      "permanent": true
+    },
+    {
+      "source": "/design-sustentavel-alto-padrao",
+      "destination": "https://blog.lesco.com.br/design-sustentavel-alto-padrao/",
+      "permanent": true
+    },
+    {
+      "source": "/design-sustentavel",
+      "destination": "https://blog.lesco.com.br/design-sustentavel/",
+      "permanent": true
+    },
+    {
+      "source": "/diferenca-entre-ripado-em-wpc-e-mdf-estetica-parecida-desempenho-oposto",
+      "destination": "https://blog.lesco.com.br/diferenca-entre-ripado-em-wpc-e-mdf-estetica-parecida-desempenho-oposto/",
+      "permanent": true
+    },
+    {
+      "source": "/durabilidade-madeira-wp",
+      "destination": "https://blog.lesco.com.br/durabilidade-madeira-wp/",
+      "permanent": true
+    },
+    {
+      "source": "/em-quais-locais-podemos-utilizar-a-madeira-ecologica",
+      "destination": "https://blog.lesco.com.br/em-quais-locais-podemos-utilizar-a-madeira-ecologica/",
+      "permanent": true
+    },
+    {
+      "source": "/engenharia-da-estetica-wpc-lesco-luxo-funcional-fachadas-urbanas",
+      "destination": "https://blog.lesco.com.br/engenharia-da-estetica-wpc-lesco-luxo-funcional-fachadas-urbanas/",
+      "permanent": true
+    },
+    {
+      "source": "/entre-calor-umidade-desafio-tecnico-wpc-lesco-cop30",
+      "destination": "https://blog.lesco.com.br/entre-calor-umidade-desafio-tecnico-wpc-lesco-cop30/",
+      "permanent": true
+    },
+    {
+      "source": "/erros-especificar-madeira-ecologica",
+      "destination": "https://blog.lesco.com.br/erros-especificar-madeira-ecologica/",
+      "permanent": true
+    },
+    {
+      "source": "/escritorios-wpc-sustentabilidade-2",
+      "destination": "https://blog.lesco.com.br/escritorios-wpc-sustentabilidade-2/",
+      "permanent": true
+    },
+    {
+      "source": "/escritorios-wpc-sustentabilidade",
+      "destination": "https://blog.lesco.com.br/escritorios-wpc-sustentabilidade/",
+      "permanent": true
+    },
+    {
+      "source": "/esg-na-construcao-civil",
+      "destination": "https://blog.lesco.com.br/esg-na-construcao-civil/",
+      "permanent": true
+    },
+    {
+      "source": "/esg-na-pratica-como-o-uso-do-wpc-agrega-valor-a-reputacao-da-sua-construtora",
+      "destination": "https://blog.lesco.com.br/esg-na-pratica-como-o-uso-do-wpc-agrega-valor-a-reputacao-da-sua-construtora/",
+      "permanent": true
+    },
+    {
+      "source": "/esg-wpc-construcao-sustentavel",
+      "destination": "https://blog.lesco.com.br/esg-wpc-construcao-sustentavel/",
+      "permanent": true
+    },
+    {
+      "source": "/estetica-customizacao-wpc-madeira",
+      "destination": "https://blog.lesco.com.br/estetica-customizacao-wpc-madeira/",
+      "permanent": true
+    },
+    {
+      "source": "/evitar-retrabalhos-materiais",
+      "destination": "https://blog.lesco.com.br/evitar-retrabalhos-materiais/",
+      "permanent": true
+    },
+    {
+      "source": "/fachada-de-casas-modernas",
+      "destination": "https://blog.lesco.com.br/fachada-de-casas-modernas/",
+      "permanent": true
+    },
+    {
+      "source": "/fachada-simbolo-futuro-madeira-ecologica-lesco-cop30",
+      "destination": "https://blog.lesco.com.br/fachada-simbolo-futuro-madeira-ecologica-lesco-cop30/",
+      "permanent": true
+    },
+    {
+      "source": "/fachada-wpc-amazonia-cop30-lesco-green-shield",
+      "destination": "https://blog.lesco.com.br/fachada-wpc-amazonia-cop30-lesco-green-shield/",
+      "permanent": true
+    },
+    {
+      "source": "/fachadas-decks-wpc-residencial",
+      "destination": "https://blog.lesco.com.br/fachadas-decks-wpc-residencial/",
+      "permanent": true
+    },
+    {
+      "source": "/fachadas-madeira-ecologica-2",
+      "destination": "https://blog.lesco.com.br/fachadas-madeira-ecologica-2/",
+      "permanent": true
+    },
+    {
+      "source": "/fachadas-madeira-ecologica",
+      "destination": "https://blog.lesco.com.br/fachadas-madeira-ecologica/",
+      "permanent": true
+    },
+    {
+      "source": "/fornecedores-para-a-construtora",
+      "destination": "https://blog.lesco.com.br/fornecedores-para-a-construtora/",
+      "permanent": true
+    },
+    {
+      "source": "/forro-sustentavel",
+      "destination": "https://blog.lesco.com.br/forro-sustentavel/",
+      "permanent": true
+    },
+    {
+      "source": "/forros-brises-projeto-arquitetura-2",
+      "destination": "https://blog.lesco.com.br/forros-brises-projeto-arquitetura-2/",
+      "permanent": true
+    },
+    {
+      "source": "/forros-brises-projeto-arquitetura",
+      "destination": "https://blog.lesco.com.br/forros-brises-projeto-arquitetura/",
+      "permanent": true
+    },
+    {
+      "source": "/gbc-brasil",
+      "destination": "https://blog.lesco.com.br/gbc-brasil/",
+      "permanent": true
+    },
+    {
+      "source": "/gestao-da-cadeia-de-suprimentos",
+      "destination": "https://blog.lesco.com.br/gestao-da-cadeia-de-suprimentos/",
+      "permanent": true
+    },
+    {
+      "source": "/inovacoes-construcao-civil",
+      "destination": "https://blog.lesco.com.br/inovacoes-construcao-civil/",
+      "permanent": true
+    },
+    {
+      "source": "/instalacao-fachadas-ventiladas-wpc-2",
+      "destination": "https://blog.lesco.com.br/instalacao-fachadas-ventiladas-wpc-2/",
+      "permanent": true
+    },
+    {
+      "source": "/instalacao-fachadas-ventiladas-wpc",
+      "destination": "https://blog.lesco.com.br/instalacao-fachadas-ventiladas-wpc/",
+      "permanent": true
+    },
+    {
+      "source": "/lesco-dna-sustentavel-que-assina-a-cop30",
+      "destination": "https://blog.lesco.com.br/lesco-dna-sustentavel-que-assina-a-cop30/",
+      "permanent": true
+    },
+    {
+      "source": "/lesco-marca-preferida-arquitetos",
+      "destination": "https://blog.lesco.com.br/lesco-marca-preferida-arquitetos/",
+      "permanent": true
+    },
+    {
+      "source": "/lesco-projetos-arquitetonicos",
+      "destination": "https://blog.lesco.com.br/lesco-projetos-arquitetonicos/",
+      "permanent": true
+    },
+    {
+      "source": "/lesco-revestimentos",
+      "destination": "https://blog.lesco.com.br/lesco-revestimentos/",
+      "permanent": true
+    },
+    {
+      "source": "/luz-natural",
+      "destination": "https://blog.lesco.com.br/luz-natural/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-duravel-custo-obra",
+      "destination": "https://blog.lesco.com.br/madeira-duravel-custo-obra/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-ecologica-comparativo-tecnico",
+      "destination": "https://blog.lesco.com.br/madeira-ecologica-comparativo-tecnico/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-ecologica-durabilidade",
+      "destination": "https://blog.lesco.com.br/madeira-ecologica-durabilidade/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-ecologica-duvidas-tecnicas-2",
+      "destination": "https://blog.lesco.com.br/madeira-ecologica-duvidas-tecnicas-2/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-ecologica-duvidas-tecnicas",
+      "destination": "https://blog.lesco.com.br/madeira-ecologica-duvidas-tecnicas/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-ecologica-investimento",
+      "destination": "https://blog.lesco.com.br/madeira-ecologica-investimento/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-ecologica-lesco-2",
+      "destination": "https://blog.lesco.com.br/madeira-ecologica-lesco-2/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-ecologica-lesco",
+      "destination": "https://blog.lesco.com.br/madeira-ecologica-lesco/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-ecologica-palcos-globais-lesco-parque-da-cidade",
+      "destination": "https://blog.lesco.com.br/madeira-ecologica-palcos-globais-lesco-parque-da-cidade/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-ecologica-pos-obra",
+      "destination": "https://blog.lesco.com.br/madeira-ecologica-pos-obra/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-ecologica-projetos-luxo",
+      "destination": "https://blog.lesco.com.br/madeira-ecologica-projetos-luxo/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-plastica-x-natural",
+      "destination": "https://blog.lesco.com.br/madeira-plastica-x-natural/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-plastica",
+      "destination": "https://blog.lesco.com.br/madeira-plastica/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-wpc-arquitetura",
+      "destination": "https://blog.lesco.com.br/madeira-wpc-arquitetura/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-wpc-contra-maresia",
+      "destination": "https://blog.lesco.com.br/madeira-wpc-contra-maresia/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-wpc-economia-sustentavel",
+      "destination": "https://blog.lesco.com.br/madeira-wpc-economia-sustentavel/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-wpc-engenharia-civil",
+      "destination": "https://blog.lesco.com.br/madeira-wpc-engenharia-civil/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-wpc-impressao-3d",
+      "destination": "https://blog.lesco.com.br/madeira-wpc-impressao-3d/",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-wpc-vs-aluminio-projetos",
+      "destination": "https://blog.lesco.com.br/madeira-wpc-vs-aluminio-projetos/",
+      "permanent": true
+    },
+    {
+      "source": "/materiais-resistentes-maresia-construcao",
+      "destination": "https://blog.lesco.com.br/materiais-resistentes-maresia-construcao/",
+      "permanent": true
+    },
+    {
+      "source": "/materiais-sustentaveis-construcao",
+      "destination": "https://blog.lesco.com.br/materiais-sustentaveis-construcao/",
+      "permanent": true
+    },
+    {
+      "source": "/materiais-verdes",
+      "destination": "https://blog.lesco.com.br/materiais-verdes/",
+      "permanent": true
+    },
+    {
+      "source": "/material-sustentavel-criterios-ecologicos",
+      "destination": "https://blog.lesco.com.br/material-sustentavel-criterios-ecologicos/",
+      "permanent": true
+    },
+    {
+      "source": "/neuroarquitetura-ambientes-madeira",
+      "destination": "https://blog.lesco.com.br/neuroarquitetura-ambientes-madeira/",
+      "permanent": true
+    },
+    {
+      "source": "/neuroarquitetura",
+      "destination": "https://blog.lesco.com.br/neuroarquitetura/",
+      "permanent": true
+    },
+    {
+      "source": "/obra-ecologica",
+      "destination": "https://blog.lesco.com.br/obra-ecologica/",
+      "permanent": true
+    },
+    {
+      "source": "/obra-evento-mundial-fachada-parque-da-cidade-lesco-cop30",
+      "destination": "https://blog.lesco.com.br/obra-evento-mundial-fachada-parque-da-cidade-lesco-cop30/",
+      "permanent": true
+    },
+    {
+      "source": "/obras-alto-padrao-baixa-manutencao",
+      "destination": "https://blog.lesco.com.br/obras-alto-padrao-baixa-manutencao/",
+      "permanent": true
+    },
+    {
+      "source": "/piscinas-wpc-areas-lazer",
+      "destination": "https://blog.lesco.com.br/piscinas-wpc-areas-lazer/",
+      "permanent": true
+    },
+    {
+      "source": "/piso-deck-wpc-escorregadio",
+      "destination": "https://blog.lesco.com.br/piso-deck-wpc-escorregadio/",
+      "permanent": true
+    },
+    {
+      "source": "/piso-e-deck-de-wpc-sao-escorregadios-o-que-considerar-para-evitar-acidentes-em-projetos-de-luxo",
+      "destination": "https://blog.lesco.com.br/piso-e-deck-de-wpc-sao-escorregadios-o-que-considerar-para-evitar-acidentes-em-projetos-de-luxo/",
+      "permanent": true
+    },
+    {
+      "source": "/piso-wpc-resistencia-trafego",
+      "destination": "https://blog.lesco.com.br/piso-wpc-resistencia-trafego/",
+      "permanent": true
+    },
+    {
+      "source": "/posicao-do-sol",
+      "destination": "https://blog.lesco.com.br/posicao-do-sol/",
+      "permanent": true
+    },
+    {
+      "source": "/problemas-em-obras",
+      "destination": "https://blog.lesco.com.br/problemas-em-obras/",
+      "permanent": true
+    },
+    {
+      "source": "/projetos-de-arquitetura",
+      "destination": "https://blog.lesco.com.br/projetos-de-arquitetura/",
+      "permanent": true
+    },
+    {
+      "source": "/reducao-custos-wpc-obra",
+      "destination": "https://blog.lesco.com.br/reducao-custos-wpc-obra/",
+      "permanent": true
+    },
+    {
+      "source": "/retrofit",
+      "destination": "https://blog.lesco.com.br/retrofit/",
+      "permanent": true
+    },
+    {
+      "source": "/revestimentos-areas-externas",
+      "destination": "https://blog.lesco.com.br/revestimentos-areas-externas/",
+      "permanent": true
+    },
+    {
+      "source": "/revestimentos-design-sustentavel",
+      "destination": "https://blog.lesco.com.br/revestimentos-design-sustentavel/",
+      "permanent": true
+    },
+    {
+      "source": "/revestimentos-ecologicos-aplicacoes",
+      "destination": "https://blog.lesco.com.br/revestimentos-ecologicos-aplicacoes/",
+      "permanent": true
+    },
+    {
+      "source": "/revestimentos-fotovoltaicos-em-wpc",
+      "destination": "https://blog.lesco.com.br/revestimentos-fotovoltaicos-em-wpc/",
+      "permanent": true
+    },
+    {
+      "source": "/revestimentos-para-seu-projeto",
+      "destination": "https://blog.lesco.com.br/revestimentos-para-seu-projeto/",
+      "permanent": true
+    },
+    {
+      "source": "/revestimentos-sustentaveis",
+      "destination": "https://blog.lesco.com.br/revestimentos-sustentaveis/",
+      "permanent": true
+    },
+    {
+      "source": "/revestimentos-wpc-construcao",
+      "destination": "https://blog.lesco.com.br/revestimentos-wpc-construcao/",
+      "permanent": true
+    },
+    {
+      "source": "/ripado-wpc-mdf-desempenho",
+      "destination": "https://blog.lesco.com.br/ripado-wpc-mdf-desempenho/",
+      "permanent": true
+    },
+    {
+      "source": "/selecao-de-revestimentos",
+      "destination": "https://blog.lesco.com.br/selecao-de-revestimentos/",
+      "permanent": true
+    },
+    {
+      "source": "/sustentabilidade-madeira-natural-wpc-2",
+      "destination": "https://blog.lesco.com.br/sustentabilidade-madeira-natural-wpc-2/",
+      "permanent": true
+    },
+    {
+      "source": "/sustentabilidade-madeira-natural-wpc",
+      "destination": "https://blog.lesco.com.br/sustentabilidade-madeira-natural-wpc/",
+      "permanent": true
+    },
+    {
+      "source": "/sustentabilidade-na-arquitetura",
+      "destination": "https://blog.lesco.com.br/sustentabilidade-na-arquitetura/",
+      "permanent": true
+    },
+    {
+      "source": "/sustentabilidade-na-construcao-civil-como-escolher-materiais-ecologicos",
+      "destination": "https://blog.lesco.com.br/sustentabilidade-na-construcao-civil-como-escolher-materiais-ecologicos/",
+      "permanent": true
+    },
+    {
+      "source": "/tendencias-em-arquitetura",
+      "destination": "https://blog.lesco.com.br/tendencias-em-arquitetura/",
+      "permanent": true
+    },
+    {
+      "source": "/textura-wpc-clientes-finais-2",
+      "destination": "https://blog.lesco.com.br/textura-wpc-clientes-finais-2/",
+      "permanent": true
+    },
+    {
+      "source": "/textura-wpc-clientes-finais",
+      "destination": "https://blog.lesco.com.br/textura-wpc-clientes-finais/",
+      "permanent": true
+    },
+    {
+      "source": "/uso-wpc-construcao-custos",
+      "destination": "https://blog.lesco.com.br/uso-wpc-construcao-custos/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-aplicacao-estrutural",
+      "destination": "https://blog.lesco.com.br/wpc-aplicacao-estrutural/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-areas-internas",
+      "destination": "https://blog.lesco.com.br/wpc-areas-internas/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-arquitetura-moderna",
+      "destination": "https://blog.lesco.com.br/wpc-arquitetura-moderna/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-certificacoes-leed-esg",
+      "destination": "https://blog.lesco.com.br/wpc-certificacoes-leed-esg/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-construcao-sustentavel",
+      "destination": "https://blog.lesco.com.br/wpc-construcao-sustentavel/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-controle-qualidade-projetos",
+      "destination": "https://blog.lesco.com.br/wpc-controle-qualidade-projetos/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-decks-resorts-luxuosos",
+      "destination": "https://blog.lesco.com.br/wpc-decks-resorts-luxuosos/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-dilatacao-termica-arquitetura",
+      "destination": "https://blog.lesco.com.br/wpc-dilatacao-termica-arquitetura/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-dilatacao-termica",
+      "destination": "https://blog.lesco.com.br/wpc-dilatacao-termica/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-duvidas-clientes-respostas",
+      "destination": "https://blog.lesco.com.br/wpc-duvidas-clientes-respostas/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-esquenta-ao-sol",
+      "destination": "https://blog.lesco.com.br/wpc-esquenta-ao-sol/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-evitar-retrabalho-pos-entrega",
+      "destination": "https://blog.lesco.com.br/wpc-evitar-retrabalho-pos-entrega/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-fachada-edificios-durabilidade",
+      "destination": "https://blog.lesco.com.br/wpc-fachada-edificios-durabilidade/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-interiores-residenciais-sofisticados",
+      "destination": "https://blog.lesco.com.br/wpc-interiores-residenciais-sofisticados/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-madeira-ecologica-arquitetura",
+      "destination": "https://blog.lesco.com.br/wpc-madeira-ecologica-arquitetura/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-madeira-estetica-sustentavel-2",
+      "destination": "https://blog.lesco.com.br/wpc-madeira-estetica-sustentavel-2/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-madeira-estetica-sustentavel",
+      "destination": "https://blog.lesco.com.br/wpc-madeira-estetica-sustentavel/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-madeira-plastica",
+      "destination": "https://blog.lesco.com.br/wpc-madeira-plastica/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-projetos-exigentes-2",
+      "destination": "https://blog.lesco.com.br/wpc-projetos-exigentes-2/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-projetos-exigentes",
+      "destination": "https://blog.lesco.com.br/wpc-projetos-exigentes/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-reduz-atrasos-construcao-2",
+      "destination": "https://blog.lesco.com.br/wpc-reduz-atrasos-construcao-2/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-reduz-atrasos-construcao",
+      "destination": "https://blog.lesco.com.br/wpc-reduz-atrasos-construcao/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-responde-climas-extremos",
+      "destination": "https://blog.lesco.com.br/wpc-responde-climas-extremos/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-retrofit-quando-aplicar-2",
+      "destination": "https://blog.lesco.com.br/wpc-retrofit-quando-aplicar-2/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-retrofit-quando-aplicar",
+      "destination": "https://blog.lesco.com.br/wpc-retrofit-quando-aplicar/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-revestimentos-externos-2",
+      "destination": "https://blog.lesco.com.br/wpc-revestimentos-externos-2/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-revestimentos-externos",
+      "destination": "https://blog.lesco.com.br/wpc-revestimentos-externos/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-sustentabilidade-certificacoes-2",
+      "destination": "https://blog.lesco.com.br/wpc-sustentabilidade-certificacoes-2/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-sustentabilidade-certificacoes",
+      "destination": "https://blog.lesco.com.br/wpc-sustentabilidade-certificacoes/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-ultra-realista-tecnologia-madeira-2",
+      "destination": "https://blog.lesco.com.br/wpc-ultra-realista-tecnologia-madeira-2/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-ultra-realista-tecnologia-madeira",
+      "destination": "https://blog.lesco.com.br/wpc-ultra-realista-tecnologia-madeira/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-versus-madeira-nobre",
+      "destination": "https://blog.lesco.com.br/wpc-versus-madeira-nobre/",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-vs-madeira-natural",
+      "destination": "https://blog.lesco.com.br/wpc-vs-madeira-natural/",
+      "permanent": true
+    }
+  ],
   "rewrites": [
-    { "source": "/((?!assets/|fonts/).*)", "destination": "/index.html" }
+    {
+      "source": "/((?!assets/|fonts/).*)",
+      "destination": "/index.html"
+    }
   ]
 }
