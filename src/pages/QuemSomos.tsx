@@ -98,7 +98,7 @@ const QuemSomos = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 md:divide-x md:divide-primary-foreground/10">
             {[
               { value: 15, suffix: "+", label: "Anos de inovação" },
-              { value: 100, suffix: "%", label: "Produtos reciclados" },
+              { value: 100, suffix: "%", label: "Produtos recicláveis" },
               { value: 1000, suffix: "+", label: "Cases realizados" },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col items-center text-center px-8">
@@ -141,7 +141,7 @@ const QuemSomos = () => {
                 <span className="font-mono-tech text-sm text-foreground">10% Aditivos</span>
               </div>
               <p className="mt-6 text-body-lg text-muted-foreground">
-                Material 100% reciclado · Resistente a cupim · Hidrofóbico · Anti-mofo · 10 anos de garantia
+                Material 100% reciclável · Resistente a cupim · Hidrofóbico · Anti-mofo · 10 anos de garantia
               </p>
             </div>
           </ScrollReveal>
