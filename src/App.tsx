@@ -47,6 +47,7 @@ const AppContent = () => {
   const isHome = location.pathname === "/";
 
   usePageTracking();
+  useUtmForwarder();
 
 
   return (
