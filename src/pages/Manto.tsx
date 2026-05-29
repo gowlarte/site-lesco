@@ -154,7 +154,7 @@ const Manto = () => {
       />
       <HeroSection
         images={heroImages}
-        headline="Arquitetura feita para o amanhã"
+        headline="Madeira Ecológica"
         subtitulo="Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto."
         ctaLabel="Explorar Produtos"
         ctaAction={handleExplorar}

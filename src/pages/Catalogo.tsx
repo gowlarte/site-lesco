@@ -69,7 +69,7 @@ const Catalogo = () => {
           </div>
 
           {/* Direita — formulário (iframe atual do catálogo) */}
-          <div className="bg-white rounded-[10px] p-3 sm:p-4 md:p-5 shadow-2xl">
+          <div className="bg-white rounded-[10px] overflow-hidden shadow-2xl">
             <iframe
               src="https://api.leadconnectorhq.com/widget/form/lr26Z8p5zKyXXMvt1CKn"
               style={{ width: "100%", height: "946px", border: "none", borderRadius: "3px" }}
