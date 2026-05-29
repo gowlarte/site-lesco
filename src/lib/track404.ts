@@ -32,6 +32,7 @@ export async function track404(path: string): Promise<void> {
 
   // Lovable Cloud
   try {
+    const { supabase } = await import("@/integrations/supabase/client");
     await supabase.from("not_found_hits").insert({
       path,
       referrer,
