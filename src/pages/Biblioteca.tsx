@@ -172,7 +172,7 @@ const Biblioteca = () => {
             <div className="flex flex-col items-center">
               <AnimatedCounter end={100} suffix="%" />
               <span className="font-body text-[13px] uppercase tracking-[0.12em] text-primary-foreground/60 mt-3">
-                Produtos reciclados
+                Produtos recicláveis
               </span>
             </div>
             <div className="flex flex-col items-center">
