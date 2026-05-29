@@ -35,15 +35,7 @@ const projetosDestaque = FEATURED_SLUGS.map(
 );
 
 const Biblioteca = () => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://link.msgsndr.com/js/form_embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+
 
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px] space-y-[10px]">
