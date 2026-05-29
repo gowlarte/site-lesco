@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { Loader2, Mail } from "lucide-react";
 
-const TOKEN_RDSTATION = "76788d5f5db5b8865e702fbe1fa5d416";
-const CONVERSION_URL = "https://cta-redirect.rdstation.com/v2/conversions";
-
 const validateEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
 
 interface Props {
@@ -27,19 +24,14 @@ export const NewsletterLancamentoForm = ({ slug, nomeLinha, variant = "light" }:
     setError("");
     setLoading(true);
     try {
-      const body = new URLSearchParams();
-      body.append("token_rdstation", TOKEN_RDSTATION);
-      body.append("conversion_identifier", `lancamento-${slug}`);
-      body.append("email", email);
-      body.append("cf_url_conversao", window.location.href);
-      body.append("cf_linha_interesse", nomeLinha);
-      await fetch(CONVERSION_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "newsletter_signup",
+        conversion_identifier: `lancamento-${slug}`,
+        linha_interesse: nomeLinha,
       });
     } catch (err) {
-      console.error("[RDStation] Newsletter submit error", err);
+      console.error("[Newsletter] dataLayer push error", err);
     }
     setLoading(false);
     setSuccess(true);
