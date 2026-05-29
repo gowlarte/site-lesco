@@ -27,8 +27,6 @@ const PortfolioProjeto = () => {
     );
   }
 
-  const indexAtual = projetos.findIndex((p) => p.slug === projeto.slug);
-  const proximo = projetos[(indexAtual + 1) % projetos.length];
 
   const ficha: Array<[string, string]> = [
     ["Local", projeto.local],
