@@ -100,6 +100,7 @@ const MantoShield = () => {
         title="Madeira Ecológica para Fachada | Lesco Shield"
         description="Nossa madeira ecológica para fachadas e painéis verticais combina tecnologia e durabilidade do plástico com a beleza estética da madeira, criando um material de alta resistência e longa durabilidade."
         path="/madeira-ecologica-para-fachada"
+        image={heroShield3}
       />
       {/* Hero */}
       <HeroSection

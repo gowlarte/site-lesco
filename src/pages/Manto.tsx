@@ -150,6 +150,7 @@ const Manto = () => {
         title="Madeira Ecológica Lesco — AltWood"
         description="Revestimentos premium em WPC: Brises, Panels, Decks, Forros e Shields para projetos arquitetônicos de alto padrão."
         path="/madeira-ecologica-lesco"
+        image={heroImg1}
       />
       <HeroSection
         images={heroImages}

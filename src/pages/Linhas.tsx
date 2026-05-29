@@ -72,6 +72,7 @@ const Linhas = () => {
         title="Nossas Linhas — Lesco"
         description="Conheça as linhas Lesco: AltWood (madeira ecológica), Zhú (bambu), Echo (acústica) e Geo (pedra flexível) para projetos premium."
         path="/linhas"
+        image={heroManto}
       />
       <section
         ref={sectionRef}

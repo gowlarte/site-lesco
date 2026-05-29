@@ -166,6 +166,7 @@ const BlogArtigo = () => {
         description="Como a madeira ecológica Lesco assina a fachada do Parque da Cidade, o palco da COP30 em Belém — sustentabilidade, técnica e identidade brasileira."
         path="/blog/cop30-parque-da-cidade"
         type="article"
+        image={heroImg}
       />
       <article className="mx-auto w-full max-w-[920px] px-6 sm:px-10 md:px-14 pt-10 md:pt-14 pb-14 md:pb-16">
         <Link
