@@ -15,7 +15,7 @@ const lancamentos = [
 ];
 
 type NavChild = { label: string; href: string };
-type NavItem = { label: string; href?: string; children?: NavChild[] };
+type NavItem = { label: string; href?: string; children?: NavChild[]; external?: boolean };
 
 const navLinks: NavItem[] = [
   { label: "Home", href: "/" },
@@ -39,7 +39,7 @@ const navLinks: NavItem[] = [
   },
   { label: "Catálogo", href: "/catalogo-lesco" },
   { label: "Biblioteca", href: "/biblioteca" },
-  { label: "Blog", href: "/blog" },
+  { label: "Blog", href: "https://blog.lesco.com.br/", external: true },
   { label: "Portfólio", href: "/portfolio" },
 ];
 
@@ -178,6 +178,25 @@ export function Header({ variant = "default" }: HeaderProps) {
                       </div>
                     )}
                   </div>
+                );
+              }
+
+              if (link.external) {
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href!}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onMouseEnter={() => {
+                      setHoveredNav(link.label);
+                      setOpenDropdown(null);
+                    }}
+                    className={sharedClass}
+                    style={sharedStyle}
+                  >
+                    {link.label}
+                  </a>
                 );
               }
 
@@ -332,6 +351,20 @@ export function Header({ variant = "default" }: HeaderProps) {
                   </div>
                 )}
               </div>
+            );
+          }
+
+          if (link.external) {
+            return (
+              <a
+                key={link.href}
+                href={link.href!}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-display text-3xl font-light text-foreground/80 hover:text-foreground transition-colors py-3"
+              >
+                {link.label}
+              </a>
             );
           }
 

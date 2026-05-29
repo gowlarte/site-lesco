@@ -48,15 +48,26 @@ export function Footer() {
                 { label: "Portfólio", href: "/portfolio" },
                 { label: "Catálogo", href: "/catalogo-lesco" },
                 { label: "Biblioteca", href: "/biblioteca" },
-                { label: "Blog", href: "/blog" },
+                { label: "Blog", href: "https://blog.lesco.com.br/", external: true },
               ].map((item) => (
                 <li key={item.href}>
-                  <Link
-                    to={item.href}
-                    className="font-body text-[13px] font-light text-foreground/70 hover:text-foreground transition-colors"
-                  >
-                    {item.label}
-                  </Link>
+                  {item.external ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-body text-[13px] font-light text-foreground/70 hover:text-foreground transition-colors"
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      className="font-body text-[13px] font-light text-foreground/70 hover:text-foreground transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
