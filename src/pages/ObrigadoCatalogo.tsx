@@ -1,0 +1,103 @@
+import { SEO } from "@/components/SEO";
+import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import obrigadoBg from "@/assets/obrigado-bg.jpg";
+import logoLight from "@/assets/logo-lesco-light.svg";
+import lescoIcon from "@/assets/lesco-icon.webp";
+
+const socials = [
+  { label: "Facebook", href: "https://www.facebook.com/lescorevestimentosbr/", Icon: Facebook },
+  { label: "Instagram", href: "https://www.instagram.com/lesco_br/", Icon: Instagram },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/lesco-revestimentos/about/", Icon: Linkedin },
+  { label: "YouTube", href: "https://www.youtube.com/@LescoBR", Icon: Youtube },
+];
+
+const TikTok = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.13v12.43a2.4 2.4 0 1 1-1.7-2.3V9.9a5.53 5.53 0 1 0 4.83 5.48V9.01a7.36 7.36 0 0 0 4.31 1.38V7.26a4.28 4.28 0 0 1-3.25-1.44Z" />
+  </svg>
+);
+
+export default function ObrigadoCatalogo() {
+  return (
+    <>
+      <SEO
+        title="Catálogo Técnico Lesco | Download"
+        description="Baixe o Catálogo Técnico Lesco e conheça nossos produtos de madeira ecológica."
+        path="/obrigado-catalogo"
+      />
+
+      {/* Hero */}
+      <section
+        className="relative min-h-[80vh] flex items-center justify-center rounded-[10px] mx-[10px] mt-[100px] overflow-hidden"
+        style={{
+          backgroundImage: `url(${obrigadoBg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0 bg-black/60" />
+
+        <div className="relative z-10 text-center px-6 max-w-2xl mx-auto py-24">
+          <img src={logoLight} alt="Lesco" className="h-12 md:h-14 mx-auto" />
+
+          <h1 className="mt-8 font-heading text-2xl md:text-4xl font-bold text-white">
+            Obrigado! Baixe Agora Mesmo
+            <br />
+            seu Catálogo Técnico Lesco.
+          </h1>
+
+          <a
+            href="https://heyzine.com/flip-book/fc3d2840f8.html#page/1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-block font-heading text-base md:text-lg font-bold text-black bg-white rounded-[10px] px-8 py-4 hover:bg-white/90 transition-colors"
+          >
+            Download do Catálogo
+          </a>
+
+          <p className="mt-6 font-body text-base md:text-lg text-white/90 leading-relaxed">
+            Sua solicitação foi registrada com sucesso.
+          </p>
+
+          <p className="mt-4 font-body text-sm text-white/70">
+            Enquanto isso, aproveite para participar da nossa próxima live workshop com a nossa arquiteta, e elevar ainda mais seus projetos:
+          </p>
+        </div>
+      </section>
+
+      {/* Novidades + redes sociais */}
+      <section className="py-20 md:py-28 px-6 text-center">
+        <p className="font-body text-lg md:text-xl text-black max-w-3xl mx-auto">
+          Enquanto você aguarda, acompanhe todas as novidades e últimas
+          atualizações da Lesco.
+        </p>
+
+        <div className="mt-12 flex items-center justify-center gap-6">
+          {socials.map(({ label, href, Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="text-black hover:text-black/70 transition-colors"
+            >
+              <Icon className="h-6 w-6" />
+            </a>
+          ))}
+          <a
+            href="https://www.tiktok.com/@lescorevestimentos"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok"
+            className="text-black hover:text-black/70 transition-colors"
+          >
+            <TikTok className="h-5 w-5" />
+          </a>
+        </div>
+
+        <img src={lescoIcon} alt="Lesco" className="mt-16 h-16 w-16 mx-auto" />
+      </section>
+    </>
+  );
+}
