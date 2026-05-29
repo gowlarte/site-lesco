@@ -1,47 +1,33 @@
 ## Objetivo
 
-Redirecionar com **301 (permanente)** todas as URLs de post do blog que hoje vivem em `https://lesco.com.br/...` para o novo subdomínio `https://blog.lesco.com.br/...`, preservando o slug e a barra final.
-
-Exemplo:
-```text
-Origem:  https://lesco.com.br/evitar-retrabalhos-materiais/
-Destino: https://blog.lesco.com.br/evitar-retrabalhos-materiais/
-```
-
-## Escopo
-
-Somente as **165 URLs** listadas no `post-sitemap.xml`. Nenhuma rota do app React (`/quem-somos`, `/portfolio`, `/orcamento`, produtos, etc.) será tocada — apenas os slugs exatos do blog. Os caminhos de imagem (`/wp-content/...`) são ignorados.
-
-Observação importante: o sitemap inclui `/blog/`. Como o blog passa a viver no subdomínio, esse caminho também será redirecionado para `https://blog.lesco.com.br/` (a página React `/blog` deixa de ser acessível pelo domínio principal — coerente com a mudança já feita no menu).
+O projeto já tem um `public/sitemap.xml`, mas com o domínio errado (`eco-essence-project.lovable.app`) e faltando rotas. Vou atualizá-lo para o domínio oficial **`https://lesco.com.br`**, incluir todas as páginas públicas indexáveis e corrigir o `robots.txt`.
 
 ## O que será feito
 
-Editar **`vercel.json`** adicionando um array `redirects` com uma entrada para cada slug do sitemap. Como o projeto usa `cleanUrls: true` / `trailingSlash: false`, cada `source` será definido sem barra final (o Vercel casa as duas formas) e o `destination` apontará para a URL completa do subdomínio **com** barra final, igual ao exemplo.
+### 1. `public/sitemap.xml` (atualizar)
+Reescrever com `loc` apontando para `https://lesco.com.br` e cobrir todas as rotas públicas:
 
-Estrutura de cada entrada:
-```json
-{ "source": "/evitar-retrabalhos-materiais", "destination": "https://blog.lesco.com.br/evitar-retrabalhos-materiais/", "permanent": true }
-```
+- `/` (home)
+- `/quem-somos`, `/madeira-wpc`, `/revestimento-sustentavel`
+- `/linhas`
+- `/madeira-ecologica-lesco` (hub), `/brise-madeira-ecologica`, `/madeira-ecologica-para-fachada`, `/madeira-ecologica-para-deck`, `/forro-wpc`, `/placa-wpc-interior`
+- `/portfolio` + páginas de projeto: `/projetos/casa-mansa`, `/projetos/residencial-urbano`, `/projetos/casa-areia`, `/projetos/vaz-batel`, `/projetos/jha-corporate-boutique`, `/projetos/casa-una`
+- `/catalogo-lesco`, `/biblioteca`, `/orcamento`
+- `/zhu`, `/echo`, `/geo`
 
-`permanent: true` gera o status **301**.
+**Excluídos** (intencional):
+- `/blog` e `/blog/:slug` — o blog agora vive em `blog.lesco.com.br` (já redirecionado com 301), então não entra no sitemap do domínio principal.
+- Rotas de redirect/legado (`/manto`, `/sobre`, `/catalogo`…), páginas de "obrigado" e o catch-all `*`.
 
-Os `redirects` são avaliados pelo Vercel **antes** dos `rewrites`, então o fallback SPA atual (`/index.html`) não interfere nas rotas redirecionadas, e as páginas estáticas pré-renderizadas continuam funcionando normalmente.
-
-## Lista de slugs a redirecionar (165)
-
-Todos os `<loc>` do `post-sitemap.xml`, incluindo entre outros:
-`/blog`, `/fornecedores-para-a-construtora`, `/obra-ecologica`, `/evitar-retrabalhos-materiais`, `/madeira-plastica`, `/deck-de-madeira-plastica`, `/neuroarquitetura`, `/retrofit`, `/acabamento`, `/wpc-vs-madeira-natural` … (a lista completa extraída do sitemap será inserida no `vercel.json`).
+### 2. `public/robots.txt` (atualizar)
+Corrigir a linha `Sitemap:` para `https://lesco.com.br/sitemap.xml`, mantendo `User-agent: *` / `Allow: /`.
 
 ## Detalhes técnicos
 
-- Arquivo alterado: `vercel.json` (apenas adicionar o bloco `redirects`; `buildCommand`, `outputDirectory`, `cleanUrls`, `trailingSlash` e `rewrites` permanecem como estão).
-- Redirect server-side via Vercel (não SPA/JS), garantindo 301 real visível em `curl -I`.
-- Após o deploy, validar com:
-  ```text
-  curl -I https://lesco.com.br/evitar-retrabalhos-materiais
-  → HTTP/1.1 301  Location: https://blog.lesco.com.br/evitar-retrabalhos-materiais/
-  ```
+- Mantém-se o mecanismo atual de **arquivo estático** (`public/sitemap.xml`), adequado aqui porque todo o conteúdo (projetos, linhas) é estático/hardcoded — sem migração para script gerador.
+- O Vite copia `public/` para `dist/` no build, então o sitemap fica disponível em `/sitemap.xml` tanto no preview quanto em produção.
+- URLs sem barra final, coerentes com `cleanUrls`/`trailingSlash:false` do `vercel.json`.
 
 ## Validação
 
-Conferir alguns slugs representativos (`/evitar-retrabalhos-materiais`, `/obra-ecologica`, `/blog`) retornando 301 com o `Location` correto, e confirmar que rotas do app principal seguem 200.
+Após o deploy, conferir `https://lesco.com.br/sitemap.xml` listando as URLs corretas e `https://lesco.com.br/robots.txt` apontando para o sitemap.

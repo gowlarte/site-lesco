@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://eco-essence-project.lovable.app/sitemap.xml
+Sitemap: https://lesco.com.br/sitemap.xml
