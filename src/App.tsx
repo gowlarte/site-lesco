@@ -93,7 +93,9 @@ const AppContent = () => {
         </Routes>
       </div>
       <Footer />
+      <WhatsAppButton />
     </>
+
   );
 };
 
