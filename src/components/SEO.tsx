@@ -27,6 +27,7 @@ export function SEO({
   image,
   type = "website",
   jsonLd,
+  noindex = false,
 }: SEOProps) {
   const url = `${SITE_URL}${path}`;
   const imageUrl = toAbsoluteUrl(image || ogDefault);
@@ -36,6 +37,7 @@ export function SEO({
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
+      {noindex && <meta name="robots" content="noindex" />}
       <link rel="canonical" href={url} />
 
       {/* Open Graph */}
