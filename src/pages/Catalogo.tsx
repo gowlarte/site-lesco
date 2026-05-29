@@ -5,22 +5,26 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 
 import heroCatalogo from "@/assets/hero-home-altwood.webp";
 
-import iconAntiMofo from "@/assets/madeira-ecologica/icon-anti-mofo.svg?raw";
-import iconHidrofobico from "@/assets/madeira-ecologica/icon-hidrofobico.svg?raw";
-import iconPragas from "@/assets/madeira-ecologica/icon-resistente-pragas.svg?raw";
-import iconGarantia from "@/assets/madeira-ecologica/icon-garantia.svg?raw";
-import iconReciclado from "@/assets/madeira-ecologica/icon-reciclado.svg?raw";
+import iconVidaUtil from "@/assets/madeira-ecologica/catalogo/vida-util.png";
+import iconGarantia from "@/assets/madeira-ecologica/catalogo/garantia.png";
+import iconReciclado from "@/assets/madeira-ecologica/catalogo/reciclado.png";
+import iconUv from "@/assets/madeira-ecologica/catalogo/uv.png";
+import iconPersonalizavel from "@/assets/madeira-ecologica/catalogo/personalizavel.png";
+import iconAcustico from "@/assets/madeira-ecologica/catalogo/acustico.png";
+import iconInstalacao from "@/assets/madeira-ecologica/catalogo/instalacao.png";
+import iconInsetos from "@/assets/madeira-ecologica/catalogo/insetos.png";
+import iconTermico from "@/assets/madeira-ecologica/catalogo/termico.png";
 
 const diferenciais = [
-  { svg: iconGarantia, label: "Vida útil de até 20 anos", description: "Durabilidade excepcional para projetos que atravessam o tempo." },
+  { svg: iconVidaUtil, label: "Vida útil de até 20 anos", description: "Durabilidade excepcional para projetos que atravessam o tempo." },
   { svg: iconGarantia, label: "Garantia de 10 anos", description: "Uma década de garantia que reflete a confiança no produto." },
   { svg: iconReciclado, label: "Produzido com material reciclado", description: "Fabricado com materiais reciclados, para uma arquitetura mais responsável." },
-  { svg: iconHidrofobico, label: "Proteção UV para toda a linha WPC Lesco", description: "Resistência à exposição solar, preservando cor e integridade." },
-  { svg: iconReciclado, label: "Tamanhos e texturas personalizáveis", description: "Flexibilidade total para adaptar o material ao seu projeto." },
-  { svg: iconAntiMofo, label: "Material com isolamento acústico", description: "Conforto sonoro para ambientes internos e externos." },
-  { svg: iconHidrofobico, label: "Instalação rápida, limpa e fácil", description: "Sistema prático que reduz prazos e desperdícios na obra." },
-  { svg: iconPragas, label: "Resistência a insetos e fungos", description: "Composição naturalmente resistente a cupins e fungos." },
-  { svg: iconAntiMofo, label: "Material com isolamento térmico", description: "Eficiência térmica que contribui para o conforto do ambiente." },
+  { svg: iconUv, label: "Proteção UV para toda a linha WPC Lesco", description: "Resistência à exposição solar, preservando cor e integridade." },
+  { svg: iconPersonalizavel, label: "Tamanhos e texturas personalizáveis", description: "Flexibilidade total para adaptar o material ao seu projeto." },
+  { svg: iconAcustico, label: "Material com isolamento acústico", description: "Conforto sonoro para ambientes internos e externos." },
+  { svg: iconInstalacao, label: "Instalação rápida, limpa e fácil", description: "Sistema prático que reduz prazos e desperdícios na obra." },
+  { svg: iconInsetos, label: "Resistência a insetos e fungos", description: "Composição naturalmente resistente a cupins e fungos." },
+  { svg: iconTermico, label: "Material com isolamento térmico", description: "Eficiência térmica que contribui para o conforto do ambiente." },
 ];
 
 const Catalogo = () => {
@@ -103,11 +107,7 @@ const Catalogo = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[10px]">
             {diferenciais.map((d) => (
               <div key={d.label} className="bg-white/50 rounded-[10px] p-8">
-                <div
-                  className="[&>svg]:h-10 [&>svg]:w-10 text-dark mb-5"
-                  dangerouslySetInnerHTML={{ __html: d.svg }}
-                  aria-hidden
-                />
+                <img src={d.svg} alt="" aria-hidden className="h-10 w-10 mb-5 object-contain" />
                 <h3 className="font-display text-xl text-dark mb-3 font-normal">{d.label}</h3>
                 <p className="font-body text-[14px] text-dark/70 leading-relaxed text-slate-950">{d.description}</p>
               </div>
