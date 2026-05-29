@@ -181,6 +181,25 @@ export function Header({ variant = "default" }: HeaderProps) {
                 );
               }
 
+              if (link.external) {
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href!}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onMouseEnter={() => {
+                      setHoveredNav(link.label);
+                      setOpenDropdown(null);
+                    }}
+                    className={sharedClass}
+                    style={sharedStyle}
+                  >
+                    {link.label}
+                  </a>
+                );
+              }
+
               return (
                 <Link
                   key={link.href}
