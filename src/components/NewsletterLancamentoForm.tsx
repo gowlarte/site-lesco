@@ -35,32 +35,35 @@ export const NewsletterLancamentoForm = ({
       }`}
       style={{ transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
     >
-      <iframe
-        key={formId}
-        scrolling="no"
-        src={`https://api.leadconnectorhq.com/widget/form/${formId}`}
-        style={{
-          width: "100%",
-          height: `${formHeight}px`,
-          border: "none",
-          borderRadius: "10px",
-          display: "block",
-          overflow: "hidden",
-        }}
-        id={`inline-${formId}`}
-        data-layout="{'id':'INLINE'}"
-        data-trigger-type="alwaysShow"
-        data-trigger-value=""
-        data-activation-type="alwaysActivated"
-        data-activation-value=""
-        data-deactivation-type="neverDeactivate"
-        data-deactivation-value=""
-        data-form-name={formName}
-        data-height={`${formHeight}`}
-        data-layout-iframe-id={`inline-${formId}`}
-        data-form-id={formId}
-        title={formName}
-      />
+      <div className="overflow-hidden rounded-[10px]" style={{ height: `${formHeight}px` }}>
+        <iframe
+          key={formId}
+          scrolling="no"
+          src={`https://api.leadconnectorhq.com/widget/form/${formId}`}
+          style={{
+            width: "calc(100% + 24px)",
+            height: `${formHeight}px`,
+            border: "none",
+            borderRadius: "10px",
+            display: "block",
+            overflow: "hidden",
+            marginRight: "-24px",
+          }}
+          id={`inline-${formId}`}
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name={formName}
+          data-height={`${formHeight}`}
+          data-layout-iframe-id={`inline-${formId}`}
+          data-form-id={formId}
+          title={formName}
+        />
+      </div>
     </div>
   );
 };
