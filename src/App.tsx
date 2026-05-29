@@ -35,6 +35,7 @@ import LinhaEmBreve from "./pages/LinhaEmBreve";
 import NotFound from "./pages/NotFound";
 import ObrigadoCatalogo from "./pages/ObrigadoCatalogo";
 import ObrigadoWhats from "./pages/ObrigadoWhats";
+import Obrigado from "./pages/Obrigado";
 
 const queryClient = new QueryClient();
 
@@ -73,6 +74,7 @@ const AppContent = () => {
           <Route path="/catalogo-lesco" element={<Catalogo />} />
           <Route path="/biblioteca" element={<Biblioteca />} />
           <Route path="/orcamento" element={<Orcamento />} />
+          <Route path="/obrigado" element={<Obrigado />} />
           <Route path="/obrigado-orcamento" element={<ObrigadoOrcamento />} />
           <Route path="/obrigado-whats" element={<ObrigadoWhats />} />
           <Route path="/portfolio" element={<Portfolio />} />
