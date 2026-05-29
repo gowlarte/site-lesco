@@ -15,7 +15,7 @@ const lancamentos = [
 ];
 
 type NavChild = { label: string; href: string };
-type NavItem = { label: string; href?: string; children?: NavChild[] };
+type NavItem = { label: string; href?: string; children?: NavChild[]; external?: boolean };
 
 const navLinks: NavItem[] = [
   { label: "Home", href: "/" },
@@ -39,7 +39,7 @@ const navLinks: NavItem[] = [
   },
   { label: "Catálogo", href: "/catalogo-lesco" },
   { label: "Biblioteca", href: "/biblioteca" },
-  { label: "Blog", href: "/blog" },
+  { label: "Blog", href: "https://blog.lesco.com.br/", external: true },
   { label: "Portfólio", href: "/portfolio" },
 ];
 
