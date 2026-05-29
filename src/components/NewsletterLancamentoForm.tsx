@@ -4,9 +4,17 @@ interface Props {
   slug: string;
   nomeLinha: string;
   variant?: "light" | "dark";
+  formId: string;
+  formName?: string;
+  formHeight?: number;
 }
 
-export const NewsletterLancamentoForm = ({ slug, nomeLinha, variant = "light" }: Props) => {
+export const NewsletterLancamentoForm = ({
+  variant = "light",
+  formId,
+  formName,
+  formHeight = 675,
+}: Props) => {
   useEffect(() => {
     const existing = document.querySelector(
       'script[src="https://link.msgsndr.com/js/form_embed.js"]'
@@ -23,22 +31,21 @@ export const NewsletterLancamentoForm = ({ slug, nomeLinha, variant = "light" }:
   return (
     <div
       className={`overflow-hidden rounded-[10px] transition-all duration-500 ${
-        isDark
-          ? "bg-white/95 border border-white/15"
-          : "bg-white border border-dark/10"
+        isDark ? "bg-white/95 border border-white/15" : "bg-white border border-dark/10"
       }`}
       style={{ transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
     >
       <iframe
-        src="https://api.leadconnectorhq.com/widget/form/FLL85sGNM6yfwV3gPYcV"
+        key={formId}
+        src={`https://api.leadconnectorhq.com/widget/form/${formId}`}
         style={{
           width: "100%",
-          height: "434px",
+          height: `${formHeight}px`,
           border: "none",
           borderRadius: "10px",
           display: "block",
         }}
-        id="inline-FLL85sGNM6yfwV3gPYcV"
+        id={`inline-${formId}`}
         data-layout="{'id':'INLINE'}"
         data-trigger-type="alwaysShow"
         data-trigger-value=""
@@ -46,11 +53,11 @@ export const NewsletterLancamentoForm = ({ slug, nomeLinha, variant = "light" }:
         data-activation-value=""
         data-deactivation-type="neverDeactivate"
         data-deactivation-value=""
-        data-form-name="[0] [FORM] [NEWS LETTER]"
-        data-height="434"
-        data-layout-iframe-id="inline-FLL85sGNM6yfwV3gPYcV"
-        data-form-id="FLL85sGNM6yfwV3gPYcV"
-        title="[0] [FORM] [NEWS LETTER]"
+        data-form-name={formName}
+        data-height={`${formHeight}`}
+        data-layout-iframe-id={`inline-${formId}`}
+        data-form-id={formId}
+        title={formName}
       />
     </div>
   );

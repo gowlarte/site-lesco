@@ -17,6 +17,10 @@ export interface LinhaEmBreve {
   sobreTexto: string;
   aplicacoes: { titulo: string; descricao: string }[];
   diferenciais: string[];
+  /** GHL form (lançamento) específico da linha */
+  formId?: string;
+  formName?: string;
+  formHeight?: number;
 }
 
 export const linhasEmBreve: Record<string, LinhaEmBreve> = {
@@ -88,5 +92,8 @@ export const linhasEmBreve: Record<string, LinhaEmBreve> = {
       "Resistente à umidade e à variação térmica",
       "Acabamento contínuo, sem juntas aparentes",
     ],
+    formId: "A7iX7TMKzhNq1vXwMiVy",
+    formName: "[05] [FORM] [GEO]",
+    formHeight: 675,
   },
 };

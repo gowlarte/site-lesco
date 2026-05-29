@@ -62,17 +62,27 @@ const LinhaEmBreve = () => {
           </div>
 
           {/* Direita — formulário */}
-          <div className="bg-white/5 backdrop-blur-md border border-white/15 rounded-[10px] p-8 md:p-10">
-            <h2 className="font-display text-white text-2xl md:text-3xl font-light leading-tight mb-3">
-              Seja avisado no lançamento
-            </h2>
-            <p className="font-body text-[14px] text-white/70 leading-relaxed mb-6">
-              Cadastre seu e-mail para receber em primeira mão a chegada da linha {linha.nome} ao portfólio Lesco.
-            </p>
-            <NewsletterLancamentoForm slug={linha.slug} nomeLinha={linha.nome} variant="dark" />
-          </div>
+          {linha.formId && (
+            <div className="bg-white/5 backdrop-blur-md border border-white/15 rounded-[10px] p-8 md:p-10">
+              <h2 className="font-display text-white text-2xl md:text-3xl font-light leading-tight mb-3">
+                Seja avisado no lançamento
+              </h2>
+              <p className="font-body text-[14px] text-white/70 leading-relaxed mb-6">
+                Cadastre seu e-mail para receber em primeira mão a chegada da linha {linha.nome} ao portfólio Lesco.
+              </p>
+              <NewsletterLancamentoForm
+                slug={linha.slug}
+                nomeLinha={linha.nome}
+                variant="dark"
+                formId={linha.formId}
+                formName={linha.formName}
+                formHeight={linha.formHeight}
+              />
+            </div>
+          )}
         </div>
       </section>
+
 
       {/* SOBRE */}
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28">
@@ -144,9 +154,18 @@ const LinhaEmBreve = () => {
         <p className="font-body text-[15px] text-white/70 leading-relaxed mb-10 max-w-xl mx-auto">
           Cadastre seu e-mail e seja notificado assim que a linha {linha.nome} estiver disponível.
         </p>
-        <div className="max-w-[520px] mx-auto">
-          <NewsletterLancamentoForm slug={linha.slug} nomeLinha={linha.nome} variant="dark" />
-        </div>
+        {linha.formId && (
+          <div className="max-w-[520px] mx-auto">
+            <NewsletterLancamentoForm
+              slug={linha.slug}
+              nomeLinha={linha.nome}
+              variant="dark"
+              formId={linha.formId}
+              formName={linha.formName}
+              formHeight={linha.formHeight}
+            />
+          </div>
+        )}
 
         <Link
           to="/linhas"
