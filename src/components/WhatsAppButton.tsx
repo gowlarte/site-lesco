@@ -16,9 +16,13 @@ function ensureFormScript() {
 
 export function WhatsAppButton() {
   const [open, setOpen] = useState(false);
+  const [formSrc, setFormSrc] = useState(FORM_URL);
 
   useEffect(() => {
-    if (open) ensureFormScript();
+    if (open) {
+      ensureFormScript();
+      setFormSrc(buildGhlFormUrl(FORM_BASE_URL));
+    }
   }, [open]);
 
   useEffect(() => {
