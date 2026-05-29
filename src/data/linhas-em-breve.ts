@@ -48,7 +48,7 @@ export const linhasEmBreve: Record<string, LinhaEmBreve> = {
     ],
     formId: "A7iX7TMKzhNq1vXwMiVy",
     formName: "[05] [FORM] [LANÇAMENTOS]",
-    formHeight: 461,
+    formHeight: 600,
   },
   echo: {
     slug: "echo",
@@ -74,7 +74,7 @@ export const linhasEmBreve: Record<string, LinhaEmBreve> = {
     ],
     formId: "A7iX7TMKzhNq1vXwMiVy",
     formName: "[05] [FORM] [LANÇAMENTOS]",
-    formHeight: 461,
+    formHeight: 600,
   },
   geo: {
     slug: "geo",
