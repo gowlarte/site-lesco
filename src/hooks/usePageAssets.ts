@@ -64,7 +64,7 @@ export function usePageAssets(containerRef: React.RefObject<HTMLDivElement | nul
     // Safety timeout
     const safetyTimer = setTimeout(() => {
       if (!cancelled) setIsLoading(false);
-    }, 4000);
+    }, 2000);
 
     return () => {
       cancelled = true;

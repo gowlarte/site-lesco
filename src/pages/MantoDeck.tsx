@@ -8,33 +8,33 @@ import { CardModelo } from "@/components/altwood/CardModelo";
 import { CardProjeto } from "@/components/altwood/CardProjeto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
-import modelo97 from "@/assets/deck-modelo-97x22.png";
-import modelo140 from "@/assets/deck-modelo-140x22.png";
-import modelo150 from "@/assets/deck-modelo-150x22.png";
-import projetoDeck1 from "@/assets/projeto-deck-1.jpg";
-import projetoDeck2 from "@/assets/projeto-deck-2.png";
-import projetoDeck3 from "@/assets/projeto-deck-3.jpg";
-import projetoDeck4 from "@/assets/projeto-deck-4.jpg";
-import projetoDeck5 from "@/assets/projeto-deck-5.jpg";
+import modelo97 from "@/assets/deck-modelo-97x22.webp";
+import modelo140 from "@/assets/deck-modelo-140x22.webp";
+import modelo150 from "@/assets/deck-modelo-150x22.webp";
+import projetoDeck1 from "@/assets/projeto-deck-1.webp";
+import projetoDeck2 from "@/assets/projeto-deck-2.webp";
+import projetoDeck3 from "@/assets/projeto-deck-3.webp";
+import projetoDeck4 from "@/assets/projeto-deck-4.webp";
+import projetoDeck5 from "@/assets/projeto-deck-5.webp";
 
 const heroImages = [projetoDeck2, projetoDeck1, projetoDeck3, projetoDeck4, projetoDeck5];
 
-import swEscBlack from "@/assets/swatch-black.png";
-import swEscLilyWhite from "@/assets/swatch-lily-white.png";
-import swEscIpe from "@/assets/swatch-ipe.png";
-import swEscTeak from "@/assets/swatch-teak.png";
-import swEscOak from "@/assets/swatch-oak.png";
-import swEscWalnut from "@/assets/swatch-walnut.png";
-import swEscRedCedar from "@/assets/swatch-red-cedar.png";
-import swEscWeatherwood from "@/assets/swatch-weatherwood.png";
+import swEscBlack from "@/assets/swatch-black.webp";
+import swEscLilyWhite from "@/assets/swatch-lily-white.webp";
+import swEscIpe from "@/assets/swatch-ipe.webp";
+import swEscTeak from "@/assets/swatch-teak.webp";
+import swEscOak from "@/assets/swatch-oak.webp";
+import swEscWalnut from "@/assets/swatch-walnut.webp";
+import swEscRedCedar from "@/assets/swatch-red-cedar.webp";
+import swEscWeatherwood from "@/assets/swatch-weatherwood.webp";
 
-import swTexLilyWhite from "@/assets/swatch-texturizado-lily-white.png";
-import swTexIpe from "@/assets/swatch-texturizado-ipe.png";
-import swTexTeak from "@/assets/swatch-texturizado-teak.png";
-import swTexOak from "@/assets/swatch-texturizado-oak.png";
-import swTexWalnut from "@/assets/swatch-texturizado-walnut.png";
-import swTexRedCedar from "@/assets/swatch-texturizado-red-cedar.png";
-import swTexWeatherwood from "@/assets/swatch-texturizado-weatherwood.png";
+import swTexLilyWhite from "@/assets/swatch-texturizado-lily-white.webp";
+import swTexIpe from "@/assets/swatch-texturizado-ipe.webp";
+import swTexTeak from "@/assets/swatch-texturizado-teak.webp";
+import swTexOak from "@/assets/swatch-texturizado-oak.webp";
+import swTexWalnut from "@/assets/swatch-texturizado-walnut.webp";
+import swTexRedCedar from "@/assets/swatch-texturizado-red-cedar.webp";
+import swTexWeatherwood from "@/assets/swatch-texturizado-weatherwood.webp";
 
 const escovadasSwatches = [
   { nome: "Black", corAproximada: "#1A1A1A", imageSrc: swEscBlack },

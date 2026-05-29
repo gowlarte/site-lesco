@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import esquemaCamadas from "@/assets/madeira-wpc/esquema-camadas.png";
+import esquemaCamadas from "@/assets/madeira-wpc/esquema-camadas.webp";
 
 const composicaoWPC = [
   { label: "55% Pó de madeira", color: "#8B5E3C", text: "#FFFFFF" },

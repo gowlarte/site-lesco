@@ -3,56 +3,56 @@ import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import { HeroSection } from "@/components/altwood/HeroSection";
-import heroBrise1 from "@/assets/hero-brise-1.jpg";
-import heroBrise2 from "@/assets/hero-brise-2.jpg";
+import heroBrise1 from "@/assets/hero-brise-1.webp";
+import heroBrise2 from "@/assets/hero-brise-2.webp";
 import heroBrise3 from "@/assets/hero-brise-3.webp";
 
 const heroImages = [heroBrise1, heroBrise2, heroBrise3];
 import { SwatchCor } from "@/components/altwood/SwatchCor";
 import { CardModelo } from "@/components/altwood/CardModelo";
 
-import briseOri25x25 from "@/assets/brise-origens-25x25.png";
-import briseOri50x25 from "@/assets/brise-origens-50x25.png";
-import briseOri50x50 from "@/assets/brise-origens-50x50.png";
-import briseOri75x25 from "@/assets/brise-origens-75x25.png";
-import briseOri100x35 from "@/assets/brise-origens-100x35.png";
-import briseOri100x50 from "@/assets/brise-origens-100x50.png";
-import briseOri150x50 from "@/assets/brise-origens-150x50.png";
-import briseOri200x50 from "@/assets/brise-origens-200x50.png";
-import briseOri250x50 from "@/assets/brise-origens-250x50.png";
-import briseOri100x25 from "@/assets/brise-origens-100x25.png";
-import briseCla50x30 from "@/assets/brise-classic-50x30.png";
-import briseCla50x50 from "@/assets/brise-classic-50x50.png";
-import briseCla100x30 from "@/assets/brise-classic-100x30.png";
-import briseCla100x50 from "@/assets/brise-classic-100x50.png";
-import briseCla150x50 from "@/assets/brise-classic-150x50.png";
-import briseCla145x145 from "@/assets/brise-classic-145x145.png";
-import briseCla200x50 from "@/assets/brise-classic-200x50.png";
-import briseCla250x50 from "@/assets/brise-classic-250x50.png";
+import briseOri25x25 from "@/assets/brise-origens-25x25.webp";
+import briseOri50x25 from "@/assets/brise-origens-50x25.webp";
+import briseOri50x50 from "@/assets/brise-origens-50x50.webp";
+import briseOri75x25 from "@/assets/brise-origens-75x25.webp";
+import briseOri100x35 from "@/assets/brise-origens-100x35.webp";
+import briseOri100x50 from "@/assets/brise-origens-100x50.webp";
+import briseOri150x50 from "@/assets/brise-origens-150x50.webp";
+import briseOri200x50 from "@/assets/brise-origens-200x50.webp";
+import briseOri250x50 from "@/assets/brise-origens-250x50.webp";
+import briseOri100x25 from "@/assets/brise-origens-100x25.webp";
+import briseCla50x30 from "@/assets/brise-classic-50x30.webp";
+import briseCla50x50 from "@/assets/brise-classic-50x50.webp";
+import briseCla100x30 from "@/assets/brise-classic-100x30.webp";
+import briseCla100x50 from "@/assets/brise-classic-100x50.webp";
+import briseCla150x50 from "@/assets/brise-classic-150x50.webp";
+import briseCla145x145 from "@/assets/brise-classic-145x145.webp";
+import briseCla200x50 from "@/assets/brise-classic-200x50.webp";
+import briseCla250x50 from "@/assets/brise-classic-250x50.webp";
 import { CardProjeto } from "@/components/altwood/CardProjeto";
-import projetoBrise1 from "@/assets/projeto-brise-1.png";
-import projetoBrise2 from "@/assets/projeto-brise-2.png";
-import projetoBrise3 from "@/assets/projeto-brise-3.png";
-import projetoBrise4 from "@/assets/projeto-brise-4.png";
+import projetoBrise1 from "@/assets/projeto-brise-1.webp";
+import projetoBrise2 from "@/assets/projeto-brise-2.webp";
+import projetoBrise3 from "@/assets/projeto-brise-3.webp";
+import projetoBrise4 from "@/assets/projeto-brise-4.webp";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
-import swatchBlack from "@/assets/swatch-black.png";
-import swatchLilyWhite from "@/assets/swatch-lily-white.png";
-import swatchIpe from "@/assets/swatch-ipe.png";
-import swatchTeak from "@/assets/swatch-teak.png";
-import swatchOak from "@/assets/swatch-oak.png";
-import swatchWalnut from "@/assets/swatch-walnut.png";
-import swatchRedCedar from "@/assets/swatch-red-cedar.png";
-import swatchWeatherwood from "@/assets/swatch-weatherwood.png";
+import swatchBlack from "@/assets/swatch-black.webp";
+import swatchLilyWhite from "@/assets/swatch-lily-white.webp";
+import swatchIpe from "@/assets/swatch-ipe.webp";
+import swatchTeak from "@/assets/swatch-teak.webp";
+import swatchOak from "@/assets/swatch-oak.webp";
+import swatchWalnut from "@/assets/swatch-walnut.webp";
+import swatchRedCedar from "@/assets/swatch-red-cedar.webp";
+import swatchWeatherwood from "@/assets/swatch-weatherwood.webp";
 
-import briseOri25x25Black from "@/assets/brise-origens-25x25-black.png";
-import briseOri25x25LilyWhite from "@/assets/brise-origens-25x25-lily-white.png";
-import briseOri25x25Ipe from "@/assets/brise-origens-25x25-ipe.png";
-import briseOri25x25Teak from "@/assets/brise-origens-25x25-teak.png";
-import briseOri25x25Oak from "@/assets/brise-origens-25x25-oak.png";
-import briseOri25x25Walnut from "@/assets/brise-origens-25x25-walnut.png";
-import briseOri25x25RedCedar from "@/assets/brise-origens-25x25-red-cedar.png";
-import briseOri25x25Weatherwood from "@/assets/brise-origens-25x25-weatherwood.png";
+import briseOri25x25Black from "@/assets/brise-origens-25x25-black.webp";
+import briseOri25x25LilyWhite from "@/assets/brise-origens-25x25-lily-white.webp";
+import briseOri25x25Ipe from "@/assets/brise-origens-25x25-ipe.webp";
+import briseOri25x25Teak from "@/assets/brise-origens-25x25-teak.webp";
+import briseOri25x25Oak from "@/assets/brise-origens-25x25-oak.webp";
+import briseOri25x25Walnut from "@/assets/brise-origens-25x25-walnut.webp";
+import briseOri25x25RedCedar from "@/assets/brise-origens-25x25-red-cedar.webp";
+import briseOri25x25Weatherwood from "@/assets/brise-origens-25x25-weatherwood.webp";
 
 // Variantes de cor por modelo (origens). Chave: medida -> cor -> imagem
 const origensColorVariants: Record<string, Record<string, string>> = {
@@ -79,12 +79,12 @@ const origensSwatches = [
   { nome: "Weatherwood", corAproximada: "#6B6560", imageSrc: swatchWeatherwood },
 ];
 
-import swatchClassicBlack from "@/assets/swatch-classic-black.png";
-import swatchClassicCedro from "@/assets/swatch-classic-cedro.png";
-import swatchClassicGray from "@/assets/swatch-classic-gray.png";
-import swatchClassicSand from "@/assets/swatch-classic-sand.png";
-import swatchClassicNogal from "@/assets/swatch-classic-nogal.png";
-import swatchClassicTeka from "@/assets/swatch-classic-teka.png";
+import swatchClassicBlack from "@/assets/swatch-classic-black.webp";
+import swatchClassicCedro from "@/assets/swatch-classic-cedro.webp";
+import swatchClassicGray from "@/assets/swatch-classic-gray.webp";
+import swatchClassicSand from "@/assets/swatch-classic-sand.webp";
+import swatchClassicNogal from "@/assets/swatch-classic-nogal.webp";
+import swatchClassicTeka from "@/assets/swatch-classic-teka.webp";
 
 const classicSwatches = [
   { nome: "Black", corAproximada: "#1A1A1A", imageSrc: swatchClassicBlack },

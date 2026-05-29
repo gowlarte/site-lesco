@@ -4,7 +4,7 @@ import { SEO } from "@/components/SEO";
 
 import heroManto from "@/assets/hero-home-altwood.webp";
 import heroZhuzen from "@/assets/hero-home-zhuzen.webp";
-import heroEcho from "@/assets/hero-home-echotex.jpg";
+import heroEcho from "@/assets/hero-home-echotex.webp";
 import heroGeo from "@/assets/hero-home-italflex.webp";
 
 import logoMantoRaw from "@/assets/linha-altwood-2.svg?raw";

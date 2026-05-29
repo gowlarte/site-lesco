@@ -1,14 +1,14 @@
 import { useEffect, useRef } from "react";
 
 import img01 from "@/assets/gallery/img-01.webp";
-import img02 from "@/assets/gallery/img-02.jpg";
-import img03 from "@/assets/gallery/img-03.jpg";
+import img02 from "@/assets/gallery/img-02.webp";
+import img03 from "@/assets/gallery/img-03.webp";
 import img04 from "@/assets/gallery/img-04.webp";
-import img05 from "@/assets/gallery/img-05.jpg";
-import img06 from "@/assets/gallery/img-06.jpeg";
+import img05 from "@/assets/gallery/img-05.webp";
+import img06 from "@/assets/gallery/img-06.webp";
 import img07 from "@/assets/gallery/img-07.webp";
-import img08 from "@/assets/gallery/img-08.jpg";
-import img09 from "@/assets/gallery/img-09.jpeg";
+import img08 from "@/assets/gallery/img-08.webp";
+import img09 from "@/assets/gallery/img-09.webp";
 
 const allImages = [img01, img02, img03, img04, img05, img06, img07, img08, img09];
 
@@ -70,6 +70,8 @@ export const ScrollMarqueeGallery = () => {
             key={i}
             src={src}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="h-[140px] sm:h-[180px] lg:h-[220px] aspect-[16/10] object-cover rounded-[10px] shrink-0 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
           />
         ))}

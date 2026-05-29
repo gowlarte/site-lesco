@@ -8,18 +8,18 @@ import { CardModelo } from "@/components/altwood/CardModelo";
 import { CardProjeto } from "@/components/altwood/CardProjeto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
-import modelo40x45 from "@/assets/line-modelo-40x45.png";
-import modelo40x100 from "@/assets/line-modelo-40x100.png";
-import modelo100x20 from "@/assets/line-modelo-100x20.png";
-import projetoLine1 from "@/assets/projeto-line-1.png";
-import projetoLine2 from "@/assets/projeto-line-2.png";
-import projetoLine3 from "@/assets/projeto-line-3.png";
-import swSemUvGoldenOak from "@/assets/swatch-semuv-golden-oak.png";
-import swSemUvPremiumOak from "@/assets/swatch-semuv-premium-oak.png";
-import swSemUvHickory from "@/assets/swatch-semuv-hickory.png";
-import swSemUvTasmaniaOak from "@/assets/swatch-semuv-tasmania-oak.png";
-import swSemUvMerbau from "@/assets/swatch-semuv-merbau.png";
-import swSemUvUrbanOak from "@/assets/swatch-semuv-urban-oak.png";
+import modelo40x45 from "@/assets/line-modelo-40x45.webp";
+import modelo40x100 from "@/assets/line-modelo-40x100.webp";
+import modelo100x20 from "@/assets/line-modelo-100x20.webp";
+import projetoLine1 from "@/assets/projeto-line-1.webp";
+import projetoLine2 from "@/assets/projeto-line-2.webp";
+import projetoLine3 from "@/assets/projeto-line-3.webp";
+import swSemUvGoldenOak from "@/assets/swatch-semuv-golden-oak.webp";
+import swSemUvPremiumOak from "@/assets/swatch-semuv-premium-oak.webp";
+import swSemUvHickory from "@/assets/swatch-semuv-hickory.webp";
+import swSemUvTasmaniaOak from "@/assets/swatch-semuv-tasmania-oak.webp";
+import swSemUvMerbau from "@/assets/swatch-semuv-merbau.webp";
+import swSemUvUrbanOak from "@/assets/swatch-semuv-urban-oak.webp";
 
 const heroImages = [projetoLine1, projetoLine2, projetoLine3];
 

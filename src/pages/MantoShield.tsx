@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { SEO } from "@/components/SEO";
-import heroShield1 from "@/assets/hero-shield-1.png";
-import heroShield2 from "@/assets/hero-shield-2.png";
-import heroShield3 from "@/assets/hero-shield-3.jpg";
-import heroShield4 from "@/assets/hero-shield-4.png";
+import heroShield1 from "@/assets/hero-shield-1.webp";
+import heroShield2 from "@/assets/hero-shield-2.webp";
+import heroShield3 from "@/assets/hero-shield-3.webp";
+import heroShield4 from "@/assets/hero-shield-4.webp";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import { HeroSection } from "@/components/altwood/HeroSection";
@@ -12,39 +12,39 @@ import { CardModelo } from "@/components/altwood/CardModelo";
 import { CardProjeto } from "@/components/altwood/CardProjeto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
-import projetoShield1 from "@/assets/projeto-shield-1.png";
-import projetoShield2 from "@/assets/projeto-shield-2.png";
-import projetoShield3 from "@/assets/projeto-shield-3.png";
-import projetoShield4 from "@/assets/projeto-shield-4.png";
-import projetoShield5 from "@/assets/projeto-shield-5.png";
-import projetoShield6 from "@/assets/projeto-shield-6.jpg";
+import projetoShield1 from "@/assets/projeto-shield-1.webp";
+import projetoShield2 from "@/assets/projeto-shield-2.webp";
+import projetoShield3 from "@/assets/projeto-shield-3.webp";
+import projetoShield4 from "@/assets/projeto-shield-4.webp";
+import projetoShield5 from "@/assets/projeto-shield-5.webp";
+import projetoShield6 from "@/assets/projeto-shield-6.webp";
 
-import imgShield124x155 from "@/assets/shield-124x155.png";
-import imgShield124x20 from "@/assets/shield-124x20.png";
-import imgShield184x20 from "@/assets/shield-184x20.png";
-import imgShield149x20 from "@/assets/shield-149x20.png";
-import imgShield217x35 from "@/assets/shield-217x35.png";
-import imgShield169x25 from "@/assets/shield-169x25.png";
-import imgShield217x25 from "@/assets/shield-217x25.png";
-import imgShield219x385 from "@/assets/shield-219x385.png";
-import imgShield124x50 from "@/assets/shield-124x50.png";
+import imgShield124x155 from "@/assets/shield-124x155.webp";
+import imgShield124x20 from "@/assets/shield-124x20.webp";
+import imgShield184x20 from "@/assets/shield-184x20.webp";
+import imgShield149x20 from "@/assets/shield-149x20.webp";
+import imgShield217x35 from "@/assets/shield-217x35.webp";
+import imgShield169x25 from "@/assets/shield-169x25.webp";
+import imgShield217x25 from "@/assets/shield-217x25.webp";
+import imgShield219x385 from "@/assets/shield-219x385.webp";
+import imgShield124x50 from "@/assets/shield-124x50.webp";
 
-import swEscBlack from "@/assets/swatch-black.png";
-import swEscLilyWhite from "@/assets/swatch-lily-white.png";
-import swEscIpe from "@/assets/swatch-ipe.png";
-import swEscTeak from "@/assets/swatch-teak.png";
-import swEscOak from "@/assets/swatch-oak.png";
-import swEscWalnut from "@/assets/swatch-walnut.png";
-import swEscRedCedar from "@/assets/swatch-red-cedar.png";
-import swEscWeatherwood from "@/assets/swatch-weatherwood.png";
+import swEscBlack from "@/assets/swatch-black.webp";
+import swEscLilyWhite from "@/assets/swatch-lily-white.webp";
+import swEscIpe from "@/assets/swatch-ipe.webp";
+import swEscTeak from "@/assets/swatch-teak.webp";
+import swEscOak from "@/assets/swatch-oak.webp";
+import swEscWalnut from "@/assets/swatch-walnut.webp";
+import swEscRedCedar from "@/assets/swatch-red-cedar.webp";
+import swEscWeatherwood from "@/assets/swatch-weatherwood.webp";
 
-import swTexLilyWhite from "@/assets/swatch-texturizado-lily-white.png";
-import swTexIpe from "@/assets/swatch-texturizado-ipe.png";
-import swTexTeak from "@/assets/swatch-texturizado-teak.png";
-import swTexOak from "@/assets/swatch-texturizado-oak.png";
-import swTexWalnut from "@/assets/swatch-texturizado-walnut.png";
-import swTexRedCedar from "@/assets/swatch-texturizado-red-cedar.png";
-import swTexWeatherwood from "@/assets/swatch-texturizado-weatherwood.png";
+import swTexLilyWhite from "@/assets/swatch-texturizado-lily-white.webp";
+import swTexIpe from "@/assets/swatch-texturizado-ipe.webp";
+import swTexTeak from "@/assets/swatch-texturizado-teak.webp";
+import swTexOak from "@/assets/swatch-texturizado-oak.webp";
+import swTexWalnut from "@/assets/swatch-texturizado-walnut.webp";
+import swTexRedCedar from "@/assets/swatch-texturizado-red-cedar.webp";
+import swTexWeatherwood from "@/assets/swatch-texturizado-weatherwood.webp";
 
 const escovadasSwatches = [
   { nome: "Black", corAproximada: "#1A1A1A", imageSrc: swEscBlack },

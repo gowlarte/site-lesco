@@ -7,18 +7,18 @@ import { Header } from "@/components/Header";
 import { MadeiraEcologicaSection } from "@/components/madeira-ecologica/MadeiraEcologicaSection";
 import { ScrollMarqueeGallery } from "@/components/ScrollMarqueeGallery";
 
-import partnerLogo1 from "@/assets/partners/logo-1.png";
-import partnerLogo2 from "@/assets/partners/logo-2.png";
-import partnerLogo3 from "@/assets/partners/logo-3.png";
-import partnerLogo4 from "@/assets/partners/logo-4.png";
+import partnerLogo1 from "@/assets/partners/logo-1.webp";
+import partnerLogo2 from "@/assets/partners/logo-2.webp";
+import partnerLogo3 from "@/assets/partners/logo-3.webp";
+import partnerLogo4 from "@/assets/partners/logo-4.webp";
 
-import showroomMain from "@/assets/showroom/showroom-main.jpg";
-import showroomDetail1 from "@/assets/showroom/showroom-detail-1.jpg";
-import showroomDetail2 from "@/assets/showroom/showroom-detail-2.jpg";
+import showroomMain from "@/assets/showroom/showroom-main.webp";
+import showroomDetail1 from "@/assets/showroom/showroom-detail-1.webp";
+import showroomDetail2 from "@/assets/showroom/showroom-detail-2.webp";
 
 import heroManto from "@/assets/hero-home-altwood.webp";
 import heroZhuzen from "@/assets/hero-home-zhuzen.webp";
-import heroEcho from "@/assets/hero-home-echotex.jpg";
+import heroEcho from "@/assets/hero-home-echotex.webp";
 import heroGeo from "@/assets/hero-home-italflex.webp";
 
 import logoMantoRaw from "@/assets/linha-altwood-2.svg?raw";
@@ -119,12 +119,23 @@ const Index = () => {
     setIsPaused(false);
   };
 
-  // Preload all hero images on mount so slide transitions are instant
+  // Only the active slide loads first (it's the LCP). The remaining hero
+  // images are warmed once the browser is idle, so they don't compete with
+  // the LCP — there's a 6s gap before the first slide transition anyway.
+  const [warmExtraSlides, setWarmExtraSlides] = useState(false);
   useEffect(() => {
-    linhas.forEach((linha) => {
-      const img = new Image();
-      img.src = linha.imagem;
-    });
+    const w = window as Window & {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+    let id: number;
+    const warm = () => setWarmExtraSlides(true);
+    if (typeof w.requestIdleCallback === "function") {
+      id = w.requestIdleCallback(warm, { timeout: 3000 });
+      return () => w.cancelIdleCallback?.(id);
+    }
+    id = window.setTimeout(warm, 2000);
+    return () => clearTimeout(id);
   }, []);
 
   useEffect(() => {
@@ -184,9 +195,12 @@ const Index = () => {
             aria-hidden={currentSlide !== i}
           >
             <img
-              src={linha.imagem}
+              src={i === 0 || i === currentSlide || warmExtraSlides ? linha.imagem : undefined}
               alt={`${linha.nome} — fundo`}
               draggable={false}
+              loading={i === 0 ? "eager" : "lazy"}
+              fetchPriority={i === 0 ? "high" : "auto"}
+              decoding="async"
               className={
                 (currentSlide === i ? "hero-bg-in hero-slide-img " : "") +
                 "w-full h-full object-cover pointer-events-none" +
@@ -339,6 +353,8 @@ const Index = () => {
                 <img
                   src={selectedProject.imagem}
                   alt={selectedProject.nome}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>

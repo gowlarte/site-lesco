@@ -105,9 +105,29 @@ export const ProdutoCanvas = forwardRef<ProdutoCanvasHandle, Props>(
         }
       };
 
-      load();
+      // Defer the (heavy) GIF download + frame decode until the canvas is
+      // near the viewport, so it never blocks initial page load / TBT.
+      const canvas = canvasRef.current;
+      let observer: IntersectionObserver | null = null;
+      if (canvas && typeof IntersectionObserver !== "undefined") {
+        observer = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((e) => e.isIntersecting)) {
+              observer?.disconnect();
+              observer = null;
+              load();
+            }
+          },
+          { rootMargin: "300px" },
+        );
+        observer.observe(canvas);
+      } else {
+        load();
+      }
+
       return () => {
         cancelled = true;
+        observer?.disconnect();
         if (rafRef.current) cancelAnimationFrame(rafRef.current);
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps

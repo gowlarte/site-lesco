@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import heroFloresta from "@/assets/sustentabilidade/hero-floresta.jpg";
-import esgBadge from "@/assets/certifications/esg.png";
-import gbcBadge from "@/assets/certifications/gbc.png";
-import leedBadge from "@/assets/certifications/leed.png";
-import iso9001Badge from "@/assets/certifications/iso-9001.png";
-import iso14001Badge from "@/assets/certifications/iso-14001.png";
+import heroFloresta from "@/assets/sustentabilidade/hero-floresta.webp";
+import esgBadge from "@/assets/certifications/esg.webp";
+import gbcBadge from "@/assets/certifications/gbc.webp";
+import leedBadge from "@/assets/certifications/leed.webp";
+import iso9001Badge from "@/assets/certifications/iso-9001.webp";
+import iso14001Badge from "@/assets/certifications/iso-14001.webp";
 
 const pilares = [
   { titulo: "Material reciclado", texto: "Polímeros pós-consumo e pó de madeira de reflorestamento — desviando resíduos de aterros." },

@@ -1,6 +1,6 @@
 import { SEO } from "@/components/SEO";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
-import obrigadoBg from "@/assets/obrigado-bg.jpg";
+import obrigadoBg from "@/assets/obrigado-bg.webp";
 import logoLight from "@/assets/logo-lesco-light.svg";
 import lescoIcon from "@/assets/lesco-icon.webp";
 
