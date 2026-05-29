@@ -16,7 +16,7 @@ const QuemSomos = () => {
     <main>
       <SEO
         title="Quem Somos — Lesco"
-        description="Conheça a Lesco: arquitetura feita para o amanhã. Sobre nossa história, valores e certificações."
+        description="Conheça a Lesco: Madeira Ecológica. Sobre nossa história, valores e certificações."
         path="/quem-somos"
       />
       {/* Hero */}
@@ -24,7 +24,7 @@ const QuemSomos = () => {
         <div className="container mx-auto px-6 lg:px-8">
           <p className="text-caption text-primary-foreground/40 mb-6">Sobre a Lesco</p>
           <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-primary-foreground max-w-4xl">
-            Arquitetura feita<br />para o amanhã.
+            Madeira Ecológica.
           </h1>
         </div>
       </section>

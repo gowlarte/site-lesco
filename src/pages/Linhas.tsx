@@ -14,7 +14,7 @@ import logoGeoRaw from "@/assets/linha-italflex-2.svg?raw";
 
 const linhas = [
   {
-    nome: "Arquitetura feita para o amanhã",
+    nome: "Madeira Ecológica",
     logo: logoMantoRaw,
     descricao: "Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto.",
     href: "/madeira-ecologica-lesco",
@@ -114,7 +114,7 @@ const Linhas = () => {
                     NOTE: o logo da linha "Madeira Ecológica" (ex-Manto) está
                     temporariamente OCULTO conforme PRD §5.2; reativar trocando
                     `linha.nome === "Madeira Ecológica"` por `false`. */}
-                {linha.nome === "Arquitetura feita para o amanhã" ? (
+                {linha.nome === "Madeira Ecológica" ? (
                   <h2
                     className="font-display font-light text-[44px] md:text-[64px] lg:text-[80px] leading-none tracking-[-0.02em] transition-all duration-500"
                     style={{

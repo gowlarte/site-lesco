@@ -13,7 +13,7 @@ export function Footer() {
           <div>
             <img src={logoLight} alt="Lesco" className="h-8" />
             <p className="mt-4 font-body text-[13px] font-light text-muted-foreground leading-relaxed max-w-[240px]">
-              Arquitetura feita para o amanhã
+              Madeira Ecológica
             </p>
           </div>
 
@@ -22,7 +22,7 @@ export function Footer() {
             <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-muted-foreground mb-5">Linhas</h4>
             <ul className="space-y-3">
               {[
-                { label: "Arquitetura feita para o amanhã", href: "/madeira-ecologica-lesco" },
+                { label: "Madeira Ecológica", href: "/madeira-ecologica-lesco" },
                 { label: "Geo", href: "/geo" },
                 { label: "Zhú", href: "/zhu" },
                 { label: "Echo", href: "/echo" },
