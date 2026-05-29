@@ -25,6 +25,8 @@ export const NewsletterLancamentoForm = ({
     Math.ceil(Math.max(nextHeight + 56, getResponsiveMinimumHeight()));
 
   const [height, setHeight] = useState<number>(() => getSafeHeight(formHeight));
+  const baseUrl = `https://api.leadconnectorhq.com/widget/form/${formId}`;
+  const [src, setSrc] = useState(baseUrl);
 
   useEffect(() => {
     const existing = document.querySelector(
@@ -36,7 +38,8 @@ export const NewsletterLancamentoForm = ({
       script.async = true;
       document.body.appendChild(script);
     }
-  }, []);
+    setSrc(buildGhlFormUrl(baseUrl));
+  }, [baseUrl]);
 
   useEffect(() => {
     setHeight(getSafeHeight(formHeight));
