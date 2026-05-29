@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
+import { buildGhlFormUrl } from "@/lib/utm";
 
-const FORM_URL = "https://api.leadconnectorhq.com/widget/form/NCyQbX00m3csRV6jg6RB";
+const FORM_BASE_URL = "https://api.leadconnectorhq.com/widget/form/NCyQbX00m3csRV6jg6RB";
+const FORM_URL = FORM_BASE_URL;
 const SCRIPT_SRC = "https://link.msgsndr.com/js/form_embed.js";
 
 function ensureFormScript() {
@@ -14,9 +16,13 @@ function ensureFormScript() {
 
 export function WhatsAppButton() {
   const [open, setOpen] = useState(false);
+  const [formSrc, setFormSrc] = useState(FORM_URL);
 
   useEffect(() => {
-    if (open) ensureFormScript();
+    if (open) {
+      ensureFormScript();
+      setFormSrc(buildGhlFormUrl(FORM_BASE_URL));
+    }
   }, [open]);
 
   useEffect(() => {
@@ -61,7 +67,7 @@ export function WhatsAppButton() {
               <X size={18} />
             </button>
             <iframe
-              src={FORM_URL}
+              src={formSrc}
               title="[07] [FORM] [WHATSAPP] [POPUP]"
               className="w-full"
               style={{ height: "min(950px, 85vh)", border: "none", borderRadius: "3px" }}

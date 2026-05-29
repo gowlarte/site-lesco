@@ -12,6 +12,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { PageTransitionLoader } from "@/components/PageTransitionLoader";
 import { usePageAssets } from "@/hooks/usePageAssets";
 import { usePageTracking } from "@/hooks/usePageTracking";
+import { useUtmForwarder } from "@/hooks/useUtmForwarder";
 import Index from "./pages/Index";
 import QuemSomos from "./pages/QuemSomos";
 import MadeiraWPC from "./pages/MadeiraWPC";
@@ -46,6 +47,7 @@ const AppContent = () => {
   const isHome = location.pathname === "/";
 
   usePageTracking();
+  useUtmForwarder();
 
 
   return (

@@ -1,7 +1,7 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { GhlForm } from "@/components/GhlForm";
 
 import heroCatalogo from "@/assets/hero-home-altwood.webp";
 
@@ -28,15 +28,7 @@ const diferenciais = [
 ];
 
 const Catalogo = () => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://link.msgsndr.com/js/form_embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+
 
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px] space-y-[10px]">
@@ -74,22 +66,11 @@ const Catalogo = () => {
 
           {/* Direita — formulário (iframe atual do catálogo) */}
           <div className="bg-white rounded-[10px] overflow-hidden shadow-2xl">
-            <iframe
-              src="https://api.leadconnectorhq.com/widget/form/lr26Z8p5zKyXXMvt1CKn"
-              style={{ width: "100%", height: "720px", border: "none", borderRadius: "3px" }}
-              id="inline-lr26Z8p5zKyXXMvt1CKn"
-              data-layout="{'id':'INLINE'}"
-              data-trigger-type="alwaysShow"
-              data-trigger-value=""
-              data-activation-type="alwaysActivated"
-              data-activation-value=""
-              data-deactivation-type="neverDeactivate"
-              data-deactivation-value=""
-              data-form-name="[01] [FORM] [DOWNLOAD CATALOGO]"
-              data-height="720"
-              data-layout-iframe-id="inline-lr26Z8p5zKyXXMvt1CKn"
-              data-form-id="lr26Z8p5zKyXXMvt1CKn"
+            <GhlForm
+              formId="lr26Z8p5zKyXXMvt1CKn"
+              formName="[01] [FORM] [DOWNLOAD CATALOGO]"
               title="[01] [FORM] [DOWNLOAD CATALOGO]"
+              height={720}
             />
           </div>
         </div>
