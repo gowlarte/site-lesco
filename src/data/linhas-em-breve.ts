@@ -34,7 +34,7 @@ export const linhasEmBreve: Record<string, LinhaEmBreve> = {
       "Uma nova linha dedicada ao bambu — material ancestral, contemporâneo e radicalmente sustentável. Em breve disponível para projetos.",
     sobreTitulo: "Sobre a linha Zhú",
     sobreTexto:
-      "Zhú reúne revestimentos, forros, luminárias, decorativos e utilitários produzidos a partir do bambu. Uma linha que celebra a leveza, a textura natural e o tempo de vida longo de uma das fibras mais nobres do planeta. [Texto placeholder — substituir pelo conteúdo definitivo da linha.]",
+      "Zhú reúne revestimentos, forros, luminárias, decorativos e utilitários produzidos a partir do bambu. Uma linha que celebra a leveza, a textura natural e o tempo de vida longo de uma das fibras mais nobres do planeta.",
     aplicacoes: [
       { titulo: "Revestimentos", descricao: "Painéis e lâminas para paredes, com acabamento natural ou tingido." },
       { titulo: "Forros e luminárias", descricao: "Soluções para forros decorativos e peças luminotécnicas em bambu." },
@@ -60,7 +60,7 @@ export const linhasEmBreve: Record<string, LinhaEmBreve> = {
       "A nova linha de tecido acústico moldado para estúdios profissionais, home cinemas e ambientes que exigem performance sonora e identidade visual.",
     sobreTitulo: "Sobre a linha Echo",
     sobreTexto:
-      "Echo é desenvolvida para resolver, no mesmo elemento, performance acústica e expressão arquitetônica. Painéis moldados em tecido com diferentes texturas, padrões e cores, prontos para integrar projetos de alto desempenho sonoro. [Texto placeholder — substituir pelo conteúdo definitivo da linha.]",
+      "Echo é desenvolvida para resolver, no mesmo elemento, performance acústica e expressão arquitetônica. Painéis moldados em tecido com diferentes texturas, padrões e cores, prontos para integrar projetos de alto desempenho sonoro.",
     aplicacoes: [
       { titulo: "Estúdios profissionais", descricao: "Tratamento acústico de salas de gravação, mixagem e masterização." },
       { titulo: "Home cinemas", descricao: "Painéis decorativos com absorção sonora controlada para residências." },
@@ -86,7 +86,7 @@ export const linhasEmBreve: Record<string, LinhaEmBreve> = {
       "Revestimento flexível para fachadas, paredes de cozinhas, banheiros e ambientes internos e externos. Em breve no portfólio Lesco.",
     sobreTitulo: "Sobre a linha Geo",
     sobreTexto:
-      "Geo é uma linha de revestimentos flexíveis que combina estética mineral com instalação simples e durabilidade superior. Indicada para áreas molhadas, fachadas e qualquer superfície que peça acabamento contínuo, leve e resistente. [Texto placeholder — substituir pelo conteúdo definitivo da linha.]",
+      "Geo é uma linha de revestimentos flexíveis que combina estética mineral com instalação simples e durabilidade superior. Indicada para áreas molhadas, fachadas e qualquer superfície que peça acabamento contínuo, leve e resistente.",
     aplicacoes: [
       { titulo: "Fachadas", descricao: "Acabamento contínuo, leve e resistente às intempéries." },
       { titulo: "Áreas molhadas", descricao: "Cozinhas, banheiros e áreas técnicas com alta exigência de impermeabilidade." },
