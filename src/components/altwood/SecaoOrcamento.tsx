@@ -20,7 +20,7 @@ export const SecaoOrcamento = ({ imageSrc }: SecaoOrcamentoProps) => (
       <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-8">
         Solicite seu Orçamento
       </h2>
-      <BotaoCTA variant="primary" className="mb-8">Falar com um especialista</BotaoCTA>
+      <BotaoCTA variant="primary" className="mb-8" href="/orcamento">Falar com um especialista</BotaoCTA>
       <p className="text-[13px] text-[#7F7F7F] leading-relaxed">
         Itajaí, SC &middot; São Paulo, SP<br />
         @lesco_br &middot; lesco.com.br &middot; (11) 94844-9044
