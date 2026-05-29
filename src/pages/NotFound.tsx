@@ -32,10 +32,10 @@ const NotFound = () => {
       <section className="rounded-[10px] bg-primary text-foreground overflow-hidden">
         <div className="container mx-auto px-6 lg:px-8 py-20 md:py-28">
           <div className="max-w-2xl">
-            <p className="font-tech text-[12px] uppercase tracking-[0.3em] text-muted-foreground">
+            <p className="font-mono text-[12px] uppercase tracking-[0.3em] text-muted-foreground">
               Erro 404
             </p>
-            <h1 className="mt-4 font-heading text-5xl md:text-7xl font-medium leading-[0.95]">
+            <h1 className="mt-4 font-display text-5xl md:text-7xl font-medium leading-[0.95]">
               Página não encontrada
             </h1>
             <p className="mt-6 font-body text-[15px] font-light text-foreground/70 leading-relaxed max-w-md">
