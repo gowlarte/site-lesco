@@ -13,6 +13,8 @@
   { "slug": "/biblioteca", "title": "Biblioteca | Lesco", "description": "Biblioteca de materiais e recursos técnicos Lesco.", "canonical": "https://lesco.com.br/biblioteca" },
   { "slug": "/orcamento", "title": "Orçamento | Lesco", "description": "Solicite um orçamento para seu projeto com a Lesco.", "canonical": "https://lesco.com.br/orcamento" },
   { "slug": "/obrigado", "title": "Obrigado | Lesco", "description": "Recebemos sua solicitação. Em breve nossa equipe entrará em contato.", "canonical": "https://lesco.com.br/obrigado" },
+  { "slug": "/obrigado-orcamento", "title": "Obrigado | Lesco", "description": "Recebemos sua solicitação de orçamento. Em breve nossa equipe entrará em contato.", "canonical": "https://lesco.com.br/obrigado-orcamento" },
+  { "slug": "/obrigado-whats", "title": "Obrigado | Lesco", "description": "Recebemos seu contato. Em breve nossa equipe entrará em contato.", "canonical": "https://lesco.com.br/obrigado-whats" },
   { "slug": "/portfolio", "title": "Portfólio | Lesco", "description": "Projetos realizados com revestimentos Lesco.", "canonical": "https://lesco.com.br/portfolio" },
   { "slug": "/blog", "title": "Blog | Lesco", "description": "Conteúdos sobre arquitetura, revestimentos e tendências.", "canonical": "https://lesco.com.br/blog" },
   { "slug": "/linhas", "title": "Linhas | Lesco", "description": "Conheça todas as linhas de revestimentos premium da Lesco.", "canonical": "https://lesco.com.br/linhas" }
