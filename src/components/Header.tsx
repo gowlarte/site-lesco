@@ -354,6 +354,20 @@ export function Header({ variant = "default" }: HeaderProps) {
             );
           }
 
+          if (link.external) {
+            return (
+              <a
+                key={link.href}
+                href={link.href!}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-display text-3xl font-light text-foreground/80 hover:text-foreground transition-colors py-3"
+              >
+                {link.label}
+              </a>
+            );
+          }
+
           return (
             <Link
               key={link.href}
