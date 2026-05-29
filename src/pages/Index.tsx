@@ -435,6 +435,7 @@ const Index = () => {
       <ScrollMarqueeGallery />
 
       {/* ========== PARCEIROS 3D ========== */}
+      {/* Temporariamente oculto
       <section className="py-16 md:py-20 mx-[10px] rounded-[10px]">
         <div className="container mx-auto px-6 lg:px-8">
           <ScrollReveal>
@@ -456,6 +457,7 @@ const Index = () => {
           </ScrollReveal>
         </div>
       </section>
+      */}
 
       {/* ========== SHOWROOM ========== */}
       <section className="mx-[10px] rounded-[10px] overflow-hidden bg-secondary">
