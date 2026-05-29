@@ -20,14 +20,12 @@ const TikTok = ({ className }: { className?: string }) => (
 export default function ObrigadoOrcamento() {
   return (
     <>
-      <Helmet>
-        <title>Pedido de orçamento recebido | Lesco</title>
-        <meta
-          name="description"
-          content="Recebemos seu pedido de orçamento. Em breve entraremos em contato. Acompanhe as novidades da Lesco enquanto aguarda."
-        />
-        <meta name="robots" content="noindex, follow" />
-      </Helmet>
+      <SEO
+        title="Pedido de orçamento recebido | Lesco"
+        description="Recebemos seu pedido de orçamento. Em breve entraremos em contato. Acompanhe as novidades da Lesco enquanto aguarda."
+        path="/obrigado-orcamento"
+      />
+
 
       {/* Hero */}
       <section
