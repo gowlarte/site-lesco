@@ -44,6 +44,9 @@ const AppContent = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
 
+  usePageTracking();
+
+
   return (
     <>
       <PageTransitionLoader isLoading={isLoading} />
