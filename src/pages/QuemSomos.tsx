@@ -141,7 +141,7 @@ const QuemSomos = () => {
                 <span className="font-mono-tech text-sm text-foreground">10% Aditivos</span>
               </div>
               <p className="mt-6 text-body-lg text-muted-foreground">
-                Material 100% reciclado · Resistente a cupim · Hidrofóbico · Anti-mofo · 10 anos de garantia
+                Material 100% reciclável · Resistente a cupim · Hidrofóbico · Anti-mofo · 10 anos de garantia
               </p>
             </div>
           </ScrollReveal>
