@@ -11,6 +11,7 @@ import { SplashScreen } from "@/components/SplashScreen";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { PageTransitionLoader } from "@/components/PageTransitionLoader";
 import { usePageAssets } from "@/hooks/usePageAssets";
+import { usePageTracking } from "@/hooks/usePageTracking";
 import Index from "./pages/Index";
 import QuemSomos from "./pages/QuemSomos";
 import MadeiraWPC from "./pages/MadeiraWPC";
