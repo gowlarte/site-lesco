@@ -1,38 +1,36 @@
-## Diagnóstico
+## Objetivo
+Substituir a página 404 genérica por uma versão elegante, alinhada à identidade Lesco, com links para as principais seções e tracking duplo (Lovable Cloud + dataLayer/GTM).
 
-O componente `src/components/SEO.tsx` já injeta tags Open Graph e Twitter Card (`og:title`, `og:description`, `og:url`, `og:type`, `twitter:card`, etc.) em **todas** as páginas via `react-helmet-async`, e o prerender (`generateSeoHeadHtml.ts`) replica isso no HTML estático para crawlers sem JS. O que falta para "melhorar o compartilhamento":
+## 1. Ativar Lovable Cloud
+Necessário para registrar os acessos ao 404 no banco. Cria a tabela:
 
-1. **Nenhuma página define `og:image`** → previews saem sem imagem.
-2. Domínio das URLs está em `lesco.lovable.app` (deve ser `https://lesco.com.br`).
-3. Faltam tags complementares que enriquecem o preview (`og:site_name`, `og:locale`, `og:image:width/height`, `og:image:alt`).
+```text
+not_found_hits
+  id          uuid (pk)
+  path        text         -- rota tentada
+  referrer    text         -- de onde veio
+  user_agent  text
+  created_at  timestamptz default now()
+```
 
-## O que será feito
+- RLS habilitada. Política de INSERT pública (anon + authenticated) para permitir o registro a partir de qualquer visitante. Sem SELECT público (dados de diagnóstico só via backend/admin).
+- GRANT de INSERT para `anon` e `authenticated`; `ALL` para `service_role`.
 
-### 1. Imagem de compartilhamento padrão
-Gerar uma imagem de marca 1200×630 em `src/assets/og-default.jpg` (identidade Lesco — fundo escuro, logo, tipografia da marca), usada como fallback em qualquer página sem imagem própria.
+## 2. Tracking utilitário
+Criar `src/lib/track404.ts` com uma função que, ao montar a 404:
+- Faz `INSERT` em `not_found_hits` via client Supabase (path, referrer, user_agent), com try/catch silencioso.
+- Dispara `window.dataLayer.push({ event: "page_not_found", page_path, referrer })` (inicializando `window.dataLayer` se não existir) — pronto para GTM/GA4.
 
-### 2. Aprimorar o componente `SEO.tsx`
-- Importar `og-default.jpg` como imagem padrão; usar a imagem da página quando fornecida, senão o padrão.
-- Normalizar caminhos relativos (assets empacotados `/assets/...`) para **URL absoluta** com o domínio, exigido pelos crawlers.
-- Adicionar: `og:site_name` ("Lesco"), `og:locale` ("pt_BR"), `og:image:width` (1200), `og:image:height` (630), `og:image:alt` (= título), e `twitter:image:alt`.
-- Trocar `SITE_URL` para `https://lesco.com.br`.
-
-### 3. Atualizar o prerender (`generateSeoHeadHtml.ts`)
-- `SITE_URL` → `https://lesco.com.br`.
-- Incluir as mesmas tags novas (site_name, locale, image:width/height/alt) e a `og:image` padrão como fallback no HTML estático.
-
-### 4. Imagens reais por página
-Passar `image={...}` no `<SEO>` das páginas que têm um hero/foto natural:
-- `Index` (hero AltWood), `Linhas`, `Manto`, `MantoBrise`, `MantoShield`, `MantoDeck`, `MantoLine`, `MantoPanel` (hero/projeto de cada linha), `Sustentabilidade` (hero floresta), `MadeiraWPC`, `Blog` (imagem do artigo em destaque), `BlogArtigo` (hero do artigo).
-- `Portfolio` (hero de um projeto). `PortfolioProjeto` e `LinhaEmBreve` **já passam** imagem.
-- Páginas sem foto natural (QuemSomos, Catálogo, Biblioteca, Orçamento, Obrigado*) usam a imagem de marca padrão automaticamente.
-
-### 5. Ajustes de domínio relacionados
-- `ssg-routes.json`: trocar os `canonical` de `lesco.lovable.app` → `lesco.com.br`.
-- `index.html`: atualizar a `url` do JSON-LD Organization para `https://lesco.com.br`.
+## 3. Redesenhar `src/pages/NotFound.tsx`
+Manter a estrutura editorial Lesco (cards flutuantes, raio 10px, tipografia PP Neue Machina / DM Sans, paleta semântica):
+- Header já é exibido automaticamente em rotas não-home (App.tsx); a página terá o padding-top de 100px de offset.
+- Bloco central: "404" em destaque, título "Página não encontrada" e texto curto orientando o visitante.
+- Grade de links para as principais seções: Madeira Ecológica (`/madeira-ecologica-lesco`), Portfólio (`/portfolio`), Catálogo (`/catalogo-lesco`), Biblioteca (`/biblioteca`), Quem Somos (`/quem-somos`), Orçamento (`/orcamento`). CTA principal "Voltar ao início".
+- Usar `<Link>` do react-router para navegação SPA.
+- Manter `<meta robots noindex>` (via SEO/Helmet) e `<title>` adequado.
+- Chamar o tracking no `useEffect` (mantendo também o `console.error` atual para debug).
 
 ## Detalhes técnicos
-
-- A normalização de imagem: se `image` começar com `http`, usa como está (ex.: fotos Unsplash do blog); caso contrário, prefixa `https://lesco.com.br`.
-- Como o site é pré-renderizado, as tags (incluindo `og:image` absoluta) ficam no HTML estático servido a LinkedIn/Facebook/WhatsApp/X, garantindo preview correto sem depender de JS.
-- Validação: rodar `npm run build` e conferir em `dist/index.html`, `dist/madeira-ecologica-lesco/index.html` e `dist/portfolio/index.html` a presença de `og:image`, `og:site_name`, `twitter:card` e URLs em `lesco.com.br`.
+- Tracking roda só no cliente (dentro de `useEffect`), sem afetar SSG/hydration.
+- Falhas de rede no INSERT não quebram a página (catch silencioso).
+- Sem novas dependências; reaproveita o client Supabase gerado pela ativação do Cloud e os tokens de design existentes.
