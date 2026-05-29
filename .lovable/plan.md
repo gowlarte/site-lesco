@@ -1,35 +1,36 @@
-# Remover todo o RD Station (forms já migrados para GHL)
+## Objetivo
 
-As páginas reais **Catálogo** e **Orçamento** já usam os iframes do GHL (IDs idênticos aos que você enviou). Os componentes React que falavam com o RD são código morto, exceto a newsletter de lançamento. Vou remover 100% do RD.
+Transformar a página `/catalogo-lesco` (`src/pages/Catalogo.tsx`) numa landing page atrativa, no mesmo estilo da página de orçamento, mantendo **exatamente o mesmo formulário** que já existe nesta página (form do catálogo `lr26Z8p5zKyXXMvt1CKn`, `[01] [FORM] [DOWNLOAD CATALOGO]`). O conteúdo segue a imagem de referência (ignorando o popup).
 
-## Diagnóstico
-- `src/pages/Catalogo.tsx` e `src/pages/Orcamento.tsx` → já embedam GHL. **Sem mudança.**
-- `src/components/catalogo/CatalogoForm.tsx` → POST ao RD, **não importado em lugar nenhum** (morto).
-- `src/components/orcamento/*` (MultiStepForm, RDStationBridge, Step1/2/3, CitySearch, NavButtons, ProgressBar, SuccessScreen, types) → fluxo RD, **nenhum import externo** (morto).
-- `src/components/NewsletterLancamentoForm.tsx` → POST ao RD, **ainda usado** em `LinhaEmBreve.tsx`.
-- `src/index.css` → bloco `.rd-station-form-container` (estilos de form RD) **não usado**.
+## Estrutura proposta
 
-## Ações
+### 1. Hero + Formulário
+Card flutuante com imagem de fundo (reuso de `hero-home-altwood.webp`) e overlay escuro, em 2 colunas (empilha no mobile):
+- **Esquerda (texto):** badge "Catálogo Lesco" + headline "Conheça o novo e explore todos os benefícios que a madeira ecológica pode oferecer" + parágrafo "Acesse nosso catálogo exclusivo e explore uma seleção diversificada de revestimentos ecológicos, criados com o compromisso de oferecer soluções estéticas e ambientalmente responsáveis."
+- **Direita (espaço em branco da referência):** o **mesmo iframe** já presente na página (mantido idêntico: `src`, `id`, `data-*`, altura), dentro de um card branco. O `useEffect` que injeta `form_embed.js` é mantido.
 
-### 1. Apagar código morto do RD
-- Excluir `src/components/catalogo/CatalogoForm.tsx` (e a pasta `catalogo/` se ficar vazia).
-- Excluir a pasta inteira `src/components/orcamento/` (MultiStepForm, RDStationBridge e todos os steps/auxiliares).
+### 2. Diferenciais (Benefícios)
+Seção "Principais diferenciais da madeira ecológica WPC" com grid de 9 itens (3 colunas), conforme a imagem:
+- Vida útil de até 20 anos
+- Garantia de 10 anos
+- Produzido com material reciclado
+- Proteção UV para toda a linha WPC Lesco
+- Tamanhos e texturas personalizáveis
+- Material com isolamento acústico
+- Instalação rápida, limpa e fácil
+- Resistência a insetos e fungos
+- Material com isolamento térmico
 
-### 2. Newsletter de lançamento (sem GHL ainda)
-O form GHL de newsletter ainda não existe. Para não enviar nada ao RD:
-- Remover do `NewsletterLancamentoForm.tsx` as constantes `TOKEN_RDSTATION`/`CONVERSION_URL` e o `fetch` para o RD.
-- Manter a UI (input de email, validação, tela de sucesso) funcionando.
-- O envio passa a só disparar um evento `dataLayer` (`newsletter_signup`) para o GTM, sem backend.
-- **Importante:** os e-mails da newsletter deixam de ser capturados em qualquer lugar até você me enviar o form GHL de newsletter. Quando tiver, troco por um iframe igual aos outros.
+Reaproveitando os ícones SVG existentes em `src/assets/madeira-ecologica/` (garantia, reciclado, hidrofóbico, anti-mofo, resistente-pragas) distribuídos entre os itens.
 
-### 3. Limpeza de CSS
-- Remover o bloco `.rd-station-form-container ...` de `src/index.css`.
+### 3. CTA final
+Seção de fechamento no mesmo estilo da página de orçamento (gradiente + botões existentes, ex.: WhatsApp / falar com equipe). Sem criar formulário novo.
 
-## Verificação
-- Build sem referências a `rdstation`/`CONVERSION_URL`.
-- `rg -i rdstation src` deve retornar vazio.
-- Páginas Catálogo e Orçamento continuam exibindo os iframes GHL normalmente.
-- Páginas "em breve" (`LinhaEmBreve`) continuam exibindo o campo de newsletter sem erro.
+## Detalhes técnicos
 
-## Pendência para você
-- Enviar o embed do form GHL de **newsletter de lançamento** quando existir, para eu plugar no lugar do atual.
+- Arquivo único alterado: `src/pages/Catalogo.tsx` (reescrito).
+- Iframe do catálogo mantido **idêntico** ao atual — nenhum formulário novo é criado.
+- Uso dos tokens do design system (PP Neue Machina / DM Sans / JetBrains Mono), margens/raios de 10px, padding-top de 100px para o header fixo.
+- Componentes reutilizados: `SEO`, `ScrollReveal` (e `AnimatedCounter` se for útil para números) — todos já existentes.
+- SEO atual mantido. Nenhuma imagem nova gerada — apenas assets já no site.
+- Responsividade: 2 colunas no desktop, empilhado no mobile, sem cortes laterais/inferiores.

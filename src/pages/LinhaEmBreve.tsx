@@ -42,7 +42,7 @@ const LinhaEmBreve = () => {
         />
         <div className="absolute inset-0 bg-[rgba(13,13,13,0.65)]" />
 
-        <div className="relative z-10 w-full px-8 md:px-16 lg:px-20 py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="relative z-10 w-full px-4 sm:px-8 md:px-16 lg:px-20 py-16 sm:py-20 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-20 items-center">
           {/* Esquerda */}
           <div className="text-white">
             <span className="inline-block font-display text-white bg-white/15 backdrop-blur rounded-full px-3 py-1.5 text-[10px] md:text-[11px] tracking-[0.18em] uppercase mb-8">
@@ -63,7 +63,7 @@ const LinhaEmBreve = () => {
 
           {/* Direita — formulário */}
           {linha.formId && (
-            <div className="bg-white/5 backdrop-blur-md border border-white/15 rounded-[10px] p-8 md:p-10">
+            <div className="bg-white/5 backdrop-blur-md border border-white/15 rounded-[10px] p-4 sm:p-8 md:p-10">
               <h2 className="font-display text-white text-2xl md:text-3xl font-light leading-tight mb-3">
                 Seja avisado no lançamento
               </h2>
@@ -115,7 +115,7 @@ const LinhaEmBreve = () => {
           {linha.aplicacoes.map((a) => (
             <div key={a.titulo} className="bg-white/50 rounded-[10px] p-8">
               <h3 className="font-display text-xl text-dark mb-3 font-normal">{a.titulo}</h3>
-              <p className="font-body text-[14px] text-dark/70 leading-relaxed text-gray-950">{a.descricao}</p>
+              <p className="font-body text-[14px] text-dark/70 leading-relaxed text-slate-950">{a.descricao}</p>
             </div>
           ))}
         </div>
