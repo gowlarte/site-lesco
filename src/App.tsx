@@ -33,6 +33,7 @@ import ObrigadoOrcamento from "./pages/ObrigadoOrcamento";
 import LinhaEmBreve from "./pages/LinhaEmBreve";
 import NotFound from "./pages/NotFound";
 import ObrigadoCatalogo from "./pages/ObrigadoCatalogo";
+import ObrigadoWhats from "./pages/ObrigadoWhats";
 
 const queryClient = new QueryClient();
 
