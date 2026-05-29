@@ -10,6 +10,7 @@ interface SEOProps {
   image?: string;
   type?: "website" | "article";
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
+  noindex?: boolean;
 }
 
 /** Turn a possibly-relative image path into an absolute URL (required by
@@ -26,6 +27,7 @@ export function SEO({
   image,
   type = "website",
   jsonLd,
+  noindex = false,
 }: SEOProps) {
   const url = `${SITE_URL}${path}`;
   const imageUrl = toAbsoluteUrl(image || ogDefault);
@@ -35,6 +37,7 @@ export function SEO({
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
+      {noindex && <meta name="robots" content="noindex" />}
       <link rel="canonical" href={url} />
 
       {/* Open Graph */}
