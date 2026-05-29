@@ -62,16 +62,24 @@ const LinhaEmBreve = () => {
           </div>
 
           {/* Direita — formulário */}
-          <div className="bg-white/5 backdrop-blur-md border border-white/15 rounded-[10px] p-8 md:p-10">
-            <h2 className="font-display text-white text-2xl md:text-3xl font-light leading-tight mb-3">
-              Seja avisado no lançamento
-            </h2>
-            <p className="font-body text-[14px] text-white/70 leading-relaxed mb-6">
-              Cadastre seu e-mail para receber em primeira mão a chegada da linha {linha.nome} ao portfólio Lesco.
-            </p>
-            <NewsletterLancamentoForm slug={linha.slug} nomeLinha={linha.nome} variant="dark" />
-          </div>
-        </div>
+          {linha.formId && (
+            <div className="bg-white/5 backdrop-blur-md border border-white/15 rounded-[10px] p-8 md:p-10">
+              <h2 className="font-display text-white text-2xl md:text-3xl font-light leading-tight mb-3">
+                Seja avisado no lançamento
+              </h2>
+              <p className="font-body text-[14px] text-white/70 leading-relaxed mb-6">
+                Cadastre seu e-mail para receber em primeira mão a chegada da linha {linha.nome} ao portfólio Lesco.
+              </p>
+              <NewsletterLancamentoForm
+                slug={linha.slug}
+                nomeLinha={linha.nome}
+                variant="dark"
+                formId={linha.formId}
+                formName={linha.formName}
+                formHeight={linha.formHeight}
+              />
+            </div>
+          )}
       </section>
 
       {/* SOBRE */}
