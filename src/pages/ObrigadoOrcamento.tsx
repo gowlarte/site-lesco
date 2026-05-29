@@ -5,10 +5,10 @@ import logoLight from "@/assets/logo-lesco-light.svg";
 import lescoIcon from "@/assets/lesco-icon.webp";
 
 const socials = [
-  { label: "Facebook", href: "https://www.facebook.com/lescorevestimentos", Icon: Facebook },
-  { label: "Instagram", href: "https://www.instagram.com/lescorevestimentos", Icon: Instagram },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/lesco-revestimentos", Icon: Linkedin },
-  { label: "YouTube", href: "https://www.youtube.com/@lescorevestimentos", Icon: Youtube },
+  { label: "Facebook", href: "https://www.facebook.com/lescorevestimentosbr/", Icon: Facebook },
+  { label: "Instagram", href: "https://www.instagram.com/lesco_br/", Icon: Instagram },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/lesco-revestimentos/about/", Icon: Linkedin },
+  { label: "YouTube", href: "https://www.youtube.com/@LescoBR", Icon: Youtube },
 ];
 
 const TikTok = ({ className }: { className?: string }) => (
@@ -58,7 +58,7 @@ export default function ObrigadoOrcamento() {
 
       {/* Novidades + redes sociais */}
       <section className="py-20 md:py-28 px-6 text-center">
-        <p className="font-body text-lg md:text-xl text-foreground/90 max-w-3xl mx-auto">
+        <p className="font-body text-lg md:text-xl text-black max-w-3xl mx-auto">
           Enquanto você aguarda seu orçamento, acompanhe todas as novidades e últimas
           atualizações da Lesco.
         </p>
@@ -71,7 +71,7 @@ export default function ObrigadoOrcamento() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="text-foreground/70 hover:text-foreground transition-colors"
+              className="text-black hover:text-black/70 transition-colors"
             >
               <Icon className="h-6 w-6" />
             </a>
@@ -81,7 +81,7 @@ export default function ObrigadoOrcamento() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="TikTok"
-            className="text-foreground/70 hover:text-foreground transition-colors"
+            className="text-black hover:text-black/70 transition-colors"
           >
             <TikTok className="h-5 w-5" />
           </a>
