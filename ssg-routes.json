@@ -1,0 +1,18 @@
+[
+  { "slug": "/", "title": "Lesco · Revestimentos Premium para Arquitetura", "description": "Lesco — superfícies que definem legados. Revestimentos premium em madeira ecológica, bambu, pedra flexível e tecido acústico.", "canonical": "https://lesco.lovable.app/" },
+  { "slug": "/quem-somos", "title": "Quem Somos | Lesco", "description": "Conheça a Lesco, nossa história e diferenciais em revestimentos premium.", "canonical": "https://lesco.lovable.app/quem-somos" },
+  { "slug": "/madeira-wpc", "title": "Madeira WPC | Lesco", "description": "Saiba tudo sobre a madeira WPC ecológica da Lesco.", "canonical": "https://lesco.lovable.app/madeira-wpc" },
+  { "slug": "/revestimento-sustentavel", "title": "Revestimento Sustentável | Lesco", "description": "Revestimentos sustentáveis para projetos arquitetônicos de alto padrão.", "canonical": "https://lesco.lovable.app/revestimento-sustentavel" },
+  { "slug": "/madeira-ecologica-lesco", "title": "Madeira Ecológica Lesco", "description": "Linha de madeira ecológica Lesco para fachadas, decks, forros e painéis.", "canonical": "https://lesco.lovable.app/madeira-ecologica-lesco" },
+  { "slug": "/brise-madeira-ecologica", "title": "Brise em Madeira Ecológica | Lesco", "description": "Brises em madeira ecológica WPC para fachadas e ambientes.", "canonical": "https://lesco.lovable.app/brise-madeira-ecologica" },
+  { "slug": "/madeira-ecologica-para-fachada", "title": "Madeira Ecológica para Fachada | Lesco", "description": "Revestimento de fachada em madeira ecológica WPC.", "canonical": "https://lesco.lovable.app/madeira-ecologica-para-fachada" },
+  { "slug": "/madeira-ecologica-para-deck", "title": "Madeira Ecológica para Deck | Lesco", "description": "Decks em madeira ecológica WPC de alta durabilidade.", "canonical": "https://lesco.lovable.app/madeira-ecologica-para-deck" },
+  { "slug": "/forro-wpc", "title": "Forro WPC | Lesco", "description": "Forros em WPC ecológico para ambientes internos e externos.", "canonical": "https://lesco.lovable.app/forro-wpc" },
+  { "slug": "/placa-wpc-interior", "title": "Placa WPC para Interior | Lesco", "description": "Placas WPC para revestimento interno de alto padrão.", "canonical": "https://lesco.lovable.app/placa-wpc-interior" },
+  { "slug": "/catalogo-lesco", "title": "Catálogo | Lesco", "description": "Baixe o catálogo técnico Lesco.", "canonical": "https://lesco.lovable.app/catalogo-lesco" },
+  { "slug": "/biblioteca", "title": "Biblioteca | Lesco", "description": "Biblioteca de materiais e recursos técnicos Lesco.", "canonical": "https://lesco.lovable.app/biblioteca" },
+  { "slug": "/orcamento", "title": "Orçamento | Lesco", "description": "Solicite um orçamento para seu projeto com a Lesco.", "canonical": "https://lesco.lovable.app/orcamento" },
+  { "slug": "/portfolio", "title": "Portfólio | Lesco", "description": "Projetos realizados com revestimentos Lesco.", "canonical": "https://lesco.lovable.app/portfolio" },
+  { "slug": "/blog", "title": "Blog | Lesco", "description": "Conteúdos sobre arquitetura, revestimentos e tendências.", "canonical": "https://lesco.lovable.app/blog" },
+  { "slug": "/linhas", "title": "Linhas | Lesco", "description": "Conheça todas as linhas de revestimentos premium da Lesco.", "canonical": "https://lesco.lovable.app/linhas" }
+]

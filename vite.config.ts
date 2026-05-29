@@ -19,4 +19,8 @@ export default defineConfig(({ mode }) => ({
     },
     dedupe: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime", "@tanstack/react-query", "@tanstack/query-core"],
   },
+  ssr: {
+    // Bundle CJS-only deps so Node ESM interop works in the SSR/SSG build.
+    noExternal: ["react-helmet-async"],
+  },
 }));
