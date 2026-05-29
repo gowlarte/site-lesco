@@ -1,8 +1,8 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { GhlForm } from "@/components/GhlForm";
 import { projetos } from "@/data/projetos";
 
 import heroBiblioteca from "@/assets/hero-home-altwood.webp";
