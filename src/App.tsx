@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -105,12 +105,19 @@ const AppContent = () => {
 };
 
 const App = () => {
-  const [contentVisible, setContentVisible] = useState(false);
+  // The splash is a client-only overlay. On the server (SSG) and during the
+  // first hydration render `mounted` is false, so the server HTML === the
+  // first client render (real content, no splash) — no hydration mismatch and
+  // the static content is visible immediately, even before/without JS.
+  const [mounted, setMounted] = useState(false);
   const [splashDone, setSplashDone] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleFadeStart = useCallback(() => {
     document.body.style.backgroundColor = '';
-    setContentVisible(true);
   }, []);
 
   const handleSplashComplete = useCallback(() => {
@@ -122,16 +129,12 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        {!splashDone && <SplashScreen onFadeStart={handleFadeStart} onComplete={handleSplashComplete} />}
-        <div
-          className="transition-opacity duration-500"
-          style={{
-            opacity: contentVisible ? 1 : 0,
-            visibility: contentVisible ? 'visible' : 'hidden',
-          }}
-        >
-          <AppContent />
-        </div>
+        {/* Content always renders (visible without JS) */}
+        <AppContent />
+        {/* Splash sits on top as a pure overlay, only after client mount */}
+        {mounted && !splashDone && (
+          <SplashScreen onFadeStart={handleFadeStart} onComplete={handleSplashComplete} />
+        )}
       </TooltipProvider>
     </QueryClientProvider>
   );
