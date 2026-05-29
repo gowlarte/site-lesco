@@ -69,6 +69,9 @@ export const linhasEmBreve: Record<string, LinhaEmBreve> = {
       "Instalação rápida e modular",
       "Soluções customizáveis sob projeto",
     ],
+    formId: "A7iX7TMKzhNq1vXwMiVy",
+    formName: "[05] [FORM] [LANÇAMENTOS]",
+    formHeight: 461,
   },
   geo: {
     slug: "geo",
