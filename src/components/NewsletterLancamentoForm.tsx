@@ -15,7 +15,15 @@ export const NewsletterLancamentoForm = ({
   formName,
   formHeight = 675,
 }: Props) => {
-  const [height, setHeight] = useState<number>(formHeight);
+  const getResponsiveMinimumHeight = () => {
+    if (typeof window === "undefined") return formHeight;
+    return window.matchMedia("(max-width: 640px)").matches ? 650 : 545;
+  };
+
+  const getSafeHeight = (nextHeight: number) =>
+    Math.ceil(Math.max(nextHeight + 56, getResponsiveMinimumHeight()));
+
+  const [height, setHeight] = useState<number>(() => getSafeHeight(formHeight));
 
   useEffect(() => {
     const existing = document.querySelector(
@@ -30,7 +38,7 @@ export const NewsletterLancamentoForm = ({
   }, []);
 
   useEffect(() => {
-    setHeight(formHeight);
+    setHeight(getSafeHeight(formHeight));
 
     const parseHeight = (value: unknown): number | null => {
       const num = typeof value === "string" ? parseFloat(value) : Number(value);
@@ -61,57 +69,58 @@ export const NewsletterLancamentoForm = ({
         parseHeight(data.scrollHeight) ??
         (data.type === "hpb-resize" ? parseHeight(data.height) : null);
 
-      if (newHeight) setHeight(newHeight);
+      if (newHeight) setHeight(getSafeHeight(newHeight));
     };
 
+    const handleResize = () => setHeight((currentHeight) => getSafeHeight(currentHeight - 56));
+
     window.addEventListener("message", handleMessage);
-    return () => window.removeEventListener("message", handleMessage);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("message", handleMessage);
+      window.removeEventListener("resize", handleResize);
+    };
   }, [formId, formHeight]);
 
   const isDark = variant === "dark";
 
   return (
     <div
-      className={`overflow-hidden rounded-[10px] transition-all duration-500 ${
+      className={`w-full min-w-0 overflow-visible rounded-[10px] transition-all duration-500 ${
         isDark ? "bg-white/95 border border-white/15" : "bg-white border border-dark/10"
       }`}
       style={{ transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
     >
-      <div
-        className="overflow-hidden rounded-[10px] transition-all duration-500"
+      <iframe
+        key={formId}
+        scrolling="no"
+        src={`https://api.leadconnectorhq.com/widget/form/${formId}`}
         style={{
+          width: "100%",
+          maxWidth: "100%",
+          minWidth: 0,
           height: `${height}px`,
-          transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+          minHeight: `${height}px`,
+          border: "none",
+          borderRadius: "10px",
+          display: "block",
+          overflow: "hidden",
+          transition: "height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), min-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
         }}
-      >
-        <iframe
-          key={formId}
-          scrolling="no"
-          src={`https://api.leadconnectorhq.com/widget/form/${formId}`}
-          style={{
-            width: "calc(100% + 24px)",
-            height: `${height}px`,
-            border: "none",
-            borderRadius: "10px",
-            display: "block",
-            overflow: "hidden",
-            marginRight: "-24px",
-          }}
-          id={`inline-${formId}`}
-          data-layout="{'id':'INLINE'}"
-          data-trigger-type="alwaysShow"
-          data-trigger-value=""
-          data-activation-type="alwaysActivated"
-          data-activation-value=""
-          data-deactivation-type="neverDeactivate"
-          data-deactivation-value=""
-          data-form-name={formName}
-          data-height={`${formHeight}`}
-          data-layout-iframe-id={`inline-${formId}`}
-          data-form-id={formId}
-          title={formName}
-        />
-      </div>
+        id={`inline-${formId}`}
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name={formName}
+        data-height={`${height}`}
+        data-layout-iframe-id={`inline-${formId}`}
+        data-form-id={formId}
+        title={formName}
+      />
     </div>
   );
 };
