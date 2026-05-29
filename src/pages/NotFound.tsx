@@ -26,6 +26,7 @@ const NotFound = () => {
         title="Página não encontrada — Lesco"
         description="A página que você procura não existe ou foi movida. Explore as principais seções do site da Lesco."
         path={location.pathname}
+        noindex
       />
 
       <section className="rounded-[10px] bg-primary text-foreground overflow-hidden">
