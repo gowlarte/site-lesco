@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { SEO } from "@/components/SEO";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import obrigadoBg from "@/assets/obrigado-bg.jpg";
 import logoLight from "@/assets/logo-lesco-light.svg";
