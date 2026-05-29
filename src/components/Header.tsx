@@ -23,7 +23,7 @@ const navLinks: NavItem[] = [
     label: "Sobre",
     children: [
       { label: "Quem somos", href: "/quem-somos" },
-      { label: "Madeira WPC", href: "/madeira-ecologica-lesco" },
+      { label: "Madeira Ecológica", href: "/madeira-ecologica-lesco" },
       { label: "Sustentabilidade", href: "/revestimento-sustentavel" },
     ],
   },
