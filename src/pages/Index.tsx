@@ -152,7 +152,7 @@ const Index = () => {
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: "Lesco",
-          url: "https://eco-essence-project.lovable.app",
+          url: "https://lesco.com.br",
         }}
       />
       {/* ========== HERO BANNER — SLIDESHOW ========== */}
