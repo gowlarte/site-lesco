@@ -115,7 +115,7 @@ const LinhaEmBreve = () => {
           {linha.aplicacoes.map((a) => (
             <div key={a.titulo} className="bg-white/50 rounded-[10px] p-8">
               <h3 className="font-display text-xl text-dark mb-3 font-normal">{a.titulo}</h3>
-              <p className="font-body text-[14px] text-dark/70 leading-relaxed text-gray-950">{a.descricao}</p>
+              <p className="font-body text-[14px] text-dark/70 leading-relaxed text-slate-950">{a.descricao}</p>
             </div>
           ))}
         </div>
