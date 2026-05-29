@@ -223,8 +223,6 @@ export function Header({ variant = "default" }: HeaderProps) {
             })}
             {/* Desktop CTA (dentro do nav, após Portfólio) - estilo igual aos demais links */}
             {(() => {
-              const emBreve = ["/zhu", "/echo", "/geo"].includes(location.pathname);
-              const ctaLabel = emBreve ? "Lançamento em breve" : "Orçamento";
               const label = "Orçamento";
               const color =
                 hoveredNav === label
@@ -238,9 +236,7 @@ export function Header({ variant = "default" }: HeaderProps) {
                 color,
                 filter: hoveredNav !== null && hoveredNav !== label ? "blur(0.5px)" : "blur(0px)",
               };
-              return emBreve ? (
-                <span className={linkClass} style={linkStyle}>{ctaLabel}</span>
-              ) : (
+              return (
                 <Link
                   to="/orcamento"
                   onMouseEnter={() => {
@@ -250,7 +246,7 @@ export function Header({ variant = "default" }: HeaderProps) {
                   className={linkClass}
                   style={linkStyle}
                 >
-                  {ctaLabel}
+                  {label}
                 </Link>
               );
             })()}
