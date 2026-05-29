@@ -1,7 +1,7 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { GhlForm } from "@/components/GhlForm";
 
 import heroCatalogo from "@/assets/hero-home-altwood.webp";
 
