@@ -30,7 +30,7 @@ import { projetos } from "@/data/projetos";
 
 const linhas = [
   {
-    nome: "Madeira Ecológica",
+    nome: "Arquitetura feita para o amanhã",
     logo: logoMantoRaw,
     descricao: "Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto.",
     slogan: "",
@@ -219,12 +219,12 @@ const Index = () => {
           <Header variant="overlay" />
         </div>
 
-        {active.nome === "Madeira Ecológica" ? (
+        {active.nome === "Arquitetura feita para o amanhã" ? (
           <>
             {/* Bottom-left: título */}
             <div className="absolute bottom-20 lg:bottom-16 left-8 lg:left-12 right-8 lg:right-auto z-10 max-w-[640px] text-white flex flex-col items-start">
               <h1 className="mb-5 font-display font-light text-[44px] md:text-[56px] lg:text-[68px] leading-none tracking-[-0.02em] text-white">
-                {active.nome}
+                Arquitetura feita para o amanhã
               </h1>
               {/* CTA — mobile */}
               <Link
@@ -314,7 +314,7 @@ const Index = () => {
           <ScrollReveal>
             <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 lg:gap-20 items-start">
               <h2 className="font-display text-3xl md:text-4xl lg:text-[52px] font-normal leading-[1.4] text-dark">
-                Pioneiros em Madeira Ecológica no Brasil, somos Madeira Ecológica.
+                Pioneiros em Madeira Ecológica no Brasil, somos arquitetura feita para o amanhã.
               </h2>
               <div className="max-w-[320px]">
                 <p className="font-body text-[16px] font-light leading-[1.65] text-dark/70 text-primary">

@@ -91,7 +91,7 @@ const Orcamento = () => {
           </div>
 
           {/* Direita — formulário (iframe atual) */}
-          <div className="bg-white rounded-[10px] p-3 sm:p-4 md:p-5 shadow-2xl">
+          <div className="rounded-[10px] overflow-hidden">
             <iframe
               src="https://api.leadconnectorhq.com/widget/form/GTcMRzSzlRyI4MLLuFYJ"
               style={{ width: "100%", height: "1141px", border: "none", borderRadius: "3px" }}
