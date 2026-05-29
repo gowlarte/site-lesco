@@ -131,7 +131,7 @@ const Orcamento = () => {
                   aria-hidden
                 />
                 <h3 className="font-display text-xl text-dark mb-3 font-normal">{b.label}</h3>
-                <p className="font-body text-[14px] text-dark/70 leading-relaxed text-gray-950">{b.description}</p>
+                <p className="font-body text-[14px] text-dark/70 leading-relaxed text-slate-950">{b.description}</p>
               </div>
             ))}
           </div>
