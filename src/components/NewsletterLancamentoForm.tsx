@@ -51,6 +51,15 @@ export const NewsletterLancamentoForm = ({
 
       let data: any = event.data;
       if (typeof data === "string") {
+        if (data.startsWith("[iFrameSizer]")) {
+          const [messageIframeId, messageHeight] = data.replace("[iFrameSizer]", "").split(":");
+          if (messageIframeId === `inline-${formId}`) {
+            const iframeHeight = parseHeight(messageHeight);
+            if (iframeHeight) setHeight(getSafeHeight(iframeHeight));
+          }
+          return;
+        }
+
         try {
           data = JSON.parse(data);
         } catch {
