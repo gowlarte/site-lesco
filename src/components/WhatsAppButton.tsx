@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
+import { buildGhlFormUrl } from "@/lib/utm";
 
-const FORM_URL = "https://api.leadconnectorhq.com/widget/form/NCyQbX00m3csRV6jg6RB";
+const FORM_BASE_URL = "https://api.leadconnectorhq.com/widget/form/NCyQbX00m3csRV6jg6RB";
+const FORM_URL = FORM_BASE_URL;
 const SCRIPT_SRC = "https://link.msgsndr.com/js/form_embed.js";
 
 function ensureFormScript() {
