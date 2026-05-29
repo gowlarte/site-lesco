@@ -104,6 +104,7 @@ const MantoPanel = () => {
         title="Placa WPC Interior | Lesco Panel"
         description="Placas WPC para interiores fabricadas a partir da combinação de fibras de madeira reciclada e resinas plásticas, oferecendo resistência, estética sofisticada e sustentabilidade."
         path="/placa-wpc-interior"
+        image={projetoPanel1}
       />
       {/* Hero */}
       <HeroSection

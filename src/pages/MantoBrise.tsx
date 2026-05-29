@@ -140,6 +140,7 @@ const MantoBrise = () => {
         title="Brise Madeira Ecológica | Lesco Brise"
         description="Nossa madeira ecológica para brises e fachadas oferece uma solução sustentável que combina a durabilidade do plástico com a estética natural da madeira."
         path="/brise-madeira-ecologica"
+        image={heroBrise1}
       />
       {/* Hero */}
       <HeroSection

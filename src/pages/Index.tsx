@@ -147,11 +147,12 @@ const Index = () => {
         title="Revestimentos em Madeira Ecológica | Lesco"
         description="Transforme cada ambiente em uma expressão de elegância natural com nossos revestimentos em madeira ecológica. Acabamentos únicos e personalizados."
         path="/"
+        image={heroManto}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: "Lesco",
-          url: "https://eco-essence-project.lovable.app",
+          url: "https://lesco.com.br",
         }}
       />
       {/* ========== HERO BANNER — SLIDESHOW ========== */}

@@ -54,6 +54,7 @@ const MantoLine = () => {
         title="Forro WPC | Lesco Line"
         description="Forros WPC retardantes ao fogo, resistentes à água e com baixo custo de manutenção. Uma solução sustentável que combina beleza natural e desempenho tecnológico."
         path="/forro-wpc"
+        image={projetoLine1}
       />
       {/* Hero */}
       <HeroSection

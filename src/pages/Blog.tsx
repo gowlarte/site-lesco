@@ -101,6 +101,8 @@ const Blog = () => {
         title="Blog — Lesco"
         description="Ideias, materiais e inspiração para a arquitetura do amanhã. Artigos sobre madeira ecológica, sustentabilidade e tendências de projeto."
         path="/blog"
+        image={destaque.imagem}
+        type="article"
       />
       {/* Header editorial */}
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-16 md:py-24 mb-[10px]">

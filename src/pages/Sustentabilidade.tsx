@@ -30,6 +30,7 @@ const Sustentabilidade = () => {
         title="Revestimento Sustentável — Lesco"
         description="Compromisso ambiental da Lesco: revestimentos premium feitos com material reciclado, longa vida útil e certificações reconhecidas internacionalmente."
         path="/revestimento-sustentavel"
+        image={heroFloresta}
       />
       <main className="min-h-screen pt-[110px] pb-[10px] px-[10px] flex flex-col gap-[10px]">
         <section
