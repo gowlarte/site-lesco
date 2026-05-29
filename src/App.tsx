@@ -29,6 +29,7 @@ import Blog from "./pages/Blog";
 import BlogArtigo from "./pages/BlogArtigo";
 import Orcamento from "./pages/Orcamento";
 import Catalogo from "./pages/Catalogo";
+import ObrigadoOrcamento from "./pages/ObrigadoOrcamento";
 import LinhaEmBreve from "./pages/LinhaEmBreve";
 import NotFound from "./pages/NotFound";
 
@@ -66,6 +67,7 @@ const AppContent = () => {
           <Route path="/catalogo-lesco" element={<Catalogo />} />
           <Route path="/biblioteca" element={<Biblioteca />} />
           <Route path="/orcamento" element={<Orcamento />} />
+          <Route path="/obrigado-orcamento" element={<ObrigadoOrcamento />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/projetos/:slug" element={<PortfolioProjeto />} />
           <Route path="/blog" element={<Blog />} />
