@@ -17,6 +17,10 @@ export interface LinhaEmBreve {
   sobreTexto: string;
   aplicacoes: { titulo: string; descricao: string }[];
   diferenciais: string[];
+  /** GHL form (lançamento) específico da linha */
+  formId?: string;
+  formName?: string;
+  formHeight?: number;
 }
 
 export const linhasEmBreve: Record<string, LinhaEmBreve> = {
