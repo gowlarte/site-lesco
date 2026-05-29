@@ -1,55 +1,36 @@
-# Landing page de Orçamento
+## Objetivo
 
-Transformar a página `/orcamento` (`src/pages/Orcamento.tsx`) numa landing page completa, inspirada no print anexo, reaproveitando o iframe do formulário GHL já existente e apenas imagens/projetos que já estão no site. Nenhuma imagem nova será gerada e nenhum formulário novo será criado.
+Transformar a página `/catalogo-lesco` (`src/pages/Catalogo.tsx`) numa landing page atrativa, no mesmo estilo da página de orçamento, mantendo **exatamente o mesmo formulário** que já existe nesta página (form do catálogo `lr26Z8p5zKyXXMvt1CKn`, `[01] [FORM] [DOWNLOAD CATALOGO]`). O conteúdo segue a imagem de referência (ignorando o popup).
 
-## Estrutura da página (de cima para baixo)
+## Estrutura proposta
 
-```text
-┌───────────────────────────────────────────────┐
-│ HERO (imagem de fundo existente + overlay)      │
-│  ┌─────────────────────┐   ┌─────────────────┐  │
-│  │ Título + subtítulo   │   │  FORMULÁRIO      │  │
-│  │ "Crie um ambiente    │   │  (iframe atual)  │  │
-│  │  exclusivo..."       │   │  card branco     │  │
-│  └─────────────────────┘   └─────────────────┘  │
-├───────────────────────────────────────────────┤
-│ BENEFÍCIOS — grid de ícones (reuso FeatureIcon) │
-├───────────────────────────────────────────────┤
-│ PROJETOS — "Conheça alguns dos nossos projetos" │
-├───────────────────────────────────────────────┤
-│ NÚMEROS — +10 anos / 100% reciclado / 3 cert.   │
-├───────────────────────────────────────────────┤
-│ CTA final                                        │
-└───────────────────────────────────────────────┘
-```
+### 1. Hero + Formulário
+Card flutuante com imagem de fundo (reuso de `hero-home-altwood.webp`) e overlay escuro, em 2 colunas (empilha no mobile):
+- **Esquerda (texto):** badge "Catálogo Lesco" + headline "Conheça o novo e explore todos os benefícios que a madeira ecológica pode oferecer" + parágrafo "Acesse nosso catálogo exclusivo e explore uma seleção diversificada de revestimentos ecológicos, criados com o compromisso de oferecer soluções estéticas e ambientalmente responsáveis."
+- **Direita (espaço em branco da referência):** o **mesmo iframe** já presente na página (mantido idêntico: `src`, `id`, `data-*`, altura), dentro de um card branco. O `useEffect` que injeta `form_embed.js` é mantido.
 
-## Detalhes por seção
+### 2. Diferenciais (Benefícios)
+Seção "Principais diferenciais da madeira ecológica WPC" com grid de 9 itens (3 colunas), conforme a imagem:
+- Vida útil de até 20 anos
+- Garantia de 10 anos
+- Produzido com material reciclado
+- Proteção UV para toda a linha WPC Lesco
+- Tamanhos e texturas personalizáveis
+- Material com isolamento acústico
+- Instalação rápida, limpa e fácil
+- Resistência a insetos e fungos
+- Material com isolamento térmico
 
-**Hero com formulário embutido**
-- Fundo: imagem já existente (`@/assets/hero-home-altwood.webp`) com overlay escuro, no padrão de cards flutuantes (`rounded-[10px]`, margens de 10px) usado no resto do site.
-- Coluna esquerda: headline "Crie um ambiente exclusivo com elegância e autenticidade" + subtítulo curto.
-- Coluna direita: card branco contendo **o mesmo iframe atual** (form `GTcMRzSzlRyI4MLLuFYJ`, "[02] [FORM] [ORCAMENTO]") — movido do corpo da página para o hero. Mantém o `useEffect` que injeta o script `form_embed.js`.
-- Layout responsivo: 2 colunas no desktop, empilhado no mobile (form acima/abaixo conforme melhor leitura).
+Reaproveitando os ícones SVG existentes em `src/assets/madeira-ecologica/` (garantia, reciclado, hidrofóbico, anti-mofo, resistente-pragas) distribuídos entre os itens.
 
-**Benefícios**
-- Grid de ícones reaproveitando os SVGs e textos de `src/components/madeira-ecologica` (anti-mofo, hidrofóbico, resistente a pragas, 10 anos de garantia, 100% reciclado). Renderização simples em grid (sem a animação 3D), apenas ícone + label + descrição curta.
+### 3. CTA final
+Seção de fechamento no mesmo estilo da página de orçamento (gradiente + botões existentes, ex.: WhatsApp / falar com equipe). Sem criar formulário novo.
 
-**Projetos**
-- Reaproveita `projetos` de `src/data/projetos.ts` (ex.: Casa Mansa, Casa Areia, Vaz Batel — mesmos destaques da home), em grid de cards com imagem + nome, linkando para `/projetos/{slug}`.
+## Detalhes técnicos
 
-**Números**
-- Bloco com os mesmos indicadores do site: +10 anos de inovação, 100% produtos reciclados, garantia/ certificações.
-
-**CTA final**
-- Faixa com chamada para ação reaproveitando o estilo de CTA existente (botão para catálogo / WhatsApp), sem novo formulário.
-
-## Considerações técnicas
-
-- Arquivo alterado: `src/pages/Orcamento.tsx` (reescrita do JSX da página). Possível extração de pequenos componentes locais se necessário.
-- O iframe é mantido **idêntico** (mesma `src`, `id`, atributos `data-*`, altura `1141px`) — apenas reposicionado dentro do card do hero.
-- Usar tokens semânticos de cor do design system; manter sistema de 10px de margem/raio e tipografia (PP Neue Machina / DM Sans / JetBrains Mono).
-- SEO mantido via componente `SEO` já presente.
-- Nenhuma imagem gerada; somente assets já importáveis de `@/assets`.
-
-## Validação
-- Conferir no preview desktop (form visível no hero, sem corte) e mobile (empilhado, iframe sem scrollbar interna).
+- Arquivo único alterado: `src/pages/Catalogo.tsx` (reescrito).
+- Iframe do catálogo mantido **idêntico** ao atual — nenhum formulário novo é criado.
+- Uso dos tokens do design system (PP Neue Machina / DM Sans / JetBrains Mono), margens/raios de 10px, padding-top de 100px para o header fixo.
+- Componentes reutilizados: `SEO`, `ScrollReveal` (e `AnimatedCounter` se for útil para números) — todos já existentes.
+- SEO atual mantido. Nenhuma imagem nova gerada — apenas assets já no site.
+- Responsividade: 2 colunas no desktop, empilhado no mobile, sem cortes laterais/inferiores.
