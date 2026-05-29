@@ -1,7 +1,4 @@
-import { useState } from "react";
-import { Loader2, Mail } from "lucide-react";
-
-const validateEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+import { useEffect } from "react";
 
 interface Props {
   slug: string;
@@ -10,74 +7,36 @@ interface Props {
 }
 
 export const NewsletterLancamentoForm = ({ slug, nomeLinha, variant = "light" }: Props) => {
-  const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validateEmail(email)) {
-      setError("Email inválido");
-      return;
-    }
-    setError("");
-    setLoading(true);
-    try {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "newsletter_signup",
-        conversion_identifier: `lancamento-${slug}`,
-        linha_interesse: nomeLinha,
-      });
-    } catch (err) {
-      console.error("[Newsletter] dataLayer push error", err);
-    }
-    setLoading(false);
-    setSuccess(true);
-  };
-
-  const isDark = variant === "dark";
-  const inputBg = isDark ? "bg-white/10 text-white placeholder:text-white/50 border-white/20 focus:border-white/60" : "bg-white/80 text-dark placeholder:text-dark/50 border-dark/15 focus:border-dark/40";
-  const btnCls = isDark ? "bg-white text-dark" : "bg-dark text-light";
-  const successBg = isDark ? "border-white/20 bg-white/10" : "border-dark/15 bg-white/40";
-  const successTextStrong = isDark ? "text-white" : "text-dark";
-  const successTextSoft = isDark ? "text-white/70" : "text-dark/60";
-
-  if (success) {
-    return (
-      <div className={`border ${successBg} rounded-[10px] p-6 text-center`}>
-        <Mail className={`w-8 h-8 mx-auto mb-3 ${successTextSoft}`} strokeWidth={1.2} />
-        <p className={`font-display text-lg mb-1 ${successTextStrong}`}>Tudo certo!</p>
-        <p className={`font-body text-sm ${successTextSoft}`}>
-          Avisaremos você assim que {nomeLinha} estiver disponível.
-        </p>
-      </div>
+  useEffect(() => {
+    const existing = document.querySelector(
+      'script[src="https://link.msgsndr.com/js/form_embed.js"]'
     );
-  }
+    if (existing) return;
+    const script = document.createElement("script");
+    script.src = "https://link.msgsndr.com/js/form_embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            if (error) setError("");
-          }}
-          placeholder="seu@email.com"
-          className={`flex-1 border ${error ? "border-red-400" : ""} ${inputBg} rounded-[10px] px-4 py-3.5 font-body text-[15px] focus:outline-none transition-colors`}
-        />
-        <button
-          type="submit"
-          disabled={loading}
-          className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-[10px] ${btnCls} font-display text-sm uppercase tracking-wider hover:opacity-90 transition-opacity disabled:opacity-60`}
-        >
-          {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Notifique-me"}
-        </button>
-      </form>
-      {error && <p className="text-red-400 text-xs mt-2 font-body">{error}</p>}
+      <iframe
+        src="https://api.leadconnectorhq.com/widget/form/FLL85sGNM6yfwV3gPYcV"
+        style={{ width: "100%", height: "434px", border: "none", borderRadius: "10px" }}
+        id="inline-FLL85sGNM6yfwV3gPYcV"
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="[0] [FORM] [NEWS LETTER]"
+        data-height="434"
+        data-layout-iframe-id="inline-FLL85sGNM6yfwV3gPYcV"
+        data-form-id="FLL85sGNM6yfwV3gPYcV"
+        title="[0] [FORM] [NEWS LETTER]"
+      />
     </div>
   );
 };
