@@ -37,6 +37,7 @@ export const NewsletterLancamentoForm = ({
     >
       <iframe
         key={formId}
+        scrolling="no"
         src={`https://api.leadconnectorhq.com/widget/form/${formId}`}
         style={{
           width: "100%",
@@ -44,6 +45,7 @@ export const NewsletterLancamentoForm = ({
           border: "none",
           borderRadius: "10px",
           display: "block",
+          overflow: "hidden",
         }}
         id={`inline-${formId}`}
         data-layout="{'id':'INLINE'}"
