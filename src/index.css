@@ -270,69 +270,7 @@
   animation: hero-slow-zoom 8s ease-out forwards;
 }
 
-/* RD Station Forms — custom styling */
-.rd-station-form-container .bricks-form {
-  font-family: 'DM Sans', sans-serif !important;
-}
 
-.rd-station-form-container .bricks-form .bricks-form__fieldset {
-  margin-bottom: 16px;
-}
-
-.rd-station-form-container .bricks-form label.bricks-form__label {
-  font-family: 'DM Sans', sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 500 !important;
-  color: hsl(var(--primary)) !important;
-  margin-bottom: 6px !important;
-}
-
-.rd-station-form-container .bricks-form input[type="text"],
-.rd-station-form-container .bricks-form input[type="email"],
-.rd-station-form-container .bricks-form input[type="tel"],
-.rd-station-form-container .bricks-form select,
-.rd-station-form-container .bricks-form textarea {
-  font-family: 'DM Sans', sans-serif !important;
-  font-size: 14px !important;
-  padding: 12px 14px !important;
-  border: 1px solid hsl(var(--border)) !important;
-  border-radius: 10px !important;
-  background: hsl(var(--background-light)) !important;
-  color: hsl(var(--primary)) !important;
-  transition: border-color 0.2s ease !important;
-}
-
-.rd-station-form-container .bricks-form input:focus,
-.rd-station-form-container .bricks-form select:focus,
-.rd-station-form-container .bricks-form textarea:focus {
-  border-color: hsl(var(--accent)) !important;
-  outline: none !important;
-  box-shadow: 0 0 0 3px hsl(var(--accent) / 0.15) !important;
-}
-
-.rd-station-form-container .bricks-form .bricks-form__submit {
-  margin-top: 8px;
-}
-
-.rd-station-form-container .bricks-form button[type="submit"] {
-  font-family: 'PP Neue Machina', sans-serif !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.04em !important;
-  text-transform: uppercase !important;
-  padding: 14px 32px !important;
-  border-radius: 10px !important;
-  background: hsl(var(--primary)) !important;
-  color: hsl(var(--foreground)) !important;
-  border: none !important;
-  cursor: pointer !important;
-  transition: opacity 0.2s ease !important;
-  width: 100% !important;
-}
-
-.rd-station-form-container .bricks-form button[type="submit"]:hover {
-  opacity: 0.85 !important;
-}
 
 /* Multi-step form slide animation */
 @keyframes slide-in {
