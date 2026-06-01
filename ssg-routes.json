@@ -18,5 +18,8 @@
   { "slug": "/obrigado-whats", "title": "Obrigado | Lesco", "description": "Recebemos seu contato. Em breve nossa equipe entrará em contato.", "canonical": "https://lesco.com.br/obrigado-whats" },
   { "slug": "/portfolio", "title": "Portfólio | Lesco", "description": "Projetos realizados com revestimentos Lesco.", "canonical": "https://lesco.com.br/portfolio" },
   { "slug": "/blog", "title": "Blog | Lesco", "description": "Conteúdos sobre arquitetura, revestimentos e tendências.", "canonical": "https://lesco.com.br/blog" },
-  { "slug": "/linhas", "title": "Linhas | Lesco", "description": "Conheça todas as linhas de revestimentos premium da Lesco.", "canonical": "https://lesco.com.br/linhas" }
+  { "slug": "/linhas", "title": "Linhas | Lesco", "description": "Conheça todas as linhas de revestimentos premium da Lesco.", "canonical": "https://lesco.com.br/linhas" },
+  { "slug": "/zhu", "title": "Zhú — Arquitetura em Bambu (em breve) | Lesco", "description": "Zhú: nova linha Lesco em bambu — revestimentos, forros e decorativos. Cadastre-se e seja avisado no lançamento.", "canonical": "https://lesco.com.br/zhu" },
+  { "slug": "/echo", "title": "Echo — Tecido Acústico Moldado (em breve) | Lesco", "description": "Echo: linha Lesco de tecido acústico moldado para estúdios, home cinemas e ambientes corporativos. Em breve.", "canonical": "https://lesco.com.br/echo" },
+  { "slug": "/geo", "title": "Geo — Revestimento Flexível (em breve) | Lesco", "description": "Geo: revestimento flexível Lesco para fachadas, áreas molhadas e interiores. Em breve no portfólio.", "canonical": "https://lesco.com.br/geo" }
 ]
