@@ -45,6 +45,21 @@ export function useUtmForwarder() {
       const utms = readSessionUtms();
       if (!utms) return;
 
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'ghl_form_submit',
+        formId: 'NCyQbX00m3csRV6jg6RB',
+        formName: 'whatsapp_popup',
+        utm_source: utms.utm_source,
+        utm_medium: utms.utm_medium,
+        utm_campaign: utms.utm_campaign,
+        utm_content: utms.utm_content,
+        utm_term: utms.utm_term,
+        campaign_id: utms.campaign_id,
+        adset_id: utms.adset_id,
+        ad_id: utms.ad_id,
+      });
+
       // a) utm-push imediato
       postBeacon(
         `${UTM_PUSH_ENDPOINT}?token=${encodeURIComponent(UTM_PUSH_TOKEN)}`,

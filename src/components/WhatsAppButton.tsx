@@ -38,7 +38,15 @@ export function WhatsAppButton() {
       {/* Floating button */}
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'whatsapp_popup_open',
+            form_id: 'NCyQbX00m3csRV6jg6RB',
+            page_path: window.location.pathname,
+          });
+          setOpen(true);
+        }}
         aria-label="Falar no WhatsApp"
         className="fixed bottom-[20px] right-[20px] z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform duration-300 hover:scale-110"
         style={{ transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
