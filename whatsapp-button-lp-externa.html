@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snippet Botão WhatsApp + Popup GHL - Lesco</title>
+  <!--
+    =================================================================
+    SNIPPET: Botão flutuante de WhatsApp + Popup com formulário GHL
+    -----------------------------------------------------------------
+    Uso: copie TODO o conteúdo entre <body> e </body> (ou o script
+    inteiro) para o HTML da sua LP externa. Não requer React/Vite.
+
+    O que ele faz:
+    - Botão verde fixo no canto inferior direito
+    - Ao clicar, dispara dataLayer event "whatsapp_popup_open"
+    - Abre popup com iframe do formulário GHL (NCyQbX00m3csRV6jg6RB)
+    - Captura UTMs da URL, persiste 24h e injeta no iframe
+    - Ouve o envio do formulário e dispara "ghl_form_submit" no dataLayer
+    - Encaminha UTMs para o dashboard da Lesco (igual ao site principal)
+
+    Configurações obrigatórias:
+    - GTM_ID: substitua por "GTM-NLMKCHH" se quiser carregar o GTM
+    - Se já carrega GTM por outro script, deixe GTM_ID = "".
+    =================================================================
+  -->
+
+  <style>
+    /* ---------- Botão flutuante ---------- */
+    .lesco-whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      width: 56px;
+      height: 56px;
+      border: none;
+      border-radius: 50%;
+      background: #25D366;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .lesco-whatsapp-btn:hover { transform: scale(1.1); }
+    .lesco-whatsapp-btn svg { width: 28px; height: 28px; fill: currentColor; }
+
+    /* ---------- Popup / Modal ---------- */
+    .lesco-whatsapp-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      padding: 16px;
+    }
+    .lesco-whatsapp-overlay.active { display: flex; }
+    .lesco-whatsapp-modal {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      background: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    .lesco-whatsapp-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+      width: 32px;
+      height: 32px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.1);
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .lesco-whatsapp-close:hover { background: rgba(0, 0, 0, 0.2); }
+    .lesco-whatsapp-iframe {
+      width: 100%;
+      height: min(950px, 85vh);
+      border: none;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- ============ CONFIGURAÇÕES ============ -->
+  <script>
+    window.LESCO_WHATSAPP_CONFIG = {
+      // ID do formulário GHL (LeadConnector) que abre no popup
+      formId: "NCyQbX00m3csRV6jg6RB",
+
+      // IDs de rastreamento (preencha ou deixe vazio se já carregar em outro lugar)
+      GTM_ID: "GTM-NLMKCHH",
+      GA4_ID: "", // ex: "G-XXXXXXXXXX" — só se quiser carregar GA4 nativo
+
+      // Endpoints do dashboard Lesco (já existem no site principal)
+      UTM_PUSH_ENDPOINT: "https://lesco-dash.vercel.app/api/utm-push",
+      SUPPLEMENT_ENDPOINT: "https://lesco-dash.vercel.app/api/supplement",
+      UTM_PUSH_TOKEN: "Lescomkt@2026#$",
+      SUPPLEMENT_TOKEN: "LescoGHL2026",
+    };
+  </script>
+
+  <!-- ============ GTM (opcional) ============ -->
+  <script>
+    (function(){
+      var cfg = window.LESCO_WHATSAPP_CONFIG || {};
+      var gtm = cfg.GTM_ID;
+      if (!gtm) return;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var d = document, s = d.createElement("script"), f = d.getElementsByTagName("script")[0];
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtm.js?id=" + encodeURIComponent(gtm);
+      f.parentNode.insertBefore(s, f);
+    })();
+  </script>
+  <noscript>
+    <!-- Substitua GTM-NLMKCHH abaixo se o GTM_ID for diferente -->
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLMKCHH"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+
+  <!-- ============ GA4 nativo (opcional) ============ -->
+  <script>
+    (function(){
+      var cfg = window.LESCO_WHATSAPP_CONFIG || {};
+      var ga4 = cfg.GA4_ID;
+      if (!ga4) return;
+      var d = document, s = d.createElement("script"), f = d.getElementsByTagName("script")[0];
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(ga4);
+      f.parentNode.insertBefore(s, f);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ window.dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag("js", new Date());
+      gtag("config", ga4);
+    })();
+  </script>
+
+  <!-- ============ BOTÃO E MODAL ============ -->
+  <button id="lesco-whatsapp-btn" class="lesco-whatsapp-btn" type="button" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M16.001 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.6 4.46 1.73 6.4L3.2 28.8l6.57-1.72a12.74 12.74 0 0 0 6.23 1.62h.01c7.06 0 12.8-5.74 12.8-12.8s-5.74-12.7-12.81-12.7zm0 23.04h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-3.9 1.02 1.04-3.8-.25-.39a10.58 10.58 0 0 1-1.62-5.66c0-5.86 4.77-10.63 10.64-10.63 2.84 0 5.51 1.11 7.52 3.12a10.56 10.56 0 0 1 3.11 7.52c0 5.87-4.77 10.53-10.64 10.53zm5.83-7.93c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.71.16-.21.32-.82 1.04-1 1.25-.18.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.22-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.72-.98-2.35-.26-.62-.52-.54-.71-.55-.18-.01-.4-.01-.61-.01-.21 0-.56.08-.85.4-.29.32-1.11 1.09-1.11 2.65 0 1.56 1.14 3.07 1.3 3.28.16.21 2.25 3.44 5.46 4.82.76.33 1.36.53 1.82.68.76.24 1.46.21 2.01.13.61-.09 1.89-.77 2.16-1.52.27-.74.27-1.38.19-1.52-.08-.13-.29-.21-.61-.37z"/>
+    </svg>
+  </button>
+
+  <div id="lesco-whatsapp-overlay" class="lesco-whatsapp-overlay" role="dialog" aria-modal="true" aria-label="Formulário de WhatsApp">
+    <div class="lesco-whatsapp-modal">
+      <button id="lesco-whatsapp-close" class="lesco-whatsapp-close" type="button" aria-label="Fechar">×</button>
+      <iframe id="lesco-whatsapp-iframe" class="lesco-whatsapp-iframe" title="[07] [FORM] [WHATSAPP] [POPUP]"></iframe>
+    </div>
+  </div>
+
+  <!-- ============ SCRIPT DE FUNCIONAMENTO ============ -->
+  <script>
+    (function(){
+      "use strict";
+
+      var cfg = window.LESCO_WHATSAPP_CONFIG || {};
+      var FORM_ID = cfg.formId || "NCyQbX00m3csRV6jg6RB";
+      var FORM_BASE_URL = "https://api.leadconnectorhq.com/widget/form/" + FORM_ID;
+      var SCRIPT_SRC = "https://link.msgsndr.com/js/form_embed.js";
+      var LS_PREFIX = "lesco_";
+      var LS_TS_KEY = "lesco_utm_ts";
+      var SS_KEY = "lesco_utm";
+      var TTL_MS = 24 * 60 * 60 * 1000; // 24h
+
+      var URL_PARAMS = [
+        "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term",
+        "campaign_id", "adset_id", "ad_id", "gclid", "fbclid"
+      ];
+      var FIELD_MAP = {
+        utm_source: "utm_source", utm_medium: "utm_medium", utm_campaign: "utm_campaign",
+        utm_content: "utm_content", utm_term: "utm_term", campaign_id: "campaign_id",
+        adset_id: "adset_id", ad_id: "ad_id", gclid: "gclid_field", fbclid: "fbclid",
+        url_conversao: "url_conversao", user_agent_lead: "user_agent_lead"
+      };
+      var IFRAME_FIELD_KEYS = [
+        "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term",
+        "campaign_id", "adset_id", "ad_id", "gclid", "fbclid"
+      ];
+      var SIGNAL_KEYS = ["utm_source", "utm_medium", "utm_campaign", "campaign_id", "gclid", "fbclid"];
+
+      function lsSet(k, v) { try { localStorage.setItem(k, v); } catch(e) {} }
+      function lsGet(k) { try { return localStorage.getItem(k); } catch(e) { return null; } }
+
+      function captureUtms() {
+        var params = new URLSearchParams(window.location.search);
+        var now = Date.now();
+        var hasNewUtm = false;
+        URL_PARAMS.forEach(function(k) {
+          var v = params.get(k);
+          if (v) { lsSet(LS_PREFIX + k, v); hasNewUtm = true; }
+        });
+        if (hasNewUtm) {
+          lsSet(LS_TS_KEY, String(now));
+          lsSet(LS_PREFIX + "url_conversao", window.location.href);
+        }
+        var savedTs = lsGet(LS_TS_KEY);
+        var isRecent = !!savedTs && (now - parseInt(savedTs, 10)) < TTL_MS;
+        var ls = function(k) { return isRecent ? (lsGet(LS_PREFIX + k) || "") : ""; };
+        var values = {};
+        URL_PARAMS.forEach(function(k) {
+          var v = params.get(k) || ls(k);
+          if (v) values[k] = v;
+        });
+        values.url_conversao = ls("url_conversao") || window.location.href;
+        values.user_agent_lead = navigator.userAgent;
+
+        try {
+          if (!sessionStorage.getItem(SS_KEY)) {
+            var hasSignal = SIGNAL_KEYS.some(function(k) { return values[k]; });
+            if (hasSignal) sessionStorage.setItem(SS_KEY, JSON.stringify(values));
+          }
+        } catch(e) {}
+
+        return values;
+      }
+
+      function readSessionUtms() {
+        try {
+          var raw = sessionStorage.getItem(SS_KEY);
+          return raw ? JSON.parse(raw) : null;
+        } catch(e) { return null; }
+      }
+
+      function buildGhlFormUrl() {
+        var values = captureUtms();
+        try {
+          var url = new URL(FORM_BASE_URL);
+          IFRAME_FIELD_KEYS.forEach(function(key) {
+            var val = values[key];
+            if (!val) return;
+            var field = FIELD_MAP[key] || key;
+            url.searchParams.set(field, val);
+          });
+          return url.toString();
+        } catch(e) { return FORM_BASE_URL; }
+      }
+
+      function pushDataLayer(obj) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(obj);
+      }
+
+      function postBeacon(url, payload) {
+        var body = JSON.stringify(payload);
+        try {
+          if (navigator.sendBeacon) {
+            navigator.sendBeacon(url, new Blob([body], { type: "application/json" }));
+            return;
+          }
+        } catch(e) {}
+        fetch(url, { method: "POST", body: body, headers: { "Content-Type": "application/json" }, keepalive: true }).catch(function(){});
+      }
+
+      var alreadySent = false;
+      function onFormSubmit(contactId, email) {
+        if (alreadySent) return;
+        alreadySent = true;
+        var utms = readSessionUtms();
+        if (!utms) return;
+
+        pushDataLayer({
+          event: "ghl_form_submit",
+          formId: FORM_ID,
+          formName: "whatsapp_popup",
+          utm_source: utms.utm_source,
+          utm_medium: utms.utm_medium,
+          utm_campaign: utms.utm_campaign,
+          utm_content: utms.utm_content,
+          utm_term: utms.utm_term,
+          campaign_id: utms.campaign_id,
+          adset_id: utms.adset_id,
+          ad_id: utms.ad_id
+        });
+
+        if (cfg.UTM_PUSH_ENDPOINT) {
+          var pushUrl = cfg.UTM_PUSH_ENDPOINT + "?token=" + encodeURIComponent(cfg.UTM_PUSH_TOKEN || "");
+          postBeacon(pushUrl, { ghl_contact_id: contactId, email: email, ...utms });
+        }
+
+        if (cfg.SUPPLEMENT_ENDPOINT && email) {
+          var suppUrl = cfg.SUPPLEMENT_ENDPOINT + "?token=" + encodeURIComponent(cfg.SUPPLEMENT_TOKEN || "");
+          var suppBody = JSON.stringify({ email: email, ...utms });
+          var suppOpts = { method: "POST", headers: { "Content-Type": "application/json" }, body: suppBody };
+          setTimeout(function() {
+            fetch(suppUrl, suppOpts).then(function(r){ return r.json(); }).then(function(data){
+              if (data && data.moskit && data.moskit.skipped === "deal nao encontrado ainda") {
+                setTimeout(function(){ fetch(suppUrl, suppOpts).catch(function(){}); }, 10000);
+              }
+            }).catch(function(){});
+          }, 5000);
+        }
+      }
+
+      function ensureFormScript() {
+        if (document.querySelector('script[src="' + SCRIPT_SRC + '"]')) return;
+        var s = document.createElement("script");
+        s.src = SCRIPT_SRC;
+        s.async = true;
+        document.body.appendChild(s);
+      }
+
+      var btn = document.getElementById("lesco-whatsapp-btn");
+      var overlay = document.getElementById("lesco-whatsapp-overlay");
+      var closeBtn = document.getElementById("lesco-whatsapp-close");
+      var iframe = document.getElementById("lesco-whatsapp-iframe");
+
+      function openPopup() {
+        pushDataLayer({
+          event: "whatsapp_popup_open",
+          form_id: FORM_ID,
+          page_path: window.location.pathname
+        });
+        ensureFormScript();
+        iframe.src = buildGhlFormUrl();
+        overlay.classList.add("active");
+      }
+
+      function closePopup() {
+        overlay.classList.remove("active");
+        iframe.src = "about:blank";
+      }
+
+      btn.addEventListener("click", openPopup);
+      closeBtn.addEventListener("click", closePopup);
+      overlay.addEventListener("click", function(e) { if (e.target === overlay) closePopup(); });
+      document.addEventListener("keydown", function(e) { if (e.key === "Escape" && overlay.classList.contains("active")) closePopup(); });
+
+      window.addEventListener("message", function(ev) {
+        try {
+          var msg = typeof ev.data === "string" ? JSON.parse(ev.data) : ev.data;
+          if (msg && (msg.event === "form_submitted" || msg.type === "FORM_SUBMITTED")) {
+            var contactId = (msg.contact && msg.contact.id) || (msg.data && msg.data.contact_id) || null;
+            var email = (msg.contact && msg.contact.email) || (msg.data && msg.data.email) || null;
+            onFormSubmit(contactId, email);
+          }
+        } catch(e) {}
+      });
+
+      document.addEventListener("submit", function(ev) {
+        var form = ev.target;
+        var emailEl = form.querySelector("[name=email],[type=email]");
+        onFormSubmit(null, emailEl ? emailEl.value : null);
+      }, true);
+
+      // Captura UTMs assim que o script roda
+      captureUtms();
+    })();
+  </script>
+</body>
+</html>
