@@ -1,8 +1,13 @@
+import { useState, useEffect } from "react";
 import { SEO } from "@/components/SEO";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
-import obrigadoBg from "@/assets/obrigado-bg.webp";
 import logoLight from "@/assets/logo-lesco-light.svg";
 import lescoIcon from "@/assets/lesco-icon.webp";
+import slide1 from "@/assets/geo-obrigado/slide-1.jpg.asset.json";
+import slide2 from "@/assets/geo-obrigado/slide-2.jpg.asset.json";
+import slide3 from "@/assets/geo-obrigado/slide-3.jpg.asset.json";
+
+const slides = [slide1.url, slide2.url, slide3.url];
 
 const socials = [
   { label: "Facebook", href: "https://www.facebook.com/lescorevestimentosbr/", Icon: Facebook },
