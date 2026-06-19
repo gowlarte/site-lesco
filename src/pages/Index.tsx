@@ -66,15 +66,6 @@ const linhas = [
     bw: true,
     sloganOffset: "mt-[15px]",
   },
-  {
-    nome: "Geo",
-    logo: logoGeoRaw,
-    descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
-    slogan: "Revestimento de Pedra Flexível",
-    href: "/geo",
-    imagem: heroGeo,
-    bw: true,
-  },
 ];
 
 const FEATURED_SLUGS = ["casa-mansa", "vaz-batel", "casa-areia"] as const;
