@@ -46,7 +46,7 @@ export default function ObrigadoCatalogoGeo() {
         {slides.map((src, i) => (
           <img
             key={src}
-            src={src}
+            src={assetUrl(src)}
             alt={`Linha Geo ${i + 1}`}
             className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
             style={{ opacity: i === current ? 1 : 0 }}
