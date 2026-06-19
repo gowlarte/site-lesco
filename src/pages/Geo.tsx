@@ -86,7 +86,7 @@ const Geo = () => {
         {heroSlides.map((src, i) => (
           <img
             key={src}
-            src={assetUrl(src)}
+            src={src}
             alt={`Aplicação da pedra flexível Geo ${i + 1}`}
             className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
             style={{ opacity: i === currentSlide ? 1 : 0 }}
