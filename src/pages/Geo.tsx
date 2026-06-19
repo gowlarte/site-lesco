@@ -106,16 +106,16 @@ const Geo = () => {
       </section>
 
       {/* ========== SOBRE A PEDRA ========== */}
-      <section className="bg-light rounded-[10px] overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2">
-          <div className="relative min-h-[320px] lg:min-h-full">
+      <section className="py-20 lg:py-32">
+        <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="flex justify-center">
             <img
               src={imgPedra}
               alt="Pedra mineral, matéria-prima da linha Geo"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="w-full max-w-[420px] h-auto object-contain"
             />
           </div>
-          <div className="px-6 md:px-12 lg:px-16 py-16 lg:py-24">
+          <div>
             <ScrollReveal>
               <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4">
                 Sobre a pedra flexível
