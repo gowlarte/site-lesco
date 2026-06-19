@@ -3,11 +3,11 @@ import { SEO } from "@/components/SEO";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import logoLight from "@/assets/logo-lesco-light.svg";
 import lescoIcon from "@/assets/lesco-icon.webp";
-import slide1 from "@/assets/geo-obrigado/slide-1.jpg.asset.json";
-import slide2 from "@/assets/geo-obrigado/slide-2.jpg.asset.json";
-import slide3 from "@/assets/geo-obrigado/slide-3.jpg.asset.json";
+import slide1 from "@/assets/geo-obrigado/slide-1.jpg";
+import slide2 from "@/assets/geo-obrigado/slide-2.jpg";
+import slide3 from "@/assets/geo-obrigado/slide-3.jpg";
 
-const slides = [slide1.url, slide2.url, slide3.url];
+const slides = [slide1, slide2, slide3];
 
 const socials = [
   { label: "Facebook", href: "https://www.facebook.com/lescorevestimentosbr/", Icon: Facebook },
