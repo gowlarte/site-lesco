@@ -345,7 +345,7 @@ const Geo = () => {
                 </div>
                 <div className="p-5">
                   <h3 className="font-display text-base text-dark font-normal">{t.nome}</h3>
-                  <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-dark/50 mt-1">{t.desc}</p>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-dark mt-1">{t.desc}</p>
                 </div>
               </div>
             ))}
