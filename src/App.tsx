@@ -38,7 +38,7 @@ import NotFound from "./pages/NotFound";
 import ObrigadoCatalogo from "./pages/ObrigadoCatalogo";
 import ObrigadoWhats from "./pages/ObrigadoWhats";
 import Obrigado from "./pages/Obrigado";
-import ObrigadoGeo from "./pages/ObrigadoGeo";
+import ObrigadoCatalogoGeo from "./pages/ObrigadoCatalogoGeo";
 
 const queryClient = new QueryClient();
 
@@ -82,7 +82,7 @@ const AppContent = () => {
           <Route path="/obrigado-orcamento" element={<ObrigadoOrcamento />} />
           <Route path="/obrigado-catalogo" element={<ObrigadoCatalogo />} />
           <Route path="/obrigado-whats" element={<ObrigadoWhats />} />
-          <Route path="/obrigado-geo" element={<ObrigadoGeo />} />
+          <Route path="/obrigado-catalogo-geo" element={<ObrigadoCatalogoGeo />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/projetos/:slug" element={<PortfolioProjeto />} />
           <Route path="/blog" element={<Blog />} />
