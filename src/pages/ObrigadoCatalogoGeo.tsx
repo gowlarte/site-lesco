@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { SEO } from "@/components/SEO";
+import { assetUrl } from "@/lib/assetUrl";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import logoLight from "@/assets/logo-lesco-light.svg";
 import lescoIcon from "@/assets/lesco-icon.webp";
