@@ -116,13 +116,23 @@ const Geo = () => {
           </div>
 
           {/* Direita — formulário GHL (catálogo Geo) */}
-          <div className="bg-white rounded-[10px] overflow-hidden shadow-2xl">
-            <GhlForm
-              formId="jx3SjqfVzHStGmOnyu6H"
-              formName="[12] [FORM] [DOWNLOAD CATALOGO] [GEO]"
-              title="[12] [FORM] [DOWNLOAD CATALOGO] [GEO]"
-              height={1035}
-            />
+          <div className="rounded-[10px] border border-white/10 bg-white/5 backdrop-blur-md p-6 sm:p-8">
+            <div className="mb-6">
+              <h2 className="font-display text-2xl sm:text-3xl text-white font-normal mb-2">
+                Baixe o catálogo Geo
+              </h2>
+              <p className="font-body text-[14px] sm:text-[15px] text-white/70 leading-relaxed">
+                Preencha o formulário para receber em primeira mão o catálogo completo da linha Geo.
+              </p>
+            </div>
+            <div className="bg-white rounded-[10px] overflow-hidden">
+              <GhlForm
+                formId="jx3SjqfVzHStGmOnyu6H"
+                formName="[12] [FORM] [DOWNLOAD CATALOGO] [GEO]"
+                title="[12] [FORM] [DOWNLOAD CATALOGO] [GEO]"
+                height={1035}
+              />
+            </div>
           </div>
         </div>
       </section>
