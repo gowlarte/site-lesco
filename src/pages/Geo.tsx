@@ -8,17 +8,17 @@ import { assetUrl } from "@/lib/assetUrl";
 import logoGeoRaw from "@/assets/linha-italflex-2.svg?raw";
 
 import heroTravertino from "@/assets/geo/geo-hero-travertino.jpg";
-import heroSlide1 from "@/assets/geo-hero/03.jpg.asset.json";
-import heroSlide2 from "@/assets/geo-hero/06.jpg.asset.json";
-import heroSlide3 from "@/assets/geo-hero/07.jpg.asset.json";
-import heroSlide4 from "@/assets/geo-hero/1.jpg.asset.json";
-import heroSlide5 from "@/assets/geo-hero/02.jpg.asset.json";
+import heroSlide1 from "@/assets/geo-hero/03.jpg";
+import heroSlide2 from "@/assets/geo-hero/06.jpg";
+import heroSlide3 from "@/assets/geo-hero/07.jpg";
+import heroSlide4 from "@/assets/geo-hero/1.jpg";
+import heroSlide5 from "@/assets/geo-hero/02.jpg";
 
-const heroSlides = [heroSlide1.url, heroSlide2.url, heroSlide3.url, heroSlide4.url, heroSlide5.url];
+const heroSlides = [heroSlide1, heroSlide2, heroSlide3, heroSlide4, heroSlide5];
 import imgBanheiro from "@/assets/geo/geo-banheiro.jpg";
 import imgSala from "@/assets/geo/geo-sala.jpg";
 import imgFachada from "@/assets/geo/geo-fachada.jpg";
-import imgPedra from "@/assets/geo/geo-pedra-fundo.png.asset.json";
+import imgPedra from "@/assets/geo/geo-pedra-fundo.png";
 
 import swatchTravertino from "@/assets/geo/swatch-travertino.jpg";
 import swatchSlate from "@/assets/geo/swatch-slate.jpg";
