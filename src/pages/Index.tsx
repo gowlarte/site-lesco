@@ -36,7 +36,6 @@ const linhas = [
     slogan: "Revestimento de Pedra Flexível",
     href: "/geo",
     imagem: heroGeo,
-    bw: true,
   },
   {
     nome: "Arquitetura feita para o amanhã",
