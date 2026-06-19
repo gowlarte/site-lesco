@@ -206,22 +206,22 @@ const Geo = () => {
             <table className="w-full min-w-[700px] border-collapse">
               <thead>
                 <tr className="border-b border-dark/10">
-                  <th className="text-left font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark/50 py-3 px-2 md:px-4">
+                  <th className="text-left font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark py-3 px-2 md:px-4">
                     Critério
                   </th>
-                  <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark/50 py-3 px-2 md:px-4">
+                  <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark py-3 px-2 md:px-4">
                     Pedra Natural
                   </th>
-                  <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark/50 py-3 px-2 md:px-4">
+                  <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark py-3 px-2 md:px-4">
                     Revestimento Cerâmico
                   </th>
-                  <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark/50 py-3 px-2 md:px-4">
+                  <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark py-3 px-2 md:px-4">
                     Pintura / Revestimento
                   </th>
-                  <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark/50 py-3 px-2 md:px-4">
+                  <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark py-3 px-2 md:px-4">
                     ACM
                   </th>
-                  <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark/50 py-3 px-2 md:px-4 bg-dark/5">
+                  <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark py-3 px-2 md:px-4 bg-dark/5">
                     Pedra Flexível
                   </th>
                 </tr>
