@@ -16,6 +16,7 @@
   { "slug": "/obrigado-orcamento", "title": "Obrigado | Lesco", "description": "Recebemos sua solicitação de orçamento. Em breve nossa equipe entrará em contato.", "canonical": "https://lesco.com.br/obrigado-orcamento" },
   { "slug": "/obrigado-catalogo", "title": "Obrigado | Lesco", "description": "Recebemos sua solicitação. O catálogo Lesco está a caminho.", "canonical": "https://lesco.com.br/obrigado-catalogo" },
   { "slug": "/obrigado-whats", "title": "Obrigado | Lesco", "description": "Recebemos seu contato. Em breve nossa equipe entrará em contato.", "canonical": "https://lesco.com.br/obrigado-whats" },
+  { "slug": "/obrigado-catalogo-geo", "title": "Catálogo Geo Lesco | Download", "description": "Baixe o Catálogo da linha Geo Lesco e conheça nossas pedras flexíveis.", "canonical": "https://lesco.com.br/obrigado-catalogo-geo" },
   { "slug": "/portfolio", "title": "Portfólio | Lesco", "description": "Projetos realizados com revestimentos Lesco.", "canonical": "https://lesco.com.br/portfolio" },
   { "slug": "/blog", "title": "Blog | Lesco", "description": "Conteúdos sobre arquitetura, revestimentos e tendências.", "canonical": "https://lesco.com.br/blog" },
   { "slug": "/linhas", "title": "Linhas | Lesco", "description": "Conheça todas as linhas de revestimentos premium da Lesco.", "canonical": "https://lesco.com.br/linhas" },
