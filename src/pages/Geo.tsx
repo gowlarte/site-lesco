@@ -82,11 +82,15 @@ const Geo = () => {
 
       {/* ========== HERO + FORMULÁRIO ========== */}
       <section className="relative rounded-[10px] overflow-hidden">
-        <img
-          src={heroTravertino}
-          alt="Parede em pedra flexível Geo com lareira"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        {heroSlides.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt={`Aplicação da pedra flexível Geo ${i + 1}`}
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+            style={{ opacity: i === currentSlide ? 1 : 0 }}
+          />
+        ))}
         <div className="absolute inset-0 bg-[rgba(13,13,13,0.65)]" />
 
         <div className="relative z-10 w-full px-4 sm:px-8 md:px-12 lg:px-16 py-12 sm:py-16 lg:py-20 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
