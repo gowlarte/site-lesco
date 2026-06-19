@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -6,6 +7,13 @@ import { GhlForm } from "@/components/GhlForm";
 import logoGeoRaw from "@/assets/linha-italflex-2.svg?raw";
 
 import heroTravertino from "@/assets/geo/geo-hero-travertino.jpg";
+import heroSlide1 from "@/assets/geo-hero/03.jpg.asset.json";
+import heroSlide2 from "@/assets/geo-hero/06.jpg.asset.json";
+import heroSlide3 from "@/assets/geo-hero/07.jpg.asset.json";
+import heroSlide4 from "@/assets/geo-hero/1.jpg.asset.json";
+import heroSlide5 from "@/assets/geo-hero/02.jpg.asset.json";
+
+const heroSlides = [heroSlide1.url, heroSlide2.url, heroSlide3.url, heroSlide4.url, heroSlide5.url];
 import imgBanheiro from "@/assets/geo/geo-banheiro.jpg";
 import imgSala from "@/assets/geo/geo-sala.jpg";
 import imgFachada from "@/assets/geo/geo-fachada.jpg";
