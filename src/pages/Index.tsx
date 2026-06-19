@@ -143,8 +143,7 @@ const Index = () => {
     const t = setInterval(() => {
       setCurrentSlide((s) => {
         const next = s + 1;
-        // After last slide, loop back to slide 1 (Zhú), skipping slide 0
-        return next >= linhas.length ? 1 : next;
+        return next >= linhas.length ? 0 : next;
       });
     }, SLIDE_INTERVAL);
     return () => clearInterval(t);
