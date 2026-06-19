@@ -135,6 +135,166 @@ const Geo = () => {
         </div>
       </section>
 
+      {/* ========== COMPARATIVO TÉCNICO ========== */}
+      <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
+        <ScrollReveal>
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4 text-center">
+            Comparativo técnico
+          </p>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-4 text-center max-w-3xl mx-auto">
+            Pedra flexível vs. materiais tradicionais.
+          </h2>
+          <p className="font-body text-[14px] text-dark/60 leading-relaxed mb-16 text-center max-w-xl mx-auto">
+            Menor custo consolidado, instalação simplificada e desempenho superior em todos os quesitos críticos.
+          </p>
+
+          {/* Gráfico de custos */}
+          <div className="bg-white rounded-[10px] p-6 md:p-10 lg:p-12 mb-[10px]">
+            <h3 className="font-display text-xl md:text-2xl text-dark mb-2 text-center">
+              Comparativo de custos: Pedra Flexível vs. Pedra Natural
+            </h3>
+            <p className="font-body text-[13px] text-dark/50 text-center mb-10">
+              Menor investimento em todas as etapas — do produto à obra finalizada.
+            </p>
+            <div className="grid grid-cols-5 gap-4 md:gap-6 max-w-4xl mx-auto items-end" style={{ minHeight: '220px' }}>
+              {[
+                { label: 'Preço unitário', flex: 35, nat: 85 },
+                { label: 'Armazenagem', flex: 25, nat: 70 },
+                { label: 'Acessórios', flex: 40, nat: 75 },
+                { label: 'Mão de obra', flex: 35, nat: 75 },
+                { label: 'Custo total', flex: 55, nat: 100 },
+              ].map((item) => (
+                <div key={item.label} className="flex flex-col items-center gap-3">
+                  <div className="flex gap-1.5 md:gap-2 items-end h-[160px] w-full justify-center">
+                    <div
+                      className="w-3 md:w-5 rounded-t bg-[#B8B8B8]"
+                      style={{ height: `${item.flex}%` }}
+                      title={`Pedra Flexível: ${item.flex}%`}
+                    />
+                    <div
+                      className="w-3 md:w-5 rounded-t bg-[#4A4A4A]"
+                      style={{ height: `${item.nat}%` }}
+                      title={`Pedra Natural: ${item.nat}%`}
+                    />
+                  </div>
+                  <span className="font-body text-[10px] md:text-[11px] text-dark/70 text-center leading-tight">
+                    {item.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-center gap-6 mt-8">
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 rounded bg-[#B8B8B8]" />
+                <span className="font-body text-[12px] text-dark/70">Pedra Flexível</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 rounded bg-[#4A4A4A]" />
+                <span className="font-body text-[12px] text-dark/70">Pedra Natural</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Tabela comparativa */}
+          <div className="bg-white rounded-[10px] p-6 md:p-10 lg:p-12 mb-[10px] overflow-x-auto">
+            <h3 className="font-display text-xl md:text-2xl text-dark mb-2 text-center">
+              Comparativo com materiais tradicionais
+            </h3>
+            <p className="font-body text-[13px] text-dark/50 text-center mb-10">
+              Desempenho ambiental, logístico e estrutural em cada categoria.
+            </p>
+            <table className="w-full min-w-[700px] border-collapse">
+              <thead>
+                <tr className="border-b border-dark/10">
+                  <th className="text-left font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark/50 py-3 px-2 md:px-4">
+                    Critério
+                  </th>
+                  <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark/50 py-3 px-2 md:px-4">
+                    Pedra Natural
+                  </th>
+                  <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark/50 py-3 px-2 md:px-4">
+                    Revestimento Cerâmico
+                  </th>
+                  <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark/50 py-3 px-2 md:px-4">
+                    Pintura / Revestimento
+                  </th>
+                  <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark/50 py-3 px-2 md:px-4">
+                    ACM
+                  </th>
+                  <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark/50 py-3 px-2 md:px-4 bg-dark/5">
+                    Pedra Flexível
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="font-body text-[12px] md:text-[13px]">
+                {[
+                  { crit: 'Emissão de CO₂', vals: ['Alta', 'Alta', 'Excesso de HCHO', 'Emissões excessivas', 'Zero poluição'] },
+                  { crit: 'Logística', vals: ['Muito pesado / Alto custo', 'Muito pesado / Alto custo', 'Proteção especial / Alto custo', 'Proteção especial / Alto custo', 'Leve / Baixo custo'] },
+                  { crit: 'Segurança', vals: ['Instalação arriscada', 'Risco de queda / instalação', 'Seguro', 'Inseguro', 'Leve / Fixação segura'] },
+                  { crit: 'Durabilidade', vals: ['Duradoura', 'Duradoura', 'Descascamento fácil', 'Geral', 'Resistente ao gelo e calor'] },
+                  { crit: 'Resistência ao fogo', vals: ['À prova de fogo', 'À prova de fogo', '—', 'Resistente ao fogo', 'Classe A à prova de fogo'] },
+                  { crit: 'Praticidade', vals: ['Construção inconveniente', 'Construção inconveniente', 'Construção fácil', 'Construção inconveniente', 'Construção fácil'] },
+                  { crit: 'Expressividade', vals: ['Expressão limitada', 'Expressão limitada', 'Falta de expressão', 'Falta de expressão', 'Expressivo'] },
+                  { crit: 'Poluição luminosa', vals: ['Comparativamente pequena', 'Sim', 'Comparativamente grande', 'Sim', 'Não'] },
+                ].map((row, i) => (
+                  <tr key={row.crit} className={i % 2 === 0 ? 'bg-dark/[0.02]' : ''}>
+                    <td className="py-3 px-2 md:px-4 font-medium text-dark">{row.crit}</td>
+                    {row.vals.map((v, j) => (
+                      <td
+                        key={j}
+                        className={`py-3 px-2 md:px-4 text-center text-dark/70 ${j === 4 ? 'bg-dark/5 font-medium text-dark' : ''}`}
+                      >
+                        {v}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Features e vantagens */}
+          <div className="bg-dark rounded-[10px] p-6 md:p-10 lg:p-12">
+            <h3 className="font-display text-xl md:text-2xl text-white mb-2 text-center">
+              Vantagens do produto
+            </h3>
+            <p className="font-body text-[13px] text-white/50 text-center mb-10">
+              Tecnologia mineral que une flexibilidade, resistência e sustentabilidade.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mb-10 max-w-3xl mx-auto">
+              {[
+                'Flexível e dobrável',
+                'Alta resistência',
+                'Resistência ao envelhecimento',
+                'Impermeável / À prova de fogo / Umidade',
+                'Leve',
+                'Ecológico',
+              ].map((f) => (
+                <div
+                  key={f}
+                  className="flex items-center gap-2 bg-white/10 rounded-[10px] px-4 py-3"
+                >
+                  <span className="w-2 h-2 rounded-full bg-white/60 shrink-0" />
+                  <span className="font-body text-[12px] md:text-[13px] text-white/85">{f}</span>
+                </div>
+              ))}
+            </div>
+            <ul className="space-y-3 max-w-3xl mx-auto">
+              {[
+                'Não precisa remover a base antiga: aplica diretamente, sem geração de resíduos sólidos e sem incômodo.',
+                'Alta produtividade, baixo custo, prazo de construção rápido, instalação simples e excelente acabamento.',
+                'Produtos sob medida, alinhados aos costumes e estilos locais.',
+              ].map((item, i) => (
+                <li key={i} className="flex gap-3 items-start">
+                  <span className="text-white/40 text-[14px] leading-relaxed shrink-0">★</span>
+                  <span className="font-body text-[13px] md:text-[14px] text-white/70 leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </ScrollReveal>
+      </section>
+
       {/* ========== APLICAÇÕES ========== */}
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
