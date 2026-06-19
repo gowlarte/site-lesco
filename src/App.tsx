@@ -82,7 +82,7 @@ const AppContent = () => {
           <Route path="/obrigado-orcamento" element={<ObrigadoOrcamento />} />
           <Route path="/obrigado-catalogo" element={<ObrigadoCatalogo />} />
           <Route path="/obrigado-whats" element={<ObrigadoWhats />} />
-          <Route path="/obrigado-geo" element={<ObrigadoGeo />} />
+          <Route path="/obrigado-catalogo-geo" element={<ObrigadoCatalogoGeo />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/projetos/:slug" element={<PortfolioProjeto />} />
           <Route path="/blog" element={<Blog />} />
