@@ -276,7 +276,7 @@ const Index = () => {
 
             {/* Static label below */}
             <span className="hero-label-in mt-5 md:mt-10 font-display font-light text-white text-[11px] md:text-[13px] tracking-[0.4em] uppercase">
-              Nova linha em breve
+              {active.nome === "Geo" ? "Novo lançamento" : "Nova linha em breve"}
             </span>
 
             {/* CTA "Saiba mais" */}
