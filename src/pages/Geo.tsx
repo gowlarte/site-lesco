@@ -9,7 +9,7 @@ import heroTravertino from "@/assets/geo/geo-hero-travertino.jpg";
 import imgBanheiro from "@/assets/geo/geo-banheiro.jpg";
 import imgSala from "@/assets/geo/geo-sala.jpg";
 import imgFachada from "@/assets/geo/geo-fachada.jpg";
-import imgPedra from "@/assets/geo/geo-pedra.jpg";
+import imgPedra from "@/assets/geo/geo-pedra-fundo.png.asset.json";
 
 import swatchTravertino from "@/assets/geo/swatch-travertino.jpg";
 import swatchSlate from "@/assets/geo/swatch-slate.jpg";
@@ -110,7 +110,7 @@ const Geo = () => {
         <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="flex justify-center">
             <img
-              src={imgPedra}
+              src={imgPedra.url}
               alt="Pedra mineral, matéria-prima da linha Geo"
               className="w-full max-w-[420px] h-auto object-contain"
             />
