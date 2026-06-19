@@ -112,7 +112,7 @@ const Geo = () => {
             <img
               src={imgPedra.url}
               alt="Pedra mineral, matéria-prima da linha Geo"
-              className="w-full max-w-[420px] h-auto object-contain"
+              className="w-full max-w-[546px] h-auto object-contain"
             />
           </div>
           <div>
