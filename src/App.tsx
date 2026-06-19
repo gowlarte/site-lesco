@@ -38,7 +38,7 @@ import NotFound from "./pages/NotFound";
 import ObrigadoCatalogo from "./pages/ObrigadoCatalogo";
 import ObrigadoWhats from "./pages/ObrigadoWhats";
 import Obrigado from "./pages/Obrigado";
-import ObrigadoGeo from "./pages/ObrigadoGeo";
+import ObrigadoCatalogoGeo from "./pages/ObrigadoCatalogoGeo";
 
 const queryClient = new QueryClient();
 

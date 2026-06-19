@@ -17,13 +17,13 @@ const TikTok = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export default function ObrigadoGeo() {
+export default function ObrigadoCatalogoGeo() {
   return (
     <>
       <SEO
         title="Catálogo Geo Lesco | Download"
         description="Baixe o Catálogo da linha Geo Lesco e conheça nossas pedras flexíveis."
-        path="/obrigado-geo"
+        path="/obrigado-catalogo-geo"
       />
 
       {/* Hero */}
