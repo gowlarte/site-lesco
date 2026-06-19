@@ -177,7 +177,7 @@ const Geo = () => {
                       title={`Pedra Natural: ${item.nat}%`}
                     />
                   </div>
-                  <span className="font-body text-[10px] md:text-[11px] text-dark/70 text-center leading-tight">
+                  <span className="font-body text-[10px] md:text-[11px] text-dark text-center leading-tight">
                     {item.label}
                   </span>
                 </div>
@@ -186,11 +186,11 @@ const Geo = () => {
             <div className="flex justify-center gap-6 mt-8">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded bg-[#B8B8B8]" />
-                <span className="font-body text-[12px] text-dark/70">Pedra Flexível</span>
+                <span className="font-body text-[12px] text-dark">Pedra Flexível</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded bg-[#4A4A4A]" />
-                <span className="font-body text-[12px] text-dark/70">Pedra Natural</span>
+                <span className="font-body text-[12px] text-dark">Pedra Natural</span>
               </div>
             </div>
           </div>
