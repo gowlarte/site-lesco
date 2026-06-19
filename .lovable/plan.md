@@ -1,20 +1,17 @@
-## Objetivo
-Reordenar o slideshow do hero da home page para que o primeiro slide seja da linha **Geo** e ajustar o texto de destaque para "Novo lançamento", mantendo o link para a landing page `/geo` (que já contém o formulário do catálogo).
+## Plano
 
-## Alterações em `src/pages/Index.tsx`
+1. **Corrigir a causa provável**
+   - Trocar os imports de `.asset.json` usados nas páginas GEO para URLs absolutas derivadas do domínio atual (`window.location.origin + /__l5e/...`).
+   - Isso evita que as imagens apontem para caminho relativo em contextos onde o preview/produção não resolve corretamente os assets externos.
 
-1. **Reordenar o array `linhas`**: Mover o objeto da Geo (atualmente índice 3) para o primeiro lugar (índice 0). Os demais slides (Altwood, Zhú, Echo) descem uma posição cada.
+2. **Ajustar páginas afetadas**
+   - Atualizar `src/pages/Geo.tsx` para o slideshow do hero e a imagem da pedra.
+   - Atualizar `src/pages/ObrigadoCatalogoGeo.tsx` para o slideshow da página de obrigado.
 
-2. **Ajustar lógica de autoplay**: O timer atual pula o slide 0 ao dar a volta (`return next >= linhas.length ? 1 : next`). Como o slide 0 agora é Geo (e deve ser exibido normalmente no loop), remover essa lógica de skip para que o autoplay percorra todos os slides em ordem: `return next >= linhas.length ? 0 : next`.
+3. **Manter fallback seguro para SSG**
+   - Criar uma pequena função utilitária local ou compartilhada que retorne a URL original durante prerender/server-side e a URL absoluta no navegador.
+   - Sem mexer nas imagens antigas que já funcionam.
 
-3. **Alterar label do slide Geo**: No bloco condicional que renderiza o conteúdo dos slides "em breve" (Echo / Geo / Zhú), trocar o texto estático:
-   - De: `Nova linha em breve`
-   - Para: `Novo lançamento`
-
-4. **Manter CTA**: O botão "Saiba mais" do slide Geo já aponta para `/geo`, que é a landing page com o formulário de catálogo — nenhuma mudança necessária no link.
-
-## Resultado esperado
-- O carrossel da home inicia no slide Geo.
-- O label abaixo do logo exibe "Novo lançamento".
-- O autoplay percorre todos os slides em sequência contínua.
-- O CTA leva o usuário para `/geo` (formulário do catálogo).
+4. **Validar**
+   - Abrir a página `/geo` no preview e conferir via navegador se as imagens renderizam com `naturalWidth > 0`.
+   - Verificar também `/obrigado-catalogo-geo` para confirmar o slideshow da página de obrigado.
