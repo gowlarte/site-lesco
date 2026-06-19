@@ -62,6 +62,15 @@ const texturas = [
 ];
 
 const Geo = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px] space-y-[10px]">
       <SEO
