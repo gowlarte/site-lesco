@@ -110,7 +110,7 @@ const Geo = () => {
         <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="flex justify-center">
             <img
-              src={imgPedra}
+              src={imgPedra.url}
               alt="Pedra mineral, matéria-prima da linha Geo"
               className="w-full max-w-[420px] h-auto object-contain"
             />
