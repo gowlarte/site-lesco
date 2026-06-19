@@ -242,7 +242,7 @@ const Geo = () => {
                     {row.vals.map((v, j) => (
                       <td
                         key={j}
-                        className={`py-3 px-2 md:px-4 text-center text-dark/70 ${j === 4 ? 'bg-dark/5 font-medium text-dark' : ''}`}
+                        className={`py-3 px-2 md:px-4 text-center text-dark ${j === 4 ? 'bg-dark/5 font-medium' : ''}`}
                       >
                         {v}
                       </td>
