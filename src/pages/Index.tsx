@@ -30,6 +30,15 @@ import { projetos } from "@/data/projetos";
 
 const linhas = [
   {
+    nome: "Geo",
+    logo: logoGeoRaw,
+    descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
+    slogan: "Revestimento de Pedra Flexível",
+    href: "/geo",
+    imagem: heroGeo,
+    bw: true,
+  },
+  {
     nome: "Arquitetura feita para o amanhã",
     logo: logoMantoRaw,
     descricao: "Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto.",
