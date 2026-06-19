@@ -9,7 +9,7 @@ import heroTravertino from "@/assets/geo/geo-hero-travertino.jpg";
 import imgBanheiro from "@/assets/geo/geo-banheiro.jpg";
 import imgSala from "@/assets/geo/geo-sala.jpg";
 import imgFachada from "@/assets/geo/geo-fachada.jpg";
-import imgPedra from "@/assets/geo/geo-pedra.jpg";
+import imgPedra from "@/assets/geo/geo-pedra-fundo.png.asset.json";
 
 import swatchTravertino from "@/assets/geo/swatch-travertino.jpg";
 import swatchSlate from "@/assets/geo/swatch-slate.jpg";
