@@ -153,7 +153,7 @@ const Geo = () => {
             <h3 className="font-display text-xl md:text-2xl text-dark mb-2 text-center">
               Comparativo de custos: Pedra Flexível vs. Pedra Natural
             </h3>
-            <p className="font-body text-[13px] text-dark/50 text-center mb-10">
+            <p className="font-body text-[13px] text-dark text-center mb-10">
               Menor investimento em todas as etapas — do produto à obra finalizada.
             </p>
             <div className="grid grid-cols-5 gap-4 md:gap-6 max-w-4xl mx-auto items-end" style={{ minHeight: '220px' }}>
