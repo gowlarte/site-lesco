@@ -23,6 +23,15 @@ const TikTok = ({ className }: { className?: string }) => (
 );
 
 export default function ObrigadoCatalogoGeo() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <SEO
@@ -32,15 +41,18 @@ export default function ObrigadoCatalogoGeo() {
       />
 
       {/* Hero */}
-      <section
-        className="relative min-h-[80vh] flex items-center justify-center rounded-[10px] mx-[10px] mt-[100px] overflow-hidden"
-        style={{
-          backgroundImage: `url(${obrigadoBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
+      <section className="relative min-h-[80vh] flex items-center justify-center rounded-[10px] mx-[10px] mt-[100px] overflow-hidden">
+        {slides.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt={`Linha Geo ${i + 1}`}
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+            style={{ opacity: i === current ? 1 : 0 }}
+          />
+        ))}
         <div className="absolute inset-0 bg-black/60" />
+
 
         <div className="relative z-10 text-center px-6 max-w-2xl mx-auto py-24">
           <img src={logoLight} alt="Lesco" className="h-12 md:h-14 mx-auto" />
