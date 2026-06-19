@@ -107,7 +107,7 @@ const Geo = () => {
 
       {/* ========== SOBRE A PEDRA ========== */}
       <section className="py-20 lg:py-32">
-        <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="flex justify-center">
             <img
               src={imgPedra.url}
