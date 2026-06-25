@@ -34,6 +34,7 @@ import Catalogo from "./pages/Catalogo";
 import ObrigadoOrcamento from "./pages/ObrigadoOrcamento";
 import LinhaEmBreve from "./pages/LinhaEmBreve";
 import Geo from "./pages/Geo";
+import LiveLesco from "./pages/LiveLesco";
 import NotFound from "./pages/NotFound";
 import ObrigadoCatalogo from "./pages/ObrigadoCatalogo";
 import ObrigadoWhats from "./pages/ObrigadoWhats";
@@ -93,6 +94,7 @@ const AppContent = () => {
           <Route path="/zhu" element={<LinhaEmBreve />} />
           <Route path="/echo" element={<LinhaEmBreve />} />
           <Route path="/geo" element={<Geo />} />
+          <Route path="/live-lesco" element={<LiveLesco />} />
           <Route path="/em-breve/:linha" element={<LinhaEmBreve />} />
 
           {/* Redirects (SPA equivalente de 301) — slugs antigos */}
