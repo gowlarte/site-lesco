@@ -195,27 +195,22 @@ const LiveLescoAmostra = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[10px]">
             {projetosDestaque.map((p) => (
-              <Link
-                key={p.slug}
-                to={`/projetos/${p.slug}`}
-                className="group cursor-pointer flex flex-col"
-              >
+              <div key={p.slug} className="flex flex-col">
                 <div className="aspect-[4/3] rounded-[10px] overflow-hidden relative">
                   <img
                     src={p.imagem}
                     alt={p.nome}
                     loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
                 </div>
                 <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/60 mt-3 ml-1">
                   {p.linha}
                 </p>
-                <h3 className="font-display text-lg font-normal text-dark ml-1 group-hover:opacity-70 transition-opacity">
+                <h3 className="font-display text-lg font-normal text-dark ml-1">
                   {p.nome}
                 </h3>
-              </Link>
+              </div>
             ))}
           </div>
         </ScrollReveal>
