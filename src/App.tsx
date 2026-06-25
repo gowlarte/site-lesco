@@ -96,6 +96,7 @@ const AppContent = () => {
           <Route path="/echo" element={<LinhaEmBreve />} />
           <Route path="/geo" element={<Geo />} />
           <Route path="/live-lesco" element={<LiveLesco />} />
+          <Route path="/live-lesco-amostra" element={<LiveLescoAmostra />} />
           <Route path="/em-breve/:linha" element={<LinhaEmBreve />} />
 
           {/* Redirects (SPA equivalente de 301) — slugs antigos */}
