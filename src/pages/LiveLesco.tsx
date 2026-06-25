@@ -4,7 +4,7 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { GhlForm } from "@/components/GhlForm";
 import { projetos } from "@/data/projetos";
 
-import heroLive from "@/assets/hero-home-altwood.webp";
+import heroLive from "@/assets/projetos/casa-areia-2.webp";
 
 import iconAntiMofo from "@/assets/madeira-ecologica/icon-anti-mofo.svg?raw";
 import iconHidrofobico from "@/assets/madeira-ecologica/icon-hidrofobico.svg?raw";
