@@ -1,4 +1,4 @@
-// Imagens e projetos não são clicáveis nesta LP
+import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { GhlForm } from "@/components/GhlForm";
