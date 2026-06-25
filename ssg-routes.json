@@ -22,5 +22,7 @@
   { "slug": "/linhas", "title": "Linhas | Lesco", "description": "Conheça todas as linhas de revestimentos premium da Lesco.", "canonical": "https://lesco.com.br/linhas" },
   { "slug": "/zhu", "title": "Zhú — Arquitetura em Bambu (em breve) | Lesco", "description": "Zhú: nova linha Lesco em bambu — revestimentos, forros e decorativos. Cadastre-se e seja avisado no lançamento.", "canonical": "https://lesco.com.br/zhu" },
   { "slug": "/echo", "title": "Echo — Tecido Acústico Moldado (em breve) | Lesco", "description": "Echo: linha Lesco de tecido acústico moldado para estúdios, home cinemas e ambientes corporativos. Em breve.", "canonical": "https://lesco.com.br/echo" },
-  { "slug": "/geo", "title": "Geo — Revestimento Flexível (em breve) | Lesco", "description": "Geo: revestimento flexível Lesco para fachadas, áreas molhadas e interiores. Em breve no portfólio.", "canonical": "https://lesco.com.br/geo" }
+  { "slug": "/geo", "title": "Geo — Revestimento Flexível (em breve) | Lesco", "description": "Geo: revestimento flexível Lesco para fachadas, áreas molhadas e interiores. Em breve no portfólio.", "canonical": "https://lesco.com.br/geo" },
+  { "slug": "/live-lesco", "title": "Live Lesco — Madeira Plástica Ecológica de Alto Padrão", "description": "Solicite sua amostra da Lesco. Revestimentos em WPC Premium que unem sofisticação, tecnologia e sustentabilidade.", "canonical": "https://lesco.com.br/live-lesco" },
+  { "slug": "/live-lesco-amostra", "title": "Solicite sua Amostra — Live Lesco | Lesco", "description": "Solicite uma amostra da Lesco. Prioridade para arquitetos e construtoras com projetos em andamento.", "canonical": "https://lesco.com.br/live-lesco-amostra" }
 ]
