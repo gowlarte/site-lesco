@@ -149,7 +149,7 @@ const Geo = () => {
           </div>
           <div>
             <ScrollReveal>
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4">
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark mb-4">
                 Sobre a pedra flexível
               </p>
               <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-6">
