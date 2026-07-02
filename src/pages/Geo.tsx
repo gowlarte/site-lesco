@@ -176,7 +176,7 @@ const Geo = () => {
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-4 text-center max-w-3xl mx-auto">
             Pedra flexível vs. materiais tradicionais.
           </h2>
-          <p className="font-body text-[14px] text-dark/60 leading-relaxed mb-16 text-center max-w-xl mx-auto">
+          <p className="font-body text-[14px] text-dark leading-relaxed mb-16 text-center max-w-xl mx-auto">
             Menor custo consolidado, instalação simplificada e desempenho superior em todos os quesitos críticos.
           </p>
 
@@ -232,7 +232,7 @@ const Geo = () => {
             <h3 className="font-display text-xl md:text-2xl text-dark mb-2 text-center">
               Comparativo com materiais tradicionais
             </h3>
-            <p className="font-body text-[13px] text-dark/50 text-center mb-10">
+            <p className="font-body text-[13px] text-dark text-center mb-10">
               Desempenho ambiental, logístico e estrutural em cada categoria.
             </p>
             <table className="w-full min-w-[700px] border-collapse">
@@ -417,7 +417,7 @@ const Geo = () => {
             <h2 className="font-display text-3xl md:text-4xl lg:text-[48px] font-normal leading-[1.15] text-dark mb-6">
               Baixe o catálogo<br />de cores da Geo.
             </h2>
-            <p className="font-body text-[15px] text-dark/70 leading-relaxed mb-10 max-w-xl mx-auto">
+            <p className="font-body text-[15px] text-dark leading-relaxed mb-10 max-w-xl mx-auto">
               Receba o catálogo completo com todas as coleções, formatos e especificações da linha de pedra flexível.
             </p>
             <a
