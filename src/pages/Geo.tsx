@@ -433,7 +433,7 @@ const Geo = () => {
             <div className="mt-10">
               <Link
                 to="/linhas"
-                className="font-display text-[12px] uppercase tracking-[0.08em] text-dark/60 hover:text-dark transition-colors"
+                className="font-display text-[12px] uppercase tracking-[0.08em] text-dark hover:text-dark transition-colors"
               >
                 Ver todas as linhas
               </Link>
