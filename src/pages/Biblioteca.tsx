@@ -1,8 +1,8 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { GhlForm } from "@/components/GhlForm";
 import { projetos } from "@/data/projetos";
 import { site } from "@/config/site";
 
@@ -36,15 +36,7 @@ const projetosDestaque = FEATURED_SLUGS.map(
 );
 
 const Biblioteca = () => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://link.msgsndr.com/js/form_embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+
 
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px] space-y-[10px]">
@@ -81,22 +73,11 @@ const Biblioteca = () => {
 
           {/* Direita — formulário (iframe atual da biblioteca) */}
           <div className="rounded-[10px] overflow-hidden">
-            <iframe
-              src={`https://api.leadconnectorhq.com/widget/form/${site.forms.biblioteca}`}
-              style={{ width: "100%", height: "862px", border: "none", borderRadius: "3px" }}
-              id={`inline-${site.forms.biblioteca}`}
-              data-layout="{'id':'INLINE'}"
-              data-trigger-type="alwaysShow"
-              data-trigger-value=""
-              data-activation-type="alwaysActivated"
-              data-activation-value=""
-              data-deactivation-type="neverDeactivate"
-              data-deactivation-value=""
-              data-form-name="[01] [FORM] [ACESSAR BIBLIOTECA]"
-              data-height="862"
-              data-layout-iframe-id={`inline-${site.forms.biblioteca}`}
-              data-form-id={site.forms.biblioteca}
+            <GhlForm
+              formId={site.forms.biblioteca}
+              formName="[01] [FORM] [ACESSAR BIBLIOTECA]"
               title="[01] [FORM] [ACESSAR BIBLIOTECA]"
+              height={862}
             />
           </div>
         </div>
@@ -165,7 +146,7 @@ const Biblioteca = () => {
         <ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 text-center">
             <div className="flex flex-col items-center">
-              <AnimatedCounter end={10} suffix="+" />
+              <AnimatedCounter end={15} suffix="+" />
               <span className="font-body text-[13px] uppercase tracking-[0.12em] text-primary-foreground/60 mt-3">
                 Anos de inovação
               </span>
@@ -173,7 +154,7 @@ const Biblioteca = () => {
             <div className="flex flex-col items-center">
               <AnimatedCounter end={100} suffix="%" />
               <span className="font-body text-[13px] uppercase tracking-[0.12em] text-primary-foreground/60 mt-3">
-                Produtos reciclados
+                Produtos recicláveis
               </span>
             </div>
             <div className="flex flex-col items-center">

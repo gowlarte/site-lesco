@@ -858,7 +858,7 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!assets/|fonts/).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]

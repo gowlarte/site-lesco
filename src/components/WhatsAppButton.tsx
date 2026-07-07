@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
+import { buildGhlFormUrl } from "@/lib/utm";
 import { site } from "@/config/site";
 
-const FORM_URL = `https://api.leadconnectorhq.com/widget/form/${site.forms.whatsappPopup}`;
+const FORM_BASE_URL = `https://api.leadconnectorhq.com/widget/form/${site.forms.whatsappPopup}`;
+const FORM_URL = FORM_BASE_URL;
 const SCRIPT_SRC = "https://link.msgsndr.com/js/form_embed.js";
 
 function ensureFormScript() {
@@ -15,9 +17,13 @@ function ensureFormScript() {
 
 export function WhatsAppButton() {
   const [open, setOpen] = useState(false);
+  const [formSrc, setFormSrc] = useState(FORM_URL);
 
   useEffect(() => {
-    if (open) ensureFormScript();
+    if (open) {
+      ensureFormScript();
+      setFormSrc(buildGhlFormUrl(FORM_BASE_URL));
+    }
   }, [open]);
 
   useEffect(() => {
@@ -33,7 +39,15 @@ export function WhatsAppButton() {
       {/* Floating button */}
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'whatsapp_popup_open',
+            form_id: site.forms.whatsappPopup,
+            page_path: window.location.pathname,
+          });
+          setOpen(true);
+        }}
         aria-label="Falar no WhatsApp"
         className="fixed bottom-[20px] right-[20px] z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform duration-300 hover:scale-110"
         style={{ transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
@@ -62,7 +76,7 @@ export function WhatsAppButton() {
               <X size={18} />
             </button>
             <iframe
-              src={FORM_URL}
+              src={formSrc}
               title="[07] [FORM] [WHATSAPP] [POPUP]"
               className="w-full"
               style={{ height: "min(950px, 85vh)", border: "none", borderRadius: "3px" }}

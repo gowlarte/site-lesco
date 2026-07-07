@@ -12,6 +12,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { PageTransitionLoader } from "@/components/PageTransitionLoader";
 import { usePageAssets } from "@/hooks/usePageAssets";
 import { usePageTracking } from "@/hooks/usePageTracking";
+import { useUtmForwarder } from "@/hooks/useUtmForwarder";
 import Index from "./pages/Index";
 import QuemSomos from "./pages/QuemSomos";
 import MadeiraWPC from "./pages/MadeiraWPC";
@@ -32,10 +33,14 @@ import Orcamento from "./pages/Orcamento";
 import Catalogo from "./pages/Catalogo";
 import ObrigadoOrcamento from "./pages/ObrigadoOrcamento";
 import LinhaEmBreve from "./pages/LinhaEmBreve";
+import Geo from "./pages/Geo";
+import LiveLesco from "./pages/LiveLesco";
+import LiveLescoAmostra from "./pages/LiveLescoAmostra";
 import NotFound from "./pages/NotFound";
 import ObrigadoCatalogo from "./pages/ObrigadoCatalogo";
 import ObrigadoWhats from "./pages/ObrigadoWhats";
 import Obrigado from "./pages/Obrigado";
+import ObrigadoCatalogoGeo from "./pages/ObrigadoCatalogoGeo";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +51,7 @@ const AppContent = () => {
   const isHome = location.pathname === "/";
 
   usePageTracking();
+  useUtmForwarder();
 
 
   return (
@@ -76,7 +82,9 @@ const AppContent = () => {
           <Route path="/orcamento" element={<Orcamento />} />
           <Route path="/obrigado" element={<Obrigado />} />
           <Route path="/obrigado-orcamento" element={<ObrigadoOrcamento />} />
+          <Route path="/obrigado-catalogo" element={<ObrigadoCatalogo />} />
           <Route path="/obrigado-whats" element={<ObrigadoWhats />} />
+          <Route path="/obrigado-catalogo-geo" element={<ObrigadoCatalogoGeo />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/projetos/:slug" element={<PortfolioProjeto />} />
           <Route path="/blog" element={<Blog />} />
@@ -86,7 +94,9 @@ const AppContent = () => {
           {/* Linhas em breve */}
           <Route path="/zhu" element={<LinhaEmBreve />} />
           <Route path="/echo" element={<LinhaEmBreve />} />
-          <Route path="/geo" element={<LinhaEmBreve />} />
+          <Route path="/geo" element={<Geo />} />
+          <Route path="/live-lesco" element={<LiveLesco />} />
+          <Route path="/live-lesco-amostra" element={<LiveLescoAmostra />} />
           <Route path="/em-breve/:linha" element={<LinhaEmBreve />} />
 
           {/* Redirects (SPA equivalente de 301) — slugs antigos */}

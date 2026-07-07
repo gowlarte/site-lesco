@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { GhlForm } from "@/components/GhlForm";
 import { projetos } from "@/data/projetos";
-import { site } from "@/config/site";
 
-import heroOrcamento from "@/assets/hero-home-altwood.webp";
+import heroAmostra from "@/assets/hero-facade.webp";
 
 import iconAntiMofo from "@/assets/madeira-ecologica/icon-anti-mofo.svg?raw";
 import iconHidrofobico from "@/assets/madeira-ecologica/icon-hidrofobico.svg?raw";
@@ -14,56 +12,92 @@ import iconPragas from "@/assets/madeira-ecologica/icon-resistente-pragas.svg?ra
 import iconGarantia from "@/assets/madeira-ecologica/icon-garantia.svg?raw";
 import iconReciclado from "@/assets/madeira-ecologica/icon-reciclado.svg?raw";
 
-const beneficios = [
+const prioridades = [
   {
     svg: iconGarantia,
-    label: "10 anos de garantia",
-    description: "Uma década de garantia que reflete a confiança na durabilidade do produto.",
-  },
-  {
-    svg: iconReciclado,
-    label: "100% reciclável",
-    description: "Fabricado com materiais reciclados, para uma arquitetura mais responsável.",
+    label: "Projetos em andamento",
+    description:
+      "Damos prioridade a quem já tem um projeto em execução e precisa avaliar a peça na prática.",
   },
   {
     svg: iconHidrofobico,
-    label: "Hidrofóbico",
-    description: "Superfície que repele água, ideal para áreas externas e ambientes úmidos.",
-  },
-  {
-    svg: iconAntiMofo,
-    label: "Anti-mofo",
-    description: "Tratamento que inibe o crescimento de fungos e bactérias ao longo dos anos.",
+    label: "Arquitetos",
+    description:
+      "Profissionais de arquitetura especificando WPC Premium para obras de alto padrão.",
   },
   {
     svg: iconPragas,
-    label: "Resistente a pragas",
-    description: "Composição naturalmente resistente a cupins e insetos, sem químicos extras.",
+    label: "Construtoras",
+    description:
+      "Construtoras e incorporadoras com demandas reais para fachadas, decks e revestimentos.",
+  },
+  {
+    svg: iconAntiMofo,
+    label: "Especificação técnica",
+    description:
+      "A amostra ajuda você a validar cor, textura e acabamento antes de fechar a especificação.",
+  },
+  {
+    svg: iconReciclado,
+    label: "Compromisso sustentável",
+    description:
+      "Material 100% reciclável: leve a sustentabilidade do projeto às mãos do cliente.",
+  },
+];
+
+const diferenciais = [
+  {
+    svg: iconHidrofobico,
+    label: "Água e resistência",
+    description:
+      "A madeira tradicional expande com a umidade. O WPC mantém sua estabilidade estrutural, evitando deformações.",
+  },
+  {
+    svg: iconGarantia,
+    label: "Durabilidade e resistência",
+    description:
+      "Enquanto a madeira convencional apodrece com o tempo, o WPC exibe robustez e imunidade à deterioração.",
+  },
+  {
+    svg: iconPragas,
+    label: "Resistência a fungos e pragas",
+    description:
+      "Cupins, mofo e fungos são desafios para a madeira. O WPC resiste a esses elementos, garantindo longa vida útil.",
+  },
+  {
+    svg: iconAntiMofo,
+    label: "Estabilidade e manutenção",
+    description:
+      "A madeira demanda manutenção frequente. O WPC tem alta estabilidade sob luz solar e exige pouca manutenção.",
+  },
+  {
+    svg: iconReciclado,
+    label: "Sustentável",
+    description:
+      "Fabricado com fibras de madeira e resinas de alta performance, 100% reciclável para uma arquitetura responsável.",
   },
 ];
 
 const FEATURED_SLUGS = ["casa-mansa", "casa-areia", "vaz-batel"] as const;
 const projetosDestaque = FEATURED_SLUGS.map(
   (slug) => projetos.find((p) => p.slug === slug)!,
-);
+).filter(Boolean);
 
-const Orcamento = () => {
-
-
+const LiveLescoAmostra = () => {
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px] space-y-[10px]">
       <SEO
-        title="Solicitar Orçamento — Lesco"
-        description="Solicite um orçamento personalizado para seu projeto. Nossa equipe entrará em contato para elaborar a melhor solução em revestimentos Lesco."
-        path="/orcamento"
-        image={heroOrcamento}
+        title="Solicite sua Amostra — Live Lesco | Madeira Plástica WPC Premium"
+        description="Solicite uma amostra da Lesco. Prioridade para arquitetos e construtoras com projetos em andamento. Avalie cor, textura e acabamento do WPC Premium na prática."
+        path="/live-lesco-amostra"
+        image={heroAmostra}
       />
 
       {/* ========== HERO + FORMULÁRIO ========== */}
       <section className="relative rounded-[10px] overflow-hidden">
         <img
-          src={heroOrcamento}
-          alt="Revestimentos em madeira ecológica Lesco"
+          src={heroAmostra}
+          alt="Fachada em madeira plástica WPC Premium Lesco"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-[rgba(13,13,13,0.65)]" />
@@ -72,40 +106,70 @@ const Orcamento = () => {
           {/* Esquerda — texto */}
           <div className="text-white">
             <span className="inline-block font-display text-white bg-white/15 backdrop-blur rounded-full px-3 py-1.5 text-[10px] md:text-[11px] tracking-[0.18em] uppercase mb-8">
-              Orçamento sem compromisso
+              Solicite sua amostra
             </span>
             <h1 className="font-display font-light text-4xl md:text-5xl lg:text-[60px] leading-[1.05] tracking-[-0.02em] mb-6">
-              Crie um ambiente exclusivo com elegância e autenticidade.
+              Sinta a qualidade da Lesco nas suas mãos.
             </h1>
-            <p className="font-body text-[15px] md:text-[17px] text-white/80 leading-relaxed max-w-md">
-              Solicite um orçamento e faça parte da transformação com revestimentos
-              em madeira ecológica de alto padrão.
+            <p className="font-body text-[15px] md:text-[17px] text-white/80 leading-relaxed max-w-md mb-6">
+              Damos prioridade a profissionais que já têm projeto em andamento —
+              sejam arquitetos ou construtoras. Solicite sua amostra e avalie cor,
+              textura e acabamento do WPC Premium antes de especificar.
+            </p>
+            <p className="font-body text-[13px] text-white/60 leading-relaxed max-w-md">
+              Preencha o formulário ao lado e nossa equipe entrará em contato para
+              alinhar o envio da amostra.
             </p>
           </div>
 
-          {/* Direita — formulário (iframe atual) */}
+          {/* Direita — formulário (iframe Live Lesco Amostra) */}
           <div className="rounded-[10px] overflow-hidden">
             <GhlForm
-              formId={site.forms.orcamento}
-              formName="[02] [FORM] [ORCAMENTO]"
-              title="[02] [FORM] [ORCAMENTO]"
-              height={1141}
+              formId="kFitazuzLyVtpAdFfnI4"
+              formName="[10] [FORM] [LEAD LIVE SOLICITOU AMOSTRA]"
+              title="[10] [FORM] [LEAD LIVE SOLICITOU AMOSTRA]"
+              height={1118}
             />
           </div>
         </div>
       </section>
 
-      {/* ========== BENEFÍCIOS ========== */}
+      {/* ========== QUEM TEM PRIORIDADE ========== */}
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4 text-center">
-            Por que Lesco
+            Quem tem prioridade
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 text-center max-w-2xl mx-auto">
-            Tecnologia e durabilidade em cada superfície.
+            Amostras prioritárias para quem já tem projeto em andamento.
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[10px]">
-            {beneficios.map((b) => (
+            {prioridades.map((b) => (
+              <div key={b.label} className="bg-white/50 rounded-[10px] p-8">
+                <div
+                  className="[&>svg]:h-10 [&>svg]:w-10 text-dark mb-5"
+                  dangerouslySetInnerHTML={{ __html: b.svg }}
+                  aria-hidden
+                />
+                <h3 className="font-display text-xl text-dark mb-3 font-normal">{b.label}</h3>
+                <p className="font-body text-[14px] text-dark/70 leading-relaxed text-slate-950">{b.description}</p>
+              </div>
+            ))}
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* ========== WPC vs MADEIRA COMUM ========== */}
+      <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
+        <ScrollReveal>
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4 text-center">
+            WPC Premium x Madeira comum
+          </p>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 text-center max-w-2xl mx-auto">
+            Por que a WPC Premium Lesco supera a madeira comum.
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[10px]">
+            {diferenciais.map((b) => (
               <div key={b.label} className="bg-white/50 rounded-[10px] p-8">
                 <div
                   className="[&>svg]:h-10 [&>svg]:w-10 text-dark mb-5"
@@ -127,58 +191,27 @@ const Orcamento = () => {
             Portfólio
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 max-w-2xl">
-            Conheça alguns dos nossos projetos.
+            Projetos inspiradores criados com a WPC Premium Lesco.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[10px]">
             {projetosDestaque.map((p) => (
-              <Link
-                key={p.slug}
-                to={`/projetos/${p.slug}`}
-                className="group cursor-pointer flex flex-col"
-              >
+              <div key={p.slug} className="flex flex-col">
                 <div className="aspect-[4/3] rounded-[10px] overflow-hidden relative">
                   <img
                     src={p.imagem}
                     alt={p.nome}
                     loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
                 </div>
                 <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/60 mt-3 ml-1">
                   {p.linha}
                 </p>
-                <h3 className="font-display text-lg font-normal text-dark ml-1 group-hover:opacity-70 transition-opacity">
+                <h3 className="font-display text-lg font-normal text-dark ml-1">
                   {p.nome}
                 </h3>
-              </Link>
+              </div>
             ))}
-          </div>
-        </ScrollReveal>
-      </section>
-
-      {/* ========== NÚMEROS ========== */}
-      <section className="bg-dark rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
-        <ScrollReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 text-center">
-            <div className="flex flex-col items-center">
-              <AnimatedCounter end={15} suffix="+" />
-              <span className="font-body text-[13px] uppercase tracking-[0.12em] text-primary-foreground/60 mt-3">
-                Anos de inovação
-              </span>
-            </div>
-            <div className="flex flex-col items-center">
-              <AnimatedCounter end={100} suffix="%" />
-              <span className="font-body text-[13px] uppercase tracking-[0.12em] text-primary-foreground/60 mt-3">
-                Produtos recicláveis
-              </span>
-            </div>
-            <div className="flex flex-col items-center">
-              <AnimatedCounter end={3} />
-              <span className="font-body text-[13px] uppercase tracking-[0.12em] text-primary-foreground/60 mt-3">
-                Certificações de qualidade
-              </span>
-            </div>
           </div>
         </ScrollReveal>
       </section>
@@ -195,7 +228,7 @@ const Orcamento = () => {
             </h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href={`https://wa.me/${site.whatsappNumber}`}
+                href="https://wa.me/5511948449044"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-7 py-3.5 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary/[0.08] transition-colors duration-250"
@@ -216,4 +249,4 @@ const Orcamento = () => {
   );
 };
 
-export default Orcamento;
+export default LiveLescoAmostra;

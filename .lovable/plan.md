@@ -1,20 +1,31 @@
-## Problema
-O formulário de catálogo (`/catalogo-lesco`) aparenta ter muito espaço vazio em volta do conteúdo, diferente do formulário de orçamento que está no tamanho certo.
+# Página /live-lesco
 
-## Causa
-Em `src/pages/Catalogo.tsx`, o iframe está com altura fixa de `946px` (`height: "946px"` e `data-height="946"`). Como o formulário de catálogo tem menos campos que o de orçamento, o conteúdo real é bem mais curto que 946px — isso gera o grande vão branco vertical visível na imagem.
+Nova landing page usando o mesmo design do site (base: `/orcamento`), com o formulário GHL específico do Live Lesco e conteúdo complementar extraído do HTML enviado. A página **não** aparece no menu (Header/Footer não serão alterados) e fica fora do sitemap principal.
 
-Observação: as margens laterais internas (esquerda/direita) do formulário vêm das configurações da própria ferramenta LeadConnector dentro do iframe de terceiros e não são ajustáveis pelo nosso código.
+## Estrutura da página (`src/pages/LiveLesco.tsx`)
 
-## Solução
-Ajustar a altura do iframe do catálogo em `src/pages/Catalogo.tsx` para um valor próximo da altura real do conteúdo do formulário, eliminando o espaço branco em excesso.
+1. **Hero + Formulário** (igual layout do /orcamento)
+   - Texto à esquerda: título "Madeira Plástica Ecológica de Alto Padrão para Projetos Exclusivos" + subtítulo sobre WPC Premium unindo sofisticação, tecnologia e sustentabilidade, com chamada para preencher o formulário.
+   - Formulário à direita usando o componente `GhlForm` existente (mantém UTMs e padrão visual):
+     - `formId="UdrSMJdSvZWUJZVI46aE"`, `formName`/`title="[09] [FORM] [LEADS LIVE LESCO]"`, `height={1034}`.
+   - Imagem de fundo: hero existente do banco de assets (ex.: `hero-home-altwood.webp`) com overlay escuro.
 
-- Reduzir `height` de `946px` para aproximadamente `720px` (e atualizar `data-height` correspondente).
-- Validar visualmente no preview e ajustar fino o valor caso ainda sobre ou falte espaço.
+2. **WPC vs Madeira comum** — seção em grid com os 4 diferenciais do HTML de referência: Água e Resistência, Durabilidade e Resistência, Resistência a Fungos e Pragas, Estabilidade e Manutenção. Reaproveita os ícones SVG já usados no /orcamento.
 
-## Detalhes técnicos
-Arquivo: `src/pages/Catalogo.tsx`, bloco do iframe (linhas ~73-89).
-- `style={{ ..., height: "720px", ... }}`
-- `data-height="720"`
+3. **Projetos inspiradores** — grid de projetos em destaque vindos de `src/data/projetos.ts` (mesmo componente do /orcamento), apontando para o portfólio interno.
 
-Se após o teste o conteúdo ainda ficar cortado ou sobrar espaço, ajustar o número até casar com a altura real do formulário renderizado.
+4. **Certificações** — bloco com GBC, LEED e ESG (textos do HTML de referência).
+
+5. **CTA final** — mesmo bloco gradiente do /orcamento (WhatsApp + catálogo), ou um CTA único "Solicitar orçamento" rolando ao formulário.
+
+## Roteamento
+- Adicionar `import LiveLesco from "./pages/LiveLesco"` e `<Route path="/live-lesco" element={<LiveLesco />} />` em `src/App.tsx`, acima do catch-all.
+- **Não** adicionar ao menu (Header/Footer ficam intactos).
+
+## SEO
+- Usar `<SEO>` com title "Live Lesco — Madeira Plástica Ecológica de Alto Padrão", description baseada no HTML, `path="/live-lesco"`.
+- Não adicionar ao `ssg-routes.json` nem ao `sitemap.xml` para manter a página fora da indexação principal (campanha). *(Confirme se prefere que ela seja pré-renderizada/indexada.)*
+
+## Observações técnicas
+- O iframe não é alterado — uso do `GhlForm` que já injeta o script `form_embed.js` e os UTMs.
+- Imagens vêm dos assets/portfólio já existentes; nenhuma imagem nova é gerada.

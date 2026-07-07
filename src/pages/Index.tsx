@@ -31,6 +31,14 @@ import { site } from "@/config/site";
 
 const linhas = [
   {
+    nome: "Geo",
+    logo: logoGeoRaw,
+    descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
+    slogan: "Revestimento de Pedra Flexível",
+    href: "/geo",
+    imagem: heroGeo,
+  },
+  {
     nome: "Arquitetura feita para o amanhã",
     logo: logoMantoRaw,
     descricao: "Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto.",
@@ -57,15 +65,6 @@ const linhas = [
     imagem: heroEcho,
     bw: true,
     sloganOffset: "mt-[15px]",
-  },
-  {
-    nome: "Geo",
-    logo: logoGeoRaw,
-    descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
-    slogan: "Revestimento de Pedra Flexível",
-    href: "/geo",
-    imagem: heroGeo,
-    bw: true,
   },
 ];
 
@@ -144,8 +143,7 @@ const Index = () => {
     const t = setInterval(() => {
       setCurrentSlide((s) => {
         const next = s + 1;
-        // After last slide, loop back to slide 1 (Zhú), skipping slide 0
-        return next >= linhas.length ? 1 : next;
+        return next >= linhas.length ? 0 : next;
       });
     }, SLIDE_INTERVAL);
     return () => clearInterval(t);
@@ -278,7 +276,7 @@ const Index = () => {
 
             {/* Static label below */}
             <span className="hero-label-in mt-5 md:mt-10 font-display font-light text-white text-[11px] md:text-[13px] tracking-[0.4em] uppercase">
-              Nova linha em breve
+              {active.nome === "Geo" ? "Novo lançamento" : "Nova linha em breve"}
             </span>
 
             {/* CTA "Saiba mais" */}
@@ -436,6 +434,7 @@ const Index = () => {
       <ScrollMarqueeGallery />
 
       {/* ========== PARCEIROS 3D ========== */}
+      {/* Temporariamente oculto
       <section className="py-16 md:py-20 mx-[10px] rounded-[10px]">
         <div className="container mx-auto px-6 lg:px-8">
           <ScrollReveal>
@@ -457,6 +456,7 @@ const Index = () => {
           </ScrollReveal>
         </div>
       </section>
+      */}
 
       {/* ========== SHOWROOM ========== */}
       <section className="mx-[10px] rounded-[10px] overflow-hidden bg-secondary">
