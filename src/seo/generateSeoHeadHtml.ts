@@ -1,7 +1,8 @@
 import type { SsgRoute } from "./types";
 import { generateSchemaGraph } from "./generateSchemaGraph";
+import { site } from "../config/site";
 
-const SITE_URL = "https://lesco.com.br";
+const SITE_URL = site.siteUrl;
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-default.jpg`;
 
 function escapeHtml(value: string): string {
@@ -20,7 +21,9 @@ function escapeHtml(value: string): string {
 export function generateSeoHeadHtml(route: SsgRoute): string {
   const title = escapeHtml(route.title || "Lesco");
   const description = escapeHtml(route.description || "");
-  const canonical = escapeHtml(route.canonical || `${SITE_URL}${route.slug}`);
+  // Always derive canonical from the active locale's domain (ssg-routes.json
+  // has the PT domain hardcoded; this keeps it correct on the EN build too).
+  const canonical = escapeHtml(`${SITE_URL}${route.slug}`);
   const ogImage = escapeHtml(route.ogImage || DEFAULT_OG_IMAGE);
   const schema = JSON.stringify(generateSchemaGraph(route));
 
@@ -29,7 +32,7 @@ export function generateSeoHeadHtml(route: SsgRoute): string {
     `<meta name="description" content="${description}" />`,
     `<link rel="canonical" href="${canonical}" />`,
     `<meta property="og:site_name" content="Lesco" />`,
-    `<meta property="og:locale" content="pt_BR" />`,
+    `<meta property="og:locale" content="${site.ogLocale}" />`,
     `<meta property="og:type" content="website" />`,
     `<meta property="og:title" content="${title}" />`,
     `<meta property="og:description" content="${description}" />`,

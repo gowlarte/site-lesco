@@ -4,6 +4,7 @@ import { SEO } from "@/components/SEO";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { projetos } from "@/data/projetos";
+import { site } from "@/config/site";
 
 import heroBiblioteca from "@/assets/hero-home-altwood.webp";
 
@@ -81,9 +82,9 @@ const Biblioteca = () => {
           {/* Direita — formulário (iframe atual da biblioteca) */}
           <div className="rounded-[10px] overflow-hidden">
             <iframe
-              src="https://api.leadconnectorhq.com/widget/form/RWTy3Nwtw9O1iGmxd3wT"
+              src={`https://api.leadconnectorhq.com/widget/form/${site.forms.biblioteca}`}
               style={{ width: "100%", height: "862px", border: "none", borderRadius: "3px" }}
-              id="inline-RWTy3Nwtw9O1iGmxd3wT"
+              id={`inline-${site.forms.biblioteca}`}
               data-layout="{'id':'INLINE'}"
               data-trigger-type="alwaysShow"
               data-trigger-value=""
@@ -93,8 +94,8 @@ const Biblioteca = () => {
               data-deactivation-value=""
               data-form-name="[01] [FORM] [ACESSAR BIBLIOTECA]"
               data-height="862"
-              data-layout-iframe-id="inline-RWTy3Nwtw9O1iGmxd3wT"
-              data-form-id="RWTy3Nwtw9O1iGmxd3wT"
+              data-layout-iframe-id={`inline-${site.forms.biblioteca}`}
+              data-form-id={site.forms.biblioteca}
               title="[01] [FORM] [ACESSAR BIBLIOTECA]"
             />
           </div>
@@ -197,7 +198,7 @@ const Biblioteca = () => {
             </h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://wa.me/5511948449044"
+                href={`https://wa.me/${site.whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-7 py-3.5 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary/[0.08] transition-colors duration-250"

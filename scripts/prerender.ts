@@ -3,6 +3,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { generateSeoHeadHtml } from "../src/seo/generateSeoHeadHtml";
 import type { SsgRoute } from "../src/seo/types";
+import { site } from "../src/config/site";
 
 const DIST = path.resolve("dist");
 const routes = JSON.parse(
@@ -17,7 +18,13 @@ async function prerender() {
   if (!fs.existsSync(templatePath)) {
     throw new Error(`Missing ${templatePath}. Run "vite build" first.`);
   }
-  const template = fs.readFileSync(templatePath, "utf-8");
+  // Locale-specific rewrites of the static shell (index.html template):
+  //  - <html lang> for the active language
+  //  - Google Tag Manager container id (separate container per domain)
+  const template = fs
+    .readFileSync(templatePath, "utf-8")
+    .replace('lang="pt-BR"', `lang="${site.htmlLang}"`)
+    .replace(/GTM-NLMKCHH/g, site.gtmId);
 
   const serverEntryPath = path.join(DIST, "server", "entry-server.js");
   const { render } = (await import(pathToFileURL(serverEntryPath).href)) as {

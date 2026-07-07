@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logoLight from "@/assets/logo-lesco-light.svg";
+import { site } from "@/config/site";
 
 export function Footer() {
   return (
@@ -77,11 +78,11 @@ export function Footer() {
           <div>
             <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-muted-foreground mb-5">Contato</h4>
             <ul className="space-y-3 font-body text-[13px] font-light text-foreground/70">
-              <li>contato@lesco.com.br</li>
+              <li>{site.email}</li>
               <li className="leading-relaxed">
                 Endereço: Av. Osvaldo Reis, 3281 - Praia Brava, Itajaí - SC, 88306-002
               </li>
-              <li>Telefone: (11) 94844-9044</li>
+              <li>Telefone: {site.phoneDisplay}</li>
               <li className="leading-relaxed">
                 Endereço: Avenida Nove de Julho, número 3147, CJ 22 – Jardim Paulista – São Paulo – SP
               </li>

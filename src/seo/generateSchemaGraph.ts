@@ -1,16 +1,17 @@
 import type { SsgRoute } from "./types";
+import { site } from "../config/site";
 
-const SITE_URL = "https://lesco.lovable.app";
+const SITE_URL = site.siteUrl;
 
 export function generateSchemaGraph(route: SsgRoute): Record<string, unknown> {
-  const url = route.canonical || `${SITE_URL}${route.slug}`;
+  const url = `${SITE_URL}${route.slug}`;
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: route.title || "Lesco",
     description: route.description || "",
     url,
-    inLanguage: "pt-BR",
+    inLanguage: site.htmlLang,
     isPartOf: {
       "@type": "WebSite",
       name: "Lesco",

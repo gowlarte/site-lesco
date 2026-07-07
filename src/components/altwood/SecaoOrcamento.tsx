@@ -1,4 +1,5 @@
 import { BotaoCTA } from "./BotaoCTA";
+import { site } from "@/config/site";
 
 interface SecaoOrcamentoProps {
   imageSrc?: string;
@@ -23,7 +24,7 @@ export const SecaoOrcamento = ({ imageSrc }: SecaoOrcamentoProps) => (
       <BotaoCTA variant="primary" className="mb-8" href="/orcamento">Falar com um especialista</BotaoCTA>
       <p className="text-[13px] text-[#7F7F7F] leading-relaxed">
         Itajaí, SC &middot; São Paulo, SP<br />
-        @lesco_br &middot; lesco.com.br &middot; (11) 94844-9044
+        @lesco_br &middot; lesco.com.br &middot; {site.phoneDisplay}
       </p>
     </div>
   </section>

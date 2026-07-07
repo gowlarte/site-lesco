@@ -1,7 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import ogDefault from "@/assets/og-default.jpg";
+import { site } from "@/config/site";
 
-const SITE_URL = "https://lesco.com.br";
+const SITE_URL = site.siteUrl;
 
 interface SEOProps {
   title: string;
@@ -42,7 +43,7 @@ export function SEO({
 
       {/* Open Graph */}
       <meta property="og:site_name" content="Lesco" />
-      <meta property="og:locale" content="pt_BR" />
+      <meta property="og:locale" content={site.ogLocale} />
       <meta property="og:type" content={type} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />

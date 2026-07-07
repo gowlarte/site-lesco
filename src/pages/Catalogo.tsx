@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { site } from "@/config/site";
 
 import heroCatalogo from "@/assets/hero-home-altwood.webp";
 
@@ -75,9 +76,9 @@ const Catalogo = () => {
           {/* Direita — formulário (iframe atual do catálogo) */}
           <div className="bg-white rounded-[10px] overflow-hidden shadow-2xl">
             <iframe
-              src="https://api.leadconnectorhq.com/widget/form/lr26Z8p5zKyXXMvt1CKn"
+              src={`https://api.leadconnectorhq.com/widget/form/${site.forms.catalogo}`}
               style={{ width: "100%", height: "720px", border: "none", borderRadius: "3px" }}
-              id="inline-lr26Z8p5zKyXXMvt1CKn"
+              id={`inline-${site.forms.catalogo}`}
               data-layout="{'id':'INLINE'}"
               data-trigger-type="alwaysShow"
               data-trigger-value=""
@@ -87,8 +88,8 @@ const Catalogo = () => {
               data-deactivation-value=""
               data-form-name="[01] [FORM] [DOWNLOAD CATALOGO]"
               data-height="720"
-              data-layout-iframe-id="inline-lr26Z8p5zKyXXMvt1CKn"
-              data-form-id="lr26Z8p5zKyXXMvt1CKn"
+              data-layout-iframe-id={`inline-${site.forms.catalogo}`}
+              data-form-id={site.forms.catalogo}
               title="[01] [FORM] [DOWNLOAD CATALOGO]"
             />
           </div>
@@ -128,7 +129,7 @@ const Catalogo = () => {
             </h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://wa.me/5511948449044"
+                href={`https://wa.me/${site.whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-7 py-3.5 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary/[0.08] transition-colors duration-250"

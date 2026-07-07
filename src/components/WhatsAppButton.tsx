@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
+import { site } from "@/config/site";
 
-const FORM_URL = "https://api.leadconnectorhq.com/widget/form/NCyQbX00m3csRV6jg6RB";
+const FORM_URL = `https://api.leadconnectorhq.com/widget/form/${site.forms.whatsappPopup}`;
 const SCRIPT_SRC = "https://link.msgsndr.com/js/form_embed.js";
 
 function ensureFormScript() {

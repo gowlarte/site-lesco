@@ -4,6 +4,7 @@ import { SEO } from "@/components/SEO";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { projetos } from "@/data/projetos";
+import { site } from "@/config/site";
 
 import heroOrcamento from "@/assets/hero-home-altwood.webp";
 
@@ -93,9 +94,9 @@ const Orcamento = () => {
           {/* Direita — formulário (iframe atual) */}
           <div className="rounded-[10px] overflow-hidden">
             <iframe
-              src="https://api.leadconnectorhq.com/widget/form/GTcMRzSzlRyI4MLLuFYJ"
+              src={`https://api.leadconnectorhq.com/widget/form/${site.forms.orcamento}`}
               style={{ width: "100%", height: "1141px", border: "none", borderRadius: "3px" }}
-              id="inline-GTcMRzSzlRyI4MLLuFYJ"
+              id={`inline-${site.forms.orcamento}`}
               data-layout="{'id':'INLINE'}"
               data-trigger-type="alwaysShow"
               data-trigger-value=""
@@ -105,8 +106,8 @@ const Orcamento = () => {
               data-deactivation-value=""
               data-form-name="[02] [FORM] [ORCAMENTO]"
               data-height="1141"
-              data-layout-iframe-id="inline-GTcMRzSzlRyI4MLLuFYJ"
-              data-form-id="GTcMRzSzlRyI4MLLuFYJ"
+              data-layout-iframe-id={`inline-${site.forms.orcamento}`}
+              data-form-id={site.forms.orcamento}
               title="[02] [FORM] [ORCAMENTO]"
             />
           </div>
@@ -213,7 +214,7 @@ const Orcamento = () => {
             </h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://wa.me/5511948449044"
+                href={`https://wa.me/${site.whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-7 py-3.5 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary/[0.08] transition-colors duration-250"

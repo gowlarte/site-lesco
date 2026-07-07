@@ -27,6 +27,7 @@ import logoEchoRaw from "@/assets/linha-echotex-2.svg?raw";
 import logoGeoRaw from "@/assets/linha-italflex-2.svg?raw";
 
 import { projetos } from "@/data/projetos";
+import { site } from "@/config/site";
 
 const linhas = [
   {
@@ -499,7 +500,7 @@ const Index = () => {
                     Avenida Nove de Julho, número 3147, CJ 22 – Jardim Paulista – São Paulo – SP
                   </p>
                   <a
-                    href="https://wa.me/5511948449044"
+                    href={`https://wa.me/${site.whatsappNumber}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-7 py-3 rounded-full bg-[hsl(10,50%,72%)] hover:bg-[hsl(10,50%,65%)] text-white font-body text-[13px] font-medium tracking-[0.04em] transition-colors duration-300"
