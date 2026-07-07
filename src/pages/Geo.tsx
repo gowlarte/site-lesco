@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { GhlForm } from "@/components/GhlForm";
+import { t } from "@/i18n/t";
 
 
 import logoGeoRaw from "@/assets/linha-italflex-2.svg?raw";
@@ -28,31 +29,31 @@ import swatchGranite from "@/assets/geo/swatch-granite.jpg";
 const aplicacoes = [
   {
     img: imgFachada,
-    titulo: "Fachadas",
+    titulo: t("Fachadas"),
     descricao:
-      "Revestimento contínuo, leve e resistente às intempéries — aplicado em grandes áreas com baixo custo de instalação.",
+      t("Revestimento contínuo, leve e resistente às intempéries — aplicado em grandes áreas com baixo custo de instalação."),
   },
   {
     img: imgBanheiro,
-    titulo: "Áreas molhadas",
+    titulo: t("Áreas molhadas"),
     descricao:
-      "Cozinhas, banheiros e ambientes técnicos com a textura da pedra natural e alta resistência à umidade.",
+      t("Cozinhas, banheiros e ambientes técnicos com a textura da pedra natural e alta resistência à umidade."),
   },
   {
     img: imgSala,
-    titulo: "Interiores",
+    titulo: t("Interiores"),
     descricao:
-      "Paredes, painéis e detalhes decorativos com toque mineral, em ambientes residenciais e corporativos.",
+      t("Paredes, painéis e detalhes decorativos com toque mineral, em ambientes residenciais e corporativos."),
   },
 ];
 
 const diferenciais = [
-  "Transporte fácil e instalação simples",
-  "Aplicação em grandes áreas, internas e externas",
-  "Textura de pedra natural com alto desempenho",
-  "Respirável, resistente à umidade e ao fogo",
-  "Estabilidade estrutural e vida útil elevada",
-  "Material sustentável de base mineral",
+  t("Transporte fácil e instalação simples"),
+  t("Aplicação em grandes áreas, internas e externas"),
+  t("Textura de pedra natural com alto desempenho"),
+  t("Respirável, resistente à umidade e ao fogo"),
+  t("Estabilidade estrutural e vida útil elevada"),
+  t("Material sustentável de base mineral"),
 ];
 
 const texturas = [
@@ -75,8 +76,8 @@ const Geo = () => {
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px] space-y-[10px]">
       <SEO
-        title="Geo Lesco — Revestimento de Pedra Flexível"
-        description="Revestimento de pedra flexível Lesco Geo: textura de pedra natural para fachadas, áreas molhadas e interiores. Baixe o catálogo de cores."
+        title={t("Geo Lesco — Revestimento de Pedra Flexível")}
+        description={t("Revestimento de pedra flexível Lesco Geo: textura de pedra natural para fachadas, áreas molhadas e interiores. Baixe o catálogo de cores.")}
         path="/geo"
         image={heroTravertino}
       />
@@ -87,7 +88,7 @@ const Geo = () => {
           <img
             key={src}
             src={src}
-            alt={`Aplicação da pedra flexível Geo ${i + 1}`}
+            alt={`${t("Aplicação da pedra flexível Geo")} ${i + 1}`}
             className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
             style={{ opacity: i === currentSlide ? 1 : 0 }}
           />
@@ -98,7 +99,7 @@ const Geo = () => {
           {/* Esquerda — texto */}
           <div className="text-white">
             <span className="inline-block font-display text-white bg-white/15 backdrop-blur rounded-full px-3 py-1.5 text-[10px] md:text-[11px] tracking-[0.18em] uppercase mb-8">
-              Catálogo de Cores · Geo
+              {t("Catálogo de Cores")} · Geo
             </span>
             <div
               className="[&>svg]:h-[52px] md:[&>svg]:h-[68px] [&>svg]:w-auto [&>svg_*]:fill-white text-white mb-6"
@@ -106,12 +107,10 @@ const Geo = () => {
               aria-label="Geo"
             />
             <h1 className="font-display font-light text-4xl md:text-5xl lg:text-[56px] leading-[1.05] tracking-[-0.02em] mb-6">
-              Revestimento de pedra flexível.
+              {t("Revestimento de pedra flexível.")}
             </h1>
             <p className="font-body text-[15px] md:text-[17px] text-white/80 leading-relaxed max-w-md">
-              A textura da pedra natural com o desempenho dos materiais modernos —
-              aplicável em grandes áreas, internas e externas, com instalação simples
-              e custo inferior ao dos revestimentos tradicionais.
+              {t("A textura da pedra natural com o desempenho dos materiais modernos — aplicável em grandes áreas, internas e externas, com instalação simples e custo inferior ao dos revestimentos tradicionais.")}
             </p>
           </div>
 
@@ -119,10 +118,10 @@ const Geo = () => {
           <div className="rounded-[10px] border border-white/10 bg-white/5 backdrop-blur-md p-6 sm:p-8">
             <div className="mb-6">
               <h2 className="font-display text-2xl sm:text-3xl text-white font-normal mb-2">
-                Baixe o catálogo Geo
+                {t("Baixe o catálogo Geo")}
               </h2>
               <p className="font-body text-[14px] sm:text-[15px] text-white/70 leading-relaxed">
-                Preencha o formulário para receber em primeira mão o catálogo completo da linha Geo.
+                {t("Preencha o formulário para receber em primeira mão o catálogo completo da linha Geo.")}
               </p>
             </div>
             <div className="bg-white rounded-[10px] overflow-hidden">
@@ -143,24 +142,20 @@ const Geo = () => {
           <div className="flex justify-center">
             <img
               src={imgPedra}
-              alt="Pedra mineral, matéria-prima da linha Geo"
+              alt={t("Pedra mineral, matéria-prima da linha Geo")}
               className="w-full max-w-[546px] h-auto object-contain"
             />
           </div>
           <div>
             <ScrollReveal>
               <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark mb-4">
-                Sobre a pedra flexível
+                {t("Sobre a pedra flexível")}
               </p>
               <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-6">
-                Durabilidade mineral, plasticidade dos materiais modernos.
+                {t("Durabilidade mineral, plasticidade dos materiais modernos.")}
               </h2>
               <p className="font-body text-[15px] md:text-[16px] text-dark/75 leading-[1.7] text-slate-950">
-                A Geo é produzida a partir de solo modificado de base mineral, triturado
-                até virar um pó microscópico e unido a polímeros ecológicos. O resultado
-                une a estabilidade estrutural dos materiais inorgânicos à flexibilidade dos
-                orgânicos — preservando as propriedades naturais da pedra: respirabilidade,
-                resistência à umidade e ao fogo, e sustentabilidade.
+                {t("A Geo é produzida a partir de solo modificado de base mineral, triturado até virar um pó microscópico e unido a polímeros ecológicos. O resultado une a estabilidade estrutural dos materiais inorgânicos à flexibilidade dos orgânicos — preservando as propriedades naturais da pedra: respirabilidade, resistência à umidade e ao fogo, e sustentabilidade.")}
               </p>
             </ScrollReveal>
           </div>
@@ -171,42 +166,42 @@ const Geo = () => {
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4 text-center">
-            Comparativo técnico
+            {t("Comparativo técnico")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-4 text-center max-w-3xl mx-auto">
-            Pedra flexível vs. materiais tradicionais.
+            {t("Pedra flexível vs. materiais tradicionais.")}
           </h2>
           <p className="font-body text-[14px] text-dark leading-relaxed mb-16 text-center max-w-xl mx-auto">
-            Menor custo consolidado, instalação simplificada e desempenho superior em todos os quesitos críticos.
+            {t("Menor custo consolidado, instalação simplificada e desempenho superior em todos os quesitos críticos.")}
           </p>
 
           {/* Gráfico de custos */}
           <div className="bg-white rounded-[10px] p-6 md:p-10 lg:p-12 mb-[10px]">
             <h3 className="font-display text-xl md:text-2xl text-dark mb-2 text-center">
-              Comparativo de custos: Pedra Flexível vs. Pedra Natural
+              {t("Comparativo de custos: Pedra Flexível vs. Pedra Natural")}
             </h3>
             <p className="font-body text-[13px] text-dark text-center mb-10">
-              Menor investimento em todas as etapas — do produto à obra finalizada.
+              {t("Menor investimento em todas as etapas — do produto à obra finalizada.")}
             </p>
             <div className="grid grid-cols-5 gap-4 md:gap-6 max-w-4xl mx-auto items-end" style={{ minHeight: '220px' }}>
               {[
-                { label: 'Preço unitário', flex: 35, nat: 85 },
-                { label: 'Armazenagem', flex: 25, nat: 70 },
-                { label: 'Acessórios', flex: 40, nat: 75 },
-                { label: 'Mão de obra', flex: 35, nat: 75 },
-                { label: 'Custo total', flex: 55, nat: 100 },
+                { label: t('Preço unitário'), flex: 35, nat: 85 },
+                { label: t('Armazenagem'), flex: 25, nat: 70 },
+                { label: t('Acessórios'), flex: 40, nat: 75 },
+                { label: t('Mão de obra'), flex: 35, nat: 75 },
+                { label: t('Custo total'), flex: 55, nat: 100 },
               ].map((item) => (
                 <div key={item.label} className="flex flex-col items-center gap-3">
                   <div className="flex gap-1.5 md:gap-2 items-end h-[160px] w-full justify-center">
                     <div
                       className="w-3 md:w-5 rounded-t bg-[#B8B8B8]"
                       style={{ height: `${item.flex}%` }}
-                      title={`Pedra Flexível: ${item.flex}%`}
+                      title={`${t("Pedra Flexível")}: ${item.flex}%`}
                     />
                     <div
                       className="w-3 md:w-5 rounded-t bg-[#4A4A4A]"
                       style={{ height: `${item.nat}%` }}
-                      title={`Pedra Natural: ${item.nat}%`}
+                      title={`${t("Pedra Natural")}: ${item.nat}%`}
                     />
                   </div>
                   <span className="font-body text-[10px] md:text-[11px] text-dark text-center leading-tight">
@@ -218,11 +213,11 @@ const Geo = () => {
             <div className="flex justify-center gap-6 mt-8">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded bg-[#B8B8B8]" />
-                <span className="font-body text-[12px] text-dark">Pedra Flexível</span>
+                <span className="font-body text-[12px] text-dark">{t("Pedra Flexível")}</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded bg-[#4A4A4A]" />
-                <span className="font-body text-[12px] text-dark">Pedra Natural</span>
+                <span className="font-body text-[12px] text-dark">{t("Pedra Natural")}</span>
               </div>
             </div>
           </div>
@@ -230,44 +225,44 @@ const Geo = () => {
           {/* Tabela comparativa */}
           <div className="bg-white rounded-[10px] p-6 md:p-10 lg:p-12 mb-[10px] overflow-x-auto">
             <h3 className="font-display text-xl md:text-2xl text-dark mb-2 text-center">
-              Comparativo com materiais tradicionais
+              {t("Comparativo com materiais tradicionais")}
             </h3>
             <p className="font-body text-[13px] text-dark text-center mb-10">
-              Desempenho ambiental, logístico e estrutural em cada categoria.
+              {t("Desempenho ambiental, logístico e estrutural em cada categoria.")}
             </p>
             <table className="w-full min-w-[700px] border-collapse">
               <thead>
                 <tr className="border-b border-dark/10">
                   <th className="text-left font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark py-3 px-2 md:px-4">
-                    Critério
+                    {t("Critério")}
                   </th>
                   <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark py-3 px-2 md:px-4">
-                    Pedra Natural
+                    {t("Pedra Natural")}
                   </th>
                   <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark py-3 px-2 md:px-4">
-                    Revestimento Cerâmico
+                    {t("Revestimento Cerâmico")}
                   </th>
                   <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark py-3 px-2 md:px-4">
-                    Pintura / Revestimento
+                    {t("Pintura / Revestimento")}
                   </th>
                   <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark py-3 px-2 md:px-4">
                     ACM
                   </th>
                   <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark py-3 px-2 md:px-4 bg-dark/5">
-                    Pedra Flexível
+                    {t("Pedra Flexível")}
                   </th>
                 </tr>
               </thead>
               <tbody className="font-body text-[12px] md:text-[13px]">
                 {[
-                  { crit: 'Emissão de CO₂', vals: ['Alta', 'Alta', 'Excesso de HCHO', 'Emissões excessivas', 'Zero poluição'] },
-                  { crit: 'Logística', vals: ['Muito pesado / Alto custo', 'Muito pesado / Alto custo', 'Proteção especial / Alto custo', 'Proteção especial / Alto custo', 'Leve / Baixo custo'] },
-                  { crit: 'Segurança', vals: ['Instalação arriscada', 'Risco de queda / instalação', 'Seguro', 'Inseguro', 'Leve / Fixação segura'] },
-                  { crit: 'Durabilidade', vals: ['Duradoura', 'Duradoura', 'Descascamento fácil', 'Geral', 'Resistente ao gelo e calor'] },
-                  { crit: 'Resistência ao fogo', vals: ['À prova de fogo', 'À prova de fogo', '—', 'Resistente ao fogo', 'Classe A à prova de fogo'] },
-                  { crit: 'Praticidade', vals: ['Construção inconveniente', 'Construção inconveniente', 'Construção fácil', 'Construção inconveniente', 'Construção fácil'] },
-                  { crit: 'Expressividade', vals: ['Expressão limitada', 'Expressão limitada', 'Falta de expressão', 'Falta de expressão', 'Expressivo'] },
-                  { crit: 'Poluição luminosa', vals: ['Comparativamente pequena', 'Sim', 'Comparativamente grande', 'Sim', 'Não'] },
+                  { crit: t('Emissão de CO₂'), vals: [t('Alta'), t('Alta'), t('Excesso de HCHO'), t('Emissões excessivas'), t('Zero poluição')] },
+                  { crit: t('Logística'), vals: [t('Muito pesado / Alto custo'), t('Muito pesado / Alto custo'), t('Proteção especial / Alto custo'), t('Proteção especial / Alto custo'), t('Leve / Baixo custo')] },
+                  { crit: t('Segurança'), vals: [t('Instalação arriscada'), t('Risco de queda / instalação'), t('Seguro'), t('Inseguro'), t('Leve / Fixação segura')] },
+                  { crit: t('Durabilidade'), vals: [t('Duradoura'), t('Duradoura'), t('Descascamento fácil'), t('Geral'), t('Resistente ao gelo e calor')] },
+                  { crit: t('Resistência ao fogo'), vals: [t('À prova de fogo'), t('À prova de fogo'), '—', t('Resistente ao fogo'), t('Classe A à prova de fogo')] },
+                  { crit: t('Praticidade'), vals: [t('Construção inconveniente'), t('Construção inconveniente'), t('Construção fácil'), t('Construção inconveniente'), t('Construção fácil')] },
+                  { crit: t('Expressividade'), vals: [t('Expressão limitada'), t('Expressão limitada'), t('Falta de expressão'), t('Falta de expressão'), t('Expressivo')] },
+                  { crit: t('Poluição luminosa'), vals: [t('Comparativamente pequena'), t('Sim'), t('Comparativamente grande'), t('Sim'), t('Não')] },
                 ].map((row, i) => (
                   <tr key={row.crit} className={i % 2 === 0 ? 'bg-dark/[0.02]' : ''}>
                     <td className="py-3 px-2 md:px-4 font-medium text-dark">{row.crit}</td>
@@ -288,19 +283,19 @@ const Geo = () => {
           {/* Features e vantagens */}
           <div className="bg-dark rounded-[10px] p-6 md:p-10 lg:p-12">
             <h3 className="font-display text-xl md:text-2xl text-white mb-2 text-center">
-              Vantagens do produto
+              {t("Vantagens do produto")}
             </h3>
             <p className="font-body text-[13px] text-white/50 text-center mb-10">
-              Tecnologia mineral que une flexibilidade, resistência e sustentabilidade.
+              {t("Tecnologia mineral que une flexibilidade, resistência e sustentabilidade.")}
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mb-10 max-w-3xl mx-auto">
               {[
-                'Flexível e dobrável',
-                'Alta resistência',
-                'Resistência ao envelhecimento',
-                'Impermeável / À prova de fogo / Umidade',
-                'Leve',
-                'Ecológico',
+                t('Flexível e dobrável'),
+                t('Alta resistência'),
+                t('Resistência ao envelhecimento'),
+                t('Impermeável / À prova de fogo / Umidade'),
+                t('Leve'),
+                t('Ecológico'),
               ].map((f) => (
                 <div
                   key={f}
@@ -313,9 +308,9 @@ const Geo = () => {
             </div>
             <ul className="space-y-3 max-w-3xl mx-auto">
               {[
-                'Não precisa remover a base antiga: aplica diretamente, sem geração de resíduos sólidos e sem incômodo.',
-                'Alta produtividade, baixo custo, prazo de construção rápido, instalação simples e excelente acabamento.',
-                'Produtos sob medida, alinhados aos costumes e estilos locais.',
+                t('Não precisa remover a base antiga: aplica diretamente, sem geração de resíduos sólidos e sem incômodo.'),
+                t('Alta produtividade, baixo custo, prazo de construção rápido, instalação simples e excelente acabamento.'),
+                t('Produtos sob medida, alinhados aos costumes e estilos locais.'),
               ].map((item, i) => (
                 <li key={i} className="flex gap-3 items-start">
                   <span className="text-white/40 text-[14px] leading-relaxed shrink-0">★</span>
@@ -331,10 +326,10 @@ const Geo = () => {
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4 text-center">
-            Infinitas aplicações
+            {t("Infinitas aplicações")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 text-center max-w-3xl mx-auto">
-            Onde a Geo transforma o ambiente.
+            {t("Onde a Geo transforma o ambiente.")}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[10px]">
             {aplicacoes.map((a) => (
@@ -361,13 +356,13 @@ const Geo = () => {
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4 text-center">
-            Texturas
+            {t("Texturas")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-3 text-center max-w-3xl mx-auto">
-            Algumas das texturas da linha.
+            {t("Algumas das texturas da linha.")}
           </h2>
           <p className="font-body text-[14px] text-dark/60 leading-relaxed mb-12 text-center max-w-xl mx-auto">
-            Esta é apenas uma amostra. O catálogo completo reúne todas as coleções, cores e formatos disponíveis.
+            {t("Esta é apenas uma amostra. O catálogo completo reúne todas as coleções, cores e formatos disponíveis.")}
           </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-[10px]">
             {texturas.map((t) => (
@@ -390,10 +385,10 @@ const Geo = () => {
         <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-12 lg:gap-20">
           <div>
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/50 mb-4">
-              Diferenciais
+              {t("Diferenciais")}
             </p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-light leading-[1.15] text-white">
-              Por que escolher a Geo.
+              {t("Por que escolher a Geo.")}
             </h2>
           </div>
           <ul className="divide-y divide-white/10">
@@ -415,10 +410,10 @@ const Geo = () => {
         <div className="container mx-auto px-6 lg:px-8 text-center">
           <ScrollReveal>
             <h2 className="font-display text-3xl md:text-4xl lg:text-[48px] font-normal leading-[1.15] text-dark mb-6">
-              Baixe o catálogo<br />de cores da Geo.
+              {t("Baixe o catálogo")}<br />{t("de cores da Geo.")}
             </h2>
             <p className="font-body text-[15px] text-dark leading-relaxed mb-10 max-w-xl mx-auto">
-              Receba o catálogo completo com todas as coleções, formatos e especificações da linha de pedra flexível.
+              {t("Receba o catálogo completo com todas as coleções, formatos e especificações da linha de pedra flexível.")}
             </p>
             <a
               href="#topo"
@@ -428,14 +423,14 @@ const Geo = () => {
               }}
               className="inline-flex items-center px-8 py-3.5 border border-dark text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-dark hover:text-white transition-colors duration-250"
             >
-              Baixar catálogo
+              {t("Baixar catálogo")}
             </a>
             <div className="mt-10">
               <Link
                 to="/linhas"
                 className="font-display text-[12px] uppercase tracking-[0.08em] text-dark hover:text-dark transition-colors"
               >
-                Ver todas as linhas
+                {t("Ver todas as linhas")}
               </Link>
             </div>
           </ScrollReveal>

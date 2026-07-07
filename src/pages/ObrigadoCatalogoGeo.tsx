@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { t } from "@/i18n/t";
 import { SEO } from "@/components/SEO";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import logoLight from "@/assets/logo-lesco-light.svg";
@@ -35,8 +36,8 @@ export default function ObrigadoCatalogoGeo() {
   return (
     <>
       <SEO
-        title="Catálogo Geo Lesco | Download"
-        description="Baixe o Catálogo da linha Geo Lesco e conheça nossas pedras flexíveis."
+        title={t("Catálogo Geo Lesco | Download")}
+        description={t("Baixe o Catálogo da linha Geo Lesco e conheça nossas pedras flexíveis.")}
         path="/obrigado-catalogo-geo"
       />
 
@@ -46,7 +47,7 @@ export default function ObrigadoCatalogoGeo() {
           <img
             key={src}
             src={src}
-            alt={`Linha Geo ${i + 1}`}
+            alt={`${t("Linha Geo")} ${i + 1}`}
             className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
             style={{ opacity: i === current ? 1 : 0 }}
           />
@@ -58,9 +59,9 @@ export default function ObrigadoCatalogoGeo() {
           <img src={logoLight} alt="Lesco" className="h-12 md:h-14 mx-auto" />
 
           <h1 className="mt-8 font-heading text-2xl md:text-4xl font-bold text-white">
-            Obrigado! Acesse Agora Mesmo
+            {t("Obrigado! Acesse Agora Mesmo")}
             <br />
-            seu Catálogo da Linha Geo.
+            {t("seu Catálogo da Linha Geo.")}
           </h1>
 
           <a
@@ -69,15 +70,15 @@ export default function ObrigadoCatalogoGeo() {
             rel="noopener noreferrer"
             className="mt-8 inline-block font-heading text-base md:text-lg font-bold text-black bg-white rounded-[10px] px-8 py-4 hover:bg-white/90 transition-colors"
           >
-            Acessar Catálogo
+            {t("Acessar Catálogo")}
           </a>
 
           <p className="mt-6 font-body text-base md:text-lg text-white/90 leading-relaxed">
-            Sua solicitação foi registrada com sucesso.
+            {t("Sua solicitação foi registrada com sucesso.")}
           </p>
 
           <p className="mt-4 font-body text-sm text-white/70">
-            Enquanto isso, aproveite para participar da nossa próxima live workshop com a nossa arquiteta, e elevar ainda mais seus projetos:
+            {t("Enquanto isso, aproveite para participar da nossa próxima live workshop com a nossa arquiteta, e elevar ainda mais seus projetos:")}
           </p>
         </div>
       </section>
@@ -85,8 +86,7 @@ export default function ObrigadoCatalogoGeo() {
       {/* Novidades + redes sociais */}
       <section className="py-20 md:py-28 px-6 text-center">
         <p className="font-body text-lg md:text-xl text-black max-w-3xl mx-auto">
-          Enquanto você aguarda, acompanhe todas as novidades e últimas
-          atualizações da Lesco.
+          {t("Enquanto você aguarda, acompanhe todas as novidades e últimas atualizações da Lesco.")}
         </p>
 
         <div className="mt-12 flex items-center justify-center gap-6">

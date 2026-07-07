@@ -28,20 +28,21 @@ import logoGeoRaw from "@/assets/linha-italflex-2.svg?raw";
 
 import { projetos } from "@/data/projetos";
 import { site } from "@/config/site";
+import { t } from "@/i18n/t";
 
 const linhas = [
   {
     nome: "Geo",
     logo: logoGeoRaw,
-    descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
-    slogan: "Revestimento de Pedra Flexível",
+    descricao: t("Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo."),
+    slogan: t("Revestimento de Pedra Flexível"),
     href: "/geo",
     imagem: heroGeo,
   },
   {
     nome: "Arquitetura feita para o amanhã",
     logo: logoMantoRaw,
-    descricao: "Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto.",
+    descricao: t("Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto."),
     slogan: "",
     href: "/madeira-ecologica-lesco",
     imagem: heroManto,
@@ -49,8 +50,8 @@ const linhas = [
   {
     nome: "Zhú",
     logo: logoZhuzenRaw,
-    descricao: "Revestimentos, forros, luminárias e decorativos feitos a partir do bambu.",
-    slogan: "Arquitetura em Bambu",
+    descricao: t("Revestimentos, forros, luminárias e decorativos feitos a partir do bambu."),
+    slogan: t("Arquitetura em Bambu"),
     href: "/zhu",
     imagem: heroZhuzen,
     bw: true,
@@ -59,8 +60,8 @@ const linhas = [
   {
     nome: "Echo",
     logo: logoEchoRaw,
-    descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais e home cinemas.",
-    slogan: "Acústica Sensorial",
+    descricao: t("Tecido acústico moldado. Revestimento para estúdios profissionais e home cinemas."),
+    slogan: t("Acústica Sensorial"),
     href: "/echo",
     imagem: heroEcho,
     bw: true,
@@ -154,8 +155,8 @@ const Index = () => {
   return (
     <main className="flex flex-col gap-[10px]">
       <SEO
-        title="Revestimentos em Madeira Ecológica | Lesco"
-        description="Transforme cada ambiente em uma expressão de elegância natural com nossos revestimentos em madeira ecológica. Acabamentos únicos e personalizados."
+        title={t("Revestimentos em Madeira Ecológica | Lesco")}
+        description={t("Transforme cada ambiente em uma expressão de elegância natural com nossos revestimentos em madeira ecológica. Acabamentos únicos e personalizados.")}
         path="/"
         image={heroManto}
         jsonLd={{
@@ -195,7 +196,7 @@ const Index = () => {
           >
             <img
               src={i === 0 || i === currentSlide || warmExtraSlides ? linha.imagem : undefined}
-              alt={`${linha.nome} — fundo`}
+              alt={`${linha.nome} — ${t("fundo")}`}
               draggable={false}
               loading={i === 0 ? "eager" : "lazy"}
               fetchPriority={i === 0 ? "high" : "auto"}
@@ -223,7 +224,7 @@ const Index = () => {
             {/* Bottom-left: título */}
             <div className="absolute bottom-20 lg:bottom-16 left-8 lg:left-12 right-8 lg:right-auto z-10 max-w-[640px] text-white flex flex-col items-start">
               <h1 className="mb-5 font-display font-light text-[44px] md:text-[56px] lg:text-[68px] leading-none tracking-[-0.02em] text-white">
-                Arquitetura feita para o amanhã
+                {t("Arquitetura feita para o amanhã")}
               </h1>
               {/* CTA — mobile */}
               <Link
@@ -231,7 +232,7 @@ const Index = () => {
                 onClick={(e) => { if (Math.abs(dragDeltaX.current) > 5) e.preventDefault(); }}
                 className="lg:hidden mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300 cursor-pointer"
               >
-                Ver linha completa
+                {t("Ver linha completa")}
                 <ArrowUpRight size={16} />
               </Link>
             </div>
@@ -242,7 +243,7 @@ const Index = () => {
               onClick={(e) => { if (Math.abs(dragDeltaX.current) > 5) e.preventDefault(); }}
               className="hidden lg:inline-flex absolute bottom-16 right-8 lg:right-12 z-10 items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300 cursor-pointer"
             >
-              Ver linha completa
+              {t("Ver linha completa")}
               <ArrowUpRight size={16} />
             </Link>
           </>
@@ -276,7 +277,7 @@ const Index = () => {
 
             {/* Static label below */}
             <span className="hero-label-in mt-5 md:mt-10 font-display font-light text-white text-[11px] md:text-[13px] tracking-[0.4em] uppercase">
-              {active.nome === "Geo" ? "Novo lançamento" : "Nova linha em breve"}
+              {active.nome === "Geo" ? t("Novo lançamento") : t("Nova linha em breve")}
             </span>
 
             {/* CTA "Saiba mais" */}
@@ -285,7 +286,7 @@ const Index = () => {
               onClick={(e) => { if (Math.abs(dragDeltaX.current) > 5) e.preventDefault(); }}
               className="hero-label-in pointer-events-auto mt-6 md:mt-7 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300 cursor-pointer"
             >
-              Saiba mais
+              {t("Saiba mais")}
               <ArrowUpRight size={16} />
             </Link>
           </div>
@@ -297,7 +298,7 @@ const Index = () => {
             <button
               key={linha.nome}
               onClick={() => goToSlide(i)}
-              aria-label={`Ir para slide ${i + 1} — ${linha.nome}`}
+              aria-label={`${t("Ir para slide")} ${i + 1} — ${linha.nome}`}
               aria-current={currentSlide === i}
               className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                 currentSlide === i ? "w-8 bg-white" : "w-2 bg-white/40 hover:bg-white/70"
@@ -313,17 +314,17 @@ const Index = () => {
           <ScrollReveal>
             <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 lg:gap-20 items-start">
               <h2 className="font-display text-3xl md:text-4xl lg:text-[52px] font-normal leading-[1.4] text-dark">
-                Pioneiros em Madeira Ecológica no Brasil, somos arquitetura feita para o amanhã.
+                {t("Pioneiros em Madeira Ecológica no Brasil, somos arquitetura feita para o amanhã.")}
               </h2>
               <div className="max-w-[320px]">
                 <p className="font-body text-[16px] font-light leading-[1.65] text-dark/70 text-primary">
-                  Acabamento premium para projetos de alto padrão, com garantia de até 10 anos. Cada superfície que criamos resiste ao tempo e agrada o olhar.
+                  {t("Acabamento premium para projetos de alto padrão, com garantia de até 10 anos. Cada superfície que criamos resiste ao tempo e agrada o olhar.")}
                 </p>
                 <Link
                   to="/orcamento"
                   className="inline-flex items-center mt-8 px-6 py-3 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary hover:text-foreground transition-colors duration-300"
                 >
-                  Fale com um especialista
+                  {t("Fale com um especialista")}
                 </Link>
               </div>
             </div>
@@ -334,7 +335,7 @@ const Index = () => {
       {/* ========== GALERIA DE PROJETOS ========== */}
       <section className="relative flex flex-col overflow-hidden px-[10px]">
         <h2 className="font-display text-3xl md:text-4xl lg:text-[42px] font-normal leading-[1.15] text-primary mb-8 ml-1">
-          Projetos selecionados
+          {t("Projetos selecionados")}
         </h2>
 
         {/* Inline project viewer */}
@@ -343,7 +344,7 @@ const Index = () => {
             <button
               onClick={() => setSelectedProject(null)}
               className="absolute top-5 right-5 z-20 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center hover:bg-background transition-colors duration-200"
-              aria-label="Fechar"
+              aria-label={t("Fechar")}
             >
               <X className="w-5 h-5 text-foreground" />
             </button>
@@ -468,15 +469,15 @@ const Index = () => {
                 {/* Small stacked images */}
                 <div className="flex flex-col gap-[10px]">
                   <div className="flex-1 rounded-[10px] overflow-hidden">
-                    <img src={showroomDetail1} alt="Showroom detalhe" loading="lazy" className="w-full h-full object-cover" />
+                    <img src={showroomDetail1} alt={t("Showroom detalhe")} loading="lazy" className="w-full h-full object-cover" />
                   </div>
                   <div className="flex-1 rounded-[10px] overflow-hidden">
-                    <img src={showroomDetail2} alt="Showroom detalhe" loading="lazy" className="w-full h-full object-cover" />
+                    <img src={showroomDetail2} alt={t("Showroom detalhe")} loading="lazy" className="w-full h-full object-cover" />
                   </div>
                 </div>
                 {/* Large image */}
                 <div className="rounded-[10px] overflow-hidden">
-                  <img src={showroomMain} alt="Showroom Lesco" loading="lazy" className="w-full h-full object-cover" />
+                  <img src={showroomMain} alt={t("Showroom Lesco")} loading="lazy" className="w-full h-full object-cover" />
                 </div>
               </div>
 
@@ -484,20 +485,20 @@ const Index = () => {
               <div className="flex flex-col justify-between p-8 md:p-12 lg:p-16">
                 <div>
                   <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.1] text-primary mb-6">
-                    Te esperamos<br />para um<br />cafezinho!
+                    {t("Te esperamos")}<br />{t("para um")}<br />{t("cafezinho!")}
                   </h2>
                   <p className="font-body text-[15px] font-light leading-[1.65] text-primary/80 max-w-[420px]">
-                    Visite nosso espaço em São Paulo – SP e conheça nossos materiais. Converse com um representante e adquira o kit de amostras para seus próximos projetos.
+                    {t("Visite nosso espaço em São Paulo – SP e conheça nossos materiais. Converse com um representante e adquira o kit de amostras para seus próximos projetos.")}
                   </p>
                 </div>
 
                 <div className="mt-10">
                   <div className="flex items-center gap-2 mb-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <span className="font-display text-[16px] font-medium text-primary">São Paulo</span>
+                    <span className="font-display text-[16px] font-medium text-primary">{t("São Paulo")}</span>
                   </div>
                   <p className="font-body text-[13px] font-light leading-[1.6] text-primary/70 max-w-[320px] mb-6">
-                    Avenida Nove de Julho, número 3147, CJ 22 – Jardim Paulista – São Paulo – SP
+                    {t("Avenida Nove de Julho, número 3147, CJ 22 – Jardim Paulista – São Paulo – SP")}
                   </p>
                   <a
                     href={`https://wa.me/${site.whatsappNumber}`}
@@ -505,7 +506,7 @@ const Index = () => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-7 py-3 rounded-full bg-[hsl(10,50%,72%)] hover:bg-[hsl(10,50%,65%)] text-white font-body text-[13px] font-medium tracking-[0.04em] transition-colors duration-300"
                   >
-                    Agende uma visita
+                    {t("Agende uma visita")}
                   </a>
                 </div>
               </div>
@@ -522,20 +523,20 @@ const Index = () => {
         <div className="container mx-auto px-6 lg:px-8 text-center">
           <ScrollReveal>
             <h2 className="font-display text-4xl md:text-5xl lg:text-[52px] font-normal leading-[1.15] text-dark mb-10">
-              Vamos iniciar<br />seu projeto?
+              {t("Vamos iniciar")}<br />{t("seu projeto?")}
             </h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 to="/orcamento"
                 className="inline-flex items-center px-7 py-3.5 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary/[0.08] transition-colors duration-250"
               >
-                Solicite um orçamento
+                {t("Solicite um orçamento")}
               </Link>
               <Link
                 to="/catalogo-lesco"
                 className="inline-flex items-center px-7 py-3.5 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary/[0.08] transition-colors duration-250"
               >
-                Baixe nosso catálogo
+                {t("Baixe nosso catálogo")}
               </Link>
             </div>
           </ScrollReveal>

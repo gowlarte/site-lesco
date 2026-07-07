@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { t } from "@/i18n/t";
 import { SEO } from "@/components/SEO";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
@@ -15,18 +16,18 @@ import iconVidaUtil from "@/assets/madeira-ecologica/catalogo/vida-util.png";
 const recursos = [
   {
     svg: iconReciclado,
-    label: "Catálogos completos",
-    description: "Acesse os catálogos atualizados de todas as linhas Lesco em alta resolução.",
+    label: t("Catálogos completos"),
+    description: t("Acesse os catálogos atualizados de todas as linhas Lesco em alta resolução."),
   },
   {
     svg: iconPersonalizavel,
-    label: "Fichas técnicas e blocos 3D",
-    description: "Especificações detalhadas e blocos 3D prontos para incluir no seu projeto.",
+    label: t("Fichas técnicas e blocos 3D"),
+    description: t("Especificações detalhadas e blocos 3D prontos para incluir no seu projeto."),
   },
   {
     svg: iconVidaUtil,
-    label: "Imagens HD",
-    description: "Banco de imagens em alta definição para apresentações e propostas.",
+    label: t("Imagens HD"),
+    description: t("Banco de imagens em alta definição para apresentações e propostas."),
   },
 ];
 
@@ -41,8 +42,8 @@ const Biblioteca = () => {
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px] space-y-[10px]">
       <SEO
-        title="Biblioteca — Lesco"
-        description="Acesse catálogos, fichas técnicas, blocos 3D e imagens HD da Lesco para incluir nossos revestimentos no seu projeto."
+        title={t("Biblioteca — Lesco")}
+        description={t("Acesse catálogos, fichas técnicas, blocos 3D e imagens HD da Lesco para incluir nossos revestimentos no seu projeto.")}
         path="/biblioteca"
         image={heroBiblioteca}
       />
@@ -51,7 +52,7 @@ const Biblioteca = () => {
       <section className="relative rounded-[10px] overflow-hidden">
         <img
           src={heroBiblioteca}
-          alt="Revestimentos em madeira ecológica Lesco"
+          alt={t("Revestimentos em madeira ecológica Lesco")}
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-[rgba(13,13,13,0.65)]" />
@@ -60,14 +61,13 @@ const Biblioteca = () => {
           {/* Esquerda — texto */}
           <div className="text-white">
             <span className="inline-block font-display text-white bg-white/15 backdrop-blur rounded-full px-3 py-1.5 text-[10px] md:text-[11px] tracking-[0.18em] uppercase mb-8">
-              Biblioteca Lesco
+              {t("Biblioteca Lesco")}
             </span>
             <h1 className="font-display font-light text-4xl md:text-5xl lg:text-[60px] leading-[1.05] tracking-[-0.02em] mb-6">
-              Tudo o que você precisa para especificar a Lesco no seu projeto.
+              {t("Tudo o que você precisa para especificar a Lesco no seu projeto.")}
             </h1>
             <p className="font-body text-[15px] md:text-[17px] text-white/80 leading-relaxed max-w-md">
-              Preencha o formulário para ter acesso a catálogos, fichas técnicas,
-              blocos 3D e imagens HD dos nossos revestimentos em madeira ecológica.
+              {t("Preencha o formulário para ter acesso a catálogos, fichas técnicas, blocos 3D e imagens HD dos nossos revestimentos em madeira ecológica.")}
             </p>
           </div>
 
@@ -87,10 +87,10 @@ const Biblioteca = () => {
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4 text-center">
-            O que você encontra
+            {t("O que você encontra")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 text-center max-w-2xl mx-auto">
-            Recursos completos para o seu projeto.
+            {t("Recursos completos para o seu projeto.")}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[10px]">
             {recursos.map((r) => (
@@ -108,10 +108,10 @@ const Biblioteca = () => {
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4">
-            Portfólio
+            {t("Portfólio")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 max-w-2xl">
-            Conheça alguns dos nossos projetos.
+            {t("Conheça alguns dos nossos projetos.")}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[10px]">
             {projetosDestaque.map((p) => (
@@ -148,19 +148,19 @@ const Biblioteca = () => {
             <div className="flex flex-col items-center">
               <AnimatedCounter end={15} suffix="+" />
               <span className="font-body text-[13px] uppercase tracking-[0.12em] text-primary-foreground/60 mt-3">
-                Anos de inovação
+                {t("Anos de inovação")}
               </span>
             </div>
             <div className="flex flex-col items-center">
               <AnimatedCounter end={100} suffix="%" />
               <span className="font-body text-[13px] uppercase tracking-[0.12em] text-primary-foreground/60 mt-3">
-                Produtos recicláveis
+                {t("Produtos recicláveis")}
               </span>
             </div>
             <div className="flex flex-col items-center">
               <AnimatedCounter end={3} />
               <span className="font-body text-[13px] uppercase tracking-[0.12em] text-primary-foreground/60 mt-3">
-                Certificações de qualidade
+                {t("Certificações de qualidade")}
               </span>
             </div>
           </div>
@@ -175,7 +175,7 @@ const Biblioteca = () => {
         <div className="container mx-auto px-6 lg:px-8 text-center">
           <ScrollReveal>
             <h2 className="font-display text-3xl md:text-4xl lg:text-[48px] font-normal leading-[1.15] text-dark mb-10">
-              Vamos iniciar<br />seu projeto?
+              {t("Vamos iniciar")}<br />{t("seu projeto?")}
             </h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
@@ -184,13 +184,13 @@ const Biblioteca = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-7 py-3.5 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary/[0.08] transition-colors duration-250"
               >
-                Falar no WhatsApp
+                {t("Falar no WhatsApp")}
               </a>
               <Link
                 to="/catalogo-lesco"
                 className="inline-flex items-center px-7 py-3.5 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary/[0.08] transition-colors duration-250"
               >
-                Baixe nosso catálogo
+                {t("Baixe nosso catálogo")}
               </Link>
             </div>
           </ScrollReveal>

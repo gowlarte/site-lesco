@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { t } from "@/i18n/t";
 
 interface CardModeloProps {
   imageSrc?: string;
@@ -26,7 +27,7 @@ export const CardModelo = ({ imageSrc, nome, medida, peso, onOrcamento }: CardMo
           className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
         />
       ) : (
-        <span className="text-[#9E9890] text-xs">Imagem do produto</span>
+        <span className="text-[#9E9890] text-xs">{t("Imagem do produto")}</span>
       )}
     </div>
 
@@ -36,7 +37,7 @@ export const CardModelo = ({ imageSrc, nome, medida, peso, onOrcamento }: CardMo
       onClick={onOrcamento}
       className="self-start text-xs text-[#525252] hover:text-primary underline underline-offset-4 decoration-[#9E9890] transition-colors cursor-pointer"
     >
-      Solicitar orçamento
+      {t("Solicitar orçamento")}
     </Link>
   </div>
 );

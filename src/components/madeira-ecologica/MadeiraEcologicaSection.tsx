@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { t } from "@/i18n/t";
 import { ProdutoCanvas, type ProdutoCanvasHandle } from "./ProdutoCanvas";
 import { FeatureIcon } from "./FeatureIcon";
 
@@ -12,38 +13,43 @@ import iconReciclado from "@/assets/madeira-ecologica/icon-reciclado.svg?raw";
 const features = [
   {
     id: "anti-mofo",
-    label: "Anti-mofo",
+    label: t("Anti-mofo"),
     svg: iconAntiMofo,
-    description:
+    description: t(
       "Tratamento que inibe o crescimento de fungos e bactérias, mantendo a superfície íntegra ao longo dos anos.",
+    ),
   },
   {
     id: "hidrofobico",
-    label: "Hidrofóbico",
+    label: t("Hidrofóbico"),
     svg: iconHidrofobico,
-    description:
+    description: t(
       "Superfície que repele água, ideal para áreas externas e ambientes úmidos como decks e revestimentos de fachada.",
+    ),
   },
   {
     id: "pragas",
-    label: "Resistente a pragas",
+    label: t("Resistente a pragas"),
     svg: iconPragas,
-    description:
+    description: t(
       "Composição naturalmente resistente a cupins e insetos, sem necessidade de tratamentos químicos adicionais.",
+    ),
   },
   {
     id: "garantia",
-    label: "10 anos de garantia",
+    label: t("10 anos de garantia"),
     svg: iconGarantia,
-    description:
+    description: t(
       "Uma década de garantia que reflete nossa confiança na durabilidade e estabilidade do produto.",
+    ),
   },
   {
     id: "reciclado",
-    label: "100% reciclado",
+    label: t("100% reciclado"),
     svg: iconReciclado,
-    description:
+    description: t(
       "Fabricado com materiais reciclados, contribuindo para uma arquitetura mais sustentável e responsável.",
+    ),
   },
 ];
 
@@ -204,7 +210,7 @@ export const MadeiraEcologicaSection = () => {
     return (
       <section ref={sectionRef} className="bg-[#DBDBDB] rounded-[10px] mx-[10px] py-16 px-5">
         <h2 className="font-display text-3xl font-normal leading-[1.15] text-[#141414] text-center mb-10">
-          Conheça nossa<br />madeira ecológica
+          {t("Conheça nossa")}<br />{t("madeira ecológica")}
         </h2>
         <div className="w-full aspect-square mb-10">
           <ProdutoCanvas
@@ -240,7 +246,7 @@ export const MadeiraEcologicaSection = () => {
     >
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col">
         <h2 className="font-display text-4xl lg:text-[52px] font-normal leading-[1.15] text-[#141414] text-center pt-16 lg:pt-20">
-          Conheça nossa madeira ecológica
+          {t("Conheça nossa madeira ecológica")}
         </h2>
 
         {/* Stage: canvas à esquerda + ícones empilhados à direita */}

@@ -1,25 +1,26 @@
 import { Link } from "react-router-dom";
+import { t } from "@/i18n/t";
 import esquemaCamadas from "@/assets/madeira-wpc/esquema-camadas.webp";
 
 const composicaoWPC = [
-  { label: "55% Pó de madeira", color: "#8B5E3C", text: "#FFFFFF" },
-  { label: "35% HDPE", color: "#C8956C", text: "#3A2A1E" },
-  { label: "10% Aditivos", color: "#D9D9D9", text: "#3A2A1E" },
+  { label: t("55% Pó de madeira"), color: "#8B5E3C", text: "#FFFFFF" },
+  { label: t("35% HDPE"), color: "#C8956C", text: "#3A2A1E" },
+  { label: t("10% Aditivos"), color: "#D9D9D9", text: "#3A2A1E" },
 ];
 
 const composicaoPVC = [
-  { label: "35% Pó de madeira", color: "#8B5E3C", text: "#FFFFFF" },
-  { label: "50% PVC", color: "#C8B59A", text: "#3A2A1E" },
-  { label: "10% Composto reciclado", color: "#9BA08F", text: "#FFFFFF" },
-  { label: "5% Aditivos", color: "#D9D9D9", text: "#3A2A1E" },
+  { label: t("35% Pó de madeira"), color: "#8B5E3C", text: "#FFFFFF" },
+  { label: t("50% PVC"), color: "#C8B59A", text: "#3A2A1E" },
+  { label: t("10% Composto reciclado"), color: "#9BA08F", text: "#FFFFFF" },
+  { label: t("5% Aditivos"), color: "#D9D9D9", text: "#3A2A1E" },
 ];
 
 const features = [
-  "10 anos de garantia",
-  "Material 100% reciclado",
-  "Resistente a cupim",
-  "Hidrofóbico",
-  "Anti-mofo",
+  t("10 anos de garantia"),
+  t("Material 100% reciclado"),
+  t("Resistente a cupim"),
+  t("Hidrofóbico"),
+  t("Anti-mofo"),
 ];
 
 const Bar = ({ items }: { items: { label: string; color: string; text: string }[] }) => (
@@ -42,15 +43,15 @@ const MadeiraWPC = () => {
   return (
     <>
       <SEO
-        title="Madeira WPC — Lesco"
-        description="Wood Polymer Composite — entenda a composição da madeira ecológica Lesco e como ela se aplica nas linhas Brise, Shield, Deck, Panel e Line."
+        title={t("Madeira WPC — Lesco")}
+        description={t("Wood Polymer Composite — entenda a composição da madeira ecológica Lesco e como ela se aplica nas linhas Brise, Shield, Deck, Panel e Line.")}
         path="/madeira-wpc"
       />
       <main className="min-h-screen pt-[110px] pb-[10px] px-[10px]">
         {/* HERO / TÍTULO */}
         <section className="bg-[#DBDBDB] rounded-[10px] px-6 md:px-12 lg:px-20 pt-16 md:pt-20 pb-10">
           <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-[#141414]/55 mb-4">
-            Tecnologia
+            {t("Tecnologia")}
           </p>
           <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-[#141414] max-w-4xl">
             Wood Polymer<br />Composite
@@ -64,7 +65,7 @@ const MadeiraWPC = () => {
             <div className="flex items-center justify-center">
               <img
                 src={esquemaCamadas}
-                alt="Esquema das camadas da madeira ecológica WPC"
+                alt={t("Esquema das camadas da madeira ecológica WPC")}
                 className="w-full max-w-[640px] h-auto object-contain"
               />
             </div>
@@ -76,12 +77,10 @@ const MadeiraWPC = () => {
                 <Bar items={composicaoWPC} />
                 <div>
                   <p className="font-body text-[14px] md:text-[15px] font-light leading-[1.65] text-[#141414]/80">
-                    O WPC, por ter madeira em sua composição, tende a apresentar
-                    um visual mais natural, semelhante à madeira, enquanto o PVC
-                    tem um acabamento mais liso e uniforme.
+                    {t("O WPC, por ter madeira em sua composição, tende a apresentar um visual mais natural, semelhante à madeira, enquanto o PVC tem um acabamento mais liso e uniforme.")}
                   </p>
                   <p className="mt-6 font-display text-[11px] uppercase tracking-[0.12em] text-[#141414]/60">
-                    Aplicado em
+                    {t("Aplicado em")}
                   </p>
                   <p className="mt-2 font-display text-[14px] tracking-[0.08em] text-[#141414]">
                     Brise · Shield · Deck
@@ -94,12 +93,10 @@ const MadeiraWPC = () => {
                 <Bar items={composicaoPVC} />
                 <div>
                   <p className="font-body text-[14px] md:text-[15px] font-light leading-[1.65] text-[#141414]/80">
-                    O PVC (cloreto de polivinila) é um plástico puro, enquanto o
-                    WPC (Wood Plastic Composite) é um composto de fibras de
-                    madeira e plástico.
+                    {t("O PVC (cloreto de polivinila) é um plástico puro, enquanto o WPC (Wood Plastic Composite) é um composto de fibras de madeira e plástico.")}
                   </p>
                   <p className="mt-6 font-display text-[11px] uppercase tracking-[0.12em] text-[#141414]/60">
-                    Aplicado em
+                    {t("Aplicado em")}
                   </p>
                   <p className="mt-2 font-display text-[14px] tracking-[0.08em] text-[#141414]">
                     Panel · Line
@@ -129,14 +126,14 @@ const MadeiraWPC = () => {
         {/* CTA */}
         <section className="bg-[#0D0D0D] rounded-[10px] mt-[10px] px-6 md:px-12 lg:px-20 py-16 md:py-20 text-center">
           <h2 className="font-display text-2xl md:text-4xl font-normal text-white leading-[1.15] mb-8">
-            Conheça as linhas em WPC.
+            {t("Conheça as linhas em WPC.")}
           </h2>
           <div className="flex flex-wrap justify-center gap-3">
             <Link to="/orcamento" className="inline-flex items-center px-6 py-3 rounded-[6px] bg-[#d5b89f] text-[#141414] font-display text-[12px] uppercase tracking-[0.1em] hover:brightness-95 transition">
-              Solicitar orçamento
+              {t("Solicitar orçamento")}
             </Link>
             <Link to="/altwood" className="inline-flex items-center px-6 py-3 rounded-[6px] border border-white/40 text-white font-display text-[12px] uppercase tracking-[0.1em] hover:bg-white/10 transition">
-              Ver linha de produtos
+              {t("Ver linha de produtos")}
             </Link>
           </div>
         </section>

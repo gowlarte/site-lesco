@@ -1,92 +1,93 @@
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
+import { t } from "@/i18n/t";
 
 const artigos = [
   {
     slug: "madeira-ecologica-arquitetura",
-    categoria: "Madeira Ecológica",
-    titulo: "Madeira ecológica: o futuro das fachadas sustentáveis",
+    categoria: t("Madeira Ecológica"),
+    titulo: t("Madeira ecológica: o futuro das fachadas sustentáveis"),
     resumo:
-      "Como a madeira plástica de alta performance está redefinindo brises, decks e revestimentos em projetos contemporâneos.",
-    data: "12 Mar 2026",
-    leitura: "6 min",
+      t("Como a madeira plástica de alta performance está redefinindo brises, decks e revestimentos em projetos contemporâneos."),
+    data: t("12 Mar 2026"),
+    leitura: t("6 min"),
     imagem:
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
   },
   {
     slug: "bambu-na-arquitetura",
     categoria: "Zhú",
-    titulo: "Bambu: o material milenar que voltou a ser tendência",
+    titulo: t("Bambu: o material milenar que voltou a ser tendência"),
     resumo:
-      "Forros, luminárias e revestimentos em bambu trazem aconchego e identidade aos interiores de alto padrão.",
-    data: "28 Fev 2026",
-    leitura: "5 min",
+      t("Forros, luminárias e revestimentos em bambu trazem aconchego e identidade aos interiores de alto padrão."),
+    data: t("28 Fev 2026"),
+    leitura: t("5 min"),
     imagem:
       "https://images.unsplash.com/photo-1610016302534-6f67f1c968d8?auto=format&fit=crop&w=1600&q=80",
   },
   {
     slug: "acustica-em-home-cinemas",
     categoria: "Echo",
-    titulo: "Acústica perfeita: tecidos moldados para home cinemas",
+    titulo: t("Acústica perfeita: tecidos moldados para home cinemas"),
     resumo:
-      "Entenda como o tratamento acústico transforma a experiência sonora em estúdios e salas residenciais.",
-    data: "14 Fev 2026",
-    leitura: "7 min",
+      t("Entenda como o tratamento acústico transforma a experiência sonora em estúdios e salas residenciais."),
+    data: t("14 Fev 2026"),
+    leitura: t("7 min"),
     imagem:
       "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=1600&q=80",
   },
   {
     slug: "pedra-flexivel-fachadas",
     categoria: "Geo",
-    titulo: "Pedra flexível: leveza e resistência em fachadas",
+    titulo: t("Pedra flexível: leveza e resistência em fachadas"),
     resumo:
-      "A revolução das pedras naturais ultrafinas para revestimentos internos e externos.",
-    data: "01 Fev 2026",
-    leitura: "4 min",
+      t("A revolução das pedras naturais ultrafinas para revestimentos internos e externos."),
+    data: t("01 Fev 2026"),
+    leitura: t("4 min"),
     imagem:
       "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80",
   },
   {
     slug: "tendencias-arquitetura-2026",
-    categoria: "Tendências",
-    titulo: "5 tendências da arquitetura sustentável em 2026",
+    categoria: t("Tendências"),
+    titulo: t("5 tendências da arquitetura sustentável em 2026"),
     resumo:
-      "Materiais reciclados, biofilia e integração com a natureza ditam o ritmo dos projetos deste ano.",
-    data: "20 Jan 2026",
-    leitura: "8 min",
+      t("Materiais reciclados, biofilia e integração com a natureza ditam o ritmo dos projetos deste ano."),
+    data: t("20 Jan 2026"),
+    leitura: t("8 min"),
     imagem:
       "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=80",
   },
   {
     slug: "deck-area-externa",
-    categoria: "Madeira Ecológica",
-    titulo: "Como escolher o deck ideal para sua área externa",
+    categoria: t("Madeira Ecológica"),
+    titulo: t("Como escolher o deck ideal para sua área externa"),
     resumo:
-      "Durabilidade, estética e manutenção: tudo o que você precisa avaliar antes de instalar um deck.",
-    data: "08 Jan 2026",
-    leitura: "5 min",
+      t("Durabilidade, estética e manutenção: tudo o que você precisa avaliar antes de instalar um deck."),
+    data: t("08 Jan 2026"),
+    leitura: t("5 min"),
     imagem:
       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
   },
   {
     slug: "biofilia-projetos",
-    categoria: "Inspiração",
-    titulo: "Design biofílico: trazendo a natureza para dentro",
+    categoria: t("Inspiração"),
+    titulo: t("Design biofílico: trazendo a natureza para dentro"),
     resumo:
-      "Projetos que integram materiais naturais e luz para criar ambientes mais saudáveis e produtivos.",
-    data: "22 Dez 2025",
-    leitura: "6 min",
+      t("Projetos que integram materiais naturais e luz para criar ambientes mais saudáveis e produtivos."),
+    data: t("22 Dez 2025"),
+    leitura: t("6 min"),
     imagem:
       "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1600&q=80",
   },
   {
     slug: "manutencao-revestimentos",
-    categoria: "Guias",
-    titulo: "Guia de manutenção para revestimentos premium",
+    categoria: t("Guias"),
+    titulo: t("Guia de manutenção para revestimentos premium"),
     resumo:
-      "Cuidados essenciais para preservar a beleza e a vida útil dos seus revestimentos arquitetônicos.",
-    data: "10 Dez 2025",
-    leitura: "4 min",
+      t("Cuidados essenciais para preservar a beleza e a vida útil dos seus revestimentos arquitetônicos."),
+    data: t("10 Dez 2025"),
+    leitura: t("4 min"),
     imagem:
       "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
   },
@@ -98,8 +99,8 @@ const Blog = () => {
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px]">
       <SEO
-        title="Blog — Lesco"
-        description="Ideias, materiais e inspiração para a arquitetura do amanhã. Artigos sobre madeira ecológica, sustentabilidade e tendências de projeto."
+        title={t("Blog — Lesco")}
+        description={t("Ideias, materiais e inspiração para a arquitetura do amanhã. Artigos sobre madeira ecológica, sustentabilidade e tendências de projeto.")}
         path="/blog"
         image={destaque.imagem}
         type="article"
@@ -107,10 +108,10 @@ const Blog = () => {
       {/* Header editorial */}
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-16 md:py-24 mb-[10px]">
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/60 mb-6">
-          Blog Lesco
+          {t("Blog Lesco")}
         </p>
         <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-dark max-w-4xl">
-          Ideias, materiais e inspiração para a arquitetura do amanhã.
+          {t("Ideias, materiais e inspiração para a arquitetura do amanhã.")}
         </h1>
       </section>
 
@@ -142,7 +143,7 @@ const Blog = () => {
               {destaque.resumo}
             </p>
             <span className="inline-flex items-center gap-2 font-display text-[12px] uppercase tracking-[0.1em] text-dark group-hover:gap-3 transition-all duration-300">
-              Ler artigo <span aria-hidden>→</span>
+              {t("Ler artigo")} <span aria-hidden>→</span>
             </span>
           </div>
         </Link>

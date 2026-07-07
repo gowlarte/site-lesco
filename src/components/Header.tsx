@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n/t";
 import logoDark from "@/assets/logo-lesco-dark-2.svg";
 import logoLight from "@/assets/logo-lesco-light.svg";
 import linhaEchotexRaw from "@/assets/linha-echotex-2.svg?raw";
@@ -20,15 +21,15 @@ type NavItem = { label: string; href?: string; children?: NavChild[]; external?:
 const navLinks: NavItem[] = [
   { label: "Home", href: "/" },
   {
-    label: "Sobre",
+    label: t("Sobre"),
     children: [
-      { label: "Quem somos", href: "/quem-somos" },
-      { label: "Madeira Ecológica", href: "/madeira-ecologica-lesco" },
-      { label: "Sustentabilidade", href: "/revestimento-sustentavel" },
+      { label: t("Quem somos"), href: "/quem-somos" },
+      { label: t("Madeira Ecológica"), href: "/madeira-ecologica-lesco" },
+      { label: t("Sustentabilidade"), href: "/revestimento-sustentavel" },
     ],
   },
   {
-    label: "Produtos",
+    label: t("Produtos"),
     children: [
       { label: "Lesco Shield", href: "/madeira-ecologica-para-fachada" },
       { label: "Lesco Panel", href: "/placa-wpc-interior" },
@@ -37,10 +38,10 @@ const navLinks: NavItem[] = [
       { label: "Lesco Deck", href: "/madeira-ecologica-para-deck" },
     ],
   },
-  { label: "Catálogo", href: "/catalogo-lesco" },
-  { label: "Biblioteca", href: "/biblioteca" },
+  { label: t("Catálogo"), href: "/catalogo-lesco" },
+  { label: t("Biblioteca"), href: "/biblioteca" },
   { label: "Blog", href: "https://blog.lesco.com.br/", external: true },
-  { label: "Portfólio", href: "/portfolio" },
+  { label: t("Portfólio"), href: "/portfolio" },
 ];
 
 interface HeaderProps {
@@ -223,7 +224,7 @@ export function Header({ variant = "default" }: HeaderProps) {
             })}
             {/* Desktop CTA (dentro do nav, após Portfólio) - estilo igual aos demais links */}
             {(() => {
-              const label = "Orçamento";
+              const label = t("Orçamento");
               const color =
                 hoveredNav === label
                   ? activeColor
@@ -294,7 +295,7 @@ export function Header({ variant = "default" }: HeaderProps) {
               className="font-display font-light text-[12px] uppercase tracking-[0.08em] whitespace-nowrap"
               style={{ color: baseColor }}
             >
-              Lançamentos
+              {t("Lançamentos")}
             </span>
           </div>
 
@@ -306,7 +307,7 @@ export function Header({ variant = "default" }: HeaderProps) {
               overlayTransparent ? "text-white" : isLight ? "text-[#303030]" : "text-foreground"
             )}
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Menu"
+            aria-label={t("Menu")}
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -384,7 +385,7 @@ export function Header({ variant = "default" }: HeaderProps) {
         {/* Lançamentos mobile */}
         <div className="mt-6 flex flex-col items-center gap-3 text-foreground/80">
           <span className="font-display font-light text-[11px] uppercase tracking-[0.12em] text-foreground/50">
-            Lançamentos
+            {t("Lançamentos")}
           </span>
           <div className="flex items-center gap-6">
             {lancamentos.map((l) => (
@@ -406,9 +407,9 @@ export function Header({ variant = "default" }: HeaderProps) {
           const mobileClass = "mt-6 px-8 py-3 rounded text-white font-display text-sm uppercase tracking-[0.08em]";
           const mobileStyle = { background: "linear-gradient(135deg, #728ea0 25%, #c0c9bf 56%, #d6aa98 74%, #efdcc5 90%)" };
           return emBreve ? (
-            <span className={mobileClass} style={mobileStyle}>Lançamento em breve</span>
+            <span className={mobileClass} style={mobileStyle}>{t("Lançamento em breve")}</span>
           ) : (
-            <Link to="/orcamento" className={mobileClass} style={mobileStyle}>Orçamento</Link>
+            <Link to="/orcamento" className={mobileClass} style={mobileStyle}>{t("Orçamento")}</Link>
           );
         })()}
       </div>

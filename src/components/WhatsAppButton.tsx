@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { buildGhlFormUrl } from "@/lib/utm";
 import { site } from "@/config/site";
+import { t } from "@/i18n/t";
 
 const FORM_BASE_URL = `https://api.leadconnectorhq.com/widget/form/${site.forms.whatsappPopup}`;
 const FORM_URL = FORM_BASE_URL;
@@ -48,7 +49,7 @@ export function WhatsAppButton() {
           });
           setOpen(true);
         }}
-        aria-label="Falar no WhatsApp"
+        aria-label={t("Falar no WhatsApp")}
         className="fixed bottom-[20px] right-[20px] z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform duration-300 hover:scale-110"
         style={{ transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
       >
@@ -70,7 +71,7 @@ export function WhatsAppButton() {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              aria-label="Fechar"
+              aria-label={t("Fechar")}
               className="absolute right-2 top-2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/10 text-black/70 transition-colors hover:bg-black/20"
             >
               <X size={18} />

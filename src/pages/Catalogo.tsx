@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { t } from "@/i18n/t";
 import { SEO } from "@/components/SEO";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { GhlForm } from "@/components/GhlForm";
@@ -17,15 +18,15 @@ import iconInsetos from "@/assets/madeira-ecologica/catalogo/insetos.png";
 import iconTermico from "@/assets/madeira-ecologica/catalogo/termico.png";
 
 const diferenciais = [
-  { svg: iconVidaUtil, label: "Vida útil de até 20 anos", description: "Durabilidade excepcional para projetos que atravessam o tempo." },
-  { svg: iconGarantia, label: "Garantia de 10 anos", description: "Uma década de garantia que reflete a confiança no produto." },
-  { svg: iconReciclado, label: "Produzido com material reciclado", description: "Fabricado com materiais reciclados, para uma arquitetura mais responsável." },
-  { svg: iconUv, label: "Proteção UV para toda a linha WPC Lesco", description: "Resistência à exposição solar, preservando cor e integridade." },
-  { svg: iconPersonalizavel, label: "Tamanhos e texturas personalizáveis", description: "Flexibilidade total para adaptar o material ao seu projeto." },
-  { svg: iconAcustico, label: "Material com isolamento acústico", description: "Conforto sonoro para ambientes internos e externos." },
-  { svg: iconInstalacao, label: "Instalação rápida, limpa e fácil", description: "Sistema prático que reduz prazos e desperdícios na obra." },
-  { svg: iconInsetos, label: "Resistência a insetos e fungos", description: "Composição naturalmente resistente a cupins e fungos." },
-  { svg: iconTermico, label: "Material com isolamento térmico", description: "Eficiência térmica que contribui para o conforto do ambiente." },
+  { svg: iconVidaUtil, label: t("Vida útil de até 20 anos"), description: t("Durabilidade excepcional para projetos que atravessam o tempo.") },
+  { svg: iconGarantia, label: t("Garantia de 10 anos"), description: t("Uma década de garantia que reflete a confiança no produto.") },
+  { svg: iconReciclado, label: t("Produzido com material reciclado"), description: t("Fabricado com materiais reciclados, para uma arquitetura mais responsável.") },
+  { svg: iconUv, label: t("Proteção UV para toda a linha WPC Lesco"), description: t("Resistência à exposição solar, preservando cor e integridade.") },
+  { svg: iconPersonalizavel, label: t("Tamanhos e texturas personalizáveis"), description: t("Flexibilidade total para adaptar o material ao seu projeto.") },
+  { svg: iconAcustico, label: t("Material com isolamento acústico"), description: t("Conforto sonoro para ambientes internos e externos.") },
+  { svg: iconInstalacao, label: t("Instalação rápida, limpa e fácil"), description: t("Sistema prático que reduz prazos e desperdícios na obra.") },
+  { svg: iconInsetos, label: t("Resistência a insetos e fungos"), description: t("Composição naturalmente resistente a cupins e fungos.") },
+  { svg: iconTermico, label: t("Material com isolamento térmico"), description: t("Eficiência térmica que contribui para o conforto do ambiente.") },
 ];
 
 const Catalogo = () => {
@@ -34,8 +35,8 @@ const Catalogo = () => {
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px] space-y-[10px]">
       <SEO
-        title="Catálogo Lesco — Baixe o catálogo completo"
-        description="Receba o catálogo completo da Lesco com todas as linhas, modelos e especificações técnicas dos nossos revestimentos premium."
+        title={t("Catálogo Lesco — Baixe o catálogo completo")}
+        description={t("Receba o catálogo completo da Lesco com todas as linhas, modelos e especificações técnicas dos nossos revestimentos premium.")}
         path="/catalogo-lesco"
         image={heroCatalogo}
       />
@@ -44,7 +45,7 @@ const Catalogo = () => {
       <section className="relative rounded-[10px] overflow-hidden">
         <img
           src={heroCatalogo}
-          alt="Revestimentos em madeira ecológica Lesco"
+          alt={t("Revestimentos em madeira ecológica Lesco")}
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-[rgba(13,13,13,0.65)]" />
@@ -53,15 +54,13 @@ const Catalogo = () => {
           {/* Esquerda — texto */}
           <div className="text-white">
             <span className="inline-block font-display text-white bg-white/15 backdrop-blur rounded-full px-3 py-1.5 text-[10px] md:text-[11px] tracking-[0.18em] uppercase mb-8">
-              Catálogo Lesco
+              {t("Catálogo Lesco")}
             </span>
             <h1 className="font-display font-light text-4xl md:text-5xl lg:text-[60px] leading-[1.05] tracking-[-0.02em] mb-6">
-              Conheça o novo e explore todos os benefícios que a madeira ecológica pode oferecer.
+              {t("Conheça o novo e explore todos os benefícios que a madeira ecológica pode oferecer.")}
             </h1>
             <p className="font-body text-[15px] md:text-[17px] text-white/80 leading-relaxed max-w-md">
-              Acesse nosso catálogo exclusivo e explore uma seleção diversificada de
-              revestimentos ecológicos, criados com o compromisso de oferecer soluções
-              estéticas e ambientalmente responsáveis.
+              {t("Acesse nosso catálogo exclusivo e explore uma seleção diversificada de revestimentos ecológicos, criados com o compromisso de oferecer soluções estéticas e ambientalmente responsáveis.")}
             </p>
           </div>
 
@@ -81,10 +80,10 @@ const Catalogo = () => {
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4 text-center">
-            Por que Lesco
+            {t("Por que Lesco")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 text-center max-w-3xl mx-auto">
-            Principais diferenciais da madeira ecológica WPC.
+            {t("Principais diferenciais da madeira ecológica WPC.")}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[10px]">
             {diferenciais.map((d) => (
@@ -106,7 +105,7 @@ const Catalogo = () => {
         <div className="container mx-auto px-6 lg:px-8 text-center">
           <ScrollReveal>
             <h2 className="font-display text-3xl md:text-4xl lg:text-[48px] font-normal leading-[1.15] text-dark mb-10">
-              Vamos iniciar<br />seu projeto?
+              {t("Vamos iniciar")}<br />{t("seu projeto?")}
             </h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
@@ -115,13 +114,13 @@ const Catalogo = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-7 py-3.5 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary/[0.08] transition-colors duration-250"
               >
-                Falar no WhatsApp
+                {t("Falar no WhatsApp")}
               </a>
               <Link
                 to="/orcamento"
                 className="inline-flex items-center px-7 py-3.5 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary/[0.08] transition-colors duration-250"
               >
-                Solicitar orçamento
+                {t("Solicitar orçamento")}
               </Link>
             </div>
           </ScrollReveal>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { t } from "@/i18n/t";
 import { SEO } from "@/components/SEO";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
@@ -17,28 +18,28 @@ import iconReciclado from "@/assets/madeira-ecologica/icon-reciclado.svg?raw";
 const beneficios = [
   {
     svg: iconGarantia,
-    label: "10 anos de garantia",
-    description: "Uma década de garantia que reflete a confiança na durabilidade do produto.",
+    label: t("10 anos de garantia"),
+    description: t("Uma década de garantia que reflete a confiança na durabilidade do produto."),
   },
   {
     svg: iconReciclado,
-    label: "100% reciclável",
-    description: "Fabricado com materiais reciclados, para uma arquitetura mais responsável.",
+    label: t("100% reciclável"),
+    description: t("Fabricado com materiais reciclados, para uma arquitetura mais responsável."),
   },
   {
     svg: iconHidrofobico,
-    label: "Hidrofóbico",
-    description: "Superfície que repele água, ideal para áreas externas e ambientes úmidos.",
+    label: t("Hidrofóbico"),
+    description: t("Superfície que repele água, ideal para áreas externas e ambientes úmidos."),
   },
   {
     svg: iconAntiMofo,
-    label: "Anti-mofo",
-    description: "Tratamento que inibe o crescimento de fungos e bactérias ao longo dos anos.",
+    label: t("Anti-mofo"),
+    description: t("Tratamento que inibe o crescimento de fungos e bactérias ao longo dos anos."),
   },
   {
     svg: iconPragas,
-    label: "Resistente a pragas",
-    description: "Composição naturalmente resistente a cupins e insetos, sem químicos extras.",
+    label: t("Resistente a pragas"),
+    description: t("Composição naturalmente resistente a cupins e insetos, sem químicos extras."),
   },
 ];
 
@@ -53,8 +54,8 @@ const Orcamento = () => {
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px] space-y-[10px]">
       <SEO
-        title="Solicitar Orçamento — Lesco"
-        description="Solicite um orçamento personalizado para seu projeto. Nossa equipe entrará em contato para elaborar a melhor solução em revestimentos Lesco."
+        title={t("Solicitar Orçamento — Lesco")}
+        description={t("Solicite um orçamento personalizado para seu projeto. Nossa equipe entrará em contato para elaborar a melhor solução em revestimentos Lesco.")}
         path="/orcamento"
         image={heroOrcamento}
       />
@@ -63,7 +64,7 @@ const Orcamento = () => {
       <section className="relative rounded-[10px] overflow-hidden">
         <img
           src={heroOrcamento}
-          alt="Revestimentos em madeira ecológica Lesco"
+          alt={t("Revestimentos em madeira ecológica Lesco")}
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-[rgba(13,13,13,0.65)]" />
@@ -72,14 +73,13 @@ const Orcamento = () => {
           {/* Esquerda — texto */}
           <div className="text-white">
             <span className="inline-block font-display text-white bg-white/15 backdrop-blur rounded-full px-3 py-1.5 text-[10px] md:text-[11px] tracking-[0.18em] uppercase mb-8">
-              Orçamento sem compromisso
+              {t("Orçamento sem compromisso")}
             </span>
             <h1 className="font-display font-light text-4xl md:text-5xl lg:text-[60px] leading-[1.05] tracking-[-0.02em] mb-6">
-              Crie um ambiente exclusivo com elegância e autenticidade.
+              {t("Crie um ambiente exclusivo com elegância e autenticidade.")}
             </h1>
             <p className="font-body text-[15px] md:text-[17px] text-white/80 leading-relaxed max-w-md">
-              Solicite um orçamento e faça parte da transformação com revestimentos
-              em madeira ecológica de alto padrão.
+              {t("Solicite um orçamento e faça parte da transformação com revestimentos em madeira ecológica de alto padrão.")}
             </p>
           </div>
 
@@ -99,10 +99,10 @@ const Orcamento = () => {
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4 text-center">
-            Por que Lesco
+            {t("Por que Lesco")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 text-center max-w-2xl mx-auto">
-            Tecnologia e durabilidade em cada superfície.
+            {t("Tecnologia e durabilidade em cada superfície.")}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[10px]">
             {beneficios.map((b) => (
@@ -124,10 +124,10 @@ const Orcamento = () => {
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4">
-            Portfólio
+            {t("Portfólio")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 max-w-2xl">
-            Conheça alguns dos nossos projetos.
+            {t("Conheça alguns dos nossos projetos.")}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[10px]">
             {projetosDestaque.map((p) => (
@@ -164,19 +164,19 @@ const Orcamento = () => {
             <div className="flex flex-col items-center">
               <AnimatedCounter end={15} suffix="+" />
               <span className="font-body text-[13px] uppercase tracking-[0.12em] text-primary-foreground/60 mt-3">
-                Anos de inovação
+                {t("Anos de inovação")}
               </span>
             </div>
             <div className="flex flex-col items-center">
               <AnimatedCounter end={100} suffix="%" />
               <span className="font-body text-[13px] uppercase tracking-[0.12em] text-primary-foreground/60 mt-3">
-                Produtos recicláveis
+                {t("Produtos recicláveis")}
               </span>
             </div>
             <div className="flex flex-col items-center">
               <AnimatedCounter end={3} />
               <span className="font-body text-[13px] uppercase tracking-[0.12em] text-primary-foreground/60 mt-3">
-                Certificações de qualidade
+                {t("Certificações de qualidade")}
               </span>
             </div>
           </div>
@@ -191,7 +191,7 @@ const Orcamento = () => {
         <div className="container mx-auto px-6 lg:px-8 text-center">
           <ScrollReveal>
             <h2 className="font-display text-3xl md:text-4xl lg:text-[48px] font-normal leading-[1.15] text-dark mb-10">
-              Vamos iniciar<br />seu projeto?
+              {t("Vamos iniciar")}<br />{t("seu projeto?")}
             </h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
@@ -200,13 +200,13 @@ const Orcamento = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-7 py-3.5 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary/[0.08] transition-colors duration-250"
               >
-                Falar no WhatsApp
+                {t("Falar no WhatsApp")}
               </a>
               <Link
                 to="/catalogo-lesco"
                 className="inline-flex items-center px-7 py-3.5 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary/[0.08] transition-colors duration-250"
               >
-                Baixe nosso catálogo
+                {t("Baixe nosso catálogo")}
               </Link>
             </div>
           </ScrollReveal>

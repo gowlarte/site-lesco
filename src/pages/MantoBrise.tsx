@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { t } from "@/i18n/t";
 import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
@@ -120,10 +121,10 @@ const classicModelos = [
 ];
 
 const galeriaItems = [
-  { legenda: "Residência com brises verticais entre jardim e vidro", ratio: "4:3" as const, imageSrc: projetoBrise1 },
-  { legenda: "Fachada comercial com brises verticais alinhados · Cor Teak", ratio: "4:3" as const, imageSrc: projetoBrise2 },
-  { legenda: "Edifício alto — fachada completa com brises verticais", ratio: "4:3" as const, imageSrc: projetoBrise3 },
-  { legenda: "Empreendimento residencial — brises em fachada e pergolado", ratio: "4:3" as const, imageSrc: projetoBrise4 },
+  { legenda: t("Residência com brises verticais entre jardim e vidro"), ratio: "4:3" as const, imageSrc: projetoBrise1 },
+  { legenda: `${t("Fachada comercial com brises verticais alinhados · Cor")} Teak`, ratio: "4:3" as const, imageSrc: projetoBrise2 },
+  { legenda: t("Edifício alto — fachada completa com brises verticais"), ratio: "4:3" as const, imageSrc: projetoBrise3 },
+  { legenda: t("Empreendimento residencial — brises em fachada e pergolado"), ratio: "4:3" as const, imageSrc: projetoBrise4 },
 ];
 
 const MantoBrise = () => {
@@ -137,8 +138,8 @@ const MantoBrise = () => {
   return (
     <div className="min-h-screen bg-[#e5e1dc]">
       <SEO
-        title="Brise Madeira Ecológica | Lesco Brise"
-        description="Nossa madeira ecológica para brises e fachadas oferece uma solução sustentável que combina a durabilidade do plástico com a estética natural da madeira."
+        title={t("Brise Madeira Ecológica | Lesco Brise")}
+        description={t("Nossa madeira ecológica para brises e fachadas oferece uma solução sustentável que combina a durabilidade do plástico com a estética natural da madeira.")}
         path="/brise-madeira-ecologica"
         image={heroBrise1}
       />
@@ -152,9 +153,9 @@ const MantoBrise = () => {
       {/* Breadcrumb */}
       <div className="px-6 md:px-12 lg:px-20 py-4">
         <nav className="flex items-center gap-1.5 text-xs">
-          <Link to="/" className="text-[#7F7F7F] hover:text-white transition-colors">Início</Link>
+          <Link to="/" className="text-[#7F7F7F] hover:text-white transition-colors">{t("Início")}</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
-          <Link to="/madeira-ecologica-lesco" className="text-[#7F7F7F] hover:text-white transition-colors">Madeira Ecológica</Link>
+          <Link to="/madeira-ecologica-lesco" className="text-[#7F7F7F] hover:text-white transition-colors">{t("Madeira Ecológica")}</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
           <span className="text-[#525252]">Brise</span>
         </nav>
@@ -168,7 +169,7 @@ const MantoBrise = () => {
           <span className="flex-1 h-px bg-[#1E1E1E]" />
         </div>
         <p className="text-[17px] text-[#7F7F7F] leading-[1.7]">
-          Os perfis de Brises de WPC (Wood-Plastic Composite) representam uma inovação notável no campo da arquitetura e da construção, oferecendo uma solução sustentável que combina a durabilidade do plástico com a estética natural da madeira.
+          {t("Os perfis de Brises de WPC (Wood-Plastic Composite) representam uma inovação notável no campo da arquitetura e da construção, oferecendo uma solução sustentável que combina a durabilidade do plástico com a estética natural da madeira.")}
         </p>
       </div>
 
@@ -185,7 +186,7 @@ const MantoBrise = () => {
                   : "text-[#9E9890] border-transparent hover:text-primary"
               }`}
             >
-              Madeira Ecológica {tab === "origens" ? "Origens" : "Classic"}
+              {t("Madeira Ecológica")} {tab === "origens" ? "Origens" : "Classic"}
             </button>
           ))}
         </div>
@@ -195,7 +196,7 @@ const MantoBrise = () => {
           {/* Paleta de Cores */}
           <div className="mb-12">
             <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-4">
-              Cores disponíveis
+              {t("Cores disponíveis")}
             </span>
             <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-8 gap-4 w-full">
               {swatches.map((s) => (
@@ -214,7 +215,7 @@ const MantoBrise = () => {
           {/* Modelos */}
           <div className="mb-12">
             <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-6">
-              Modelos
+              {t("Modelos")}
             </span>
             <div className="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
               {modelos.map((m) => {
@@ -235,50 +236,50 @@ const MantoBrise = () => {
             onClick={() => setSpecsOpen(!specsOpen)}
             className="text-[#7F7F7F] hover:text-white text-sm transition-colors duration-300 cursor-pointer flex items-center gap-1"
           >
-            Especificações técnicas {specsOpen ? "−" : "+"}
+            {t("Especificações técnicas")} {specsOpen ? "−" : "+"}
           </button>
 
           {specsOpen && (
             <div className="mt-6 bg-[#141414] rounded-[12px] p-8 animate-fade-in">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Material</h4>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Material")}</h4>
                   <div className="h-px bg-[#1E1E1E] mb-4" />
                   <div className="text-sm text-white font-mono space-y-1">
                     <p>WPC — Wood-Plastic Composite</p>
-                    <p className="text-[#7F7F7F]">55% pó de madeira natural</p>
-                    <p className="text-[#7F7F7F]">35% HPDE reciclado</p>
-                    <p className="text-[#7F7F7F]">10% aditivos</p>
+                    <p className="text-[#7F7F7F]">{t("55% pó de madeira natural")}</p>
+                    <p className="text-[#7F7F7F]">{t("35% HPDE reciclado")}</p>
+                    <p className="text-[#7F7F7F]">{t("10% aditivos")}</p>
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Resistência</h4>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Resistência")}</h4>
                   <div className="h-px bg-[#1E1E1E] mb-4" />
                   <div className="text-sm text-white space-y-1">
-                    <p>✓ Anti-cupim</p>
-                    <p>✓ Hidrofóbico</p>
-                    <p>✓ Anti-mofo</p>
-                    <p>✓ Resistência UV</p>
+                    <p>✓ {t("Anti-cupim")}</p>
+                    <p>✓ {t("Hidrofóbico")}</p>
+                    <p>✓ {t("Anti-mofo")}</p>
+                    <p>✓ {t("Resistência UV")}</p>
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Certificações</h4>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Certificações")}</h4>
                   <div className="h-px bg-[#1E1E1E] mb-4" />
                   <p className="text-sm text-white">ISO 9001 · ISO 14001 · LEED · ESG</p>
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Garantia</h4>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Garantia")}</h4>
                   <div className="h-px bg-[#1E1E1E] mb-4" />
-                  <p className="text-sm text-white">10 anos</p>
+                  <p className="text-sm text-white">{t("10 anos")}</p>
                 </div>
                 <div className="md:col-span-2">
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Subestrutura Recomendada</h4>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Subestrutura Recomendada")}</h4>
                   <div className="h-px bg-[#1E1E1E] mb-4" />
                   <div className="text-sm text-white font-mono space-y-1">
-                    <p>Aplicação em parede: <span className="text-[#7F7F7F]">espaçamento 80 cm entre estruturas</span></p>
-                    <p>Aplicação em teto: <span className="text-[#7F7F7F]">espaçamento 60 cm entre estruturas</span></p>
-                    <p>Fixação: <span className="text-[#7F7F7F]">parafuso Philips autobrocante flangeado ou cabeça panela 4,2×19 mm</span></p>
-                    <p>Estrutura auxiliar: <span className="text-[#7F7F7F]">alumínio ou aço — 50×50 mm · 38×38 mm · 50×25 mm</span></p>
+                    <p>{t("Aplicação em parede:")} <span className="text-[#7F7F7F]">{t("espaçamento 80 cm entre estruturas")}</span></p>
+                    <p>{t("Aplicação em teto:")} <span className="text-[#7F7F7F]">{t("espaçamento 60 cm entre estruturas")}</span></p>
+                    <p>{t("Fixação:")} <span className="text-[#7F7F7F]">{t("parafuso Philips autobrocante flangeado ou cabeça panela 4,2×19 mm")}</span></p>
+                    <p>{t("Estrutura auxiliar:")} <span className="text-[#7F7F7F]">{t("alumínio ou aço")} — 50×50 mm · 38×38 mm · 50×25 mm</span></p>
                   </div>
                 </div>
               </div>
@@ -289,8 +290,8 @@ const MantoBrise = () => {
 
       {/* Galeria de Projetos */}
       <div className="px-6 md:px-12 lg:px-20 py-24">
-        <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">Projetos</span>
-        <h2 className="font-display text-3xl md:text-4xl font-semibold mb-10 text-gray-950">Realizações com Lesco Brise</h2>
+        <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">{t("Projetos")}</span>
+        <h2 className="font-display text-3xl md:text-4xl font-semibold mb-10 text-gray-950">{t("Realizações com Lesco Brise")}</h2>
 
         <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
           {galeriaItems.map((item, i) => (
@@ -305,7 +306,7 @@ const MantoBrise = () => {
       <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-[#1E1E1E]">
         <div className="flex justify-between items-center">
           <Link to="/madeira-ecologica-lesco" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
-            ← Madeira Ecológica
+            ← {t("Madeira Ecológica")}
           </Link>
           <Link to="/madeira-ecologica-para-fachada" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
             Shield →

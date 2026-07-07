@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { SwatchCor } from "./SwatchCor";
 import { BotaoCTA } from "./BotaoCTA";
 import { ImageIcon } from "lucide-react";
+import { t } from "@/i18n/t";
 
 interface SwatchData {
   nome: string;
@@ -94,7 +95,7 @@ export const PreviewProduto = ({ id, tag, titulo, descricao, swatches, href, ima
               <SwatchCor key={s.nome} nome={s.nome} corAproximada={s.corAproximada} />
             ))}
           </div>
-          <BotaoCTA variant="ghost">Ver linha completa</BotaoCTA>
+          <BotaoCTA variant="ghost">{t("Ver linha completa")}</BotaoCTA>
         </div>
       </Link>
     </section>

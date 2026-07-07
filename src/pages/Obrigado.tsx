@@ -1,4 +1,5 @@
 import { SEO } from "@/components/SEO";
+import { t } from "@/i18n/t";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import obrigadoBg from "@/assets/obrigado-bg.webp";
 import logoLight from "@/assets/logo-lesco-light.svg";
@@ -21,8 +22,8 @@ export default function Obrigado() {
   return (
     <>
       <SEO
-        title="Obrigado | Lesco"
-        description="Recebemos sua solicitação. Em breve nossa equipe entrará em contato. Acompanhe as novidades da Lesco enquanto aguarda."
+        title={t("Obrigado | Lesco")}
+        description={t("Recebemos sua solicitação. Em breve nossa equipe entrará em contato. Acompanhe as novidades da Lesco enquanto aguarda.")}
         path="/obrigado"
       />
 
@@ -41,16 +42,15 @@ export default function Obrigado() {
           <img src={logoLight} alt="Lesco" className="h-12 md:h-14 mx-auto" />
 
           <h1 className="mt-8 font-heading text-2xl md:text-4xl font-bold text-white">
-            Obrigado pelo seu contato!
+            {t("Obrigado pelo seu contato!")}
           </h1>
 
           <p className="mt-6 font-body text-base md:text-lg text-white/90 leading-relaxed">
-            Sua solicitação foi registrada com sucesso. Em breve nossa equipe
-            entrará em contato com você.
+            {t("Sua solicitação foi registrada com sucesso. Em breve nossa equipe entrará em contato com você.")}
           </p>
 
           <p className="mt-4 font-body text-sm text-white/70">
-            Qualquer dúvida, fale conosco a qualquer momento.
+            {t("Qualquer dúvida, fale conosco a qualquer momento.")}
           </p>
         </div>
       </section>
@@ -58,8 +58,7 @@ export default function Obrigado() {
       {/* Novidades + redes sociais */}
       <section className="py-20 md:py-28 px-6 text-center">
         <p className="font-body text-lg md:text-xl text-black max-w-3xl mx-auto">
-          Enquanto você aguarda, acompanhe todas as novidades e últimas
-          atualizações da Lesco.
+          {t("Enquanto você aguarda, acompanhe todas as novidades e últimas atualizações da Lesco.")}
         </p>
 
         <div className="mt-12 flex items-center justify-center gap-6">

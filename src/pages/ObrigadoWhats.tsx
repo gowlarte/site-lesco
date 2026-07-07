@@ -1,4 +1,5 @@
 import { SEO } from "@/components/SEO";
+import { t } from "@/i18n/t";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import obrigadoBg from "@/assets/obrigado-bg.webp";
 import logoLight from "@/assets/logo-lesco-light.svg";
@@ -21,8 +22,8 @@ export default function ObrigadoWhats() {
   return (
     <>
       <SEO
-        title="Contato recebido | Lesco"
-        description="Recebemos sua solicitação de contato. Em breve nossa equipe responderá."
+        title={t("Contato recebido | Lesco")}
+        description={t("Recebemos sua solicitação de contato. Em breve nossa equipe responderá.")}
         path="/obrigado-whats"
       />
 
@@ -41,7 +42,7 @@ export default function ObrigadoWhats() {
           <img src={logoLight} alt="Lesco" className="h-12 md:h-14 mx-auto" />
 
           <h1 className="mt-8 font-heading text-2xl md:text-4xl font-bold text-white">
-            Sua solicitação de contato foi recebida
+            {t("Sua solicitação de contato foi recebida")}
           </h1>
         </div>
       </section>
@@ -49,8 +50,7 @@ export default function ObrigadoWhats() {
       {/* Redes sociais */}
       <section className="py-20 md:py-28 px-6 text-center">
         <p className="font-body text-lg md:text-xl text-black max-w-3xl mx-auto">
-          Enquanto você aguarda, acompanhe todas as novidades e últimas
-          atualizações da Lesco.
+          {t("Enquanto você aguarda, acompanhe todas as novidades e últimas atualizações da Lesco.")}
         </p>
 
         <div className="mt-12 flex items-center justify-center gap-6">

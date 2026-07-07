@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
+import { t } from "@/i18n/t";
 
 import heroManto from "@/assets/hero-home-altwood.webp";
 import heroZhuzen from "@/assets/hero-home-zhuzen.webp";
@@ -14,9 +15,9 @@ import logoGeoRaw from "@/assets/linha-italflex-2.svg?raw";
 
 const linhas = [
   {
-    nome: "Madeira Ecológica",
+    nome: t("Madeira Ecológica"),
     logo: logoMantoRaw,
-    descricao: "Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto.",
+    descricao: t("Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto."),
     href: "/madeira-ecologica-lesco",
     imagem: heroManto,
     cor: "#F7C39B",
@@ -24,7 +25,7 @@ const linhas = [
   {
     nome: "Zhú",
     logo: logoZhuzenRaw,
-    descricao: "Revestimentos, forros, luminárias, decorativos e utilitários feitas a partir do bambu.",
+    descricao: t("Revestimentos, forros, luminárias, decorativos e utilitários feitas a partir do bambu."),
     href: "/zhu",
     imagem: heroZhuzen,
     cor: "#A3DBA0",
@@ -32,7 +33,7 @@ const linhas = [
   {
     nome: "Echo",
     logo: logoEchoRaw,
-    descricao: "Tecido acústico moldado. Revestimento para estúdios profissionais e home cinemas.",
+    descricao: t("Tecido acústico moldado. Revestimento para estúdios profissionais e home cinemas."),
     href: "/echo",
     imagem: heroEcho,
     cor: "#C6E1D7",
@@ -40,7 +41,7 @@ const linhas = [
   {
     nome: "Geo",
     logo: logoGeoRaw,
-    descricao: "Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo.",
+    descricao: t("Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo."),
     href: "/geo",
     imagem: heroGeo,
     cor: "#F57D69",
@@ -69,8 +70,8 @@ const Linhas = () => {
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px]">
       <SEO
-        title="Nossas Linhas — Lesco"
-        description="Conheça as linhas Lesco: AltWood (madeira ecológica), Zhú (bambu), Echo (acústica) e Geo (pedra flexível) para projetos premium."
+        title={t("Nossas Linhas — Lesco")}
+        description={t("Conheça as linhas Lesco: AltWood (madeira ecológica), Zhú (bambu), Echo (acústica) e Geo (pedra flexível) para projetos premium.")}
         path="/linhas"
         image={heroManto}
       />
@@ -114,7 +115,7 @@ const Linhas = () => {
                     NOTE: o logo da linha "Madeira Ecológica" (ex-Manto) está
                     temporariamente OCULTO conforme PRD §5.2; reativar trocando
                     `linha.nome === "Madeira Ecológica"` por `false`. */}
-                {linha.nome === "Madeira Ecológica" ? (
+                {linha.nome === t("Madeira Ecológica") ? (
                   <h2
                     className="font-display font-light text-[44px] md:text-[64px] lg:text-[80px] leading-none tracking-[-0.02em] transition-all duration-500"
                     style={{
@@ -138,7 +139,7 @@ const Linhas = () => {
                       aria-label={linha.nome}
                     />
                     <span className="font-display font-light text-white bg-[#141414] rounded-full px-3 py-1.5 text-[10px] md:text-[11px] tracking-[0.15em] uppercase whitespace-nowrap">
-                      Lançamento<br />em breve
+                      {t("Lançamento")}<br />{t("em breve")}
                     </span>
                   </div>
                 )}

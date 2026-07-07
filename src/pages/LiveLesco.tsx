@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { t } from "@/i18n/t";
 import { SEO } from "@/components/SEO";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { GhlForm } from "@/components/GhlForm";
@@ -15,54 +16,62 @@ import iconReciclado from "@/assets/madeira-ecologica/icon-reciclado.svg?raw";
 const diferenciais = [
   {
     svg: iconHidrofobico,
-    label: "Água e resistência",
-    description:
+    label: t("Água e resistência"),
+    description: t(
       "A madeira tradicional expande com a umidade. O WPC mantém sua estabilidade estrutural, evitando deformações.",
+    ),
   },
   {
     svg: iconGarantia,
-    label: "Durabilidade e resistência",
-    description:
+    label: t("Durabilidade e resistência"),
+    description: t(
       "Enquanto a madeira convencional apodrece com o tempo, o WPC exibe robustez e imunidade à deterioração.",
+    ),
   },
   {
     svg: iconPragas,
-    label: "Resistência a fungos e pragas",
-    description:
+    label: t("Resistência a fungos e pragas"),
+    description: t(
       "Cupins, mofo e fungos são desafios para a madeira. O WPC resiste a esses elementos, garantindo longa vida útil.",
+    ),
   },
   {
     svg: iconAntiMofo,
-    label: "Estabilidade e manutenção",
-    description:
+    label: t("Estabilidade e manutenção"),
+    description: t(
       "A madeira demanda manutenção frequente. O WPC tem alta estabilidade sob luz solar e exige pouca manutenção.",
+    ),
   },
   {
     svg: iconReciclado,
-    label: "Sustentável",
-    description:
+    label: t("Sustentável"),
+    description: t(
       "Fabricado com fibras de madeira e resinas de alta performance, 100% reciclável para uma arquitetura responsável.",
+    ),
   },
 ];
 
 const certificacoes = [
   {
     sigla: "GBC",
-    titulo: "Certificação GBC",
-    description:
+    titulo: t("Certificação GBC"),
+    description: t(
       "Organização não governamental que fomenta a construção sustentável no país, atuando junto a governo e empresas focadas em qualidade e sustentabilidade.",
+    ),
   },
   {
     sigla: "LEED",
-    titulo: "Certificação LEED",
-    description:
+    titulo: t("Certificação LEED"),
+    description: t(
       "Leadership in Energy and Environmental Design — incentiva e acelera a adoção de práticas de construção sustentável, do projeto à construção final.",
+    ),
   },
   {
     sigla: "ESG",
-    titulo: "Certificação ESG",
-    description:
+    titulo: t("Certificação ESG"),
+    description: t(
       "Práticas sociais, ambientais e de governança que atestam empresas comprometidas com a redução de impactos ambientais e o respeito ao planeta.",
+    ),
   },
 ];
 
@@ -75,8 +84,8 @@ const LiveLesco = () => {
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px] space-y-[10px]">
       <SEO
-        title="Live Lesco — Madeira Plástica Ecológica de Alto Padrão"
-        description="Solicite sua amostra da Lesco. Revestimentos em WPC Premium que unem sofisticação, tecnologia e sustentabilidade para projetos arquitetônicos de alto padrão."
+        title={t("Live Lesco — Madeira Plástica Ecológica de Alto Padrão")}
+        description={t("Solicite sua amostra da Lesco. Revestimentos em WPC Premium que unem sofisticação, tecnologia e sustentabilidade para projetos arquitetônicos de alto padrão.")}
         path="/live-lesco"
         image={heroLive}
       />
@@ -179,10 +188,10 @@ const LiveLesco = () => {
       <section className="bg-dark rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary-foreground/50 mb-4 text-center">
-            Certificações
+            {t("Certificações")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-primary-foreground mb-12 text-center max-w-2xl mx-auto">
-            Excelência sustentável comprovada.
+            {t("Excelência sustentável comprovada.")}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[10px]">
             {certificacoes.map((c) => (

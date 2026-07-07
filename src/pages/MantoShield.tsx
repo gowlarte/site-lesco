@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { t } from "@/i18n/t";
 import { SEO } from "@/components/SEO";
 import heroShield1 from "@/assets/hero-shield-1.webp";
 import heroShield2 from "@/assets/hero-shield-2.webp";
@@ -81,12 +82,12 @@ const modelos = [
 ];
 
 const galeriaItems = [
-  { imageSrc: projetoShield1, legenda: "Edifício comercial — revestimento Shield em fachada", ratio: "4:3" as const },
-  { imageSrc: projetoShield2, legenda: "Arena/pavilhão — fachada e cobertura Shield", ratio: "4:3" as const },
-  { imageSrc: projetoShield3, legenda: "Terraço e área gourmet — teto em Shield", ratio: "4:3" as const },
-  { imageSrc: projetoShield4, legenda: "Edifício corporativo — fachada Shield + estrutura metálica", ratio: "4:3" as const },
-  { imageSrc: projetoShield5, legenda: "Resort à beira-mar — revestimento Shield em varandas", ratio: "4:3" as const },
-  { imageSrc: projetoShield6, legenda: "Residência contemporânea — Shield e brise em fachada", ratio: "3:4" as const },
+  { imageSrc: projetoShield1, legenda: t("Edifício comercial — revestimento Shield em fachada"), ratio: "4:3" as const },
+  { imageSrc: projetoShield2, legenda: t("Arena/pavilhão — fachada e cobertura Shield"), ratio: "4:3" as const },
+  { imageSrc: projetoShield3, legenda: t("Terraço e área gourmet — teto em Shield"), ratio: "4:3" as const },
+  { imageSrc: projetoShield4, legenda: t("Edifício corporativo — fachada Shield + estrutura metálica"), ratio: "4:3" as const },
+  { imageSrc: projetoShield5, legenda: t("Resort à beira-mar — revestimento Shield em varandas"), ratio: "4:3" as const },
+  { imageSrc: projetoShield6, legenda: t("Residência contemporânea — Shield e brise em fachada"), ratio: "3:4" as const },
 ];
 
 const MantoShield = () => {
@@ -97,8 +98,8 @@ const MantoShield = () => {
   return (
     <div className="min-h-screen bg-[#e5e1dc]">
       <SEO
-        title="Madeira Ecológica para Fachada | Lesco Shield"
-        description="Nossa madeira ecológica para fachadas e painéis verticais combina tecnologia e durabilidade do plástico com a beleza estética da madeira, criando um material de alta resistência e longa durabilidade."
+        title={t("Madeira Ecológica para Fachada | Lesco Shield")}
+        description={t("Nossa madeira ecológica para fachadas e painéis verticais combina tecnologia e durabilidade do plástico com a beleza estética da madeira, criando um material de alta resistência e longa durabilidade.")}
         path="/madeira-ecologica-para-fachada"
         image={heroShield3}
       />
@@ -112,9 +113,9 @@ const MantoShield = () => {
       {/* Breadcrumb */}
       <div className="px-6 md:px-12 lg:px-20 py-4">
         <nav className="flex items-center gap-1.5 text-xs">
-          <Link to="/" className="text-[#7F7F7F] hover:text-white transition-colors">Início</Link>
+          <Link to="/" className="text-[#7F7F7F] hover:text-white transition-colors">{t("Início")}</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
-          <Link to="/madeira-ecologica-lesco" className="text-[#7F7F7F] hover:text-white transition-colors">Madeira Ecológica</Link>
+          <Link to="/madeira-ecologica-lesco" className="text-[#7F7F7F] hover:text-white transition-colors">{t("Madeira Ecológica")}</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
           <span className="text-[#525252]">Shield</span>
         </nav>
@@ -128,12 +129,12 @@ const MantoShield = () => {
           <span className="flex-1 h-px bg-[#1E1E1E]" />
         </div>
         <p className="text-[17px] text-[#7F7F7F] leading-[1.7] whitespace-pre-line">
-          Os revestimentos Lesco representam um paradigma de qualidade e sofisticação para aplicações tanto internas quanto externas. Ele combina tecnologia e durabilidade do plástico com a beleza estética da madeira, criando um material de alta resistência e durabilidade, sem perder o aspecto natural.
+          {t(`Os revestimentos Lesco representam um paradigma de qualidade e sofisticação para aplicações tanto internas quanto externas. Ele combina tecnologia e durabilidade do plástico com a beleza estética da madeira, criando um material de alta resistência e durabilidade, sem perder o aspecto natural.
 
           Explore as características e benefícios desses perfis, que destacam suas aplicações versáteis e seu potencial para aprimorar tanto o desempenho quanto a aparência de uma variedade de estruturas.
 
           Aplicações: fachadas e painéis verticais.
-          Garantia: 10 anos.
+          Garantia: 10 anos.`)}
         </p>
       </div>
 
@@ -143,7 +144,7 @@ const MantoShield = () => {
           {/* Cores Escovadas */}
           <div>
             <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-4">
-              Cores Escovadas
+              {t("Cores Escovadas")}
             </span>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-4">
               {escovadasSwatches.map((s) => (
@@ -162,7 +163,7 @@ const MantoShield = () => {
           {/* Cores Texturizadas */}
           <div>
             <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-4">
-              Cores Texturizadas
+              {t("Cores Texturizadas")}
             </span>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-4">
               {texturizadasSwatches.map((s) => (
@@ -182,7 +183,7 @@ const MantoShield = () => {
         {/* Modelos */}
         <div className="mb-12">
           <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-6">
-            Modelos
+            {t("Modelos")}
           </span>
           <div className="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
             {modelos.map((m) => (
@@ -197,50 +198,50 @@ const MantoShield = () => {
             onClick={() => setSpecsOpen(!specsOpen)}
             className="text-[#7F7F7F] hover:text-white text-sm transition-colors duration-300 cursor-pointer flex items-center gap-1"
           >
-            Especificações técnicas {specsOpen ? "−" : "+"}
+            {t("Especificações técnicas")} {specsOpen ? "−" : "+"}
           </button>
 
           {specsOpen && (
             <div className="mt-6 bg-[#141414] rounded-[12px] p-8 animate-fade-in">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Material</h4>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Material")}</h4>
                   <div className="h-px bg-[#1E1E1E] mb-4" />
                   <div className="text-sm text-white font-mono space-y-1">
-                    <p>WPC — Wood-Plastic Composite</p>
-                    <p className="text-[#7F7F7F]">55% pó de madeira natural</p>
-                    <p className="text-[#7F7F7F]">35% HPDE reciclado</p>
-                    <p className="text-[#7F7F7F]">10% aditivos</p>
+                    <p>{t("WPC — Wood-Plastic Composite")}</p>
+                    <p className="text-[#7F7F7F]">{t("55% pó de madeira natural")}</p>
+                    <p className="text-[#7F7F7F]">{t("35% HPDE reciclado")}</p>
+                    <p className="text-[#7F7F7F]">{t("10% aditivos")}</p>
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Resistência</h4>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Resistência")}</h4>
                   <div className="h-px bg-[#1E1E1E] mb-4" />
                   <div className="text-sm text-white space-y-1">
-                    <p>✓ Anti-cupim</p>
-                    <p>✓ Hidrofóbico</p>
-                    <p>✓ Anti-mofo</p>
-                    <p>✓ Resistência UV</p>
+                    <p>{t("✓ Anti-cupim")}</p>
+                    <p>{t("✓ Hidrofóbico")}</p>
+                    <p>{t("✓ Anti-mofo")}</p>
+                    <p>{t("✓ Resistência UV")}</p>
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Certificações</h4>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Certificações")}</h4>
                   <div className="h-px bg-[#1E1E1E] mb-4" />
                   <p className="text-sm text-white">ISO 9001 · ISO 14001 · LEED · ESG</p>
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Garantia</h4>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Garantia")}</h4>
                   <div className="h-px bg-[#1E1E1E] mb-4" />
-                  <p className="text-sm text-white">10 anos</p>
+                  <p className="text-sm text-white">{t("10 anos")}</p>
                 </div>
                 <div className="md:col-span-2">
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">Subestrutura Recomendada</h4>
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Subestrutura Recomendada")}</h4>
                   <div className="h-px bg-[#1E1E1E] mb-4" />
                   <div className="text-sm text-white font-mono space-y-1">
-                    <p>Aplicação em parede: <span className="text-[#7F7F7F]">espaçamento 80 cm entre estruturas</span></p>
-                    <p>Aplicação em teto: <span className="text-[#7F7F7F]">espaçamento 60 cm entre estruturas</span></p>
-                    <p>Fixação: <span className="text-[#7F7F7F]">parafuso Philips autobrocante flangeado ou cabeça panela 4,2×19 mm</span></p>
-                    <p>Estrutura auxiliar: <span className="text-[#7F7F7F]">alumínio ou aço — 50×50 mm · 38×38 mm · 50×25 mm</span></p>
+                    <p>{t("Aplicação em parede:")} <span className="text-[#7F7F7F]">{t("espaçamento 80 cm entre estruturas")}</span></p>
+                    <p>{t("Aplicação em teto:")} <span className="text-[#7F7F7F]">{t("espaçamento 60 cm entre estruturas")}</span></p>
+                    <p>{t("Fixação:")} <span className="text-[#7F7F7F]">{t("parafuso Philips autobrocante flangeado ou cabeça panela 4,2×19 mm")}</span></p>
+                    <p>{t("Estrutura auxiliar:")} <span className="text-[#7F7F7F]">{t("alumínio ou aço — 50×50 mm · 38×38 mm · 50×25 mm")}</span></p>
                   </div>
                 </div>
               </div>
@@ -251,8 +252,8 @@ const MantoShield = () => {
 
       {/* Galeria de Projetos */}
       <div className="px-6 md:px-12 lg:px-20 py-24">
-        <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">Projetos</span>
-        <h2 className="font-display text-3xl md:text-4xl font-semibold mb-10 text-gray-950">Realizações com Lesco Shield</h2>
+        <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">{t("Projetos")}</span>
+        <h2 className="font-display text-3xl md:text-4xl font-semibold mb-10 text-gray-950">{t("Realizações com Lesco Shield")}</h2>
 
         <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
           {galeriaItems.map((item, i) => (

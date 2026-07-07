@@ -1,4 +1,5 @@
 import { SEO } from "@/components/SEO";
+import { t } from "@/i18n/t";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import obrigadoBg from "@/assets/obrigado-bg.webp";
 import logoLight from "@/assets/logo-lesco-light.svg";
@@ -21,8 +22,8 @@ export default function ObrigadoOrcamento() {
   return (
     <>
       <SEO
-        title="Pedido de orçamento recebido | Lesco"
-        description="Recebemos seu pedido de orçamento. Em breve entraremos em contato. Acompanhe as novidades da Lesco enquanto aguarda."
+        title={t("Pedido de orçamento recebido | Lesco")}
+        description={t("Recebemos seu pedido de orçamento. Em breve entraremos em contato. Acompanhe as novidades da Lesco enquanto aguarda.")}
         path="/obrigado-orcamento"
       />
 
@@ -42,16 +43,15 @@ export default function ObrigadoOrcamento() {
           <img src={logoLight} alt="Lesco" className="h-12 md:h-14 mx-auto" />
 
           <h1 className="mt-8 font-heading text-2xl md:text-4xl font-bold text-white">
-            Pedido de orçamento recebido!
+            {t("Pedido de orçamento recebido!")}
           </h1>
 
           <p className="mt-6 font-body text-base md:text-lg text-white/90 leading-relaxed">
-            Agradecemos seu interesse! Em breve entraremos em contato para conversarmos
-            sobre o seu orçamento.
+            {t("Agradecemos seu interesse! Em breve entraremos em contato para conversarmos sobre o seu orçamento.")}
           </p>
 
           <p className="mt-4 font-body text-sm text-white/70">
-            Qualquer dúvida, entre em contato conosco.
+            {t("Qualquer dúvida, entre em contato conosco.")}
           </p>
         </div>
       </section>
@@ -59,8 +59,7 @@ export default function ObrigadoOrcamento() {
       {/* Novidades + redes sociais */}
       <section className="py-20 md:py-28 px-6 text-center">
         <p className="font-body text-lg md:text-xl text-black max-w-3xl mx-auto">
-          Enquanto você aguarda seu orçamento, acompanhe todas as novidades e últimas
-          atualizações da Lesco.
+          {t("Enquanto você aguarda seu orçamento, acompanhe todas as novidades e últimas atualizações da Lesco.")}
         </p>
 
         <div className="mt-12 flex items-center justify-center gap-6">

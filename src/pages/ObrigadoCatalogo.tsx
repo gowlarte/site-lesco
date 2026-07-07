@@ -1,4 +1,5 @@
 import { SEO } from "@/components/SEO";
+import { t } from "@/i18n/t";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import obrigadoBg from "@/assets/obrigado-bg.webp";
 import logoLight from "@/assets/logo-lesco-light.svg";
@@ -21,8 +22,8 @@ export default function ObrigadoCatalogo() {
   return (
     <>
       <SEO
-        title="Catálogo Técnico Lesco | Download"
-        description="Baixe o Catálogo Técnico Lesco e conheça nossos produtos de madeira ecológica."
+        title={t("Catálogo Técnico Lesco | Download")}
+        description={t("Baixe o Catálogo Técnico Lesco e conheça nossos produtos de madeira ecológica.")}
         path="/obrigado-catalogo"
       />
 
@@ -41,9 +42,9 @@ export default function ObrigadoCatalogo() {
           <img src={logoLight} alt="Lesco" className="h-12 md:h-14 mx-auto" />
 
           <h1 className="mt-8 font-heading text-2xl md:text-4xl font-bold text-white">
-            Obrigado! Acesse Agora Mesmo
+            {t("Obrigado! Acesse Agora Mesmo")}
             <br />
-            seu Catálogo Técnico Lesco.
+            {t("seu Catálogo Técnico Lesco.")}
           </h1>
 
           <a
@@ -52,15 +53,15 @@ export default function ObrigadoCatalogo() {
             rel="noopener noreferrer"
             className="mt-8 inline-block font-heading text-base md:text-lg font-bold text-black bg-white rounded-[10px] px-8 py-4 hover:bg-white/90 transition-colors"
           >
-            Acessar Catálogo
+            {t("Acessar Catálogo")}
           </a>
 
           <p className="mt-6 font-body text-base md:text-lg text-white/90 leading-relaxed">
-            Sua solicitação foi registrada com sucesso.
+            {t("Sua solicitação foi registrada com sucesso.")}
           </p>
 
           <p className="mt-4 font-body text-sm text-white/70">
-            Enquanto isso, aproveite para participar da nossa próxima live workshop com a nossa arquiteta, e elevar ainda mais seus projetos:
+            {t("Enquanto isso, aproveite para participar da nossa próxima live workshop com a nossa arquiteta, e elevar ainda mais seus projetos:")}
           </p>
         </div>
       </section>
@@ -68,8 +69,7 @@ export default function ObrigadoCatalogo() {
       {/* Novidades + redes sociais */}
       <section className="py-20 md:py-28 px-6 text-center">
         <p className="font-body text-lg md:text-xl text-black max-w-3xl mx-auto">
-          Enquanto você aguarda, acompanhe todas as novidades e últimas
-          atualizações da Lesco.
+          {t("Enquanto você aguarda, acompanhe todas as novidades e últimas atualizações da Lesco.")}
         </p>
 
         <div className="mt-12 flex items-center justify-center gap-6">

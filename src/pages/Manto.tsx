@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { t } from "@/i18n/t";
 import { HeroSection } from "@/components/altwood/HeroSection";
 import { SEO } from "@/components/SEO";
 import heroImg1 from "@/assets/hero-altwood-1.webp";
@@ -42,7 +43,7 @@ const produtos = [
     id: "brise",
     tag: "Brise",
     titulo: "Lesco Brise",
-    descricao: "Perfis de WPC para fachadas, brises soleil e elementos de proteção solar. Disponível nas linhas Madeira Ecológica Origens e Madeira Ecológica Classic.",
+    descricao: t("Perfis de WPC para fachadas, brises soleil e elementos de proteção solar. Disponível nas linhas Madeira Ecológica Origens e Madeira Ecológica Classic."),
     swatches: [
       { nome: "Black", corAproximada: "#1A1A1A" },
       { nome: "Ipê", corAproximada: "#6B4226" },
@@ -56,7 +57,7 @@ const produtos = [
     id: "shield",
     tag: "Shield",
     titulo: "Lesco Shield",
-    descricao: "Revestimento de alta sofisticação para aplicações internas e externas. Acabamentos escovados e texturizados.",
+    descricao: t("Revestimento de alta sofisticação para aplicações internas e externas. Acabamentos escovados e texturizados."),
     swatches: [
       { nome: "Black", corAproximada: "#1A1A1A" },
       { nome: "Ipê", corAproximada: "#6B4226" },
@@ -70,7 +71,7 @@ const produtos = [
     id: "deck",
     tag: "Deck",
     titulo: "Lesco Deck",
-    descricao: "Decks de madeira ecológica para espaços externos residenciais, comerciais e públicos. Fixação oculta por presilhas de aço inox.",
+    descricao: t("Decks de madeira ecológica para espaços externos residenciais, comerciais e públicos. Fixação oculta por presilhas de aço inox."),
     swatches: [
       { nome: "Black", corAproximada: "#1A1A1A" },
       { nome: "Ipê", corAproximada: "#6B4226" },
@@ -84,7 +85,7 @@ const produtos = [
     id: "line",
     tag: "Line",
     titulo: "Lesco Line",
-    descricao: "Forros, sancas e superfícies contínuas com encaixe técnico. Acabamento acetinado com retardante ao fogo.",
+    descricao: t("Forros, sancas e superfícies contínuas com encaixe técnico. Acabamento acetinado com retardante ao fogo."),
     swatches: [
       { nome: "Golden Oak", corAproximada: "#C8972E" },
       { nome: "Hickory", corAproximada: "#9E7B4F" },
@@ -98,7 +99,7 @@ const produtos = [
     id: "panel",
     tag: "Panel",
     titulo: "Lesco Panel",
-    descricao: "Painéis para interiores e fachadas ventiladas protegidas. Disponível em acabamento acetinado e fosco com tratamento UV.",
+    descricao: t("Painéis para interiores e fachadas ventiladas protegidas. Disponível em acabamento acetinado e fosco com tratamento UV."),
     swatches: [
       { nome: "Golden Oak", corAproximada: "#C8972E" },
       { nome: "Hickory", corAproximada: "#9E7B4F" },
@@ -147,16 +148,16 @@ const Manto = () => {
   return (
     <div className="min-h-screen bg-[#e5e1dc]">
       <SEO
-        title="Madeira Ecológica Lesco — AltWood"
-        description="Revestimentos premium em WPC: Brises, Panels, Decks, Forros e Shields para projetos arquitetônicos de alto padrão."
+        title={t("Madeira Ecológica Lesco — AltWood")}
+        description={t("Revestimentos premium em WPC: Brises, Panels, Decks, Forros e Shields para projetos arquitetônicos de alto padrão.")}
         path="/madeira-ecologica-lesco"
         image={heroImg1}
       />
       <HeroSection
         images={heroImages}
-        headline="Madeira Ecológica"
-        subtitulo="Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto."
-        ctaLabel="Explorar Produtos"
+        headline={t("Madeira Ecológica")}
+        subtitulo={t("Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto.")}
+        ctaLabel={t("Explorar Produtos")}
         ctaAction={handleExplorar}
       />
 

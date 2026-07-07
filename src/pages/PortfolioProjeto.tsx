@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { getProjetoBySlug, projetos } from "@/data/projetos";
 import { SEO } from "@/components/SEO";
+import { t } from "@/i18n/t";
 
 const PortfolioProjeto = () => {
   const { slug } = useParams();
@@ -11,16 +12,16 @@ const PortfolioProjeto = () => {
       <main className="min-h-screen pt-[110px] pb-[10px] px-[10px]">
         <section className="bg-light rounded-[10px] px-8 md:px-16 py-20">
           <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-6">
-            Portfólio
+            {t("Portfólio")}
           </p>
           <h1 className="font-display text-3xl md:text-5xl font-normal text-dark mb-6">
-            Projeto não encontrado.
+            {t("Projeto não encontrado.")}
           </h1>
           <Link
             to="/portfolio"
             className="inline-flex items-center px-6 py-3 rounded bg-dark text-white font-display text-[13px] uppercase tracking-[0.08em] hover:opacity-90 transition-opacity"
           >
-            Ver todos os projetos
+            {t("Ver todos os projetos")}
           </Link>
         </section>
       </main>
@@ -29,10 +30,10 @@ const PortfolioProjeto = () => {
 
 
   const ficha: Array<[string, string]> = [
-    ["Local", projeto.local],
-    ["Ano", projeto.ano],
-    ["Área", projeto.area],
-    ["Arquitetura", projeto.arquitetura],
+    [t("Local"), projeto.local],
+    [t("Ano"), projeto.ano],
+    [t("Área"), projeto.area],
+    [t("Arquitetura"), projeto.arquitetura],
   ];
 
   return (
@@ -59,7 +60,7 @@ const PortfolioProjeto = () => {
           <div className="relative z-10 w-full px-8 md:px-16 lg:px-24 py-16 md:py-20">
             <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-white/80 mb-6">
               <Link to="/portfolio" className="hover:text-white transition-colors">
-                Portfólio
+                {t("Portfólio")}
               </Link>
               <span className="mx-2">/</span>
               {projeto.linha}
@@ -74,7 +75,7 @@ const PortfolioProjeto = () => {
           <div className="lg:col-span-2 space-y-10">
             <div>
               <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4 text-gray-950">
-                Sobre o projeto
+                {t("Sobre o projeto")}
               </p>
               <p className="font-body text-base md:text-lg leading-[1.7] text-dark/80 text-slate-500">
                 {projeto.descricao}
@@ -82,13 +83,13 @@ const PortfolioProjeto = () => {
             </div>
             <div>
               <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4 text-gray-950">
-                Desafio
+                {t("Desafio")}
               </p>
               <p className="font-body text-base leading-[1.7] text-dark/80 text-gray-500">{projeto.desafio}</p>
             </div>
             <div>
               <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4 text-gray-950">
-                Solução
+                {t("Solução")}
               </p>
               <p className="font-body text-base leading-[1.7] text-dark/80 text-gray-500">{projeto.solucao}</p>
             </div>
@@ -97,7 +98,7 @@ const PortfolioProjeto = () => {
           <aside className="space-y-8">
             <div>
               <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4 text-gray-950">
-                Ficha técnica
+                {t("Ficha técnica")}
               </p>
               <dl className="space-y-3">
                 {ficha.map(([k, v]) => (
@@ -110,7 +111,7 @@ const PortfolioProjeto = () => {
             </div>
             <div>
               <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4 text-gray-950">
-                Produtos aplicados
+                {t("Produtos aplicados")}
               </p>
               <ul className="space-y-2">
                 {projeto.produtos.map((prod) => (
@@ -128,7 +129,7 @@ const PortfolioProjeto = () => {
             <div key={i} className="aspect-[4/3] rounded-[10px] overflow-hidden">
               <img
                 src={img}
-                alt={`${projeto.nome} — imagem ${i + 1}`}
+                alt={`${projeto.nome} — ${t("imagem")} ${i + 1}`}
                 loading="lazy"
                 className="w-full h-full object-cover"
               />

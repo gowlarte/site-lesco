@@ -1,3 +1,5 @@
+import { t } from "@/i18n/t";
+
 export const BRAZILIAN_STATES = [
   { value: "AC", label: "Acre" },
   { value: "AL", label: "Alagoas" },
@@ -29,26 +31,26 @@ export const BRAZILIAN_STATES = [
 ];
 
 export const PROFILE_OPTIONS = [
-  "Arquiteto / Engenheiro",
-  "Construtora / Engenharia",
-  "Instalador / Serralheiro",
-  "Comprador / Suprimentos",
-  "PJ / Cliente Final",
-  "PF / Cliente Final",
+  t("Arquiteto / Engenheiro"),
+  t("Construtora / Engenharia"),
+  t("Instalador / Serralheiro"),
+  t("Comprador / Suprimentos"),
+  t("PJ / Cliente Final"),
+  t("PF / Cliente Final"),
 ];
 
 export const TIMELINE_OPTIONS = [
-  "Este mês",
-  "Próximos 90 dias",
-  "Próximos 6 meses",
-  "De 6 a 12 Meses",
-  "Estou somente projetando",
+  t("Este mês"),
+  t("Próximos 90 dias"),
+  t("Próximos 6 meses"),
+  t("De 6 a 12 Meses"),
+  t("Estou somente projetando"),
 ];
 
 export const PRODUCT_OPTIONS = [
   "Brise",
   "Deck",
-  "Forro",
-  "Revestimento Externo",
-  "Revestimento Interno",
+  t("Forro"),
+  t("Revestimento Externo"),
+  t("Revestimento Interno"),
 ];

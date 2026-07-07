@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import logoLight from "@/assets/logo-lesco-light.svg";
 import { site } from "@/config/site";
+import { t } from "@/i18n/t";
 
 export function Footer() {
   return (
@@ -14,16 +15,16 @@ export function Footer() {
           <div>
             <img src={logoLight} alt="Lesco" className="h-8" />
             <p className="mt-4 font-body text-[13px] font-light text-muted-foreground leading-relaxed max-w-[240px]">
-              Madeira Ecológica
+              {t("Madeira Ecológica")}
             </p>
           </div>
 
           {/* Col 2 — Linhas */}
           <div>
-            <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-muted-foreground mb-5">Linhas</h4>
+            <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-muted-foreground mb-5">{t("Linhas")}</h4>
             <ul className="space-y-3">
               {[
-                { label: "Madeira Ecológica", href: "/madeira-ecologica-lesco" },
+                { label: t("Madeira Ecológica"), href: "/madeira-ecologica-lesco" },
                 { label: "Geo", href: "/geo" },
                 { label: "Zhú", href: "/zhu" },
                 { label: "Echo", href: "/echo" },
@@ -42,13 +43,13 @@ export function Footer() {
 
           {/* Col 3 — Institucional */}
           <div>
-            <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-muted-foreground mb-5">Institucional</h4>
+            <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-muted-foreground mb-5">{t("Institucional")}</h4>
             <ul className="space-y-3">
               {[
-                { label: "Sobre", href: "/quem-somos" },
-                { label: "Portfólio", href: "/portfolio" },
-                { label: "Catálogo", href: "/catalogo-lesco" },
-                { label: "Biblioteca", href: "/biblioteca" },
+                { label: t("Sobre"), href: "/quem-somos" },
+                { label: t("Portfólio"), href: "/portfolio" },
+                { label: t("Catálogo"), href: "/catalogo-lesco" },
+                { label: t("Biblioteca"), href: "/biblioteca" },
                 { label: "Blog", href: "https://blog.lesco.com.br/", external: true },
               ].map((item) => (
                 <li key={item.href}>
@@ -76,15 +77,15 @@ export function Footer() {
 
           {/* Col 4 — Contato */}
           <div>
-            <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-muted-foreground mb-5">Contato</h4>
+            <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-muted-foreground mb-5">{t("Contato")}</h4>
             <ul className="space-y-3 font-body text-[13px] font-light text-foreground/70">
               <li>{site.email}</li>
               <li className="leading-relaxed">
-                Endereço: Av. Osvaldo Reis, 3281 - Praia Brava, Itajaí - SC, 88306-002
+                {t("Endereço")}: Av. Osvaldo Reis, 3281 - Praia Brava, Itajaí - SC, 88306-002
               </li>
-              <li>Telefone: {site.phoneDisplay}</li>
+              <li>{t("Telefone")}: {site.phoneDisplay}</li>
               <li className="leading-relaxed">
-                Endereço: Avenida Nove de Julho, número 3147, CJ 22 – Jardim Paulista – São Paulo – SP
+                {t("Endereço")}: Avenida Nove de Julho, número 3147, CJ 22 – Jardim Paulista – São Paulo – SP
               </li>
             </ul>
           </div>
@@ -93,7 +94,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-white/[0.08] flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-body text-[11px] text-muted-foreground">
-            © 2026 Lesco - Todos os direitos reservados.
+            {t("© 2026 Lesco - Todos os direitos reservados.")}
           </p>
         </div>
       </div>
