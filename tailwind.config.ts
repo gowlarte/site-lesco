@@ -137,6 +137,8 @@ export default {
         "fade-up": "fade-up 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
         "fade-in": "fade-in 0.5s ease-out forwards",
         "scroll-hint": "scroll-hint 2s ease-in-out infinite",
+        marquee: "marquee 28s linear infinite",
+
       },
     },
   },
