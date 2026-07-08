@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/components/AppLink";
 import { t } from "@/i18n/t";
 import esquemaCamadas from "@/assets/madeira-wpc/esquema-camadas.webp";
 

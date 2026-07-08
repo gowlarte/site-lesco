@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/AppLink";
 import { SEO } from "@/components/SEO";
 import { ArrowUpRight, X } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";

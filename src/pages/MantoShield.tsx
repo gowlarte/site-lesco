@@ -5,7 +5,7 @@ import heroShield1 from "@/assets/hero-shield-1.webp";
 import heroShield2 from "@/assets/hero-shield-2.webp";
 import heroShield3 from "@/assets/hero-shield-3.webp";
 import heroShield4 from "@/assets/hero-shield-4.webp";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/AppLink";
 import { ChevronRight } from "lucide-react";
 import { HeroSection } from "@/components/altwood/HeroSection";
 import { SwatchCor } from "@/components/altwood/SwatchCor";

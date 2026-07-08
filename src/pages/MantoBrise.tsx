@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { t } from "@/i18n/t";
 import { SEO } from "@/components/SEO";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/AppLink";
 import { ChevronRight } from "lucide-react";
 import { HeroSection } from "@/components/altwood/HeroSection";
 import heroBrise1 from "@/assets/hero-brise-1.webp";

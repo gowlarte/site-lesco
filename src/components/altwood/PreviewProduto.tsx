@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/AppLink";
 import { SwatchCor } from "./SwatchCor";
 import { BotaoCTA } from "./BotaoCTA";
 import { ImageIcon } from "lucide-react";

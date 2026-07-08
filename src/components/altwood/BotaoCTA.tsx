@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { localizePath } from "@/i18n/routes";
 
 interface BotaoCTAProps {
   variant?: "primary" | "secondary" | "ghost";
@@ -19,7 +20,7 @@ export const BotaoCTA = ({ variant = "primary", children, onClick, className, hr
   const cls = cn(base, styles[variant], className);
 
   if (href) {
-    return <a href={href} className={cls} onClick={onClick}>{children}{variant === "ghost" && <span>→</span>}</a>;
+    return <a href={localizePath(href)} className={cls} onClick={onClick}>{children}{variant === "ghost" && <span>→</span>}</a>;
   }
 
   return (

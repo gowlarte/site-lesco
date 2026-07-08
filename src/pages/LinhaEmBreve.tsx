@@ -1,4 +1,5 @@
-import { useParams, useLocation, Link } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
+import { Link } from "@/components/AppLink";
 import { ArrowLeft } from "lucide-react";
 import { linhasEmBreve } from "@/data/linhas-em-breve";
 import { NewsletterLancamentoForm } from "@/components/NewsletterLancamentoForm";

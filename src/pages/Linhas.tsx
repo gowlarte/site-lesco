@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/AppLink";
 import { SEO } from "@/components/SEO";
 import { t } from "@/i18n/t";
 

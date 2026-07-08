@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/components/AppLink";
 import { SEO } from "@/components/SEO";
 import { t } from "@/i18n/t";
 import heroImg from "@/assets/cop30/hero.webp";

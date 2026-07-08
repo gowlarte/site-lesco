@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/components/AppLink";
 import logoLight from "@/assets/logo-lesco-light.svg";
 import { site } from "@/config/site";
 import { t } from "@/i18n/t";

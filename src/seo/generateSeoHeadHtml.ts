@@ -1,6 +1,7 @@
 import type { SsgRoute } from "./types";
 import { generateSchemaGraph } from "./generateSchemaGraph";
 import { site, LOCALE_URLS } from "../config/site";
+import { slugFor, LOCALE } from "../i18n/routes";
 
 const SITE_URL = site.siteUrl;
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-default.jpg`;
@@ -21,9 +22,8 @@ function escapeHtml(value: string): string {
 export function generateSeoHeadHtml(route: SsgRoute): string {
   const title = escapeHtml(route.title || "Lesco");
   const description = escapeHtml(route.description || "");
-  // Always derive canonical from the active locale's domain (ssg-routes.json
-  // has the PT domain hardcoded; this keeps it correct on the EN build too).
-  const canonical = escapeHtml(`${SITE_URL}${route.slug}`);
+  // Canonical do domínio + slug do locale ativo (route.slug é o slug PT).
+  const canonical = escapeHtml(`${SITE_URL}${slugFor(route.slug, LOCALE)}`);
   const ogImage = escapeHtml(route.ogImage || DEFAULT_OG_IMAGE);
   const schema = JSON.stringify(generateSchemaGraph(route));
 
@@ -31,9 +31,9 @@ export function generateSeoHeadHtml(route: SsgRoute): string {
     `<title>${title}</title>`,
     `<meta name="description" content="${description}" />`,
     `<link rel="canonical" href="${canonical}" />`,
-    `<link rel="alternate" hreflang="pt-BR" href="${escapeHtml(LOCALE_URLS.pt + route.slug)}" />`,
-    `<link rel="alternate" hreflang="en" href="${escapeHtml(LOCALE_URLS.en + route.slug)}" />`,
-    `<link rel="alternate" hreflang="x-default" href="${escapeHtml(LOCALE_URLS.en + route.slug)}" />`,
+    `<link rel="alternate" hreflang="pt-BR" href="${escapeHtml(LOCALE_URLS.pt + slugFor(route.slug, "pt"))}" />`,
+    `<link rel="alternate" hreflang="en" href="${escapeHtml(LOCALE_URLS.en + slugFor(route.slug, "en"))}" />`,
+    `<link rel="alternate" hreflang="x-default" href="${escapeHtml(LOCALE_URLS.en + slugFor(route.slug, "en"))}" />`,
     `<meta property="og:site_name" content="Lesco" />`,
     `<meta property="og:locale" content="${site.ogLocale}" />`,
     `<meta property="og:type" content="website" />`,

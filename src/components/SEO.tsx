@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import ogDefault from "@/assets/og-default.jpg";
 import { site, LOCALE_URLS } from "@/config/site";
+import { slugFor, LOCALE } from "@/i18n/routes";
 
 const SITE_URL = site.siteUrl;
 
@@ -30,7 +31,10 @@ export function SEO({
   jsonLd,
   noindex = false,
 }: SEOProps) {
-  const url = `${SITE_URL}${path}`;
+  // `path` é sempre o slug PT; canonical/hreflang usam o slug de cada locale.
+  const url = `${SITE_URL}${slugFor(path, LOCALE)}`;
+  const ptUrl = `${LOCALE_URLS.pt}${slugFor(path, "pt")}`;
+  const enUrl = `${LOCALE_URLS.en}${slugFor(path, "en")}`;
   const imageUrl = toAbsoluteUrl(image || ogDefault);
   const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
@@ -41,10 +45,10 @@ export function SEO({
       {noindex && <meta name="robots" content="noindex" />}
       <link rel="canonical" href={url} />
 
-      {/* hreflang — mesma página nos dois domínios (slugs idênticos por ora) */}
-      <link rel="alternate" hrefLang="pt-BR" href={`${LOCALE_URLS.pt}${path}`} />
-      <link rel="alternate" hrefLang="en" href={`${LOCALE_URLS.en}${path}`} />
-      <link rel="alternate" hrefLang="x-default" href={`${LOCALE_URLS.en}${path}`} />
+      {/* hreflang — mesma página nos dois domínios, cada um com seu slug */}
+      <link rel="alternate" hrefLang="pt-BR" href={ptUrl} />
+      <link rel="alternate" hrefLang="en" href={enUrl} />
+      <link rel="alternate" hrefLang="x-default" href={enUrl} />
 
       {/* Open Graph */}
       <meta property="og:site_name" content="Lesco" />

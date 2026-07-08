@@ -1,4 +1,5 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { Link } from "@/components/AppLink";
 import { useEffect } from "react";
 import { SEO } from "@/components/SEO";
 import { track404 } from "@/lib/track404";

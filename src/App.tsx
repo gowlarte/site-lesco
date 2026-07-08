@@ -1,6 +1,8 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
+import { localizePath, ROUTE_KEYS } from "@/i18n/routes";
+import { isEN } from "@/i18n/locale";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -61,53 +63,62 @@ const AppContent = () => {
       {!isHome && <Header />}
       <div ref={contentRef} style={{ opacity: isLoading ? 0 : 1, transition: "opacity 300ms ease" }}>
         <Routes>
-          <Route path="/" element={<Index />} />
+          {/* Os paths são escritos em PT; localizePath() devolve o slug do
+              locale ativo (no build EN vira o slug em inglês). */}
+          <Route path={localizePath("/")} element={<Index />} />
 
           {/* Sobre */}
-          <Route path="/quem-somos" element={<QuemSomos />} />
-          <Route path="/madeira-wpc" element={<MadeiraWPC />} />
-          <Route path="/revestimento-sustentavel" element={<Sustentabilidade />} />
+          <Route path={localizePath("/quem-somos")} element={<QuemSomos />} />
+          <Route path={localizePath("/madeira-wpc")} element={<MadeiraWPC />} />
+          <Route path={localizePath("/revestimento-sustentavel")} element={<Sustentabilidade />} />
 
           {/* Madeira Ecológica — hub e produtos (na raiz) */}
-          <Route path="/madeira-ecologica-lesco" element={<Manto />} />
-          <Route path="/brise-madeira-ecologica" element={<MantoBrise />} />
-          <Route path="/madeira-ecologica-para-fachada" element={<MantoShield />} />
-          <Route path="/madeira-ecologica-para-deck" element={<MantoDeck />} />
-          <Route path="/forro-wpc" element={<MantoLine />} />
-          <Route path="/placa-wpc-interior" element={<MantoPanel />} />
+          <Route path={localizePath("/madeira-ecologica-lesco")} element={<Manto />} />
+          <Route path={localizePath("/brise-madeira-ecologica")} element={<MantoBrise />} />
+          <Route path={localizePath("/madeira-ecologica-para-fachada")} element={<MantoShield />} />
+          <Route path={localizePath("/madeira-ecologica-para-deck")} element={<MantoDeck />} />
+          <Route path={localizePath("/forro-wpc")} element={<MantoLine />} />
+          <Route path={localizePath("/placa-wpc-interior")} element={<MantoPanel />} />
 
           {/* Outros */}
-          <Route path="/catalogo-lesco" element={<Catalogo />} />
-          <Route path="/biblioteca" element={<Biblioteca />} />
-          <Route path="/orcamento" element={<Orcamento />} />
-          <Route path="/obrigado" element={<Obrigado />} />
-          <Route path="/obrigado-orcamento" element={<ObrigadoOrcamento />} />
-          <Route path="/obrigado-catalogo" element={<ObrigadoCatalogo />} />
-          <Route path="/obrigado-whats" element={<ObrigadoWhats />} />
-          <Route path="/obrigado-catalogo-geo" element={<ObrigadoCatalogoGeo />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/projetos/:slug" element={<PortfolioProjeto />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogArtigo />} />
-          <Route path="/linhas" element={<Linhas />} />
+          <Route path={localizePath("/catalogo-lesco")} element={<Catalogo />} />
+          <Route path={localizePath("/biblioteca")} element={<Biblioteca />} />
+          <Route path={localizePath("/orcamento")} element={<Orcamento />} />
+          <Route path={localizePath("/obrigado")} element={<Obrigado />} />
+          <Route path={localizePath("/obrigado-orcamento")} element={<ObrigadoOrcamento />} />
+          <Route path={localizePath("/obrigado-catalogo")} element={<ObrigadoCatalogo />} />
+          <Route path={localizePath("/obrigado-whats")} element={<ObrigadoWhats />} />
+          <Route path={localizePath("/obrigado-catalogo-geo")} element={<ObrigadoCatalogoGeo />} />
+          <Route path={localizePath("/portfolio")} element={<Portfolio />} />
+          <Route path={localizePath("/projetos/:slug")} element={<PortfolioProjeto />} />
+          <Route path={localizePath("/blog")} element={<Blog />} />
+          <Route path={localizePath("/blog/:slug")} element={<BlogArtigo />} />
+          <Route path={localizePath("/linhas")} element={<Linhas />} />
 
           {/* Linhas em breve */}
-          <Route path="/zhu" element={<LinhaEmBreve />} />
-          <Route path="/echo" element={<LinhaEmBreve />} />
-          <Route path="/geo" element={<Geo />} />
-          <Route path="/live-lesco" element={<LiveLesco />} />
-          <Route path="/live-lesco-amostra" element={<LiveLescoAmostra />} />
-          <Route path="/em-breve/:linha" element={<LinhaEmBreve />} />
+          <Route path={localizePath("/zhu")} element={<LinhaEmBreve />} />
+          <Route path={localizePath("/echo")} element={<LinhaEmBreve />} />
+          <Route path={localizePath("/geo")} element={<Geo />} />
+          <Route path={localizePath("/live-lesco")} element={<LiveLesco />} />
+          <Route path={localizePath("/live-lesco-amostra")} element={<LiveLescoAmostra />} />
+          <Route path={localizePath("/em-breve/:linha")} element={<LinhaEmBreve />} />
+
+          {/* No build EN, os slugs PT redirecionam para o slug EN canônico
+              (rede de proteção para links/URLs antigos com slug em português). */}
+          {isEN &&
+            ROUTE_KEYS.filter((pt) => localizePath(pt) !== pt).map((pt) => (
+              <Route key={`en-redir-${pt}`} path={pt} element={<Navigate to={localizePath(pt)} replace />} />
+            ))}
 
           {/* Redirects (SPA equivalente de 301) — slugs antigos */}
-          <Route path="/manto" element={<Navigate to="/madeira-ecologica-lesco" replace />} />
-          <Route path="/manto-brise" element={<Navigate to="/brise-madeira-ecologica" replace />} />
-          <Route path="/manto-shield" element={<Navigate to="/madeira-ecologica-para-fachada" replace />} />
-          <Route path="/manto-deck" element={<Navigate to="/madeira-ecologica-para-deck" replace />} />
-          <Route path="/manto-line" element={<Navigate to="/forro-wpc" replace />} />
-          <Route path="/manto-panel" element={<Navigate to="/placa-wpc-interior" replace />} />
-          <Route path="/sobre" element={<Navigate to="/quem-somos" replace />} />
-          <Route path="/catalogo" element={<Navigate to="/catalogo-lesco" replace />} />
+          <Route path="/manto" element={<Navigate to={localizePath("/madeira-ecologica-lesco")} replace />} />
+          <Route path="/manto-brise" element={<Navigate to={localizePath("/brise-madeira-ecologica")} replace />} />
+          <Route path="/manto-shield" element={<Navigate to={localizePath("/madeira-ecologica-para-fachada")} replace />} />
+          <Route path="/manto-deck" element={<Navigate to={localizePath("/madeira-ecologica-para-deck")} replace />} />
+          <Route path="/manto-line" element={<Navigate to={localizePath("/forro-wpc")} replace />} />
+          <Route path="/manto-panel" element={<Navigate to={localizePath("/placa-wpc-interior")} replace />} />
+          <Route path="/sobre" element={<Navigate to={localizePath("/quem-somos")} replace />} />
+          <Route path="/catalogo" element={<Navigate to={localizePath("/catalogo-lesco")} replace />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
