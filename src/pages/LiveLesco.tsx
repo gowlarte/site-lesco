@@ -26,37 +26,53 @@ const diferenciais = [
     svg: iconHidrofobico,
     label: t("Água e resistência"),
     description: t(
-      "A madeira tradicional expande com a umidade. O WPC mantém sua estabilidade estrutural, evitando deformações.",
+      "A madeira comum expande com a umidade. A Madeira Ecológica mantém sua estabilidade estrutural, evitando deformações.",
     ),
   },
   {
     svg: iconGarantia,
     label: t("Durabilidade e resistência"),
     description: t(
-      "Enquanto a madeira convencional apodrece com o tempo, o WPC exibe robustez e imunidade à deterioração.",
+      "Enquanto a madeira convencional apodrece com o tempo, a Madeira Ecológica exibe robustez e imunidade à deterioração.",
     ),
   },
   {
     svg: iconPragas,
     label: t("Resistência a fungos e pragas"),
     description: t(
-      "Cupins, mofo e fungos são desafios para a madeira. O WPC resiste a esses elementos, garantindo longa vida útil.",
+      "Cupins, mofo e fungos são desafios para a madeira comum. A Madeira Ecológica resiste a esses elementos, garantindo longa vida útil.",
     ),
   },
   {
     svg: iconAntiMofo,
     label: t("Estabilidade e manutenção"),
     description: t(
-      "A madeira demanda manutenção frequente. O WPC tem alta estabilidade sob luz solar e exige pouca manutenção.",
+      "A madeira comum demanda manutenção frequente. A Madeira Ecológica tem alta estabilidade sob luz solar e exige pouca manutenção.",
     ),
   },
   {
     svg: iconReciclado,
     label: t("Sustentável"),
     description: t(
-      "Fabricado com fibras de madeira e resinas de alta performance, 100% reciclável para uma arquitetura responsável.",
+      "Fabricada com fibras de madeira e resinas de alta performance, 100% reciclável para uma arquitetura responsável.",
     ),
   },
+];
+
+/** Atributos-chave para a faixa em marquee. */
+const atributosMarquee = [
+  { svg: iconAntiMofo, label: t("Anti-mofo") },
+  { svg: iconHidrofobico, label: t("Hidrofóbico") },
+  { svg: iconPragas, label: t("Resistente a pragas") },
+  { svg: iconReciclado, label: t("Sustentável") },
+  { svg: iconGarantia, label: t("Baixa manutenção") },
+];
+
+/** Provas de credibilidade exibidas no hero. */
+const provasHero = [
+  t("Especificado por arquitetos e construtoras"),
+  t("Materiais premium e sustentáveis"),
+  t("Amostras enviadas para o seu projeto"),
 ];
 
 /** Princípios reais do grupo Lesco. */
@@ -76,7 +92,7 @@ const principios = [
   {
     titulo: t("Tecnologia aplicada"),
     texto: t(
-      "Do WPC ao bambu e à pedra flexível, unimos inovação de materiais e engenharia para resolver, no mesmo elemento, performance e expressão.",
+      "Da Madeira Ecológica ao bambu e à pedra flexível, unimos inovação de materiais e engenharia para resolver, no mesmo elemento, performance e expressão.",
     ),
   },
 ];
@@ -202,8 +218,8 @@ const LiveLesco = () => {
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px] space-y-[10px]">
       <SEO
-        title={t("Live Lesco — Madeira Plástica Ecológica de Alto Padrão")}
-        description={t("Solicite sua amostra da Lesco. Revestimentos em WPC Premium que unem sofisticação, tecnologia e sustentabilidade para projetos arquitetônicos de alto padrão.")}
+        title={t("Live Lesco — Madeira Ecológica de Alto Padrão")}
+        description={t("Solicite sua amostra da Lesco. Revestimentos em Madeira Ecológica que unem sofisticação, tecnologia e sustentabilidade para projetos arquitetônicos de alto padrão.")}
         path="/live-lesco"
         image={heroLive}
       />
@@ -212,7 +228,7 @@ const LiveLesco = () => {
       <section id="form" className="relative rounded-[10px] overflow-hidden scroll-mt-[110px]">
         <img
           src={heroLive}
-          alt={t("Revestimentos em madeira plástica WPC Premium Lesco")}
+          alt={t("Revestimentos em Madeira Ecológica Premium Lesco")}
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-[rgba(13,13,13,0.65)]" />
@@ -224,11 +240,32 @@ const LiveLesco = () => {
               Live Lesco
             </span>
             <h1 className="font-display font-light text-4xl md:text-5xl lg:text-[60px] leading-[1.05] tracking-[-0.02em] mb-6">
-              {t("Madeira Plástica Ecológica de Alto Padrão para Projetos Exclusivos.")}
+              {t("Madeira Ecológica de Alto Padrão para Projetos Exclusivos.")}
             </h1>
-            <p className="font-body text-[15px] md:text-[17px] text-white/80 leading-relaxed max-w-md">
-              {t("Os revestimentos em WPC Premium da Lesco unem sofisticação, tecnologia e sustentabilidade em cada detalhe. Preencha o formulário e transforme seus projetos em obras magníficas.")}
+            <p className="font-body text-[15px] md:text-[17px] text-white/80 leading-relaxed max-w-md mb-8">
+              {t("Os revestimentos em Madeira Ecológica Premium da Lesco unem sofisticação, tecnologia e sustentabilidade em cada detalhe. Preencha o formulário e transforme seus projetos em obras magníficas.")}
             </p>
+
+            {/* Provas de credibilidade */}
+            <div className="flex items-center gap-3 mb-6">
+              <span className="font-display text-xl text-white">4,7</span>
+              <span className="flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} size={14} className="fill-accent text-accent" />
+                ))}
+              </span>
+              <span className="font-body text-[12px] text-white/70">{t("29 avaliações no Google")}</span>
+            </div>
+            <ul className="space-y-3">
+              {provasHero.map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <span className="shrink-0 flex h-5 w-5 items-center justify-center rounded-full bg-accent/25">
+                    <Check size={12} className="text-accent" />
+                  </span>
+                  <span className="font-body text-[13px] md:text-[14px] text-white/85 leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Direita — formulário (iframe Live Lesco) */}
@@ -263,7 +300,7 @@ const LiveLesco = () => {
                 {t("Sobre a Lesco.")}
               </h2>
               <p className="font-body text-[15px] md:text-[16px] text-dark leading-relaxed mb-10 max-w-xl">
-                {t("A Lesco desenvolve materiais de revestimento premium para arquitetura de alto padrão. Unimos tecnologia, estética e sustentabilidade em linhas completas — do WPC ao bambu e à pedra flexível — especificadas por arquitetos e construtoras nas obras mais exigentes do país.")}
+                {t("A Lesco desenvolve materiais de revestimento premium para arquitetura de alto padrão. Unimos tecnologia, estética e sustentabilidade em linhas completas — da Madeira Ecológica ao bambu e à pedra flexível — especificadas por arquitetos e construtoras nas obras mais exigentes do país.")}
               </p>
               <div className="space-y-[10px]">
                 {principios.map((p) => (
@@ -347,18 +384,48 @@ const LiveLesco = () => {
         </ScrollReveal>
       </section>
 
-      {/* ========== WPC vs MADEIRA COMUM ========== */}
-      <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
+      {/* ========== MADEIRA ECOLÓGICA vs MADEIRA COMUM ========== */}
+      <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24 overflow-hidden">
         <ScrollReveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark mb-4 text-center">
-            {t("WPC Premium x Madeira comum")}
+            {t("Madeira Ecológica x Madeira comum")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 text-center max-w-2xl mx-auto">
-            {t("Por que a WPC Premium Lesco supera a madeira comum.")}
+            {t("Por que a Madeira Ecológica Lesco supera a madeira comum.")}
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[10px]">
-            {diferenciais.map((b) => (
-              <div key={b.label} className="bg-white/50 rounded-[10px] p-8">
+        </ScrollReveal>
+
+        {/* Faixa marquee de atributos-chave */}
+        <div
+          className="relative mb-12 -mx-6 md:-mx-12 lg:-mx-20"
+          style={{
+            maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+            WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+          }}
+        >
+          <div className="flex w-max animate-[marquee_28s_linear_infinite] gap-[10px] hover:[animation-play-state:paused]">
+            {[...atributosMarquee, ...atributosMarquee, ...atributosMarquee].map((a, i) => (
+              <div
+                key={`${a.label}-${i}`}
+                className="flex items-center gap-3 bg-white/60 rounded-[10px] px-6 py-4 shrink-0"
+              >
+                <span
+                  className="[&>svg]:h-6 [&>svg]:w-6 text-dark"
+                  dangerouslySetInnerHTML={{ __html: a.svg }}
+                  aria-hidden
+                />
+                <span className="font-mono text-[12px] uppercase tracking-[0.14em] text-dark whitespace-nowrap">
+                  {a.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[10px]">
+          {diferenciais.map((b, i) => (
+            <ScrollReveal key={b.label} delay={i * 0.1}>
+              <div className="bg-white/50 rounded-[10px] p-8 h-full transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-1.5 hover:shadow-lg">
                 <div
                   className="[&>svg]:h-10 [&>svg]:w-10 text-dark mb-5"
                   dangerouslySetInnerHTML={{ __html: b.svg }}
@@ -367,9 +434,9 @@ const LiveLesco = () => {
                 <h3 className="font-display text-xl text-dark mb-3 font-normal">{b.label}</h3>
                 <p className="font-body text-[14px] text-dark leading-relaxed">{b.description}</p>
               </div>
-            ))}
-          </div>
-        </ScrollReveal>
+            </ScrollReveal>
+          ))}
+        </div>
       </section>
 
       {/* ========== PARA QUEM É / PARA QUEM NÃO É ========== */}
@@ -397,17 +464,17 @@ const LiveLesco = () => {
                 ))}
               </ul>
             </div>
-            <div className="bg-white/30 rounded-[10px] p-8">
-              <p className="font-body text-[12px] uppercase tracking-[0.14em] text-dark/60 mb-6">
+            <div className="bg-white/60 rounded-[10px] p-8 border-l-2 border-dark/30">
+              <p className="font-body text-[12px] uppercase tracking-[0.14em] text-dark mb-6">
                 {t("Para quem não é")}
               </p>
               <ul className="space-y-4">
                 {paraQuemNaoE.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="mt-0.5 shrink-0 flex h-5 w-5 items-center justify-center rounded-full bg-dark/10">
-                      <X size={13} className="text-dark/50" />
+                    <span className="mt-0.5 shrink-0 flex h-5 w-5 items-center justify-center rounded-full bg-dark/15">
+                      <X size={13} className="text-dark" />
                     </span>
-                    <span className="font-body text-[15px] text-dark/70 leading-relaxed">{item}</span>
+                    <span className="font-body text-[15px] text-dark leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -465,7 +532,7 @@ const LiveLesco = () => {
             {t("Portfólio")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 max-w-2xl">
-            {t("Projetos inspiradores criados com a WPC Premium Lesco.")}
+            {t("Projetos inspiradores criados com a Madeira Ecológica Lesco.")}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[10px]">
             {projetosDestaque.map((p) => (

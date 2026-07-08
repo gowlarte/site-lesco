@@ -1,31 +1,46 @@
-# Página /live-lesco
+# Otimização da Landing Page Live Lesco
 
-Nova landing page usando o mesmo design do site (base: `/orcamento`), com o formulário GHL específico do Live Lesco e conteúdo complementar extraído do HTML enviado. A página **não** aparece no menu (Header/Footer não serão alterados) e fica fora do sitemap principal.
+Refinar a página `/live-lesco` (`src/pages/LiveLesco.tsx`) em três frentes: legibilidade, conteúdo do hero e a seção de diferenciais do material — tudo dentro da linguagem visual atual (cards flutuantes, margens/radius de 10px, tipografia PP Neue Machina / DM Sans / JetBrains Mono).
 
-## Estrutura da página (`src/pages/LiveLesco.tsx`)
+## 1. Corrigir legibilidade da seção "Para quem é / Para quem não é"
 
-1. **Hero + Formulário** (igual layout do /orcamento)
-   - Texto à esquerda: título "Madeira Plástica Ecológica de Alto Padrão para Projetos Exclusivos" + subtítulo sobre WPC Premium unindo sofisticação, tecnologia e sustentabilidade, com chamada para preencher o formulário.
-   - Formulário à direita usando o componente `GhlForm` existente (mantém UTMs e padrão visual):
-     - `formId="UdrSMJdSvZWUJZVI46aE"`, `formName`/`title="[09] [FORM] [LEADS LIVE LESCO]"`, `height={1034}`.
-   - Imagem de fundo: hero existente do banco de assets (ex.: `hero-home-altwood.webp`) com overlay escuro.
+No print, o card "Para quem não é" está quase ilegível (texto cinza claro sobre fundo translúcido).
 
-2. **WPC vs Madeira comum** — seção em grid com os 4 diferenciais do HTML de referência: Água e Resistência, Durabilidade e Resistência, Resistência a Fungos e Pragas, Estabilidade e Manutenção. Reaproveita os ícones SVG já usados no /orcamento.
+- Trocar o fundo `bg-white/30` do card por um tom sólido legível (ex.: `bg-white/70`).
+- Aumentar o contraste dos textos: `text-dark/70` → `text-dark`, e os rótulos/ícones esmaecidos (`text-dark/60`, `text-dark/50`, `bg-dark/10`) para tons sólidos escuros.
+- Manter a distinção visual entre os dois cards por borda/ícone (verde para "é", neutro para "não é"), não por opacidade do texto.
 
-3. **Projetos inspiradores** — grid de projetos em destaque vindos de `src/data/projetos.ts` (mesmo componente do /orcamento), apontando para o portfólio interno.
+## 2. Enriquecer a parte inicial (Hero)
 
-4. **Certificações** — bloco com GBC, LEED e ESG (textos do HTML de referência).
+Complementar o conteúdo do hero **sem incluir datas**, mantendo o layout de 2 colunas (texto à esquerda, formulário GHL à direita).
 
-5. **CTA final** — mesmo bloco gradiente do /orcamento (WhatsApp + catálogo), ou um CTA único "Solicitar orçamento" rolando ao formulário.
+- Manter H1 e parágrafo atuais.
+- Adicionar abaixo do parágrafo uma faixa de **provas/credibilidade** coerente com o tom executivo, reaproveitando dados já existentes na página:
+  - Avaliação Google (4,7 · 29 avaliações).
+  - Bullets curtos de reforço (ex.: "Especificado por arquitetos e construtoras", "Materiais premium e sustentáveis", "Amostras enviadas para o seu projeto").
+- Estilo em pílulas/linha discreta sobre o hero escuro, sem poluir o formulário.
 
-## Roteamento
-- Adicionar `import LiveLesco from "./pages/LiveLesco"` e `<Route path="/live-lesco" element={<LiveLesco />} />` em `src/App.tsx`, acima do catch-all.
-- **Não** adicionar ao menu (Header/Footer ficam intactos).
+## 3. Seção "Por que Madeira Ecológica" (remover WPC) + animações
 
-## SEO
-- Usar `<SEO>` com title "Live Lesco — Madeira Plástica Ecológica de Alto Padrão", description baseada no HTML, `path="/live-lesco"`.
-- Não adicionar ao `ssg-routes.json` nem ao `sitemap.xml` para manter a página fora da indexação principal (campanha). *(Confirme se prefere que ela seja pré-renderizada/indexada.)*
+Atualmente a seção usa "WPC Premium x Madeira comum". Nesta página **nunca** usar o termo "WPC".
 
-## Observações técnicas
-- O iframe não é alterado — uso do `GhlForm` que já injeta o script `form_embed.js` e os UTMs.
-- Imagens vêm dos assets/portfólio já existentes; nenhuma imagem nova é gerada.
+- Substituir todos os textos que mencionam "WPC" por "Madeira Ecológica" (título, kicker, descrições dos 5 diferenciais e a menção no bloco "Sobre a Lesco" e nos Projetos/Portfólio).
+- Reescrever as descrições dos diferenciais comparando "Madeira Ecológica" vs "madeira comum", mantendo o sentido técnico.
+- Adicionar **animações mais avançadas** nesta seção:
+  - Cards de diferenciais entram com stagger (revelação sequencial em cascata) ao entrar na viewport.
+  - Faixa/linha de containers que rolam horizontalmente (marquee) com os atributos-chave (Anti-mofo, Hidrofóbico, Resistente a pragas, Sustentável, Baixa manutenção) — reutilizando o componente `ScrollMarqueeGallery` existente ou uma marquee CSS simples com os ícones SVG.
+  - Hover elevado nos cards (leve scale/translate) coerente com as transições do projeto (`cubic-bezier(0.25,0.46,0.45,0.94)`).
+
+## Detalhes técnicos
+
+- Arquivo único afetado: `src/pages/LiveLesco.tsx`.
+- Reaproveitar `ScrollReveal` e, se possível, `ScrollMarqueeGallery` para a faixa animada; caso não encaixe, usar keyframe marquee via classe utilitária.
+- Stagger via `transition-delay` incremental dentro do map dos diferenciais (ou variantes do `ScrollReveal`).
+- Sem alterar cores hardcoded — usar tokens semânticos (`text-dark`, `bg-light`, `text-primary-foreground`, `accent`).
+- Ajustar também o `<SEO>` e demais copies da página para remover "WPC" e usar "Madeira Ecológica".
+- Verificação: `tsgo` (typecheck) e conferência visual no preview após o build.
+
+## Fora de escopo
+
+- Sem mudanças de backend, formulário GHL ou rotas.
+- Sem novas imagens geradas, salvo se necessário substituir alguma que não exista (usa-se o acervo atual).
