@@ -125,6 +125,11 @@ export default {
           "0%, 100%": { transform: "translateY(0)", opacity: "1" },
           "50%": { transform: "translateY(12px)", opacity: "0.5" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-33.333%)" },
+        },
+
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
