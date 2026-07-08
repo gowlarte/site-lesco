@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logoLight from "@/assets/logo-lesco-light.svg";
 import { site } from "@/config/site";
 import { t } from "@/i18n/t";
+import { isEN } from "@/i18n/locale";
 
 export function Footer() {
   return (
@@ -51,7 +52,7 @@ export function Footer() {
                 { label: t("Catálogo"), href: "/catalogo-lesco" },
                 { label: t("Biblioteca"), href: "/biblioteca" },
                 { label: "Blog", href: "https://blog.lesco.com.br/", external: true },
-              ].map((item) => (
+              ].filter((item) => !(isEN && item.href.includes("blog.lesco"))).map((item) => (
                 <li key={item.href}>
                   {item.external ? (
                     <a

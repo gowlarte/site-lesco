@@ -1,6 +1,6 @@
 import type { SsgRoute } from "./types";
 import { generateSchemaGraph } from "./generateSchemaGraph";
-import { site } from "../config/site";
+import { site, LOCALE_URLS } from "../config/site";
 
 const SITE_URL = site.siteUrl;
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-default.jpg`;
@@ -31,6 +31,9 @@ export function generateSeoHeadHtml(route: SsgRoute): string {
     `<title>${title}</title>`,
     `<meta name="description" content="${description}" />`,
     `<link rel="canonical" href="${canonical}" />`,
+    `<link rel="alternate" hreflang="pt-BR" href="${escapeHtml(LOCALE_URLS.pt + route.slug)}" />`,
+    `<link rel="alternate" hreflang="en" href="${escapeHtml(LOCALE_URLS.en + route.slug)}" />`,
+    `<link rel="alternate" hreflang="x-default" href="${escapeHtml(LOCALE_URLS.en + route.slug)}" />`,
     `<meta property="og:site_name" content="Lesco" />`,
     `<meta property="og:locale" content="${site.ogLocale}" />`,
     `<meta property="og:type" content="website" />`,

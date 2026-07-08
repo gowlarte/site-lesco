@@ -71,4 +71,14 @@ const CONFIGS: Record<Locale, SiteConfig> = {
 };
 
 export const site: SiteConfig = CONFIGS[LOCALE];
+
+/** Origin de cada locale — usado para gerar hreflang cruzado entre os dois domínios. */
+export const LOCALE_URLS: Record<Locale, string> = {
+  pt: CONFIGS.pt.siteUrl,
+  en: CONFIGS.en.siteUrl,
+};
+
+/** Ordem estável dos locales para iterar (ex.: gerar tags hreflang). */
+export const LOCALES: Locale[] = ["pt", "en"];
+
 export { LOCALE };

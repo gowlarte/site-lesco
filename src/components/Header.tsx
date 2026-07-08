@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { t } from "@/i18n/t";
+import { isEN } from "@/i18n/locale";
 import logoDark from "@/assets/logo-lesco-dark-2.svg";
 import logoLight from "@/assets/logo-lesco-light.svg";
 import linhaEchotexRaw from "@/assets/linha-echotex-2.svg?raw";
@@ -42,7 +43,8 @@ const navLinks: NavItem[] = [
   { label: t("Biblioteca"), href: "/biblioteca" },
   { label: "Blog", href: "https://blog.lesco.com.br/", external: true },
   { label: t("Portfólio"), href: "/portfolio" },
-];
+  // Blog é do site PT (blog.lesco.com.br); ocultar no build EN por ora.
+].filter((link) => !(isEN && link.href?.includes("blog.lesco")));
 
 interface HeaderProps {
   variant?: "default" | "overlay";

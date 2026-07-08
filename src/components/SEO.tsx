@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import ogDefault from "@/assets/og-default.jpg";
-import { site } from "@/config/site";
+import { site, LOCALE_URLS } from "@/config/site";
 
 const SITE_URL = site.siteUrl;
 
@@ -40,6 +40,11 @@ export function SEO({
       <meta name="description" content={description} />
       {noindex && <meta name="robots" content="noindex" />}
       <link rel="canonical" href={url} />
+
+      {/* hreflang — mesma página nos dois domínios (slugs idênticos por ora) */}
+      <link rel="alternate" hrefLang="pt-BR" href={`${LOCALE_URLS.pt}${path}`} />
+      <link rel="alternate" hrefLang="en" href={`${LOCALE_URLS.en}${path}`} />
+      <link rel="alternate" hrefLang="x-default" href={`${LOCALE_URLS.en}${path}`} />
 
       {/* Open Graph */}
       <meta property="og:site_name" content="Lesco" />

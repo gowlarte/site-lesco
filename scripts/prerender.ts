@@ -21,10 +21,13 @@ async function prerender() {
   // Locale-specific rewrites of the static shell (index.html template):
   //  - <html lang> for the active language
   //  - Google Tag Manager container id (separate container per domain)
+  //  - Organization JSON-LD: url/email do domínio ativo
   const template = fs
     .readFileSync(templatePath, "utf-8")
     .replace('lang="pt-BR"', `lang="${site.htmlLang}"`)
-    .replace(/GTM-NLMKCHH/g, site.gtmId);
+    .replace(/GTM-NLMKCHH/g, site.gtmId)
+    .replace('"url": "https://lesco.com.br"', `"url": "${site.siteUrl}"`)
+    .replace('"email": "contato@lesco.com.br"', `"email": "${site.email}"`);
 
   const serverEntryPath = path.join(DIST, "server", "entry-server.js");
   const { render } = (await import(pathToFileURL(serverEntryPath).href)) as {
@@ -65,6 +68,25 @@ async function prerender() {
   }
 
   console.log(`[SSG] Concluído: ${routes.length} páginas pré-renderizadas.`);
+
+  // sitemap.xml + robots.txt gerados por locale (o domínio muda por build).
+  const lastmod = new Date().toISOString().slice(0, 10);
+  const urls = routes
+    .map((route) => {
+      const loc = `${site.siteUrl}${route.slug}`;
+      const isHome = route.slug === "/";
+      const changefreq = isHome ? "weekly" : "monthly";
+      const priority = isHome ? "1.0" : "0.7";
+      return `  <url><loc>${loc}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
+    })
+    .join("\n");
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
+  fs.writeFileSync(path.join(DIST, "sitemap.xml"), sitemap, "utf-8");
+
+  const robots = `User-agent: *\nAllow: /\n\nSitemap: ${site.siteUrl}/sitemap.xml\n`;
+  fs.writeFileSync(path.join(DIST, "robots.txt"), robots, "utf-8");
+
+  console.log(`[SSG] sitemap.xml e robots.txt gerados para ${site.siteUrl}`);
 }
 
 prerender().catch((err) => {
