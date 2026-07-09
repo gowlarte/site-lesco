@@ -48,6 +48,7 @@ export function Footer() {
             <ul className="space-y-3">
               {[
                 { label: t("Sobre"), href: "/quem-somos" },
+                { label: t("Live Lesco"), href: "/live-lesco" },
                 { label: t("Portfólio"), href: "/portfolio" },
                 { label: t("Catálogo"), href: "/catalogo-lesco" },
                 { label: t("Biblioteca"), href: "/biblioteca" },
