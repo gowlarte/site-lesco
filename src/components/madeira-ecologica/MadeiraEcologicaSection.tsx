@@ -45,7 +45,7 @@ const features = [
   },
   {
     id: "reciclado",
-    label: t("100% reciclado"),
+    label: t("100% reciclável"),
     svg: iconReciclado,
     description: t(
       "Fabricado com materiais reciclados, contribuindo para uma arquitetura mais sustentável e responsável.",
