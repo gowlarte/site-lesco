@@ -644,4 +644,11 @@ export const en: Record<string, string> = {
   "Xangri-Lá, RS": "Xangri-Lá, RS",
   "Zero poluição": "Zero pollution",
   "Zhú reúne revestimentos, forros, luminárias, decorativos e utilitários produzidos a partir do bambu. Uma linha que celebra a leveza, a textura natural e o tempo de vida longo de uma das fibras mais nobres do planeta.": "Zhú brings together cladding, ceilings, lighting, décor and functional pieces crafted from bamboo. A line that celebrates lightness, natural texture and the long lifespan of one of the planet's finest fibers.",
+  "Política de Privacidade": "Privacy Policy",
+  "Termos de Serviço": "Terms of Service",
+  "Política de Privacidade | Lesco": "Privacy Policy | Lesco",
+  "Termos de Serviço | Lesco": "Terms of Service | Lesco",
+  "Política de Privacidade da Lesco. Conheça como tratamos e protegemos suas informações.": "Lesco Privacy Policy. Learn how we handle and protect your information.",
+  "Termos de Serviço da Lesco. Conheça as condições de uso do site e dos nossos serviços.": "Lesco Terms of Service. Learn the conditions of use for the site and our services.",
+  "Atualizado em 9 de julho de 2026": "Updated on July 9, 2026",
 };
