@@ -102,6 +102,18 @@ function ssGetStore(): UtmValues | null {
     return null;
   }
 }
+function ssClearStore() {
+  try {
+    window.sessionStorage.removeItem(SS_KEY);
+  } catch {
+    /* noop */
+  }
+}
+
+// Marca se a carga atual da página (full load / reload) já foi processada.
+// É resetada a cada reload real porque o módulo é reavaliado; a navegação
+// interna da SPA NÃO reseta, então mantém a atribuição de quem veio de campanha.
+let pageLoadHandled = false;
 
 /**
  * Resolve as UTMs da sessão atual (last-touch) e devolve o objeto final.
