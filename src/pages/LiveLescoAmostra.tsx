@@ -244,24 +244,6 @@ const LiveLescoAmostra = () => {
         </div>
       </section>
 
-      {/* ========== LEGAL ========== */}
-      <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-8">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-          <Link
-            to="/politica-de-privacidade"
-            className="font-body text-[12px] text-dark/60 hover:text-dark transition-colors"
-          >
-            {t("Política de Privacidade")}
-          </Link>
-          <span className="hidden sm:inline text-dark/20">·</span>
-          <Link
-            to="/termos-de-servico"
-            className="font-body text-[12px] text-dark/60 hover:text-dark transition-colors"
-          >
-            {t("Termos de Serviço")}
-          </Link>
-        </div>
-      </section>
     </main>
   );
 };
