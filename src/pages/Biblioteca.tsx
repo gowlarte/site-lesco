@@ -1,4 +1,5 @@
 import { Link } from "@/components/AppLink";
+import { openWhatsAppPopup } from "@/lib/whatsappPopup";
 import { t } from "@/i18n/t";
 import { SEO } from "@/components/SEO";
 import { ScrollReveal } from "@/components/ScrollReveal";
