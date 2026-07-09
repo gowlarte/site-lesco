@@ -1,46 +1,59 @@
-# Otimização da Landing Page Live Lesco
+# Ajuste das páginas Política de Privacidade e Termos de Serviço
 
-Refinar a página `/live-lesco` (`src/pages/LiveLesco.tsx`) em três frentes: legibilidade, conteúdo do hero e a seção de diferenciais do material — tudo dentro da linguagem visual atual (cards flutuantes, margens/radius de 10px, tipografia PP Neue Machina / DM Sans / JetBrains Mono).
+## Problema raiz (legibilidade)
+As páginas usam `bg-light` e `text-dark`, classes **inexistentes** no `tailwind.config.ts`. Resultado: card sem fundo real (herda o fundo escuro global) e texto herdando cor clara → texto ilegível em PT **e** EN. Corrigir os tokens resolve a ilegibilidade dos dois idiomas de uma vez.
 
-## 1. Corrigir legibilidade da seção "Para quem é / Para quem não é"
+## 1. Correção de cores (tokens reais)
+Substituir em ambas as páginas:
+- `bg-light` → `bg-lesco-white` (card off-white `#F0EDE8`)
+- `text-dark` / `text-dark/70` / `text-dark/50` → `text-lesco-black` e opacidades (`text-lesco-black/70`, `/50`)
 
-No print, o card "Para quem não é" está quase ilegível (texto cinza claro sobre fundo translúcido).
+Isso garante contraste correto (texto escuro sobre card claro), respeitando a linguagem visual (cards flutuantes, raio 10px, margem 10px).
 
-- Trocar o fundo `bg-white/30` do card por um tom sólido legível (ex.: `bg-white/70`).
-- Aumentar o contraste dos textos: `text-dark/70` → `text-dark`, e os rótulos/ícones esmaecidos (`text-dark/60`, `text-dark/50`, `bg-dark/10`) para tons sólidos escuros.
-- Manter a distinção visual entre os dois cards por borda/ícone (verde para "é", neutro para "não é"), não por opacidade do texto.
+## 2. Imagem no topo (hero)
+Adicionar um bloco hero no topo de cada página, dentro da moldura de 10px:
+- Imagem full-width com `rounded-[10px]`, altura ~40vh, overlay escuro sutil.
+- Título sobreposto (`Política de Privacidade` / `Termos de Serviço`) + data de atualização em mono.
+- Gerar 1 imagem editorial coerente com o nicho (revestimentos arquitetônicos sustentáveis, brises/AltWood, luz natural, tom linho/madeira). Uma imagem serve para as duas páginas ou uma para cada — usarei uma imagem arquitetônica sóbria.
 
-## 2. Enriquecer a parte inicial (Hero)
+## 3. Conteúdo — pesquisa profunda e LGPD (não genérico)
+Reescrever todo o conteúdo com base na **Lei 13.709/2018 (LGPD)** e nas boas práticas recomendadas, adaptado ao nicho da Lesco (revestimentos/brises/decks WPC, arquitetura sustentável, atendimento B2B e a arquitetos/construtoras, catálogos e amostras).
 
-Complementar o conteúdo do hero **sem incluir datas**, mantendo o layout de 2 colunas (texto à esquerda, formulário GHL à direita).
+**Política de Privacidade** passará a incluir seções alinhadas à LGPD:
+1. Controlador dos dados e contato do encarregado (DPO)
+2. Dados pessoais coletados (fornecidos, de navegação/cookies, de terceiros)
+3. Finalidades específicas + **bases legais** da LGPD (consentimento, execução de contrato, legítimo interesse, obrigação legal)
+4. Compartilhamento e operadores (ferramentas de analytics, e-mail, CRM, hospedagem)
+5. Transferência internacional de dados (se aplicável a ferramentas fora do Brasil)
+6. Cookies e tecnologias de rastreamento (categorias e gestão)
+7. Retenção e descarte
+8. Segurança da informação
+9. **Direitos do titular (art. 18 LGPD)**: confirmação, acesso, correção, anonimização, portabilidade, eliminação, revogação de consentimento, revisão de decisões automatizadas
+10. Como exercer os direitos / prazo de resposta
+11. Menores de idade
+12. Alterações desta política
+13. Encarregado (DPO) e canal de contato / ANPD
 
-- Manter H1 e parágrafo atuais.
-- Adicionar abaixo do parágrafo uma faixa de **provas/credibilidade** coerente com o tom executivo, reaproveitando dados já existentes na página:
-  - Avaliação Google (4,7 · 29 avaliações).
-  - Bullets curtos de reforço (ex.: "Especificado por arquitetos e construtoras", "Materiais premium e sustentáveis", "Amostras enviadas para o seu projeto").
-- Estilo em pílulas/linha discreta sobre o hero escuro, sem poluir o formulário.
+**Termos de Serviço** revisados para o contexto: objeto, cadastro/orçamentos/amostras, obrigações do usuário, propriedade intelectual, ausência de venda direta on-line vs. atendimento comercial, isenção de garantias sobre especificações técnicas, limitação de responsabilidade, links de terceiros, lei aplicável (Brasil) e foro, alterações.
 
-## 3. Seção "Por que Madeira Ecológica" (remover WPC) + animações
+Todo o texto novo entra via `t("...")` (fonte PT). A versão EN é gerada adicionando as entradas correspondentes no dicionário `src/i18n/dictionaries/en.ts` — assim os dois idiomas ficam legíveis e traduzidos.
 
-Atualmente a seção usa "WPC Premium x Madeira comum". Nesta página **nunca** usar o termo "WPC".
+Observação de conformidade: manterei o texto como base editável da Lesco, sem inventar certificações. Onde faltarem dados específicos (nome jurídico completo, CNPJ, e-mail do DPO), usarei o contato existente `contato@lesco.com.br` e deixarei rótulos claros para você preencher.
 
-- Substituir todos os textos que mencionam "WPC" por "Madeira Ecológica" (título, kicker, descrições dos 5 diferenciais e a menção no bloco "Sobre a Lesco" e nos Projetos/Portfólio).
-- Reescrever as descrições dos diferenciais comparando "Madeira Ecológica" vs "madeira comum", mantendo o sentido técnico.
-- Adicionar **animações mais avançadas** nesta seção:
-  - Cards de diferenciais entram com stagger (revelação sequencial em cascata) ao entrar na viewport.
-  - Faixa/linha de containers que rolam horizontalmente (marquee) com os atributos-chave (Anti-mofo, Hidrofóbico, Resistente a pragas, Sustentável, Baixa manutenção) — reutilizando o componente `ScrollMarqueeGallery` existente ou uma marquee CSS simples com os ícones SVG.
-  - Hover elevado nos cards (leve scale/translate) coerente com as transições do projeto (`cubic-bezier(0.25,0.46,0.45,0.94)`).
+## 4. Modernização do design
+- Tipografia com melhor hierarquia: números de seção em mono/accent, títulos `font-display`, corpo `font-body` com `leading-relaxed` e largura de leitura confortável (`max-w-3xl`).
+- Índice/sumário navegável (âncoras) no topo do conteúdo em telas grandes.
+- Divisórias sutis entre seções, respiro vertical maior.
+- Blocos de destaque (ex.: direitos do titular) em card `bg-lesco-bone` com raio 10px.
+- Rodapé da página com card de contato do DPO.
+- Coerência total com o sistema: margem 10px, raio 10px, transições suaves.
 
-## Detalhes técnicos
+## Arquivos afetados
+- `src/pages/PoliticaPrivacidade.tsx` — reescrita completa (tokens, hero, conteúdo LGPD, design)
+- `src/pages/TermosServico.tsx` — reescrita completa (tokens, hero, conteúdo, design)
+- `src/i18n/dictionaries/en.ts` — novas entradas de tradução EN
+- `src/assets/` — nova(s) imagem(ns) de hero geradas
 
-- Arquivo único afetado: `src/pages/LiveLesco.tsx`.
-- Reaproveitar `ScrollReveal` e, se possível, `ScrollMarqueeGallery` para a faixa animada; caso não encaixe, usar keyframe marquee via classe utilitária.
-- Stagger via `transition-delay` incremental dentro do map dos diferenciais (ou variantes do `ScrollReveal`).
-- Sem alterar cores hardcoded — usar tokens semânticos (`text-dark`, `bg-light`, `text-primary-foreground`, `accent`).
-- Ajustar também o `<SEO>` e demais copies da página para remover "WPC" e usar "Madeira Ecológica".
-- Verificação: `tsgo` (typecheck) e conferência visual no preview após o build.
-
-## Fora de escopo
-
-- Sem mudanças de backend, formulário GHL ou rotas.
-- Sem novas imagens geradas, salvo se necessário substituir alguma que não exista (usa-se o acervo atual).
+## Verificação
+- Build passa
+- Screenshot via Playwright das duas páginas em PT e EN confirmando contraste/legibilidade e hero
