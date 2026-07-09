@@ -9,9 +9,10 @@
     })(window,document,'script','dataLayer','GTM-NLMKCHH');</script>
     <!-- End Google Tag Manager -->
 
-    <!-- Captura precoce de UTMs (persiste em localStorage por 24h).
+    <!-- Captura precoce de UTMs (last-touch, por sessão de navegação).
          A injeção nos formulários GHL acontece via query param na src do
          iframe (ver src/lib/utm.ts), pois os forms são iframes cross-origin. -->
+
     <script>
     (function () {
       // Captura precoce das UTMs (last-touch) na MESMA fonte de verdade usada
