@@ -144,10 +144,21 @@ export function captureUtms(): UtmValues {
     values.url_conversao = window.location.href;
     ssSetStore(values);
   } else {
-    // Sem sinal na URL: mantém o que já existe na sessão (nav. interna).
-    // Entrada direta sem sessão prévia → objeto vazio (sem campanha).
-    values = ssGetStore() || {};
+    // Sem sinal na URL.
+    if (!pageLoadHandled) {
+      // Primeira carga/reload da página SEM UTM = entrada direta/orgânica.
+      // Descarta qualquer atribuição antiga para não pré-preencher o form com
+      // dados de uma campanha que não pertence a este acesso.
+      ssClearStore();
+      values = {};
+    } else {
+      // Navegação interna na mesma carga: mantém a campanha da sessão (a URL
+      // interna não carrega a query string, mas o lead segue sendo o mesmo).
+      values = ssGetStore() || {};
+    }
   }
+
+  pageLoadHandled = true;
 
   // user_agent sempre do momento atual; não altera a atribuição.
   const enriched: UtmValues = { ...values };
