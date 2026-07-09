@@ -108,14 +108,13 @@ const Catalogo = () => {
               {t("Vamos iniciar")}<br />{t("seu projeto?")}
             </h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href={`https://wa.me/${site.whatsappNumber}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={openWhatsAppPopup}
                 className="inline-flex items-center px-7 py-3.5 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary/[0.08] transition-colors duration-250"
               >
                 {t("Falar no WhatsApp")}
-              </a>
+              </button>
               <Link
                 to="/orcamento"
                 className="inline-flex items-center px-7 py-3.5 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary/[0.08] transition-colors duration-250"
