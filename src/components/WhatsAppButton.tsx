@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { buildGhlFormUrl } from "@/lib/utm";
+import { WHATSAPP_POPUP_EVENT } from "@/lib/whatsappPopup";
 import { site } from "@/config/site";
 import { t } from "@/i18n/t";
 
