@@ -18,12 +18,38 @@
 //     lead mantém a atribuição enquanto navega no site na mesma sessão.
 //   - É zerado quando a aba/sessão do navegador fecha, então um novo acesso
 //     direto começa limpo (sem campanha).
+//   - Também limpamos chaves legadas/externas de UTM no localStorage quando a
+//     entrada atual é direta, porque navegadores usados todos os dias podem
+//     carregar cache antigo que o embed do GHL ainda tenta reaproveitar.
 //   - O MESMO objeto resolvido alimenta o iframe (buildGhlFormUrl) e o
 //     forwarder do dashboard (readSessionUtms) — fim da divergência
 //     first-touch × last-touch que misturava dados de campanhas diferentes.
 // ---------------------------------------------------------------------------
 
 const SS_KEY = "lesco_utm"; // fonte de verdade por sessão de navegação
+
+const STORAGE_CLEANUP_KEYS = new Set([
+  SS_KEY,
+  "utm",
+  "utms",
+  "utm_data",
+  "utmData",
+  "utm_params",
+  "utmParams",
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+  "utm_term",
+  "campaign_id",
+  "adset_id",
+  "ad_id",
+  "gclid",
+  "gclid_field",
+  "fbclid",
+  "url_conversao",
+  "user_agent_lead",
+]);
 
 // Parâmetros lidos diretamente da URL
 const URL_PARAMS = [
@@ -105,6 +131,34 @@ function ssGetStore(): UtmValues | null {
 function ssClearStore() {
   try {
     window.sessionStorage.removeItem(SS_KEY);
+  } catch {
+    /* noop */
+  }
+}
+
+function clearStaleUtmStorage() {
+  if (!isBrowser()) return;
+
+  ssClearStore();
+
+  try {
+    STORAGE_CLEANUP_KEYS.forEach((key) => window.localStorage.removeItem(key));
+
+    for (let i = window.localStorage.length - 1; i >= 0; i--) {
+      const key = window.localStorage.key(i);
+      if (!key) continue;
+      const normalized = key.toLowerCase();
+      if (
+        normalized.includes("utm") ||
+        normalized.includes("gclid") ||
+        normalized.includes("fbclid") ||
+        normalized.includes("campaign_id") ||
+        normalized.includes("adset_id") ||
+        normalized.includes("ad_id")
+      ) {
+        window.localStorage.removeItem(key);
+      }
+    }
   } catch {
     /* noop */
   }
@@ -228,7 +282,9 @@ export function captureUtms(): UtmValues {
       } else {
         // Entrada direta (sem referrer/UTM) → descarta atribuição antiga para
         // não pré-preencher o form com dados de um acesso que não é este.
-        ssClearStore();
+        // Além da sessão atual, limpamos chaves legadas no localStorage para
+        // resolver navegadores que já tinham UTM/cache salvo antes da correção.
+        clearStaleUtmStorage();
         values = {};
       }
     } else {
