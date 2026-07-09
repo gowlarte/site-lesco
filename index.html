@@ -14,24 +14,26 @@
          iframe (ver src/lib/utm.ts), pois os forms são iframes cross-origin. -->
     <script>
     (function () {
+      // Captura precoce das UTMs (last-touch) na MESMA fonte de verdade usada
+      // pelo app: sessionStorage 'lesco_utm'. Só grava quando há sinal real de
+      // campanha na URL, para que uma entrada direta/orgânica não herde campanha
+      // antiga. Não usamos mais localStorage de 24h (evita "ressurreição").
       try {
         var KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term',
                     'campaign_id','adset_id','ad_id','gclid','fbclid'];
+        var SIGNAL = ['utm_source','utm_medium','utm_campaign','campaign_id','gclid','fbclid'];
         var p = new URLSearchParams(window.location.search);
-        var now = Date.now(), found = false;
-        KEYS.forEach(function (k) {
-          var v = p.get(k);
-          if (v) { try { localStorage.setItem('lesco_' + k, v); found = true; } catch (e) {} }
-        });
-        if (found) {
-          try {
-            localStorage.setItem('lesco_utm_ts', String(now));
-            localStorage.setItem('lesco_url_conversao', window.location.href);
-          } catch (e) {}
+        var hasSignal = SIGNAL.some(function (k) { return p.get(k); });
+        if (hasSignal) {
+          var values = {};
+          KEYS.forEach(function (k) { var v = p.get(k); if (v) values[k] = v; });
+          values.url_conversao = window.location.href;
+          try { sessionStorage.setItem('lesco_utm', JSON.stringify(values)); } catch (e) {}
         }
       } catch (e) {}
     })();
     </script>
+
 
 
 
