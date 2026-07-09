@@ -215,15 +215,24 @@ export function captureUtms(): UtmValues {
     values.url_conversao = window.location.href;
     ssSetStore(values);
   } else {
-    // Sem sinal na URL.
+    // Sem UTM explícita na URL.
     if (!pageLoadHandled) {
-      // Primeira carga/reload da página SEM UTM = entrada direta/orgânica.
-      // Descarta qualquer atribuição antiga para não pré-preencher o form com
-      // dados de uma campanha que não pertence a este acesso.
-      ssClearStore();
-      values = {};
+      // Primeira carga/reload da página. Antes de descartar tudo, tentamos
+      // derivar a origem pelo referrer (orgânico do Google, social, referral).
+      const referrerAttr = deriveReferrerAttribution();
+      if (referrerAttr) {
+        // Origem real detectada (ex.: pesquisou no Google e clicou) → vira a
+        // atribuição da sessão e persiste igual a uma campanha.
+        values = { ...referrerAttr, url_conversao: window.location.href };
+        ssSetStore(values);
+      } else {
+        // Entrada direta (sem referrer/UTM) → descarta atribuição antiga para
+        // não pré-preencher o form com dados de um acesso que não é este.
+        ssClearStore();
+        values = {};
+      }
     } else {
-      // Navegação interna na mesma carga: mantém a campanha da sessão (a URL
+      // Navegação interna na mesma carga: mantém a origem da sessão (a URL
       // interna não carrega a query string, mas o lead segue sendo o mesmo).
       values = ssGetStore() || {};
     }
