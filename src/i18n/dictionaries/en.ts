@@ -21,6 +21,7 @@ export const en: Record<string, string> = {
   "10% Composto reciclado": "10% Recycled Compound",
   "100% reciclado": "100% recycled",
   "100% reciclável": "100% recyclable",
+  "100% reciclável": "100% recyclable",
   "12 Mar 2026": "Mar 12, 2026",
   "14 Fev 2026": "Feb 14, 2026",
   "20 Jan 2026": "Jan 20, 2026",
