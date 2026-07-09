@@ -115,6 +115,77 @@ function ssClearStore() {
 // interna da SPA NÃO reseta, então mantém a atribuição de quem veio de campanha.
 let pageLoadHandled = false;
 
+// --- Detecção de origem pelo referrer (modelo GA4) -------------------------
+// Buscadores enviam apenas o domínio como referrer (ex.: google orgânico chega
+// como "https://www.google.com/", sem os termos de busca, que são criptografados).
+// Mapeamos esse referrer para uma atribuição orgânica/social/referral, igual ao
+// que o Google Analytics faz automaticamente.
+const SEARCH_ENGINES: Array<{ match: RegExp; source: string }> = [
+  { match: /(^|\.)google\./, source: "google" },
+  { match: /(^|\.)bing\.com$/, source: "bing" },
+  { match: /(^|\.)yahoo\./, source: "yahoo" },
+  { match: /(^|\.)duckduckgo\.com$/, source: "duckduckgo" },
+  { match: /(^|\.)ecosia\.org$/, source: "ecosia" },
+  { match: /(^|\.)yandex\./, source: "yandex" },
+  { match: /(^|\.)baidu\.com$/, source: "baidu" },
+  { match: /(^|\.)ask\.com$/, source: "ask" },
+];
+
+const SOCIAL_SOURCES: Array<{ match: RegExp; source: string }> = [
+  { match: /(^|\.)facebook\.com$/, source: "facebook" },
+  { match: /(^|\.)fb\.com$/, source: "facebook" },
+  { match: /(^|\.)instagram\.com$/, source: "instagram" },
+  { match: /(^|\.)l\.instagram\.com$/, source: "instagram" },
+  { match: /(^|\.)linkedin\.com$/, source: "linkedin" },
+  { match: /(^|\.)lnkd\.in$/, source: "linkedin" },
+  { match: /(^|\.)t\.co$/, source: "twitter" },
+  { match: /(^|\.)twitter\.com$/, source: "twitter" },
+  { match: /(^|\.)x\.com$/, source: "twitter" },
+  { match: /(^|\.)youtube\.com$/, source: "youtube" },
+  { match: /(^|\.)youtu\.be$/, source: "youtube" },
+  { match: /(^|\.)pinterest\./, source: "pinterest" },
+  { match: /(^|\.)tiktok\.com$/, source: "tiktok" },
+  { match: /(^|\.)wa\.me$/, source: "whatsapp" },
+  { match: /(^|\.)whatsapp\.com$/, source: "whatsapp" },
+];
+
+/**
+ * Deriva atribuição a partir do `document.referrer` quando NÃO há UTM na URL.
+ *
+ * - Referrer de buscador  → { utm_source: <buscador>, utm_medium: "organic" }
+ * - Referrer de rede social → { utm_source: <rede>, utm_medium: "social" }
+ * - Outro domínio externo → { utm_source: <domínio>, utm_medium: "referral" }
+ * - Sem referrer ou referrer do próprio site → null (entrada direta/interna)
+ */
+function deriveReferrerAttribution(): UtmValues | null {
+  const ref = document.referrer;
+  if (!ref) return null;
+
+  let refHost: string;
+  try {
+    refHost = new URL(ref).hostname.replace(/^www\./, "").toLowerCase();
+  } catch {
+    return null;
+  }
+
+  const selfHost = window.location.hostname.replace(/^www\./, "").toLowerCase();
+  // Referrer do próprio domínio = navegação interna / reload → não é origem nova.
+  if (refHost === selfHost) return null;
+
+  for (const { match, source } of SEARCH_ENGINES) {
+    if (match.test(refHost)) {
+      return { utm_source: source, utm_medium: "organic" };
+    }
+  }
+  for (const { match, source } of SOCIAL_SOURCES) {
+    if (match.test(refHost)) {
+      return { utm_source: source, utm_medium: "social" };
+    }
+  }
+  // Qualquer outro site externo → referral.
+  return { utm_source: refHost, utm_medium: "referral" };
+}
+
 /**
  * Resolve as UTMs da sessão atual (last-touch) e devolve o objeto final.
  *
@@ -144,15 +215,24 @@ export function captureUtms(): UtmValues {
     values.url_conversao = window.location.href;
     ssSetStore(values);
   } else {
-    // Sem sinal na URL.
+    // Sem UTM explícita na URL.
     if (!pageLoadHandled) {
-      // Primeira carga/reload da página SEM UTM = entrada direta/orgânica.
-      // Descarta qualquer atribuição antiga para não pré-preencher o form com
-      // dados de uma campanha que não pertence a este acesso.
-      ssClearStore();
-      values = {};
+      // Primeira carga/reload da página. Antes de descartar tudo, tentamos
+      // derivar a origem pelo referrer (orgânico do Google, social, referral).
+      const referrerAttr = deriveReferrerAttribution();
+      if (referrerAttr) {
+        // Origem real detectada (ex.: pesquisou no Google e clicou) → vira a
+        // atribuição da sessão e persiste igual a uma campanha.
+        values = { ...referrerAttr, url_conversao: window.location.href };
+        ssSetStore(values);
+      } else {
+        // Entrada direta (sem referrer/UTM) → descarta atribuição antiga para
+        // não pré-preencher o form com dados de um acesso que não é este.
+        ssClearStore();
+        values = {};
+      }
     } else {
-      // Navegação interna na mesma carga: mantém a campanha da sessão (a URL
+      // Navegação interna na mesma carga: mantém a origem da sessão (a URL
       // interna não carrega a query string, mas o lead segue sendo o mesmo).
       values = ssGetStore() || {};
     }
