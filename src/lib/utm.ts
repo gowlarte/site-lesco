@@ -6,12 +6,24 @@
 // via DOM. O mecanismo confiável é anexar os valores como query params na
 // própria `src` do iframe — o GHL casa cada param com o campo cujo "Query Key"
 // tem o mesmo nome. É o que `buildGhlFormUrl()` faz.
+//
+// MODELO DE ATRIBUIÇÃO (decidido com o cliente):
+//   • Last-touch: quando a URL traz UTM nova, a campanha do clique atual VENCE
+//     e sobrescreve o que estava guardado.
+//   • Entrada direta/orgânica = SEM campanha. Não ressuscitamos campanha de
+//     visitas antigas (era o bug de "lead entrando com dado de outra página").
+//
+// FONTE DE VERDADE ÚNICA: `sessionStorage` (chave `lesco_utm`).
+//   - Sobrevive à navegação interna (que apaga a query string da URL), então o
+//     lead mantém a atribuição enquanto navega no site na mesma sessão.
+//   - É zerado quando a aba/sessão do navegador fecha, então um novo acesso
+//     direto começa limpo (sem campanha).
+//   - O MESMO objeto resolvido alimenta o iframe (buildGhlFormUrl) e o
+//     forwarder do dashboard (readSessionUtms) — fim da divergência
+//     first-touch × last-touch que misturava dados de campanhas diferentes.
 // ---------------------------------------------------------------------------
 
-const LS_PREFIX = "lesco_";
-const LS_TS_KEY = "lesco_utm_ts";
-const SS_KEY = "lesco_utm"; // mesmo do script externo do <body>
-const TTL_MS = 86_400_000; // 24h
+const SS_KEY = "lesco_utm"; // fonte de verdade por sessão de navegação
 
 // Parâmetros lidos diretamente da URL
 const URL_PARAMS = [
@@ -58,7 +70,7 @@ const IFRAME_FIELD_KEYS = [
   "fbclid",
 ] as const;
 
-// Quais chaves sinalizam que houve uma origem de campanha real
+// Quais chaves sinalizam que houve uma origem de campanha real (novo touch)
 const SIGNAL_KEYS = [
   "utm_source",
   "utm_medium",
@@ -70,78 +82,67 @@ const SIGNAL_KEYS = [
 
 const isBrowser = () => typeof window !== "undefined";
 
+export type UtmValues = Record<string, string>;
+
 // --- storage seguro (Safari privado/iOS não derruba o script) --------------
-function lsSet(k: string, v: string) {
+function ssSetStore(values: UtmValues) {
   try {
-    window.localStorage.setItem(k, v);
+    window.sessionStorage.setItem(SS_KEY, JSON.stringify(values));
   } catch {
     /* noop */
   }
 }
-function lsGet(k: string): string | null {
+function ssGetStore(): UtmValues | null {
   try {
-    return window.localStorage.getItem(k);
+    const raw = window.sessionStorage.getItem(SS_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === "object" ? (parsed as UtmValues) : null;
   } catch {
     return null;
   }
 }
 
-export type UtmValues = Record<string, string>;
-
 /**
- * Lê a URL, persiste UTMs novas (24h) e devolve o objeto final de valores
- * (URL > localStorage > vazio). Também sincroniza o sessionStorage usado pelo
- * forwarder do dashboard. Seguro para SSR (retorna {} fora do browser).
+ * Resolve as UTMs da sessão atual (last-touch) e devolve o objeto final.
+ *
+ * - URL com sinal de campanha  → nova campanha VENCE e sobrescreve a sessão.
+ * - URL sem sinal              → reaproveita a campanha da sessão (navegação
+ *                                 interna). Se não houver, fica VAZIO (entrada
+ *                                 direta/orgânica não herda campanha antiga).
+ *
+ * Seguro para SSR (retorna {} fora do browser).
  */
 export function captureUtms(): UtmValues {
   if (!isBrowser()) return {};
 
   const params = new URLSearchParams(window.location.search);
-  const now = Date.now();
+  const hasSignal = SIGNAL_KEYS.some((k) => params.get(k));
 
-  // 1. Salva no localStorage só o que vier da URL agora
-  let hasNewUtm = false;
-  URL_PARAMS.forEach((k) => {
-    const v = params.get(k);
-    if (v) {
-      lsSet(LS_PREFIX + k, v);
-      hasNewUtm = true;
-    }
-  });
-  if (hasNewUtm) {
-    lsSet(LS_TS_KEY, String(now));
-    // url_conversao = a LP de origem real (só quando há UTM nova na URL)
-    lsSet(LS_PREFIX + "url_conversao", window.location.href);
+  let values: UtmValues;
+
+  if (hasSignal) {
+    // Last-touch: o clique atual define a atribuição e sobrescreve a sessão.
+    values = {};
+    URL_PARAMS.forEach((k) => {
+      const v = params.get(k);
+      if (v) values[k] = v;
+    });
+    // url_conversao = a LP onde a campanha realmente entrou.
+    values.url_conversao = window.location.href;
+    ssSetStore(values);
+  } else {
+    // Sem sinal na URL: mantém o que já existe na sessão (nav. interna).
+    // Entrada direta sem sessão prévia → objeto vazio (sem campanha).
+    values = ssGetStore() || {};
   }
 
-  // 2. Validade do localStorage (24h)
-  const savedTs = lsGet(LS_TS_KEY);
-  const isRecent = !!savedTs && now - parseInt(savedTs, 10) < TTL_MS;
-  const ls = (k: string) => (isRecent ? lsGet(LS_PREFIX + k) || "" : "");
+  // user_agent sempre do momento atual; não altera a atribuição.
+  const enriched: UtmValues = { ...values };
+  enriched.user_agent_lead = navigator.userAgent;
+  if (!enriched.url_conversao) enriched.url_conversao = window.location.href;
 
-  // 3. Monta objeto final
-  const values: UtmValues = {};
-  URL_PARAMS.forEach((k) => {
-    const v = params.get(k) || ls(k);
-    if (v) values[k] = v;
-  });
-  const urlConversao = ls("url_conversao") || window.location.href;
-  values.url_conversao = urlConversao;
-  values.user_agent_lead = navigator.userAgent;
-
-  // 4. Sincroniza sessionStorage (first-touch) para o forwarder
-  try {
-    if (!window.sessionStorage.getItem(SS_KEY)) {
-      const hasSignal = SIGNAL_KEYS.some((k) => values[k]);
-      if (hasSignal) {
-        window.sessionStorage.setItem(SS_KEY, JSON.stringify(values));
-      }
-    }
-  } catch {
-    /* noop */
-  }
-
-  return values;
+  return enriched;
 }
 
 /** Igual a captureUtms mas sem reler/persistir — útil para leitura rápida. */
@@ -171,13 +172,15 @@ export function buildGhlFormUrl(baseUrl: string): string {
   }
 }
 
-/** Lê o payload de UTMs salvo no sessionStorage (para o forwarder). */
+/**
+ * Lê os UTMs da sessão para o forwarder do dashboard.
+ * Usa exatamente a MESMA resolução que alimenta o iframe (captureUtms), para
+ * que form e forwarder nunca enviem campanhas diferentes. Retorna null quando
+ * não há nenhum sinal de campanha (entrada direta) — o forwarder ignora.
+ */
 export function readSessionUtms(): UtmValues | null {
   if (!isBrowser()) return null;
-  try {
-    const raw = window.sessionStorage.getItem(SS_KEY);
-    return raw ? (JSON.parse(raw) as UtmValues) : null;
-  } catch {
-    return null;
-  }
+  const values = captureUtms();
+  const hasSignal = SIGNAL_KEYS.some((k) => values[k]);
+  return hasSignal ? values : null;
 }
