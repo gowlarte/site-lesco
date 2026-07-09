@@ -36,6 +36,22 @@ export function WhatsAppButton() {
     return () => document.removeEventListener("keydown", onKey);
   }, [open]);
 
+  useEffect(() => {
+    const onOpen = () => {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'whatsapp_popup_open',
+        form_id: site.forms.whatsappPopup,
+        page_path: window.location.pathname,
+      });
+      setOpen(true);
+    };
+    window.addEventListener(WHATSAPP_POPUP_EVENT, onOpen);
+    return () => window.removeEventListener(WHATSAPP_POPUP_EVENT, onOpen);
+  }, []);
+
+
+
   return (
     <>
       {/* Floating button */}
