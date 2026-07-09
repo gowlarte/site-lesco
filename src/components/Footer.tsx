@@ -97,6 +97,21 @@ export function Footer() {
           <p className="font-body text-[11px] text-muted-foreground">
             {t("© 2026 Lesco - Todos os direitos reservados.")}
           </p>
+          <div className="flex items-center gap-4">
+            <Link
+              to="/politica-de-privacidade"
+              className="font-body text-[11px] text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t("Política de Privacidade")}
+            </Link>
+            <span className="text-muted-foreground/30">·</span>
+            <Link
+              to="/termos-de-servico"
+              className="font-body text-[11px] text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t("Termos de Serviço")}
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
