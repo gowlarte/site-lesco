@@ -33,6 +33,8 @@ export const ROUTES: RouteMap = {
   "/live-lesco": { pt: "/live-lesco", en: "/live-lesco" },
   "/live-lesco-amostra": { pt: "/live-lesco-amostra", en: "/live-lesco-sample" },
   "/blog": { pt: "/blog", en: "/blog" },
+  "/politica-de-privacidade": { pt: "/politica-de-privacidade", en: "/privacy-policy" },
+  "/termos-de-servico": { pt: "/termos-de-servico", en: "/terms-of-service" },
   "/obrigado": { pt: "/obrigado", en: "/thank-you" },
   "/obrigado-orcamento": { pt: "/obrigado-orcamento", en: "/thank-you-quote" },
   "/obrigado-catalogo": { pt: "/obrigado-catalogo", en: "/thank-you-catalog" },
