@@ -1,31 +1,59 @@
-# Página /live-lesco
+# Ajuste das páginas Política de Privacidade e Termos de Serviço
 
-Nova landing page usando o mesmo design do site (base: `/orcamento`), com o formulário GHL específico do Live Lesco e conteúdo complementar extraído do HTML enviado. A página **não** aparece no menu (Header/Footer não serão alterados) e fica fora do sitemap principal.
+## Problema raiz (legibilidade)
+As páginas usam `bg-light` e `text-dark`, classes **inexistentes** no `tailwind.config.ts`. Resultado: card sem fundo real (herda o fundo escuro global) e texto herdando cor clara → texto ilegível em PT **e** EN. Corrigir os tokens resolve a ilegibilidade dos dois idiomas de uma vez.
 
-## Estrutura da página (`src/pages/LiveLesco.tsx`)
+## 1. Correção de cores (tokens reais)
+Substituir em ambas as páginas:
+- `bg-light` → `bg-lesco-white` (card off-white `#F0EDE8`)
+- `text-dark` / `text-dark/70` / `text-dark/50` → `text-lesco-black` e opacidades (`text-lesco-black/70`, `/50`)
 
-1. **Hero + Formulário** (igual layout do /orcamento)
-   - Texto à esquerda: título "Madeira Plástica Ecológica de Alto Padrão para Projetos Exclusivos" + subtítulo sobre WPC Premium unindo sofisticação, tecnologia e sustentabilidade, com chamada para preencher o formulário.
-   - Formulário à direita usando o componente `GhlForm` existente (mantém UTMs e padrão visual):
-     - `formId="UdrSMJdSvZWUJZVI46aE"`, `formName`/`title="[09] [FORM] [LEADS LIVE LESCO]"`, `height={1034}`.
-   - Imagem de fundo: hero existente do banco de assets (ex.: `hero-home-altwood.webp`) com overlay escuro.
+Isso garante contraste correto (texto escuro sobre card claro), respeitando a linguagem visual (cards flutuantes, raio 10px, margem 10px).
 
-2. **WPC vs Madeira comum** — seção em grid com os 4 diferenciais do HTML de referência: Água e Resistência, Durabilidade e Resistência, Resistência a Fungos e Pragas, Estabilidade e Manutenção. Reaproveita os ícones SVG já usados no /orcamento.
+## 2. Imagem no topo (hero)
+Adicionar um bloco hero no topo de cada página, dentro da moldura de 10px:
+- Imagem full-width com `rounded-[10px]`, altura ~40vh, overlay escuro sutil.
+- Título sobreposto (`Política de Privacidade` / `Termos de Serviço`) + data de atualização em mono.
+- Gerar 1 imagem editorial coerente com o nicho (revestimentos arquitetônicos sustentáveis, brises/AltWood, luz natural, tom linho/madeira). Uma imagem serve para as duas páginas ou uma para cada — usarei uma imagem arquitetônica sóbria.
 
-3. **Projetos inspiradores** — grid de projetos em destaque vindos de `src/data/projetos.ts` (mesmo componente do /orcamento), apontando para o portfólio interno.
+## 3. Conteúdo — pesquisa profunda e LGPD (não genérico)
+Reescrever todo o conteúdo com base na **Lei 13.709/2018 (LGPD)** e nas boas práticas recomendadas, adaptado ao nicho da Lesco (revestimentos/brises/decks WPC, arquitetura sustentável, atendimento B2B e a arquitetos/construtoras, catálogos e amostras).
 
-4. **Certificações** — bloco com GBC, LEED e ESG (textos do HTML de referência).
+**Política de Privacidade** passará a incluir seções alinhadas à LGPD:
+1. Controlador dos dados e contato do encarregado (DPO)
+2. Dados pessoais coletados (fornecidos, de navegação/cookies, de terceiros)
+3. Finalidades específicas + **bases legais** da LGPD (consentimento, execução de contrato, legítimo interesse, obrigação legal)
+4. Compartilhamento e operadores (ferramentas de analytics, e-mail, CRM, hospedagem)
+5. Transferência internacional de dados (se aplicável a ferramentas fora do Brasil)
+6. Cookies e tecnologias de rastreamento (categorias e gestão)
+7. Retenção e descarte
+8. Segurança da informação
+9. **Direitos do titular (art. 18 LGPD)**: confirmação, acesso, correção, anonimização, portabilidade, eliminação, revogação de consentimento, revisão de decisões automatizadas
+10. Como exercer os direitos / prazo de resposta
+11. Menores de idade
+12. Alterações desta política
+13. Encarregado (DPO) e canal de contato / ANPD
 
-5. **CTA final** — mesmo bloco gradiente do /orcamento (WhatsApp + catálogo), ou um CTA único "Solicitar orçamento" rolando ao formulário.
+**Termos de Serviço** revisados para o contexto: objeto, cadastro/orçamentos/amostras, obrigações do usuário, propriedade intelectual, ausência de venda direta on-line vs. atendimento comercial, isenção de garantias sobre especificações técnicas, limitação de responsabilidade, links de terceiros, lei aplicável (Brasil) e foro, alterações.
 
-## Roteamento
-- Adicionar `import LiveLesco from "./pages/LiveLesco"` e `<Route path="/live-lesco" element={<LiveLesco />} />` em `src/App.tsx`, acima do catch-all.
-- **Não** adicionar ao menu (Header/Footer ficam intactos).
+Todo o texto novo entra via `t("...")` (fonte PT). A versão EN é gerada adicionando as entradas correspondentes no dicionário `src/i18n/dictionaries/en.ts` — assim os dois idiomas ficam legíveis e traduzidos.
 
-## SEO
-- Usar `<SEO>` com title "Live Lesco — Madeira Plástica Ecológica de Alto Padrão", description baseada no HTML, `path="/live-lesco"`.
-- Não adicionar ao `ssg-routes.json` nem ao `sitemap.xml` para manter a página fora da indexação principal (campanha). *(Confirme se prefere que ela seja pré-renderizada/indexada.)*
+Observação de conformidade: manterei o texto como base editável da Lesco, sem inventar certificações. Onde faltarem dados específicos (nome jurídico completo, CNPJ, e-mail do DPO), usarei o contato existente `contato@lesco.com.br` e deixarei rótulos claros para você preencher.
 
-## Observações técnicas
-- O iframe não é alterado — uso do `GhlForm` que já injeta o script `form_embed.js` e os UTMs.
-- Imagens vêm dos assets/portfólio já existentes; nenhuma imagem nova é gerada.
+## 4. Modernização do design
+- Tipografia com melhor hierarquia: números de seção em mono/accent, títulos `font-display`, corpo `font-body` com `leading-relaxed` e largura de leitura confortável (`max-w-3xl`).
+- Índice/sumário navegável (âncoras) no topo do conteúdo em telas grandes.
+- Divisórias sutis entre seções, respiro vertical maior.
+- Blocos de destaque (ex.: direitos do titular) em card `bg-lesco-bone` com raio 10px.
+- Rodapé da página com card de contato do DPO.
+- Coerência total com o sistema: margem 10px, raio 10px, transições suaves.
+
+## Arquivos afetados
+- `src/pages/PoliticaPrivacidade.tsx` — reescrita completa (tokens, hero, conteúdo LGPD, design)
+- `src/pages/TermosServico.tsx` — reescrita completa (tokens, hero, conteúdo, design)
+- `src/i18n/dictionaries/en.ts` — novas entradas de tradução EN
+- `src/assets/` — nova(s) imagem(ns) de hero geradas
+
+## Verificação
+- Build passa
+- Screenshot via Playwright das duas páginas em PT e EN confirmando contraste/legibilidade e hero

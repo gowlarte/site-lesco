@@ -43,6 +43,9 @@ import ObrigadoCatalogo from "./pages/ObrigadoCatalogo";
 import ObrigadoWhats from "./pages/ObrigadoWhats";
 import Obrigado from "./pages/Obrigado";
 import ObrigadoCatalogoGeo from "./pages/ObrigadoCatalogoGeo";
+import PoliticaPrivacidade from "./pages/PoliticaPrivacidade";
+import TermosServico from "./pages/TermosServico";
+import FormularioTeste from "./pages/FormularioTeste";
 
 const queryClient = new QueryClient();
 
@@ -102,6 +105,9 @@ const AppContent = () => {
           <Route path={localizePath("/live-lesco")} element={<LiveLesco />} />
           <Route path={localizePath("/live-lesco-amostra")} element={<LiveLescoAmostra />} />
           <Route path={localizePath("/em-breve/:linha")} element={<LinhaEmBreve />} />
+          <Route path={localizePath("/politica-de-privacidade")} element={<PoliticaPrivacidade />} />
+          <Route path={localizePath("/termos-de-servico")} element={<TermosServico />} />
+          <Route path="/formulario-teste" element={<FormularioTeste />} />
 
           {/* No build EN, os slugs PT redirecionam para o slug EN canônico
               (rede de proteção para links/URLs antigos com slug em português). */}

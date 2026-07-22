@@ -35,11 +35,11 @@ export const linhasEmBreve: Record<string, LinhaEmBreve> = {
       t("Uma nova linha dedicada ao bambu — material ancestral, contemporâneo e radicalmente sustentável. Em breve disponível para projetos."),
     sobreTitulo: t("Sobre a linha Zhú"),
     sobreTexto:
-      t("Zhú reúne revestimentos, forros, luminárias, decorativos e utilitários produzidos a partir do bambu. Uma linha que celebra a leveza, a textura natural e o tempo de vida longo de uma das fibras mais nobres do planeta."),
+      t("Zhú reúne forros, painéis acústicos e decks produzidos a partir do bambu. Uma linha que celebra a leveza, a textura natural e o tempo de vida longo de uma das fibras mais nobres do planeta."),
     aplicacoes: [
-      { titulo: t("Revestimentos"), descricao: t("Painéis e lâminas para paredes, com acabamento natural ou tingido.") },
-      { titulo: t("Forros e luminárias"), descricao: t("Soluções para forros decorativos e peças luminotécnicas em bambu.") },
-      { titulo: t("Decorativos e utilitários"), descricao: t("Coleção de objetos para projetos residenciais, hoteleiros e gastronômicos.") },
+      { titulo: t("Forros"), descricao: t("Forros decorativos em bambu para ambientes internos, com acabamento natural ou tingido.") },
+      { titulo: t("Painéis acústicos"), descricao: t("Painéis em bambu com performance acústica para ambientes que exigem conforto sonoro.") },
+      { titulo: t("Decks"), descricao: t("Decks em bambu para áreas externas e internas, com alta durabilidade e estética natural.") },
     ],
     diferenciais: [
       t("Matéria-prima 100% renovável e de rápido crescimento"),
