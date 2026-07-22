@@ -6,6 +6,21 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/landing-page-orcamento-p",
+      "destination": "/orcamento",
+      "permanent": true
+    },
+    {
+      "source": "/somos-lesco",
+      "destination": "/quem-somos",
+      "permanent": true
+    },
+    {
+      "source": "/downloadcatalogo",
+      "destination": "/catalogo-lesco",
+      "permanent": true
+    },
+    {
       "source": "/a-madeira-evoluiu-e-o-seu-projeto-tambem-pode",
       "destination": "https://blog.lesco.com.br/a-madeira-evoluiu-e-o-seu-projeto-tambem-pode/",
       "permanent": true
