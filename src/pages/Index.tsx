@@ -16,10 +16,10 @@ import showroomMain from "@/assets/showroom/showroom-main.webp";
 import showroomDetail1 from "@/assets/showroom/showroom-detail-1.webp";
 import showroomDetail2 from "@/assets/showroom/showroom-detail-2.webp";
 
-import heroManto from "@/assets/hero-home-altwood.webp";
 import heroZhuzen from "@/assets/hero-home-zhuzen.webp";
 import heroEcho from "@/assets/hero-home-echotex.webp";
 import heroGeo from "@/assets/hero-home-italflex.webp";
+import heroCasaMansa from "@/assets/projetos/casa-mansa-4.webp";
 
 import logoMantoRaw from "@/assets/linha-altwood-2.svg?raw";
 import logoZhuzenRaw from "@/assets/linha-zhuzen-2.svg?raw";
@@ -45,7 +45,7 @@ const linhas = [
     descricao: t("Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto."),
     slogan: "",
     href: "/madeira-ecologica-lesco",
-    imagem: heroManto,
+    imagem: heroCasaMansa,
   },
   {
     nome: "Zhú",
@@ -158,7 +158,7 @@ const Index = () => {
         title={t("Revestimentos em Madeira Ecológica | Lesco")}
         description={t("Transforme cada ambiente em uma expressão de elegância natural com nossos revestimentos em madeira ecológica. Acabamentos únicos e personalizados.")}
         path="/"
-        image={heroManto}
+        image={heroCasaMansa}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "WebSite",
