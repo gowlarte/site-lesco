@@ -44,7 +44,7 @@ const beneficios = [
   },
 ];
 
-const FEATURED_SLUGS = ["casa-mansa", "casa-areia", "vaz-batel"] as const;
+const FEATURED_SLUGS = ["casa-mansa", "casa-una", "vaz-batel"] as const;
 const projetosDestaque = FEATURED_SLUGS.map(
   (slug) => projetos.find((p) => p.slug === slug)!,
 );

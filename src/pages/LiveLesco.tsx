@@ -8,7 +8,7 @@ import { projetos } from "@/data/projetos";
 import { Check, X, ChevronDown, Star, ArrowUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-import heroLive from "@/assets/projetos/casa-areia-2.webp";
+import heroLive from "@/assets/hero-home-altwood.webp";
 import sobreLescoImg from "@/assets/projetos/casa-mansa-hero.webp";
 
 import logoEchoRaw from "@/assets/linha-echotex-2.svg?raw";
@@ -195,7 +195,7 @@ const depoimentos = [
   },
 ];
 
-const FEATURED_SLUGS = ["casa-mansa", "casa-areia", "vaz-batel"] as const;
+const FEATURED_SLUGS = ["casa-mansa", "casa-una", "vaz-batel"] as const;
 const projetosDestaque = FEATURED_SLUGS.map(
   (slug) => projetos.find((p) => p.slug === slug)!,
 ).filter(Boolean);

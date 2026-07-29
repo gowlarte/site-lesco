@@ -69,7 +69,7 @@ const linhas = [
   },
 ];
 
-const FEATURED_SLUGS = ["casa-mansa", "vaz-batel", "casa-areia"] as const;
+const FEATURED_SLUGS = ["casa-mansa", "vaz-batel", "casa-una"] as const;
 const projects = FEATURED_SLUGS.map(
   (slug) => projetos.find((p) => p.slug === slug)!,
 ).map((p) => ({

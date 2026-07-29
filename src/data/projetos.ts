@@ -33,35 +33,6 @@ import casaNh23 from "@/assets/projetos/casa-nh-23.webp";
 import casaNh24 from "@/assets/projetos/casa-nh-24.webp";
 import casaNh25 from "@/assets/projetos/casa-nh-25.webp";
 import casaNh26 from "@/assets/projetos/casa-nh-26.webp";
-import casaAreia1 from "@/assets/projetos/casa-areia-1.webp";
-import casaAreia2 from "@/assets/projetos/casa-areia-2.webp";
-import casaAreia3 from "@/assets/projetos/casa-areia-3.webp";
-import casaAreia4 from "@/assets/projetos/casa-areia-4.webp";
-import casaAreia5 from "@/assets/projetos/casa-areia-5.webp";
-import casaAreia6 from "@/assets/projetos/casa-areia-6.webp";
-import casaAreia7 from "@/assets/projetos/casa-areia-7.webp";
-import casaAreia8 from "@/assets/projetos/casa-areia-8.webp";
-import casaAreia9 from "@/assets/projetos/casa-areia-9.webp";
-import casaAreia10 from "@/assets/projetos/casa-areia-10.webp";
-import casaAreia11 from "@/assets/projetos/casa-areia-11.webp";
-import casaAreia12 from "@/assets/projetos/casa-areia-12.webp";
-import casaAreia13 from "@/assets/projetos/casa-areia-13.webp";
-import casaAreia14 from "@/assets/projetos/casa-areia-14.webp";
-import casaAreia15 from "@/assets/projetos/casa-areia-15.webp";
-import casaAreia16 from "@/assets/projetos/casa-areia-16.webp";
-import casaAreia17 from "@/assets/projetos/casa-areia-17.webp";
-import casaAreia18 from "@/assets/projetos/casa-areia-18.webp";
-import casaAreia19 from "@/assets/projetos/casa-areia-19.webp";
-import casaAreia20 from "@/assets/projetos/casa-areia-20.webp";
-import casaAreia21 from "@/assets/projetos/casa-areia-21.webp";
-import casaAreia22 from "@/assets/projetos/casa-areia-22.webp";
-import casaAreia23 from "@/assets/projetos/casa-areia-23.webp";
-import casaAreia24 from "@/assets/projetos/casa-areia-24.webp";
-import casaAreia25 from "@/assets/projetos/casa-areia-25.webp";
-import casaAreia26 from "@/assets/projetos/casa-areia-26.webp";
-import casaAreia27 from "@/assets/projetos/casa-areia-27.webp";
-import casaAreia28 from "@/assets/projetos/casa-areia-28.webp";
-import casaAreia29 from "@/assets/projetos/casa-areia-29.webp";
 import vazBatel1 from "@/assets/projetos/vaz-batel-1.webp";
 import vazBatel2 from "@/assets/projetos/vaz-batel-2.webp";
 import vazBatel3 from "@/assets/projetos/vaz-batel-3.webp";
@@ -172,24 +143,6 @@ export const projetos: Projeto[] = [
       casaNh25,
       casaNh26,
     ],
-  },
-  {
-    slug: "casa-areia",
-    nome: "Casa Areia",
-    imagem: casaAreia2,
-    linha: t("Madeira Ecológica"),
-    local: t("Búzios, RJ"),
-    ano: "2024",
-    area: "310 m²",
-    arquitetura: "Atelier Praia",
-    produtos: ["AltWood Deck", "AltWood Line"],
-    descricao:
-      "Casa de praia com partido horizontal, deck contínuo entre interior e exterior e forro em madeira ecológica que unifica varanda e estar.",
-    desafio:
-      "Garantir continuidade visual entre piso interno, deck externo e forro, com resistência à exposição solar intensa.",
-    solucao:
-      "Especificação coordenada de Deck e Line em tonalidades complementares, com instalação técnica que respeita dilatações e drenagem.",
-    galeria: [casaAreia1, casaAreia3, casaAreia4, casaAreia5, casaAreia6, casaAreia7, casaAreia8, casaAreia9, casaAreia10, casaAreia11, casaAreia12, casaAreia13, casaAreia14, casaAreia15, casaAreia16, casaAreia17, casaAreia18, casaAreia19, casaAreia20, casaAreia21, casaAreia22, casaAreia23, casaAreia24, casaAreia25, casaAreia26, casaAreia27, casaAreia28, casaAreia29],
   },
   {
     slug: "vaz-batel",
