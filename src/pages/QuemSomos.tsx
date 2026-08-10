@@ -25,7 +25,7 @@ const QuemSomos = () => {
         <div className="container mx-auto px-6 lg:px-8">
           <p className="text-caption text-primary-foreground/40 mb-6">{t("Sobre a Lesco")}</p>
           <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-primary-foreground max-w-4xl">
-            {t("Madeira Ecológica.")}
+            {t("Somos arquitetura feita para o amanhã.")}
           </h1>
         </div>
       </section>
