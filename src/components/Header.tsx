@@ -7,39 +7,41 @@ import { t } from "@/i18n/t";
 import { isEN } from "@/i18n/locale";
 import logoDark from "@/assets/logo-lesco-dark-2.svg";
 import logoLight from "@/assets/logo-lesco-light.svg";
-import linhaEchotexRaw from "@/assets/linha-echotex-2.svg?raw";
-import linhaItalflexRaw from "@/assets/linha-italflex-2.svg?raw";
-import linhaZhuzenRaw from "@/assets/linha-zhuzen-2.svg?raw";
 
-const lancamentos = [
-  { label: "Echo", href: "/echo", svg: linhaEchotexRaw, svgClass: "[&_svg]:h-[18px]" },
-  { label: "Geo", href: "/geo", svg: linhaItalflexRaw, svgClass: "[&_svg]:h-[17px] [&_svg]:-mb-[5px] [&_svg]:mt-[3px]" },
-  { label: "Zhú", href: "/zhu", svg: linhaZhuzenRaw, svgClass: "[&_svg]:h-[18px]" },
-];
-
-type NavChild = { label: string; href: string };
+/**
+ * Navegação por MATERIAL no primeiro nível e por TIPO DE PRODUTO no segundo.
+ *
+ * O rótulo visível é sempre o tipo ("Brises", "Forros"), porque é o vocabulário
+ * que o arquiteto já usa. O nome comercial da linha ("Lesco Brise", "Zhú") vem
+ * como `linha` e é renderizado como tag secundária à direita — apoio, não
+ * protagonista, já que as linhas foram lançadas recentemente e a nomenclatura
+ * ainda não é reconhecida pelo público.
+ */
+type NavChild = { label: string; href: string; linha?: string };
 type NavItem = { label: string; href?: string; children?: NavChild[]; external?: boolean };
 
 const navLinks: NavItem[] = [
-  { label: "Home", href: "/" },
   {
-    label: t("Sobre"),
+    label: t("Madeira ecológica"),
     children: [
-      { label: t("Quem somos"), href: "/quem-somos" },
-      { label: t("Madeira Ecológica"), href: "/madeira-ecologica-lesco" },
-      { label: t("Sustentabilidade"), href: "/revestimento-sustentavel" },
+      { label: t("Brises"), href: "/brise-madeira-ecologica", linha: "Lesco Brise" },
+      { label: t("Forros"), href: "/forro-wpc", linha: "Lesco Line" },
+      { label: t("Decks"), href: "/madeira-ecologica-para-deck", linha: "Lesco Deck" },
+      { label: t("Shields"), href: "/madeira-ecologica-para-fachada", linha: "Lesco Shield" },
+      { label: t("Panels"), href: "/placa-wpc-interior", linha: "Lesco Panel" },
+      { label: t("Muxarabi"), href: "/muxarabi-madeira-ecologica", linha: "Lesco Muxarabi" },
     ],
   },
   {
-    label: t("Produtos"),
+    label: t("Bambu"),
     children: [
-      { label: "Lesco Shield", href: "/madeira-ecologica-para-fachada" },
-      { label: "Lesco Panel", href: "/placa-wpc-interior" },
-      { label: "Lesco Brise", href: "/brise-madeira-ecologica" },
-      { label: "Lesco Line", href: "/forro-wpc" },
-      { label: "Lesco Deck", href: "/madeira-ecologica-para-deck" },
+      { label: t("Painéis e forros"), href: "/painel-bambu", linha: "Zhú" },
+      { label: t("Painéis acústicos"), href: "/painel-acustico-bambu", linha: "Zhú" },
+      { label: t("Brises"), href: "/brise-bambu", linha: "Zhú" },
+      { label: t("Decks"), href: "/deck-bambu", linha: "Zhú" },
     ],
   },
+  { label: t("Pedra flexível"), href: "/geo" },
   { label: t("Catálogo"), href: "/catalogo-lesco" },
   { label: t("Biblioteca"), href: "/biblioteca" },
   { label: "Blog", href: "https://blog.lesco.com.br/", external: true },
@@ -79,9 +81,12 @@ export function Header({ variant = "default" }: HeaderProps) {
   const activeColor = overlayTransparent ? "#FFFFFF" : isLight ? "#000000" : "#FFFFFF";
   const dimColor = overlayTransparent ? "rgba(255,255,255,0.55)" : isLight ? "#A0A0A0" : "#525252";
 
+  // Filhos podem carregar âncora (ex. "/zhu#forro"); comparar só o pathname.
+  const pathOf = (href: string) => href.split("#")[0];
+
   const isActive = (item: NavItem) => {
     if (item.href && location.pathname === item.href) return true;
-    if (item.children?.some((c) => c.href === location.pathname)) return true;
+    if (item.children?.some((c) => pathOf(c.href) === location.pathname)) return true;
     return false;
   };
 
@@ -99,8 +104,10 @@ export function Header({ variant = "default" }: HeaderProps) {
         )}
       >
         <div className="flex items-center h-14 px-6 lg:px-8 py-[40px] pb-[40px] gap-6">
-          {/* Logo */}
-          <Link to="/" className="flex items-center">
+          {/* Logo — `shrink-0` é obrigatório: a linha é um flex único e, sem
+              isso, é a logo (e não o menu) que absorve a compressão quando o
+              nav não cabe, chegando a sumir por completo. */}
+          <Link to="/" className="flex items-center shrink-0">
             <img
               src={isLight ? logoDark : logoLight}
               alt="Lesco"
@@ -108,9 +115,11 @@ export function Header({ variant = "default" }: HeaderProps) {
             />
           </Link>
 
-          {/* Desktop Nav */}
+          {/* Desktop Nav — o nav completo pede ~1145px (7 itens + CTA + logo +
+              paddings). Ligar em `md` (768px) espremia a logo; abaixo de `xl`
+              usamos o hambúrguer, que já contém os mesmos links. */}
           <nav
-            className="hidden md:flex items-center gap-8 lg:gap-10 ml-auto"
+            className="hidden xl:flex items-center gap-8 2xl:gap-10 ml-auto"
             onMouseLeave={() => {
               setHoveredNav(null);
               setOpenDropdown(null);
@@ -159,7 +168,7 @@ export function Header({ variant = "default" }: HeaderProps) {
                       <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50">
                         <div
                           className={cn(
-                            "min-w-[220px] rounded-[10px] py-2 shadow-2xl",
+                            "min-w-[280px] rounded-[10px] py-2 shadow-2xl",
                             isLight ? "bg-[#e5e1dc] border border-dark/10" : "bg-[rgba(17,17,16,0.96)] backdrop-blur-xl"
                           )}
                         >
@@ -168,14 +177,26 @@ export function Header({ variant = "default" }: HeaderProps) {
                               key={child.href}
                               to={child.href}
                               className={cn(
-                                "block px-5 py-2.5 font-display font-light text-[12px] uppercase tracking-[0.08em] transition-colors duration-200",
+                                "flex items-center justify-between gap-8 px-5 py-2.5 transition-colors duration-200",
                                 isLight
                                   ? "text-[#303030] hover:text-black hover:bg-black/5"
                                   : "text-white/70 hover:text-white hover:bg-white/5",
-                                location.pathname === child.href && (isLight ? "text-black" : "text-white")
+                                location.pathname === pathOf(child.href) && (isLight ? "text-black" : "text-white")
                               )}
                             >
-                              {child.label}
+                              <span className="font-display font-light text-[12px] uppercase tracking-[0.08em]">
+                                {child.label}
+                              </span>
+                              {child.linha && (
+                                <span
+                                  className={cn(
+                                    "font-body text-[10px] font-light tracking-normal whitespace-nowrap",
+                                    isLight ? "text-[#303030]/45" : "text-white/35"
+                                  )}
+                                >
+                                  {child.linha}
+                                </span>
+                              )}
                             </Link>
                           ))}
                         </div>
@@ -257,56 +278,10 @@ export function Header({ variant = "default" }: HeaderProps) {
 
           </nav>
 
-          {/* Separator */}
-          <span
-            className="hidden lg:block w-px h-4 self-center"
-            style={{ backgroundColor: dimColor }}
-            aria-hidden="true"
-          />
-
-          {/* Lançamentos pill */}
-          <div
-            className={cn(
-              "hidden lg:flex items-center rounded-full border-0 transition-colors duration-300 gap-[25px] py-0 px-0"
-            )}
-            onMouseLeave={() => setHoveredNav(null)}
-          >
-            {lancamentos.map((l) => {
-              const hovered = hoveredNav === `lanc-${l.label}`;
-              const color = hovered
-                ? activeColor
-                : hoveredNav !== null
-                ? dimColor
-                : baseColor;
-              return (
-                <Link
-                  key={l.href}
-                  to={l.href}
-                  onMouseEnter={() => setHoveredNav(`lanc-${l.label}`)}
-                  className={cn(
-                    "flex items-center transition-transform duration-300 hover:scale-105 [&_svg]:w-auto [&_svg]:fill-current [&_svg_*]:fill-current",
-                    l.svgClass
-                  )}
-                  style={{ color }}
-                  aria-label={l.label}
-                  dangerouslySetInnerHTML={{ __html: l.svg }}
-                />
-
-              );
-            })}
-            <span
-              className="font-display font-light text-[12px] uppercase tracking-[0.08em] whitespace-nowrap"
-              style={{ color: baseColor }}
-            >
-              {t("Lançamentos")}
-            </span>
-          </div>
-
-
           {/* Mobile Hamburger */}
           <button
             className={cn(
-              "md:hidden ml-auto transition-colors duration-300",
+              "xl:hidden ml-auto transition-colors duration-300",
               overlayTransparent ? "text-white" : isLight ? "text-[#303030]" : "text-foreground"
             )}
             onClick={() => setMenuOpen(!menuOpen)}
@@ -343,9 +318,12 @@ export function Header({ variant = "default" }: HeaderProps) {
                       <Link
                         key={child.href}
                         to={child.href}
-                        className="font-body text-base font-light text-foreground/60 hover:text-foreground transition-colors"
+                        className="flex flex-col items-center text-foreground/60 hover:text-foreground transition-colors"
                       >
-                        {child.label}
+                        <span className="font-body text-base font-light">{child.label}</span>
+                        {child.linha && (
+                          <span className="font-body text-[11px] font-light text-foreground/35">{child.linha}</span>
+                        )}
                       </Link>
                     ))}
                   </div>
@@ -385,28 +363,10 @@ export function Header({ variant = "default" }: HeaderProps) {
           );
         })}
 
-        {/* Lançamentos mobile */}
-        <div className="mt-6 flex flex-col items-center gap-3 text-foreground/80">
-          <span className="font-display font-light text-[11px] uppercase tracking-[0.12em] text-foreground/50">
-            {t("Lançamentos")}
-          </span>
-          <div className="flex items-center gap-6">
-            {lancamentos.map((l) => (
-              <Link
-                key={l.href}
-                to={l.href}
-                aria-label={l.label}
-                className="flex items-center [&_svg]:h-6 [&_svg]:w-auto [&_svg]:fill-current [&_svg_*]:fill-current hover:text-foreground transition-colors"
-                dangerouslySetInnerHTML={{ __html: l.svg }}
-              />
-            ))}
-          </div>
-        </div>
-
-
-
         {(() => {
-          const emBreve = ["/zhu", "/echo", "/geo"].includes(location.pathname);
+          // /zhu saiu da lista: a linha tem catálogo e páginas de produto, então
+          // o CTA certo ali é orçamento, não "aguarde o lançamento".
+          const emBreve = ["/echo", "/geo"].includes(location.pathname);
           const mobileClass = "mt-6 px-8 py-3 rounded text-white font-display text-sm uppercase tracking-[0.08em]";
           const mobileStyle = { background: "linear-gradient(135deg, #728ea0 25%, #c0c9bf 56%, #d6aa98 74%, #efdcc5 90%)" };
           return emBreve ? (

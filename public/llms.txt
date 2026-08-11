@@ -2,7 +2,7 @@
 
 > Revestimentos premium para arquitetura: madeira ecológica (WPC), bambu, pedra flexível e tecido acústico, para projetos de alto padrão no Brasil.
 
-A Lesco desenvolve e comercializa revestimentos arquitetônicos premium. A linha principal AltWood é feita em WPC (Wood Polymer Composite), com formatos para brises, fachadas, decks, forros e placas internas. Outras linhas (Zhú, Echo, Geo) estão em lançamento.
+A Lesco desenvolve e comercializa revestimentos arquitetônicos premium. A linha principal AltWood é feita em WPC (Wood Polymer Composite), com formatos para brises, fachadas, decks, forros, placas internas e muxarabis. Outras linhas (Zhú, Echo, Geo) estão em lançamento.
 
 ## Pages
 
@@ -21,6 +21,7 @@ A Lesco desenvolve e comercializa revestimentos arquitetônicos premium. A linha
 - [Deck](/madeira-ecologica-para-deck): deck externo em WPC
 - [Line](/forro-wpc): forros em WPC
 - [Panel](/placa-wpc-interior): placas internas em WPC
+- [Muxarabi](/muxarabi-madeira-ecologica): vedação vazada em WPC para fachadas, varandas e divisórias
 
 ## Conversão
 
@@ -32,8 +33,15 @@ A Lesco desenvolve e comercializa revestimentos arquitetônicos premium. A linha
 
 - [Blog](/blog): ideias, materiais e inspiração para arquitetura
 
+## Zhú — bambu maciço
+
+- [Zhú](/zhu): visão geral da linha em bambu maciço
+- [Painéis e forros](/painel-bambu): painéis, revestimentos e forros ripados em bambu (10 modelos)
+- [Painéis acústicos](/painel-acustico-bambu): camada cruzada, perfurados e ripados com base PET (9 modelos)
+- [Brises](/brise-bambu): grelhas e baffles em bambu sobre base de alumínio preto (5 modelos)
+- [Decks](/deck-bambu): decks em bambu strand woven, super e extrema densidade (2 modelos)
+
 ## Lançamentos
 
-- [Zhú](/zhu): revestimentos em bambu (em breve)
 - [Echo](/echo): tecido acústico moldado (em breve)
 - [Geo](/geo): revestimento de pedra flexível (em breve)

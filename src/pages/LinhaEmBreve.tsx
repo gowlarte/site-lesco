@@ -115,7 +115,7 @@ const LinhaEmBreve = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[10px]">
           {linha.aplicacoes.map((a) => (
-            <div key={a.titulo} className="bg-white/50 rounded-[10px] p-8">
+            <div key={a.titulo} id={a.id} className="bg-white/50 rounded-[10px] p-8 scroll-mt-32">
               <h3 className="font-display text-xl text-dark mb-3 font-normal">{t(a.titulo)}</h3>
               <p className="font-body text-[14px] text-dark/70 leading-relaxed text-slate-950">{t(a.descricao)}</p>
             </div>

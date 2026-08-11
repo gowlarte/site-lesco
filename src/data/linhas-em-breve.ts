@@ -16,7 +16,8 @@ export interface LinhaEmBreve {
   intro: string;
   sobreTitulo: string;
   sobreTexto: string;
-  aplicacoes: { titulo: string; descricao: string }[];
+  /** `id` vira âncora da seção — usado pelos links de tipo no menu (ex. /zhu#forro). */
+  aplicacoes: { titulo: string; descricao: string; id?: string }[];
   diferenciais: string[];
   /** GHL form (lançamento) específico da linha */
   formId?: string;
@@ -37,9 +38,9 @@ export const linhasEmBreve: Record<string, LinhaEmBreve> = {
     sobreTexto:
       t("Zhú reúne forros, painéis acústicos e decks produzidos a partir do bambu. Uma linha que celebra a leveza, a textura natural e o tempo de vida longo de uma das fibras mais nobres do planeta."),
     aplicacoes: [
-      { titulo: t("Forros"), descricao: t("Forros decorativos em bambu para ambientes internos, com acabamento natural ou tingido.") },
-      { titulo: t("Painéis acústicos"), descricao: t("Painéis em bambu com performance acústica para ambientes que exigem conforto sonoro.") },
-      { titulo: t("Decks"), descricao: t("Decks em bambu para áreas externas e internas, com alta durabilidade e estética natural.") },
+      { id: "forro", titulo: t("Forros"), descricao: t("Forros decorativos em bambu para ambientes internos, com acabamento natural ou tingido.") },
+      { id: "acustico", titulo: t("Painéis acústicos"), descricao: t("Painéis em bambu com performance acústica para ambientes que exigem conforto sonoro.") },
+      { id: "deck", titulo: t("Decks"), descricao: t("Decks em bambu para áreas externas e internas, com alta durabilidade e estética natural.") },
     ],
     diferenciais: [
       t("Matéria-prima 100% renovável e de rápido crescimento"),
@@ -47,9 +48,9 @@ export const linhasEmBreve: Record<string, LinhaEmBreve> = {
       t("Aplicação versátil em interiores e mobiliário"),
       t("Fabricação artesanal com controle de qualidade"),
     ],
-    formId: "A7iX7TMKzhNq1vXwMiVy",
-    formName: "[05] [FORM] [LANÇAMENTOS]",
-    formHeight: 470,
+    // Sem formulário: a Zhú saiu do pré-lançamento e /zhu agora é a visão geral
+    // da linha (src/pages/Zhu.tsx), com as páginas de produto por família.
+    // O Echo, abaixo, segue captando pelo formulário.
   },
   echo: {
     slug: "echo",

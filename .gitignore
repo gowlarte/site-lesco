@@ -16,6 +16,9 @@ dist-ssr
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+# Claude Code: launch.json é compartilhável, settings.local.json é da máquina
+.claude/settings.local.json
 .DS_Store
 *.suo
 *.ntvs*

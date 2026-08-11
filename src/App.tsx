@@ -28,6 +28,12 @@ import MantoShield from "./pages/MantoShield";
 import MantoDeck from "./pages/MantoDeck";
 import MantoLine from "./pages/MantoLine";
 import MantoPanel from "./pages/MantoPanel";
+import Muxarabi from "./pages/Muxarabi";
+import Zhu from "./pages/Zhu";
+import ZhuPaineis from "./pages/ZhuPaineis";
+import ZhuAcusticos from "./pages/ZhuAcusticos";
+import ZhuBrises from "./pages/ZhuBrises";
+import ZhuDecks from "./pages/ZhuDecks";
 import Linhas from "./pages/Linhas";
 import Blog from "./pages/Blog";
 import BlogArtigo from "./pages/BlogArtigo";
@@ -82,6 +88,13 @@ const AppContent = () => {
           <Route path={localizePath("/madeira-ecologica-para-deck")} element={<MantoDeck />} />
           <Route path={localizePath("/forro-wpc")} element={<MantoLine />} />
           <Route path={localizePath("/placa-wpc-interior")} element={<MantoPanel />} />
+          <Route path={localizePath("/muxarabi-madeira-ecologica")} element={<Muxarabi />} />
+
+          {/* Zhú (bambu) — hub e produtos por família */}
+          <Route path={localizePath("/painel-bambu")} element={<ZhuPaineis />} />
+          <Route path={localizePath("/painel-acustico-bambu")} element={<ZhuAcusticos />} />
+          <Route path={localizePath("/brise-bambu")} element={<ZhuBrises />} />
+          <Route path={localizePath("/deck-bambu")} element={<ZhuDecks />} />
 
           {/* Outros */}
           <Route path={localizePath("/catalogo-lesco")} element={<Catalogo />} />
@@ -98,8 +111,8 @@ const AppContent = () => {
           <Route path={localizePath("/blog/:slug")} element={<BlogArtigo />} />
           <Route path={localizePath("/linhas")} element={<Linhas />} />
 
-          {/* Linhas em breve */}
-          <Route path={localizePath("/zhu")} element={<LinhaEmBreve />} />
+          {/* Linhas */}
+          <Route path={localizePath("/zhu")} element={<Zhu />} />
           <Route path={localizePath("/echo")} element={<LinhaEmBreve />} />
           <Route path={localizePath("/geo")} element={<Geo />} />
           <Route path={localizePath("/live-lesco")} element={<LiveLesco />} />
