@@ -6,6 +6,12 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "catalogo2.lesco.com.br" }],
+      "destination": "https://lesco.com.br/catalogo-lesco",
+      "permanent": true
+    },
+    {
       "source": "/landing-page-orcamento-p",
       "destination": "/orcamento",
       "permanent": true
@@ -18,6 +24,16 @@
     {
       "source": "/downloadcatalogo",
       "destination": "/catalogo-lesco",
+      "permanent": true
+    },
+    {
+      "source": "/revestimentos",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/brises",
+      "destination": "/brise-madeira-ecologica",
       "permanent": true
     },
     {
