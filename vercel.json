@@ -6,6 +6,12 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/",
+      "has": [{ "type": "host", "value": "catalogo2.lesco.com.br" }],
+      "destination": "https://lesco.com.br/catalogo-lesco",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "catalogo2.lesco.com.br" }],
       "destination": "https://lesco.com.br/catalogo-lesco",
