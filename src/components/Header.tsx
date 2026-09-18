@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Link } from "@/components/AppLink";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { rolarPara } from "@/lib/scroll-suave";
 import { useSaiuDoHero } from "@/hooks/useSaiuDoHero";
 import { t } from "@/i18n/t";
 import { isEN } from "@/i18n/locale";
@@ -121,7 +122,20 @@ export function Header({ variant = "default" }: HeaderProps) {
           {/* Logo — `shrink-0` é obrigatório: a linha é um flex único e, sem
               isso, é a logo (e não o menu) que absorve a compressão quando o
               nav não cabe, chegando a sumir por completo. */}
-          <Link to="/" className="flex items-center shrink-0">
+          <Link
+            to="/"
+            className="flex items-center shrink-0"
+            onClick={(e) => {
+              // Estando já na home o React Router não troca de rota, então nem
+              // o ScrollToTop nem o efeito de [location] rodam: subir ao topo e
+              // fechar o menu ficam por conta daqui.
+              if (location.pathname === "/") {
+                e.preventDefault();
+                rolarPara(0, true);
+              }
+              setMenuOpen(false);
+            }}
+          >
             <img
               src={isLight ? logoDark : logoLight}
               alt="Lesco"
@@ -250,7 +264,7 @@ export function Header({ variant = "default" }: HeaderProps) {
                   onClick={(e) => {
                     if (link.href === "/" && location.pathname === "/") {
                       e.preventDefault();
-                      window.scrollTo({ top: 0, behavior: "smooth" });
+                      rolarPara(0, true);
                     }
                   }}
                   className={sharedClass}
@@ -367,7 +381,7 @@ export function Header({ variant = "default" }: HeaderProps) {
               onClick={(e) => {
                 if (link.href === "/" && location.pathname === "/") {
                   e.preventDefault();
-                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  rolarPara(0, true);
                 }
               }}
               className="font-display text-3xl font-light text-foreground/80 hover:text-foreground transition-colors py-3"
