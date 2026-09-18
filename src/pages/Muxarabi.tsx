@@ -6,6 +6,7 @@ import { ChevronRight } from "lucide-react";
 import { HeroSection } from "@/components/altwood/HeroSection";
 import { SwatchCor } from "@/components/altwood/SwatchCor";
 import { CardModelo } from "@/components/altwood/CardModelo";
+import { CardProjeto } from "@/components/altwood/CardProjeto";
 import { ProjetosDoProduto } from "@/components/altwood/ProjetosDoProduto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
@@ -13,6 +14,9 @@ import heroMuxarabi from "@/assets/hero-muxarabi-1.webp";
 import modelo50x50 from "@/assets/muxarabi-50x50.webp";
 import modelo100x100 from "@/assets/muxarabi-100x100.webp";
 import modelo150x150 from "@/assets/muxarabi-150x150.webp";
+import aplicacao1 from "@/assets/muxarabi-aplicacao-1.webp";
+import aplicacao2 from "@/assets/muxarabi-aplicacao-2.webp";
+import aplicacao3 from "@/assets/muxarabi-aplicacao-3.webp";
 
 import swatchBlack from "@/assets/swatch-black.webp";
 import swatchLilyWhite from "@/assets/swatch-lily-white.webp";
@@ -73,6 +77,19 @@ const modelos = [
   { nome: "Lesco Muxarabi-50x50", medida: "50x50 mm", peso: "25,06 kg/m²", imageSrc: modelo50x50 },
   { nome: "Lesco Muxarabi-100x100", medida: "100x100 mm", peso: "15 kg/m²", imageSrc: modelo100x100 },
   { nome: "Lesco Muxarabi-150x150", medida: "150x150 mm", peso: "10,74 kg/m²", imageSrc: modelo150x150 },
+];
+
+/**
+ * Galeria de aplicação — fotos de produto, não de portfólio. Deliberadamente
+ * sem nome de obra, local ou crédito: a obra não está formalizada, então as
+ * legendas descrevem o produto aplicado, não o projeto. Se um dia ela for
+ * formalizada, entra em projetos.ts com tipo "muxarabi" e aparece sozinha na
+ * seção ProjetosDoProduto, que já está montada no fim da página.
+ */
+const galeria = [
+  { imageSrc: aplicacao1, legenda: t("Trama contínua vista em perspectiva"), ratio: "3:4" as const },
+  { imageSrc: aplicacao2, legenda: t("Vedação vazada em fachada ventilada"), ratio: "3:4" as const },
+  { imageSrc: aplicacao3, legenda: t("Fechamento completo de fachada em muxarabi"), ratio: "3:4" as const },
 ];
 
 const aplicacoes = [
@@ -243,6 +260,17 @@ const Muxarabi = () => {
                 <h3 className="font-display text-xl text-gray-950 mb-3 font-normal">{a.titulo}</h3>
                 <p className="font-body text-[14px] text-[#7F7F7F] leading-relaxed">{a.descricao}</p>
               </div>
+            ))}
+          </div>
+        </div>
+        {/* Galeria de aplicação */}
+        <div className="mb-16">
+          <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-6">
+            {t("Galeria")}
+          </span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {galeria.map((g) => (
+              <CardProjeto key={g.legenda} imageSrc={g.imageSrc} legenda={g.legenda} ratio={g.ratio} />
             ))}
           </div>
         </div>
