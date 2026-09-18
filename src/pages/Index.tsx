@@ -1,9 +1,8 @@
-import { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "@/components/AppLink";
 import { SEO } from "@/components/SEO";
-import { ArrowUpRight, X } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { Header } from "@/components/Header";
+import { HeroSolucoes } from "@/components/home/HeroSolucoes";
+import { ProjetosHorizontal } from "@/components/home/ProjetosHorizontal";
 import { MadeiraEcologicaSection } from "@/components/madeira-ecologica/MadeiraEcologicaSection";
 import { ScrollMarqueeGallery } from "@/components/ScrollMarqueeGallery";
 
@@ -16,149 +15,22 @@ import showroomMain from "@/assets/showroom/showroom-main.webp";
 import showroomDetail1 from "@/assets/showroom/showroom-detail-1.webp";
 import showroomDetail2 from "@/assets/showroom/showroom-detail-2.webp";
 
-import heroZhuzen from "@/assets/hero-home-zhuzen.webp";
-import heroEcho from "@/assets/hero-home-echotex.webp";
-import heroGeo from "@/assets/hero-home-italflex.webp";
-import heroCasaMansa from "@/assets/projetos/casa-mansa-4.webp";
+// Só para o og:image do compartilhamento — o hero agora vive em HeroSolucoes.
+import ogHome from "@/assets/projetos/casa-mansa-4.webp";
 
-import logoMantoRaw from "@/assets/linha-altwood-2.svg?raw";
-import logoZhuzenRaw from "@/assets/linha-zhuzen-2.svg?raw";
-import logoEchoRaw from "@/assets/linha-echotex-2.svg?raw";
-import logoGeoRaw from "@/assets/linha-italflex-2.svg?raw";
-
-import { projetos } from "@/data/projetos";
+import { slideAbertura } from "@/data/hero-solucoes";
 import { site } from "@/config/site";
 import { t } from "@/i18n/t";
 
-const linhas = [
-  {
-    nome: "Geo",
-    logo: logoGeoRaw,
-    descricao: t("Revestimento para fachadas, paredes de cozinhas e banheiros, interno e externo."),
-    slogan: t("Revestimento de Pedra Flexível"),
-    href: "/geo",
-    imagem: heroGeo,
-  },
-  {
-    nome: "Arquitetura feita para o amanhã",
-    logo: logoMantoRaw,
-    descricao: t("Revestimentos premium em WPC. Brises, Panels, Decks, Forros e Shields em diferentes formatos que se adaptam a cada situação de projeto."),
-    slogan: "",
-    href: "/madeira-ecologica-lesco",
-    imagem: heroCasaMansa,
-  },
-  {
-    nome: "Zhú",
-    logo: logoZhuzenRaw,
-    descricao: t("Revestimentos, forros, luminárias e decorativos feitos a partir do bambu."),
-    slogan: t("Arquitetura em Bambu"),
-    href: "/zhu",
-    imagem: heroZhuzen,
-    bw: true,
-    sloganOffset: "mt-[15px]",
-  },
-  {
-    nome: "Echo",
-    logo: logoEchoRaw,
-    descricao: t("Tecido acústico moldado. Revestimento para estúdios profissionais e home cinemas."),
-    slogan: t("Acústica Sensorial"),
-    href: "/echo",
-    imagem: heroEcho,
-    bw: true,
-    sloganOffset: "mt-[15px]",
-  },
-];
-
-const FEATURED_SLUGS = ["casa-mansa", "vaz-batel", "casa-una"] as const;
-const projects = FEATURED_SLUGS.map(
-  (slug) => projetos.find((p) => p.slug === slug)!,
-).map((p) => ({
-  nome: p.nome,
-  imagem: p.imagem,
-  href: `/projetos/${p.slug}`,
-  descricao: p.descricao,
-  linha: p.linha,
-}));
-
-const SLIDE_INTERVAL = 6000;
-
 const Index = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<typeof projects[number] | null>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const dragStartX = useRef<number | null>(null);
-  const dragDeltaX = useRef(0);
-
-  const goToSlide = useCallback((i: number) => {
-    setCurrentSlide(((i % linhas.length) + linhas.length) % linhas.length);
-  }, []);
-
-  const handleDragStart = (clientX: number) => {
-    dragStartX.current = clientX;
-    dragDeltaX.current = 0;
-    setIsDragging(true);
-    setIsPaused(true);
-  };
-
-  const handleDragMove = (clientX: number) => {
-    if (dragStartX.current === null) return;
-    dragDeltaX.current = clientX - dragStartX.current;
-  };
-
-  const handleDragEnd = () => {
-    if (dragStartX.current === null) return;
-    const threshold = 60;
-    if (dragDeltaX.current <= -threshold) {
-      goToSlide(currentSlide + 1);
-    } else if (dragDeltaX.current >= threshold) {
-      goToSlide(currentSlide - 1);
-    }
-    dragStartX.current = null;
-    dragDeltaX.current = 0;
-    setIsDragging(false);
-    setIsPaused(false);
-  };
-
-  // Only the active slide loads first (it's the LCP). The remaining hero
-  // images are warmed once the browser is idle, so they don't compete with
-  // the LCP — there's a 6s gap before the first slide transition anyway.
-  const [warmExtraSlides, setWarmExtraSlides] = useState(false);
-  useEffect(() => {
-    const w = window as Window & {
-      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
-      cancelIdleCallback?: (id: number) => void;
-    };
-    let id: number;
-    const warm = () => setWarmExtraSlides(true);
-    if (typeof w.requestIdleCallback === "function") {
-      id = w.requestIdleCallback(warm, { timeout: 3000 });
-      return () => w.cancelIdleCallback?.(id);
-    }
-    id = window.setTimeout(warm, 2000);
-    return () => clearTimeout(id);
-  }, []);
-
-  useEffect(() => {
-    if (isPaused) return;
-    const t = setInterval(() => {
-      setCurrentSlide((s) => {
-        const next = s + 1;
-        return next >= linhas.length ? 0 : next;
-      });
-    }, SLIDE_INTERVAL);
-    return () => clearInterval(t);
-  }, [isPaused]);
-
-  const active = linhas[currentSlide];
-
   return (
     <main className="flex flex-col gap-[10px]">
       <SEO
         title={t("Revestimentos em Madeira Ecológica | Lesco")}
         description={t("Transforme cada ambiente em uma expressão de elegância natural com nossos revestimentos em madeira ecológica. Acabamentos únicos e personalizados.")}
         path="/"
-        image={heroCasaMansa}
+        image={ogHome}
+        preloadImage={slideAbertura.imagem}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "WebSite",
@@ -166,147 +38,8 @@ const Index = () => {
           url: "https://lesco.com.br",
         }}
       />
-      {/* ========== HERO BANNER — SLIDESHOW ========== */}
-      <section
-        className={`relative m-[10px] h-[calc(100vh-20px)] rounded-[10px] overflow-hidden select-none ${
-          isDragging ? "cursor-grabbing" : "cursor-grab"
-        }`}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => {
-          setIsPaused(false);
-          if (isDragging) handleDragEnd();
-        }}
-        onMouseDown={(e) => handleDragStart(e.clientX)}
-        onMouseMove={(e) => isDragging && handleDragMove(e.clientX)}
-        onMouseUp={handleDragEnd}
-        onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
-        onTouchMove={(e) => handleDragMove(e.touches[0].clientX)}
-        onTouchEnd={handleDragEnd}
-      >
-        {/* Slides */}
-        {linhas.map((linha, i) => (
-          <div
-            key={linha.nome}
-            className="absolute inset-0"
-            style={{
-              opacity: currentSlide === i ? 1 : 0,
-              transition: "opacity 1400ms cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-            }}
-            aria-hidden={currentSlide !== i}
-          >
-            <img
-              src={i === 0 || i === currentSlide || warmExtraSlides ? linha.imagem : undefined}
-              alt={`${linha.nome} — ${t("fundo")}`}
-              draggable={false}
-              loading={i === 0 ? "eager" : "lazy"}
-              fetchPriority={i === 0 ? "high" : "auto"}
-              decoding="async"
-              className={
-                (currentSlide === i ? "hero-bg-in hero-slide-img " : "") +
-                "w-full h-full object-cover pointer-events-none" +
-                (linha.bw ? " grayscale" : "")
-              }
-              key={`${linha.nome}-bg-${currentSlide === i ? "active" : "inactive"}`}
-            />
-          </div>
-        ))}
-
-        {/* Overlay tom */}
-        <div className="absolute inset-0 bg-[#141414]/50 pointer-events-none" />
-
-        {/* Header inside banner */}
-        <div className="relative z-20">
-          <Header variant="overlay" />
-        </div>
-
-        {active.nome === "Arquitetura feita para o amanhã" ? (
-          <>
-            {/* Bottom-left: título */}
-            <div className="absolute bottom-20 lg:bottom-16 left-8 lg:left-12 right-8 lg:right-auto z-10 max-w-[640px] text-white flex flex-col items-start">
-              <h1 className="mb-5 font-display font-light text-[44px] md:text-[56px] lg:text-[68px] leading-none tracking-[-0.02em] text-white">
-                {t("Arquitetura feita para o amanhã")}
-              </h1>
-              {/* CTA — mobile */}
-              <Link
-                to={active.href}
-                onClick={(e) => { if (Math.abs(dragDeltaX.current) > 5) e.preventDefault(); }}
-                className="lg:hidden mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300 cursor-pointer"
-              >
-                {t("Ver linha completa")}
-                <ArrowUpRight size={16} />
-              </Link>
-            </div>
-
-            {/* Bottom-right: CTA — desktop only */}
-            <Link
-              to={active.href}
-              onClick={(e) => { if (Math.abs(dragDeltaX.current) > 5) e.preventDefault(); }}
-              className="hidden lg:inline-flex absolute bottom-16 right-8 lg:right-12 z-10 items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300 cursor-pointer"
-            >
-              {t("Ver linha completa")}
-              <ArrowUpRight size={16} />
-            </Link>
-          </>
-        ) : (
-          /* Centered "em breve" composition — Echo / Geo / Zhú */
-          <div
-            key={`hero-center-${active.nome}-${currentSlide}`}
-            className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none px-6 text-white"
-          >
-            {/* Logo + dot + slogan */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-7 lg:gap-9 max-w-[1200px]">
-              <div
-                className="hero-logo-in [&>svg]:h-[44px] md:[&>svg]:h-[64px] lg:[&>svg]:h-[80px] [&>svg]:w-auto text-white"
-                dangerouslySetInnerHTML={{ __html: active.logo }}
-                aria-label={active.nome}
-              />
-              <span
-                aria-hidden="true"
-                className={`hero-circle-in hidden md:inline-block w-2 h-2 md:w-2.5 md:h-2.5 lg:w-3 lg:h-3 rounded-full bg-white shrink-0 ${(active as any).sloganOffset ?? ""}`}
-              />
-              <span className={`hero-slogan-in font-display font-light text-white text-[14px] md:text-[20px] lg:text-[26px] leading-none tracking-[-0.01em] md:whitespace-nowrap ${(active as any).sloganOffset ?? ""}`}>
-                {active.slogan}
-              </span>
-            </div>
-
-            {/* Dot — mobile only, between slogan and label */}
-            <span
-              aria-hidden="true"
-              className="hero-circle-in md:hidden inline-block w-2 h-2 rounded-full bg-white mt-5"
-            />
-
-            {/* Static label below */}
-            <span className="hero-label-in mt-5 md:mt-10 font-display font-light text-white text-[11px] md:text-[13px] tracking-[0.4em] uppercase">
-              {active.nome === "Geo" ? t("Novo lançamento") : t("Nova linha em breve")}
-            </span>
-
-            {/* CTA "Saiba mais" */}
-            <Link
-              to={active.href}
-              onClick={(e) => { if (Math.abs(dragDeltaX.current) > 5) e.preventDefault(); }}
-              className="hero-label-in pointer-events-auto mt-6 md:mt-7 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/95 hover:bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] transition-all duration-300 cursor-pointer"
-            >
-              {t("Saiba mais")}
-              <ArrowUpRight size={16} />
-            </Link>
-          </div>
-        )}
-
-        {/* Bullets — bottom center */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-3">
-          {linhas.map((linha, i) => (
-            <button
-              key={linha.nome}
-              onClick={() => goToSlide(i)}
-              aria-label={`${t("Ir para slide")} ${i + 1} — ${linha.nome}`}
-              aria-current={currentSlide === i}
-              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                currentSlide === i ? "w-8 bg-white" : "w-2 bg-white/40 hover:bg-white/70"
-              }`}
-            />
-          ))}
-        </div>
-      </section>
+      {/* ========== HERO DE SOLUÇÕES — 9 telas ancoradas, sem autoplay ========== */}
+      <HeroSolucoes />
 
       {/* ========== MANIFESTO ========== */}
       <section className="section-spacing">
@@ -332,101 +65,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ========== GALERIA DE PROJETOS ========== */}
-      <section className="relative flex flex-col overflow-hidden px-[10px]">
-        <h2 className="font-display text-3xl md:text-4xl lg:text-[42px] font-normal leading-[1.15] text-primary mb-8 ml-1">
-          {t("Projetos selecionados")}
-        </h2>
-
-        {/* Inline project viewer */}
-        {selectedProject && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 rounded-[10px] overflow-hidden relative bg-secondary">
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="absolute top-5 right-5 z-20 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center hover:bg-background transition-colors duration-200"
-              aria-label={t("Fechar")}
-            >
-              <X className="w-5 h-5 text-foreground" />
-            </button>
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              <div className="aspect-[4/3] lg:aspect-auto lg:min-h-[500px]">
-                <img
-                  src={selectedProject.imagem}
-                  alt={selectedProject.nome}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="flex flex-col justify-center p-10 lg:p-16 bg-primary">
-                <p className="font-body text-[11px] font-light uppercase tracking-[0.1em] text-foreground/50 mb-4">
-                  {selectedProject.linha}
-                </p>
-                <h3 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-foreground mb-6">
-                  {selectedProject.nome}
-                </h3>
-                <p className="font-body text-[16px] font-light leading-[1.65] text-foreground/70 max-w-[400px]">
-                  {selectedProject.descricao}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Gallery grid — hidden when a project is open */}
-        {!selectedProject && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
-            {/* Left — large featured image spanning full height */}
-            <Link
-              to={projects[0].href}
-              className="group cursor-pointer flex flex-col"
-            >
-              <div className="aspect-[4/3] md:aspect-auto md:flex-1 rounded-[10px] overflow-hidden relative">
-                <img
-                  src={projects[0].imagem}
-                  alt={projects[0].nome}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
-              </div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/60 mt-3 ml-1 text-gray-950">
-                {projects[0].linha}
-              </p>
-              <h3 className="font-display text-lg font-normal text-dark ml-1 group-hover:opacity-70 transition-opacity">
-                {projects[0].nome}
-              </h3>
-            </Link>
-
-            {/* Right — two stacked images */}
-            <div className="flex flex-col gap-[10px]">
-              {[projects[1], projects[2]].map((p) => (
-                <Link
-                  to={p.href}
-                  key={p.nome}
-                  className="group cursor-pointer flex-1"
-                >
-                  <div className="aspect-video rounded-[10px] overflow-hidden relative">
-                    <img
-                      src={p.imagem}
-                      alt={p.nome}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
-                  </div>
-                  <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/60 mt-3 ml-1 text-zinc-950">
-                    {p.linha}
-                  </p>
-                  <h3 className="font-display text-lg font-normal text-dark ml-1 group-hover:opacity-70 transition-opacity">
-                    {p.nome}
-                  </h3>
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
-      </section>
+      {/* ========== PROJETOS SELECIONADOS — palco fixo, navegação horizontal ========== */}
+      <ProjetosHorizontal />
 
       {/* ========== MADEIRA ECOLÓGICA — SCROLL ANIMATION ========== */}
       <MadeiraEcologicaSection />

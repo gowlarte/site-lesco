@@ -141,8 +141,11 @@
     @apply border-border;
   }
 
+  /* O scroll suave vem do Lenis (src/lib/scroll-suave.ts), que precisa do
+     scroll nativo cru para interpolar em cima. `scroll-behavior: smooth`
+     aqui brigaria com ele e as duas animações se anulariam. */
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   body {
@@ -261,17 +264,6 @@
   100% { transform: translateX(100%); }
 }
 
-/* Hero banner — slow zoom on active slide */
-@keyframes hero-slow-zoom {
-  from { transform: scale(1); }
-  to   { transform: scale(1.08); }
-}
-.hero-slide-img {
-  animation: hero-slow-zoom 8s ease-out forwards;
-}
-
-
-
 /* Multi-step form slide animation */
 @keyframes slide-in {
   from {
@@ -288,21 +280,171 @@
   animation: slide-in 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-/* Hero slideshow — entry animations (PRD) */
-@keyframes heroFadeSlideUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* ===========================================================================
+   PALCOS FIXOS DA HOME — hero de soluções e projetos selecionados.
+   =========================================================================== */
+
+/* Nenhum dos dois palcos pode ganhar transform, filter nem will-change:
+   qualquer um deles cria bloco de contenção e prenderia o header (que vira
+   `position: fixed` depois de 60px de scroll) dentro do container recortado.
+   O parallax anda na <img>, nunca no palco. */
+.hero-palco,
+.projetos-palco {
+  isolation: isolate;
 }
-@keyframes heroPopIn {
-  from { opacity: 0; transform: scale(0); }
-  to   { opacity: 1; transform: scale(1); }
+
+/* ---------------------------------------------------------------------------
+   Escurecimento: UMA cor chapada sobre a foto inteira.
+
+   Era um degradê de altura inteira mais uma segunda faixa atrelada ao texto.
+   Funcionava para o contraste, mas pesava a barra inferior e deixava a foto
+   com aquele contraste forçado. Uma cor só, uniforme, escurece a imagem do
+   jeito que uma exposição menor faria — a foto continua legível como foto e
+   o texto branco fecha 4.5:1 em qualquer ponto dela.
+
+   O valor está em variável porque é o botão de ajuste do visual. 0.55 é o piso
+   medido: com texto 100% branco é o que fecha 4.5:1 mesmo contra um pixel de
+   céu estourado (255). Abaixo disso o título começa a falhar nas fotos claras
+   — em 0.46 o pior caso media 2.67:1. */
+:root {
+  --tint-palco: 0.55;
 }
-@keyframes heroBgFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+
+.hero-tint,
+.projeto-tint {
+  background-color: rgba(0, 0, 0, var(--tint-palco));
 }
-.hero-bg-in     { animation: heroBgFadeIn 800ms ease-in both; }
-.hero-logo-in   { animation: heroFadeSlideUp 600ms ease-out 400ms both; }
-.hero-circle-in { animation: heroPopIn 500ms cubic-bezier(0.34, 1.56, 0.64, 1) 550ms both; }
-.hero-slogan-in { animation: heroFadeSlideUp 600ms ease-out 700ms both; }
-.hero-label-in  { animation: heroFadeSlideUp 600ms ease-out 900ms both; }
+
+/* ---------------------------------------------------------------------------
+   Régua do hero e os dois encaixes de texto em volta dela.
+
+   A régua (número, pílulas e barra de progresso) é camada FIXA do palco: fica
+   fora dos blocos que dão fade, senão ela sumiria e voltaria a cada troca de
+   tela. Para isso funcionar, o texto acima e abaixo dela precisa de posição
+   previsível — daí os dois slots ancorados a `--regua-y`, e não um bloco em
+   fluxo cuja altura muda de tela para tela.
+
+   --regua-y é a distância do fundo do palco até a BASE da barra. Ele tem que
+   caber a descrição mais o CTA embaixo: no mobile o mesmo texto quebra em ~6
+   linhas, por isso o valor é bem maior ali. */
+.hero-solucoes {
+  /* Distância do fundo do palco até a linha. No mobile ela é apertada de
+     propósito: o bloco de baixo cabe justo e o conjunto — título, pílula,
+     linha e ação — encosta no rodapé do container, em vez de flutuar no meio
+     com 200px de vazio embaixo. */
+  --regua-y: 120px;
+  --legenda-h: 24px; /* altura da faixa de pílulas */
+  /* O MESMO respiro dos dois lados da linha: é ele que faz a linha parecer
+     centrada no bloco de texto em vez de encostada em alguma coisa. Acima
+     dele repousa a pílula (ou, na abertura, o próprio título); abaixo, a
+     ação. */
+  --gap-linha: 24px;
+  /* Título e pílula andam juntos, como um par. */
+  --gap-titulo: 12px;
+}
+@media (min-width: 640px) {
+  .hero-solucoes {
+    --regua-y: 250px;
+  }
+}
+@media (min-width: 1024px) {
+  .hero-solucoes {
+    --regua-y: 212px;
+  }
+}
+
+/* A linha é a única peça fixa. */
+.hero-regua {
+  bottom: var(--regua-y);
+}
+
+/* Pílula e título empilham para CIMA a partir da linha; corpo, para baixo. */
+.hero-slot-legenda {
+  bottom: calc(var(--regua-y) + var(--gap-linha));
+}
+
+.hero-slot-titulo {
+  bottom: calc(
+    var(--regua-y) + var(--gap-linha) + var(--legenda-h) + var(--gap-titulo)
+  );
+}
+
+/* A abertura não tem pílula: ali o título ocupa o lugar dela e encosta na
+   linha pelo mesmo respiro. O fundo do bloco de texto cai no mesmo ponto em
+   todas as telas — o que muda é só quantos elementos existem acima dele. */
+.hero-sem-pilula .hero-slot-titulo {
+  bottom: calc(var(--regua-y) + var(--gap-linha));
+}
+
+.hero-slot-corpo {
+  height: var(--regua-y);
+  padding-top: var(--gap-linha);
+}
+
+/* ---------------------------------------------------------------------------
+   Parallax. O zoom de overscan é o que garante que o deslocamento nunca
+   revele a borda do container. */
+.hero-img {
+  transform: scale(1.14);
+}
+
+.projeto-img {
+  transform: scale(1.16);
+}
+
+/* ---------------------------------------------------------------------------
+   Deslocamento em leque das tipografias. `--tela-d` / `--proj-d` são escritos
+   pelo loop de scroll no bloco de conteúdo (-1 = chegando, 0 = no lugar,
+   1 = já saiu) e `--peso` define quanto cada linha viaja.
+
+   No hero o texto sobe; nos projetos ele avança para o lado, mais rápido que
+   o painel, porque ali é a camada da frente de uma faixa que corre. */
+/* O texto do hero entra pela esquerda e sai pela direita. Era um movimento
+   vertical, mas com a linha do loader fixa no meio da composição os elementos
+   passavam por cima dela na troca; na horizontal eles correm paralelos a ela. */
+.hero-mov {
+  transform: translate3d(calc(var(--tela-d, 0) * var(--peso, 1) * 48px), 0, 0);
+}
+
+.projeto-mov {
+  transform: translate3d(calc(var(--proj-d, 0) * var(--peso, 1) * -70px), 0, 0);
+}
+
+/* Seta do indicador de scroll — respiro curto, só para sinalizar o gesto. */
+@keyframes heroSetaRespira {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(3px); }
+}
+.hero-seta {
+  animation: heroSetaRespira 2s ease-in-out infinite;
+}
+
+/* Foco sempre visível — os dois módulos são navegáveis por teclado. */
+.hero-solucoes a:focus-visible,
+.hero-solucoes button:focus-visible,
+.projetos-h a:focus-visible,
+.projetos-h button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  /* Fica o corte e o fade (nem um nem outro é deslocamento); saem o parallax,
+     o leque das tipografias e o respiro da seta. */
+  .hero-img,
+  .projeto-img,
+  .hero-mov,
+  .projeto-mov {
+    transform: none;
+  }
+  .hero-seta {
+    animation: none;
+  }
+  .hero-solucoes *,
+  .projetos-h * {
+    transition-duration: 0.01ms !important;
+  }
+}

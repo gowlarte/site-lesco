@@ -25,3 +25,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Vercel: vínculo local com projeto/conta (orgId + projectId). Nunca versionar,
+# senão o repo fixa uma conta e quebra ao trocar de Vercel.
+.vercel
+
+# Fotos originais dos heros (fonte dos .webp). ~47MB, nenhuma referenciada no
+# código — ficam na máquina, não no histórico.
+src/assets/hero-2/

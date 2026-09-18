@@ -6,8 +6,14 @@ import { ChevronRight } from "lucide-react";
 import { HeroSection } from "@/components/altwood/HeroSection";
 import { SwatchCor } from "@/components/altwood/SwatchCor";
 import { CardModelo } from "@/components/altwood/CardModelo";
-import { CardProjeto } from "@/components/altwood/CardProjeto";
+import { ProjetosDoProduto } from "@/components/altwood/ProjetosDoProduto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
+import projetoPanel1 from "@/assets/projeto-panel-1.webp";
+import projetoPanel2 from "@/assets/projeto-panel-2.webp";
+import projetoPanel3 from "@/assets/projeto-panel-3.webp";
+import projetoPanel4 from "@/assets/projeto-panel-4.webp";
+import projetoPanel5 from "@/assets/projeto-panel-5.webp";
+import projetoPanel6 from "@/assets/projeto-panel-6.webp";
 
 import modelo119x12 from "@/assets/panel-modelo-119x12.webp";
 import modelo215x30 from "@/assets/panel-modelo-215x30.webp";
@@ -38,12 +44,6 @@ import swSemUvHickory from "@/assets/swatch-semuv-hickory.webp";
 import swSemUvTasmaniaOak from "@/assets/swatch-semuv-tasmania-oak.webp";
 import swSemUvMerbau from "@/assets/swatch-semuv-merbau.webp";
 import swSemUvUrbanOak from "@/assets/swatch-semuv-urban-oak.webp";
-import projetoPanel1 from "@/assets/projeto-panel-1.webp";
-import projetoPanel2 from "@/assets/projeto-panel-2.webp";
-import projetoPanel3 from "@/assets/projeto-panel-3.webp";
-import projetoPanel4 from "@/assets/projeto-panel-4.webp";
-import projetoPanel5 from "@/assets/projeto-panel-5.webp";
-import projetoPanel6 from "@/assets/projeto-panel-6.webp";
 
 const heroImages = [projetoPanel1, projetoPanel2, projetoPanel3, projetoPanel4, projetoPanel5, projetoPanel6];
 
@@ -83,15 +83,6 @@ const modelos = [
   { nome: "Lesco Panel-153x12", medida: "153x12 mm", peso: "4,20 kg/m²", imageSrc: modelo153x12 },
   { nome: "Lesco Panel-59x34", medida: "59x34 mm", peso: "0,43 kg/m²", imageSrc: modelo59x34 },
   { nome: "Lesco Panel-45x35", medida: "45x35 mm", peso: "0,28 kg/m²", imageSrc: modelo45x35 },
-];
-
-const galeriaItems = [
-  { imageSrc: projetoPanel1, legenda: t("Fachada com ripado vertical em painel WPC"), ratio: "3:4" as const },
-  { imageSrc: projetoPanel2, legenda: t("Área gourmet com painéis contínuos em madeira ecológica"), ratio: "4:3" as const },
-  { imageSrc: projetoPanel3, legenda: t("Forro externo com paginação linear elegante"), ratio: "3:4" as const },
-  { imageSrc: projetoPanel4, legenda: t("Ambiente interno com revestimento e teto integrados"), ratio: "3:4" as const },
-  { imageSrc: projetoPanel5, legenda: t("Varanda contemporânea com painel e deck integrados"), ratio: "4:3" as const },
-  { imageSrc: projetoPanel6, legenda: t("Auditório com painéis laterais e acabamento técnico"), ratio: "4:3" as const },
 ];
 
 const MantoPanel = () => {
@@ -239,20 +230,8 @@ const MantoPanel = () => {
         </div>
       </div>
 
-      {/* Galeria de Projetos */}
-      {galeriaItems.length > 0 && (
-        <div className="px-6 md:px-12 lg:px-20 py-24">
-          <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">{t("Projetos")}</span>
-          <h2 className="font-display text-3xl md:text-4xl font-semibold mb-10 text-gray-950">{t("Realizações com")} Lesco Panel</h2>
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
-            {galeriaItems.map((item, i) => (
-              <div key={i} className="break-inside-avoid">
-                <CardProjeto imageSrc={item.imageSrc} legenda={item.legenda} ratio={item.ratio} />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      {/* Obras do portfolio que usaram este produto */}
+      <ProjetosDoProduto tipo="panel" linha="Lesco Panel" />
 
       {/* Navegação entre produtos */}
       <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-[#1E1E1E]">

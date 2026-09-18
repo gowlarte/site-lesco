@@ -30,11 +30,7 @@ import briseCla150x50 from "@/assets/brise-classic-150x50.webp";
 import briseCla145x145 from "@/assets/brise-classic-145x145.webp";
 import briseCla200x50 from "@/assets/brise-classic-200x50.webp";
 import briseCla250x50 from "@/assets/brise-classic-250x50.webp";
-import { CardProjeto } from "@/components/altwood/CardProjeto";
-import projetoBrise1 from "@/assets/projeto-brise-1.webp";
-import projetoBrise2 from "@/assets/projeto-brise-2.webp";
-import projetoBrise3 from "@/assets/projeto-brise-3.webp";
-import projetoBrise4 from "@/assets/projeto-brise-4.webp";
+import { ProjetosDoProduto } from "@/components/altwood/ProjetosDoProduto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
 import swatchBlack from "@/assets/swatch-black.webp";
@@ -118,13 +114,6 @@ const classicModelos = [
   { nome: "Madeira Ecológica-Brise-145x145-Classic", medida: "145x145 mm", peso: "6,20 kg/mL", imageSrc: briseCla145x145 },
   { nome: "Madeira Ecológica-Brise-200x50-Classic", medida: "200x50 mm", peso: "4,90 kg/mL", imageSrc: briseCla200x50 },
   { nome: "Madeira Ecológica-Brise-250x50-Classic", medida: "250x50 mm", peso: "6,50 kg/mL", imageSrc: briseCla250x50 },
-];
-
-const galeriaItems = [
-  { legenda: t("Residência com brises verticais entre jardim e vidro"), ratio: "4:3" as const, imageSrc: projetoBrise1 },
-  { legenda: `${t("Fachada comercial com brises verticais alinhados · Cor")} Teak`, ratio: "4:3" as const, imageSrc: projetoBrise2 },
-  { legenda: t("Edifício alto — fachada completa com brises verticais"), ratio: "4:3" as const, imageSrc: projetoBrise3 },
-  { legenda: t("Empreendimento residencial — brises em fachada e pergolado"), ratio: "4:3" as const, imageSrc: projetoBrise4 },
 ];
 
 const MantoBrise = () => {
@@ -288,19 +277,8 @@ const MantoBrise = () => {
         </div>
       </div>
 
-      {/* Galeria de Projetos */}
-      <div className="px-6 md:px-12 lg:px-20 py-24">
-        <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">{t("Projetos")}</span>
-        <h2 className="font-display text-3xl md:text-4xl font-semibold mb-10 text-gray-950">{t("Realizações com Lesco Brise")}</h2>
-
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
-          {galeriaItems.map((item, i) => (
-            <div key={i} className="break-inside-avoid">
-              <CardProjeto imageSrc={item.imageSrc} legenda={item.legenda} ratio={item.ratio} />
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* Obras do portfolio que usaram este produto */}
+      <ProjetosDoProduto tipo="brise" linha="Lesco Brise" />
 
       {/* Navegação entre produtos */}
       <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-[#1E1E1E]">

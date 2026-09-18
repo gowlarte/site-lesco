@@ -10,15 +10,9 @@ import { ChevronRight } from "lucide-react";
 import { HeroSection } from "@/components/altwood/HeroSection";
 import { SwatchCor } from "@/components/altwood/SwatchCor";
 import { CardModelo } from "@/components/altwood/CardModelo";
-import { CardProjeto } from "@/components/altwood/CardProjeto";
+import { ProjetosDoProduto } from "@/components/altwood/ProjetosDoProduto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
-import projetoShield1 from "@/assets/projeto-shield-1.webp";
-import projetoShield2 from "@/assets/projeto-shield-2.webp";
-import projetoShield3 from "@/assets/projeto-shield-3.webp";
-import projetoShield4 from "@/assets/projeto-shield-4.webp";
-import projetoShield5 from "@/assets/projeto-shield-5.webp";
-import projetoShield6 from "@/assets/projeto-shield-6.webp";
 
 import imgShield124x155 from "@/assets/shield-124x155.webp";
 import imgShield124x20 from "@/assets/shield-124x20.webp";
@@ -79,15 +73,6 @@ const modelos = [
   { nome: "Madeira Ecológica-Shield-217x25", medida: "217x25 mm", peso: "13,25 kg/m²", imageSrc: imgShield217x25 },
   { nome: "Madeira Ecológica-Shield-219x38,5", medida: "219x38,5 mm", peso: "15,60 kg/m²", imageSrc: imgShield219x385 },
   { nome: "Madeira Ecológica-Shield-124x50", medida: "124x50 mm", peso: "15,60 kg/m²", imageSrc: imgShield124x50 },
-];
-
-const galeriaItems = [
-  { imageSrc: projetoShield1, legenda: t("Edifício comercial — revestimento Shield em fachada"), ratio: "4:3" as const },
-  { imageSrc: projetoShield2, legenda: t("Arena/pavilhão — fachada e cobertura Shield"), ratio: "4:3" as const },
-  { imageSrc: projetoShield3, legenda: t("Terraço e área gourmet — teto em Shield"), ratio: "4:3" as const },
-  { imageSrc: projetoShield4, legenda: t("Edifício corporativo — fachada Shield + estrutura metálica"), ratio: "4:3" as const },
-  { imageSrc: projetoShield5, legenda: t("Resort à beira-mar — revestimento Shield em varandas"), ratio: "4:3" as const },
-  { imageSrc: projetoShield6, legenda: t("Residência contemporânea — Shield e brise em fachada"), ratio: "3:4" as const },
 ];
 
 const MantoShield = () => {
@@ -250,19 +235,8 @@ const MantoShield = () => {
         </div>
       </div>
 
-      {/* Galeria de Projetos */}
-      <div className="px-6 md:px-12 lg:px-20 py-24">
-        <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">{t("Projetos")}</span>
-        <h2 className="font-display text-3xl md:text-4xl font-semibold mb-10 text-gray-950">{t("Realizações com Lesco Shield")}</h2>
-
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
-          {galeriaItems.map((item, i) => (
-            <div key={i} className="break-inside-avoid">
-              <CardProjeto imageSrc={item.imageSrc} legenda={item.legenda} ratio={item.ratio} />
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* Obras do portfolio que usaram este produto */}
+      <ProjetosDoProduto tipo="shield" linha="Lesco Shield" />
 
       {/* Navegação entre produtos */}
       <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-[#1E1E1E]">

@@ -15,6 +15,7 @@ import { PageTransitionLoader } from "@/components/PageTransitionLoader";
 import { usePageAssets } from "@/hooks/usePageAssets";
 import { usePageTracking } from "@/hooks/usePageTracking";
 import { useUtmForwarder } from "@/hooks/useUtmForwarder";
+import { iniciarScrollSuave } from "@/lib/scroll-suave";
 import Index from "./pages/Index";
 import QuemSomos from "./pages/QuemSomos";
 import MadeiraWPC from "./pages/MadeiraWPC";
@@ -64,12 +65,20 @@ const AppContent = () => {
   usePageTracking();
   useUtmForwarder();
 
+  // Scroll interpolado do site inteiro — ver src/lib/scroll-suave.ts.
+  useEffect(() => iniciarScrollSuave(), []);
+
 
   return (
     <>
       <PageTransitionLoader isLoading={isLoading} />
       <ScrollToTop />
-      {!isHome && <Header />}
+      {/* Um cabeçalho só, sempre na raiz da árvore. Na home ele é transparente
+          sobre a foto do hero, mas NÃO mora dentro dele: o palco do hero é
+          `sticky`, e `sticky` abre um contexto de empilhamento — lá dentro o
+          z-50 do menu só valeria contra os irmãos do palco, e cada seção
+          posicionada seguinte (projetos, showroom) passaria por cima dele. */}
+      <Header variant={isHome ? "overlay" : "default"} />
       <div ref={contentRef} style={{ opacity: isLoading ? 0 : 1, transition: "opacity 300ms ease" }}>
         <Routes>
           {/* Os paths são escritos em PT; localizePath() devolve o slug do

@@ -209,9 +209,7 @@ export const MadeiraEcologicaSection = () => {
   if (isMobile) {
     return (
       <section ref={sectionRef} className="bg-[#DBDBDB] rounded-[10px] mx-[10px] py-16 px-5">
-        <h2 className="font-display text-3xl font-normal leading-[1.15] text-[#141414] text-center mb-10">
-          {t("Conheça nossa")}<br />{t("madeira ecológica")}
-        </h2>
+        <h2 className="sr-only">{t("Conheça nossa madeira ecológica")}</h2>
         <div className="w-full aspect-square mb-10">
           <ProdutoCanvas
             ref={canvasRef}
@@ -245,15 +243,22 @@ export const MadeiraEcologicaSection = () => {
       className="relative bg-[#DBDBDB] rounded-[10px] mx-[10px] h-[450vh]"
     >
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col">
-        <h2 className="font-display text-4xl lg:text-[52px] font-normal leading-[1.15] text-[#141414] text-center pt-16 lg:pt-20">
-          {t("Conheça nossa madeira ecológica")}
-        </h2>
+        {/* O título saiu da tela: a peça desmontada e os cinco ícones já dizem
+            o que a seção é. Ele fica como marcação — leitor de tela e sumário
+            da página continuam enxergando um h2 aqui. */}
+        <h2 className="sr-only">{t("Conheça nossa madeira ecológica")}</h2>
 
-        {/* Stage: canvas à esquerda + ícones empilhados à direita */}
-        <div className="flex-1 w-full flex items-center justify-center px-4 sm:px-8">
+        {/* Stage: canvas à esquerda + ícones empilhados à direita.
+            O respiro de 100px no topo é o header flutuante (fixed em
+            top-[10px], 80px de altura). Enquanto o título ocupava essa faixa
+            ele já servia de afastamento; sem ele o palco centraliza na tela
+            inteira e, em notebook (~750px de altura), a peça subiria por baixo
+            do header. O teto de altura do canvas é a mesma conta pelo avesso:
+            ele nunca passa do que sobra entre o header e a borda de baixo. */}
+        <div className="flex-1 w-full flex items-center justify-center px-4 sm:px-8 pt-[100px] pb-10">
           <div className="w-full flex items-center justify-center gap-8 lg:gap-16 xl:gap-24">
             {/* Coluna esquerda: canvas */}
-            <div className="w-[45%] max-w-[640px] aspect-square shrink-0">
+            <div className="w-[45%] max-w-[640px] max-h-[calc(100vh-140px)] aspect-square shrink-0">
               <ProdutoCanvas
                 ref={canvasRef}
                 onReady={handleReady}

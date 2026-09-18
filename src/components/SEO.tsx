@@ -13,6 +13,8 @@ interface SEOProps {
   type?: "website" | "article";
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
   noindex?: boolean;
+  /** Imagem do LCP da página: entra como <link rel="preload"> no <head>. */
+  preloadImage?: string;
 }
 
 /** Turn a possibly-relative image path into an absolute URL (required by
@@ -30,6 +32,7 @@ export function SEO({
   type = "website",
   jsonLd,
   noindex = false,
+  preloadImage,
 }: SEOProps) {
   // `path` é sempre o slug PT; canonical/hreflang usam o slug de cada locale.
   const url = `${SITE_URL}${slugFor(path, LOCALE)}`;
@@ -44,6 +47,11 @@ export function SEO({
       <meta name="description" content={description} />
       {noindex && <meta name="robots" content="noindex" />}
       <link rel="canonical" href={url} />
+
+      {/* LCP: o preload sai no HTML estático, antes de o bundle avaliar o <img>. */}
+      {preloadImage && (
+        <link rel="preload" as="image" href={preloadImage} fetchPriority="high" />
+      )}
 
       {/* hreflang — mesma página nos dois domínios, cada um com seu slug */}
       <link rel="alternate" hrefLang="pt-BR" href={ptUrl} />

@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Link } from "@/components/AppLink";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useSaiuDoHero } from "@/hooks/useSaiuDoHero";
 import { t } from "@/i18n/t";
 import { isEN } from "@/i18n/locale";
 import logoDark from "@/assets/logo-lesco-dark-2.svg";
@@ -54,18 +55,28 @@ interface HeaderProps {
 }
 
 export function Header({ variant = "default" }: HeaderProps) {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [hoveredNav, setHoveredNav] = useState<string | null>(null);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const location = useLocation();
 
+  const isOverlay = variant === "overlay";
+
+  // Fora da home basta a distância: passados 60px o cabeçalho já não está
+  // mais sobre o topo da página e pede fundo. Na home ele é transparente sobre
+  // o hero, e quem sabe dizer quando o hero acabou é o hook.
+  const saiuDoHero = useSaiuDoHero();
+  const [rolou, setRolou] = useState(false);
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const sincronizar = () => setRolou(window.scrollY > 60);
+    sincronizar(); // um F5 no meio da página já começa rolado
+    window.addEventListener("scroll", sincronizar, { passive: true });
+    return () => window.removeEventListener("scroll", sincronizar);
   }, []);
+
+  const scrolled = isOverlay ? saiuDoHero : rolou;
 
   useEffect(() => {
     setMenuOpen(false);
@@ -73,7 +84,6 @@ export function Header({ variant = "default" }: HeaderProps) {
     setMobileExpanded(null);
   }, [location]);
 
-  const isOverlay = variant === "overlay";
   const overlayTransparent = isOverlay && !scrolled;
   const isLight = !isOverlay && !scrolled;
 
@@ -94,13 +104,17 @@ export function Header({ variant = "default" }: HeaderProps) {
     <>
       <header
         className={cn(
-          "z-50 transition-all duration-[400ms] rounded-[10px]",
+          // A posição não muda com o scroll: só a cor. `fixed` sempre, inclusive
+          // no estado transparente da home — lá o topo da página coincide com o
+          // topo do palco do hero (ambos a 10px), então não há diferença visual,
+          // e some o risco de o cabeçalho depender de onde ele está na árvore.
+          "fixed top-[10px] left-[10px] right-[10px] z-50",
+          "transition-all duration-[400ms] rounded-[10px]",
           overlayTransparent
-            ? "absolute top-0 left-0 right-0 bg-transparent"
-            : cn(
-                "fixed top-[10px] left-[10px] right-[10px]",
-                isLight ? "bg-[#e5e1dc]" : "bg-[rgba(17,17,16,0.92)] backdrop-blur-xl"
-              )
+            ? "bg-transparent"
+            : isLight
+              ? "bg-[#e5e1dc]"
+              : "bg-[rgba(17,17,16,0.92)] backdrop-blur-xl"
         )}
       >
         <div className="flex items-center h-14 px-6 lg:px-8 py-[40px] pb-[40px] gap-6">

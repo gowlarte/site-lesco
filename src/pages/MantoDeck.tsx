@@ -6,7 +6,7 @@ import { ChevronRight } from "lucide-react";
 import { HeroSection } from "@/components/altwood/HeroSection";
 import { SwatchCor } from "@/components/altwood/SwatchCor";
 import { CardModelo } from "@/components/altwood/CardModelo";
-import { CardProjeto } from "@/components/altwood/CardProjeto";
+import { ProjetosDoProduto } from "@/components/altwood/ProjetosDoProduto";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
 
 import modelo97 from "@/assets/deck-modelo-97x22.webp";
@@ -63,14 +63,6 @@ const modelos = [
   { nome: "Lesco Deck-97x22", medida: "97x22 mm", peso: "20,0 kg/m²", imageSrc: modelo97 },
   { nome: "Lesco Deck-140x22", medida: "140x22 mm", peso: "28 kg/m²", imageSrc: modelo140 },
   { nome: "Lesco Deck-150x22", medida: "150x22 mm", peso: "18,75 kg/m²", imageSrc: modelo150 },
-];
-
-const galeriaItems = [
-  { imageSrc: projetoDeck1, legenda: t("Deck paisagístico com iluminação noturna"), ratio: "4:3" as const },
-  { imageSrc: projetoDeck2, legenda: t("Residência contemporânea com deck frontal"), ratio: "4:3" as const },
-  { imageSrc: projetoDeck3, legenda: t("Passarela em deck com paisagismo integrado"), ratio: "4:3" as const },
-  { imageSrc: projetoDeck4, legenda: t("Deck em jardim zen com espelho d'água"), ratio: "4:3" as const },
-  { imageSrc: projetoDeck5, legenda: t("Projeto noturno com deck e paisagismo"), ratio: "3:4" as const },
 ];
 
 const MantoDeck = () => {
@@ -227,19 +219,8 @@ const MantoDeck = () => {
         </div>
       </div>
 
-      {/* Galeria de Projetos */}
-      <div className="px-6 md:px-12 lg:px-20 py-24">
-        <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">{t("Projetos")}</span>
-        <h2 className="font-display text-3xl md:text-4xl font-semibold mb-10 text-gray-950">{t("Realizações com")} Lesco Deck</h2>
-
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
-          {galeriaItems.map((item, i) => (
-            <div key={i} className="break-inside-avoid">
-              <CardProjeto imageSrc={item.imageSrc} legenda={item.legenda} ratio={item.ratio} />
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* Obras do portfolio que usaram este produto */}
+      <ProjetosDoProduto tipo="deck" linha="Lesco Deck" />
 
       {/* Navegação entre produtos */}
       <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-[#1E1E1E]">

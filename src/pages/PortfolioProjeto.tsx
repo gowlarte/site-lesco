@@ -1,12 +1,16 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "@/components/AppLink";
 import { getProjetoBySlug, projetos } from "@/data/projetos";
+import { Lightbox } from "@/components/Lightbox";
 import { SEO } from "@/components/SEO";
 import { t } from "@/i18n/t";
 
 const PortfolioProjeto = () => {
   const { slug } = useParams();
   const projeto = getProjetoBySlug(slug);
+  /** Foto aberta em tela cheia. `null` = grade normal. */
+  const [ampliada, setAmpliada] = useState<number | null>(null);
 
   if (!projeto) {
     return (
@@ -29,6 +33,9 @@ const PortfolioProjeto = () => {
     );
   }
 
+
+  /** Mesmo texto no alt da grade, no título do visor e no rótulo do botão. */
+  const legendaFoto = (i: number) => `${projeto.nome} — ${t("imagem")} ${i + 1}`;
 
   const ficha: Array<[string, string]> = [
     [t("Local"), projeto.local],
@@ -125,18 +132,33 @@ const PortfolioProjeto = () => {
           </aside>
         </section>
 
+        {/* A grade recorta em 4:3 e desenha a foto pequena. O clique abre o
+            arquivo inteiro, no tamanho em que ele veio — ver Lightbox.tsx. */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-[10px]">
           {projeto.galeria.map((img, i) => (
-            <div key={i} className="aspect-[4/3] rounded-[10px] overflow-hidden">
+            <button
+              key={i}
+              type="button"
+              onClick={() => setAmpliada(i)}
+              aria-label={`${t("Ampliar")}: ${legendaFoto(i)}`}
+              className="group aspect-[4/3] rounded-[10px] overflow-hidden cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+            >
               <img
                 src={img}
-                alt={`${projeto.nome} — ${t("imagem")} ${i + 1}`}
+                alt={legendaFoto(i)}
                 loading="lazy"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />
-            </div>
+            </button>
           ))}
         </section>
+
+        <Lightbox
+          imagens={projeto.galeria}
+          indice={ampliada}
+          onIndice={setAmpliada}
+          legenda={legendaFoto}
+        />
 
       </main>
     </>
