@@ -36,7 +36,7 @@ import imgAcustica from "@/assets/hero-home-echotex.webp";
  * Regra de marca: o termo "WPC" não aparece em nenhum texto deste módulo
  * (usar "madeira ecológica" ou "material 100% reciclado"). Brise, Shield, Line,
  * Panel, Deck e Muxarabi são tipologias DENTRO da linha de madeira ecológica —
- * por isso a linha vai no eyebrow e a tipologia no título.
+ * por isso a linha vai no eyebrow e a tipologia no título — salvo nas duas telas de Forro, onde a linha entra no título para distingui-las.
  */
 
 export interface SlideAbertura {
@@ -108,14 +108,14 @@ export const slidesTipologia: SlideTipologia[] = [
     imagem: imgFachada,
     alt: t("Edifício com fachada em madeira ecológica Lesco, brises verticais e sacadas plantadas."),
   },
-  // Duas telas de Forro. O título continua sendo a tipologia — o eixo do PRD —
-  // e quem separa as duas é o produto no eyebrow. Vêm em sequência e logo
-  // depois da Fachada, que também é Shield, para o material não pular de tela.
+  // Duas telas de Forro. O que as distingue é a linha, e ela vai no próprio
+  // título (Forro Shield, Forro Line) — não no eyebrow. Vêm em sequência e
+  // logo após a Fachada, que também é Shield, para o material não pular de tela.
   {
     id: "forro-shield",
     tab: t("Forro"),
-    eyebrow: t("Madeira ecológica · Shield"),
-    titulo: t("Forro"),
+    eyebrow: t("Madeira ecológica"),
+    titulo: t("Forro Shield"),
     // Não existe página de forro Shield; o destino é a da linha.
     cta: t("Ver a linha Shield"),
     href: "/madeira-ecologica-para-fachada",
@@ -125,8 +125,8 @@ export const slidesTipologia: SlideTipologia[] = [
   {
     id: "forro-line",
     tab: t("Forro"),
-    eyebrow: t("Madeira ecológica · Line"),
-    titulo: t("Forro"),
+    eyebrow: t("Madeira ecológica"),
+    titulo: t("Forro Line"),
     cta: t("Ver a linha Line"),
     href: "/forro-wpc",
     imagem: imgForroLine,
