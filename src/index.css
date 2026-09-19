@@ -297,6 +297,45 @@
     }
   }
 
+  /* Entrada escalonada do menu mobile.
+     O atraso de cada linha vem inline, por índice, em Header.tsx.
+
+     A regra depende do atributo `data-aberto` no painel, e não de uma classe
+     fixa: os itens ficam no DOM o tempo todo (o painel só muda de opacidade),
+     então uma animação aplicada de saída rodaria na montagem da página, com o
+     menu fechado, e nunca mais. Amarrada ao atributo, ela recomeça a cada
+     abertura, que é quando se quer ver. */
+  @keyframes menu-entra {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  :root.com-js #menu-mobile[data-aberto="sim"] .menu-linha {
+    animation: menu-entra 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root.com-js #menu-mobile[data-aberto="sim"] .menu-linha {
+      animation: none;
+    }
+  }
+
+  /* O menu mobile é modal (`aria-modal`), e o botão do WhatsApp é `fixed` com
+     z-60: aberto o painel, ele ficava por cima do canto direito do CTA de
+     orçamento. A marca no <html> é posta pelo Header; o acoplamento é por
+     atributo justamente para não passar estado entre dois componentes que não
+     têm nenhuma outra relação. */
+  :root[data-menu-aberto="sim"] .botao-whatsapp {
+    opacity: 0;
+    pointer-events: none;
+  }
+
   :root.com-js .revelar[data-visivel="sim"] {
     animation: revelar-sobe 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   }

@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "@/components/AppLink";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { rolarPara, assinarScroll } from "@/lib/scroll-suave";
+import { rolarPara, assinarScroll, travarScrollSuave } from "@/lib/scroll-suave";
 import { useSaiuDoHero } from "@/hooks/useSaiuDoHero";
 import { t } from "@/i18n/t";
 import { isEN } from "@/i18n/locale";
@@ -20,10 +20,31 @@ import logoLight from "@/assets/logo-lesco-light.svg";
  * ainda não é reconhecida pelo público.
  */
 type NavChild = { label: string; href: string; linha?: string };
-type NavItem = { label: string; href?: string; children?: NavChild[]; external?: boolean };
+type NavItem = { label: string; href?: string; children?: NavChild[]; external?: boolean; grupo: Grupo };
 
-const navLinks: NavItem[] = [
+/**
+ * Agrupamento do menu mobile. Não é deduzido de "tem filhos" nem do slug: a
+ * divisão é editorial — o que a Lesco fabrica de um lado, o que ela publica do
+ * outro — e precisa ficar escrita para não virar adivinhação na próxima
+ * mudança de rota. O desktop ignora o campo.
+ */
+type Grupo = "materiais" | "conteudo";
+
+const GRUPOS: { id: Grupo; titulo: string }[] = [
+  { id: "materiais", titulo: t("Materiais") },
+  { id: "conteudo", titulo: t("Conteúdo") },
+];
+
+/** Gradiente da marca. Vive aqui porque o CTA e a marca de item ativo usam o
+ *  mesmo, e duas cópias soltas divergem na primeira alteração. */
+const GRADIENTE_MARCA =
+  "linear-gradient(135deg, #728ea0 25%, #c0c9bf 56%, #d6aa98 74%, #efdcc5 90%)";
+
+/** A anotação fica no literal, não no resultado do `.filter()`: encadeados, o
+ *  TypeScript perde o tipo contextual e alarga `grupo` para `string`. */
+const todosLinks: NavItem[] = [
   {
+    grupo: "materiais",
     label: t("Madeira ecológica"),
     children: [
       { label: t("Brises"), href: "/brise-madeira-ecologica", linha: "Lesco Brise" },
@@ -35,6 +56,7 @@ const navLinks: NavItem[] = [
     ],
   },
   {
+    grupo: "materiais",
     label: t("Bambu"),
     children: [
       { label: t("Painéis e forros"), href: "/painel-bambu", linha: "Zhú" },
@@ -43,13 +65,15 @@ const navLinks: NavItem[] = [
       { label: t("Decks"), href: "/deck-bambu", linha: "Zhú" },
     ],
   },
-  { label: t("Pedra flexível"), href: "/geo" },
-  { label: t("Catálogo"), href: "/catalogo-lesco" },
-  { label: t("Biblioteca"), href: "/biblioteca" },
-  { label: "Blog", href: "https://blog.lesco.com.br/", external: true },
-  { label: t("Portfólio"), href: "/portfolio" },
-  // Blog é do site PT (blog.lesco.com.br); ocultar no build EN por ora.
-].filter((link) => !(isEN && link.href?.includes("blog.lesco")));
+  { grupo: "materiais", label: t("Pedra flexível"), href: "/geo" },
+  { grupo: "conteudo", label: t("Catálogo"), href: "/catalogo-lesco" },
+  { grupo: "conteudo", label: t("Biblioteca"), href: "/biblioteca" },
+  { grupo: "conteudo", label: "Blog", href: "https://blog.lesco.com.br/", external: true },
+  { grupo: "conteudo", label: t("Portfólio"), href: "/portfolio" },
+];
+
+// Blog é do site PT (blog.lesco.com.br); ocultar no build EN por ora.
+const navLinks = todosLinks.filter((link) => !(isEN && link.href?.includes("blog.lesco")));
 
 interface HeaderProps {
   variant?: "default" | "overlay";
@@ -61,6 +85,8 @@ export function Header({ variant = "default" }: HeaderProps) {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const location = useLocation();
+  const painelRef = useRef<HTMLDivElement>(null);
+  const fecharRef = useRef<HTMLButtonElement>(null);
 
   const isOverlay = variant === "overlay";
 
@@ -84,8 +110,80 @@ export function Header({ variant = "default" }: HeaderProps) {
     setMobileExpanded(null);
   }, [location]);
 
+  /**
+   * Menu aberto: Esc fecha, Tab circula dentro dele, e a página por baixo
+   * para de rolar.
+   *
+   * O painel não é um Dialog do Radix (o Lightbox é, e ganha isso de graça),
+   * então as três coisas são feitas à mão. A trava de rolagem é dupla de
+   * propósito: `travarScrollSuave` para o Lenis, `overflow: hidden` para quem
+   * não tem Lenis — quem pediu menos movimento, ou antes de ele iniciar.
+   */
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    travarScrollSuave(true);
+    const overflowAnterior = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    // O painel é modal: nada deve flutuar sobre ele. Quem escuta a marca é o
+    // botão do WhatsApp, por CSS em index.css — ele é `fixed` com z-60 e
+    // estava cobrindo o canto direito do CTA de orçamento.
+    document.documentElement.dataset.menuAberto = "sim";
+    fecharRef.current?.focus();
+
+    // O botão de fechar mora no cabeçalho, fora do painel: sem incluí-lo na
+    // lista, o Tab escaparia do menu logo no primeiro passo.
+    const focaveis = () => {
+      const lista: HTMLElement[] = [];
+      if (fecharRef.current) lista.push(fecharRef.current);
+      const dentro = painelRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+      if (dentro) lista.push(...Array.from(dentro).filter((el) => el.offsetParent !== null));
+      return lista;
+    };
+
+    const aoTeclar = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const lista = focaveis();
+      if (lista.length === 0) return;
+      const primeiro = lista[0];
+      const ultimo = lista[lista.length - 1];
+      if (e.shiftKey && document.activeElement === primeiro) {
+        e.preventDefault();
+        ultimo.focus();
+      } else if (!e.shiftKey && document.activeElement === ultimo) {
+        e.preventDefault();
+        primeiro.focus();
+      }
+    };
+
+    window.addEventListener("keydown", aoTeclar);
+    return () => {
+      window.removeEventListener("keydown", aoTeclar);
+      travarScrollSuave(false);
+      document.body.style.overflow = overflowAnterior;
+      delete document.documentElement.dataset.menuAberto;
+    };
+  }, [menuOpen]);
+
+  // Passar para a largura do nav de desktop com o menu aberto deixaria o painel
+  // escondido por CSS e a rolagem travada por JS.
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1280px)");
+    const fechar = () => mq.matches && setMenuOpen(false);
+    mq.addEventListener("change", fechar);
+    return () => mq.removeEventListener("change", fechar);
+  }, []);
+
   const overlayTransparent = isOverlay && !scrolled;
-  const isLight = !isOverlay && !scrolled;
+  // Com o painel aberto o cabeçalho fica sobre uma superfície escura: manter o
+  // tema claro deixaria uma faixa bege em cima do menu preto.
+  const isLight = !isOverlay && !scrolled && !menuOpen;
 
   const baseColor = overlayTransparent ? "#FFFFFF" : isLight ? "#303030" : "#7F7F7F";
   const activeColor = overlayTransparent ? "#FFFFFF" : isLight ? "#000000" : "#FFFFFF";
@@ -100,6 +198,17 @@ export function Header({ variant = "default" }: HeaderProps) {
     return false;
   };
 
+  /** Filete do gradiente da marca à esquerda do item da página atual. O menu
+   *  mobile não indicava de nenhuma forma onde o leitor estava. Fica em -18px
+   *  para pousar na sangria de 6px da tela, fora da margem de 24px do painel. */
+  const marcaAtivo = (
+    <span
+      aria-hidden="true"
+      className="absolute left-[-18px] top-1/2 -translate-y-1/2 h-6 w-[3px] rounded-full"
+      style={{ background: GRADIENTE_MARCA }}
+    />
+  );
+
   return (
     <>
       <header
@@ -110,7 +219,10 @@ export function Header({ variant = "default" }: HeaderProps) {
           // e some o risco de o cabeçalho depender de onde ele está na árvore.
           "fixed top-[10px] left-[10px] right-[10px] z-50",
           "transition-all duration-[400ms] rounded-[10px]",
-          overlayTransparent
+          // Com o menu aberto o cabeçalho some: a marca e o "Fechar" ficam
+          // soltos sobre o painel, sem a barra arredondada desenhando um
+          // retângulo por cima dele.
+          overlayTransparent || menuOpen
             ? "bg-transparent"
             : isLight
               ? "bg-[#e5e1dc]"
@@ -305,103 +417,205 @@ export function Header({ variant = "default" }: HeaderProps) {
 
           </nav>
 
-          {/* Mobile Hamburger */}
+          {/* Mobile Hamburger — aberto, vira "Fechar ✕". A palavra ao lado do
+              ícone é o que Exo Ape, basement.studio e MONOGRID fazem: o X
+              sozinho depende de o leitor já saber o que ele faz. */}
           <button
+            ref={fecharRef}
             className={cn(
-              "xl:hidden ml-auto transition-colors duration-300",
-              overlayTransparent ? "text-white" : isLight ? "text-[#303030]" : "text-foreground"
+              "xl:hidden ml-auto flex items-center gap-2.5 transition-colors duration-300",
+              "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current",
+              overlayTransparent || menuOpen ? "text-white" : isLight ? "text-[#303030]" : "text-foreground"
             )}
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={t("Menu")}
+            aria-label={menuOpen ? t("Fechar menu") : t("Abrir menu")}
+            aria-expanded={menuOpen}
+            aria-controls="menu-mobile"
           >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            {menuOpen && <span className="rotulo-tec">{t("Fechar")}</span>}
+            {menuOpen ? <X size={22} /> : <Menu size={24} />}
           </button>
         </div>
       </header>
 
-      {/* Mobile Menu Fullscreen */}
+      {/* ===================== MENU MOBILE =====================
+          Índice alinhado à esquerda, em dois grupos rotulados.
+
+          Antes tudo era centralizado — rótulo, seta, filhos e a tag da linha —
+          e os sete itens dividiam o mesmo `text-3xl font-light`: "Madeira
+          ecológica", que abre seis produtos, ficava visualmente igual a
+          "Blog", que é um link externo. Sem borda de alinhamento e sem
+          hierarquia, não havia onde o olho descansar.
+
+          O desenho novo vem de três menus premiados, abertos em 375px:
+          Exo Ape (lista rente à esquerda, escala grande, entrelinha apertada,
+          segundo nível muito menor), basement.studio (item ativo em cor de
+          destaque) e MONOGRID (rótulo de seção em mono seguido de filete).
+      */}
       <div
+        id="menu-mobile"
+        ref={painelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={t("Menu")}
+        data-aberto={menuOpen ? "sim" : undefined}
         className={cn(
-          "fixed inset-0 z-40 bg-primary flex flex-col items-center pt-28 pb-12 gap-2 overflow-y-auto transition-all duration-500",
+          "fixed inset-0 z-40 bg-primary overflow-y-auto overscroll-contain xl:hidden",
+          "transition-opacity duration-[400ms]",
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >
-        {navLinks.map((link) => {
-          if (link.children) {
-            const expanded = mobileExpanded === link.label;
+        <div className="min-h-full flex flex-col px-6 pt-28 pb-8">
+          {GRUPOS.map((grupo, iGrupo) => {
+            const itens = navLinks.filter((l) => l.grupo === grupo.id);
+            if (itens.length === 0) return null;
+
             return (
-              <div key={link.label} className="w-full max-w-md flex flex-col items-center">
-                <button
-                  type="button"
-                  onClick={() => setMobileExpanded(expanded ? null : link.label)}
-                  className="font-display text-3xl font-light text-foreground/80 hover:text-foreground transition-colors flex items-center gap-2 py-3"
+              <section key={grupo.id} className="mb-9">
+                {/* Rótulo em mono seguido de filete: é o que quebra as sete
+                    linhas iguais em dois blocos com respiro entre eles. */}
+                <div
+                  className="menu-linha flex items-center gap-4 mb-3"
+                  style={{ animationDelay: `${iGrupo * 80}ms` }}
                 >
-                  {link.label}
-                  <ChevronDown size={22} className={cn("transition-transform duration-200", expanded && "rotate-180")} />
-                </button>
-                {expanded && (
-                  <div className="flex flex-col items-center gap-3 pb-2">
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        to={child.href}
-                        className="flex flex-col items-center text-foreground/60 hover:text-foreground transition-colors"
-                      >
-                        <span className="font-body text-base font-light">{child.label}</span>
-                        {child.linha && (
-                          <span className="font-body text-[11px] font-light text-foreground/35">{child.linha}</span>
+                  {/* /55 e não /40: sobre #111110 o texto de 11px precisa de
+                      alfa 0,50 para fechar 4,5:1. A /40 dava 3,49:1, que só
+                      serve para ícone. */}
+                  <span className="rotulo-tec text-foreground/55">{grupo.titulo}</span>
+                  <span className="h-px flex-1 bg-foreground/15" />
+                </div>
+
+                {itens.map((link, iItem) => {
+                  const atraso = { animationDelay: `${iGrupo * 80 + (iItem + 1) * 45}ms` };
+                  const ativo = isActive(link);
+                  // Fluido porque "Madeira ecológica" é o rótulo mais longo e,
+                  // fixo em 32px, ele pedia 300px num vão de 293 e quebrava em
+                  // duas linhas já no iPhone de 375. A 7.8vw ele cabe numa
+                  // linha a partir de ~360px, e cresce até 36px no tablet.
+                  const escala =
+                    "font-display text-[clamp(27px,7.8vw,36px)] leading-[1.06] font-light transition-colors duration-300";
+
+                  if (link.children) {
+                    const expanded = mobileExpanded === link.label;
+                    return (
+                      <div key={link.label} className="menu-linha" style={atraso}>
+                        <button
+                          type="button"
+                          onClick={() => setMobileExpanded(expanded ? null : link.label)}
+                          aria-expanded={expanded}
+                          className="relative w-full flex items-start justify-between gap-3 py-1.5 text-left"
+                        >
+                          {ativo && marcaAtivo}
+                          <span className={cn(escala, ativo ? "text-foreground" : "text-foreground/85")}>
+                            {link.label}
+                          </span>
+                          {/* `items-start` + este recuo: se o rótulo quebrar
+                              numa tela estreita, a seta fica na primeira
+                              linha, e não centralizada no bloco de duas. */}
+                          <ChevronDown
+                            size={20}
+                            className={cn(
+                              "shrink-0 mt-1.5 text-foreground/40 transition-transform duration-300",
+                              expanded && "rotate-180",
+                            )}
+                          />
+                        </button>
+
+                        {/* Ficha técnica: tipo à esquerda, linha comercial à
+                            direita, na mesma base, filete entre as linhas.
+                            Antes os dois vinham empilhados e centralizados,
+                            gastando duas linhas por produto e sem nenhuma
+                            borda de alinhamento. */}
+                        {expanded && (
+                          <div className="pb-4">
+                            {link.children.map((child) => {
+                              const filhoAtivo = pathOf(child.href) === location.pathname;
+                              return (
+                                <Link
+                                  key={child.href}
+                                  to={child.href}
+                                  className="flex items-baseline justify-between gap-4 py-2.5 border-b border-foreground/10 last:border-b-0"
+                                >
+                                  <span
+                                    className={cn(
+                                      "font-body text-[15px]",
+                                      filhoAtivo ? "text-foreground" : "text-foreground/70",
+                                    )}
+                                  >
+                                    {child.label}
+                                  </span>
+                                  {/* Também /55. O código antigo usava /35 na
+                                      tag da linha: 2,96:1, reprovado. */}
+                                  {child.linha && (
+                                    <span className="font-body text-[11px] text-foreground/55 shrink-0">
+                                      {child.linha}
+                                    </span>
+                                  )}
+                                </Link>
+                              );
+                            })}
+                          </div>
                         )}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+                      </div>
+                    );
+                  }
+
+                  if (link.external) {
+                    return (
+                      <a
+                        key={link.href}
+                        href={link.href!}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="menu-linha relative flex items-center justify-between gap-3 py-1.5"
+                        style={atraso}
+                      >
+                        <span className={cn(escala, "text-foreground/85")}>{link.label}</span>
+                        <ArrowUpRight size={20} className="shrink-0 text-foreground/40" />
+                      </a>
+                    );
+                  }
+
+                  return (
+                    <Link
+                      key={link.href}
+                      to={link.href!}
+                      className="menu-linha relative flex items-center py-1.5"
+                      style={atraso}
+                    >
+                      {ativo && marcaAtivo}
+                      <span className={cn(escala, ativo ? "text-foreground" : "text-foreground/85")}>
+                        {link.label}
+                      </span>
+                    </Link>
+                  );
+                })}
+              </section>
             );
-          }
+          })}
 
-          if (link.external) {
-            return (
-              <a
-                key={link.href}
-                href={link.href!}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-display text-3xl font-light text-foreground/80 hover:text-foreground transition-colors py-3"
-              >
-                {link.label}
-              </a>
+          {(() => {
+            // /zhu saiu da lista: a linha tem catálogo e páginas de produto, então
+            // o CTA certo ali é orçamento, não "aguarde o lançamento".
+            const emBreve = ["/echo", "/geo"].includes(location.pathname);
+            // Texto ESCURO sobre o gradiente. Era branco, e o gradiente termina
+            // em #efdcc5: dava 1,3:1, ilegível. Escuro fecha 5,8:1 na ponta mais
+            // escura (#728ea0) e 14:1 na mais clara.
+            const classe =
+              "menu-linha mt-auto flex items-center justify-between gap-4 rounded-[10px] px-6 py-4 text-primary font-display text-[13px] uppercase tracking-[0.1em]";
+            const estilo = { background: GRADIENTE_MARCA, animationDelay: "320ms" };
+            return emBreve ? (
+              <span className={classe} style={estilo}>
+                {t("Lançamento em breve")}
+              </span>
+            ) : (
+              <Link to="/orcamento" className={classe} style={estilo}>
+                {t("Orçamento")}
+                <ArrowUpRight size={18} />
+              </Link>
             );
-          }
-
-          return (
-            <Link
-              key={link.href}
-              to={link.href!}
-              onClick={(e) => {
-                if (link.href === "/" && location.pathname === "/") {
-                  e.preventDefault();
-                  rolarPara(0, true);
-                }
-              }}
-              className="font-display text-3xl font-light text-foreground/80 hover:text-foreground transition-colors py-3"
-            >
-              {link.label}
-            </Link>
-          );
-        })}
-
-        {(() => {
-          // /zhu saiu da lista: a linha tem catálogo e páginas de produto, então
-          // o CTA certo ali é orçamento, não "aguarde o lançamento".
-          const emBreve = ["/echo", "/geo"].includes(location.pathname);
-          const mobileClass = "mt-6 px-8 py-3 rounded text-white font-display text-sm uppercase tracking-[0.08em]";
-          const mobileStyle = { background: "linear-gradient(135deg, #728ea0 25%, #c0c9bf 56%, #d6aa98 74%, #efdcc5 90%)" };
-          return emBreve ? (
-            <span className={mobileClass} style={mobileStyle}>{t("Lançamento em breve")}</span>
-          ) : (
-            <Link to="/orcamento" className={mobileClass} style={mobileStyle}>{t("Orçamento")}</Link>
-          );
-        })()}
+          })()}
+        </div>
       </div>
     </>
   );

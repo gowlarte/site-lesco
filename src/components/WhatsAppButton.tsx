@@ -75,7 +75,7 @@ export function WhatsAppButton() {
         aria-hidden={!visivel}
         tabIndex={visivel ? undefined : -1}
         className={
-          "fixed bottom-[20px] right-[20px] z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-[transform,opacity] duration-300 hover:scale-110 " +
+          "botao-whatsapp fixed bottom-[20px] right-[20px] z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-[transform,opacity] duration-300 hover:scale-110 " +
           (visivel ? "opacity-100" : "pointer-events-none translate-y-4 opacity-0")
         }
         style={{ transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
