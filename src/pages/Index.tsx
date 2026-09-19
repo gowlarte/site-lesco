@@ -2,6 +2,7 @@ import { Link } from "@/components/AppLink";
 import { SEO } from "@/components/SEO";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { HeroSolucoes } from "@/components/home/HeroSolucoes";
+import { Manifesto360 } from "@/components/home/Manifesto360";
 import { ProjetosHorizontal } from "@/components/home/ProjetosHorizontal";
 import { MadeiraEcologicaSection } from "@/components/madeira-ecologica/MadeiraEcologicaSection";
 import { ScrollMarqueeGallery } from "@/components/ScrollMarqueeGallery";
@@ -41,29 +42,8 @@ const Index = () => {
       {/* ========== HERO DE SOLUÇÕES — 9 telas ancoradas, sem autoplay ========== */}
       <HeroSolucoes />
 
-      {/* ========== MANIFESTO ========== */}
-      <section className="section-spacing">
-        <div className="container mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 lg:gap-20 items-start">
-              <h2 className="font-display text-3xl md:text-4xl lg:text-[52px] font-normal leading-[1.4] text-dark">
-                {t("Pioneiros em Madeira Ecológica no Brasil, somos arquitetura feita para o amanhã.")}
-              </h2>
-              <div className="max-w-[320px]">
-                <p className="font-body text-[16px] font-light leading-[1.65] text-primary">
-                  {t("Acabamento premium para projetos de alto padrão, com garantia de até 10 anos. Cada superfície que criamos resiste ao tempo e agrada o olhar.")}
-                </p>
-                <Link
-                  to="/orcamento"
-                  className="inline-flex items-center mt-8 px-6 py-3 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary hover:text-foreground transition-colors duration-300"
-                >
-                  {t("Fale com um especialista")}
-                </Link>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+      {/* ========== MANIFESTO + 360 — o hall da Biotique dentro do copy ========== */}
+      <Manifesto360 />
 
       {/* ========== PROJETOS SELECIONADOS — palco fixo, navegação horizontal ========== */}
       <ProjetosHorizontal />

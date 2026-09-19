@@ -10,6 +10,7 @@
     "build": "npm run build:client && npm run build:server && tsx scripts/prerender.ts",
     "build:dev": "vite build --mode development",
     "3d": "node scripts/otimizar-3d.mjs",
+    "biotique": "node scripts/importar-biotique.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
