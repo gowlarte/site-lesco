@@ -8,7 +8,15 @@ import { GhlForm } from "@/components/GhlForm";
 import { projetos } from "@/data/projetos";
 import { site } from "@/config/site";
 
-import heroBiblioteca from "@/assets/hero-home-altwood.webp";
+/**
+ * O fundo do herói é o desenho técnico da página 68 do catálogo (detalhe de
+ * fixação, corte do perfil e paginação de ripas), não uma foto de obra: esta
+ * página entrega catálogo, ficha técnica e bloco 3D, e o desenho diz isso
+ * melhor do que mais uma fachada.
+ */
+import fundoBiblioteca from "@/assets/biblioteca-wireframes.webp";
+/** Só para o card de compartilhamento — um desenho preto vira um link feio. */
+import capaBiblioteca from "@/assets/hero-home-altwood.webp";
 
 import iconReciclado from "@/assets/madeira-ecologica/catalogo/reciclado.png";
 import iconPersonalizavel from "@/assets/madeira-ecologica/catalogo/personalizavel.png";
@@ -46,16 +54,26 @@ const Biblioteca = () => {
         title={t("Biblioteca — Lesco")}
         description={t("Acesse catálogos, fichas técnicas, blocos 3D e imagens HD da Lesco para incluir nossos revestimentos no seu projeto.")}
         path="/biblioteca"
-        image={heroBiblioteca}
+        image={capaBiblioteca}
       />
 
       {/* ========== HERO + FORMULÁRIO ========== */}
       <section className="relative rounded-[10px] overflow-hidden">
         <img
-          src={heroBiblioteca}
-          alt={t("Revestimentos em madeira ecológica Lesco")}
-          className="absolute inset-0 w-full h-full object-cover"
+          src={fundoBiblioteca}
+          /* Decoração: o <h1> logo abaixo já diz do que a página trata. */
+          alt=""
+          aria-hidden="true"
+          /* `object-right` por causa do celular: ali a moldura é estreita e
+             alta, o corte come as laterais, e é no lado direito que estão os
+             desenhos. Na largura de desktop o corte é vertical e a âncora
+             horizontal não muda nada. */
+          className="absolute inset-0 w-full h-full object-cover object-right"
         />
+        {/* Mesmo véu das outras páginas. Cheguei a baixar para 0,45 porque o
+            desenho é escuro e parecia não precisar, e isso derrubou o herói
+            para 3,01:1 — o critério não é o que ESTE fundo tem, é o pior caso
+            que o véu garante. O traço do desenho foi reforçado em vez disso. */}
         <div className="absolute inset-0 bg-[rgba(13,13,13,0.65)]" />
 
         <div className="relative z-10 w-full px-4 sm:px-8 md:px-12 lg:px-16 py-12 sm:py-16 lg:py-20 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
