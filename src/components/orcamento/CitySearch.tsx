@@ -108,7 +108,7 @@ const CitySearch = ({ value, state, onChange, error }: CitySearchProps) => {
 
   return (
     <div ref={containerRef} className="relative">
-      <label className="block font-display text-[11px] tracking-wider uppercase text-dark/80 mb-2">
+      <label className="block font-display text-[11px] tracking-wider uppercase text-primary/80 mb-2">
         Cidade *
       </label>
       <input
@@ -119,19 +119,19 @@ const CitySearch = ({ value, state, onChange, error }: CitySearchProps) => {
         onKeyDown={handleKeyDown}
         placeholder={state ? "Digite sua cidade" : "Selecione o estado primeiro"}
         disabled={!state}
-        className={`w-full bg-white/60 border ${error ? "border-red-400" : "border-dark/10"} rounded-[10px] px-4 py-3.5 font-body text-[15px] text-dark placeholder:text-dark/50 focus:outline-none focus:border-dark/30 transition-colors disabled:opacity-40`}
+        className={`w-full bg-white/60 border ${error ? "border-red-400" : "border-primary/10"} rounded-[10px] px-4 py-3.5 font-body text-[15px] text-dark placeholder:text-primary/65 focus:outline-none focus:border-primary/30 transition-colors disabled:opacity-40`}
       />
       {error && <p className="text-red-500 text-xs mt-1.5 font-body">{error}</p>}
 
       {isOpen && filtered.length > 0 && (
-        <div className="absolute z-50 top-full mt-1 w-full bg-white rounded-[10px] border border-dark/10 shadow-lg max-h-[200px] overflow-y-auto">
+        <div className="absolute z-50 top-full mt-1 w-full bg-white rounded-[10px] border border-primary/10 shadow-lg max-h-[200px] overflow-y-auto">
           {filtered.map((city, i) => (
             <button
               key={city}
               type="button"
               onClick={() => selectCity(city)}
-              className={`w-full text-left px-4 py-2.5 font-body text-[14px] text-dark hover:bg-dark/5 transition-colors ${
-                i === highlightIndex ? "bg-dark/5" : ""
+              className={`w-full text-left px-4 py-2.5 font-body text-[14px] text-dark hover:bg-primary/5 transition-colors ${
+                i === highlightIndex ? "bg-primary/5" : ""
               } ${i === 0 ? "rounded-t-[10px]" : ""} ${i === filtered.length - 1 ? "rounded-b-[10px]" : ""}`}
             >
               {city}

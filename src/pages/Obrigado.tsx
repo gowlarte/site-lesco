@@ -49,7 +49,7 @@ export default function Obrigado() {
             {t("Sua solicitação foi registrada com sucesso. Em breve nossa equipe entrará em contato com você.")}
           </p>
 
-          <p className="mt-4 font-body text-sm text-white/70">
+          <p className="mt-4 font-body text-sm text-white/85">
             {t("Qualquer dúvida, fale conosco a qualquer momento.")}
           </p>
         </div>

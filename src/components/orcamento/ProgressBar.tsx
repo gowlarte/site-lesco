@@ -11,14 +11,14 @@ const ProgressBar = ({ currentStep, totalSteps }: ProgressBarProps) => {
   return (
     <div className="mb-10">
       <div className="flex items-center justify-between mb-3">
-        <span className="font-display text-xs tracking-wider uppercase text-dark/80 text-muted-foreground">
+        <span className="font-display text-xs tracking-wider uppercase text-muted-foreground">
           Etapa {currentStep} de {totalSteps}
         </span>
-        <span className="font-display text-xs tracking-wider uppercase text-dark/80 font-medium text-muted-foreground">
+        <span className="font-display text-xs tracking-wider uppercase font-medium text-muted-foreground">
           {stepLabels[currentStep - 1]}
         </span>
       </div>
-      <div className="w-full h-[3px] bg-dark/10 rounded-full overflow-hidden">
+      <div className="w-full h-[3px] bg-primary/10 rounded-full overflow-hidden">
         <div
           className="h-full bg-dark rounded-full transition-all duration-500 ease-out"
           style={{ width: `${progress}%` }}

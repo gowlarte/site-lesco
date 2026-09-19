@@ -11,7 +11,7 @@ const composicaoWPC = [
 const composicaoPVC = [
   { label: t("35% Pó de madeira"), color: "#8B5E3C", text: "#FFFFFF" },
   { label: t("50% PVC"), color: "#C8B59A", text: "#3A2A1E" },
-  { label: t("10% Composto reciclado"), color: "#9BA08F", text: "#FFFFFF" },
+  { label: t("10% Composto reciclado"), color: "#9BA08F", text: "#3A2A1E" },
   { label: t("5% Aditivos"), color: "#D9D9D9", text: "#3A2A1E" },
 ];
 
@@ -50,7 +50,7 @@ const MadeiraWPC = () => {
       <main className="min-h-screen pt-[110px] pb-[10px] px-[10px]">
         {/* HERO / TÍTULO */}
         <section className="bg-[#DBDBDB] rounded-[10px] px-6 md:px-12 lg:px-20 pt-16 md:pt-20 pb-10">
-          <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-[#141414]/55 mb-4">
+          <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-[#141414]/65 mb-4">
             {t("Tecnologia")}
           </p>
           <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-[#141414] max-w-4xl">
@@ -79,7 +79,7 @@ const MadeiraWPC = () => {
                   <p className="font-body text-[14px] md:text-[15px] font-light leading-[1.65] text-[#141414]/80">
                     {t("O WPC, por ter madeira em sua composição, tende a apresentar um visual mais natural, semelhante à madeira, enquanto o PVC tem um acabamento mais liso e uniforme.")}
                   </p>
-                  <p className="mt-6 font-display text-[11px] uppercase tracking-[0.12em] text-[#141414]/60">
+                  <p className="mt-6 font-display text-[11px] uppercase tracking-[0.12em] text-[#141414]/65">
                     {t("Aplicado em")}
                   </p>
                   <p className="mt-2 font-display text-[14px] tracking-[0.08em] text-[#141414]">
@@ -95,7 +95,7 @@ const MadeiraWPC = () => {
                   <p className="font-body text-[14px] md:text-[15px] font-light leading-[1.65] text-[#141414]/80">
                     {t("O PVC (cloreto de polivinila) é um plástico puro, enquanto o WPC (Wood Plastic Composite) é um composto de fibras de madeira e plástico.")}
                   </p>
-                  <p className="mt-6 font-display text-[11px] uppercase tracking-[0.12em] text-[#141414]/60">
+                  <p className="mt-6 font-display text-[11px] uppercase tracking-[0.12em] text-[#141414]/65">
                     {t("Aplicado em")}
                   </p>
                   <p className="mt-2 font-display text-[14px] tracking-[0.08em] text-[#141414]">

@@ -15,7 +15,7 @@ export const CardProjeto = ({ imageSrc, legenda, ratio = "4:3" }: CardProjetoPro
         <img src={imageSrc} alt={legenda} className="w-full h-full object-cover" />
       ) : (
         <div className="w-full h-full bg-secondary flex items-center justify-center">
-          <ImageIcon className="w-8 h-8 text-primary/35" />
+          <ImageIcon className="w-8 h-8 text-primary/65" />
         </div>
       )}
       <div className="absolute inset-0 bg-[rgba(13,13,13,0.72)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">

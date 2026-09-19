@@ -73,7 +73,7 @@ const ComparisonTable = () => {
   return (
     <table className="w-full text-left border-collapse">
       <thead>
-        <tr className="border-y border-dark/20">
+        <tr className="border-y border-primary/20">
           <th className="py-3 pr-6 font-display font-bold text-[12px] text-dark w-[38%]">{t("Critério")}</th>
           <th className="py-3 font-display font-bold text-[12px] text-dark">
             {t("Leitura para obras de referência")}
@@ -82,7 +82,7 @@ const ComparisonTable = () => {
       </thead>
       <tbody>
         {rows.map(([criterio, leitura]) => (
-          <tr key={criterio} className="border-b border-dark/10">
+          <tr key={criterio} className="border-b border-primary/10">
             <td className="py-3.5 pr-6 align-top font-body text-[12.5px] text-dark">{criterio}</td>
             <td className="py-3.5 font-body text-[12.5px] text-dark">
               <span className="font-bold">WPC Lesco</span> {leitura}
@@ -95,7 +95,7 @@ const ComparisonTable = () => {
 };
 
 const CTABlock = () => (
-  <section className="rounded-[10px] bg-bone border border-dark/10 px-7 md:px-9 py-7 md:py-8">
+  <section className="rounded-[10px] bg-bone border border-primary/10 px-7 md:px-9 py-7 md:py-8">
     <H2>{t("Leve o padrão COP30 para o seu projeto")}</H2>
     <p className="mt-3 font-body text-[12.5px] leading-[1.6] text-dark">
       {t("Explore perfis, cores, métodos de fixação e diretrizes de instalação das linhas Shield, Brise, Panel, Line e Deck. Baixe o Catálogo Lesco e descubra como especificar luxo funcional em fachadas, forros e áreas externas.")}

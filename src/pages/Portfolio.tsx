@@ -14,7 +14,7 @@ const Portfolio = () => {
       />
       <main className="min-h-screen pt-[110px] pb-[10px] px-[10px] flex flex-col gap-[10px]">
         <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 md:py-28">
-          <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-6">
+          <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-primary/65 mb-6">
             {t("Portfólio")}
           </p>
           <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-dark max-w-4xl">
@@ -34,7 +34,7 @@ const Portfolio = () => {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                   />
                 </div>
-                <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/60 mt-3 ml-1 text-gray-600">
+                <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] mt-3 ml-1 text-gray-600">
                   {p.linha}
                 </p>
                 <h3 className="font-display text-lg font-normal text-dark ml-1 group-hover:opacity-70 transition-opacity">

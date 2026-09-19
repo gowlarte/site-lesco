@@ -116,9 +116,15 @@ export default function TermosServico() {
           width={1920}
           height={900}
         />
-        <div className="absolute inset-0 bg-lesco-black/45" />
+        {/* 45% deixava a foto clara demais: o rótulo de 11px media 2,37:1. 65%
+
+            aqui equivale ao 0,55 de preto puro já medido no palco da home, e leva
+
+            o texto branco a 4,98:1 mesmo contra um pixel de céu estourado. */}
+
+        <div className="absolute inset-0 bg-lesco-black/65" />
         <div className="relative z-10 px-6 md:px-12 lg:px-20 pb-8 lg:pb-12 max-w-4xl">
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-lesco-white/70 mb-3">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-lesco-white mb-3">
             {t("Atualizado em 9 de julho de 2026")}
           </p>
           <h1 className="font-display text-3xl md:text-4xl lg:text-[52px] font-normal leading-[1.1] text-lesco-white">
@@ -133,7 +139,7 @@ export default function TermosServico() {
           {/* TOC */}
           <aside className="hidden lg:block">
             <div className="sticky top-[90px]">
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-lesco-black/40 mb-4">
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-lesco-black/65 mb-4">
                 {t("Nesta página")}
               </p>
               <nav className="space-y-2">

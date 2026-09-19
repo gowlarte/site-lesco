@@ -16,7 +16,7 @@ const PortfolioProjeto = () => {
     return (
       <main className="min-h-screen pt-[110px] pb-[10px] px-[10px]">
         <section className="bg-light rounded-[10px] px-8 md:px-16 py-20">
-          <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-6">
+          <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-primary/65 mb-6">
             {t("Portfólio")}
           </p>
           <h1 className="font-display text-3xl md:text-5xl font-normal text-dark mb-6">
@@ -82,43 +82,43 @@ const PortfolioProjeto = () => {
         <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-16 md:py-20 grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2 space-y-10">
             <div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4 text-gray-950">
+              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] mb-4 text-gray-950">
                 {t("Sobre o projeto")}
               </p>
-              <p className="font-body text-base md:text-lg leading-[1.7] text-dark/80 text-slate-500">
+              <p className="font-body text-base md:text-lg leading-[1.7] text-slate-500">
                 {projeto.descricao}
               </p>
             </div>
             <div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4 text-gray-950">
+              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] mb-4 text-gray-950">
                 {t("Desafio")}
               </p>
-              <p className="font-body text-base leading-[1.7] text-dark/80 text-gray-500">{projeto.desafio}</p>
+              <p className="font-body text-base leading-[1.7] text-gray-500">{projeto.desafio}</p>
             </div>
             <div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4 text-gray-950">
+              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] mb-4 text-gray-950">
                 {t("Solução")}
               </p>
-              <p className="font-body text-base leading-[1.7] text-dark/80 text-gray-500">{projeto.solucao}</p>
+              <p className="font-body text-base leading-[1.7] text-gray-500">{projeto.solucao}</p>
             </div>
           </div>
 
           <aside className="space-y-8">
             <div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4 text-gray-950">
+              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] mb-4 text-gray-950">
                 {t("Ficha técnica")}
               </p>
               <dl className="space-y-3">
                 {ficha.map(([k, v]) => (
-                  <div key={k} className="flex justify-between border-b border-dark/10 pb-2">
-                    <dt className="font-body text-sm text-dark/60 text-gray-950">{k}</dt>
+                  <div key={k} className="flex justify-between border-b border-primary/10 pb-2">
+                    <dt className="font-body text-sm text-gray-950">{k}</dt>
                     <dd className="font-display text-sm text-dark text-right">{v}</dd>
                   </div>
                 ))}
               </dl>
             </div>
             <div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/50 mb-4 text-gray-950">
+              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] mb-4 text-gray-950">
                 {t("Produtos aplicados")}
               </p>
               <ul className="space-y-2">

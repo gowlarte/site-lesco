@@ -45,11 +45,11 @@ export const PaginaFamiliaZhu = ({ familia }: { familia: FamiliaZhu }) => {
           <Link to="/" className="text-muted-foreground hover:text-primary transition-colors">
             {t("Início")}
           </Link>
-          <ChevronRight className="w-3 h-3 text-primary/40" />
+          <ChevronRight className="w-3 h-3 text-primary/65" />
           <Link to="/zhu" className="text-muted-foreground hover:text-primary transition-colors">
             Zhú
           </Link>
-          <ChevronRight className="w-3 h-3 text-primary/40" />
+          <ChevronRight className="w-3 h-3 text-primary/65" />
           <span className="text-[#525252]">{familia.curto}</span>
         </nav>
       </div>

@@ -464,14 +464,14 @@ const LiveLesco = () => {
                 ))}
               </ul>
             </div>
-            <div className="bg-white/60 rounded-[10px] p-8 border-l-2 border-dark/30">
+            <div className="bg-white/60 rounded-[10px] p-8 border-l-2 border-primary/30">
               <p className="font-body text-[12px] uppercase tracking-[0.14em] text-dark mb-6">
                 {t("Para quem não é")}
               </p>
               <ul className="space-y-4">
                 {paraQuemNaoE.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="mt-0.5 shrink-0 flex h-5 w-5 items-center justify-center rounded-full bg-dark/15">
+                    <span className="mt-0.5 shrink-0 flex h-5 w-5 items-center justify-center rounded-full bg-primary/15">
                       <X size={13} className="text-dark" />
                     </span>
                     <span className="font-body text-[15px] text-dark leading-relaxed">{item}</span>
@@ -499,7 +499,7 @@ const LiveLesco = () => {
                 <Star key={i} size={16} className="fill-accent text-accent" />
               ))}
             </span>
-            <span className="font-body text-[13px] text-dark/60">{t("29 avaliações no Google")}</span>
+            <span className="font-body text-[13px] text-primary/65">{t("29 avaliações no Google")}</span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[10px]">
             {depoimentos.map((d) => (
@@ -510,13 +510,13 @@ const LiveLesco = () => {
                   ))}
                 </span>
                 <p className="font-body text-[14px] text-dark leading-relaxed flex-1">"{d.texto}"</p>
-                <div className="flex items-center gap-3 mt-6 pt-6 border-t border-dark/10">
+                <div className="flex items-center gap-3 mt-6 pt-6 border-t border-primary/10">
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-dark text-white font-display text-[13px]">
                     {initials(d.nome)}
                   </span>
                   <div>
                     <p className="font-display text-[15px] text-dark leading-tight">{d.nome}</p>
-                    <p className="font-body text-[12px] text-dark/50">{d.contexto}</p>
+                    <p className="font-body text-[12px] text-primary/65">{d.contexto}</p>
                   </div>
                 </div>
               </div>
@@ -545,7 +545,7 @@ const LiveLesco = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/60 mt-3 ml-1">
+                <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-primary/65 mt-3 ml-1">
                   {p.linha}
                 </p>
                 <h3 className="font-display text-lg font-normal text-dark ml-1">
@@ -592,14 +592,14 @@ const LiveLesco = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
           <Link
             to="/politica-de-privacidade"
-            className="font-body text-[12px] text-dark/60 hover:text-dark transition-colors"
+            className="font-body text-[12px] text-primary/65 hover:text-dark transition-colors"
           >
             {t("Política de Privacidade")}
           </Link>
-          <span className="hidden sm:inline text-dark/20">·</span>
+          <span className="hidden sm:inline text-primary/65">·</span>
           <Link
             to="/termos-de-servico"
-            className="font-body text-[12px] text-dark/60 hover:text-dark transition-colors"
+            className="font-body text-[12px] text-primary/65 hover:text-dark transition-colors"
           >
             {t("Termos de Serviço")}
           </Link>

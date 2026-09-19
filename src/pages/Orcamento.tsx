@@ -99,7 +99,7 @@ const Orcamento = () => {
       {/* ========== BENEFÍCIOS ========== */}
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4 text-center">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4 text-center">
             {t("Por que Lesco")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 text-center max-w-2xl mx-auto">
@@ -114,7 +114,7 @@ const Orcamento = () => {
                   aria-hidden
                 />
                 <h3 className="font-display text-xl text-dark mb-3 font-normal">{b.label}</h3>
-                <p className="font-body text-[14px] text-dark/70 leading-relaxed text-slate-950">{b.description}</p>
+                <p className="font-body text-[14px] leading-relaxed text-slate-950">{b.description}</p>
               </div>
             ))}
           </div>
@@ -124,7 +124,7 @@ const Orcamento = () => {
       {/* ========== PROJETOS ========== */}
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4">
             {t("Portfólio")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 max-w-2xl">
@@ -146,7 +146,7 @@ const Orcamento = () => {
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
                 </div>
-                <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-dark/60 mt-3 ml-1">
+                <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-primary/65 mt-3 ml-1">
                   {p.linha}
                 </p>
                 <h3 className="font-display text-lg font-normal text-dark ml-1 group-hover:opacity-70 transition-opacity">

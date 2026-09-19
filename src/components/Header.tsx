@@ -197,7 +197,7 @@ export function Header({ variant = "default" }: HeaderProps) {
                         <div
                           className={cn(
                             "min-w-[280px] rounded-[10px] py-2 shadow-2xl",
-                            isLight ? "bg-[#e5e1dc] border border-dark/10" : "bg-[rgba(17,17,16,0.96)] backdrop-blur-xl"
+                            isLight ? "bg-[#e5e1dc] border border-primary/10" : "bg-[rgba(17,17,16,0.96)] backdrop-blur-xl"
                           )}
                         >
                           {link.children.map((child) => (

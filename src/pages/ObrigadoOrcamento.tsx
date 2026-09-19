@@ -50,7 +50,7 @@ export default function ObrigadoOrcamento() {
             {t("Agradecemos seu interesse! Em breve entraremos em contato para conversarmos sobre o seu orçamento.")}
           </p>
 
-          <p className="mt-4 font-body text-sm text-white/70">
+          <p className="mt-4 font-body text-sm text-white/85">
             {t("Qualquer dúvida, entre em contato conosco.")}
           </p>
         </div>

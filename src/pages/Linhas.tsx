@@ -102,7 +102,7 @@ const Linhas = () => {
           ))}
         </div>
 
-        <ul className="relative z-10 divide-y divide-dark/10">
+        <ul className="relative z-10 divide-y divide-primary/10">
           {linhas.map((linha, i) => (
             <li key={linha.nome}>
               <Link

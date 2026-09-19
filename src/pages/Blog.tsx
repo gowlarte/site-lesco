@@ -107,7 +107,7 @@ const Blog = () => {
       />
       {/* Header editorial */}
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-16 md:py-24 mb-[10px]">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/60 mb-6">
+        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-6">
           {t("Blog Lesco")}
         </p>
         <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-dark max-w-4xl">
@@ -129,17 +129,17 @@ const Blog = () => {
             />
           </div>
           <div className="flex flex-col justify-center p-8 md:p-12 lg:p-16">
-            <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-dark/60 mb-6">
+            <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-primary/65 mb-6">
               <span>{destaque.categoria}</span>
-              <span className="w-1 h-1 rounded-full bg-dark/40" />
+              <span className="w-1 h-1 rounded-full bg-primary/40" />
               <span>{destaque.data}</span>
-              <span className="w-1 h-1 rounded-full bg-dark/40" />
+              <span className="w-1 h-1 rounded-full bg-primary/40" />
               <span>{destaque.leitura}</span>
             </div>
             <h2 className="font-display font-extralight text-[28px] md:text-[40px] lg:text-[52px] leading-[1.05] tracking-[-0.015em] text-dark mb-6">
               {destaque.titulo}
             </h2>
-            <p className="font-body text-[15px] md:text-[17px] font-light leading-relaxed text-dark/70 max-w-[560px] mb-8">
+            <p className="font-body text-[15px] md:text-[17px] font-light leading-relaxed text-primary/70 max-w-[560px] mb-8">
               {destaque.resumo}
             </p>
             <span className="inline-flex items-center gap-2 font-display text-[12px] uppercase tracking-[0.1em] text-dark group-hover:gap-3 transition-all duration-300">
@@ -166,17 +166,17 @@ const Blog = () => {
                   loading="lazy"
                 />
               </div>
-              <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-dark/60 mb-3">
+              <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-primary/65 mb-3">
                 <span>{artigo.categoria}</span>
-                <span className="w-1 h-1 rounded-full bg-dark/40" />
+                <span className="w-1 h-1 rounded-full bg-primary/40" />
                 <span>{artigo.data}</span>
-                <span className="w-1 h-1 rounded-full bg-dark/40" />
+                <span className="w-1 h-1 rounded-full bg-primary/40" />
                 <span>{artigo.leitura}</span>
               </div>
               <h3 className="font-display font-extralight text-[22px] md:text-[24px] leading-[1.15] tracking-[-0.01em] text-dark mb-3 group-hover:opacity-70 transition-opacity duration-300">
                 {artigo.titulo}
               </h3>
-              <p className="font-body text-[14px] font-light leading-relaxed text-dark/65">
+              <p className="font-body text-[14px] font-light leading-relaxed text-primary/65">
                 {artigo.resumo}
               </p>
             </Link>

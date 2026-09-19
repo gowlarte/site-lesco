@@ -68,7 +68,7 @@ const Zhu = () => {
               {atributos.map((a) => (
                 <span
                   key={a}
-                  className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-white/60"
+                  className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-white/75"
                 >
                   {a}
                 </span>
@@ -80,7 +80,7 @@ const Zhu = () => {
 
       {/* PRODUTOS */}
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4">
+        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4">
           {t("Produtos")}
         </p>
         <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 max-w-2xl">
@@ -102,11 +102,11 @@ const Zhu = () => {
                 />
               </div>
               <h3 className="font-display text-xl text-dark mb-2 font-normal">{f.nome}</h3>
-              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-dark/40 mb-3">
+              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-primary/65 mb-3">
                 {f.modelos.length} {f.modelos.length === 1 ? t("modelo") : t("modelos")}
               </p>
-              <p className="font-body text-[14px] text-dark/70 leading-relaxed flex-1">{f.intro}</p>
-              <span className="inline-flex items-center gap-2 mt-6 font-display text-[12px] uppercase tracking-[0.08em] text-dark/60 group-hover:text-dark transition-colors">
+              <p className="font-body text-[14px] text-primary/70 leading-relaxed flex-1">{f.intro}</p>
+              <span className="inline-flex items-center gap-2 mt-6 font-display text-[12px] uppercase tracking-[0.08em] text-primary/65 group-hover:text-dark transition-colors">
                 {t("Ver modelos")}
                 <ArrowRight className="w-3.5 h-3.5" />
               </span>
@@ -119,7 +119,7 @@ const Zhu = () => {
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-12 lg:gap-20">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4">
               {t("A linha")}
             </p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark">
@@ -127,10 +127,10 @@ const Zhu = () => {
             </h2>
           </div>
           <div className="space-y-6">
-            <p className="font-body text-[16px] md:text-[17px] text-dark/75 leading-[1.7]">
+            <p className="font-body text-[16px] md:text-[17px] text-primary/75 leading-[1.7]">
               {t("O bambu é uma das matérias-primas mais versáteis da natureza. No mercado de arquitetura, cresce a demanda por materiais de baixo impacto, alta resistência e ampla possibilidade de aplicação.")}
             </p>
-            <p className="font-body text-[16px] md:text-[17px] text-dark/75 leading-[1.7]">
+            <p className="font-body text-[16px] md:text-[17px] text-primary/75 leading-[1.7]">
               {t("A partir desse contexto, a Lesco desenvolveu a linha Zhú: soluções em bambu para projetos que exigem desempenho técnico, naturalidade e expressão estética.")}
             </p>
           </div>
@@ -139,7 +139,7 @@ const Zhu = () => {
 
       {/* ONDE UTILIZAR */}
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4">
+        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4">
           {t("Onde utilizar")}
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-[10px] mb-16">
@@ -152,18 +152,18 @@ const Zhu = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-12 lg:gap-20">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4">
               {t("Diferenciais")}
             </p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark">
               {t("O que torna")} Zhú {t("especial.")}
             </h2>
           </div>
-          <ul className="divide-y divide-dark/10">
+          <ul className="divide-y divide-primary/10">
             {diferenciais.map((d, i) => (
               <li key={d} className="py-5 flex gap-4 items-start">
-                <span className="font-mono text-[12px] text-dark/40 pt-1">0{i + 1}</span>
-                <span className="font-body text-[16px] md:text-[17px] text-dark/80 leading-relaxed">{d}</span>
+                <span className="font-mono text-[12px] text-primary/65 pt-1">0{i + 1}</span>
+                <span className="font-body text-[16px] md:text-[17px] text-primary/80 leading-relaxed">{d}</span>
               </li>
             ))}
           </ul>
@@ -174,7 +174,7 @@ const Zhu = () => {
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28">
         <button
           onClick={() => setSpecsOpen(!specsOpen)}
-          className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 hover:text-dark transition-colors cursor-pointer"
+          className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 hover:text-dark transition-colors cursor-pointer"
         >
           {t("Dados técnicos")} {specsOpen ? "−" : "+"}
         </button>
@@ -183,11 +183,11 @@ const Zhu = () => {
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 animate-fade-in">
             {dadosTecnicosZhu.map((d) => (
               <div key={d.rotulo}>
-                <h3 className="font-mono text-[10px] uppercase tracking-[0.14em] text-dark/40 mb-2">
+                <h3 className="font-mono text-[10px] uppercase tracking-[0.14em] text-primary/65 mb-2">
                   {d.rotulo}
                 </h3>
-                <div className="h-px bg-dark/10 mb-3" />
-                <p className="font-body text-[14px] text-dark/80 leading-relaxed">{d.valor}</p>
+                <div className="h-px bg-primary/10 mb-3" />
+                <p className="font-body text-[14px] text-primary/80 leading-relaxed">{d.valor}</p>
               </div>
             ))}
           </div>

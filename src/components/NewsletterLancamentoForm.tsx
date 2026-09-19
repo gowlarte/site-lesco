@@ -164,7 +164,7 @@ export const NewsletterLancamentoForm = ({
   return (
     <div
       className={`w-full min-w-0 overflow-visible rounded-[10px] transition-all duration-500 ${
-        isDark ? "bg-white/95 border border-white/15" : "bg-white border border-dark/10"
+        isDark ? "bg-white/95 border border-white/15" : "bg-white border border-primary/10"
       }`}
       style={{ transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
     >

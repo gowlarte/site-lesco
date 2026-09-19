@@ -80,7 +80,7 @@ export const PreviewProduto = ({ id, tag, titulo, descricao, swatches, href, ima
             ))
           ) : (
             <div className="w-full h-full bg-secondary flex items-center justify-center">
-              <ImageIcon className="w-10 h-10 text-primary/35" />
+              <ImageIcon className="w-10 h-10 text-primary/65" />
             </div>
           )}
         </div>

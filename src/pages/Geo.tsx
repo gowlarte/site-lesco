@@ -120,7 +120,7 @@ const Geo = () => {
               <h2 className="font-display text-2xl sm:text-3xl text-white font-normal mb-2">
                 {t("Baixe o catálogo Geo")}
               </h2>
-              <p className="font-body text-[14px] sm:text-[15px] text-white/70 leading-relaxed">
+              <p className="font-body text-[14px] sm:text-[15px] text-white/80 leading-relaxed">
                 {t("Preencha o formulário para receber em primeira mão o catálogo completo da linha Geo.")}
               </p>
             </div>
@@ -154,7 +154,7 @@ const Geo = () => {
               <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-6">
                 {t("Durabilidade mineral, plasticidade dos materiais modernos.")}
               </h2>
-              <p className="font-body text-[15px] md:text-[16px] text-dark/75 leading-[1.7] text-slate-950">
+              <p className="font-body text-[15px] md:text-[16px] leading-[1.7] text-slate-950">
                 {t("A Geo é produzida a partir de solo modificado de base mineral, triturado até virar um pó microscópico e unido a polímeros ecológicos. O resultado une a estabilidade estrutural dos materiais inorgânicos à flexibilidade dos orgânicos — preservando as propriedades naturais da pedra: respirabilidade, resistência à umidade e ao fogo, e sustentabilidade.")}
               </p>
             </ScrollReveal>
@@ -165,7 +165,7 @@ const Geo = () => {
       {/* ========== COMPARATIVO TÉCNICO ========== */}
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4 text-center">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4 text-center">
             {t("Comparativo técnico")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-4 text-center max-w-3xl mx-auto">
@@ -232,7 +232,7 @@ const Geo = () => {
             </p>
             <table className="w-full min-w-[700px] border-collapse">
               <thead>
-                <tr className="border-b border-dark/10">
+                <tr className="border-b border-primary/10">
                   <th className="text-left font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark py-3 px-2 md:px-4">
                     {t("Critério")}
                   </th>
@@ -248,7 +248,7 @@ const Geo = () => {
                   <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark py-3 px-2 md:px-4">
                     ACM
                   </th>
-                  <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark py-3 px-2 md:px-4 bg-dark/5">
+                  <th className="text-center font-display text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-dark py-3 px-2 md:px-4 bg-primary/5">
                     {t("Pedra Flexível")}
                   </th>
                 </tr>
@@ -269,7 +269,7 @@ const Geo = () => {
                     {row.vals.map((v, j) => (
                       <td
                         key={j}
-                        className={`py-3 px-2 md:px-4 text-center text-dark ${j === 4 ? 'bg-dark/5 font-medium' : ''}`}
+                        className={`py-3 px-2 md:px-4 text-center text-dark ${j === 4 ? 'bg-primary/5 font-medium' : ''}`}
                       >
                         {v}
                       </td>
@@ -313,7 +313,7 @@ const Geo = () => {
                 t('Produtos sob medida, alinhados aos costumes e estilos locais.'),
               ].map((item, i) => (
                 <li key={i} className="flex gap-3 items-start">
-                  <span className="text-white/40 text-[14px] leading-relaxed shrink-0">★</span>
+                  <span className="text-white/50 text-[14px] leading-relaxed shrink-0">★</span>
                   <span className="font-body text-[13px] md:text-[14px] text-white/70 leading-relaxed">{item}</span>
                 </li>
               ))}
@@ -325,7 +325,7 @@ const Geo = () => {
       {/* ========== APLICAÇÕES ========== */}
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4 text-center">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4 text-center">
             {t("Infinitas aplicações")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 text-center max-w-3xl mx-auto">
@@ -344,7 +344,7 @@ const Geo = () => {
                 </div>
                 <div className="p-7">
                   <h3 className="font-display text-xl text-dark mb-3 font-normal">{a.titulo}</h3>
-                  <p className="font-body text-[14px] text-dark/70 leading-relaxed text-slate-950">{a.descricao}</p>
+                  <p className="font-body text-[14px] leading-relaxed text-slate-950">{a.descricao}</p>
                 </div>
               </div>
             ))}
@@ -355,13 +355,13 @@ const Geo = () => {
       {/* ========== TEXTURAS (amostra) ========== */}
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4 text-center">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4 text-center">
             {t("Texturas")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-3 text-center max-w-3xl mx-auto">
             {t("Algumas das texturas da linha.")}
           </h2>
-          <p className="font-body text-[14px] text-dark/60 leading-relaxed mb-12 text-center max-w-xl mx-auto">
+          <p className="font-body text-[14px] text-primary/65 leading-relaxed mb-12 text-center max-w-xl mx-auto">
             {t("Esta é apenas uma amostra. O catálogo completo reúne todas as coleções, cores e formatos disponíveis.")}
           </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-[10px]">
@@ -394,7 +394,7 @@ const Geo = () => {
           <ul className="divide-y divide-white/10">
             {diferenciais.map((d, i) => (
               <li key={i} className="py-5 flex gap-4 items-start">
-                <span className="font-mono text-[12px] text-white/40 pt-1">0{i + 1}</span>
+                <span className="font-mono text-[12px] text-white/50 pt-1">0{i + 1}</span>
                 <span className="font-body text-[16px] md:text-[17px] text-white/85 leading-relaxed">{d}</span>
               </li>
             ))}

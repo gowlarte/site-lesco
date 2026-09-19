@@ -18,7 +18,7 @@ const NavButtons = ({ currentStep, totalSteps, onBack, onNext, onSubmit, isSubmi
         <button
           type="button"
           onClick={onBack}
-          className="flex items-center gap-2 font-display text-[13px] tracking-wider uppercase text-dark/60 hover:text-dark transition-colors"
+          className="flex items-center gap-2 font-display text-[13px] tracking-wider uppercase text-primary/65 hover:text-dark transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           Voltar

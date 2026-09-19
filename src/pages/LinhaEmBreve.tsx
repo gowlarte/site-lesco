@@ -18,7 +18,7 @@ const LinhaEmBreve = () => {
         <section className="bg-light rounded-[10px] min-h-[calc(100vh-120px)] flex items-center justify-center px-6 py-20">
           <div className="text-center">
             <h1 className="font-display text-3xl text-dark mb-4">{t("Linha não encontrada")}</h1>
-            <Link to="/linhas" className="font-display text-[12px] uppercase tracking-[0.08em] text-dark/60 hover:text-dark">
+            <Link to="/linhas" className="font-display text-[12px] uppercase tracking-[0.08em] text-primary/65 hover:text-dark">
               {t("Voltar para linhas")}
             </Link>
           </div>
@@ -69,7 +69,7 @@ const LinhaEmBreve = () => {
               <h2 className="font-display text-white text-2xl md:text-3xl font-light leading-tight mb-3">
                 {t("Seja avisado no lançamento")}
               </h2>
-              <p className="font-body text-[14px] text-white/70 leading-relaxed mb-6">
+              <p className="font-body text-[14px] text-white/80 leading-relaxed mb-6">
                 {t("Cadastre seu e-mail para receber em primeira mão a chegada da linha")} {linha.nome} {t("ao portfólio Lesco.")}
               </p>
               <NewsletterLancamentoForm
@@ -90,7 +90,7 @@ const LinhaEmBreve = () => {
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-12 lg:gap-20">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4">
               {t("A linha")}
             </p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark">
@@ -98,7 +98,7 @@ const LinhaEmBreve = () => {
             </h2>
           </div>
           <div>
-            <p className="font-body text-[16px] md:text-[17px] text-dark/75 leading-[1.7] text-gray-950">
+            <p className="font-body text-[16px] md:text-[17px] leading-[1.7] text-gray-950">
               {t(linha.sobreTexto)}
             </p>
           </div>
@@ -107,7 +107,7 @@ const LinhaEmBreve = () => {
 
       {/* APLICAÇÕES */}
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4">
+        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4">
           {t("Aplicações")}
         </p>
         <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 max-w-2xl">
@@ -117,7 +117,7 @@ const LinhaEmBreve = () => {
           {linha.aplicacoes.map((a) => (
             <div key={a.titulo} id={a.id} className="bg-white/50 rounded-[10px] p-8 scroll-mt-32">
               <h3 className="font-display text-xl text-dark mb-3 font-normal">{t(a.titulo)}</h3>
-              <p className="font-body text-[14px] text-dark/70 leading-relaxed text-slate-950">{t(a.descricao)}</p>
+              <p className="font-body text-[14px] leading-relaxed text-slate-950">{t(a.descricao)}</p>
             </div>
           ))}
         </div>
@@ -127,18 +127,18 @@ const LinhaEmBreve = () => {
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-12 lg:gap-20">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4">
               {t("Diferenciais")}
             </p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark">
               {t("O que torna")} {linha.nome} {t("especial.")}
             </h2>
           </div>
-          <ul className="divide-y divide-dark/10">
+          <ul className="divide-y divide-primary/10">
             {linha.diferenciais.map((d, i) => (
               <li key={i} className="py-5 flex gap-4 items-start text-gray-950">
-                <span className="font-mono text-[12px] text-dark/40 pt-1 text-gray-950">0{i + 1}</span>
-                <span className="font-body text-[16px] md:text-[17px] text-dark/80 leading-relaxed text-gray-950">{t(d)}</span>
+                <span className="font-mono text-[12px] pt-1 text-gray-950">0{i + 1}</span>
+                <span className="font-body text-[16px] md:text-[17px] leading-relaxed text-gray-950">{t(d)}</span>
               </li>
             ))}
           </ul>

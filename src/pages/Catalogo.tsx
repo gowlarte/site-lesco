@@ -80,7 +80,7 @@ const Catalogo = () => {
       {/* ========== DIFERENCIAIS ========== */}
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark/50 mb-4 text-center">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4 text-center">
             {t("Por que Lesco")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 text-center max-w-3xl mx-auto">
@@ -91,7 +91,7 @@ const Catalogo = () => {
               <div key={d.label} className="bg-white/50 rounded-[10px] p-8">
                 <img src={d.svg} alt="" aria-hidden className="h-10 w-10 mb-5 object-contain" />
                 <h3 className="font-display text-xl text-dark mb-3 font-normal">{d.label}</h3>
-                <p className="font-body text-[14px] text-dark/70 leading-relaxed text-slate-950">{d.description}</p>
+                <p className="font-body text-[14px] leading-relaxed text-slate-950">{d.description}</p>
               </div>
             ))}
           </div>

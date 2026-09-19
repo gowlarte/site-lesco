@@ -77,7 +77,7 @@ export default function ObrigadoCatalogoGeo() {
             {t("Sua solicitação foi registrada com sucesso.")}
           </p>
 
-          <p className="mt-4 font-body text-sm text-white/70">
+          <p className="mt-4 font-body text-sm text-white/85">
             {t("Enquanto isso, aproveite para participar da nossa próxima live workshop com a nossa arquiteta, e elevar ainda mais seus projetos:")}
           </p>
         </div>

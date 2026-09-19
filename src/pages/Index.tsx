@@ -50,7 +50,7 @@ const Index = () => {
                 {t("Pioneiros em Madeira Ecológica no Brasil, somos arquitetura feita para o amanhã.")}
               </h2>
               <div className="max-w-[320px]">
-                <p className="font-body text-[16px] font-light leading-[1.65] text-dark/70 text-primary">
+                <p className="font-body text-[16px] font-light leading-[1.65] text-primary">
                   {t("Acabamento premium para projetos de alto padrão, com garantia de até 10 anos. Cada superfície que criamos resiste ao tempo e agrada o olhar.")}
                 </p>
                 <Link
