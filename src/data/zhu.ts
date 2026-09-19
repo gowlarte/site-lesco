@@ -55,6 +55,13 @@ export interface ModeloZhu {
   uso: string;
   aplicacao: string;
   imagem: string;
+  /**
+   * Nome do .glb em public/3d/zhu, sem extensão. Só os modelos que têm um
+   * arquivo publicado por scripts/otimizar-3d.mjs. O visor 3D da página só
+   * aparece quando TODOS os modelos da família têm o seu: uma seção 3D com
+   * parte da família sugere que o resto não existe.
+   */
+  modelo3d?: string;
   variantes: VarianteZhu[];
 }
 
@@ -95,6 +102,7 @@ const paineisForros: ModeloZhu[] = [
     uso: USO_AMBOS,
     aplicacao: APLIC_PAINEL,
     imagem: infintyWave,
+    modelo3d: "infinity-wave",
     variantes: [
       { codigo: "WP-18VC18-5", acabamento: VERNIZ, uso: USO_INTERNO },
       { codigo: "WEP-18VC18-5", acabamento: OLEO, uso: USO_AMBOS },
@@ -107,6 +115,7 @@ const paineisForros: ModeloZhu[] = [
     uso: USO_AMBOS,
     aplicacao: APLIC_PAINEL,
     imagem: slotWave,
+    modelo3d: "slot-wave",
     variantes: [
       { codigo: "WP-18VC35-12", acabamento: VERNIZ, uso: USO_INTERNO },
       { codigo: "WEP-18VC35-12", acabamento: OLEO, uso: USO_AMBOS },
@@ -119,6 +128,7 @@ const paineisForros: ModeloZhu[] = [
     uso: USO_AMBOS,
     aplicacao: APLIC_PAINEL,
     imagem: obliqueWave,
+    modelo3d: "oblique-wave",
     variantes: [
       { codigo: "WP-15VC5-TG", acabamento: VERNIZ, uso: USO_INTERNO },
       { codigo: "WEP-15VC5-TG", acabamento: OLEO, uso: USO_AMBOS },
@@ -131,6 +141,7 @@ const paineisForros: ModeloZhu[] = [
     uso: USO_AMBOS,
     aplicacao: APLIC_PAINEL,
     imagem: squareWave,
+    modelo3d: "square-wave",
     variantes: [
       { codigo: "WP-15VC7-7-TG", acabamento: VERNIZ, uso: USO_INTERNO },
       { codigo: "WEP-15VC7-7-TG", acabamento: OLEO, uso: USO_AMBOS },
@@ -143,6 +154,7 @@ const paineisForros: ModeloZhu[] = [
     uso: USO_AMBOS,
     aplicacao: APLIC_PAINEL,
     imagem: sawWave,
+    modelo3d: "saw-wave",
     variantes: [
       { codigo: "WP-15VCV28-TG", acabamento: VERNIZ, uso: USO_INTERNO },
       { codigo: "WEP-15VCV28-TG", acabamento: OLEO, uso: USO_AMBOS },
@@ -155,6 +167,7 @@ const paineisForros: ModeloZhu[] = [
     uso: USO_AMBOS,
     aplicacao: APLIC_PAINEL,
     imagem: grandWave,
+    modelo3d: "grand-wave",
     variantes: [
       { codigo: "WP-15VCR18G-TG", acabamento: VERNIZ, uso: USO_INTERNO },
       { codigo: "WEP-15VCR18G-TG", acabamento: OLEO, uso: USO_AMBOS },
@@ -167,6 +180,7 @@ const paineisForros: ModeloZhu[] = [
     uso: USO_AMBOS,
     aplicacao: APLIC_PAINEL,
     imagem: narrowWave,
+    modelo3d: "narrow-wave",
     variantes: [
       { codigo: "WP-15VCS8-TG", acabamento: VERNIZ, uso: USO_INTERNO },
       { codigo: "WEP-15VCS8-TG", acabamento: OLEO, uso: USO_AMBOS },
@@ -179,6 +193,7 @@ const paineisForros: ModeloZhu[] = [
     uso: USO_AMBOS,
     aplicacao: APLIC_PAINEL,
     imagem: cloudWave,
+    modelo3d: "cloud-wave",
     variantes: [
       { codigo: "WP-15VCR18T-TG", acabamento: VERNIZ, uso: USO_INTERNO },
       { codigo: "WEP-15VCR18T-TG", acabamento: OLEO, uso: USO_AMBOS },
@@ -191,6 +206,7 @@ const paineisForros: ModeloZhu[] = [
     uso: USO_AMBOS,
     aplicacao: APLIC_PAINEL,
     imagem: squareWaveXl,
+    modelo3d: "square-wave-xl",
     variantes: [
       { codigo: "WP-15VC20-4-TG", acabamento: VERNIZ, uso: USO_INTERNO },
       { codigo: "WEP-15VC20-4-TG", acabamento: OLEO, uso: USO_AMBOS },
@@ -203,6 +219,7 @@ const paineisForros: ModeloZhu[] = [
     uso: USO_AMBOS,
     aplicacao: APLIC_PAINEL,
     imagem: squareWaveXxl,
+    modelo3d: "square-wave-xxl",
     variantes: [
       { codigo: "WP-15VC28-2-TG", acabamento: VERNIZ, uso: USO_INTERNO },
       { codigo: "WEP-15VC28-2-TG", acabamento: OLEO, uso: USO_AMBOS },

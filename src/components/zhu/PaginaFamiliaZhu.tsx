@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { t } from "@/i18n/t";
 import { SEO } from "@/components/SEO";
 import { Link } from "@/components/AppLink";
 import { ChevronRight } from "lucide-react";
 import { CardModelo } from "@/components/altwood/CardModelo";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
+import { VisorPerfil3D } from "@/components/zhu/VisorPerfil3D";
 import { dadosTecnicosZhu, type FamiliaZhu } from "@/data/zhu";
 
 /**
@@ -19,6 +20,21 @@ import { dadosTecnicosZhu, type FamiliaZhu } from "@/data/zhu";
  */
 export const PaginaFamiliaZhu = ({ familia }: { familia: FamiliaZhu }) => {
   const [specsOpen, setSpecsOpen] = useState(false);
+
+  // Tudo ou nada: com meia família modelada, o visor sugeriria que os modelos
+  // de fora não existem. Hoje só a de painéis e forros tem os dez.
+  const modelos3d = useMemo(
+    () =>
+      familia.modelos.every((m) => m.modelo3d)
+        ? familia.modelos.map((m) => ({
+            nome: m.nome,
+            arquivo: m.modelo3d as string,
+            medida: m.medida,
+            imagem: m.imagem,
+          }))
+        : [],
+    [familia],
+  );
 
   return (
     <div className="min-h-screen bg-[#e5e1dc]">
@@ -78,6 +94,11 @@ export const PaginaFamiliaZhu = ({ familia }: { familia: FamiliaZhu }) => {
             ))}
           </div>
         </div>
+
+        {/* Perfil em 3D — vem depois da grade porque é aprofundamento: o
+            visitante primeiro vê quais modelos existem, depois examina o
+            corte de um deles. */}
+        {modelos3d.length > 0 && <VisorPerfil3D modelos={modelos3d} />}
 
         {/* Especificação — códigos e acabamentos do catálogo */}
         <div className="mb-12">

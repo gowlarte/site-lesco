@@ -33,3 +33,10 @@ dist-ssr
 # Fotos originais dos heros (fonte dos .webp). ~47MB, nenhuma referenciada no
 # código — ficam na máquina, não no histórico.
 src/assets/hero-2/
+
+# Modelos 3D como saem do editor (fonte dos .glb de public/3d/zhu). 38MB, dos
+# quais 32MB são a MESMA textura de bambu repetida 13 vezes — ver o cabeçalho
+# de scripts/otimizar-3d.mjs. Ficam na máquina; o que vai para o repositório é
+# a saída do script, 830KB. Para acrescentar um modelo: solte o .glb aqui,
+# ponha o nome em PUBLICAR e rode `npm run 3d`.
+src/assets/zhu-3d/
