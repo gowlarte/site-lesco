@@ -37,10 +37,10 @@ export const CardModelo = ({
     <div className="flex items-baseline justify-between gap-3 pb-2">
       <span className="text-sm md:text-[15px] font-semibold text-primary tracking-tight">{medida}</span>
       {(peso ?? nota) ? (
-        <span className="text-[11px] md:text-xs text-[#7F7F7F] whitespace-nowrap">{peso ?? nota}</span>
+        <span className="text-[11px] md:text-xs text-muted-foreground whitespace-nowrap">{peso ?? nota}</span>
       ) : null}
     </div>
-    <div className="h-px bg-[#1E1E1E]/30" />
+    <div className="h-px bg-primary/15" />
 
     {/* Imagem sem caixa */}
     <div className="h-44 md:h-52 flex items-center justify-center py-6">
@@ -51,7 +51,7 @@ export const CardModelo = ({
           className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
         />
       ) : (
-        <span className="text-[#9E9890] text-xs">{t("Imagem do produto")}</span>
+        <span className="text-muted-foreground text-xs">{t("Imagem do produto")}</span>
       )}
     </div>
 
@@ -59,7 +59,7 @@ export const CardModelo = ({
     <Link
       to="/orcamento"
       onClick={onOrcamento}
-      className="self-start text-xs text-[#525252] hover:text-primary underline underline-offset-4 decoration-[#9E9890] transition-colors cursor-pointer"
+      className="self-start text-xs text-[#525252] hover:text-primary underline underline-offset-4 decoration-muted-foreground/50 transition-colors cursor-pointer"
     >
       {t("Solicitar orçamento")}
     </Link>

@@ -88,9 +88,9 @@ const MantoDeck = () => {
       {/* Breadcrumb */}
       <div className="px-6 md:px-12 lg:px-20 py-4">
         <nav className="flex items-center gap-1.5 text-xs">
-          <Link to="/" className="text-[#7F7F7F] hover:text-white transition-colors">{t("Início")}</Link>
+          <Link to="/" className="text-muted-foreground hover:text-primary transition-colors">{t("Início")}</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
-          <Link to="/madeira-ecologica-lesco" className="text-[#7F7F7F] hover:text-white transition-colors">{t("Madeira Ecológica")}</Link>
+          <Link to="/madeira-ecologica-lesco" className="text-muted-foreground hover:text-primary transition-colors">{t("Madeira Ecológica")}</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
           <span className="text-[#525252]">Deck</span>
         </nav>
@@ -99,11 +99,11 @@ const MantoDeck = () => {
       {/* Introdução */}
       <div className="px-6 md:px-12 lg:px-20 py-20 text-center">
         <div className="flex items-center gap-4 justify-center mb-8">
-          <span className="flex-1 h-px bg-[#1E1E1E]" />
-          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C8956C]">Deck</span>
-          <span className="flex-1 h-px bg-[#1E1E1E]" />
+          <span className="flex-1 h-px bg-primary/15" />
+          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-accent-ink">Deck</span>
+          <span className="flex-1 h-px bg-primary/15" />
         </div>
-        <p className="text-[17px] text-[#7F7F7F] leading-[1.7]">
+        <p className="text-[17px] text-muted-foreground leading-[1.7]">
           {t("Os decks de madeira ecológica representam uma escolha inteligente e elegante para aprimorar espaços externos. Eles são uma solução ideal para projetos residenciais, comerciais e públicos que buscam criar ambientes externos excepcionais que perduram ao longo do tempo.")}
         </p>
       </div>
@@ -166,28 +166,28 @@ const MantoDeck = () => {
         <div className="mt-12 mb-16">
           <button
             onClick={() => setSpecsOpen(!specsOpen)}
-            className="text-[#7F7F7F] hover:text-white text-sm transition-colors duration-300 cursor-pointer flex items-center gap-1"
+            className="text-muted-foreground hover:text-primary text-sm transition-colors duration-300 cursor-pointer flex items-center gap-1"
           >
             {t("Especificações técnicas")} {specsOpen ? "−" : "+"}
           </button>
 
           {specsOpen && (
-            <div className="mt-6 bg-[#141414] rounded-[12px] p-8 animate-fade-in">
+            <div className="mt-6 bg-white rounded-[12px] p-8 animate-fade-in">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div>
                   <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Material")}</h4>
-                  <div className="h-px bg-[#1E1E1E] mb-4" />
-                  <div className="text-sm text-white font-mono space-y-1">
+                  <div className="h-px bg-primary/15 mb-4" />
+                  <div className="text-sm text-primary font-mono space-y-1">
                     <p>WPC — Wood-Plastic Composite</p>
-                    <p className="text-[#7F7F7F]">{t("55% pó de madeira natural")}</p>
-                    <p className="text-[#7F7F7F]">{t("35% HPDE reciclado")}</p>
-                    <p className="text-[#7F7F7F]">{t("10% aditivos")}</p>
+                    <p className="text-muted-foreground">{t("55% pó de madeira natural")}</p>
+                    <p className="text-muted-foreground">{t("35% HPDE reciclado")}</p>
+                    <p className="text-muted-foreground">{t("10% aditivos")}</p>
                   </div>
                 </div>
                 <div>
                   <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Resistência")}</h4>
-                  <div className="h-px bg-[#1E1E1E] mb-4" />
-                  <div className="text-sm text-white space-y-1">
+                  <div className="h-px bg-primary/15 mb-4" />
+                  <div className="text-sm text-primary space-y-1">
                     <p>✓ {t("Anti-cupim")}</p>
                     <p>✓ {t("Hidrofóbico")}</p>
                     <p>✓ {t("Anti-mofo")}</p>
@@ -196,21 +196,21 @@ const MantoDeck = () => {
                 </div>
                 <div>
                   <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Certificações")}</h4>
-                  <div className="h-px bg-[#1E1E1E] mb-4" />
-                  <p className="text-sm text-white">ISO 9001 · ISO 14001 · LEED · ESG</p>
+                  <div className="h-px bg-primary/15 mb-4" />
+                  <p className="text-sm text-primary">ISO 9001 · ISO 14001 · LEED · ESG</p>
                 </div>
                 <div>
                   <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Garantia")}</h4>
-                  <div className="h-px bg-[#1E1E1E] mb-4" />
-                  <p className="text-sm text-white">{t("10 anos")}</p>
+                  <div className="h-px bg-primary/15 mb-4" />
+                  <p className="text-sm text-primary">{t("10 anos")}</p>
                 </div>
                 <div className="md:col-span-2">
                   <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Subestrutura Recomendada")}</h4>
-                  <div className="h-px bg-[#1E1E1E] mb-4" />
-                  <div className="text-sm text-white font-mono space-y-1">
-                    <p>{t("Espaçamento entre perfis:")} <span className="text-[#7F7F7F]">{t("máximo 40 cm entre apoios")}</span></p>
-                    <p>{t("Fixação:")} <span className="text-[#7F7F7F]">{t("clip de fixação oculta ou parafuso autobrocante 4,2×19 mm")}</span></p>
-                    <p>{t("Estrutura auxiliar:")} <span className="text-[#7F7F7F]">{t("alumínio ou aço — 50×50 mm · 38×38 mm")}</span></p>
+                  <div className="h-px bg-primary/15 mb-4" />
+                  <div className="text-sm text-primary font-mono space-y-1">
+                    <p>{t("Espaçamento entre perfis:")} <span className="text-muted-foreground">{t("máximo 40 cm entre apoios")}</span></p>
+                    <p>{t("Fixação:")} <span className="text-muted-foreground">{t("clip de fixação oculta ou parafuso autobrocante 4,2×19 mm")}</span></p>
+                    <p>{t("Estrutura auxiliar:")} <span className="text-muted-foreground">{t("alumínio ou aço — 50×50 mm · 38×38 mm")}</span></p>
                   </div>
                 </div>
               </div>
@@ -223,12 +223,12 @@ const MantoDeck = () => {
       <ProjetosDoProduto tipo="deck" linha="Lesco Deck" />
 
       {/* Navegação entre produtos */}
-      <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-[#1E1E1E]">
+      <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-primary/15">
         <div className="flex justify-between items-center">
-          <Link to="/madeira-ecologica-para-fachada" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
+          <Link to="/madeira-ecologica-para-fachada" className="text-[13px] text-muted-foreground hover:text-primary transition-colors">
             ← Shield
           </Link>
-          <Link to="/forro-wpc" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
+          <Link to="/forro-wpc" className="text-[13px] text-muted-foreground hover:text-primary transition-colors">
             Line →
           </Link>
         </div>

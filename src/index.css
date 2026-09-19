@@ -63,11 +63,23 @@
     --secondary-foreground: 40 10% 7%;
 
     --muted: 33 14% 88%;
-    --muted-foreground: 20 4% 40%;    /* #6B6560 */
+    /* Texto secundário sobre as superfícies CLARAS (osso, linho, branco dos
+       cards). Era 40%, que media 4,42:1 sobre o osso e reprovava o AA por
+       pouco. Em 36% fecha 5,17:1 no osso, 5,02:1 no bg-secondary e 6,72:1 no
+       branco, sem sair do cinza quente da paleta.
+       Sobre fundo ESCURO este token não serve: ali o secundário é
+       `text-foreground/70` (8,17:1 no rodapé). Um valor só não cobre os dois
+       lados, e era essa confusão que deixava o rodapé em 3,25:1. */
+    --muted-foreground: 20 4% 36%;    /* #5F5B58 */
 
     --accent-green: 87 76% 58%;       /* #9EE44A */
     --accent-orange: 15 76% 60%;      /* #E8714A */
     --accent-warm: 30 39% 59%;        /* #C49A6C */
+    /* O mesmo âmbar da marca, rebaixado só o suficiente para virar TEXTO
+       sobre superfície clara: a 59% de luminosidade ele mede 2,02:1 no osso,
+       a 35% fecha 4,83:1 e continua lendo como âmbar. O --accent-warm segue
+       intacto para uso sobre escuro e para elemento não textual. */
+    --accent-ink: 30 39% 35%;         /* #7C5936 */
     --accent: 30 39% 59%;
     --accent-foreground: 40 10% 7%;
 

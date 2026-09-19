@@ -31,7 +31,7 @@ export const PaginaFamiliaZhu = ({ familia }: { familia: FamiliaZhu }) => {
 
       {/* Hero */}
       <section className="bg-primary px-6 md:px-12 lg:px-20 pt-32 pb-16 md:pt-40 md:pb-20">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-foreground/40 mb-6">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-foreground/70 mb-6">
           Zhú · {t("Bambu")}
         </p>
         <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-primary-foreground max-w-4xl">
@@ -42,14 +42,14 @@ export const PaginaFamiliaZhu = ({ familia }: { familia: FamiliaZhu }) => {
       {/* Breadcrumb */}
       <div className="px-6 md:px-12 lg:px-20 py-4">
         <nav className="flex items-center gap-1.5 text-xs">
-          <Link to="/" className="text-[#7F7F7F] hover:text-black transition-colors">
+          <Link to="/" className="text-muted-foreground hover:text-primary transition-colors">
             {t("Início")}
           </Link>
-          <ChevronRight className="w-3 h-3 text-[#A0A0A0]" />
-          <Link to="/zhu" className="text-[#7F7F7F] hover:text-black transition-colors">
+          <ChevronRight className="w-3 h-3 text-primary/40" />
+          <Link to="/zhu" className="text-muted-foreground hover:text-primary transition-colors">
             Zhú
           </Link>
-          <ChevronRight className="w-3 h-3 text-[#A0A0A0]" />
+          <ChevronRight className="w-3 h-3 text-primary/40" />
           <span className="text-[#525252]">{familia.curto}</span>
         </nav>
       </div>
@@ -57,11 +57,11 @@ export const PaginaFamiliaZhu = ({ familia }: { familia: FamiliaZhu }) => {
       {/* Introdução */}
       <div className="px-6 md:px-12 lg:px-20 py-16 md:py-20 text-center">
         <div className="flex items-center gap-4 justify-center mb-8">
-          <span className="flex-1 h-px bg-[#1E1E1E]/30" />
-          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C8956C]">
+          <span className="flex-1 h-px bg-primary/15" />
+          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-accent-ink">
             {familia.curto}
           </span>
-          <span className="flex-1 h-px bg-[#1E1E1E]/30" />
+          <span className="flex-1 h-px bg-primary/15" />
         </div>
         <p className="text-[17px] text-[#525252] leading-[1.7] max-w-3xl mx-auto">{familia.intro}</p>
       </div>
@@ -94,7 +94,7 @@ export const PaginaFamiliaZhu = ({ familia }: { familia: FamiliaZhu }) => {
           <div className="overflow-x-auto rounded-md bg-white">
             <table className="w-full text-left text-[13px] text-gray-950">
               <thead>
-                <tr className="border-b border-[#1E1E1E]/15">
+                <tr className="border-b border-primary/15">
                   <th className="px-5 py-3 font-semibold whitespace-nowrap">{t("Modelo")}</th>
                   <th className="px-5 py-3 font-semibold whitespace-nowrap">{t("Código")}</th>
                   <th className="px-5 py-3 font-semibold whitespace-nowrap">{t("Medidas")}</th>
@@ -106,7 +106,7 @@ export const PaginaFamiliaZhu = ({ familia }: { familia: FamiliaZhu }) => {
               <tbody>
                 {familia.modelos.flatMap((m) =>
                   m.variantes.map((v, i) => (
-                    <tr key={v.codigo} className="border-b border-[#1E1E1E]/10 last:border-0">
+                    <tr key={v.codigo} className="border-b border-primary/10 last:border-0">
                       <td className="px-5 py-3 whitespace-nowrap">{i === 0 ? m.nome : ""}</td>
                       <td className="px-5 py-3 font-mono text-[12px] whitespace-nowrap">{v.codigo}</td>
                       <td className="px-5 py-3 whitespace-nowrap">{m.medida}</td>
@@ -125,25 +125,25 @@ export const PaginaFamiliaZhu = ({ familia }: { familia: FamiliaZhu }) => {
         <div className="mt-12 mb-16">
           <button
             onClick={() => setSpecsOpen(!specsOpen)}
-            className="text-[#525252] hover:text-black text-sm transition-colors duration-300 cursor-pointer flex items-center gap-1"
+            className="text-[#525252] hover:text-primary text-sm transition-colors duration-300 cursor-pointer flex items-center gap-1"
           >
             {t("Especificações técnicas")} {specsOpen ? "−" : "+"}
           </button>
 
           {specsOpen && (
-            <div className="mt-6 bg-[#141414] rounded-[12px] p-8 animate-fade-in">
+            <div className="mt-6 bg-white rounded-[12px] p-8 animate-fade-in">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
                 {dadosTecnicosZhu.map((d) => (
                   <div key={d.rotulo}>
                     <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">
                       {d.rotulo}
                     </h4>
-                    <div className="h-px bg-[#1E1E1E] mb-4" />
-                    <p className="text-sm text-white">{d.valor}</p>
+                    <div className="h-px bg-primary/15 mb-4" />
+                    <p className="text-sm text-primary">{d.valor}</p>
                   </div>
                 ))}
               </div>
-              <p className="mt-8 text-[12px] text-[#7F7F7F] leading-relaxed">
+              <p className="mt-8 text-[12px] text-muted-foreground leading-relaxed">
                 {t("Material de alto desempenho desenvolvido para aplicações arquitetônicas que exigem durabilidade, segurança e responsabilidade ambiental.")}
               </p>
             </div>
@@ -152,17 +152,17 @@ export const PaginaFamiliaZhu = ({ familia }: { familia: FamiliaZhu }) => {
       </div>
 
       {/* Navegação entre famílias */}
-      <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-[#1E1E1E]/15">
+      <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-primary/15">
         <div className="flex justify-between items-center gap-4">
           <Link
             to={familia.anterior.href}
-            className="text-[13px] text-[#7F7F7F] hover:text-black transition-colors"
+            className="text-[13px] text-muted-foreground hover:text-primary transition-colors"
           >
             ← {familia.anterior.label}
           </Link>
           <Link
             to={familia.proximo.href}
-            className="text-[13px] text-[#7F7F7F] hover:text-black transition-colors"
+            className="text-[13px] text-muted-foreground hover:text-primary transition-colors"
           >
             {familia.proximo.label} →
           </Link>

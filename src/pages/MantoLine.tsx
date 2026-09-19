@@ -67,9 +67,9 @@ const MantoLine = () => {
       {/* Breadcrumb */}
       <div className="px-6 md:px-12 lg:px-20 py-4">
         <nav className="flex items-center gap-1.5 text-xs">
-          <Link to="/" className="text-[#7F7F7F] hover:text-white transition-colors">{t("Início")}</Link>
+          <Link to="/" className="text-muted-foreground hover:text-primary transition-colors">{t("Início")}</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
-          <Link to="/madeira-ecologica-lesco" className="text-[#7F7F7F] hover:text-white transition-colors">{t("Madeira Ecológica")}</Link>
+          <Link to="/madeira-ecologica-lesco" className="text-muted-foreground hover:text-primary transition-colors">{t("Madeira Ecológica")}</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
           <span className="text-[#525252]">Line</span>
         </nav>
@@ -78,11 +78,11 @@ const MantoLine = () => {
       {/* Introdução */}
       <div className="px-6 md:px-12 lg:px-20 py-20 text-center">
         <div className="flex items-center gap-4 justify-center mb-8">
-          <span className="flex-1 h-px bg-[#1E1E1E]" />
-          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C8956C]">Line</span>
-          <span className="flex-1 h-px bg-[#1E1E1E]" />
+          <span className="flex-1 h-px bg-primary/15" />
+          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-accent-ink">Line</span>
+          <span className="flex-1 h-px bg-primary/15" />
         </div>
-        <p className="text-[17px] text-[#7F7F7F] leading-[1.7]">
+        <p className="text-[17px] text-muted-foreground leading-[1.7]">
           {t("No mundo da arquitetura e design de interiores, a busca por materiais que combinem beleza natural e desempenho tecnológico está em alta. Os forros com tecnologia WPC emergem como uma solução sustentável, unindo o calor da madeira à resistência do plástico. Além de contar com características retardantes ao fogo, resistência à água e baixo custo de manutenção.")}
         </p>
       </div>
@@ -123,28 +123,28 @@ const MantoLine = () => {
         <div className="mt-12 mb-16">
           <button
             onClick={() => setSpecsOpen(!specsOpen)}
-            className="text-[#7F7F7F] hover:text-white text-sm transition-colors duration-300 cursor-pointer flex items-center gap-1"
+            className="text-muted-foreground hover:text-primary text-sm transition-colors duration-300 cursor-pointer flex items-center gap-1"
           >
             {t("Especificações técnicas")} {specsOpen ? "−" : "+"}
           </button>
 
           {specsOpen && (
-            <div className="mt-6 bg-[#141414] rounded-[12px] p-8 animate-fade-in">
+            <div className="mt-6 bg-white rounded-[12px] p-8 animate-fade-in">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div>
                   <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Material")}</h4>
-                  <div className="h-px bg-[#1E1E1E] mb-4" />
-                  <div className="text-sm text-white font-mono space-y-1">
+                  <div className="h-px bg-primary/15 mb-4" />
+                  <div className="text-sm text-primary font-mono space-y-1">
                     <p>WPC — Wood-Plastic Composite</p>
-                    <p className="text-[#7F7F7F]">{t("55% pó de madeira natural")}</p>
-                    <p className="text-[#7F7F7F]">{t("35% HPDE reciclado")}</p>
-                    <p className="text-[#7F7F7F]">{t("10% aditivos")}</p>
+                    <p className="text-muted-foreground">{t("55% pó de madeira natural")}</p>
+                    <p className="text-muted-foreground">{t("35% HPDE reciclado")}</p>
+                    <p className="text-muted-foreground">{t("10% aditivos")}</p>
                   </div>
                 </div>
                 <div>
                   <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Resistência")}</h4>
-                  <div className="h-px bg-[#1E1E1E] mb-4" />
-                  <div className="text-sm text-white space-y-1">
+                  <div className="h-px bg-primary/15 mb-4" />
+                  <div className="text-sm text-primary space-y-1">
                     <p>{t("✓ Anti-cupim")}</p>
                     <p>{t("✓ Hidrofóbico")}</p>
                     <p>{t("✓ Anti-mofo")}</p>
@@ -153,13 +153,13 @@ const MantoLine = () => {
                 </div>
                 <div>
                   <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Certificações")}</h4>
-                  <div className="h-px bg-[#1E1E1E] mb-4" />
-                  <p className="text-sm text-white">ISO 9001 · ISO 14001 · LEED · ESG</p>
+                  <div className="h-px bg-primary/15 mb-4" />
+                  <p className="text-sm text-primary">ISO 9001 · ISO 14001 · LEED · ESG</p>
                 </div>
                 <div>
                   <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Garantia")}</h4>
-                  <div className="h-px bg-[#1E1E1E] mb-4" />
-                  <p className="text-sm text-white">{t("10 anos")}</p>
+                  <div className="h-px bg-primary/15 mb-4" />
+                  <p className="text-sm text-primary">{t("10 anos")}</p>
                 </div>
               </div>
             </div>
@@ -170,7 +170,7 @@ const MantoLine = () => {
       {/* Galeria de Projetos */}
       {galeriaItems.length > 0 && (
         <div className="px-6 md:px-12 lg:px-20 py-24">
-          <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">{t("Projetos")}</span>
+          <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-accent-ink mb-3">{t("Projetos")}</span>
           <h2 className="font-display text-3xl md:text-4xl font-semibold mb-10 text-gray-950">{t("Realizações com")} Lesco Line</h2>
           <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
             {galeriaItems.map((item, i) => (
@@ -183,12 +183,12 @@ const MantoLine = () => {
       )}
 
       {/* Navegação entre produtos */}
-      <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-[#1E1E1E]">
+      <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-primary/15">
         <div className="flex justify-between items-center">
-          <Link to="/madeira-ecologica-para-deck" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
+          <Link to="/madeira-ecologica-para-deck" className="text-[13px] text-muted-foreground hover:text-primary transition-colors">
             ← Deck
           </Link>
-          <Link to="/placa-wpc-interior" className="text-[13px] text-[#7F7F7F] hover:text-white transition-colors">
+          <Link to="/placa-wpc-interior" className="text-[13px] text-muted-foreground hover:text-primary transition-colors">
             Panel →
           </Link>
         </div>

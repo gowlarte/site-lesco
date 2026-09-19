@@ -133,9 +133,9 @@ const Muxarabi = () => {
       {/* Breadcrumb */}
       <div className="px-6 md:px-12 lg:px-20 py-4">
         <nav className="flex items-center gap-1.5 text-xs">
-          <Link to="/" className="text-[#7F7F7F] hover:text-white transition-colors">{t("Início")}</Link>
+          <Link to="/" className="text-muted-foreground hover:text-primary transition-colors">{t("Início")}</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
-          <Link to="/madeira-ecologica-lesco" className="text-[#7F7F7F] hover:text-white transition-colors">{t("Madeira Ecológica")}</Link>
+          <Link to="/madeira-ecologica-lesco" className="text-muted-foreground hover:text-primary transition-colors">{t("Madeira Ecológica")}</Link>
           <ChevronRight className="w-3 h-3 text-[#525252]" />
           <span className="text-[#525252]">Muxarabi</span>
         </nav>
@@ -144,11 +144,11 @@ const Muxarabi = () => {
       {/* Introdução */}
       <div className="px-6 md:px-12 lg:px-20 py-20 text-center">
         <div className="flex items-center gap-4 justify-center mb-8">
-          <span className="flex-1 h-px bg-[#1E1E1E]" />
-          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C8956C]">Muxarabi</span>
-          <span className="flex-1 h-px bg-[#1E1E1E]" />
+          <span className="flex-1 h-px bg-primary/15" />
+          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-accent-ink">Muxarabi</span>
+          <span className="flex-1 h-px bg-primary/15" />
         </div>
-        <p className="text-[17px] text-[#7F7F7F] leading-[1.7]">
+        <p className="text-[17px] text-muted-foreground leading-[1.7]">
           {t("O muxarabi traduz uma tradição arquitetônica milenar do Oriente Médio e do norte da África em um material de alta performance. Composto por fibras de madeira reciclada e polímeros, o elemento vazado une a beleza natural da madeira à resistência às intempéries: os padrões geométricos promovem controle de luminosidade, ventilação natural e privacidade, enquanto o material não racha, não deforma e dispensa tratamentos periódicos. Ideal para interiores e fachadas ventiladas protegidas.")}
         </p>
       </div>
@@ -162,8 +162,8 @@ const Muxarabi = () => {
               onClick={() => { setActiveTab(tab); setSelectedSwatch(null); }}
               className={`px-6 py-3 text-[13px] font-medium uppercase tracking-[0.06em] transition-all duration-300 border-b-2 -mb-px cursor-pointer ${
                 activeTab === tab
-                  ? "text-primary border-[#C8956C]"
-                  : "text-[#9E9890] border-transparent hover:text-primary"
+                  ? "text-primary border-accent-ink"
+                  : "text-muted-foreground border-transparent hover:text-primary"
               }`}
             >
               {t("Madeira Ecológica")} {tab === "origens" ? "Origens" : "Classic"}
@@ -206,28 +206,28 @@ const Muxarabi = () => {
         <div className="mt-12 mb-16">
           <button
             onClick={() => setSpecsOpen(!specsOpen)}
-            className="text-[#7F7F7F] hover:text-white text-sm transition-colors duration-300 cursor-pointer flex items-center gap-1"
+            className="text-muted-foreground hover:text-primary text-sm transition-colors duration-300 cursor-pointer flex items-center gap-1"
           >
             {t("Especificações técnicas")} {specsOpen ? "−" : "+"}
           </button>
 
           {specsOpen && (
-            <div className="mt-6 bg-[#141414] rounded-[12px] p-8 animate-fade-in">
+            <div className="mt-6 bg-white rounded-[12px] p-8 animate-fade-in">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div>
                   <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Material")}</h4>
-                  <div className="h-px bg-[#1E1E1E] mb-4" />
-                  <div className="text-sm text-white font-mono space-y-1">
+                  <div className="h-px bg-primary/15 mb-4" />
+                  <div className="text-sm text-primary font-mono space-y-1">
                     <p>WPC — Wood-Plastic Composite</p>
-                    <p className="text-[#7F7F7F]">{t("55% pó de madeira natural")}</p>
-                    <p className="text-[#7F7F7F]">{t("35% HPDE reciclado")}</p>
-                    <p className="text-[#7F7F7F]">{t("10% aditivos")}</p>
+                    <p className="text-muted-foreground">{t("55% pó de madeira natural")}</p>
+                    <p className="text-muted-foreground">{t("35% HPDE reciclado")}</p>
+                    <p className="text-muted-foreground">{t("10% aditivos")}</p>
                   </div>
                 </div>
                 <div>
                   <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Resistência")}</h4>
-                  <div className="h-px bg-[#1E1E1E] mb-4" />
-                  <div className="text-sm text-white space-y-1">
+                  <div className="h-px bg-primary/15 mb-4" />
+                  <div className="text-sm text-primary space-y-1">
                     <p>{t("✓ Anti-cupim")}</p>
                     <p>{t("✓ Hidrofóbico")}</p>
                     <p>{t("✓ Anti-mofo")}</p>
@@ -236,13 +236,13 @@ const Muxarabi = () => {
                 </div>
                 <div>
                   <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Certificações")}</h4>
-                  <div className="h-px bg-[#1E1E1E] mb-4" />
-                  <p className="text-sm text-white">ISO 9001 · ISO 14001 · LEED · ESG</p>
+                  <div className="h-px bg-primary/15 mb-4" />
+                  <p className="text-sm text-primary">ISO 9001 · ISO 14001 · LEED · ESG</p>
                 </div>
                 <div>
                   <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Garantia")}</h4>
-                  <div className="h-px bg-[#1E1E1E] mb-4" />
-                  <p className="text-sm text-white">{t("10 anos")}</p>
+                  <div className="h-px bg-primary/15 mb-4" />
+                  <p className="text-sm text-primary">{t("10 anos")}</p>
                 </div>
               </div>
             </div>
@@ -258,7 +258,7 @@ const Muxarabi = () => {
             {aplicacoes.map((a) => (
               <div key={a.titulo} className="bg-white rounded-md p-8">
                 <h3 className="font-display text-xl text-gray-950 mb-3 font-normal">{a.titulo}</h3>
-                <p className="font-body text-[14px] text-[#7F7F7F] leading-relaxed">{a.descricao}</p>
+                <p className="font-body text-[14px] text-muted-foreground leading-relaxed">{a.descricao}</p>
               </div>
             ))}
           </div>

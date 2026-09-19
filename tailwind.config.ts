@@ -49,6 +49,8 @@ export default {
           green: "hsl(var(--accent-green))",
           orange: "hsl(var(--accent-orange))",
           warm: "hsl(var(--accent-warm))",
+          // Versão de texto do âmbar, para superfície clara. Ver --accent-ink.
+          ink: "hsl(var(--accent-ink))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",

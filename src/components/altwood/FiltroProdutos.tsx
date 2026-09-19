@@ -13,6 +13,15 @@ interface FiltroProdutosProps {
   onTabClick: (id: string) => void;
 }
 
+/**
+ * A barra é uma superfície ESCURA no meio de uma página clara, e é por isso
+ * que as cores aqui continuam sendo as do tema escuro: sobre #181817 elas
+ * passam. O que estava fora da régua era só o cinza dos itens inativos, em
+ * 4,44:1; subiu para #8A8A8A, que fecha 5,15:1.
+ *
+ * A pergunta de se essa barra deveria ser escura é de composição, não de
+ * contraste, e fica para o lote de recomposição.
+ */
 export const FiltroProdutos = ({ activeId, onTabClick }: FiltroProdutosProps) => (
   <nav
     id="filtro"
@@ -27,7 +36,7 @@ export const FiltroProdutos = ({ activeId, onTabClick }: FiltroProdutosProps) =>
             "px-4 py-2 text-[13px] font-medium uppercase tracking-[0.06em] transition-all duration-300 border-b-2 cursor-pointer",
             activeId === tab.id
               ? "text-[#C8956C] border-[#C8956C]"
-              : "text-[#7F7F7F] border-transparent hover:text-white"
+              : "text-[#8A8A8A] border-transparent hover:text-white"
           )}
         >
           {tab.label}

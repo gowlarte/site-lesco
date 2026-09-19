@@ -33,7 +33,7 @@ export const ProjetosDoProduto = ({ tipo, linha }: Props) => {
 
   return (
     <div className="px-6 md:px-12 lg:px-20 py-24">
-      <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C] mb-3">
+      <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-accent-ink mb-3">
         {t("Projetos")}
       </span>
       <h2 className="font-display text-3xl md:text-4xl font-semibold mb-10 text-gray-950">

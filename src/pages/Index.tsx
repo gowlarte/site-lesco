@@ -140,11 +140,15 @@ const Index = () => {
                   <p className="font-body text-[13px] font-light leading-[1.6] text-primary/70 max-w-[320px] mb-6">
                     {t("Avenida Nove de Julho, número 3147, CJ 22 – Jardim Paulista – São Paulo – SP")}
                   </p>
+                  {/* O salmão da marca fica: o que muda é o texto. Branco
+                      sobre ele media 2,22:1, ilegível ao sol. O mesmo tom
+                      escuro do resto da página fecha 8,43:1 e a pílula
+                      continua exatamente com a mesma cor. */}
                   <a
                     href={`https://wa.me/${site.whatsappNumber}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-7 py-3 rounded-full bg-[hsl(10,50%,72%)] hover:bg-[hsl(10,50%,65%)] text-white font-body text-[13px] font-medium tracking-[0.04em] transition-colors duration-300"
+                    className="inline-flex items-center px-7 py-3 rounded-full bg-[hsl(10,50%,72%)] hover:bg-[hsl(10,50%,65%)] text-primary font-body text-[13px] font-medium tracking-[0.04em] transition-colors duration-300"
                   >
                     {t("Agende uma visita")}
                   </a>

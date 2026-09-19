@@ -94,7 +94,10 @@
     </script>
   </head>
 
-  <body style="background-color: #DBDBDB">
+  <!-- Mesma cor do `body` em src/index.css. Estavam divergentes (#DBDBDB aqui,
+       #e5e1dc no CSS), e a diferença aparecia como um pisco na entrada, entre
+       o HTML estático e a folha de estilo. -->
+  <body style="background-color: #e5e1dc">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLMKCHH"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

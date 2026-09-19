@@ -55,8 +55,11 @@ export const HeroSection = ({ imageSrc, images, headline, subtitulo, ctaLabel, c
         <h1 className="font-display text-6xl md:text-7xl lg:text-8xl xl:text-[96px] uppercase tracking-[-0.02em] text-white leading-none mb-4 font-light">
           {headline}
         </h1>
+        {/* O subtítulo era #B0B0B0: sobre a foto escurecida a 60% isso cai
+            para 2,81:1 quando a foto é clara. Branco a 90% fecha 5,30:1 e
+            continua um degrau abaixo do título, que é branco cheio. */}
         {subtitulo?.trim() && (
-          <p className="text-[#B0B0B0] text-lg md:text-xl max-w-lg mb-8 whitespace-pre-line">{subtitulo}</p>
+          <p className="text-white/90 text-lg md:text-xl max-w-lg mb-8 whitespace-pre-line">{subtitulo}</p>
         )}
         {ctaLabel && (
           <div>

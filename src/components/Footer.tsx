@@ -15,14 +15,14 @@ export function Footer() {
           {/* Col 1 — Logo */}
           <div>
             <img src={logoLight} alt="Lesco" className="h-8" />
-            <p className="mt-4 font-body text-[13px] font-light text-muted-foreground leading-relaxed max-w-[240px]">
+            <p className="mt-4 font-body text-[13px] font-light text-foreground/70 leading-relaxed max-w-[240px]">
               {t("Madeira Ecológica")}
             </p>
           </div>
 
           {/* Col 2 — Linhas */}
           <div>
-            <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-muted-foreground mb-5">{t("Linhas")}</h4>
+            <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-foreground/55 mb-5">{t("Linhas")}</h4>
             <ul className="space-y-3">
               {[
                 { label: t("Madeira Ecológica"), href: "/madeira-ecologica-lesco" },
@@ -44,7 +44,7 @@ export function Footer() {
 
           {/* Col 3 — Institucional */}
           <div>
-            <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-muted-foreground mb-5">{t("Institucional")}</h4>
+            <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-foreground/55 mb-5">{t("Institucional")}</h4>
             <ul className="space-y-3">
               {[
                 { label: t("Sobre"), href: "/quem-somos" },
@@ -80,7 +80,7 @@ export function Footer() {
 
           {/* Col 4 — Contato */}
           <div>
-            <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-muted-foreground mb-5">{t("Contato")}</h4>
+            <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-foreground/55 mb-5">{t("Contato")}</h4>
             <ul className="space-y-3 font-body text-[13px] font-light text-foreground/70">
               <li>{site.email}</li>
               <li className="leading-relaxed">
@@ -96,20 +96,20 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-white/[0.08] flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="font-body text-[11px] text-muted-foreground">
+          <p className="font-body text-[11px] text-foreground/70">
             {t("© 2026 Lesco - Todos os direitos reservados.")}
           </p>
           <div className="flex items-center gap-4">
             <Link
               to="/politica-de-privacidade"
-              className="font-body text-[11px] text-muted-foreground hover:text-foreground transition-colors"
+              className="font-body text-[11px] text-foreground/70 hover:text-foreground transition-colors"
             >
               {t("Política de Privacidade")}
             </Link>
-            <span className="text-muted-foreground/30">·</span>
+            <span className="text-foreground/50">·</span>
             <Link
               to="/termos-de-servico"
-              className="font-body text-[11px] text-muted-foreground hover:text-foreground transition-colors"
+              className="font-body text-[11px] text-foreground/70 hover:text-foreground transition-colors"
             >
               {t("Termos de Serviço")}
             </Link>

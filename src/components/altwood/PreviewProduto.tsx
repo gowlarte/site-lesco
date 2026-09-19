@@ -56,7 +56,7 @@ export const PreviewProduto = ({ id, tag, titulo, descricao, swatches, href, ima
   useEffect(() => () => { if (intervalRef.current) clearInterval(intervalRef.current); }, []);
 
   return (
-    <section id={id} className="py-24 border-b border-[#1E1E1E] last:border-b-0 mx-[10px] my-[10px] border-0">
+    <section id={id} className="py-24 border-b border-primary/15 last:border-b-0 mx-[10px] my-[10px] border-0">
       <Link
         to={href}
         className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-10 lg:gap-16 px-6 md:px-12 lg:px-20 group cursor-pointer"
@@ -79,17 +79,17 @@ export const PreviewProduto = ({ id, tag, titulo, descricao, swatches, href, ima
               />
             ))
           ) : (
-            <div className="w-full h-full bg-[#141414] flex items-center justify-center">
-              <ImageIcon className="w-10 h-10 text-[#2A2A2A]" />
+            <div className="w-full h-full bg-secondary flex items-center justify-center">
+              <ImageIcon className="w-10 h-10 text-primary/35" />
             </div>
           )}
         </div>
 
         {/* Right — Info */}
         <div className="flex flex-col justify-center gap-5">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C8956C]">{tag}</span>
+          <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-accent-ink">{tag}</span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] leading-tight text-primary font-light">{titulo}</h2>
-          <p className="text-[15px] text-[#7F7F7F] leading-relaxed max-w-md">{descricao}</p>
+          <p className="text-[15px] text-muted-foreground leading-relaxed max-w-md">{descricao}</p>
           <div className="flex gap-3 flex-wrap">
             {swatches.map((s) => (
               <SwatchCor key={s.nome} nome={s.nome} corAproximada={s.corAproximada} />

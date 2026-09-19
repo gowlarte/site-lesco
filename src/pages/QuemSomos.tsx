@@ -23,7 +23,7 @@ const QuemSomos = () => {
       {/* Hero */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-primary">
         <div className="container mx-auto px-6 lg:px-8">
-          <p className="text-caption text-primary-foreground/40 mb-6">{t("Sobre a Lesco")}</p>
+          <p className="text-caption text-primary-foreground/70 mb-6">{t("Sobre a Lesco")}</p>
           <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-primary-foreground max-w-4xl">
             {t("Somos arquitetura feita para o amanhã.")}
           </h1>
@@ -65,7 +65,7 @@ const QuemSomos = () => {
                   t("Parceiros de projetos icônicos"),
                   t("Pioneiros em sustentabilidade aplicada"),
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-body-lg text-muted-foreground">
+                  <li key={item} className="flex items-start gap-3 text-body-lg text-foreground/70">
                     <Check className="text-accent mt-1 shrink-0" size={18} />
                     {item}
                   </li>
@@ -82,8 +82,8 @@ const QuemSomos = () => {
                   t("Fornecedores de soluções descartáveis"),
                   t("Uma empresa que acompanha tendências passageiras"),
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-body-lg text-muted-foreground">
-                    <span className="text-muted-foreground/40 mt-1 shrink-0">✕</span>
+                  <li key={item} className="flex items-start gap-3 text-body-lg text-foreground/70">
+                    <span className="text-foreground/55 mt-1 shrink-0">✕</span>
                     {item}
                   </li>
                 ))}
@@ -115,7 +115,7 @@ const QuemSomos = () => {
       <section className="section-spacing bg-background">
         <div className="container mx-auto px-6 lg:px-8 text-center">
           <ScrollReveal>
-            <p className="text-subheading text-muted-foreground mb-4">{t("Certificações")}</p>
+            <p className="text-subheading text-foreground/70 mb-4">{t("Certificações")}</p>
             <h2 className="text-heading text-foreground mb-12">
               {t("Compromisso com excelência")}
             </h2>
@@ -133,15 +133,15 @@ const QuemSomos = () => {
 
           <ScrollReveal delay={0.2}>
             <div className="mt-16 max-w-2xl mx-auto">
-              <p className="text-subheading text-muted-foreground mb-4">{t("Composição WPC")}</p>
+              <p className="text-subheading text-foreground/70 mb-4">{t("Composição WPC")}</p>
               <div className="flex items-center justify-center gap-6 flex-wrap">
                 <span className="font-mono-tech text-sm text-foreground">{t("55% Pó de Madeira")}</span>
-                <span className="text-muted-foreground/30">+</span>
+                <span className="text-foreground/55">+</span>
                 <span className="font-mono-tech text-sm text-foreground">35% HDPE</span>
-                <span className="text-muted-foreground/30">+</span>
+                <span className="text-foreground/55">+</span>
                 <span className="font-mono-tech text-sm text-foreground">{t("10% Aditivos")}</span>
               </div>
-              <p className="mt-6 text-body-lg text-muted-foreground">
+              <p className="mt-6 text-body-lg text-foreground/70">
                 {t("Material 100% reciclável · Resistente a cupim · Hidrofóbico · Anti-mofo · 10 anos de garantia")}
               </p>
             </div>
