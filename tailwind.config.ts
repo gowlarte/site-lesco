@@ -102,6 +102,10 @@ export default {
         mono: ["JetBrains Mono", "monospace"],
       },
       borderRadius: {
+        // `rounded` puro ficava nos 0.25rem de fábrica do Tailwind, um quarto
+        // degrau fora da régua do site. Amarrado ao --radius, os ~22 botões
+        // que o usam caem no mesmo 6px dos demais controles pequenos.
+        DEFAULT: "var(--radius)",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",

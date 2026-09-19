@@ -87,7 +87,7 @@ export const PreviewProduto = ({ id, tag, titulo, descricao, swatches, href, ima
 
         {/* Right — Info */}
         <div className="flex flex-col justify-center gap-5">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-accent-ink">{tag}</span>
+          <span className="rotulo text-accent-ink">{tag}</span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] leading-tight text-primary font-light">{titulo}</h2>
           <p className="text-[15px] text-muted-foreground leading-relaxed max-w-md">{descricao}</p>
           <div className="flex gap-3 flex-wrap">

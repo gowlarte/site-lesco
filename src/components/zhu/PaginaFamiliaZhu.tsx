@@ -31,7 +31,7 @@ export const PaginaFamiliaZhu = ({ familia }: { familia: FamiliaZhu }) => {
 
       {/* Hero */}
       <section className="bg-primary px-6 md:px-12 lg:px-20 pt-32 pb-16 md:pt-40 md:pb-20">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-foreground/70 mb-6">
+        <p className="rotulo text-primary-foreground/70 mb-6">
           Zhú · {t("Bambu")}
         </p>
         <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-primary-foreground max-w-4xl">
@@ -58,7 +58,7 @@ export const PaginaFamiliaZhu = ({ familia }: { familia: FamiliaZhu }) => {
       <div className="px-6 md:px-12 lg:px-20 py-16 md:py-20 text-center">
         <div className="flex items-center gap-4 justify-center mb-8">
           <span className="flex-1 h-px bg-primary/15" />
-          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-accent-ink">
+          <span className="rotulo text-accent-ink">
             {familia.curto}
           </span>
           <span className="flex-1 h-px bg-primary/15" />
@@ -69,7 +69,7 @@ export const PaginaFamiliaZhu = ({ familia }: { familia: FamiliaZhu }) => {
       <div className="px-6 md:px-12 lg:px-20">
         {/* Modelos */}
         <div className="mb-12">
-          <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-6">
+          <span className="block rotulo text-[#525252] mb-6">
             {t("Modelos")}
           </span>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -88,19 +88,19 @@ export const PaginaFamiliaZhu = ({ familia }: { familia: FamiliaZhu }) => {
 
         {/* Especificação — códigos e acabamentos do catálogo */}
         <div className="mb-12">
-          <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-6">
+          <span className="block rotulo text-[#525252] mb-6">
             {t("Especificação")}
           </span>
           <div className="overflow-x-auto rounded-md bg-white">
             <table className="w-full text-left text-[13px] text-gray-950">
               <thead>
                 <tr className="border-b border-primary/15">
-                  <th className="px-5 py-3 font-semibold whitespace-nowrap">{t("Modelo")}</th>
-                  <th className="px-5 py-3 font-semibold whitespace-nowrap">{t("Código")}</th>
-                  <th className="px-5 py-3 font-semibold whitespace-nowrap">{t("Medidas")}</th>
-                  <th className="px-5 py-3 font-semibold whitespace-nowrap">{t("Acabamento")}</th>
-                  <th className="px-5 py-3 font-semibold whitespace-nowrap">{t("Uso")}</th>
-                  <th className="px-5 py-3 font-semibold whitespace-nowrap">{t("Aplicação")}</th>
+                  <th className="px-5 py-3 font-medium whitespace-nowrap">{t("Modelo")}</th>
+                  <th className="px-5 py-3 font-medium whitespace-nowrap">{t("Código")}</th>
+                  <th className="px-5 py-3 font-medium whitespace-nowrap">{t("Medidas")}</th>
+                  <th className="px-5 py-3 font-medium whitespace-nowrap">{t("Acabamento")}</th>
+                  <th className="px-5 py-3 font-medium whitespace-nowrap">{t("Uso")}</th>
+                  <th className="px-5 py-3 font-medium whitespace-nowrap">{t("Aplicação")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -131,11 +131,11 @@ export const PaginaFamiliaZhu = ({ familia }: { familia: FamiliaZhu }) => {
           </button>
 
           {specsOpen && (
-            <div className="mt-6 bg-white rounded-[12px] p-8 animate-fade-in">
+            <div className="mt-6 bg-white rounded-[10px] p-8 animate-fade-in">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
                 {dadosTecnicosZhu.map((d) => (
                   <div key={d.rotulo}>
-                    <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">
+                    <h4 className="rotulo text-[#525252] mb-3">
                       {d.rotulo}
                     </h4>
                     <div className="h-px bg-primary/15 mb-4" />

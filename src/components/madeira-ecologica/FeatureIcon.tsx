@@ -56,7 +56,7 @@ export const FeatureIcon = ({
           dangerouslySetInnerHTML={{ __html: svgRaw }}
         />
       </button>
-      <p className="mt-3 font-display text-[11px] uppercase tracking-[0.1em] text-[#141414] max-w-[160px] leading-tight">
+      <p className="mt-3 font-display rotulo text-[#141414] max-w-[160px] leading-tight">
         {label}
       </p>
       <div

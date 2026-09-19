@@ -35,7 +35,7 @@ export const CardModelo = ({
 
     {/* Header: medida + peso */}
     <div className="flex items-baseline justify-between gap-3 pb-2">
-      <span className="text-sm md:text-[15px] font-semibold text-primary tracking-tight">{medida}</span>
+      <span className="text-sm md:text-[15px] font-medium text-primary tracking-tight">{medida}</span>
       {(peso ?? nota) ? (
         <span className="text-[11px] md:text-xs text-muted-foreground whitespace-nowrap">{peso ?? nota}</span>
       ) : null}

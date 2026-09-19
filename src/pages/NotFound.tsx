@@ -54,7 +54,7 @@ const NotFound = () => {
 
           {/* Principais seções */}
           <div className="mt-16">
-            <h2 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-muted-foreground mb-5">
+            <h2 className="rotulo text-muted-foreground mb-5">
               {t("Principais seções")}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[10px]">

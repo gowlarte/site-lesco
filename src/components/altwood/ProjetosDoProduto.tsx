@@ -33,10 +33,10 @@ export const ProjetosDoProduto = ({ tipo, linha }: Props) => {
 
   return (
     <div className="px-6 md:px-12 lg:px-20 py-24">
-      <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-accent-ink mb-3">
+      <span className="block rotulo text-accent-ink mb-3">
         {t("Projetos")}
       </span>
-      <h2 className="font-display text-3xl md:text-4xl font-semibold mb-10 text-gray-950">
+      <h2 className="font-display text-3xl md:text-4xl font-normal mb-10 text-gray-950">
         {t("Realizações com")} {linha}
       </h2>
 
@@ -57,7 +57,7 @@ export const ProjetosDoProduto = ({ tipo, linha }: Props) => {
             {/* O degradê é permanente, não só no hover: o nome da obra é a
                 razão de o card existir, e no toque não há hover para revelar. */}
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent pt-16 px-5 pb-5">
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-white/70">
+              <p className="rotulo text-white/70">
                 {legenda(obra.local, obra.ano)}
               </p>
               <p className="mt-1.5 flex items-center gap-1.5 font-display text-[19px] leading-tight text-white">

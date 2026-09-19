@@ -16,7 +16,7 @@ const PortfolioProjeto = () => {
     return (
       <main className="min-h-screen pt-[110px] pb-[10px] px-[10px]">
         <section className="bg-light rounded-[10px] px-8 md:px-16 py-20">
-          <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-primary/65 mb-6">
+          <p className="rotulo text-primary/65 mb-6">
             {t("Portfólio")}
           </p>
           <h1 className="font-display text-3xl md:text-5xl font-normal text-dark mb-6">
@@ -35,7 +35,7 @@ const PortfolioProjeto = () => {
 
 
   /** Mesmo texto no alt da grade, no título do visor e no rótulo do botão. */
-  const legendaFoto = (i: number) => `${projeto.nome} — ${t("imagem")} ${i + 1}`;
+  const legendaFoto = (i: number) => `${projeto.nome}, ${t("imagem")} ${i + 1}`;
 
   const ficha: Array<[string, string]> = [
     [t("Local"), projeto.local],
@@ -66,7 +66,7 @@ const PortfolioProjeto = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
 
           <div className="relative z-10 w-full px-8 md:px-16 lg:px-24 py-16 md:py-20">
-            <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-white/80 mb-6">
+            <p className="rotulo text-white/80 mb-6">
               <Link to="/portfolio" className="hover:text-white transition-colors">
                 {t("Portfólio")}
               </Link>
@@ -82,7 +82,7 @@ const PortfolioProjeto = () => {
         <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-16 md:py-20 grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2 space-y-10">
             <div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] mb-4 text-gray-950">
+              <p className="rotulo mb-4 text-gray-950">
                 {t("Sobre o projeto")}
               </p>
               <p className="font-body text-base md:text-lg leading-[1.7] text-slate-500">
@@ -90,13 +90,13 @@ const PortfolioProjeto = () => {
               </p>
             </div>
             <div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] mb-4 text-gray-950">
+              <p className="rotulo mb-4 text-gray-950">
                 {t("Desafio")}
               </p>
               <p className="font-body text-base leading-[1.7] text-gray-500">{projeto.desafio}</p>
             </div>
             <div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] mb-4 text-gray-950">
+              <p className="rotulo mb-4 text-gray-950">
                 {t("Solução")}
               </p>
               <p className="font-body text-base leading-[1.7] text-gray-500">{projeto.solucao}</p>
@@ -105,7 +105,7 @@ const PortfolioProjeto = () => {
 
           <aside className="space-y-8">
             <div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] mb-4 text-gray-950">
+              <p className="rotulo mb-4 text-gray-950">
                 {t("Ficha técnica")}
               </p>
               <dl className="space-y-3">
@@ -118,7 +118,7 @@ const PortfolioProjeto = () => {
               </dl>
             </div>
             <div>
-              <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] mb-4 text-gray-950">
+              <p className="rotulo mb-4 text-gray-950">
                 {t("Produtos aplicados")}
               </p>
               <ul className="space-y-2">

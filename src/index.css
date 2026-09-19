@@ -90,7 +90,11 @@
     --input: 33 14% 85%;
     --ring: 30 39% 59%;
 
-    --radius: 0.25rem;
+    /* Raio base da biblioteca de componentes (rounded-lg/md/sm do shadcn saem
+       daqui). Era 0.25rem, o que dava lg=4px, md=2px e sm=0 e deixava diálogo,
+       select e toast num degrau que não existia em lugar nenhum do site. Em
+       6px o lg encosta no degrau de controle pequeno da régua acima. */
+    --radius: 6px;
 
     /* Dividers on dark bg */
     --divider: 0 0% 100% / 0.12;
@@ -140,9 +144,16 @@
     --aw-text-secondary: 0 0% 50%;
     --aw-text-muted: 0 0% 32%;
     --aw-overlay: 0 0% 5% / 0.72;
-    --aw-radius-card: 12px;
+    /* Régua de canto do site, uma só, com três degraus e uma regra por degrau:
+         10px  bloco de página, card, seção, painel
+          6px  controle pequeno: botão retangular, input, swatch, tag
+         full  pílula
+       Estes três tokens eram 12px, 6px e 8px, um quarto e um quinto valor
+       fora da régua. Ver também --radius logo acima, que é o que a biblioteca
+       de componentes usa. */
+    --aw-radius-card: 10px;
     --aw-radius-swatch: 6px;
-    --aw-radius-btn: 8px;
+    --aw-radius-btn: 6px;
     --aw-transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     --aw-shadow-card: 0 4px 32px rgba(0,0,0,0.4);
   }
@@ -198,6 +209,41 @@
 
   .text-subheading {
     @apply font-body text-[11px] font-medium uppercase tracking-[0.08em];
+  }
+
+  /* ---------------------------------------------------------------------
+     RÓTULO: o texto pequeno em caixa alta que abre uma seção ou nomeia um
+     bloco. Existiam 16 grafias dele espalhadas por 132 lugares, variando
+     tamanho (10 ou 11px), peso (light, medium, semibold ou nenhum) e
+     espacejamento (de 0,1em a 0,2em). Nenhuma dessas variações era decisão
+     de projeto: era cópia e cola derivando.
+
+     São DOIS, e isso sim é de propósito. Marcam as duas gerações de página
+     que convivem no site:
+
+       .rotulo      sans, nas páginas de produto da Madeira Ecológica
+       .rotulo-tec  mono, nas páginas mais novas (Zhú, Geo, Blog, Biblioteca)
+
+     Fundir os dois num só é decisão de composição, não de tipografia, e fica
+     para o lote em que as páginas antigas forem para a linguagem nova.
+
+     O peso é 500 porque 500 existe. A DM Sans é carregada em 300, 400 e 500,
+     e a PP Neue Machina tem 200, 300, 400, 800 e 900. Um `font-semibold`
+     (600) aqui não acharia par: pela regra de casamento do CSS ele sobe para
+     o peso mais próximo ACIMA, o que na display significa cair nos 800 do
+     Ultrabold. Era o que 58 destes rótulos vinham fazendo. */
+  /* Fixa a MÉTRICA do rótulo (tamanho, peso, caixa, espacejamento) e não a
+     família. É de propósito: alguns blocos pedem a display explicitamente
+     (os selos da madeira ecológica, por exemplo) e, se este utilitário
+     cravasse `font-body`, ele venceria o `font-display` do bloco por vir
+     depois na folha. Sem família declarada, herda a DM Sans do `body` no
+     caso comum e respeita o `font-display` quando o bloco pede. */
+  .rotulo {
+    @apply text-[11px] font-medium uppercase tracking-[0.1em];
+  }
+
+  .rotulo-tec {
+    @apply font-mono text-[11px] uppercase tracking-[0.2em];
   }
 
   .text-body-lg {

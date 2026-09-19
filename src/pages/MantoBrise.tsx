@@ -154,7 +154,7 @@ const MantoBrise = () => {
       <div className="w-full px-6 md:px-12 lg:px-20 py-20 text-center">
         <div className="flex items-center gap-4 justify-center mb-8">
           <span className="flex-1 h-px bg-primary/15" />
-          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-accent-ink">Brise</span>
+          <span className="rotulo text-accent-ink">Brise</span>
           <span className="flex-1 h-px bg-primary/15" />
         </div>
         <p className="text-[17px] text-muted-foreground leading-[1.7]">
@@ -184,7 +184,7 @@ const MantoBrise = () => {
         <div key={activeTab} className="animate-fade-in pt-12">
           {/* Paleta de Cores */}
           <div className="mb-12">
-            <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-4">
+            <span className="block rotulo text-[#525252] mb-4">
               {t("Cores disponíveis")}
             </span>
             <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-8 gap-4 w-full">
@@ -203,7 +203,7 @@ const MantoBrise = () => {
 
           {/* Modelos */}
           <div className="mb-12">
-            <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-6">
+            <span className="block rotulo text-[#525252] mb-6">
               {t("Modelos")}
             </span>
             <div className="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
@@ -229,20 +229,20 @@ const MantoBrise = () => {
           </button>
 
           {specsOpen && (
-            <div className="mt-6 bg-white rounded-[12px] p-8 animate-fade-in">
+            <div className="mt-6 bg-white rounded-[10px] p-8 animate-fade-in">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Material")}</h4>
+                  <h4 className="rotulo text-[#525252] mb-3">{t("Material")}</h4>
                   <div className="h-px bg-primary/15 mb-4" />
                   <div className="text-sm text-primary font-mono space-y-1">
-                    <p>WPC — Wood-Plastic Composite</p>
+                    <p>WPC (Wood-Plastic Composite)</p>
                     <p className="text-muted-foreground">{t("55% pó de madeira natural")}</p>
                     <p className="text-muted-foreground">{t("35% HPDE reciclado")}</p>
                     <p className="text-muted-foreground">{t("10% aditivos")}</p>
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Resistência")}</h4>
+                  <h4 className="rotulo text-[#525252] mb-3">{t("Resistência")}</h4>
                   <div className="h-px bg-primary/15 mb-4" />
                   <div className="text-sm text-primary space-y-1">
                     <p>✓ {t("Anti-cupim")}</p>
@@ -252,23 +252,23 @@ const MantoBrise = () => {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Certificações")}</h4>
+                  <h4 className="rotulo text-[#525252] mb-3">{t("Certificações")}</h4>
                   <div className="h-px bg-primary/15 mb-4" />
                   <p className="text-sm text-primary">ISO 9001 · ISO 14001 · LEED · ESG</p>
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Garantia")}</h4>
+                  <h4 className="rotulo text-[#525252] mb-3">{t("Garantia")}</h4>
                   <div className="h-px bg-primary/15 mb-4" />
                   <p className="text-sm text-primary">{t("10 anos")}</p>
                 </div>
                 <div className="md:col-span-2">
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Subestrutura Recomendada")}</h4>
+                  <h4 className="rotulo text-[#525252] mb-3">{t("Subestrutura Recomendada")}</h4>
                   <div className="h-px bg-primary/15 mb-4" />
                   <div className="text-sm text-primary font-mono space-y-1">
                     <p>{t("Aplicação em parede:")} <span className="text-muted-foreground">{t("espaçamento 80 cm entre estruturas")}</span></p>
                     <p>{t("Aplicação em teto:")} <span className="text-muted-foreground">{t("espaçamento 60 cm entre estruturas")}</span></p>
                     <p>{t("Fixação:")} <span className="text-muted-foreground">{t("parafuso Philips autobrocante flangeado ou cabeça panela 4,2×19 mm")}</span></p>
-                    <p>{t("Estrutura auxiliar:")} <span className="text-muted-foreground">{t("alumínio ou aço")} — 50×50 mm · 38×38 mm · 50×25 mm</span></p>
+                    <p>{t("Estrutura auxiliar:")} <span className="text-muted-foreground">{t("alumínio ou aço")}: 50×50 mm · 38×38 mm · 50×25 mm</span></p>
                   </div>
                 </div>
               </div>

@@ -79,7 +79,7 @@ const MantoLine = () => {
       <div className="px-6 md:px-12 lg:px-20 py-20 text-center">
         <div className="flex items-center gap-4 justify-center mb-8">
           <span className="flex-1 h-px bg-primary/15" />
-          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-accent-ink">Line</span>
+          <span className="rotulo text-accent-ink">Line</span>
           <span className="flex-1 h-px bg-primary/15" />
         </div>
         <p className="text-[17px] text-muted-foreground leading-[1.7]">
@@ -90,7 +90,7 @@ const MantoLine = () => {
       {/* Paleta de Cores */}
       <div className="px-6 md:px-12 lg:px-20">
         <div className="mb-12">
-          <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-4">
+          <span className="block rotulo text-[#525252] mb-4">
             {t("Cores Acetinadas sem tratamento UV")}
           </span>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-x-6 gap-y-4">
@@ -109,7 +109,7 @@ const MantoLine = () => {
 
         {/* Modelos */}
         <div className="mb-12">
-          <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-6">
+          <span className="block rotulo text-[#525252] mb-6">
             {t("Modelos")}
           </span>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -129,20 +129,20 @@ const MantoLine = () => {
           </button>
 
           {specsOpen && (
-            <div className="mt-6 bg-white rounded-[12px] p-8 animate-fade-in">
+            <div className="mt-6 bg-white rounded-[10px] p-8 animate-fade-in">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Material")}</h4>
+                  <h4 className="rotulo text-[#525252] mb-3">{t("Material")}</h4>
                   <div className="h-px bg-primary/15 mb-4" />
                   <div className="text-sm text-primary font-mono space-y-1">
-                    <p>WPC — Wood-Plastic Composite</p>
+                    <p>WPC (Wood-Plastic Composite)</p>
                     <p className="text-muted-foreground">{t("55% pó de madeira natural")}</p>
                     <p className="text-muted-foreground">{t("35% HPDE reciclado")}</p>
                     <p className="text-muted-foreground">{t("10% aditivos")}</p>
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Resistência")}</h4>
+                  <h4 className="rotulo text-[#525252] mb-3">{t("Resistência")}</h4>
                   <div className="h-px bg-primary/15 mb-4" />
                   <div className="text-sm text-primary space-y-1">
                     <p>{t("✓ Anti-cupim")}</p>
@@ -152,12 +152,12 @@ const MantoLine = () => {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Certificações")}</h4>
+                  <h4 className="rotulo text-[#525252] mb-3">{t("Certificações")}</h4>
                   <div className="h-px bg-primary/15 mb-4" />
                   <p className="text-sm text-primary">ISO 9001 · ISO 14001 · LEED · ESG</p>
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Garantia")}</h4>
+                  <h4 className="rotulo text-[#525252] mb-3">{t("Garantia")}</h4>
                   <div className="h-px bg-primary/15 mb-4" />
                   <p className="text-sm text-primary">{t("10 anos")}</p>
                 </div>
@@ -170,8 +170,8 @@ const MantoLine = () => {
       {/* Galeria de Projetos */}
       {galeriaItems.length > 0 && (
         <div className="px-6 md:px-12 lg:px-20 py-24">
-          <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-accent-ink mb-3">{t("Projetos")}</span>
-          <h2 className="font-display text-3xl md:text-4xl font-semibold mb-10 text-gray-950">{t("Realizações com")} Lesco Line</h2>
+          <span className="block rotulo text-accent-ink mb-3">{t("Projetos")}</span>
+          <h2 className="font-display text-3xl md:text-4xl font-normal mb-10 text-gray-950">{t("Realizações com")} Lesco Line</h2>
           <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
             {galeriaItems.map((item, i) => (
               <div key={i} className="break-inside-avoid">

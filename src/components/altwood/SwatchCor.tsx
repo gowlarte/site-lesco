@@ -31,7 +31,7 @@ export const SwatchCor = ({ nome, corAproximada, imageSrc, selected, onClick }: 
         vem do tom mais escuro, que é o que a página inteira usa para dar
         ênfase. */}
     <span className={cn(
-      "text-[11px] uppercase tracking-[0.1em] transition-colors duration-300 whitespace-nowrap",
+      "rotulo transition-colors duration-300 whitespace-nowrap",
       selected ? "text-primary font-medium" : "text-muted-foreground"
     )}>
       {nome}

@@ -68,7 +68,7 @@ const Zhu = () => {
               {atributos.map((a) => (
                 <span
                   key={a}
-                  className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-white/75"
+                  className="rotulo-tec text-white/75"
                 >
                   {a}
                 </span>
@@ -80,7 +80,7 @@ const Zhu = () => {
 
       {/* PRODUTOS */}
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4">
+        <p className="rotulo-tec text-primary/65 mb-4">
           {t("Produtos")}
         </p>
         <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 max-w-2xl">
@@ -102,7 +102,7 @@ const Zhu = () => {
                 />
               </div>
               <h3 className="font-display text-xl text-dark mb-2 font-normal">{f.nome}</h3>
-              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-primary/65 mb-3">
+              <p className="rotulo-tec text-primary/65 mb-3">
                 {f.modelos.length} {f.modelos.length === 1 ? t("modelo") : t("modelos")}
               </p>
               <p className="font-body text-[14px] text-primary/70 leading-relaxed flex-1">{f.intro}</p>
@@ -119,7 +119,7 @@ const Zhu = () => {
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-12 lg:gap-20">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4">
+            <p className="rotulo-tec text-primary/65 mb-4">
               {t("A linha")}
             </p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark">
@@ -139,7 +139,7 @@ const Zhu = () => {
 
       {/* ONDE UTILIZAR */}
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4">
+        <p className="rotulo-tec text-primary/65 mb-4">
           {t("Onde utilizar")}
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-[10px] mb-16">
@@ -152,7 +152,7 @@ const Zhu = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-12 lg:gap-20">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4">
+            <p className="rotulo-tec text-primary/65 mb-4">
               {t("Diferenciais")}
             </p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark">
@@ -174,7 +174,7 @@ const Zhu = () => {
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28">
         <button
           onClick={() => setSpecsOpen(!specsOpen)}
-          className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 hover:text-dark transition-colors cursor-pointer"
+          className="rotulo-tec text-primary/65 hover:text-dark transition-colors cursor-pointer"
         >
           {t("Dados técnicos")} {specsOpen ? "−" : "+"}
         </button>
@@ -183,7 +183,7 @@ const Zhu = () => {
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 animate-fade-in">
             {dadosTecnicosZhu.map((d) => (
               <div key={d.rotulo}>
-                <h3 className="font-mono text-[10px] uppercase tracking-[0.14em] text-primary/65 mb-2">
+                <h3 className="rotulo-tec text-primary/65 mb-2">
                   {d.rotulo}
                 </h3>
                 <div className="h-px bg-primary/10 mb-3" />

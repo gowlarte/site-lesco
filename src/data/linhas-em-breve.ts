@@ -33,7 +33,7 @@ export const linhasEmBreve: Record<string, LinhaEmBreve> = {
     imagem: heroZhuzen,
     tagline: t("Arquitetura em Bambu"),
     intro:
-      t("Uma nova linha dedicada ao bambu — material ancestral, contemporâneo e radicalmente sustentável. Em breve disponível para projetos."),
+      t("Uma nova linha dedicada ao bambu: material ancestral, contemporâneo e radicalmente sustentável. Em breve disponível para projetos."),
     sobreTitulo: t("Sobre a linha Zhú"),
     sobreTexto:
       t("Zhú reúne forros, painéis acústicos e decks produzidos a partir do bambu. Uma linha que celebra a leveza, a textura natural e o tempo de vida longo de uma das fibras mais nobres do planeta."),

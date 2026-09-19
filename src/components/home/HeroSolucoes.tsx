@@ -117,7 +117,7 @@ function Legenda({ pilulas }: { pilulas: string[] }) {
 }
 
 const pilula =
-  "inline-flex shrink-0 items-center rounded-full border border-white/40 px-3 py-1 font-body text-[10px] uppercase tracking-[0.12em] text-white";
+  "inline-flex shrink-0 items-center rounded-full border border-white/40 px-3 py-1 rotulo text-white";
 
 export function HeroSolucoes() {
   const [ativo, setAtivo] = useState(0);

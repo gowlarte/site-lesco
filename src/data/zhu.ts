@@ -417,12 +417,12 @@ export const familiasZhu: Record<string, FamiliaZhu> = {
 export const dadosTecnicosZhu: { rotulo: string; valor: string }[] = [
   { rotulo: t("Densidade"), valor: "±680 kg/m³" },
   { rotulo: t("Dureza Janka"), valor: "1.380 lbf" },
-  { rotulo: t("Emissão de formaldeído"), valor: t("Classe E1 — 0,72 mg/m².h (EN 717-2)") },
+  { rotulo: t("Emissão de formaldeído"), valor: t("Classe E1, 0,72 mg/m².h (EN 717-2)") },
   { rotulo: t("Resistência a fungos"), valor: t("Alta resistência, conforme EN 846") },
   { rotulo: t("Teor de umidade"), valor: "10% — 14%" },
   { rotulo: t("Condutividade térmica"), valor: "0,39 W/(m·K) (EN 12524)" },
   { rotulo: t("Expansão linear"), valor: t("0,1% entre 50% e 90% de umidade relativa (ASTM D1037:2012)") },
   { rotulo: t("Resistência ao fogo"), valor: t("Classificação Bfl-s1 disponível sob consulta (EN 13501)") },
   { rotulo: t("Ensaio de durabilidade"), valor: t("Classe 1 (EN 350 / CEN/TS 15083-2) e Classe 4 (EN 335)") },
-  { rotulo: t("Certificação FSC"), valor: t("Disponível sob consulta — certificado C135631") },
+  { rotulo: t("Certificação FSC"), valor: t("Disponível sob consulta, certificado C135631") },
 ];

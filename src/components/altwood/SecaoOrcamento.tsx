@@ -19,7 +19,7 @@ export const SecaoOrcamento = ({ imageSrc }: SecaoOrcamentoProps) => (
     )}
     {/* Content */}
     <div className="relative z-10 flex flex-col items-center text-center px-6">
-      <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-8">
+      <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-8">
         {t("Solicite seu Orçamento")}
       </h2>
       <BotaoCTA variant="primary" className="mb-8" href="/orcamento">{t("Falar com um especialista")}</BotaoCTA>

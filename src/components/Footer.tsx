@@ -22,7 +22,7 @@ export function Footer() {
 
           {/* Col 2 — Linhas */}
           <div>
-            <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-foreground/55 mb-5">{t("Linhas")}</h4>
+            <h4 className="rotulo text-foreground/55 mb-5">{t("Linhas")}</h4>
             <ul className="space-y-3">
               {[
                 { label: t("Madeira Ecológica"), href: "/madeira-ecologica-lesco" },
@@ -44,7 +44,7 @@ export function Footer() {
 
           {/* Col 3 — Institucional */}
           <div>
-            <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-foreground/55 mb-5">{t("Institucional")}</h4>
+            <h4 className="rotulo text-foreground/55 mb-5">{t("Institucional")}</h4>
             <ul className="space-y-3">
               {[
                 { label: t("Sobre"), href: "/quem-somos" },
@@ -80,7 +80,7 @@ export function Footer() {
 
           {/* Col 4 — Contato */}
           <div>
-            <h4 className="text-[10px] font-body font-medium uppercase tracking-[0.15em] text-foreground/55 mb-5">{t("Contato")}</h4>
+            <h4 className="rotulo text-foreground/55 mb-5">{t("Contato")}</h4>
             <ul className="space-y-3 font-body text-[13px] font-light text-foreground/70">
               <li>{site.email}</li>
               <li className="leading-relaxed">

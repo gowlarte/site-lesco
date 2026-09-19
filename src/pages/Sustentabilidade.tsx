@@ -8,18 +8,18 @@ import iso9001Badge from "@/assets/certifications/iso-9001.webp";
 import iso14001Badge from "@/assets/certifications/iso-14001.webp";
 
 const pilares = [
-  { titulo: t("Material reciclado"), texto: t("Polímeros pós-consumo e pó de madeira de reflorestamento — desviando resíduos de aterros.") },
+  { titulo: t("Material reciclado"), texto: t("Polímeros pós-consumo e pó de madeira de reflorestamento, desviando resíduos de aterros.") },
   { titulo: t("Vida útil longa"), texto: t("Garantia de 10 anos. Menos substituições, menos resíduo, menor pegada ambiental.") },
   { titulo: t("Manutenção mínima"), texto: t("Não requer vernizes, óleos ou solventes ao longo da vida útil do produto.") },
   { titulo: t("Certificações"), texto: t("ISO 9001, ISO 14001, LEED e diretrizes ESG aplicadas em toda a cadeia produtiva.") },
 ];
 
 const certificacoes = [
-  { src: esgBadge, alt: t("Selo ESG — Environmental Social Governance Certified") },
+  { src: esgBadge, alt: t("Selo ESG (Environmental Social Governance Certified)") },
   { src: gbcBadge, alt: t("Selo Green Building Council") },
-  { src: leedBadge, alt: t("Selo LEED — Leadership in Energy & Environmental Design") },
-  { src: iso9001Badge, alt: t("Selo ISO 9001 — Quality Management System Certified") },
-  { src: iso14001Badge, alt: t("Selo ISO 14001 — Environmental Management System Certified") },
+  { src: leedBadge, alt: t("Selo LEED (Leadership in Energy & Environmental Design)") },
+  { src: iso9001Badge, alt: t("Selo ISO 9001 (Quality Management System Certified)") },
+  { src: iso14001Badge, alt: t("Selo ISO 14001 (Environmental Management System Certified)") },
 ];
 
 import { SEO } from "@/components/SEO";
@@ -44,14 +44,14 @@ const Sustentabilidade = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
           <div className="relative z-10">
-            <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-white/80 mb-6">
+            <p className="rotulo text-white/80 mb-6">
               {t("Sustentabilidade")}
             </p>
             <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-white max-w-4xl">
               {t("Arquitetura responsável, do design ao descarte.")}
             </h1>
             <p className="mt-8 max-w-2xl font-body text-[16px] md:text-[18px] font-light leading-[1.65] text-white/85">
-              {t("Acreditamos que o revestimento certo precisa ser bonito, durável e responsável — ao mesmo tempo. Cada produto Lesco nasce de uma cadeia produtiva que respeita o ciclo da matéria.")}
+              {t("Acreditamos que o revestimento certo precisa ser bonito, durável e responsável ao mesmo tempo. Cada produto Lesco nasce de uma cadeia produtiva que respeita o ciclo da matéria.")}
             </p>
           </div>
         </section>
@@ -71,7 +71,7 @@ const Sustentabilidade = () => {
           </div>
 
           <div className="mt-20 pt-12 border-t border-primary/10">
-            <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-primary/65 mb-10">
+            <p className="rotulo text-primary/65 mb-10">
               {t("Certificações reconhecidas")}
             </p>
             <ul className="grid grid-cols-3 sm:grid-cols-5 gap-8 md:gap-12 items-center">

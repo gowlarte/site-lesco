@@ -42,7 +42,7 @@ export default function ObrigadoOrcamento() {
         <div className="relative z-10 text-center px-6 max-w-2xl mx-auto py-24">
           <img src={logoLight} alt="Lesco" className="h-12 md:h-14 mx-auto" />
 
-          <h1 className="mt-8 font-heading text-2xl md:text-4xl font-bold text-white">
+          <h1 className="mt-8 font-display text-2xl md:text-4xl font-normal text-white">
             {t("Pedido de orçamento recebido!")}
           </h1>
 

@@ -169,7 +169,7 @@ const BlogArtigo = () => {
       <article className="mx-auto w-full max-w-[920px] px-6 sm:px-10 md:px-14 pt-10 md:pt-14 pb-14 md:pb-16">
         <Link
           to="/blog"
-          className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-dark hover:opacity-70 transition-opacity mb-8"
+          className="inline-flex items-center gap-2 rotulo-tec text-dark hover:opacity-70 transition-opacity mb-8"
         >
           <span aria-hidden>←</span> {t("Voltar ao blog")}
         </Link>
@@ -179,7 +179,7 @@ const BlogArtigo = () => {
         {/* Hero */}
         <figure className="mt-8">
           <div className="relative aspect-[16/8] overflow-hidden rounded-[10px]">
-            <img src={heroImg} alt={t("Parque da Cidade — fachada COP30")} className="absolute inset-0 w-full h-full object-cover" />
+            <img src={heroImg} alt={t("Parque da Cidade, fachada COP30")} className="absolute inset-0 w-full h-full object-cover" />
           </div>
           <figcaption className="mt-4 text-center font-display italic font-light text-[13px] text-dark">
             {t("\"Um bom ambiente é aquele que foi pensado para guiar a sua experiência dentro dele\"")}
@@ -191,7 +191,7 @@ const BlogArtigo = () => {
           <H2>{t("De Belém para o mundo: inovação com identidade brasileira")}</H2>
           <div className="mt-3">
             <Body>
-              {t("O Brasil tem uma assinatura própria quando o assunto é construção sustentável: unir a estética da natureza à precisão da engenharia. No Parque da Cidade, essa assinatura ganha escala: um palco global revestido com um material que fala a língua do clima, da cultura e do legado urbano. É a prova de que o país não apenas acompanha tendências — lidera o diálogo entre tecnologia, conforto e responsabilidade ambiental.")}
+              {t("O Brasil tem uma assinatura própria quando o assunto é construção sustentável: unir a estética da natureza à precisão da engenharia. No Parque da Cidade, essa assinatura ganha escala: um palco global revestido com um material que fala a língua do clima, da cultura e do legado urbano. É a prova de que o país não apenas acompanha tendências: lidera o diálogo entre tecnologia, conforto e responsabilidade ambiental.")}
             </Body>
           </div>
 
@@ -240,7 +240,7 @@ const BlogArtigo = () => {
 
           <div className="mt-6">
             <Body>
-              {t("O Red Cedar dialoga com a paleta da paisagem amazônica e reforça a narrativa de sofisticação + sustentabilidade — a estética que permanece bonita mesmo sob uso intenso.")}
+              {t("O Red Cedar dialoga com a paleta da paisagem amazônica e reforça a narrativa de sofisticação + sustentabilidade, a estética que permanece bonita mesmo sob uso intenso.")}
             </Body>
           </div>
         </section>
@@ -250,7 +250,7 @@ const BlogArtigo = () => {
           <H2>{t("Engenharia que sustenta a estética")}</H2>
           <div className="mt-3">
             <Body>
-              {t("O Brasil tem uma assinatura própria quando o assunto é construção sustentável: unir a estética da natureza à precisão da engenharia. No Parque da Cidade, essa assinatura ganha escala: um palco global revestido com um material que fala a língua do clima, da cultura e do legado urbano. É a prova de que o país não apenas acompanha tendências — lidera o diálogo entre tecnologia, conforto e responsabilidade ambiental.")}
+              {t("O Brasil tem uma assinatura própria quando o assunto é construção sustentável: unir a estética da natureza à precisão da engenharia. No Parque da Cidade, essa assinatura ganha escala: um palco global revestido com um material que fala a língua do clima, da cultura e do legado urbano. É a prova de que o país não apenas acompanha tendências: lidera o diálogo entre tecnologia, conforto e responsabilidade ambiental.")}
             </Body>
           </div>
           <div className="mt-7 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-5">

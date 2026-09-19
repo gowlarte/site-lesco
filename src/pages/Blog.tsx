@@ -107,7 +107,7 @@ const Blog = () => {
       />
       {/* Header editorial */}
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-16 md:py-24 mb-[10px]">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-6">
+        <p className="rotulo-tec text-primary/65 mb-6">
           {t("Blog Lesco")}
         </p>
         <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-dark max-w-4xl">
@@ -129,7 +129,7 @@ const Blog = () => {
             />
           </div>
           <div className="flex flex-col justify-center p-8 md:p-12 lg:p-16">
-            <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-primary/65 mb-6">
+            <div className="flex items-center gap-3 rotulo-tec text-primary/65 mb-6">
               <span>{destaque.categoria}</span>
               <span className="w-1 h-1 rounded-full bg-primary/40" />
               <span>{destaque.data}</span>
@@ -166,7 +166,7 @@ const Blog = () => {
                   loading="lazy"
                 />
               </div>
-              <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-primary/65 mb-3">
+              <div className="flex items-center gap-2 rotulo-tec text-primary/65 mb-3">
                 <span>{artigo.categoria}</span>
                 <span className="w-1 h-1 rounded-full bg-primary/40" />
                 <span>{artigo.data}</span>

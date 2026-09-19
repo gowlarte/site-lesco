@@ -90,7 +90,7 @@ const LinhaEmBreve = () => {
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-12 lg:gap-20">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4">
+            <p className="rotulo-tec text-primary/65 mb-4">
               {t("A linha")}
             </p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark">
@@ -107,7 +107,7 @@ const LinhaEmBreve = () => {
 
       {/* APLICAÇÕES */}
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4">
+        <p className="rotulo-tec text-primary/65 mb-4">
           {t("Aplicações")}
         </p>
         <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 max-w-2xl">
@@ -127,7 +127,7 @@ const LinhaEmBreve = () => {
       <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-12 lg:gap-20">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4">
+            <p className="rotulo-tec text-primary/65 mb-4">
               {t("Diferenciais")}
             </p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark">
@@ -147,7 +147,7 @@ const LinhaEmBreve = () => {
 
       {/* CTA FINAL */}
       <section className="bg-dark rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28 text-center">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/50 mb-4">
+        <p className="rotulo-tec text-white/50 mb-4">
           {linha.nome}
         </p>
         <h2 className="font-display text-3xl md:text-4xl lg:text-[52px] font-light leading-[1.1] text-white mb-6 max-w-3xl mx-auto">

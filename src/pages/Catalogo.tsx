@@ -80,7 +80,7 @@ const Catalogo = () => {
       {/* ========== DIFERENCIAIS ========== */}
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4 text-center">
+          <p className="rotulo-tec text-primary/65 mb-4 text-center">
             {t("Por que Lesco")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 text-center max-w-3xl mx-auto">

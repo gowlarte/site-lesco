@@ -120,7 +120,7 @@ const MantoPanel = () => {
       <div className="px-6 md:px-12 lg:px-20 py-20 text-center">
         <div className="flex items-center gap-4 justify-center mb-8">
           <span className="flex-1 h-px bg-primary/15" />
-          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-accent-ink">Panel</span>
+          <span className="rotulo text-accent-ink">Panel</span>
           <span className="flex-1 h-px bg-primary/15" />
         </div>
         <p className="text-[17px] text-muted-foreground leading-[1.7]">
@@ -133,7 +133,7 @@ const MantoPanel = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
           {/* Cores Acetinadas */}
           <div>
-            <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-4">
+            <span className="block rotulo text-[#525252] mb-4">
               {t("Cores Acetinadas Sem Tratamento UV")}
             </span>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-4">
@@ -152,7 +152,7 @@ const MantoPanel = () => {
 
           {/* Cores Foscas */}
           <div>
-            <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-4">
+            <span className="block rotulo text-[#525252] mb-4">
               {t("Cores Foscas Com Tratamento UV")}
             </span>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-4">
@@ -172,7 +172,7 @@ const MantoPanel = () => {
 
         {/* Modelos */}
         <div className="mb-12">
-          <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-6">
+          <span className="block rotulo text-[#525252] mb-6">
             {t("Modelos")}
           </span>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -192,20 +192,20 @@ const MantoPanel = () => {
           </button>
 
           {specsOpen && (
-            <div className="mt-6 bg-white rounded-[12px] p-8 animate-fade-in">
+            <div className="mt-6 bg-white rounded-[10px] p-8 animate-fade-in">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Material")}</h4>
+                  <h4 className="rotulo text-[#525252] mb-3">{t("Material")}</h4>
                   <div className="h-px bg-primary/15 mb-4" />
                   <div className="text-sm text-primary font-mono space-y-1">
-                    <p>WPC — Wood-Plastic Composite</p>
+                    <p>WPC (Wood-Plastic Composite)</p>
                     <p className="text-muted-foreground">{t("55% pó de madeira natural")}</p>
                     <p className="text-muted-foreground">{t("35% HPDE reciclado")}</p>
                     <p className="text-muted-foreground">{t("10% aditivos")}</p>
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Resistência")}</h4>
+                  <h4 className="rotulo text-[#525252] mb-3">{t("Resistência")}</h4>
                   <div className="h-px bg-primary/15 mb-4" />
                   <div className="text-sm text-primary space-y-1">
                     <p>✓ {t("Anti-cupim")}</p>
@@ -215,12 +215,12 @@ const MantoPanel = () => {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Certificações")}</h4>
+                  <h4 className="rotulo text-[#525252] mb-3">{t("Certificações")}</h4>
                   <div className="h-px bg-primary/15 mb-4" />
                   <p className="text-sm text-primary">ISO 9001 · ISO 14001 · LEED · ESG</p>
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#525252] mb-3">{t("Garantia")}</h4>
+                  <h4 className="rotulo text-[#525252] mb-3">{t("Garantia")}</h4>
                   <div className="h-px bg-primary/15 mb-4" />
                   <p className="text-sm text-primary">{t("10 anos")}</p>
                 </div>

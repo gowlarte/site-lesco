@@ -58,7 +58,7 @@ export default function ObrigadoCatalogoGeo() {
         <div className="relative z-10 text-center px-6 max-w-2xl mx-auto py-24">
           <img src={logoLight} alt="Lesco" className="h-12 md:h-14 mx-auto" />
 
-          <h1 className="mt-8 font-heading text-2xl md:text-4xl font-bold text-white">
+          <h1 className="mt-8 font-display text-2xl md:text-4xl font-normal text-white">
             {t("Obrigado! Acesse Agora Mesmo")}
             <br />
             {t("seu Catálogo da Linha Geo.")}
@@ -68,7 +68,7 @@ export default function ObrigadoCatalogoGeo() {
             href="https://heyzine.com/flip-book/0e7ef2706b.html"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-block font-heading text-base md:text-lg font-bold text-black bg-white rounded-[10px] px-8 py-4 hover:bg-white/90 transition-colors"
+            className="mt-8 inline-block font-display text-base md:text-lg font-medium text-black bg-white rounded-[10px] px-8 py-4 hover:bg-white/90 transition-colors"
           >
             {t("Acessar Catálogo")}
           </a>

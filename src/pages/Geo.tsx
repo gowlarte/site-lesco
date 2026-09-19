@@ -31,7 +31,7 @@ const aplicacoes = [
     img: imgFachada,
     titulo: t("Fachadas"),
     descricao:
-      t("Revestimento contínuo, leve e resistente às intempéries — aplicado em grandes áreas com baixo custo de instalação."),
+      t("Revestimento contínuo, leve e resistente às intempéries, aplicado em grandes áreas com baixo custo de instalação."),
   },
   {
     img: imgBanheiro,
@@ -110,7 +110,7 @@ const Geo = () => {
               {t("Revestimento de pedra flexível.")}
             </h1>
             <p className="font-body text-[15px] md:text-[17px] text-white/80 leading-relaxed max-w-md">
-              {t("A textura da pedra natural com o desempenho dos materiais modernos — aplicável em grandes áreas, internas e externas, com instalação simples e custo inferior ao dos revestimentos tradicionais.")}
+              {t("A textura da pedra natural com o desempenho dos materiais modernos, aplicável em grandes áreas, internas e externas, com instalação simples e custo inferior ao dos revestimentos tradicionais.")}
             </p>
           </div>
 
@@ -148,14 +148,14 @@ const Geo = () => {
           </div>
           <div>
             <ScrollReveal>
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark mb-4">
+              <p className="rotulo-tec text-dark mb-4">
                 {t("Sobre a pedra flexível")}
               </p>
               <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-6">
                 {t("Durabilidade mineral, plasticidade dos materiais modernos.")}
               </h2>
               <p className="font-body text-[15px] md:text-[16px] leading-[1.7] text-slate-950">
-                {t("A Geo é produzida a partir de solo modificado de base mineral, triturado até virar um pó microscópico e unido a polímeros ecológicos. O resultado une a estabilidade estrutural dos materiais inorgânicos à flexibilidade dos orgânicos — preservando as propriedades naturais da pedra: respirabilidade, resistência à umidade e ao fogo, e sustentabilidade.")}
+                {t("A Geo é produzida a partir de solo modificado de base mineral, triturado até virar um pó microscópico e unido a polímeros ecológicos. O resultado une a estabilidade estrutural dos materiais inorgânicos à flexibilidade dos orgânicos, preservando as propriedades naturais da pedra: respirabilidade, resistência à umidade e ao fogo, e sustentabilidade.")}
               </p>
             </ScrollReveal>
           </div>
@@ -165,7 +165,7 @@ const Geo = () => {
       {/* ========== COMPARATIVO TÉCNICO ========== */}
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4 text-center">
+          <p className="rotulo-tec text-primary/65 mb-4 text-center">
             {t("Comparativo técnico")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-4 text-center max-w-3xl mx-auto">
@@ -181,7 +181,7 @@ const Geo = () => {
               {t("Comparativo de custos: Pedra Flexível vs. Pedra Natural")}
             </h3>
             <p className="font-body text-[13px] text-dark text-center mb-10">
-              {t("Menor investimento em todas as etapas — do produto à obra finalizada.")}
+              {t("Menor investimento em todas as etapas, do produto à obra finalizada.")}
             </p>
             <div className="grid grid-cols-5 gap-4 md:gap-6 max-w-4xl mx-auto items-end" style={{ minHeight: '220px' }}>
               {[
@@ -259,7 +259,7 @@ const Geo = () => {
                   { crit: t('Logística'), vals: [t('Muito pesado / Alto custo'), t('Muito pesado / Alto custo'), t('Proteção especial / Alto custo'), t('Proteção especial / Alto custo'), t('Leve / Baixo custo')] },
                   { crit: t('Segurança'), vals: [t('Instalação arriscada'), t('Risco de queda / instalação'), t('Seguro'), t('Inseguro'), t('Leve / Fixação segura')] },
                   { crit: t('Durabilidade'), vals: [t('Duradoura'), t('Duradoura'), t('Descascamento fácil'), t('Geral'), t('Resistente ao gelo e calor')] },
-                  { crit: t('Resistência ao fogo'), vals: [t('À prova de fogo'), t('À prova de fogo'), '—', t('Resistente ao fogo'), t('Classe A à prova de fogo')] },
+                  { crit: t('Resistência ao fogo'), vals: [t('À prova de fogo'), t('À prova de fogo'), '-', t('Resistente ao fogo'), t('Classe A à prova de fogo')] },
                   { crit: t('Praticidade'), vals: [t('Construção inconveniente'), t('Construção inconveniente'), t('Construção fácil'), t('Construção inconveniente'), t('Construção fácil')] },
                   { crit: t('Expressividade'), vals: [t('Expressão limitada'), t('Expressão limitada'), t('Falta de expressão'), t('Falta de expressão'), t('Expressivo')] },
                   { crit: t('Poluição luminosa'), vals: [t('Comparativamente pequena'), t('Sim'), t('Comparativamente grande'), t('Sim'), t('Não')] },
@@ -325,7 +325,7 @@ const Geo = () => {
       {/* ========== APLICAÇÕES ========== */}
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4 text-center">
+          <p className="rotulo-tec text-primary/65 mb-4 text-center">
             {t("Infinitas aplicações")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 text-center max-w-3xl mx-auto">
@@ -355,7 +355,7 @@ const Geo = () => {
       {/* ========== TEXTURAS (amostra) ========== */}
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/65 mb-4 text-center">
+          <p className="rotulo-tec text-primary/65 mb-4 text-center">
             {t("Texturas")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-3 text-center max-w-3xl mx-auto">
@@ -372,7 +372,7 @@ const Geo = () => {
                 </div>
                 <div className="p-5">
                   <h3 className="font-display text-base text-dark font-normal">{t.nome}</h3>
-                  <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-dark mt-1">{t.desc}</p>
+                  <p className="rotulo-tec text-dark mt-1">{t.desc}</p>
                 </div>
               </div>
             ))}
@@ -384,7 +384,7 @@ const Geo = () => {
       <section className="bg-dark rounded-[10px] px-8 md:px-16 lg:px-24 py-20 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-12 lg:gap-20">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/50 mb-4">
+            <p className="rotulo-tec text-white/50 mb-4">
               {t("Diferenciais")}
             </p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-light leading-[1.15] text-white">

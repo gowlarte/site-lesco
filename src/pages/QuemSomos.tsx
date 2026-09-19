@@ -38,13 +38,13 @@ const QuemSomos = () => {
               <div className="hidden md:block w-px bg-accent shrink-0 self-stretch" />
               <div className="space-y-8">
                 <p className="font-display text-2xl md:text-3xl lg:text-4xl font-light text-foreground leading-[1.3] text-gray-950">
-                  {t("A Lesco nasceu da convicção de que a arquitetura pode ser bonita, durável e responsável — ao mesmo tempo.")}
+                  {t("A Lesco nasceu da convicção de que a arquitetura pode ser bonita, durável e responsável. Ao mesmo tempo.")}
                 </p>
                 <p className="text-body-lg text-muted-foreground">
-                  {t("Há mais de 15 anos, fomos pioneiros em trazer a madeira ecológica WPC para o Brasil. Hoje, evoluímos. Não somos mais apenas uma empresa de WPC — somos uma casa de linhas premium de revestimento que coloca arquitetos, designers e construtores em contato com superfícies extraordinárias.")}
+                  {t("Há mais de 15 anos, fomos pioneiros em trazer a madeira ecológica WPC para o Brasil. Hoje, evoluímos. Não somos mais apenas uma empresa de WPC. Somos uma casa de linhas premium de revestimento que coloca arquitetos, designers e construtores em contato com superfícies extraordinárias.")}
                 </p>
                 <p className="text-body-lg text-muted-foreground">
-                  {t("Cada material que selecionamos passa por um crivo rigoroso de estética, performance e sustentabilidade. Porque acreditamos que o revestimento certo não é um detalhe — é a assinatura de um projeto.")}
+                  {t("Cada material que selecionamos passa por um crivo rigoroso de estética, performance e sustentabilidade. Porque acreditamos que o revestimento certo não é um detalhe. É a assinatura de um projeto.")}
                 </p>
               </div>
             </div>

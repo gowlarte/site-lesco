@@ -80,7 +80,7 @@ const principios = [
   {
     titulo: t("Alto padrão sem concessões"),
     texto: t(
-      "Cada linha nasce para atender projetos exigentes — do detalhe técnico ao acabamento final. Especificamos com quem projeta e constrói obras de referência.",
+      "Cada linha nasce para atender projetos exigentes, do detalhe técnico ao acabamento final. Especificamos com quem projeta e constrói obras de referência.",
     ),
   },
   {
@@ -119,7 +119,7 @@ const novasLinhas = [
     logo: logoGeoRaw,
     tagline: t("Revestimento Flexível"),
     resumo: t(
-      "Revestimento flexível de estética mineral para fachadas, áreas molhadas e interiores — acabamento contínuo, leve e resistente.",
+      "Revestimento flexível de estética mineral para fachadas, áreas molhadas e interiores: acabamento contínuo, leve e resistente.",
     ),
     detalhes: [
       t("Flexível e leve, de aplicação simples em superfícies diversas."),
@@ -133,7 +133,7 @@ const novasLinhas = [
     logo: logoZhuRaw,
     tagline: t("Arquitetura em Bambu"),
     resumo: t(
-      "Revestimentos, forros, luminárias e decorativos produzidos a partir do bambu — material ancestral, contemporâneo e radicalmente sustentável.",
+      "Revestimentos, forros, luminárias e decorativos produzidos a partir do bambu: material ancestral, contemporâneo e radicalmente sustentável.",
     ),
     detalhes: [
       t("Matéria-prima 100% renovável e de rápido crescimento."),
@@ -293,14 +293,14 @@ const LiveLesco = () => {
               />
             </div>
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark mb-4">
+              <p className="rotulo-tec text-dark mb-4">
                 {t("Quem conduz")}
               </p>
               <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-6">
                 {t("Sobre a Lesco.")}
               </h2>
               <p className="font-body text-[15px] md:text-[16px] text-dark leading-relaxed mb-10 max-w-xl">
-                {t("A Lesco desenvolve materiais de revestimento premium para arquitetura de alto padrão. Unimos tecnologia, estética e sustentabilidade em linhas completas — da Madeira Ecológica ao bambu e à pedra flexível — especificadas por arquitetos e construtoras nas obras mais exigentes do país.")}
+                {t("A Lesco desenvolve materiais de revestimento premium para arquitetura de alto padrão. Unimos tecnologia, estética e sustentabilidade em linhas completas (da Madeira Ecológica ao bambu e à pedra flexível), especificadas por arquitetos e construtoras nas obras mais exigentes do país.")}
               </p>
               <div className="space-y-[10px]">
                 {principios.map((p) => (
@@ -318,7 +318,7 @@ const LiveLesco = () => {
       {/* ========== NOVAS LINHAS (EXPANDÍVEIS) ========== */}
       <section className="bg-dark rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary-foreground/60 mb-4 text-center">
+          <p className="rotulo-tec text-primary-foreground/60 mb-4 text-center">
             {t("Novas linhas Lesco")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-primary-foreground mb-12 text-center max-w-2xl mx-auto">
@@ -387,7 +387,7 @@ const LiveLesco = () => {
       {/* ========== MADEIRA ECOLÓGICA vs MADEIRA COMUM ========== */}
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24 overflow-hidden">
         <ScrollReveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark mb-4 text-center">
+          <p className="rotulo-tec text-dark mb-4 text-center">
             {t("Madeira Ecológica x Madeira comum")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 text-center max-w-2xl mx-auto">
@@ -442,7 +442,7 @@ const LiveLesco = () => {
       {/* ========== PARA QUEM É / PARA QUEM NÃO É ========== */}
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark mb-4 text-center">
+          <p className="rotulo-tec text-dark mb-4 text-center">
             {t("Para você decidir antes")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 text-center max-w-2xl mx-auto">
@@ -486,7 +486,7 @@ const LiveLesco = () => {
       {/* ========== DEPOIMENTOS ========== */}
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark mb-4 text-center">
+          <p className="rotulo-tec text-dark mb-4 text-center">
             {t("Quem já especificou")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-4 text-center max-w-2xl mx-auto">
@@ -528,7 +528,7 @@ const LiveLesco = () => {
       {/* ========== PROJETOS ========== */}
       <section className="bg-light rounded-[10px] px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <ScrollReveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-dark mb-4">
+          <p className="rotulo-tec text-dark mb-4">
             {t("Portfólio")}
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] text-dark mb-12 max-w-2xl">
@@ -545,7 +545,7 @@ const LiveLesco = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-primary/65 mt-3 ml-1">
+                <p className="rotulo text-primary/65 mt-3 ml-1">
                   {p.linha}
                 </p>
                 <h3 className="font-display text-lg font-normal text-dark ml-1">

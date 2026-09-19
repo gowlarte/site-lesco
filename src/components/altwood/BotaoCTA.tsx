@@ -10,7 +10,7 @@ interface BotaoCTAProps {
 }
 
 export const BotaoCTA = ({ variant = "primary", children, onClick, className, href }: BotaoCTAProps) => {
-  const base = "inline-flex items-center justify-center font-semibold transition-all cursor-pointer";
+  const base = "inline-flex items-center justify-center font-medium transition-all cursor-pointer";
   const styles = {
     primary: "bg-[#d5b89f] text-primary px-6 py-3 rounded-[var(--aw-radius-btn)] hover:brightness-[0.92]",
     // `secondary` só existe sobre a foto do hero (ver HeroSection). Era âmbar

@@ -168,7 +168,7 @@ export default function PoliticaPrivacidade() {
 
         <div className="absolute inset-0 bg-lesco-black/65" />
         <div className="relative z-10 px-6 md:px-12 lg:px-20 pb-8 lg:pb-12 max-w-4xl">
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-lesco-white mb-3">
+          <p className="rotulo-tec text-lesco-white mb-3">
             {t("Atualizado em 9 de julho de 2026")}
           </p>
           <h1 className="font-display text-3xl md:text-4xl lg:text-[52px] font-normal leading-[1.1] text-lesco-white">
@@ -183,7 +183,7 @@ export default function PoliticaPrivacidade() {
           {/* TOC */}
           <aside className="hidden lg:block">
             <div className="sticky top-[90px]">
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-lesco-black/65 mb-4">
+              <p className="rotulo-tec text-lesco-black/65 mb-4">
                 {t("Nesta página")}
               </p>
               <nav className="space-y-2">
@@ -234,7 +234,7 @@ export default function PoliticaPrivacidade() {
 
               {/* DPO contact card */}
               <div className="scroll-mt-24 bg-lesco-black rounded-[10px] p-6 md:p-8">
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-lesco-white/50 mb-3">
+                <p className="rotulo-tec text-lesco-white/50 mb-3">
                   {t("13. Encarregado (DPO) e contato")}
                 </p>
                 <p className="font-body text-[14px] text-lesco-white/80 leading-relaxed mb-4">

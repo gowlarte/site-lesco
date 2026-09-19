@@ -50,7 +50,7 @@ const MadeiraWPC = () => {
       <main className="min-h-screen pt-[110px] pb-[10px] px-[10px]">
         {/* HERO / TÍTULO */}
         <section className="bg-[#DBDBDB] rounded-[10px] px-6 md:px-12 lg:px-20 pt-16 md:pt-20 pb-10">
-          <p className="font-body text-[11px] font-light uppercase tracking-[0.12em] text-[#141414]/65 mb-4">
+          <p className="rotulo text-[#141414]/65 mb-4">
             {t("Tecnologia")}
           </p>
           <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-[#141414] max-w-4xl">
@@ -79,7 +79,7 @@ const MadeiraWPC = () => {
                   <p className="font-body text-[14px] md:text-[15px] font-light leading-[1.65] text-[#141414]/80">
                     {t("O WPC, por ter madeira em sua composição, tende a apresentar um visual mais natural, semelhante à madeira, enquanto o PVC tem um acabamento mais liso e uniforme.")}
                   </p>
-                  <p className="mt-6 font-display text-[11px] uppercase tracking-[0.12em] text-[#141414]/65">
+                  <p className="mt-6 font-display rotulo text-[#141414]/65">
                     {t("Aplicado em")}
                   </p>
                   <p className="mt-2 font-display text-[14px] tracking-[0.08em] text-[#141414]">
@@ -95,7 +95,7 @@ const MadeiraWPC = () => {
                   <p className="font-body text-[14px] md:text-[15px] font-light leading-[1.65] text-[#141414]/80">
                     {t("O PVC (cloreto de polivinila) é um plástico puro, enquanto o WPC (Wood Plastic Composite) é um composto de fibras de madeira e plástico.")}
                   </p>
-                  <p className="mt-6 font-display text-[11px] uppercase tracking-[0.12em] text-[#141414]/65">
+                  <p className="mt-6 font-display rotulo text-[#141414]/65">
                     {t("Aplicado em")}
                   </p>
                   <p className="mt-2 font-display text-[14px] tracking-[0.08em] text-[#141414]">
@@ -114,7 +114,7 @@ const MadeiraWPC = () => {
                   <div className="w-12 h-12 rounded-full border border-[#141414]/30 flex items-center justify-center mb-3">
                     <span className="block w-2 h-2 rounded-full bg-[#141414]/60" />
                   </div>
-                  <p className="font-display text-[11px] uppercase tracking-[0.1em] text-[#141414] leading-tight max-w-[140px]">
+                  <p className="font-display rotulo text-[#141414] leading-tight max-w-[140px]">
                     {f}
                   </p>
                 </div>
@@ -132,7 +132,7 @@ const MadeiraWPC = () => {
             <Link to="/orcamento" className="inline-flex items-center px-6 py-3 rounded-[6px] bg-[#d5b89f] text-[#141414] font-display text-[12px] uppercase tracking-[0.1em] hover:brightness-95 transition">
               {t("Solicitar orçamento")}
             </Link>
-            <Link to="/altwood" className="inline-flex items-center px-6 py-3 rounded-[6px] border border-white/40 text-white font-display text-[12px] uppercase tracking-[0.1em] hover:bg-white/10 transition">
+            <Link to="/madeira-ecologica-lesco" className="inline-flex items-center px-6 py-3 rounded-[6px] border border-white/40 text-white font-display text-[12px] uppercase tracking-[0.1em] hover:bg-white/10 transition">
               {t("Ver linha de produtos")}
             </Link>
           </div>
