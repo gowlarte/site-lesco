@@ -77,12 +77,7 @@ const MantoLine = () => {
 
       {/* Introdução */}
       <div className="px-6 md:px-12 lg:px-20 py-20 text-center">
-        <div className="flex items-center gap-4 justify-center mb-8">
-          <span className="flex-1 h-px bg-primary/15" />
-          <span className="rotulo text-accent-ink">Line</span>
-          <span className="flex-1 h-px bg-primary/15" />
-        </div>
-        <p className="text-[17px] text-muted-foreground leading-[1.7]">
+        <p className="text-[17px] text-muted-foreground leading-[1.7] max-w-[62ch] mx-auto">
           {t("No mundo da arquitetura e design de interiores, a busca por materiais que combinem beleza natural e desempenho tecnológico está em alta. Os forros com tecnologia WPC emergem como uma solução sustentável, unindo o calor da madeira à resistência do plástico. Além de contar com características retardantes ao fogo, resistência à água e baixo custo de manutenção.")}
         </p>
       </div>

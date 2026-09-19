@@ -163,10 +163,31 @@ const Manto = () => {
 
       <FiltroProdutos activeId={activeTab} onTabClick={handleTabClick} />
 
+      {/*
+        Ritmo da lista de produtos.
+
+        Os cinco produtos vinham no MESMO arranjo, um embaixo do outro: foto em
+        60% à esquerda, texto em 40% à direita, cinco vezes, sem nem alternar o
+        lado. A quinta fileira não dizia nada que a primeira já não tivesse
+        dito, e a página lia como uma tabela.
+
+        Agora são três arranjos: o primeiro produto em destaque de largura
+        cheia, os dois seguintes lado a lado com o lado trocado entre eles, e
+        os dois últimos numa grade de dois. Nenhum arranjo aparece três vezes
+        seguidas, que é onde a repetição começa a pesar.
+      */}
       <div className="bg-secondary">
-        {produtos.map((p) => (
-          <PreviewProduto key={p.id} {...p} />
-        ))}
+        <PreviewProduto {...produtos[0]} formato="destaque" />
+        <PreviewProduto {...produtos[1]} formato="divisao" />
+        <PreviewProduto {...produtos[2]} formato="divisao" inverter />
+
+        <div className="py-24 mx-[10px] my-[10px] px-6 md:px-12 lg:px-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
+            {produtos.slice(3).map((p) => (
+              <PreviewProduto key={p.id} {...p} formato="cartao" />
+            ))}
+          </div>
+        </div>
       </div>
 
       <SecaoOrcamento />

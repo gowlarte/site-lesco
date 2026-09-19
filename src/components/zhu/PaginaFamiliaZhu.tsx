@@ -56,13 +56,6 @@ export const PaginaFamiliaZhu = ({ familia }: { familia: FamiliaZhu }) => {
 
       {/* Introdução */}
       <div className="px-6 md:px-12 lg:px-20 py-16 md:py-20 text-center">
-        <div className="flex items-center gap-4 justify-center mb-8">
-          <span className="flex-1 h-px bg-primary/15" />
-          <span className="rotulo text-accent-ink">
-            {familia.curto}
-          </span>
-          <span className="flex-1 h-px bg-primary/15" />
-        </div>
         <p className="text-[17px] text-[#525252] leading-[1.7] max-w-3xl mx-auto">{familia.intro}</p>
       </div>
 

@@ -152,12 +152,7 @@ const MantoBrise = () => {
 
       {/* Introdução */}
       <div className="w-full px-6 md:px-12 lg:px-20 py-20 text-center">
-        <div className="flex items-center gap-4 justify-center mb-8">
-          <span className="flex-1 h-px bg-primary/15" />
-          <span className="rotulo text-accent-ink">Brise</span>
-          <span className="flex-1 h-px bg-primary/15" />
-        </div>
-        <p className="text-[17px] text-muted-foreground leading-[1.7]">
+        <p className="text-[17px] text-muted-foreground leading-[1.7] max-w-[62ch] mx-auto">
           {t("Os perfis de Brises de WPC (Wood-Plastic Composite) representam uma inovação notável no campo da arquitetura e da construção, oferecendo uma solução sustentável que combina a durabilidade do plástico com a estética natural da madeira.")}
         </p>
       </div>

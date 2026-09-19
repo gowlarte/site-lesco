@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import ogDefault from "@/assets/og-default.jpg";
 import { site, LOCALE_URLS } from "@/config/site";
 import { slugFor, LOCALE } from "@/i18n/routes";
+import { prioridade } from "@/lib/utils";
 
 const SITE_URL = site.siteUrl;
 
@@ -50,7 +51,7 @@ export function SEO({
 
       {/* LCP: o preload sai no HTML estático, antes de o bundle avaliar o <img>. */}
       {preloadImage && (
-        <link rel="preload" as="image" href={preloadImage} fetchPriority="high" />
+        <link rel="preload" as="image" href={preloadImage} {...prioridade("high")} />
       )}
 
       {/* hreflang — mesma página nos dois domínios, cada um com seu slug */}

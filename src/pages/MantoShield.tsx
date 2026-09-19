@@ -108,12 +108,7 @@ const MantoShield = () => {
 
       {/* Introdução */}
       <div className="px-6 md:px-12 lg:px-20 py-20 text-center">
-        <div className="flex items-center gap-4 justify-center mb-8">
-          <span className="flex-1 h-px bg-primary/15" />
-          <span className="rotulo text-accent-ink">Shield</span>
-          <span className="flex-1 h-px bg-primary/15" />
-        </div>
-        <p className="text-[17px] text-muted-foreground leading-[1.7] whitespace-pre-line">
+        <p className="text-[17px] text-muted-foreground leading-[1.7] whitespace-pre-line max-w-[62ch] mx-auto">
           {t(`Os revestimentos Lesco representam um paradigma de qualidade e sofisticação para aplicações tanto internas quanto externas. Ele combina tecnologia e durabilidade do plástico com a beleza estética da madeira, criando um material de alta resistência e durabilidade, sem perder o aspecto natural.
 
           Explore as características e benefícios desses perfis, que destacam suas aplicações versáteis e seu potencial para aprimorar tanto o desempenho quanto a aparência de uma variedade de estruturas.

@@ -18,6 +18,7 @@ import {
   TOTAL_TELAS,
   type SlideTipologia,
 } from "@/data/hero-solucoes";
+import { prioridade } from "@/lib/utils";
 
 /**
  * Hero da home — navegador de soluções (PRD "Hero de Soluções" v0.1).
@@ -273,7 +274,7 @@ export function HeroSolucoes() {
               src={tela.imagem}
               alt={tela.alt}
               loading={i === 0 ? undefined : "lazy"}
-              fetchPriority={i === 0 ? "high" : undefined}
+              {...prioridade(i === 0 ? "high" : undefined)}
               decoding="async"
               className="hero-img absolute inset-0 w-full h-full object-cover"
             />

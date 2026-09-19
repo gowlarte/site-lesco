@@ -143,12 +143,7 @@ const Muxarabi = () => {
 
       {/* Introdução */}
       <div className="px-6 md:px-12 lg:px-20 py-20 text-center">
-        <div className="flex items-center gap-4 justify-center mb-8">
-          <span className="flex-1 h-px bg-primary/15" />
-          <span className="rotulo text-accent-ink">Muxarabi</span>
-          <span className="flex-1 h-px bg-primary/15" />
-        </div>
-        <p className="text-[17px] text-muted-foreground leading-[1.7]">
+        <p className="text-[17px] text-muted-foreground leading-[1.7] max-w-[62ch] mx-auto">
           {t("O muxarabi traduz uma tradição arquitetônica milenar do Oriente Médio e do norte da África em um material de alta performance. Composto por fibras de madeira reciclada e polímeros, o elemento vazado une a beleza natural da madeira à resistência às intempéries: os padrões geométricos promovem controle de luminosidade, ventilação natural e privacidade, enquanto o material não racha, não deforma e dispensa tratamentos periódicos. Ideal para interiores e fachadas ventiladas protegidas.")}
         </p>
       </div>

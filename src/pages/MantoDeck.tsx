@@ -98,12 +98,7 @@ const MantoDeck = () => {
 
       {/* Introdução */}
       <div className="px-6 md:px-12 lg:px-20 py-20 text-center">
-        <div className="flex items-center gap-4 justify-center mb-8">
-          <span className="flex-1 h-px bg-primary/15" />
-          <span className="rotulo text-accent-ink">Deck</span>
-          <span className="flex-1 h-px bg-primary/15" />
-        </div>
-        <p className="text-[17px] text-muted-foreground leading-[1.7]">
+        <p className="text-[17px] text-muted-foreground leading-[1.7] max-w-[62ch] mx-auto">
           {t("Os decks de madeira ecológica representam uma escolha inteligente e elegante para aprimorar espaços externos. Eles são uma solução ideal para projetos residenciais, comerciais e públicos que buscam criar ambientes externos excepcionais que perduram ao longo do tempo.")}
         </p>
       </div>
