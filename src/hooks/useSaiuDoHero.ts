@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { assinarScroll } from "@/lib/scroll-suave";
 
 /**
  * `true` quando a página já saiu do hero de tela cheia — e sempre `true` em
@@ -65,10 +66,10 @@ export function useSaiuDoHero(): boolean {
 
     // Uma leitura na montagem: um F5 no meio da página já começa passado.
     aoRedimensionar();
-    window.addEventListener("scroll", sincronizar, { passive: true });
+    const desassinar = assinarScroll(sincronizar);
     window.addEventListener("resize", aoRedimensionar);
     return () => {
-      window.removeEventListener("scroll", sincronizar);
+      desassinar();
       window.removeEventListener("resize", aoRedimensionar);
     };
   }, [pathname]);

@@ -1,4 +1,5 @@
 import { BotaoCTA } from "./BotaoCTA";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { site } from "@/config/site";
 import { t } from "@/i18n/t";
 
@@ -18,7 +19,7 @@ export const SecaoOrcamento = ({ imageSrc }: SecaoOrcamentoProps) => (
       <div className="absolute inset-0 bg-[#0F0F0F] my-0 mx-0" />
     )}
     {/* Content */}
-    <div className="relative z-10 flex flex-col items-center text-center px-6">
+    <ScrollReveal className="relative z-10 flex flex-col items-center text-center px-6">
       <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-8">
         {t("Solicite seu Orçamento")}
       </h2>
@@ -27,6 +28,6 @@ export const SecaoOrcamento = ({ imageSrc }: SecaoOrcamentoProps) => (
         Itajaí, SC &middot; São Paulo, SP<br />
         @lesco_br &middot; lesco.com.br &middot; {site.phoneDisplay}
       </p>
-    </div>
+    </ScrollReveal>
   </section>
 );

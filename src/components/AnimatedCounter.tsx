@@ -8,7 +8,9 @@ interface AnimatedCounterProps {
 }
 
 export function AnimatedCounter({ end, suffix = "", duration = 2000 }: AnimatedCounterProps) {
-  const { ref, isVisible } = useScrollReveal(0.3);
+  // O hook não recebe mais limiar: o gatilho agora é a posição do topo do
+  // bloco, não a fração visível dele. Ver src/hooks/useScrollReveal.ts.
+  const { ref, isVisible } = useScrollReveal();
   const [count, setCount] = useState(0);
 
   useEffect(() => {

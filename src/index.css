@@ -260,6 +260,55 @@
     @apply font-mono text-[11px] uppercase tracking-[0.2em];
   }
 
+  /* ---------------------------------------------------------------------
+     REVELAR: bloco que entra com fade ao alcançar a janela.
+
+     O estado escondido mora aqui, e não numa classe `opacity-0` aplicada no
+     React, por dois motivos que o jeito antigo errava:
+
+     1. O HTML pré-renderizado saía com `opacity-0` cravado. Sem JS, aqueles
+        blocos simplesmente não existiam para o leitor. Agora o esconder
+        depende de `.com-js` no <html>, marcado por um script inline no
+        index.html: sem JS a regra não casa e o conteúdo nasce visível.
+
+     2. Quem pede menos movimento continuava recebendo o deslocamento. A
+        última regra deste bloco desliga tudo: sem fade, sem subida, visível
+        desde o primeiro quadro. */
+  .revelar {
+    opacity: 1;
+  }
+
+  :root.com-js .revelar {
+    opacity: 0;
+  }
+
+  /* Os keyframes moram aqui, e não só no tailwind.config: o Tailwind só emite
+     `@keyframes fade-up` quando a classe `animate-fade-up` aparece em algum
+     arquivo, e depois desta refatoração ela não aparece mais. Sem esta
+     declaração a animação não existe, e o bloco fica preso em opacidade 0. */
+  @keyframes revelar-sobe {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  :root.com-js .revelar[data-visivel="sim"] {
+    animation: revelar-sobe 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root.com-js .revelar,
+    :root.com-js .revelar[data-visivel="sim"] {
+      opacity: 1;
+      animation: none;
+    }
+  }
+
   .text-body-lg {
     @apply font-body text-[15px] md:text-[17px] font-light leading-[1.65];
   }

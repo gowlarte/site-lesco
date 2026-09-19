@@ -27,7 +27,10 @@ export const HeroSection = ({ imageSrc, images, headline, subtitulo, ctaLabel, c
   }, [nextSlide, slideImages.length]);
 
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    // `min-h-[100dvh]` e não `h-screen`: no iOS o `vh` é medido com a barra do
+    // Safari escondida, então o hero ficava mais alto que a janela e a página
+    // dava um pulo quando a barra reaparecia.
+    <section className="relative w-full min-h-[100dvh] overflow-hidden">
       {/* Background Slideshow */}
       {slideImages.length > 0 ? (
         slideImages.map((src, i) => (

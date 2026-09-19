@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Link } from "@/components/AppLink";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { rolarPara } from "@/lib/scroll-suave";
+import { rolarPara, assinarScroll } from "@/lib/scroll-suave";
 import { useSaiuDoHero } from "@/hooks/useSaiuDoHero";
 import { t } from "@/i18n/t";
 import { isEN } from "@/i18n/locale";
@@ -73,8 +73,7 @@ export function Header({ variant = "default" }: HeaderProps) {
   useEffect(() => {
     const sincronizar = () => setRolou(window.scrollY > 60);
     sincronizar(); // um F5 no meio da página já começa rolado
-    window.addEventListener("scroll", sincronizar, { passive: true });
-    return () => window.removeEventListener("scroll", sincronizar);
+    return assinarScroll(sincronizar);
   }, []);
 
   const scrolled = isOverlay ? saiuDoHero : rolou;

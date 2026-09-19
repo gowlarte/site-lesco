@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "@/components/AppLink";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { projetosPorTipo, type TipoProduto } from "@/data/projetos";
 import { t } from "@/i18n/t";
 
@@ -32,7 +33,7 @@ export const ProjetosDoProduto = ({ tipo, linha }: Props) => {
   if (!obras.length) return null;
 
   return (
-    <div className="px-6 md:px-12 lg:px-20 py-24">
+    <ScrollReveal className="px-6 md:px-12 lg:px-20 py-24">
       <span className="block rotulo text-accent-ink mb-3">
         {t("Projetos")}
       </span>
@@ -71,6 +72,6 @@ export const ProjetosDoProduto = ({ tipo, linha }: Props) => {
           </Link>
         ))}
       </div>
-    </div>
+    </ScrollReveal>
   );
 };

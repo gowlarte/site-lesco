@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { t } from "@/i18n/t";
 import { ProdutoCanvas, type ProdutoCanvasHandle } from "./ProdutoCanvas";
 import { FeatureIcon } from "./FeatureIcon";
+import { assinarScroll } from "@/lib/scroll-suave";
 
 
 import iconAntiMofo from "@/assets/madeira-ecologica/icon-anti-mofo.svg?raw";
@@ -118,7 +119,7 @@ export const MadeiraEcologicaSection = () => {
     );
     io.observe(section);
 
-    window.addEventListener("scroll", onScroll, { passive: true });
+    const desassinar = assinarScroll(onScroll);
     window.addEventListener("resize", onScroll);
 
     // Initial compute when frames become available
@@ -131,7 +132,7 @@ export const MadeiraEcologicaSection = () => {
 
     return () => {
       io.disconnect();
-      window.removeEventListener("scroll", onScroll);
+      desassinar();
       window.removeEventListener("resize", onScroll);
       clearInterval(interval);
     };
@@ -242,7 +243,12 @@ export const MadeiraEcologicaSection = () => {
       ref={sectionRef}
       className="relative bg-[#DBDBDB] rounded-[10px] mx-[10px] h-[450vh]"
     >
-      <div className="sticky top-0 h-screen overflow-hidden flex flex-col">
+      {/* Palco fixo: aqui a altura precisa ser definida, não mínima, porque o
+          scroll é medido contra ela. `svh` e não `dvh` pelo mesmo motivo que o
+          palco do hero da home usa `svh`: com a altura dinâmica, esconder a
+          barra do navegador mudaria a altura no meio da rolagem e o cálculo do
+          quadro pularia. */}
+      <div className="sticky top-0 h-[100svh] overflow-hidden flex flex-col">
         {/* O título saiu da tela: a peça desmontada e os cinco ícones já dizem
             o que a seção é. Ele fica como marcação — leitor de tela e sumário
             da página continuam enxergando um h2 aqui. */}

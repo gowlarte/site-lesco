@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { assinarScroll } from "@/lib/scroll-suave";
 
 import img01 from "@/assets/gallery/img-01.webp";
 import img02 from "@/assets/gallery/img-02.webp";
@@ -55,8 +56,7 @@ export const ScrollMarqueeGallery = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return assinarScroll(handleScroll);
   }, []);
 
   const renderRow = (

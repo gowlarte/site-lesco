@@ -38,6 +38,12 @@
 
 
 
+    <!-- Marca que há JS ANTES da primeira pintura. É o que permite ao
+         scroll-reveal esconder o bloco só quando existe quem vá revelá-lo:
+         sem JS a regra não casa e o conteúdo nasce visível, que é a premissa
+         do SSG deste site. Ver `.revelar` em src/index.css. -->
+    <script>document.documentElement.classList.add('com-js')</script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Lesco" />

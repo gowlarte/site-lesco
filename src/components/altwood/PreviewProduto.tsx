@@ -2,6 +2,7 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { Link } from "@/components/AppLink";
 import { SwatchCor } from "./SwatchCor";
 import { BotaoCTA } from "./BotaoCTA";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { ImageIcon } from "lucide-react";
 import { t } from "@/i18n/t";
 
@@ -57,6 +58,7 @@ export const PreviewProduto = ({ id, tag, titulo, descricao, swatches, href, ima
 
   return (
     <section id={id} className="py-24 border-b border-primary/15 last:border-b-0 mx-[10px] my-[10px] border-0">
+      <ScrollReveal>
       <Link
         to={href}
         className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-10 lg:gap-16 px-6 md:px-12 lg:px-20 group cursor-pointer"
@@ -98,6 +100,7 @@ export const PreviewProduto = ({ id, tag, titulo, descricao, swatches, href, ima
           <BotaoCTA variant="ghost">{t("Ver linha completa")}</BotaoCTA>
         </div>
       </Link>
+      </ScrollReveal>
     </section>
   );
 };

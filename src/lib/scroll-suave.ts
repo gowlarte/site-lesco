@@ -33,10 +33,15 @@ export function iniciarScrollSuave(): () => void {
     wheelMultiplier: 1,
   });
   instancia = lenis;
+  // Os efeitos dos filhos rodam ANTES do efeito do App que chama esta função,
+  // então quem assinou scroll já está pendurado no listener de reserva. Troca
+  // a fonte para o rAF do Lenis agora que ele existe.
+  religarFonteDeScroll();
 
   return () => {
     lenis.destroy();
     instancia = null;
+    religarFonteDeScroll();
   };
 }
 
@@ -53,6 +58,71 @@ export function travarScrollSuave(travado: boolean) {
   if (!instancia) return;
   if (travado) instancia.stop();
   else instancia.start();
+}
+
+/**
+ * Ponto único de assinatura de scroll do site.
+ *
+ * Antes cada módulo pendurava o seu `window.addEventListener("scroll")`: o
+ * cabeçalho, o hook do hero, a galeria em marquee e o canvas da madeira
+ * ecológica. Quatro listeners disputando os mesmos quadros, cada um lendo
+ * `window.scrollY` por conta própria.
+ *
+ * Agora é um só, e quando o Lenis está ligado nem existe listener de DOM: o
+ * aviso vem do rAF dele, que é exatamente o quadro em que a página foi
+ * redesenhada. É a posição certa para ler, e não uma leitura a mais.
+ *
+ * Sem Lenis (quem pediu menos movimento, ou antes de `iniciarScrollSuave`),
+ * cai num listener passivo único, limitado a um aviso por quadro.
+ *
+ * `src/components/home/palco.ts` continua com o listener próprio dele de
+ * propósito: é o motor do hero e dos projetos da home, calibrado, e não entra
+ * em refatoração de encanamento.
+ */
+const assinantes = new Set<() => void>();
+let desligarFonte: (() => void) | null = null;
+
+function ligarFonte() {
+  if (desligarFonte) return;
+  const avisar = () => assinantes.forEach((fn) => fn());
+
+  if (instancia) {
+    desligarFonte = instancia.on("scroll", avisar);
+    return;
+  }
+
+  let agendado = false;
+  const aoRolar = () => {
+    if (agendado) return;
+    agendado = true;
+    requestAnimationFrame(() => {
+      agendado = false;
+      avisar();
+    });
+  };
+  window.addEventListener("scroll", aoRolar, { passive: true });
+  desligarFonte = () => window.removeEventListener("scroll", aoRolar);
+}
+
+/** Troca a fonte de aviso (Lenis <-> listener de reserva) sem perder assinante. */
+function religarFonteDeScroll() {
+  if (!desligarFonte) return; // ninguém assinando: nada a religar
+  desligarFonte();
+  desligarFonte = null;
+  if (assinantes.size > 0) ligarFonte();
+}
+
+export function assinarScroll(callback: () => void): () => void {
+  if (typeof window === "undefined") return () => {};
+  assinantes.add(callback);
+  ligarFonte();
+  return () => {
+    assinantes.delete(callback);
+    if (assinantes.size === 0) {
+      desligarFonte?.();
+      desligarFonte = null;
+    }
+  };
 }
 
 /**
