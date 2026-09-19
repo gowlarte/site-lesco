@@ -98,7 +98,7 @@ export default {
       },
       fontFamily: {
         display: ["PP Neue Machina", "sans-serif"],
-        body: ["DM Sans", "sans-serif"],
+        body: ["DM Sans Variable", "DM Sans", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
       },
       borderRadius: {

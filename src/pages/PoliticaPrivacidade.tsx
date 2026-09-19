@@ -8,7 +8,7 @@ const sections = [
     title: t("1. Controlador dos dados"),
     body: [
       t(
-        "A Lesco é a controladora dos dados pessoais tratados por meio deste site e dos seus canais de atendimento, nos termos da Lei nº 13.709/2018 (Lei Geral de Proteção de Dados Pessoais — LGPD). Isso significa que somos responsáveis pelas decisões sobre o tratamento dos seus dados e por garantir os seus direitos como titular."
+        "A Lesco é a controladora dos dados pessoais tratados por meio deste site e dos seus canais de atendimento, nos termos da Lei nº 13.709/2018 (Lei Geral de Proteção de Dados Pessoais, LGPD). Isso significa que somos responsáveis pelas decisões sobre o tratamento dos seus dados e por garantir os seus direitos como titular."
       ),
       t(
         "Para qualquer assunto relacionado à privacidade, o contato do nosso Encarregado (DPO) está indicado ao final desta página."
@@ -38,16 +38,16 @@ const sections = [
         "Tratamos seus dados apenas para finalidades específicas e legítimas, sempre amparados por uma base legal da LGPD (art. 7º e art. 11):"
       ),
       t(
-        "• Responder a solicitações, elaborar orçamentos e enviar catálogos/amostras — execução de procedimentos preliminares e de contrato a pedido do titular."
+        "• Responder a solicitações, elaborar orçamentos e enviar catálogos/amostras: execução de procedimentos preliminares e de contrato a pedido do titular."
       ),
       t(
-        "• Aprimorar produtos, atendimento e a experiência no site, além de prevenir fraudes — legítimo interesse, sempre respeitando suas expectativas e direitos."
+        "• Aprimorar produtos, atendimento e a experiência no site, além de prevenir fraudes: legítimo interesse, sempre respeitando suas expectativas e direitos."
       ),
       t(
-        "• Enviar comunicações de marketing sobre revestimentos, brises, decks e novidades de arquitetura sustentável — consentimento, que pode ser revogado a qualquer momento."
+        "• Enviar comunicações de marketing sobre revestimentos, brises, decks e novidades de arquitetura sustentável: consentimento, que pode ser revogado a qualquer momento."
       ),
       t(
-        "• Cumprir obrigações legais, regulatórias, fiscais e defender direitos em processos — cumprimento de obrigação legal e exercício regular de direitos."
+        "• Cumprir obrigações legais, regulatórias, fiscais e defender direitos em processos: cumprimento de obrigação legal e exercício regular de direitos."
       ),
     ],
   },
@@ -98,7 +98,7 @@ const sections = [
     title: t("8. Segurança da informação"),
     body: [
       t(
-        "Adotamos medidas técnicas e administrativas para proteger os dados contra acessos não autorizados, perda, alteração ou destruição — incluindo controle de acesso, criptografia em trânsito e boas práticas de gestão. Nenhum sistema é 100% inviolável; por isso, atuamos de forma contínua para reduzir riscos."
+        "Adotamos medidas técnicas e administrativas para proteger os dados contra acessos não autorizados, perda, alteração ou destruição, incluindo controle de acesso, criptografia em trânsito e boas práticas de gestão. Nenhum sistema é 100% inviolável; por isso, atuamos de forma contínua para reduzir riscos."
       ),
     ],
   },

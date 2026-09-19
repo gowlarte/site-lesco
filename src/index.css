@@ -1,3 +1,17 @@
+/* Fontes servidas pelo próprio domínio, como a PP Neue Machina em
+   /public/fonts já era. Antes vinham de fonts.googleapis.com por <link>, o
+   que punha duas origens externas e uma folha bloqueante no caminho do LCP.
+
+   A DM Sans entra no build VARIÁVEL (um arquivo cobre 300, 400 e 500, que é
+   o que o site usa) e a JetBrains Mono no estático de peso 400, que é o
+   único peso usado dela: o variável dela pesaria 40 KB contra 24 KB.
+
+   Atenção ao nome: o pacote variável registra a família como
+   'DM Sans Variable', não 'DM Sans'. É por isso que as pilhas abaixo citam
+   os dois nomes, nessa ordem. */
+@import '@fontsource-variable/dm-sans/wght.css';
+@import '@fontsource/jetbrains-mono/latin-400.css';
+
 @font-face {
   font-family: 'PP Neue Machina';
   src: url('/fonts/PPNeueMachina-Ultralight.otf') format('opentype');
@@ -173,7 +187,7 @@
 
   body {
     @apply text-foreground antialiased;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'DM Sans Variable', 'DM Sans', sans-serif;
     background-color: #e5e1dc;
   }
 
@@ -188,7 +202,7 @@
   }
 
   .font-body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'DM Sans Variable', 'DM Sans', sans-serif;
   }
 
   .font-mono-tech {

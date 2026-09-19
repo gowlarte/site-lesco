@@ -53,8 +53,7 @@
          runtime by react-helmet-async via the <SEO /> component. -->
     <!--seo-head-->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Sem preconnect de fonte: não existe mais origem externa de fonte. -->
 
     <!-- Warm up DNS+TLS dos domínios dos formulários (LeadConnector/GoHighLevel)
          para reduzir o atraso de carregamento dos embeds. -->
@@ -62,12 +61,8 @@
     <link rel="preconnect" href="https://link.msgsndr.com" />
     <link rel="dns-prefetch" href="https://api.leadconnectorhq.com" />
     <link rel="dns-prefetch" href="https://link.msgsndr.com" />
-    <!-- A Cormorant Garamond saiu daqui: nenhuma regra do site a aplica, então
-         o navegador nunca chegava a baixar o arquivo dela, mas as cinco
-         variações (com itálico) viajavam como declaração dentro desta folha e
-         davam a entender que a marca tem uma serifada. Não tem: a display é a
-         PP Neue Machina. -->
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+    <!-- As fontes são self-hospedadas e importadas em src/index.css, que
+         registra a escolha de build de cada uma. -->
 
     <script type="application/ld+json">
       {

@@ -17,7 +17,7 @@ const sections = [
     title: t("2. Orçamentos, catálogos e amostras"),
     body: [
       t(
-        "Este site tem caráter institucional e comercial: apresentamos linhas de revestimentos, brises, decks e painéis em WPC e recebemos solicitações de orçamento, catálogos e amostras. As solicitações não constituem, por si só, uma venda concluída — a comercialização é formalizada pela nossa equipe comercial mediante proposta específica."
+        "Este site tem caráter institucional e comercial: apresentamos linhas de revestimentos, brises, decks e painéis em WPC e recebemos solicitações de orçamento, catálogos e amostras. As solicitações não constituem, por si só, uma venda concluída. A comercialização é formalizada pela nossa equipe comercial mediante proposta específica."
       ),
       t(
         "Preços, prazos, disponibilidade e condições comerciais podem variar conforme o projeto, o volume e a região, e são confirmados no atendimento."
