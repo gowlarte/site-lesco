@@ -4,8 +4,8 @@
  * GERADO por scripts/importar-biotique.mjs a partir do Visogram — não edite à
  * mão. Rodar `npm run biotique` reescreve este arquivo inteiro.
  *
- * São as 5 salas que se alcançam A PÉ desde o hall; as outras
- * 10 do tour completo só existem pela tira de miniaturas do viewer em
+ * São as 3 salas que se alcançam A PÉ desde o hall; as outras
+ * 12 do tour completo só existem pela tira de miniaturas do viewer em
  * overlay do Visogram, que não veio para cá.
  *
  * Os nomes passam por t() para entrarem no dicionário como qualquer outro
@@ -45,29 +45,9 @@ export const POSTER_ALTA = "/tours/biotique/poster-alta.webp";
 /** A primeira é a capa: é onde o visitante chega. */
 export const CENAS: CenaBiotique[] = [
   {
-    id: "c16",
-    nome: t("Hall de entrada"),
-    vista: { yaw: 0.942478, pitch: 0.18, fov: 82 },
-    src: "/tours/biotique/c16.webp",
-    borrao: "data:image/webp;base64,UklGRvgAAABXRUJQVlA4IOwAAAAwBwCdASowABgAPu1kqU6ppaOiMBqoATAdiUAWnQdRL+v7NayxEoXUX0qdf8ezfEyYdBaLW1cTHoi6yiiGRKX1ndgA/oum/jtjS2YCIgT6JAWlxB9MGkiCmYFefsFWB38kRJgxWU2Z+1q8FQquM/cz3QXKU4FMcn81iTlolaRnbWYnLUH7dYiL78fS5VHPOw6R/USLYAHrbVmIBKNDe3W7/AiB609F2KxuVB48K3Dk1ACaI5VlmF6PuQO64Ttz4QL+xnQUUCE/almJRJi/HgzT7O3GquQjVspXF29DyiS/+PadDKpSjhB1ZygAAA==",
-    portas: [
-      { yaw: -2.995966, pitch: -0.185517, destino: "c13" },
-    ],
-  },
-  {
-    id: "c13",
-    nome: t("Escada"),
-    vista: { yaw: 0, pitch: 0, fov: 76 },
-    src: "/tours/biotique/c13.webp",
-    borrao: "data:image/webp;base64,UklGRvYAAABXRUJQVlA4IOoAAADQBgCdASowABgAPu1sr1GppaQipWsxMB2JQBdmb3/rKsZBoMsMeFPIykT4LCJBYVePBaEw3wTThKfJwKZJZaAA/dxggkas3ZJkZh368Evt60MSS4jVPbAnYHiGqFF6H8GLcRUc7zv6ArK1RsBFRtB39FZEqh2je7bIqSy51DlvblTJGx0NIfEhFI0TRJUxCY6S3b9Al5Hz8NZ8355f2PtBj+6SgFf0kVvmesIzxpaUpv7schYxEkRSRpGuTTMaEgCqT3PzZJh0RWsAxkKckb02DXARX+8t2OzJJ3KJA8Xf61wCbFCFgq6AAAA=",
-    portas: [
-      { yaw: -2.972202, pitch: 0.233501, destino: "c3" },
-    ],
-  },
-  {
     id: "c3",
     nome: t("Corredor Hub"),
-    vista: { yaw: 0, pitch: 0, fov: 76 },
+    vista: { yaw: 0.188496, pitch: 0.02, fov: 82 },
     src: "/tours/biotique/c3.webp",
     borrao: "data:image/webp;base64,UklGRhYBAABXRUJQVlA4IAoBAADQBgCdASowABgAPu1srlCppiQiqqgBMB2JQBOmWXkQ/VvQTO5ol9kMQU7T9ubvgPP/j9kC6NfTTrZbrJG0NsAA64pXuZU5nqAumQRjjmAwlwleIVH+ykF57QC195a9XzoduU9vXZ8BeOfZaGfpsFVKiCQLhEe2vcqSpiXoz6dyYnnRr+veeo71JGPCHENyC+Wma9jb073pa0qRHVYdk2KQZLhGu/VxRdfDMZkT2bK+InF168GHagy4C0S5mXsDwBvpupuMUzMfBpdYhh2K+GtOUifA9IirUw305vHgBSzMc0Gx1H1mj1ZCSFKaUvv+CzRuIzdBmJMr2BVNxjupQvP0/nIpqTV1ZgAAAA==",
     portas: [

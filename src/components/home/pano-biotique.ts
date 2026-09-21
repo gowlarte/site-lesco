@@ -83,6 +83,8 @@ const INCLINACAO_CHEGADA = 0.35;
 /** Setas, em radianos por toque; + e - mexem o fov por razão fixa. */
 const PASSO_TECLA = 0.08;
 const PASSO_ZOOM = 1.18;
+/** Metade do anel da porta, em pixels de tela. Casa com `.porta-360__anel`. */
+const RAIO_MARCA = 13;
 
 /**
  * Quantos panoramas podem estar na GPU ao mesmo tempo. Um 4096x2048 é 32 MB
@@ -366,8 +368,17 @@ export function criarVisor(opcoes: OpcoesVisor): Visor {
     if (!marcadores.length) return;
     const l = palco.clientWidth;
     const a = palco.clientHeight;
-    /** Respiro da borda, para o anel não sair pela metade. */
-    const beirada = 22;
+    /**
+     * O que se ancora no ponto é o ANEL, não o conjunto anel+rótulo.
+     *
+     * Com `translate(-50%, -50%)` quem ficava sobre a porta era o centro do
+     * botão inteiro, e o rótulo empurrava o anel para a esquerda na mesma
+     * medida da largura dele — perto da borda, o anel saía pela metade. Agora
+     * o deslocamento é de meio anel (`--ancora`, no CSS), e o rótulo pendura
+     * a partir dele. Passando da metade direita do painel o CSS inverte a
+     * ordem, para o rótulo não vazar do outro lado.
+     */
+    const beirada = RAIO_MARCA + 6;
     const tanV = Math.tan(emRad(camera.fov) / 2);
     const tanH = tanV * camera.aspect;
 
@@ -399,8 +410,9 @@ export function criarVisor(opcoes: OpcoesVisor): Visor {
       const y = limita((-ny * 0.5 + 0.5) * a, beirada, a - beirada);
       marca.el.hidden = false;
       marca.el.dataset.fora = fora ? "sim" : "nao";
+      marca.el.dataset.lado = x > l * 0.56 ? "esquerda" : "direita";
       marca.el.style.transform =
-        `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) translate(-50%, -50%)`;
+        `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) translate(var(--ancora), -50%)`;
     }
   }
 

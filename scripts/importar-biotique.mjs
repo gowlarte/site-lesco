@@ -61,22 +61,35 @@ const PAINEL = [
   { nome: "poster-alta", aspecto: 4 / 5, largura: 820 },
 ];
 /**
- * A capa abre num enquadramento DIFERENTE do autoral, e só aqui.
+ * A sala em que a home abre — e, por tabela, o alcance inteiro do tour aqui.
  *
- * O `vista` da cena foi composto para o viewer em overlay, que ocupa a tela
- * inteira; ali, 76º verticais dão 107º de varredura e o hall inteiro aparece.
- * Neste painel de 5/4 os mesmos 76º dão 88º, e o que sobra é um close na
- * parede ripada — material bonito, espaço nenhum. O construtor de cards do
- * Visogram chegou à mesma conclusão pelo mesmo motivo e abre os dele a 88º.
+ * NÃO é a capa do Visogram, que é o Hall de entrada (c16). A home abre no
+ * Corredor Hub, e isso muda mais do que a primeira imagem: as salas vêm de uma
+ * busca em largura A PARTIR DAQUI, então c16 e c13, que só se alcançavam
+ * descendo do hall, deixam de vir junto. Sobram três — Hub, Entrada Elevador e
+ * Corredor —, que fecham um laço entre si.
  *
- * Girado um oitavo de volta para a quina onde o envidraçado encontra o volume
- * ripado: vidro, canteiro, ripado e clarabóia no mesmo quadro. Escolhido
- * comparando seis enquadramentos lado a lado, não no olho.
- *
- * Vale para o pôster E para o WebGL — é por isso que mora aqui e não no
- * componente. Nos dois lugares, eles divergem.
+ * Trocar esta linha e rodar de novo refaz tudo: alcance, panoramas copiados,
+ * pôsteres e o arquivo de dados.
  */
-const ABERTURA = { yaw: 2 * Math.PI * (0.5 - 0.35), pitch: 0.18, fov: 82 };
+const CAPA = "c3";
+
+/**
+ * Onde a câmera aponta ao abrir, e vale para o pôster E para o WebGL — é por
+ * isso que mora aqui e não no componente. Nos dois lugares, eles divergem.
+ *
+ * O `vista` que o Visogram compôs para cada cena foi feito para um overlay de
+ * tela cheia. O painel da home é QUADRADO, e num painel 1:1 o piso de
+ * `framing.ts` já obriga 88º: o que decide a imagem é só para onde se olha.
+ *
+ * Escolhido comparando sete direções lado a lado, no formato final. Nesta, a
+ * parede ripada com a luz de cima corre em perspectiva pela esquerda e o
+ * corredor desemboca no estar iluminado — material, profundidade e escala no
+ * mesmo quadro. Como a rolagem gira 75º para cada lado, este é o MEIO do
+ * caminho: de um extremo se vê o nicho ripado fechado, do outro a fachada
+ * envidraçada.
+ */
+const ABERTURA = { yaw: 0.188496, pitch: 0.02, fov: 82 };
 
 const H_SWEEP = 88;
 const FOV_MAX_TALL = 104;
@@ -108,6 +121,12 @@ if (!tour) {
 
 const porId = new Map(tour.cenas.map((c) => [c.id, c]));
 
+if (!porId.has(CAPA)) {
+  console.error(`A capa "${CAPA}" não existe no tour "${SLUG}".`);
+  console.error(`Cenas: ${[...porId.keys()].join(", ")}`);
+  process.exit(1);
+}
+
 /** Busca em largura pelas portas, a partir da capa. */
 function alcancavel(capa) {
   const vistos = new Set([capa]);
@@ -127,10 +146,10 @@ function alcancavel(capa) {
   return ordem;
 }
 
-const cenas = alcancavel(tour.capa);
+const cenas = alcancavel(CAPA);
 const fora = tour.cenas.length - cenas.length;
 console.log(`\n${tour.obra} — ${tour.cenas.length} cenas no Visogram`);
-console.log(`${cenas.length} alcançáveis a pé desde "${porId.get(tour.capa).nome}"` +
+console.log(`${cenas.length} alcançáveis a pé desde "${porId.get(CAPA).nome}"` +
   (fora ? `, ${fora} só pela tira de miniaturas (ficam de fora)` : ""));
 
 // ---------------------------------------------------------------- panoramas
@@ -174,7 +193,7 @@ const { reproject } = await import(
   pathToFileURL(path.join(VISOGRAM, "tools/reproject.mjs")).href
 );
 
-const capa = porId.get(tour.capa);
+const capa = porId.get(CAPA);
 const origemCapa = path.join(VISOGRAM, "public", capa.src.replace(/^\//, ""));
 
 console.log("");
@@ -221,7 +240,7 @@ const linhasCenas = cenas
       `    nome: t(${aspas(cena.nome)}),`,
       // A capa abre pelo ABERTURA acima; as outras mantêm o enquadramento
       // autoral, que é o que o Visogram compôs para cada sala.
-      cena.id === tour.capa
+      cena.id === CAPA
         ? `    vista: { yaw: ${ABERTURA.yaw.toFixed(6)}, pitch: ${ABERTURA.pitch}, fov: ${ABERTURA.fov} },`
         : `    vista: { yaw: ${cena.vista.yaw}, pitch: ${cena.vista.pitch}, fov: ${cena.vista.fov} },`,
       `    src: ${aspas(`${BASE_PUBLICA}/${cena.id}.webp`)},`,

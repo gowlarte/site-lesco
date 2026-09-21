@@ -7,11 +7,17 @@ import { CENAS, ESCRITORIO, LOCAL, OBRA, POSTER_ALTA, POSTER_LARGA } from "@/dat
 import type { EstadoVisor, Visor } from "./pano-biotique";
 
 /**
- * O manifesto da home, com o hall da Biotique ao lado dele.
+ * O manifesto da home, com o corredor da Biotique ao lado dele.
  *
  * Duas colunas: o copy à esquerda, e à direita um painel que não é foto — é a
- * sala de verdade, em 360. No celular a mesma coisa empilhada, com o painel
- * sangrando de borda a borda entre o título e o parágrafo.
+ * sala de verdade, em 360. No celular a mesma coisa empilhada, e ali o painel
+ * sangra de borda a borda entre o título e o parágrafo.
+ *
+ * NADA DE HUD sobre a imagem, só as portas. Legenda da obra, dica de arrasto e
+ * botão de voltar saíram: a rolagem já gira a sala sozinha, o que tornava a
+ * dica redundante, e o tour é um LAÇO de três salas — Hub, Entrada Elevador e
+ * Corredor —, então dá para voltar andando e não falta botão nenhum. A
+ * instrução sobrou só para leitor de tela.
  *
  * A ROLAGEM É O CONTROLE
  *
@@ -59,7 +65,6 @@ export function Manifesto360() {
   const semMovimento = useSemMovimento();
   const [querCarregar, setQuerCarregar] = useState(false);
   const [pronto, setPronto] = useState(false);
-  const [tocado, setTocado] = useState(false);
   const [estado, setEstado] = useState<EstadoVisor | null>(null);
 
   // ---------------------------------------------------------- a rolagem gira
@@ -194,12 +199,12 @@ export function Manifesto360() {
             {t("Pioneiros em Madeira Ecológica no Brasil, somos arquitetura feita para o amanhã.")}
           </h2>
 
-          {/* O painel sangra: no celular de borda a borda, no desktop até o
-              limite do container. É a mesma decisão do print — o texto tem
-              margem, a imagem não. */}
+          {/* No celular o painel sangra de borda a borda; no desktop ele
+              respeita a mesma margem lateral de todo bloco da página, que é a
+              do container. */}
           <div
             ref={molduraRef}
-            className="moldura-360 order-2 -mx-6 my-10 lg:mx-0 lg:-mr-8 lg:my-0 lg:col-start-2 lg:row-start-1 lg:row-span-2"
+            className="moldura-360 order-2 -mx-6 my-10 lg:mx-0 lg:my-0 lg:col-start-2 lg:row-start-1 lg:row-span-2"
           >
             <div
               ref={palcoRef}
@@ -213,7 +218,7 @@ export function Manifesto360() {
                 <source media="(min-width: 1024px)" srcSet={POSTER_LARGA} />
                 <img
                   src={POSTER_ALTA}
-                  alt={t("Hall de entrada da Biotique, com o volume revestido em ripado de madeira")}
+                  alt={t("Corredor da Biotique, com a parede revestida em ripado de madeira")}
                   loading="lazy"
                   decoding="async"
                   className={cn(
@@ -229,7 +234,6 @@ export function Manifesto360() {
                 role="img"
                 aria-label={`${t("Vista 360")}. ${estado?.nome ?? CENAS[0].nome}. ${legenda}`}
                 aria-describedby={ID_INSTRUCAO}
-                onPointerDown={() => setTocado(true)}
                 className={cn(
                   "absolute inset-0 w-full h-full outline-none transition-opacity duration-700",
                   "focus-visible:ring-2 focus-visible:ring-white/70",
@@ -241,39 +245,15 @@ export function Manifesto360() {
                   container é dele e não do React. */}
               <div ref={marcasRef} className="marcas-360" aria-live="off" />
 
-              <div className="veu-360" aria-hidden="true" />
+              {/* Única coisa que sobra por cima da imagem: as portas.
 
-              <div className="rodape-360">
-                <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/85">
-                  {legenda}
-                  {estado?.nome ? <span className="text-white"> · {estado.nome}</span> : null}
-                </p>
-
-                {estado?.podeVoltar ? (
-                  <button type="button" onClick={() => visorRef.current?.voltar()} className="botao-360">
-                    {t("Voltar")}
-                  </button>
-                ) : null}
-              </div>
-
-              {/* Some ao primeiro gesto, e nunca aparece antes de haver o que
-                  arrastar. A rolagem já gira sozinha; isto é a pista de que a
-                  mão também pode. */}
-              <p
-                id={ID_INSTRUCAO}
-                className={cn(
-                  "dica-360 font-mono text-[10px] uppercase tracking-[0.14em]",
-                  mostraTela && !tocado ? "opacity-100" : "opacity-0",
-                )}
-              >
-                {t("arraste para olhar")}
+                  A instrução fica só para quem navega por voz ou teclado. Com
+                  a rolagem girando a sala sozinha, a pista visual virou
+                  redundante — e legenda, dica e botão sobre a foto eram
+                  exatamente o que estava pedindo para sair daqui. */}
+              <p id={ID_INSTRUCAO} className="sr-only">
+                {t("arraste ou use as setas para girar")}
               </p>
-
-              {estado?.falhou ? (
-                <p className="aviso-360 font-body text-[12px]">
-                  {t("Não foi possível abrir a vista 360 neste navegador.")}
-                </p>
-              ) : null}
             </div>
           </div>
 

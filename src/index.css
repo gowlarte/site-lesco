@@ -659,6 +659,9 @@
 }
 
 .porta-360 {
+  /* Meio anel: é o que o motor soma ao ponto para ancorar pelo ANEL e não
+     pelo centro do conjunto. Ver `posicionarMarcas` em pano-biotique.ts. */
+  --ancora: -13px;
   position: absolute;
   top: 0;
   left: 0;
@@ -670,6 +673,13 @@
   background: none;
   border: 0;
   cursor: pointer;
+}
+
+/* Na metade direita do painel o rótulo pendura para a esquerda, ou vazaria
+   pela borda. O anel continua exatamente sobre a porta. */
+.porta-360[data-lado="esquerda"] {
+  flex-direction: row-reverse;
+  --ancora: calc(-100% + 13px);
 }
 
 .porta-360__anel {
@@ -731,108 +741,6 @@
   outline: 2px solid #ffffff;
   outline-offset: 4px;
   border-radius: 999px;
-}
-
-/* -------------------------------------------------- legenda, voltar e dica */
-
-/* Duas camadas com trabalhos diferentes.
-
-   O VÉU é só transição: escurece a foto subindo, para a barra de baixo não
-   nascer de uma aresta. Ele NÃO é quem garante contraste — a altura dele é uma
-   fração do painel, e a da legenda depende de quantas linhas ela ocupa.
-
-   Quem garante é o fundo do PRÓPRIO RODAPÉ. Amarrado à caixa do texto, ele
-   cobre exatamente o que tem de cobrir, em qualquer largura e com a legenda em
-   uma ou três linhas. A primeira versão punha uma faixa chapada de 22% do véu
-   e dava certo no desktop: no celular o rodapé subia para 58px, a faixa tinha
-   41px, e a primeira linha da legenda saía por cima dela.
-
-   0,72 de alfa sobre branco puro dá rgb(84,84,83); texto a 85% de branco ali
-   fecha 6,0:1. O piso vale contra qualquer pixel da foto, que é o critério
-   quando o visitante pode girar a sala por baixo do texto. */
-.veu-360 {
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 38%;
-  background: linear-gradient(to top, rgba(17, 17, 16, 0.5), rgba(17, 17, 16, 0));
-  pointer-events: none;
-}
-
-.rodape-360 {
-  position: absolute;
-  inset: auto 0 0 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 12px 16px;
-  background: rgba(17, 17, 16, 0.72);
-}
-
-.botao-360 {
-  flex: none;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #111110;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 7px 13px;
-  border-radius: 999px;
-  transition: background-color 0.25s ease;
-}
-.botao-360:hover {
-  background: #ffffff;
-}
-.botao-360:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 3px;
-}
-
-.dica-360 {
-  position: absolute;
-  top: 14px;
-  right: 16px;
-  color: #ffffff;
-  background: rgba(17, 17, 16, 0.72);
-  padding: 6px 10px;
-  border-radius: 999px;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-}
-
-/* Pastilha própria, e não texto solto: o aviso só aparece quando o WebGL
-   falhou, e nesse caso o que está atrás dele é o PÔSTER — uma fotografia. Sem
-   véu, este é o único texto do painel cujo contraste dependeria do pixel. */
-.aviso-360 {
-  position: absolute;
-  left: 50%;
-  bottom: 50%;
-  transform: translateX(-50%);
-  max-width: calc(100% - 32px);
-  text-align: center;
-  color: #ffffff;
-  background: rgba(17, 17, 16, 0.82);
-  padding: 8px 14px;
-  border-radius: 10px;
-}
-
-
-/* Porta fora do quadro: encostada na borda, sem rótulo, menor e mais discreta
-   — é uma seta de direção, não um destino ao alcance do clique. */
-.porta-360[data-fora="sim"] .porta-360__rotulo {
-  display: none;
-}
-.porta-360[data-fora="sim"] .porta-360__anel {
-  width: 18px;
-  height: 18px;
-  opacity: 0.7;
-}
-.porta-360[data-fora="sim"] .porta-360__anel::after {
-  inset: 6px;
-}
-.porta-360[data-fora="sim"] .porta-360__anel::before {
-  animation: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
