@@ -610,43 +610,34 @@
 }
 
 /* ===========================================================================
-   PAINEL 360 DA HOME — o hall da Biotique dentro do manifesto.
+   SEÇÃO 360 DA HOME — o manifesto ao lado do hall da Biotique.
    Componente em src/components/home/Manifesto360.tsx; motor em pano-biotique.ts.
    =========================================================================== */
 
-/* A abertura vive em `clip-path`, e não em `height`.
-
-   Mudar altura reflui a grade a cada quadro de rolagem, e a coluna do copy ao
-   lado subiria e desceria junto. O recorte não toca no layout: o painel tem
-   sempre o mesmo tamanho, e o que abre é a janela por onde ele aparece.
-
-   Sem JS o painel nasce ABERTO, porque `--abre` só existe depois que alguém a
-   escreve. `:root.com-js` é a mesma trava de `.revelar`: este site é
-   pré-renderizado, e o HTML estático não pode ir para o ar com a foto
-   recortada a zero. */
-.moldura-360 {
-  --abre: 1;
+/* Um respiro a mais que o `section-spacing` padrão. A seção é uma imagem
+   grande ao lado de pouco texto, e apertada contra os vizinhos ela lê como
+   banner; com folga, lê como página. */
+.manifesto-360 {
+  padding-block: 6rem;
 }
-:root.com-js .moldura-360 {
-  --abre: 0;
+@media (min-width: 768px) {
+  .manifesto-360 {
+    padding-block: 8rem;
+  }
+}
+@media (min-width: 1024px) {
+  .manifesto-360 {
+    padding-block: 10rem;
+  }
 }
 
 .palco-360 {
-  /* 44% em cima e embaixo deixa uma fresta de 12% da altura — leitura de
-     abertura, não de elemento faltando. */
-  clip-path: inset(calc((1 - var(--abre)) * 44%) 0 round 10px);
-  transform: translateY(calc((1 - var(--abre)) * 18px));
-  /* O arrasto é nosso; a rolagem vertical é da página. `pan-y` entrega o gesto
-     vertical ao navegador e fica com o horizontal — que é justamente o eixo de
-     olhar em volta numa sala. Sem isto, arrastar aqui no celular prenderia a
-     página dentro do painel. */
+  /* O arrasto é nosso; a rolagem vertical é da página — e aqui isso importa
+     duas vezes, porque a rolagem TAMBÉM gira a câmera. `pan-y` entrega o gesto
+     vertical ao navegador e fica com o horizontal, que é o eixo de olhar em
+     volta numa sala. Sem isto, arrastar aqui no celular prenderia a página
+     dentro do painel. */
   touch-action: pan-y;
-}
-
-/* Fechado, o painel é uma fotografia: não disputa o ponteiro de quem está
-   passando por ele. */
-.moldura-360[data-aberto="nao"] .palco-360 {
-  pointer-events: none;
 }
 
 .palco-360 canvas {
@@ -845,11 +836,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* Fica o recorte, que é corte e não deslocamento; saem o levantar do painel
-     e o respiro das portas. */
-  .palco-360 {
-    transform: none;
-  }
+  /* O giro pela rolagem já sai pelo JS (ver `desenhar` no componente); aqui
+     resta o respiro das portas. */
   .porta-360__anel::before {
     animation: none;
   }

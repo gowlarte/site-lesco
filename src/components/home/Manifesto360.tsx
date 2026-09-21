@@ -1,65 +1,59 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "@/components/AppLink";
-import { ScrollReveal } from "@/components/ScrollReveal";
 import { t } from "@/i18n/t";
 import { cn } from "@/lib/utils";
-import { suave, useLoopDeScroll, useSemMovimento } from "./palco";
-import {
-  CENAS,
-  ESCRITORIO,
-  LOCAL,
-  OBRA,
-  POSTER_ALTA,
-  POSTER_LARGA,
-} from "@/data/biotique";
+import { limita, useLoopDeScroll, useSemMovimento } from "./palco";
+import { CENAS, ESCRITORIO, LOCAL, OBRA, POSTER_ALTA, POSTER_LARGA } from "@/data/biotique";
 import type { EstadoVisor, Visor } from "./pano-biotique";
 
 /**
- * O manifesto da home, agora com o hall da Biotique dentro dele.
+ * O manifesto da home, com o hall da Biotique ao lado dele.
  *
- * Esta seção era só tipografia: um título de 52px à esquerda e um parágrafo à
- * direita. O copy continua inteiro e no mesmo lugar — o que mudou é que a
- * coluna da direita virou um painel 360 em que se pode olhar em volta e andar
- * pelas portas.
+ * Duas colunas: o copy à esquerda, e à direita um painel que não é foto — é a
+ * sala de verdade, em 360. No celular a mesma coisa empilhada, com o painel
+ * sangrando de borda a borda entre o título e o parágrafo.
+ *
+ * A ROLAGEM É O CONTROLE
+ *
+ * Quem gira a câmera é o scroll da página: descer vira a sala num sentido,
+ * subir desfaz. São 150º ao longo da travessia da seção pela janela, e o
+ * enquadramento composto é o que aparece quando ela está bem no meio da tela —
+ * ou seja, a foto "certa" é o meio do caminho, e os dois extremos mostram o
+ * resto do ambiente.
+ *
+ * O desvio da rolagem é SOMADO ao rumo do visitante, nunca atribuído (ver
+ * `apontar()` no motor). Quem arrastar com a mão continua mandando, e a página
+ * andando por baixo só acrescenta — os dois não disputam a mesma variável.
  *
  * NÃO É UM PALCO FIXO, de propósito. O hero são 9 telas presas e os projetos
- * são 8; uma terceira seção presa entre as duas daria dezenove telas seguidas
- * sem a página nunca andar. Aqui a página não para: a abertura é amarrada à
- * POSIÇÃO DO PAINEL na janela, e não a um trilho. Entra abrindo quando sobe
- * pela borda de baixo, fica aberto por cerca de uma tela de rolagem, e fecha
- * saindo por cima — que é a animação de entrada e de saída, sem sequestrar a
- * rolagem de ninguém.
+ * são 8; uma terceira presa entre as duas daria dezenove seguidas sem a página
+ * nunca andar. Aqui a página não para em momento nenhum.
  *
- * O CONTRASTE COM O QUE VEM DEPOIS é o que decide a forma. `ProjetosHorizontal`
- * sangra: preto, tela cheia, sem goteira, tipografia de 76px. Então aqui é o
- * oposto — fundo claro da página, painel recortado dentro da grade, copy em
- * texto escuro. A virada de registro é o que faz a foto de obra chegar como
- * chegada.
- *
- * Nada de 3D existe até a seção se aproximar: three, este módulo e o primeiro
- * panorama entram por import dinâmico quando o observador dispara. Quem não
- * rola até aqui não paga nada, e quem pediu Save-Data fica no pôster.
+ * Nada de 3D existe até a seção se aproximar: three, o motor e o primeiro
+ * panorama entram por import dinâmico. Quem não rola até aqui não paga nada, e
+ * quem pediu Save-Data fica no pôster.
  */
 
-/** O painel abre e fecha por distância do centro da janela, em telas. */
-const ABRE_EM = 0.34;
-const FECHA_EM = 0.7;
-/** Daqui para cima o painel responde ao ponteiro e o laço de quadros roda. */
-const VIVO_ACIMA_DE = 0.55;
+/**
+ * Quanto a câmera gira da entrada à saída da seção, em radianos. 150º é o que
+ * faz a rolagem LER como controle: menos que isso passa por deriva de parallax,
+ * e muito mais embrulha, porque a sala inteira cabe em 360º.
+ */
+const GIRO = (150 * Math.PI) / 180;
+/** Um respiro de inclinação junto, só para o movimento não ser puro eixo Y. */
+const INCLINA = 0.09;
 
 const ID_INSTRUCAO = "biotique-instrucao";
-
 const legenda = [OBRA, LOCAL, ESCRITORIO].filter(Boolean).join(" · ");
 
 export function Manifesto360() {
+  const secaoRef = useRef<HTMLElement>(null);
   const molduraRef = useRef<HTMLDivElement>(null);
   const telaRef = useRef<HTMLCanvasElement>(null);
   const palcoRef = useRef<HTMLDivElement>(null);
   const marcasRef = useRef<HTMLDivElement>(null);
   const visorRef = useRef<Visor | null>(null);
   /** Fora do React: muda a cada quadro de rolagem. */
-  const abertoRef = useRef(false);
-  /** O painel está em algum pedaço da janela. Governa o laço de quadros. */
   const visivelRef = useRef(false);
 
   const semMovimento = useSemMovimento();
@@ -68,34 +62,42 @@ export function Manifesto360() {
   const [tocado, setTocado] = useState(false);
   const [estado, setEstado] = useState<EstadoVisor | null>(null);
 
-  // ---------------------------------------------------------------- abertura
+  // ---------------------------------------------------------- a rolagem gira
 
   const desenhar = useCallback(() => {
-    const moldura = molduraRef.current;
-    if (!moldura) return;
-    const r = moldura.getBoundingClientRect();
-    const altura = window.innerHeight || 1;
-    // Distância do centro do painel ao centro da janela, em telas. Simétrica,
-    // então a mesma curva serve para entrar e para sair.
-    const d = Math.abs(r.top + r.height / 2 - altura / 2) / altura;
-    const abre = semMovimento ? 1 : 1 - suave(d, ABRE_EM, FECHA_EM);
-    moldura.style.setProperty("--abre", abre.toFixed(4));
-
-    // Só o ponteiro depende disto. O laço de quadros NÃO: ver o observador de
-    // visibilidade abaixo.
-    const aberto = abre > VIVO_ACIMA_DE;
-    if (aberto === abertoRef.current) return;
-    abertoRef.current = aberto;
-    moldura.dataset.aberto = aberto ? "sim" : "nao";
+    const secao = secaoRef.current;
+    const visor = visorRef.current;
+    if (!secao || !visor) return;
+    if (semMovimento) {
+      visor.apontar(0, 0);
+      return;
+    }
+    const r = secao.getBoundingClientRect();
+    const janela = window.innerHeight || 1;
+    // Travessia: 0 quando o topo da seção encosta no pé da janela, 1 quando o
+    // pé dela passa do topo. Uma conta só, que serve para seção mais alta ou
+    // mais baixa que a janela.
+    const p = limita((janela - r.top) / (janela + r.height), 0, 1);
+    // Centrado em 0,5: o enquadramento composto é o do meio da travessia.
+    visor.apontar((p - 0.5) * GIRO, (p - 0.5) * INCLINA);
   }, [semMovimento]);
 
   useLoopDeScroll(desenhar);
 
+  /* O efeito do visor precisa mirar a câmera assim que ela nasce, mas não pode
+     depender de `desenhar`: ele muda quando `prefers-reduced-motion` muda, e
+     isso derrubaria e recriaria o contexto WebGL por causa de uma preferência
+     de movimento. */
+  const desenharRef = useRef(desenhar);
+  useEffect(() => {
+    desenharRef.current = desenhar;
+  }, [desenhar]);
+
   // ---------------------------------------------------------- quando carregar
 
   useEffect(() => {
-    const moldura = molduraRef.current;
-    if (!moldura || querCarregar) return;
+    const secao = secaoRef.current;
+    if (!secao || querCarregar) return;
 
     // Save-Data é o único pedido explícito de gastar menos que o navegador
     // manda. 440 KB de panorama numa seção que ninguém pediu para abrir é
@@ -109,29 +111,24 @@ export function Manifesto360() {
         observador.disconnect();
         setQuerCarregar(true);
       },
-      // Uma tela cheia de antecedência: o módulo e o primeiro panorama têm tempo
-      // de chegar antes de o painel começar a abrir.
+      // Uma tela cheia de antecedência: o módulo e o primeiro panorama têm
+      // tempo de chegar antes de a seção entrar.
       { rootMargin: "1000px 0px" },
     );
-    observador.observe(moldura);
+    observador.observe(secao);
     return () => observador.disconnect();
   }, [querCarregar]);
 
   // ------------------------------------------------- quando desenhar quadros
 
   /**
-   * O laço segue a VISIBILIDADE do painel, e não o quanto ele está aberto.
+   * O laço segue a VISIBILIDADE do painel.
    *
-   * A primeira versão desligava junto com a abertura, e o painel meio fechado
-   * ficava PRETO: sem `preserveDrawingBuffer`, o canvas não guarda o último
-   * quadro, e parar de desenhar apaga o que estava ali. Ou seja, a animação de
-   * saída — que é justamente quando a abertura cai — era a única hora em que
-   * não havia imagem para recortar.
-   *
-   * Ligar `preserveDrawingBuffer` resolveria o sintoma cobrando uma cópia do
-   * buffer a cada quadro, que numa GPU de celular é caro para o que é. Desenhar
-   * enquanto o painel estiver em qualquer pedaço da janela sai de graça: em
-   * repouso o motor desenha uma vez e para sozinho.
+   * Sem `preserveDrawingBuffer`, o canvas não guarda o último quadro: parar de
+   * desenhar apaga o que estava ali. Ligar essa opção resolveria cobrando uma
+   * cópia do buffer por quadro, cara numa GPU de celular; desenhar enquanto o
+   * painel estiver à vista sai de graça, porque em repouso o motor desenha uma
+   * vez e para sozinho.
    */
   useEffect(() => {
     const moldura = molduraRef.current;
@@ -170,6 +167,9 @@ export function Manifesto360() {
           },
         });
         visorRef.current.ativar(visivelRef.current);
+        // Sem isto a sala abre no enquadramento de repouso e só se endireita no
+        // próximo evento de scroll, que pode não vir se a pessoa parar de rolar.
+        desenharRef.current();
         if (!cancelado) setPronto(true);
       } catch (erro) {
         console.warn("[biotique] visor não subiu", erro);
@@ -187,35 +187,28 @@ export function Manifesto360() {
   const mostraTela = pronto && !estado?.falhou;
 
   return (
-    <section className="section-spacing">
+    <section ref={secaoRef} className="manifesto-360">
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[46%_1fr] gap-12 lg:gap-16 items-center">
-          {/* ---------- o copy, inteiro e no mesmo lugar ---------- */}
-          <ScrollReveal>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-[52px] font-normal leading-[1.4] text-dark">
-              {t("Pioneiros em Madeira Ecológica no Brasil, somos arquitetura feita para o amanhã.")}
-            </h2>
-            <p className="font-body text-[16px] font-light leading-[1.65] text-primary mt-8 max-w-[380px]">
-              {t("Acabamento premium para projetos de alto padrão, com garantia de até 10 anos. Cada superfície que criamos resiste ao tempo e agrada o olhar.")}
-            </p>
-            <Link
-              to="/orcamento"
-              className="inline-flex items-center mt-8 px-6 py-3 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary hover:text-foreground transition-colors duration-300"
-            >
-              {t("Fale com um especialista")}
-            </Link>
-          </ScrollReveal>
+        <div className="flex flex-col lg:grid lg:grid-cols-[34%_1fr] lg:gap-x-14 xl:gap-x-20 lg:items-center">
+          <h2 className="order-1 lg:col-start-1 lg:row-start-1 font-display text-3xl md:text-4xl lg:text-[44px] xl:text-[52px] font-normal leading-[1.28] md:leading-[1.28] lg:leading-[1.22] text-dark">
+            {t("Pioneiros em Madeira Ecológica no Brasil, somos arquitetura feita para o amanhã.")}
+          </h2>
 
-          {/* ---------- o hall, que abre e fecha com a rolagem ---------- */}
-          <div ref={molduraRef} className="moldura-360" data-aberto="nao">
+          {/* O painel sangra: no celular de borda a borda, no desktop até o
+              limite do container. É a mesma decisão do print — o texto tem
+              margem, a imagem não. */}
+          <div
+            ref={molduraRef}
+            className="moldura-360 order-2 -mx-6 my-10 lg:mx-0 lg:-mr-8 lg:my-0 lg:col-start-2 lg:row-start-1 lg:row-span-2"
+          >
             <div
               ref={palcoRef}
-              className="palco-360 relative w-full aspect-[4/5] lg:aspect-[5/4] overflow-hidden rounded-[10px] bg-primary"
+              className="palco-360 relative w-full aspect-[4/5] lg:aspect-square overflow-hidden bg-primary lg:rounded-[10px]"
             >
               {/* O pôster é o que o HTML pré-renderizado mostra, o que vê quem
                   não executa JS e o que fica de pé sob Save-Data. Reprojetado
-                  no enquadramento EXATO em que o WebGL abre — ver o cabeçalho
-                  de scripts/importar-biotique.mjs. */}
+                  no enquadramento EXATO em que o WebGL abre — um por proporção
+                  de painel, no mesmo corte de 1024px da className acima. */}
               <picture>
                 <source media="(min-width: 1024px)" srcSet={POSTER_LARGA} />
                 <img
@@ -239,7 +232,7 @@ export function Manifesto360() {
                 onPointerDown={() => setTocado(true)}
                 className={cn(
                   "absolute inset-0 w-full h-full outline-none transition-opacity duration-700",
-                  "focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-0",
+                  "focus-visible:ring-2 focus-visible:ring-white/70",
                   mostraTela ? "opacity-100" : "opacity-0",
                 )}
               />
@@ -248,8 +241,6 @@ export function Manifesto360() {
                   container é dele e não do React. */}
               <div ref={marcasRef} className="marcas-360" aria-live="off" />
 
-              {/* Véu de baixo: a legenda e os controles pousam sobre foto, e a
-                  foto muda de sala para sala. */}
               <div className="veu-360" aria-hidden="true" />
 
               <div className="rodape-360">
@@ -259,19 +250,15 @@ export function Manifesto360() {
                 </p>
 
                 {estado?.podeVoltar ? (
-                  <button
-                    type="button"
-                    onClick={() => visorRef.current?.voltar()}
-                    className="botao-360"
-                  >
+                  <button type="button" onClick={() => visorRef.current?.voltar()} className="botao-360">
                     {t("Voltar")}
                   </button>
                 ) : null}
               </div>
 
               {/* Some ao primeiro gesto, e nunca aparece antes de haver o que
-                  arrastar. Não é um título anunciando nada: é a única pista de
-                  que a foto responde ao ponteiro. */}
+                  arrastar. A rolagem já gira sozinha; isto é a pista de que a
+                  mão também pode. */}
               <p
                 id={ID_INSTRUCAO}
                 className={cn(
@@ -289,9 +276,20 @@ export function Manifesto360() {
               ) : null}
             </div>
           </div>
+
+          <div className="order-3 lg:col-start-1 lg:row-start-2 lg:mt-8">
+            <p className="font-body text-[16px] font-light leading-[1.65] text-primary max-w-[420px]">
+              {t("Acabamento premium para projetos de alto padrão, com garantia de até 10 anos. Cada superfície que criamos resiste ao tempo e agrada o olhar.")}
+            </p>
+            <Link
+              to="/orcamento"
+              className="inline-flex items-center mt-8 px-6 py-3 border border-[hsl(var(--primary))] text-dark font-body text-[13px] font-medium uppercase tracking-[0.08em] rounded hover:bg-primary hover:text-foreground transition-colors duration-300"
+            >
+              {t("Fale com um especialista")}
+            </Link>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-

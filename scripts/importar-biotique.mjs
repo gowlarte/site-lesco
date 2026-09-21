@@ -57,7 +57,7 @@ const DESTINO_DADOS = path.resolve("src/data/biotique.ts");
  * pôster deixa de bater com o primeiro quadro do WebGL.
  */
 const PAINEL = [
-  { nome: "poster-larga", aspecto: 5 / 4, largura: 1100 },
+  { nome: "poster-larga", aspecto: 1, largura: 1000 },
   { nome: "poster-alta", aspecto: 4 / 5, largura: 820 },
 ];
 /**

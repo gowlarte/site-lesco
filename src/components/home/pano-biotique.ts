@@ -15,6 +15,9 @@
  * - O de lá tem uma tira de miniaturas para pular entre as 15 salas. Aqui só
  *   existem as 5 que se alcançam a pé, e a navegação é a porta.
  * - Aqui o laço PARA quando a seção sai da tela. Lá a pergunta não existia.
+ * - Aqui a ROLAGEM DA PÁGINA gira a câmera, por `apontar()`. É o gesto
+ *   principal da seção: quanto mais se rola, mais a sala vira, e voltar a
+ *   página desfaz o giro. Lá nada disso existe — o overlay sela o scroll.
  *
  * Este módulo é o único do arquivo que importa three, e entra por import
  * dinâmico: nada disto viaja no bundle de quem só abre a home e não rola.
@@ -171,6 +174,11 @@ export interface OpcoesVisor {
 export interface Visor {
   /** Liga e desliga o laço de quadros conforme a seção entra e sai da tela. */
   ativar(ligado: boolean): void;
+  /**
+   * Para onde a ROLAGEM está mirando, em radianos, somado ao rumo que o
+   * visitante tiver dado à mão. Quem chama é a seção, a cada quadro de scroll.
+   */
+  apontar(yaw: number, pitch: number): void;
   voltar(): void;
   destruir(): void;
 }
@@ -284,6 +292,14 @@ export function criarVisor(opcoes: OpcoesVisor): Visor {
   let yaw = 0;
   let pitch = 0;
   let fov = 82;
+  /**
+   * Desvio que a ROLAGEM da página impõe, somado ao rumo do visitante na hora
+   * de pintar. Somado, e não atribuído: assim o arrasto continua valendo
+   * enquanto a página anda, em vez de os dois disputarem a mesma variável e a
+   * câmera pular de volta a cada quadro.
+   */
+  let yawDaRolagem = 0;
+  let pitchDaRolagem = 0;
   /** Inércia, em radianos por segundo. */
   let velYaw = 0;
   let velPitch = 0;
@@ -412,8 +428,8 @@ export function criarVisor(opcoes: OpcoesVisor): Visor {
 
   function pintar() {
     if (!renderizador) return;
-    camera.rotation.y = yaw;
-    camera.rotation.x = pitch;
+    camera.rotation.y = yaw + yawDaRolagem;
+    camera.rotation.x = limita(pitch + pitchDaRolagem, -LIMITE_PITCH, LIMITE_PITCH);
     camera.fov = fov;
     camera.updateProjectionMatrix();
     // Antes de posicionar as marcas, e não depois: quem atualiza a matriz de
@@ -853,6 +869,12 @@ export function criarVisor(opcoes: OpcoesVisor): Visor {
   }
 
   return {
+    apontar(dYaw: number, dPitch: number) {
+      if (dYaw === yawDaRolagem && dPitch === pitchDaRolagem) return;
+      yawDaRolagem = dYaw;
+      pitchDaRolagem = dPitch;
+      pedirQuadro();
+    },
     ativar(ligado: boolean) {
       if (ativo === ligado) return;
       ativo = ligado;
