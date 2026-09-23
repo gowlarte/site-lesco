@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { buildGhlFormUrl } from "@/lib/utm";
 import { WHATSAPP_POPUP_EVENT } from "@/lib/whatsappPopup";
-import { useSaiuDoHero } from "@/hooks/useSaiuDoHero";
 import { site } from "@/config/site";
 import { t } from "@/i18n/t";
 
@@ -21,10 +20,6 @@ function ensureFormScript() {
 export function WhatsAppButton() {
   const [open, setOpen] = useState(false);
   const [formSrc, setFormSrc] = useState(FORM_URL);
-  // O botão não disputa espaço com o hero: entra junto com o fundo do menu,
-  // quando a página sai da primeira tela. Em página sem hero ele já nasce
-  // visível.
-  const visivel = useSaiuDoHero();
 
   useEffect(() => {
     if (open) {
@@ -72,12 +67,12 @@ export function WhatsAppButton() {
           setOpen(true);
         }}
         aria-label={t("Falar no WhatsApp")}
-        aria-hidden={!visivel}
-        tabIndex={visivel ? undefined : -1}
-        className={
-          "botao-whatsapp fixed bottom-[20px] right-[20px] z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-[transform,opacity] duration-300 hover:scale-110 " +
-          (visivel ? "opacity-100" : "pointer-events-none translate-y-4 opacity-0")
-        }
+        /* Visível desde o topo, e não só depois do hero: é o canal de contato
+           principal, e esperar a primeira tela passar tirava o botão de quem
+           chega decidido. Quem some no lugar dele é o menu mobile aberto, por
+           `[data-menu-aberto]` no index.css — nada pode flutuar sobre um
+           `aria-modal`. */
+        className="botao-whatsapp fixed bottom-[20px] right-[20px] z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-[transform,opacity] duration-300 hover:scale-110"
         style={{ transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
       >
         <svg viewBox="0 0 32 32" className="h-7 w-7 fill-current" aria-hidden="true">

@@ -352,14 +352,16 @@ export function HeroSolucoes() {
              os valores compensam um ao outro, então o ícone cai no mesmo
              ponto em qualquer largura.
 
-             Pode usar o canto: o botão do WhatsApp só entra depois do hero
-             (ver useSaiuDoHero), e quando ele entra o palco já subiu o
-             bastante para a seta não estar mais lá embaixo. */}
+             NÃO pode usar o canto: o botão do WhatsApp é fixo, ocupa de 20 a
+             76px da borda direita e agora está lá desde a primeira tela — o
+             `useSaiuDoHero` que segurava ele saiu a pedido. Com o indicador no
+             canto, a seta ficava inteira por baixo de um botão de z-60. Daí o
+             deslocamento: a caixa termina antes dos 76px, com folga. */}
         <button
           type="button"
           onClick={avancar}
           aria-label={rotuloScroll}
-          className="absolute bottom-3.5 right-2.5 lg:right-[34px] z-30 inline-flex items-center gap-2 p-3.5 font-body text-[12px] text-white hover:opacity-70 transition-opacity duration-300"
+          className="absolute bottom-3.5 right-[88px] lg:right-[112px] z-30 inline-flex items-center gap-2 p-3.5 font-body text-[12px] text-white hover:opacity-70 transition-opacity duration-300"
         >
           <span className="hidden sm:inline">{rotuloScroll}</span>
           <ArrowDown size={14} className="hero-seta" />
