@@ -20,6 +20,12 @@ import logoLight from "@/assets/logo-lesco-light.svg";
  * ainda não é reconhecida pelo público.
  */
 type NavChild = { label: string; href: string; linha?: string };
+/**
+ * `href` junto de `children` = o material tem página-hub própria (/zhu,
+ * /madeira-ecologica-lesco). Nesse caso o rótulo do primeiro nível é link: o
+ * hub apresenta a linha e hospeda o formulário do catálogo dela, e sem isso
+ * não havia como chegar lá pelo menu — só pelas páginas de produto.
+ */
 type NavItem = { label: string; href?: string; children?: NavChild[]; external?: boolean; grupo: Grupo };
 
 /**
@@ -46,6 +52,7 @@ const todosLinks: NavItem[] = [
   {
     grupo: "materiais",
     label: t("Madeira ecológica"),
+    href: "/madeira-ecologica-lesco",
     children: [
       { label: t("Brises"), href: "/brise-madeira-ecologica", linha: "Lesco Brise" },
       { label: t("Forros"), href: "/forro-wpc", linha: "Lesco Line" },
@@ -58,6 +65,7 @@ const todosLinks: NavItem[] = [
   {
     grupo: "materiais",
     label: t("Bambu"),
+    href: "/zhu",
     children: [
       { label: t("Painéis e forros"), href: "/painel-bambu", linha: "Zhú" },
       { label: t("Painéis acústicos"), href: "/painel-acustico-bambu", linha: "Zhú" },
@@ -283,6 +291,14 @@ export function Header({ variant = "default" }: HeaderProps) {
 
               if (link.children) {
                 const isOpen = openDropdown === link.label;
+                // A lista continua abrindo no hover; o clique, quando existe
+                // hub, leva à página do material em vez de não fazer nada.
+                const conteudoGatilho = (
+                  <>
+                    {link.label}
+                    <ChevronDown size={12} className={cn("transition-transform duration-200", isOpen && "rotate-180")} />
+                  </>
+                );
                 return (
                   <div
                     key={link.label}
@@ -292,16 +308,27 @@ export function Header({ variant = "default" }: HeaderProps) {
                       setOpenDropdown(link.label);
                     }}
                   >
-                    <button
-                      type="button"
-                      className={sharedClass}
-                      style={sharedStyle}
-                      aria-haspopup="true"
-                      aria-expanded={isOpen}
-                    >
-                      {link.label}
-                      <ChevronDown size={12} className={cn("transition-transform duration-200", isOpen && "rotate-180")} />
-                    </button>
+                    {link.href ? (
+                      <Link
+                        to={link.href}
+                        className={sharedClass}
+                        style={sharedStyle}
+                        aria-haspopup="true"
+                        aria-expanded={isOpen}
+                      >
+                        {conteudoGatilho}
+                      </Link>
+                    ) : (
+                      <button
+                        type="button"
+                        className={sharedClass}
+                        style={sharedStyle}
+                        aria-haspopup="true"
+                        aria-expanded={isOpen}
+                      >
+                        {conteudoGatilho}
+                      </button>
+                    )}
 
                     {isOpen && (
                       <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50">
@@ -499,27 +526,49 @@ export function Header({ variant = "default" }: HeaderProps) {
                     const expanded = mobileExpanded === link.label;
                     return (
                       <div key={link.label} className="menu-linha" style={atraso}>
-                        <button
-                          type="button"
-                          onClick={() => setMobileExpanded(expanded ? null : link.label)}
-                          aria-expanded={expanded}
-                          className="relative w-full flex items-start justify-between gap-3 py-1.5 text-left"
-                        >
+                        {/* Com hub próprio a linha se parte em dois alvos: o
+                            rótulo leva à página do material, a seta abre a
+                            lista de produtos. Sem hub, os dois abrem a lista —
+                            é o comportamento antigo, preservado. */}
+                        <div className="relative flex items-start justify-between gap-3">
                           {ativo && marcaAtivo}
-                          <span className={cn(escala, ativo ? "text-foreground" : "text-foreground/85")}>
-                            {link.label}
-                          </span>
+                          {link.href ? (
+                            <Link to={link.href} className="flex-1 py-1.5">
+                              <span className={cn(escala, ativo ? "text-foreground" : "text-foreground/85")}>
+                                {link.label}
+                              </span>
+                            </Link>
+                          ) : (
+                            <button
+                              type="button"
+                              onClick={() => setMobileExpanded(expanded ? null : link.label)}
+                              aria-expanded={expanded}
+                              className="flex-1 py-1.5 text-left"
+                            >
+                              <span className={cn(escala, ativo ? "text-foreground" : "text-foreground/85")}>
+                                {link.label}
+                              </span>
+                            </button>
+                          )}
                           {/* `items-start` + este recuo: se o rótulo quebrar
                               numa tela estreita, a seta fica na primeira
                               linha, e não centralizada no bloco de duas. */}
-                          <ChevronDown
-                            size={20}
-                            className={cn(
-                              "shrink-0 mt-1.5 text-foreground/40 transition-transform duration-300",
-                              expanded && "rotate-180",
-                            )}
-                          />
-                        </button>
+                          <button
+                            type="button"
+                            onClick={() => setMobileExpanded(expanded ? null : link.label)}
+                            aria-expanded={expanded}
+                            aria-label={`${expanded ? t("Recolher") : t("Expandir")} ${link.label}`}
+                            className="shrink-0 p-2 -mr-2 mt-0.5"
+                          >
+                            <ChevronDown
+                              size={20}
+                              className={cn(
+                                "text-foreground/40 transition-transform duration-300",
+                                expanded && "rotate-180",
+                              )}
+                            />
+                          </button>
+                        </div>
 
                         {/* Ficha técnica: tipo à esquerda, linha comercial à
                             direita, na mesma base, filete entre as linhas.

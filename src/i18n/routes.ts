@@ -44,6 +44,7 @@ export const ROUTES: RouteMap = {
   "/obrigado-orcamento": { pt: "/obrigado-orcamento", en: "/thank-you-quote" },
   "/obrigado-catalogo": { pt: "/obrigado-catalogo", en: "/thank-you-catalog" },
   "/obrigado-catalogo-geo": { pt: "/obrigado-catalogo-geo", en: "/thank-you-catalog-geo" },
+  "/obrigado-catalogo-zhu": { pt: "/obrigado-catalogo-zhu", en: "/thank-you-catalog-zhu" },
   "/obrigado-whats": { pt: "/obrigado-whats", en: "/thank-you-whatsapp" },
   // Marcas/lançamentos — mantidos iguais nos dois idiomas.
   "/zhu": { pt: "/zhu", en: "/zhu" },

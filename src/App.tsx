@@ -50,6 +50,7 @@ import ObrigadoCatalogo from "./pages/ObrigadoCatalogo";
 import ObrigadoWhats from "./pages/ObrigadoWhats";
 import Obrigado from "./pages/Obrigado";
 import ObrigadoCatalogoGeo from "./pages/ObrigadoCatalogoGeo";
+import ObrigadoCatalogoZhu from "./pages/ObrigadoCatalogoZhu";
 import PoliticaPrivacidade from "./pages/PoliticaPrivacidade";
 import TermosServico from "./pages/TermosServico";
 import FormularioTeste from "./pages/FormularioTeste";
@@ -114,6 +115,7 @@ const AppContent = () => {
           <Route path={localizePath("/obrigado-catalogo")} element={<ObrigadoCatalogo />} />
           <Route path={localizePath("/obrigado-whats")} element={<ObrigadoWhats />} />
           <Route path={localizePath("/obrigado-catalogo-geo")} element={<ObrigadoCatalogoGeo />} />
+          <Route path={localizePath("/obrigado-catalogo-zhu")} element={<ObrigadoCatalogoZhu />} />
           <Route path={localizePath("/portfolio")} element={<Portfolio />} />
           <Route path={localizePath("/projetos/:slug")} element={<PortfolioProjeto />} />
           <Route path={localizePath("/blog")} element={<Blog />} />

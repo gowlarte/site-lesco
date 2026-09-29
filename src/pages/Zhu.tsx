@@ -3,6 +3,7 @@ import { Link } from "@/components/AppLink";
 import { ArrowRight } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { SecaoOrcamento } from "@/components/altwood/SecaoOrcamento";
+import { GhlForm } from "@/components/GhlForm";
 import { dadosTecnicosZhu, familiasZhu } from "@/data/zhu";
 import { t } from "@/i18n/t";
 
@@ -42,22 +43,26 @@ const Zhu = () => {
         image={heroZhu}
       />
 
-      {/* HERO */}
-      <section className="relative rounded-[10px] overflow-hidden min-h-[calc(100vh-120px)] flex items-center">
+      {/* HERO + FORMULÁRIO
+          Duas colunas no mesmo molde da /geo: a linha tem catálogo próprio, e o
+          formulário de download precisa estar acima da dobra — é por ele que o
+          menu "Bambu" agora entra nesta página. */}
+      <section className="relative rounded-[10px] overflow-hidden">
         <img src={heroZhu} alt="Zhú" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-[rgba(13,13,13,0.65)]" />
 
-        <div className="relative z-10 w-full px-4 sm:px-8 md:px-16 lg:px-20 py-16 sm:py-20">
-          <div className="max-w-3xl text-white">
+        <div className="relative z-10 w-full px-4 sm:px-8 md:px-12 lg:px-16 py-12 sm:py-16 lg:py-20 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {/* Esquerda — texto */}
+          <div className="text-white">
             <span className="inline-block font-display text-white bg-white/15 backdrop-blur rounded-full px-3 py-1.5 text-[10px] md:text-[11px] tracking-[0.18em] uppercase mb-8">
               {t("Bambu")}
             </span>
             <div
-              className="[&>svg]:h-[56px] md:[&>svg]:h-[80px] lg:[&>svg]:h-[96px] [&>svg]:w-auto text-white mb-6"
+              className="[&>svg]:h-[52px] md:[&>svg]:h-[72px] [&>svg]:w-auto text-white mb-6"
               dangerouslySetInnerHTML={{ __html: logoZhuRaw }}
               aria-label="Zhú"
             />
-            <p className="font-display font-light text-white/90 text-xl md:text-2xl lg:text-3xl leading-tight tracking-[-0.01em] mb-6">
+            <p className="font-display font-light text-white/90 text-xl md:text-2xl lg:text-3xl leading-tight md:leading-tight lg:leading-tight tracking-[-0.01em] mb-6">
               {t("Arquitetura em Bambu")}
             </p>
             <p className="font-body text-[15px] md:text-[16px] text-white/75 leading-relaxed max-w-xl">
@@ -73,6 +78,29 @@ const Zhu = () => {
                   {a}
                 </span>
               ))}
+            </div>
+          </div>
+
+          {/* Direita — formulário GHL (catálogo Zhú) */}
+          <div className="rounded-[10px] border border-white/10 bg-white/5 backdrop-blur-md p-6 sm:p-8">
+            <div className="mb-6">
+              <h2 className="font-display text-2xl sm:text-3xl text-white font-normal mb-2">
+                {t("Baixe o catálogo Zhú")}
+              </h2>
+              <p className="font-body text-[14px] sm:text-[15px] text-white/80 leading-relaxed">
+                {t("Preencha o formulário para receber o catálogo completo da linha Zhú, com os modelos, medidas e códigos de especificação de cada família.")}
+              </p>
+            </div>
+            <div className="bg-white rounded-[10px] overflow-hidden">
+              <GhlForm
+                formId="5w0wUghd8D2YEQUVwWgQ"
+                formName="[13] [FORM] [DOWNLOAD CATALOGO] [BAMBU]"
+                title="[13] [FORM] [DOWNLOAD CATALOGO] [BAMBU]"
+                // Altura medida com o formulário já carregado: 837px a 541px de
+                // largura (duas colunas) e 909px a 273px (mobile). O sizer do
+                // GHL ajusta depois; este número é o que evita o salto até lá.
+                height={900}
+              />
             </div>
           </div>
         </div>
