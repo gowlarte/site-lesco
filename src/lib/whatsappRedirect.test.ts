@@ -1,11 +1,11 @@
 import { describe, it, expect } from "vitest";
-import { DESTINOS_WHATSAPP, type DestinoWhatsApp } from "../config/whatsapp";
+import { DESTINOS_WHATSAPP, type DestinoWhatsApp } from "../config/whatsapp.js";
 import {
   ehDispositivoMovel,
   montarDeepLinkWhatsApp,
   montarPaginaDeepLink,
   montarUrlWhatsApp,
-} from "./whatsappRedirect";
+} from "./whatsappRedirect.js";
 
 const DESTINO: DestinoWhatsApp = {
   numero: "5511948449044",

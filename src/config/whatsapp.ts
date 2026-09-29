@@ -1,5 +1,3 @@
-import { site } from "./site";
-
 /**
  * Destinos do redirecionador /wa/<slug>. Só os dados — como a pessoa chega até
  * a conversa está em src/lib/whatsappRedirect.ts.
@@ -34,10 +32,19 @@ export const SLUG_PADRAO = "comercial";
  *
  * Mensagens diferentes para a mesma pessoa (uma por campanha, por exemplo)
  * são slugs diferentes apontando para o mesmo número.
+ *
+ * O número está escrito aqui, e não lido de site.whatsappNumber, por dois
+ * motivos. O técnico: este módulo é carregado pela função serverless, que roda
+ * em ESM nativo, onde cada import de runtime precisa de extensão explícita —
+ * puxar site.ts arrastaria i18n/locale.ts junto e obrigaria a mexer em arquivo
+ * que o site inteiro importa. O outro: o destino de um template JÁ APROVADO
+ * pela Meta não pode mudar porque alguém editou o telefone de contato do site.
+ * São dois números com o mesmo valor hoje e vidas diferentes. O teste guarda
+ * a igualdade, para a divergência ser uma decisão e não um acidente.
  */
 export const DESTINOS_WHATSAPP: Record<string, DestinoWhatsApp> = {
   comercial: {
-    numero: site.whatsappNumber,
+    numero: "5511948449044",
     nome: "Comercial Lesco",
     mensagem: "Olá! Vim pelo WhatsApp da Lesco e quero falar com o comercial.",
   },

@@ -1,10 +1,11 @@
 import { describe, it, expect } from "vitest";
+import { site } from "./site.js";
 import {
   DESTINOS_WHATSAPP,
   SLUG_PADRAO,
   normalizarSlug,
   resolverDestino,
-} from "./whatsapp";
+} from "./whatsapp.js";
 
 describe("normalizarSlug", () => {
   it("aceita o que a querystring da Vercel pode devolver", () => {
@@ -39,5 +40,17 @@ describe("DESTINOS_WHATSAPP", () => {
       expect(destino.numero, slug).toMatch(/^\d{12,13}$/);
       expect(destino.mensagem.trim(), slug).not.toBe("");
     }
+  });
+});
+
+describe("o número do comercial e o do site", () => {
+  /**
+   * São dois campos com o mesmo valor e vidas diferentes: um atende o site, o
+   * outro é o destino de um template já aprovado pela Meta, que não pode mudar
+   * sozinho. Este teste existe para a divergência ser uma decisão — se for
+   * intencional, troque a asserção; se não for, você acabou de ser avisado.
+   */
+  it("hoje apontam para o mesmo lugar", () => {
+    expect(DESTINOS_WHATSAPP.comercial.numero).toBe(site.whatsappNumber);
   });
 });

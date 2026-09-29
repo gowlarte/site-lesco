@@ -1,9 +1,9 @@
-import { normalizarSlug, resolverDestino } from "../src/config/whatsapp";
+import { normalizarSlug, resolverDestino } from "../src/config/whatsapp.js";
 import {
   ehDispositivoMovel,
   montarPaginaDeepLink,
   montarUrlWhatsApp,
-} from "../src/lib/whatsappRedirect";
+} from "../src/lib/whatsappRedirect.js";
 
 /**
  * GET /wa/<slug> → leva a pessoa para a conversa no WhatsApp do destino.

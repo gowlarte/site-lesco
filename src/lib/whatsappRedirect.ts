@@ -1,4 +1,4 @@
-import type { DestinoWhatsApp } from "../config/whatsapp";
+import type { DestinoWhatsApp } from "../config/whatsapp.js";
 
 /**
  * Como o /wa/<slug> leva a pessoa até a conversa. Os destinos em si estão em
