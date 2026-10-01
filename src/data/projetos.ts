@@ -116,10 +116,19 @@ export type Projeto = {
   arquitetura: string;
   produtos: string[];
   tipos: TipoProduto[];
+  /** Vazios em obra que entrou pelo tour e ainda não tem case escrito. */
   descricao: string;
   desafio: string;
   solucao: string;
   galeria: string[];
+  /**
+   * Slug do tour em src/data/tours.ts, quando a obra tem visita 360.
+   *
+   * É o que liga o portfólio ao Lesco Viewer, e o que acende o selo 360 na
+   * capa. Um slug que não existe mais lá (tour despublicado) some sozinho: o
+   * `getTour` devolve `undefined` e a página volta a ser só fotos.
+   */
+  tour?: string;
 };
 
 export const projetos: Projeto[] = [
@@ -227,6 +236,10 @@ export const projetos: Projeto[] = [
     solucao:
       "Aplicação do Lesco Green Shield 124×15,5 Oak em forros e elementos de fachada, trazendo calor visual e contraste com os volumes em vidro e estrutura metálica.",
     galeria: [jhaCorporate2, jhaCorporate3, jhaCorporate4, jhaCorporate5, jhaCorporate6, jhaCorporate7, jhaCorporate8],
+    // O Viewer chama esta obra de "JHA Boutique"; é o mesmo prédio. A capa do
+    // tour é a passagem coberta do térreo, com o mesmo forro de madeira, os
+    // mesmos pilares inclinados e as mesmas jardineiras das fotos acima.
+    tour: "jha-boutique",
   },
   {
     slug: "casa-una",
@@ -330,7 +343,88 @@ export const projetos: Projeto[] = [
       felipeCama8,
     ],
   },
+
+  /* ---------------------------------------------------------------------
+     Obras que entraram pelo tour 360.
+
+     A ficha vem do Lesco Viewer e para por aí: lá não há texto de case, linha
+     aplicada nem galeria de fotos, e inventar isso numa obra real seria pior
+     do que deixar em branco. A página aguenta os campos vazios — some a seção
+     que não tem conteúdo —, e o que sustenta cada uma é a visita.
+
+     `imagem` é a capa reprojetada pelo `npm run tours`, um caminho servido de
+     public/ e não um import de src/assets como nas obras fotografadas.
+
+     Quando o case for escrito, é só preencher: `descricao` preenchida é o que
+     leva a obra para o carrossel da home (ver `projetosDaHome`), e `tipos`
+     preenchidos a levam para a página do produto.
+     --------------------------------------------------------------------- */
+  {
+    slug: "biotique",
+    nome: "Biotique",
+    imagem: "/tours/biotique/capa.webp",
+    linha: "",
+    local: t("São Paulo, SP"),
+    ano: "2026",
+    area: "—",
+    arquitetura: "—",
+    tipos: [],
+    produtos: [],
+    descricao: "",
+    desafio: "",
+    solucao: "",
+    galeria: [],
+    tour: "biotique",
+  },
+  {
+    slug: "lavvi",
+    nome: "Lavvi",
+    imagem: "/tours/lavvi/capa.webp",
+    linha: "",
+    local: t("São Paulo, SP"),
+    ano: "2026",
+    area: "—",
+    arquitetura: "—",
+    tipos: [],
+    produtos: [],
+    descricao: "",
+    desafio: "",
+    solucao: "",
+    galeria: [],
+    tour: "lavvi",
+  },
+  {
+    slug: "alpha-one",
+    nome: "Alpha One",
+    imagem: "/tours/alpha-one/capa.webp",
+    linha: "",
+    local: t("São Paulo, SP"),
+    ano: "2026",
+    area: "—",
+    arquitetura: "—",
+    tipos: [],
+    produtos: [],
+    descricao: "",
+    desafio: "",
+    solucao: "",
+    galeria: [],
+    tour: "alpha-one",
+  },
 ];
+
+/**
+ * O carrossel de projetos da home.
+ *
+ * NÃO é `projetos` inteiro, de propósito. Cada obra ali ocupa uma tela presa
+ * de rolagem, e uma obra que entrou pelo tour e ainda não tem case escrito
+ * daria uma tela cheia com nome, cidade e mais nada para ler. No portfólio ela
+ * se sustenta porque a visita 360 é o conteúdo da página; na home não há
+ * visita, só a capa.
+ *
+ * O critério é o próprio texto, e não uma lista à parte que envelhece: escreveu
+ * a `descricao`, a obra entra na home sozinha.
+ */
+export const projetosDaHome = projetos.filter((p) => p.descricao);
 
 /**
  * Obras que ilustram a página de um tipo de produto, na ordem do portfólio.

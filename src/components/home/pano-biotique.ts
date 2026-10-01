@@ -182,6 +182,17 @@ export interface Visor {
    */
   apontar(yaw: number, pitch: number): void;
   voltar(): void;
+  /**
+   * Pula direto para uma sala, pelo id, sem passar pelas portas.
+   *
+   * É a tira de ambientes da página da obra. As portas só existem onde alguém
+   * as ligou no Lesco Viewer, e três dos quatro tours publicados não têm
+   * nenhuma: sem um pulo, o visitante ficaria preso na sala de chegada.
+   *
+   * Pular NÃO é um passo caminhado — zera a trilha. `voltar()` desfaz caminho
+   * andado, e escolher na tira é outra coisa.
+   */
+  irParaCena(id: string): void;
   destruir(): void;
 }
 
@@ -902,6 +913,12 @@ export function criarVisor(opcoes: OpcoesVisor): Visor {
       }
     },
     voltar,
+    irParaCena(id: string) {
+      const cena = porId.get(id);
+      if (!cena || cena === atual || travessia) return;
+      trilha.length = 0;
+      irPara(cena, false);
+    },
     destruir() {
       vivo = false;
       ativo = false;

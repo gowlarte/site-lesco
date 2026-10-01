@@ -2,7 +2,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "@/components/AppLink";
 import { t } from "@/i18n/t";
-import { projetos } from "@/data/projetos";
+/* `projetosDaHome`, e não `projetos`: a lista inteira inclui obras que
+   entraram pelo tour 360 e ainda não têm case escrito — ver o comentário na
+   fonte. Aqui cada obra custa uma tela presa de rolagem. */
+import { projetosDaHome as projetos } from "@/data/projetos";
 import {
   irParaTela,
   limita,

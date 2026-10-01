@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "@/components/AppLink";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { Selo360 } from "@/components/Selo360";
 import { projetosPorTipo, type TipoProduto } from "@/data/projetos";
 import { t } from "@/i18n/t";
 
@@ -55,6 +56,7 @@ export const ProjetosDoProduto = ({ tipo, linha }: Props) => {
               decoding="async"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
             />
+            {obra.tour && <Selo360 className="absolute top-3 right-3 z-10" />}
             {/* O degradê é permanente, não só no hover: o nome da obra é a
                 razão de o card existir, e no toque não há hover para revelar. */}
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent pt-16 px-5 pb-5">

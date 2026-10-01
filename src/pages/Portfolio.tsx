@@ -1,6 +1,7 @@
 import { Link } from "@/components/AppLink";
 import { projetos } from "@/data/projetos";
 import { SEO } from "@/components/SEO";
+import { Selo360 } from "@/components/Selo360";
 import { t } from "@/i18n/t";
 
 const Portfolio = () => {
@@ -26,16 +27,19 @@ const Portfolio = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[10px]">
             {projetos.map((p) => (
               <Link to={`/projetos/${p.slug}`} key={p.slug} className="group block">
-                <div className="aspect-[4/3] rounded-[10px] overflow-hidden">
+                <div className="relative aspect-[4/3] rounded-[10px] overflow-hidden">
                   <img
                     src={p.imagem}
                     alt={p.nome}
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                   />
+                  {p.tour && <Selo360 className="absolute top-3 right-3" />}
                 </div>
+                {/* Obra vinda do tour ainda não tem linha aplicada cadastrada;
+                    a cidade ocupa o lugar em vez de deixar a linha em branco. */}
                 <p className="rotulo mt-3 ml-1 text-gray-600">
-                  {p.linha}
+                  {p.linha || p.local}
                 </p>
                 <h3 className="font-display text-lg font-normal text-dark ml-1 group-hover:opacity-70 transition-opacity">
                   {p.nome}

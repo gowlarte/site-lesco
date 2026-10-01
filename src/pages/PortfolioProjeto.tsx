@@ -4,6 +4,9 @@ import { Link } from "@/components/AppLink";
 import { getProjetoBySlug, projetos } from "@/data/projetos";
 import { Lightbox } from "@/components/Lightbox";
 import { SEO } from "@/components/SEO";
+import { Tour360 } from "@/components/Tour360";
+import { getTour } from "@/data/tours";
+import { cn } from "@/lib/utils";
 import { t } from "@/i18n/t";
 
 const PortfolioProjeto = () => {
@@ -37,18 +40,34 @@ const PortfolioProjeto = () => {
   /** Mesmo texto no alt da grade, no título do visor e no rótulo do botão. */
   const legendaFoto = (i: number) => `${projeto.nome}, ${t("imagem")} ${i + 1}`;
 
-  const ficha: Array<[string, string]> = [
-    [t("Local"), projeto.local],
-    [t("Ano"), projeto.ano],
-    [t("Área"), projeto.area],
-    [t("Arquitetura"), projeto.arquitetura],
-  ];
+  const tour = getTour(projeto.tour);
+  /**
+   * Obra que entrou pelo tour ainda não tem case escrito. Sem isto, a coluna
+   * de texto seria um vazio de dois terços ao lado da ficha.
+   */
+  const temTexto = Boolean(projeto.descricao || projeto.desafio || projeto.solucao);
+
+  // Linha de ficha sem valor não vira "—" na tela: sai da lista. Numa obra sem
+  // metragem e sem escritório, quatro linhas viravam duas de travessão.
+  const ficha: Array<[string, string]> = (
+    [
+      [t("Local"), projeto.local],
+      [t("Ano"), projeto.ano],
+      [t("Área"), projeto.area],
+      [t("Arquitetura"), projeto.arquitetura],
+    ] as Array<[string, string]>
+  ).filter(([, v]) => v && v !== "—");
 
   return (
     <>
       <SEO
         title={`${projeto.nome} — Portfólio Lesco`}
-        description={projeto.descricao.slice(0, 155)}
+        description={
+          projeto.descricao.slice(0, 155) ||
+          `${projeto.nome} — ${projeto.local}. ${
+            tour ? t("Visita 360 pela obra entregue, com a Lesco.") : t("Obra com revestimentos Lesco.")
+          }`
+        }
         path={`/projetos/${projeto.slug}`}
         image={projeto.imagem}
         type="article"
@@ -71,39 +90,60 @@ const PortfolioProjeto = () => {
                 {t("Portfólio")}
               </Link>
               <span className="mx-2">/</span>
-              {projeto.linha}
+              {projeto.linha || projeto.local}
             </p>
             <h1 className="font-display text-3xl md:text-5xl lg:text-[64px] font-normal leading-[1.1] text-white max-w-4xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]">
               {projeto.nome}
             </h1>
+            {/* Âncora, e não botão de abrir: o visor está mais abaixo na
+                própria página, e carrega sozinho quando chega perto. */}
+            {tour && (
+              <a
+                href="#visita-360"
+                className="inline-flex items-center mt-8 px-6 py-3 rounded bg-white text-dark font-display text-[13px] uppercase tracking-[0.08em] hover:bg-white/85 transition-colors duration-300"
+              >
+                {t("Ver a visita 360")}
+              </a>
+            )}
           </div>
         </section>
 
         <section className="bg-light rounded-[10px] px-8 md:px-16 lg:px-24 py-16 md:py-20 grid grid-cols-1 lg:grid-cols-3 gap-12">
-          <div className="lg:col-span-2 space-y-10">
-            <div>
-              <p className="rotulo mb-4 text-gray-950">
-                {t("Sobre o projeto")}
-              </p>
-              <p className="font-body text-base md:text-lg leading-[1.7] text-slate-500">
-                {projeto.descricao}
-              </p>
+          {temTexto && (
+            <div className="lg:col-span-2 space-y-10">
+              {projeto.descricao && (
+                <div>
+                  <p className="rotulo mb-4 text-gray-950">
+                    {t("Sobre o projeto")}
+                  </p>
+                  <p className="font-body text-base md:text-lg leading-[1.7] text-slate-500">
+                    {projeto.descricao}
+                  </p>
+                </div>
+              )}
+              {projeto.desafio && (
+                <div>
+                  <p className="rotulo mb-4 text-gray-950">
+                    {t("Desafio")}
+                  </p>
+                  <p className="font-body text-base leading-[1.7] text-gray-500">{projeto.desafio}</p>
+                </div>
+              )}
+              {projeto.solucao && (
+                <div>
+                  <p className="rotulo mb-4 text-gray-950">
+                    {t("Solução")}
+                  </p>
+                  <p className="font-body text-base leading-[1.7] text-gray-500">{projeto.solucao}</p>
+                </div>
+              )}
             </div>
-            <div>
-              <p className="rotulo mb-4 text-gray-950">
-                {t("Desafio")}
-              </p>
-              <p className="font-body text-base leading-[1.7] text-gray-500">{projeto.desafio}</p>
-            </div>
-            <div>
-              <p className="rotulo mb-4 text-gray-950">
-                {t("Solução")}
-              </p>
-              <p className="font-body text-base leading-[1.7] text-gray-500">{projeto.solucao}</p>
-            </div>
-          </div>
+          )}
 
-          <aside className="space-y-8">
+          {/* Sem texto ao lado, a ficha ocupa a linha inteira — mas não estica
+              junto: um `dl` de duas colunas com 900px de largura separaria
+              rótulo e valor por meia tela. */}
+          <aside className={cn("space-y-8", !temTexto && "lg:col-span-3 lg:max-w-sm")}>
             <div>
               <p className="rotulo mb-4 text-gray-950">
                 {t("Ficha técnica")}
@@ -117,23 +157,28 @@ const PortfolioProjeto = () => {
                 ))}
               </dl>
             </div>
-            <div>
-              <p className="rotulo mb-4 text-gray-950">
-                {t("Produtos aplicados")}
-              </p>
-              <ul className="space-y-2">
-                {projeto.produtos.map((prod) => (
-                  <li key={prod} className="font-display text-sm text-dark">
-                    {prod}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {projeto.produtos.length > 0 && (
+              <div>
+                <p className="rotulo mb-4 text-gray-950">
+                  {t("Produtos aplicados")}
+                </p>
+                <ul className="space-y-2">
+                  {projeto.produtos.map((prod) => (
+                    <li key={prod} className="font-display text-sm text-dark">
+                      {prod}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </aside>
         </section>
 
+        {tour && <Tour360 tour={tour} obra={projeto.nome} />}
+
         {/* A grade recorta em 4:3 e desenha a foto pequena. O clique abre o
             arquivo inteiro, no tamanho em que ele veio — ver Lightbox.tsx. */}
+        {projeto.galeria.length > 0 && (
         <section className="grid grid-cols-1 md:grid-cols-3 gap-[10px]">
           {projeto.galeria.map((img, i) => (
             <button
@@ -152,6 +197,7 @@ const PortfolioProjeto = () => {
             </button>
           ))}
         </section>
+        )}
 
         <Lightbox
           imagens={projeto.galeria}

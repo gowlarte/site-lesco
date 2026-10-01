@@ -156,16 +156,12 @@ console.log(`${cenas.length} alcançáveis a pé desde "${porId.get(CAPA).nome}"
 
 fs.mkdirSync(DESTINO_IMG, { recursive: true });
 
-/** Apaga o que sobrou de uma rodada anterior com outro alcance. */
-const esperados = new Set([
-  ...cenas.map((c) => `${c.id}.webp`),
-  ...PAINEL.map((p) => `${p.nome}.webp`),
-]);
-for (const arquivo of fs.readdirSync(DESTINO_IMG)) {
-  if (esperados.has(arquivo)) continue;
-  fs.unlinkSync(path.join(DESTINO_IMG, arquivo));
-  console.log(`  - ${arquivo} (sobra de outra rodada)`);
-}
+/* Não há limpeza aqui: esta pasta é DIVIDIDA com `importar-tours.mjs`, que
+   traz as 15 salas da Biotique para o portfólio e é quem manda nos panoramas.
+   O alcance daqui é um subconjunto dele, com os mesmos bytes, e varrer o que
+   este script não espera apagaria as outras 12 salas. Quem limpa sobra de
+   rodada antiga é o outro, que conhece o conjunto inteiro — e ele preserva os
+   dois pôsteres desta seção (ver `DE_OUTRO_DONO` lá). */
 
 let bytes = 0;
 console.log("");
