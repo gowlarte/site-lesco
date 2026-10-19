@@ -17,7 +17,6 @@ type RouteMap = Record<string, Record<Locale, string>>;
 export const ROUTES: RouteMap = {
   "/": { pt: "/", en: "/" },
   "/quem-somos": { pt: "/quem-somos", en: "/about-us" },
-  "/madeira-wpc": { pt: "/madeira-wpc", en: "/wpc-wood" },
   "/revestimento-sustentavel": { pt: "/revestimento-sustentavel", en: "/sustainable-cladding" },
   "/madeira-ecologica-lesco": { pt: "/madeira-ecologica-lesco", en: "/ecological-wood" },
   "/brise-madeira-ecologica": { pt: "/brise-madeira-ecologica", en: "/wood-brise" },

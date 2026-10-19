@@ -28,6 +28,16 @@
       "permanent": true
     },
     {
+      "source": "/madeira-wpc",
+      "destination": "/linhas",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-wood",
+      "destination": "/collections",
+      "permanent": true
+    },
+    {
       "source": "/landing-page-orcamento-p",
       "destination": "/orcamento",
       "permanent": true

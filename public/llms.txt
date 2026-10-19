@@ -9,7 +9,6 @@ A Lesco desenvolve e comercializa revestimentos arquitetônicos premium. A linha
 - [Home](/): visão geral da marca e linhas
 - [Quem Somos](/quem-somos): institucional, manifesto e certificações
 - [Nossas Linhas](/linhas): seletor visual das linhas Lesco
-- [Madeira WPC](/madeira-wpc): tecnologia e composição do material
 - [Revestimento Sustentável](/revestimento-sustentavel): compromisso ambiental e certificações
 - [Portfólio](/portfolio): cases reais com revestimentos Lesco
 

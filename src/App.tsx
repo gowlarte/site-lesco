@@ -18,7 +18,6 @@ import { useUtmForwarder } from "@/hooks/useUtmForwarder";
 import { iniciarScrollSuave } from "@/lib/scroll-suave";
 import Index from "./pages/Index";
 import QuemSomos from "./pages/QuemSomos";
-import MadeiraWPC from "./pages/MadeiraWPC";
 import Sustentabilidade from "./pages/Sustentabilidade";
 import Biblioteca from "./pages/Biblioteca";
 import Portfolio from "./pages/Portfolio";
@@ -88,7 +87,6 @@ const AppContent = () => {
 
           {/* Sobre */}
           <Route path={localizePath("/quem-somos")} element={<QuemSomos />} />
-          <Route path={localizePath("/madeira-wpc")} element={<MadeiraWPC />} />
           <Route path={localizePath("/revestimento-sustentavel")} element={<Sustentabilidade />} />
 
           {/* Madeira Ecológica — hub e produtos (na raiz) */}
