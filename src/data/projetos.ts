@@ -100,7 +100,7 @@ import felipeCama8 from "@/assets/projetos/residencial-felipe-cama-8.webp";
  * Vem separada de `produtos` de propósito: `produtos` é a ficha da obra, com
  * medida e cor, e muda a cada projeto; `tipos` é navegação e precisa casar
  * com as rotas de /brise-madeira-ecologica, /madeira-ecologica-para-fachada,
- * /madeira-ecologica-para-deck, /forro-wpc, /placa-wpc-interior e
+ * /madeira-ecologica-para-deck, /forro-line, /lesco-panel e
  * /muxarabi-madeira-ecologica.
  */
 export type TipoProduto = "brise" | "shield" | "deck" | "line" | "panel" | "muxarabi";

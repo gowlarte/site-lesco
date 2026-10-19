@@ -96,8 +96,8 @@ const AppContent = () => {
           <Route path={localizePath("/brise-madeira-ecologica")} element={<MantoBrise />} />
           <Route path={localizePath("/madeira-ecologica-para-fachada")} element={<MantoShield />} />
           <Route path={localizePath("/madeira-ecologica-para-deck")} element={<MantoDeck />} />
-          <Route path={localizePath("/forro-wpc")} element={<MantoLine />} />
-          <Route path={localizePath("/placa-wpc-interior")} element={<MantoPanel />} />
+          <Route path={localizePath("/forro-line")} element={<MantoLine />} />
+          <Route path={localizePath("/lesco-panel")} element={<MantoPanel />} />
           <Route path={localizePath("/muxarabi-madeira-ecologica")} element={<Muxarabi />} />
 
           {/* Zhú (bambu) — hub e produtos por família */}
@@ -145,8 +145,8 @@ const AppContent = () => {
           <Route path="/manto-brise" element={<Navigate to={localizePath("/brise-madeira-ecologica")} replace />} />
           <Route path="/manto-shield" element={<Navigate to={localizePath("/madeira-ecologica-para-fachada")} replace />} />
           <Route path="/manto-deck" element={<Navigate to={localizePath("/madeira-ecologica-para-deck")} replace />} />
-          <Route path="/manto-line" element={<Navigate to={localizePath("/forro-wpc")} replace />} />
-          <Route path="/manto-panel" element={<Navigate to={localizePath("/placa-wpc-interior")} replace />} />
+          <Route path="/manto-line" element={<Navigate to={localizePath("/forro-line")} replace />} />
+          <Route path="/manto-panel" element={<Navigate to={localizePath("/lesco-panel")} replace />} />
           <Route path="/sobre" element={<Navigate to={localizePath("/quem-somos")} replace />} />
           <Route path="/catalogo" element={<Navigate to={localizePath("/catalogo-lesco")} replace />} />
 

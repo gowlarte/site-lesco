@@ -92,7 +92,7 @@ const produtos = [
       { nome: "Tasmania Oak", corAproximada: "#C4A882" },
       { nome: "Urban Oak", corAproximada: "#7A7060" },
     ],
-    href: "/forro-wpc",
+    href: "/forro-line",
     images: [projetoLine1, projetoLine2, projetoLine3],
   },
   {
@@ -106,7 +106,7 @@ const produtos = [
       { nome: "Merbau", corAproximada: "#5C2E1A" },
       { nome: "Urban Oak", corAproximada: "#7A7060" },
     ],
-    href: "/placa-wpc-interior",
+    href: "/lesco-panel",
     images: [projetoPanel1, projetoPanel2, projetoPanel3, projetoPanel4, projetoPanel5, projetoPanel6],
   },
 ];
