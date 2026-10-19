@@ -149,7 +149,7 @@ const Manto = () => {
     <div className="min-h-screen bg-[#e5e1dc]">
       <SEO
         title={t("Madeira Ecológica Lesco — AltWood")}
-        description={t("Revestimentos premium em WPC: Brises, Panels, Decks, Forros e Shields para projetos arquitetônicos de alto padrão.")}
+        description={t("Revestimentos premium em madeira ecológica: Brises, Panels, Decks, Forros e Shields para projetos arquitetônicos de alto padrão.")}
         path="/madeira-ecologica-lesco"
         image={heroImg1}
       />
