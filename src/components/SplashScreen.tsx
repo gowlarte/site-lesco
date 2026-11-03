@@ -1,5 +1,25 @@
 import { useEffect, useState, useRef } from "react";
 
+/**
+ * Linha do tempo da abertura, em ms. Somadas, é o tempo que a marca cobre uma
+ * página que o servidor já entregou pronta — medido antes desta mudança, o
+ * preto entrava aos 737ms e só saía aos 4312ms, com o conteúdo pintado desde
+ * os 131ms. Cortar pela metade é o que cabe sem desmontar a coreografia: o
+ * varrido do swoosh e a entrada do logotipo continuam inteiros, o que sai é a
+ * espera parada entre um e outro.
+ *
+ * Os tempos do CSS andam junto com estes — `.splash-clip-rect` e
+ * `.splash-swoosh-*` em src/index.css. Mexer aqui sem mexer lá corta o
+ * varrido no meio.
+ */
+const SWOOSH_MS = 1000;
+const REVELA_MS = 600;
+const SAIDA_MS = 400;
+
+/** Entrada do logotipo, dentro da janela de REVELA_MS. */
+const MOVE_MS = 550;
+const FADE_MS = 350;
+
 interface SplashScreenProps {
   onFadeStart: () => void;
   onComplete: () => void;
@@ -16,9 +36,9 @@ export const SplashScreen = ({ onFadeStart, onComplete }: SplashScreenProps) => 
     onComplete();
   };
 
-  // Timeline: swoosh 2s → reveal 1.5s → fadeout 600ms
+  // Timeline: swoosh → reveal → fadeout (ver as constantes no topo)
   useEffect(() => {
-    const t = setTimeout(() => setPhase("reveal"), 2000);
+    const t = setTimeout(() => setPhase("reveal"), SWOOSH_MS);
     return () => clearTimeout(t);
   }, []);
 
@@ -27,23 +47,23 @@ export const SplashScreen = ({ onFadeStart, onComplete }: SplashScreenProps) => 
       const t = setTimeout(() => {
         setPhase("fadeout");
         onFadeStart(); // signal App to start showing content underneath
-      }, 1500);
+      }, REVELA_MS);
       return () => clearTimeout(t);
     }
     if (phase === "fadeout") {
-      const t = setTimeout(finish, 600);
+      const t = setTimeout(finish, SAIDA_MS);
       return () => clearTimeout(t);
     }
   }, [phase]);
 
-  // Safety timeout
+  // Safety timeout — a linha do tempo inteira mais uma folga.
   useEffect(() => {
     const t = setTimeout(() => {
       if (!completedRef.current) {
         onFadeStart();
         finish();
       }
-    }, 5000);
+    }, SWOOSH_MS + REVELA_MS + SAIDA_MS + 1000);
     return () => clearTimeout(t);
   }, []);
 
@@ -53,7 +73,7 @@ export const SplashScreen = ({ onFadeStart, onComplete }: SplashScreenProps) => 
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center transition-opacity duration-[600ms] ${
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center transition-opacity duration-[400ms] ${
         phase === "fadeout" ? "opacity-0" : "opacity-100"
       }`}
       style={{ backgroundColor: "#141414" }}
@@ -62,7 +82,7 @@ export const SplashScreen = ({ onFadeStart, onComplete }: SplashScreenProps) => 
         className="relative flex flex-col items-center"
         style={{
           transform: isRevealed ? "translateX(3%)" : "translateX(-34%)",
-          transition: "transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+          transition: `transform ${MOVE_MS}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)`,
         }}
       >
         <svg
@@ -90,7 +110,7 @@ export const SplashScreen = ({ onFadeStart, onComplete }: SplashScreenProps) => 
             style={{
               opacity: isRevealed ? 1 : 0,
               transform: isRevealed ? "translateY(0)" : "translateY(4px)",
-              transition: "opacity 400ms ease-out, transform 400ms ease-out",
+              transition: `opacity ${FADE_MS}ms ease-out, transform ${FADE_MS}ms ease-out`,
             }}
           >
             <path fill="#e9e9e9" d="M20.07,124.35c-2.93,0-5.3-2.38-5.3-5.31V3.4H0l.18,121.69c0,2.93,2.38,5.3,5.31,5.3h73.23v-6.01l-58.64-.03Z"/>
@@ -103,7 +123,7 @@ export const SplashScreen = ({ onFadeStart, onComplete }: SplashScreenProps) => 
             style={{
               opacity: isRevealed ? 1 : 0,
               transform: isRevealed ? "translateY(0)" : "translateY(4px)",
-              transition: "opacity 400ms ease-out, transform 400ms ease-out",
+              transition: `opacity ${FADE_MS}ms ease-out, transform ${FADE_MS}ms ease-out`,
             }}
           >
             <path fill="#e9e9e9" fillRule="evenodd" d="M521.16,67.91c-.03,2.62-.16,5.17-.41,7.65,4.9-2.96,9.96-5.89,15.19-8.77,0-.52-.01-1.06-.02-1.59,0-.56-.02-1.11-.04-1.67-.02-.57-.05-1.11-.08-1.67-.2-3.54-.61-6.99-1.22-10.35-3.3,1.24-9.27,3.8-12.84,5.37-.4.17-.72-.37-.36-.64,3.26-2.35,8.88-6.21,12.51-8.09-.45-1.98-.98-3.92-1.6-5.81-7.14-22.49-24.61-38.74-50.62-40.58-.45-.03-.9-.06-1.35-.08-.1,0-.2-.01-.3-.02-.52-.02-1.04-.04-1.56-.05-.53,0-1.05-.02-1.59-.02h-.18c-.53,0-1.05,0-1.57.02-7.06.15-13.54,1.32-19.39,3.41,0,0-.01,0-.01,0-.9.32-1.78.66-2.65,1.01-.43.18-.87.36-1.3.56-.92.39-1.82.83-2.7,1.28-.43.22-.88.45-1.3.69-.42.23-.85.46-1.26.72-.57.32-1.12.66-1.68,1.01-.39.25-.79.51-1.17.77-15.21,10.22-24.17,27.84-25.92,48.34-.12,1.37-.2,2.75-.25,4.14-.04,1.11-.06,2.22-.06,3.35,0,.9.01,1.79.04,2.68.02.54.04,1.08.06,1.62.04.8.09,1.6.15,2.38.04.5.08.98.13,1.48.01.1.02.21.03.31.05.49.1.98.15,1.48.09.74.18,1.48.29,2.2,1.16,8.04,3.5,15.57,6.92,22.28,6.17,12.13,15.92,21.61,28.74,26.72.05-.06.1-.11.17-.18.08-.09.16-.18.24-.27,1.05-1.15,2.75-2.9,4.39-4.59-.03,0-.05-.03-.08-.05-10.67-5.66-18.39-16.48-22.64-30.14-1.49-4.77-2.56-9.88-3.17-15.24-.03-.19-.05-.39-.07-.59-.35-2.97-.55-6.05-.58-9.22,0-.54,0-1.07,0-1.61,0-33.79,16.04-61.18,44.49-61.18,22.84,0,37.68,17.64,42.64,42.08.62,3.04,1.08,6.18,1.39,9.42.04.26.06.53.08.79.25,2.9.38,5.87.38,8.89v.43c0,.45,0,.89,0,1.33ZM527.58,74.41c-2.2.98-4.09,2.49-5.53,4.32-1.42,1.82-2.26,4.02-2.73,6.27-4.99,24.57-20.03,42.33-42.66,42.33-3.11,0-6.07-.33-8.89-.98-3.77-.86-7.7.2-10.46,2.9.98.31,1.97.61,2.97.88.51.13,1.02.26,1.54.38.01,0,.02,0,.03.01.51.11,1.01.22,1.53.33.5.1,1,.2,1.51.29.21.04.42.07.65.11.39.07.79.13,1.19.19.79.11,1.6.22,2.4.31.41.05.82.09,1.23.12.85.08,1.7.14,2.56.19.43.02.86.04,1.29.05.38.02.77.03,1.15.03.43.02.87.02,1.3.02,1.18,0,2.34-.03,3.5-.08.53-.03,1.05-.06,1.58-.09,31-2.28,50.21-25.49,53.64-55.32.05-.48.1-.99.15-1.49.05-.55.1-1.09.14-1.64.04-.56.08-1.1.11-1.66.02-.39.04-.79.06-1.19l-8.27,3.69Z"/>

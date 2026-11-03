@@ -10,6 +10,7 @@ import { Header } from "@/components/Header";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { Footer } from "@/components/Footer";
 import { SplashScreen } from "@/components/SplashScreen";
+import { deveMostrarSplash, marcarSplashVisto } from "@/lib/splash";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { PageTransitionLoader } from "@/components/PageTransitionLoader";
 import { usePageAssets } from "@/hooks/usePageAssets";
@@ -163,14 +164,19 @@ const AppContent = () => {
 
 const App = () => {
   // The splash is a client-only overlay. On the server (SSG) and during the
-  // first hydration render `mounted` is false, so the server HTML === the
-  // first client render (real content, no splash) — no hydration mismatch and
-  // the static content is visible immediately, even before/without JS.
-  const [mounted, setMounted] = useState(false);
-  const [splashDone, setSplashDone] = useState(false);
+  // first hydration render `mostrarSplash` is false, so the server HTML ===
+  // the first client render (real content, no splash) — no hydration mismatch
+  // and the static content is visible immediately, even before/without JS.
+  //
+  // Quem decide se ela aparece é `deveMostrarSplash()`: uma vez por sessão de
+  // navegação, e nunca para quem pediu menos movimento. Ver o comentário na
+  // fonte dela.
+  const [mostrarSplash, setMostrarSplash] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    if (!deveMostrarSplash()) return;
+    marcarSplashVisto();
+    setMostrarSplash(true);
   }, []);
 
   const handleFadeStart = useCallback(() => {
@@ -178,7 +184,7 @@ const App = () => {
   }, []);
 
   const handleSplashComplete = useCallback(() => {
-    setSplashDone(true);
+    setMostrarSplash(false);
   }, []);
 
   return (
@@ -189,7 +195,7 @@ const App = () => {
         {/* Content always renders (visible without JS) */}
         <AppContent />
         {/* Splash sits on top as a pure overlay, only after client mount */}
-        {mounted && !splashDone && (
+        {mostrarSplash && (
           <SplashScreen onFadeStart={handleFadeStart} onComplete={handleSplashComplete} />
         )}
       </TooltipProvider>

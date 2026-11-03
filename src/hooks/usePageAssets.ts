@@ -1,76 +1,93 @@
 import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
+/**
+ * Teto de quanto a página pode ficar escondida atrás do overlay de navegação.
+ *
+ * Eram 2000ms, e o que mais importa é que eles disparavam SEMPRE (ver o
+ * comentário sobre as imagens pendentes abaixo). Agora é o que o nome diz: o
+ * limite de paciência com uma foto lenta. Passou disso, o conteúdo entra e a
+ * imagem aparece quando chegar — que é melhor do que tela preta.
+ */
+const TETO_MS = 600;
+
 export function usePageAssets(containerRef: React.RefObject<HTMLDivElement | null>) {
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
-  const prevPath = useRef(location.pathname);
   const isHome = location.pathname === "/";
+  /** O overlay é de TRANSIÇÃO: na primeira pintura não há de onde transitar. */
+  const jaNavegou = useRef(false);
 
   useEffect(() => {
-    // Don't show loader on home
     if (isHome) {
       setIsLoading(false);
-      prevPath.current = location.pathname;
+      jaNavegou.current = true;
       return;
     }
 
-    // Only trigger on path change (not on initial mount for home)
-    if (prevPath.current === location.pathname) {
-      // First mount on a non-home route
-      if (!prevPath.current || prevPath.current === location.pathname) {
-        setIsLoading(true);
-      }
-    } else {
-      setIsLoading(true);
+    // Entrada direta numa rota (link de anúncio, F5, aba nova): o HTML
+    // pré-renderizado já está na tela com o texto todo. Cobri-lo para esperar
+    // uma foto seria trocar conteúdo visível por preto.
+    if (!jaNavegou.current) {
+      jaNavegou.current = true;
+      setIsLoading(false);
+      return;
     }
-    prevPath.current = location.pathname;
 
-    let cancelled = false;
+    const container = containerRef.current;
+    if (!container) return;
 
-    const checkAssets = async () => {
-      // Wait for fonts
-      try {
-        await document.fonts.ready;
-      } catch {}
+    /*
+     * Só as imagens da PRIMEIRA TELA, e só as que já estão baixando.
+     *
+     * A versão anterior esperava `img.complete` de TODAS as imagens do
+     * container. As que têm `loading="lazy"` e nascem abaixo da dobra não
+     * começam a baixar enquanto ninguém rolar até elas, então `complete`
+     * nunca virava `true`, o `Promise.all` nunca resolvia, e o timeout de
+     * segurança deixava de ser exceção para virar o caminho normal: 2s de
+     * tela preta em toda navegação interna, inclusive com tudo em cache.
+     *
+     * A posição é medida contra o DOCUMENTO, não contra a janela. O
+     * ScrollToTop é um filho, e efeito de filho roda antes do do pai, então
+     * quando chegamos aqui a página já está no topo — mas a conta contra o
+     * documento continua certa no caso com âncora, em que ela não está.
+     */
+    const pendentes = Array.from(container.querySelectorAll("img")).filter(
+      (img) =>
+        !img.complete &&
+        img.loading !== "lazy" &&
+        img.getBoundingClientRect().top + window.scrollY < window.innerHeight,
+    );
 
-      // Wait a frame for images to appear in the DOM
-      await new Promise((r) => requestAnimationFrame(r));
-      await new Promise((r) => requestAnimationFrame(r));
+    // Nada a esperar — e é o caso comum. A página entra direto, sem piscar.
+    if (pendentes.length === 0) {
+      setIsLoading(false);
+      return;
+    }
 
-      // Wait for all images in the container
-      const container = containerRef.current;
-      if (container) {
-        const images = Array.from(container.querySelectorAll("img"));
-        const pending = images.filter((img) => !img.complete);
-        if (pending.length > 0) {
-          await Promise.all(
-            pending.map(
-              (img) =>
-                new Promise<void>((resolve) => {
-                  img.addEventListener("load", () => resolve(), { once: true });
-                  img.addEventListener("error", () => resolve(), { once: true });
-                })
-            )
-          );
-        }
-      }
-
-      if (!cancelled) setIsLoading(false);
+    setIsLoading(true);
+    let cancelado = false;
+    const liberar = () => {
+      if (!cancelado) setIsLoading(false);
     };
 
-    checkAssets();
+    void Promise.all(
+      pendentes.map(
+        (img) =>
+          new Promise<void>((resolve) => {
+            img.addEventListener("load", () => resolve(), { once: true });
+            img.addEventListener("error", () => resolve(), { once: true });
+          }),
+      ),
+    ).then(liberar);
 
-    // Safety timeout
-    const safetyTimer = setTimeout(() => {
-      if (!cancelled) setIsLoading(false);
-    }, 2000);
+    const teto = setTimeout(liberar, TETO_MS);
 
     return () => {
-      cancelled = true;
-      clearTimeout(safetyTimer);
+      cancelado = true;
+      clearTimeout(teto);
     };
-  }, [location.pathname, isHome]);
+  }, [location.pathname, isHome, containerRef]);
 
   return { isLoading: isHome ? false : isLoading };
 }
