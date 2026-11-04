@@ -52,9 +52,9 @@ const MantoLine = () => {
   return (
     <div className="min-h-screen bg-[#e5e1dc]">
       <SEO
-        title={t("Forro WPC | Lesco Line")}
-        description={t("Forros WPC retardantes ao fogo, resistentes à água e com baixo custo de manutenção. Uma solução sustentável que combina beleza natural e desempenho tecnológico.")}
-        path="/forro-wpc"
+        title={t("Forro em Madeira Ecológica | Lesco Line")}
+        description={t("Forros em madeira ecológica retardantes ao fogo, resistentes à água e com baixo custo de manutenção. Uma solução sustentável que combina beleza natural e desempenho tecnológico.")}
+        path="/forro-line"
         image={projetoLine1}
       />
       {/* Hero */}
@@ -183,7 +183,7 @@ const MantoLine = () => {
           <Link to="/madeira-ecologica-para-deck" className="text-[13px] text-muted-foreground hover:text-primary transition-colors">
             ← Deck
           </Link>
-          <Link to="/placa-wpc-interior" className="text-[13px] text-muted-foreground hover:text-primary transition-colors">
+          <Link to="/lesco-panel" className="text-[13px] text-muted-foreground hover:text-primary transition-colors">
             Panel →
           </Link>
         </div>

@@ -18,6 +18,26 @@
       "permanent": true
     },
     {
+      "source": "/placa-wpc-interior",
+      "destination": "/lesco-panel",
+      "permanent": true
+    },
+    {
+      "source": "/forro-wpc",
+      "destination": "/forro-line",
+      "permanent": true
+    },
+    {
+      "source": "/madeira-wpc",
+      "destination": "/linhas",
+      "permanent": true
+    },
+    {
+      "source": "/wpc-wood",
+      "destination": "/collections",
+      "permanent": true
+    },
+    {
       "source": "/landing-page-orcamento-p",
       "destination": "/orcamento",
       "permanent": true

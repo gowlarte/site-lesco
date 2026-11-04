@@ -93,9 +93,9 @@ const MantoPanel = () => {
   return (
     <div className="min-h-screen bg-[#e5e1dc]">
       <SEO
-        title={t("Placa WPC Interior | Lesco Panel")}
-        description={t("Placas WPC para interiores fabricadas a partir da combinação de fibras de madeira reciclada e resinas plásticas, oferecendo resistência, estética sofisticada e sustentabilidade.")}
-        path="/placa-wpc-interior"
+        title={t("Placa para Interior em Madeira Ecológica | Lesco Panel")}
+        description={t("Placas em madeira ecológica para interiores fabricadas a partir da combinação de fibras de madeira reciclada e resinas plásticas, oferecendo resistência, estética sofisticada e sustentabilidade.")}
+        path="/lesco-panel"
         image={projetoPanel1}
       />
       {/* Hero */}
@@ -231,7 +231,7 @@ const MantoPanel = () => {
       {/* Navegação entre produtos */}
       <div className="px-6 md:px-12 lg:px-20 py-12 border-t border-primary/15">
         <div className="flex justify-between items-center">
-          <Link to="/forro-wpc" className="text-[13px] text-muted-foreground hover:text-primary transition-colors">
+          <Link to="/forro-line" className="text-[13px] text-muted-foreground hover:text-primary transition-colors">
             ← Line
           </Link>
           <Link to="/madeira-ecologica-lesco" className="text-[13px] text-muted-foreground hover:text-primary transition-colors">

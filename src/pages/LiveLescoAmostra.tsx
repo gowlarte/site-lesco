@@ -89,8 +89,8 @@ const LiveLescoAmostra = () => {
   return (
     <main className="min-h-screen pt-[100px] pb-[10px] px-[10px] space-y-[10px]">
       <SEO
-        title={t("Solicite sua Amostra — Live Lesco | Madeira Plástica WPC Premium")}
-        description={t("Solicite uma amostra da Lesco. Prioridade para arquitetos e construtoras com projetos em andamento. Avalie cor, textura e acabamento do WPC Premium na prática.")}
+        title={t("Solicite sua Amostra — Live Lesco | Madeira Ecológica Premium")}
+        description={t("Solicite uma amostra da Lesco. Prioridade para arquitetos e construtoras com projetos em andamento. Avalie cor, textura e acabamento da madeira ecológica Premium na prática.")}
         path="/live-lesco-amostra"
         image={heroAmostra}
       />
@@ -114,7 +114,7 @@ const LiveLescoAmostra = () => {
               {t("Sinta a qualidade da Lesco nas suas mãos.")}
             </h1>
             <p className="font-body text-[15px] md:text-[17px] text-white/80 leading-relaxed max-w-md mb-6">
-              {t("Damos prioridade a profissionais que já têm projeto em andamento, sejam arquitetos ou construtoras. Solicite sua amostra e avalie cor, textura e acabamento do WPC Premium antes de especificar.")}
+              {t("Damos prioridade a profissionais que já têm projeto em andamento, sejam arquitetos ou construtoras. Solicite sua amostra e avalie cor, textura e acabamento da madeira ecológica Premium antes de especificar.")}
             </p>
             <p className="font-body text-[13px] text-white/80 leading-relaxed max-w-md">
               {t("Preencha o formulário ao lado e nossa equipe entrará em contato para alinhar o envio da amostra.")}

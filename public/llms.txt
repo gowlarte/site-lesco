@@ -9,7 +9,6 @@ A Lesco desenvolve e comercializa revestimentos arquitetônicos premium. A linha
 - [Home](/): visão geral da marca e linhas
 - [Quem Somos](/quem-somos): institucional, manifesto e certificações
 - [Nossas Linhas](/linhas): seletor visual das linhas Lesco
-- [Madeira WPC](/madeira-wpc): tecnologia e composição do material
 - [Revestimento Sustentável](/revestimento-sustentavel): compromisso ambiental e certificações
 - [Portfólio](/portfolio): cases reais com revestimentos Lesco
 
@@ -19,8 +18,8 @@ A Lesco desenvolve e comercializa revestimentos arquitetônicos premium. A linha
 - [Brise](/brise-madeira-ecologica): brises Origens e Classic em WPC
 - [Shield](/madeira-ecologica-para-fachada): revestimento para fachadas
 - [Deck](/madeira-ecologica-para-deck): deck externo em WPC
-- [Line](/forro-wpc): forros em WPC
-- [Panel](/placa-wpc-interior): placas internas em WPC
+- [Line](/forro-line): forros em WPC
+- [Panel](/lesco-panel): placas internas em WPC
 - [Muxarabi](/muxarabi-madeira-ecologica): vedação vazada em WPC para fachadas, varandas e divisórias
 
 ## Conversão

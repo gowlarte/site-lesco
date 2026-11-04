@@ -223,7 +223,7 @@ const MantoDeck = () => {
           <Link to="/madeira-ecologica-para-fachada" className="text-[13px] text-muted-foreground hover:text-primary transition-colors">
             ← Shield
           </Link>
-          <Link to="/forro-wpc" className="text-[13px] text-muted-foreground hover:text-primary transition-colors">
+          <Link to="/forro-line" className="text-[13px] text-muted-foreground hover:text-primary transition-colors">
             Line →
           </Link>
         </div>

@@ -55,10 +55,10 @@ const todosLinks: NavItem[] = [
     href: "/madeira-ecologica-lesco",
     children: [
       { label: t("Brises"), href: "/brise-madeira-ecologica", linha: "Lesco Brise" },
-      { label: t("Forros"), href: "/forro-wpc", linha: "Lesco Line" },
+      { label: t("Forros"), href: "/forro-line", linha: "Lesco Line" },
       { label: t("Decks"), href: "/madeira-ecologica-para-deck", linha: "Lesco Deck" },
       { label: t("Shields"), href: "/madeira-ecologica-para-fachada", linha: "Lesco Shield" },
-      { label: t("Panels"), href: "/placa-wpc-interior", linha: "Lesco Panel" },
+      { label: t("Panels"), href: "/lesco-panel", linha: "Lesco Panel" },
       { label: t("Muxarabi"), href: "/muxarabi-madeira-ecologica", linha: "Lesco Muxarabi" },
     ],
   },
