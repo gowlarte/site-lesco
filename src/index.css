@@ -754,3 +754,59 @@
     animation: none;
   }
 }
+
+/* ===========================================================================
+   FAIXA DE FOTOS DA HOME (ScrollMarqueeGallery)
+
+   O desenho: duas fitas de fotos cinzentas e apagadas correndo em sentidos
+   opostos conforme a página rola, e a foto volta a ter cor quando o mouse
+   passa por cima dela.
+
+   Essa revelação é o motivo de o filtro estar em cada foto — e onde não existe
+   mouse ela nunca pode acontecer. Num celular as 54 fotos ficam cinzentas para
+   sempre, cada uma com o seu `filter` e a sua transição, para um efeito que o
+   aparelho não tem como disparar.
+
+   Então o repouso vai na FITA onde não há mouse, e só vai por foto onde há. A
+   fita já é camada própria (`will-change: transform`), e filtro em camada
+   promovida é trabalho de composição, feito uma vez — não um passe de filtro
+   por pedaço de fita que entra na tela, 54 vezes.
+
+   Isto não é condição de viewport disfarçada: `hover` pergunta se existe o
+   ponteiro de que o efeito depende, não qual é a largura da tela. Um tablet
+   com mouse cai no ramo certo e um notebook com tela de toque também.
+   =========================================================================== */
+.marquee-fita {
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+
+@media (hover: hover) {
+  /* Com ponteiro a revelação é por foto, então o filtro desce para a foto. */
+  .marquee-fita {
+    filter: none;
+    opacity: 1;
+  }
+
+  .marquee-foto {
+    filter: grayscale(1);
+    opacity: 0.5;
+    /* Eram `transition-all duration-500` em 54 elementos: o navegador passava a
+       vigiar TODA propriedade animável de cada foto para animar duas. */
+    transition:
+      filter 0.5s,
+      opacity 0.5s;
+  }
+
+  .marquee-foto:hover {
+    filter: none;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* A fita parada já sai do JS; aqui resta a transição da revelação. */
+  .marquee-foto {
+    transition: none;
+  }
+}
