@@ -14,7 +14,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Col 1 — Logo */}
           <div>
-            <img src={logoLight} alt="Lesco" className="h-8" />
+            <img src={logoLight} alt="Lesco" loading="lazy" decoding="async" className="h-8" />
             <p className="mt-4 font-body text-[13px] font-light text-foreground/70 leading-relaxed max-w-[240px]">
               {t("Madeira Ecológica")}
             </p>

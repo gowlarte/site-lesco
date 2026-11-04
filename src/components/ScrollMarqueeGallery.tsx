@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { assinarScroll } from "@/lib/scroll-suave";
+import { responsiva, SIZES_GALERIA } from "@/lib/imagem";
 
 import img01 from "@/assets/gallery/img-01.webp";
 import img02 from "@/assets/gallery/img-02.webp";
@@ -69,6 +70,7 @@ export const ScrollMarqueeGallery = () => {
           <img
             key={i}
             src={src}
+            {...responsiva(src, SIZES_GALERIA)}
             alt=""
             loading="lazy"
             decoding="async"

@@ -12,7 +12,7 @@ export const SecaoOrcamento = ({ imageSrc }: SecaoOrcamentoProps) => (
     {/* Background */}
     {imageSrc ? (
       <>
-        <img src={imageSrc} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <img src={imageSrc} alt="" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-[rgba(13,13,13,0.75)]" />
       </>
     ) : (

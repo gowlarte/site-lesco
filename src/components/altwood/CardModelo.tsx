@@ -48,6 +48,8 @@ export const CardModelo = ({
         <img
           src={imageSrc}
           alt={nome}
+          loading="lazy"
+          decoding="async"
           className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
         />
       ) : (

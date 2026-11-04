@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { t } from "@/i18n/t";
-import { ProdutoCanvas, type ProdutoCanvasHandle } from "./ProdutoCanvas";
+import { ProdutoExplodido } from "./ProdutoExplodido";
 import { FeatureIcon } from "./FeatureIcon";
 import { assinarScroll } from "@/lib/scroll-suave";
 
@@ -56,8 +56,6 @@ const features = [
 
 export const MadeiraEcologicaSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const canvasRef = useRef<ProdutoCanvasHandle>(null);
-  const totalFramesRef = useRef(0);
   const rafScheduledRef = useRef(false);
 
   const [isComplete, setIsComplete] = useState(false);
@@ -72,135 +70,84 @@ export const MadeiraEcologicaSection = () => {
     return () => mql.removeEventListener("change", onChange);
   }, []);
 
-  // Scroll → frame (desktop only)
+  /*
+   * A ROLAGEM É O CONTROLE, NOS DOIS TAMANHOS.
+   *
+   * Antes só o desktop acompanhava a rolagem; no celular a animação tocava
+   * sozinha uma vez e acabava. Agora é a mesma mecânica para os dois, e o que
+   * muda é só o mapeamento — porque os dois layouts são diferentes, não porque
+   * a animação seja.
+   *
+   *   desktop  palco preso em 450vh: a separação acontece nos primeiros 60%
+   *            do curso e os 40% finais seguram a peça aberta com os ícones.
+   *   celular  a seção corre no fluxo normal: a separação acompanha a
+   *            travessia dela pela janela, completando quando ela chega perto
+   *            do topo — ou seja, a peça está aberta enquanto os ícones são
+   *            lidos.
+   *
+   * O que sai daqui é UM número em `--p`, escrito na própria seção. Quem
+   * distribui esse número pelas 8 camadas é o CSS, em `transform` fixos; ver
+   * ProdutoExplodido.tsx.
+   */
   useEffect(() => {
-    if (isMobile) return;
     const section = sectionRef.current;
     if (!section) return;
 
-    let isVisible = false;
-
-    const compute = () => {
-      rafScheduledRef.current = false;
-      const total = totalFramesRef.current;
-      if (!total) return;
-
-      const rect = section.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const scrollable = rect.height - vh;
-      const scrolled = -rect.top;
-      const progress = Math.max(0, Math.min(1, scrolled / Math.max(1, scrollable)));
-
-      // Anima o GIF apenas nos primeiros 60% do scroll;
-      // os 40% restantes mantêm a seção "presa" com ícones visíveis.
-      const animationProgress = Math.min(1, progress / 0.6);
-      const frame = Math.floor(animationProgress * (total - 1));
-      canvasRef.current?.setFrame(frame);
-
-      const complete = animationProgress >= 1;
-      setIsComplete((prev) => (prev !== complete ? complete : prev));
+    const limita = (v: number) => Math.min(1, Math.max(0, v));
+    const escrever = (p: number) => {
+      section.style.setProperty("--p", p.toFixed(4));
+      setIsComplete((antes) => (antes !== (p >= 1) ? p >= 1 : antes));
     };
 
-    const onScroll = () => {
-      if (!isVisible) return;
-      if (rafScheduledRef.current) return;
+    // Menos movimento: a peça fica separada e parada. É o estado que explica
+    // o produto; o estado montado é o que não diz nada sozinho.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      escrever(1);
+      return;
+    }
+
+    let visivel = false;
+
+    const medir = () => {
+      rafScheduledRef.current = false;
+      const r = section.getBoundingClientRect();
+      const janela = window.innerHeight || 1;
+
+      if (isMobile) {
+        escrever(limita((janela * 0.9 - r.top) / (janela * 0.75)));
+        return;
+      }
+      const curso = r.height - janela;
+      escrever(limita(-r.top / Math.max(1, curso) / 0.6));
+    };
+
+    const aoRolar = () => {
+      if (!visivel || rafScheduledRef.current) return;
       rafScheduledRef.current = true;
-      requestAnimationFrame(compute);
+      requestAnimationFrame(medir);
     };
 
     const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          isVisible = entry.isIntersecting;
-          if (isVisible) compute();
+      (entradas) => {
+        for (const e of entradas) {
+          visivel = e.isIntersecting;
+          if (visivel) medir();
         }
       },
       { rootMargin: "0px" },
     );
     io.observe(section);
 
-    const desassinar = assinarScroll(onScroll);
-    window.addEventListener("resize", onScroll);
-
-    // Initial compute when frames become available
-    const interval = setInterval(() => {
-      if (totalFramesRef.current > 0) {
-        compute();
-        clearInterval(interval);
-      }
-    }, 100);
+    const desassinar = assinarScroll(aoRolar);
+    window.addEventListener("resize", aoRolar);
+    medir();
 
     return () => {
       io.disconnect();
       desassinar();
-      window.removeEventListener("resize", onScroll);
-      clearInterval(interval);
+      window.removeEventListener("resize", aoRolar);
     };
   }, [isMobile]);
-
-  // Mobile: play animation once when section enters viewport
-  useEffect(() => {
-    if (!isMobile) return;
-    const section = sectionRef.current;
-    if (!section) return;
-
-    let played = false;
-    let rafId: number | null = null;
-    let waitInterval: ReturnType<typeof setInterval> | null = null;
-    const DURATION = 2200;
-
-    const play = () => {
-      const total = totalFramesRef.current;
-      if (!total) return;
-      played = true;
-      const start = performance.now();
-      const step = (now: number) => {
-        const t = Math.min(1, (now - start) / DURATION);
-        const frame = Math.floor(t * (total - 1));
-        canvasRef.current?.setFrame(frame);
-        if (t < 1) {
-          rafId = requestAnimationFrame(step);
-        } else {
-          setIsComplete(true);
-        }
-      };
-      rafId = requestAnimationFrame(step);
-    };
-
-    const tryStart = () => {
-      if (played) return;
-      if (totalFramesRef.current > 0) {
-        play();
-      } else {
-        waitInterval = setInterval(() => {
-          if (totalFramesRef.current > 0) {
-            if (waitInterval) clearInterval(waitInterval);
-            play();
-          }
-        }, 100);
-      }
-    };
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting && !played) tryStart();
-        }
-      },
-      { threshold: 0.3 },
-    );
-    io.observe(section);
-
-    return () => {
-      io.disconnect();
-      if (rafId) cancelAnimationFrame(rafId);
-      if (waitInterval) clearInterval(waitInterval);
-    };
-  }, [isMobile]);
-
-  const handleReady = (n: number) => {
-    totalFramesRef.current = n;
-  };
 
   const handleToggle = (id: string) => {
     setActiveId((cur) => (cur === id ? null : id));
@@ -211,12 +158,12 @@ export const MadeiraEcologicaSection = () => {
     return (
       <section ref={sectionRef} className="bg-[#DBDBDB] rounded-[10px] mx-[10px] py-16 px-5">
         <h2 className="sr-only">{t("Conheça nossa madeira ecológica")}</h2>
-        <div className="w-full aspect-square mb-10">
-          <ProdutoCanvas
-            ref={canvasRef}
-            onReady={handleReady}
-            className="w-full h-full object-contain"
-          />
+        {/* Sem `aspect-square`: a proporção da caixa de composição vem do
+            próprio render e é o ProdutoExplodido que a declara. Forçar outra
+            aqui distorceria a peça, porque as camadas são posicionadas em
+            porcentagem dessa caixa. */}
+        <div className="w-full mb-10">
+          <ProdutoExplodido className="w-full" />
         </div>
         <div className="grid grid-cols-3 gap-x-4 gap-y-8">
           {features.map((f) => (
@@ -263,13 +210,15 @@ export const MadeiraEcologicaSection = () => {
             ele nunca passa do que sobra entre o header e a borda de baixo. */}
         <div className="flex-1 w-full flex items-center justify-center px-4 sm:px-8 pt-[100px] pb-10">
           <div className="w-full flex items-center justify-center gap-8 lg:gap-16 xl:gap-24">
-            {/* Coluna esquerda: canvas */}
-            <div className="w-[45%] max-w-[640px] max-h-[calc(100vh-140px)] aspect-square shrink-0">
-              <ProdutoCanvas
-                ref={canvasRef}
-                onReady={handleReady}
-                className="w-full h-full object-contain"
-              />
+            {/* Coluna esquerda: a peça.
+                O teto de largura é a mesma conta de antes pelo avesso, agora
+                escrita em largura e não em altura: a caixa de composição é
+                1146x1086, então a altura que sobra entre o header e a borda de
+                baixo vira largura multiplicando por essa proporção. Em
+                notebook de ~750px a peça encolhe em vez de passar por baixo do
+                header. */}
+            <div className="w-[45%] max-w-[min(640px,calc((100svh-140px)*1.0552))] shrink-0">
+              <ProdutoExplodido className="w-full" />
             </div>
 
             {/* Coluna direita: lista de ícones */}

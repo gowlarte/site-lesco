@@ -3,6 +3,7 @@ import ogDefault from "@/assets/og-default.jpg";
 import { site, LOCALE_URLS } from "@/config/site";
 import { slugFor, LOCALE } from "@/i18n/routes";
 import { prioridade } from "@/lib/utils";
+import { preloadResponsivo } from "@/lib/imagem";
 
 const SITE_URL = site.siteUrl;
 
@@ -16,6 +17,9 @@ interface SEOProps {
   noindex?: boolean;
   /** Imagem do LCP da página: entra como <link rel="preload"> no <head>. */
   preloadImage?: string;
+  /** `sizes` da imagem de LCP. Sem ele o preload baixa o original e o <img>
+   *  baixa a variante — duas fotos no caminho crítico em vez de uma. */
+  preloadSizes?: string;
 }
 
 /** Turn a possibly-relative image path into an absolute URL (required by
@@ -34,6 +38,7 @@ export function SEO({
   jsonLd,
   noindex = false,
   preloadImage,
+  preloadSizes,
 }: SEOProps) {
   // `path` é sempre o slug PT; canonical/hreflang usam o slug de cada locale.
   const url = `${SITE_URL}${slugFor(path, LOCALE)}`;
@@ -51,7 +56,13 @@ export function SEO({
 
       {/* LCP: o preload sai no HTML estático, antes de o bundle avaliar o <img>. */}
       {preloadImage && (
-        <link rel="preload" as="image" href={preloadImage} {...prioridade("high")} />
+        <link
+          rel="preload"
+          as="image"
+          href={preloadImage}
+          {...(preloadSizes ? preloadResponsivo(preloadImage, preloadSizes) : {})}
+          {...prioridade("high")}
+        />
       )}
 
       {/* hreflang — mesma página nos dois domínios, cada um com seu slug */}

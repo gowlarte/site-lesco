@@ -21,7 +21,7 @@ export const SwatchCor = ({ nome, corAproximada, imageSrc, selected, onClick }: 
       )}
     >
       {imageSrc ? (
-        <img src={imageSrc} alt={nome} className="w-full h-full object-cover" />
+        <img src={imageSrc} alt={nome} loading="lazy" decoding="async" className="w-full h-full object-cover" />
       ) : (
         <div className="w-full h-full" style={{ backgroundColor: corAproximada }} />
       )}

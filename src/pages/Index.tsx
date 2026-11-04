@@ -21,6 +21,7 @@ import ogHome from "@/assets/projetos/casa-mansa-4.webp";
 
 import { slideAbertura } from "@/data/hero-solucoes";
 import { site } from "@/config/site";
+import { SIZES_TELA_CHEIA } from "@/lib/imagem";
 import { t } from "@/i18n/t";
 
 const Index = () => {
@@ -32,6 +33,7 @@ const Index = () => {
         path="/"
         image={ogHome}
         preloadImage={slideAbertura.imagem}
+        preloadSizes={SIZES_TELA_CHEIA}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "WebSite",

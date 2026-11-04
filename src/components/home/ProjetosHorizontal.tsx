@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "@/components/AppLink";
 import { t } from "@/i18n/t";
+import { responsiva, SIZES_TELA_CHEIA } from "@/lib/imagem";
 /* `projetosDaHome`, e não `projetos`: a lista inteira inclui obras que
    entraram pelo tour 360 e ainda não têm case escrito — ver o comentário na
    fonte. Aqui cada obra custa uma tela presa de rolagem. */
@@ -190,6 +191,7 @@ export function ProjetosHorizontal() {
                   imagensRef.current[i] = el;
                 }}
                 src={projeto.imagem}
+                {...responsiva(projeto.imagem, SIZES_TELA_CHEIA)}
                 alt={projeto.nome}
                 loading={i === 0 ? undefined : "lazy"}
                 decoding="async"

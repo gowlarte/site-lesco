@@ -12,7 +12,7 @@ export const CardProjeto = ({ imageSrc, legenda, ratio = "4:3" }: CardProjetoPro
   return (
     <div className={`relative ${aspectClass} rounded-[var(--aw-radius-card)] overflow-hidden group cursor-pointer`}>
       {imageSrc ? (
-        <img src={imageSrc} alt={legenda} className="w-full h-full object-cover" />
+        <img src={imageSrc} alt={legenda} loading="lazy" decoding="async" className="w-full h-full object-cover" />
       ) : (
         <div className="w-full h-full bg-secondary flex items-center justify-center">
           <ImageIcon className="w-8 h-8 text-primary/65" />

@@ -19,6 +19,7 @@ import {
   type SlideTipologia,
 } from "@/data/hero-solucoes";
 import { prioridade } from "@/lib/utils";
+import { responsiva, SIZES_TELA_CHEIA } from "@/lib/imagem";
 
 /**
  * Hero da home — navegador de soluções (PRD "Hero de Soluções" v0.1).
@@ -272,6 +273,7 @@ export function HeroSolucoes() {
                 imagensRef.current[i] = el;
               }}
               src={tela.imagem}
+              {...responsiva(tela.imagem, SIZES_TELA_CHEIA)}
               alt={tela.alt}
               loading={i === 0 ? undefined : "lazy"}
               {...prioridade(i === 0 ? "high" : undefined)}

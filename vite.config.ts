@@ -36,7 +36,7 @@ export default defineConfig(({ mode, isSsrBuild }) => ({
             manualChunks: {
               "vendor-react": ["react", "react-dom", "react-router-dom"],
               "vendor-ui": ["@radix-ui/react-tooltip", "@radix-ui/react-toast", "sonner", "lucide-react"],
-              "vendor-scroll": ["lenis", "gifuct-js"],
+              "vendor-scroll": ["lenis"],
             },
           },
         },
