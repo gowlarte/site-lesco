@@ -173,11 +173,15 @@ export function ProjetosHorizontal() {
       // nas bordas da página, e um respiro de 10px acima e abaixo estragaria o
       // efeito de tela cheia.
       className="projetos-h relative -my-[10px]"
-      style={{ height: "calc(" + TOTAL + " * 100svh)" }}
+      // Mesma soma do hero (ver HeroSolucoes): o trilho carrega o palco dentro
+      // da própria altura, para que `curso = trilho - palco` fique em `svh` e
+      // não se mexa quando a barra do Safari encolhe. Sem isso, o palco em
+      // `svh` deixava uma faixa do fundo da página aparecendo embaixo dele.
+      style={{ height: "calc(" + (TOTAL - 1) + " * 100svh + 100dvh)" }}
     >
       <div
         ref={palcoRef}
-        className="projetos-palco sticky top-0 h-[100svh] overflow-hidden bg-primary"
+        className="projetos-palco sticky top-0 h-[100dvh] overflow-hidden bg-primary"
       >
         {/* ---------- Faixa horizontal de projetos ---------- */}
         <div ref={faixaRef} className="flex h-full">

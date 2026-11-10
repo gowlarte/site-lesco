@@ -252,11 +252,34 @@ export function HeroSolucoes() {
       ref={trilhoRef}
       onKeyDown={onKeyDown}
       className="hero-solucoes relative mt-[10px]"
-      style={{ height: "calc(" + TOTAL_TELAS + " * 100svh - 20px)" }}
+      /*
+       * O TRILHO CARREGA O PALCO DENTRO DA PRÓPRIA ALTURA.
+       *
+       * O palco mede uma janela ATUAL (`dvh`); o curso de rolagem mede
+       * `TOTAL_TELAS - 1` janelas ESTÁVEIS (`svh`). Escrevendo o trilho como a
+       * soma dos dois, o motor enxerga sempre o mesmo curso:
+       *
+       *     curso = trilho - palco
+       *           = (N-1)*svh + dvh - 20px  -  (dvh - 20px)
+       *           = (N-1)*svh
+       *
+       * O termo do palco se cancela. É isso que deixa o cartão acompanhar a
+       * janela sem reintroduzir o defeito que tinha posto tudo em `svh`:
+       * encolher a barra do Safari no meio da rolagem mudava o curso e o
+       * quadro pulava. Agora muda o trilho e o palco na mesma medida, e a
+       * diferença entre eles não se mexe.
+       */
+      style={{
+        height: "calc(" + (TOTAL_TELAS - 1) + " * 100svh + 100dvh - 20px)",
+      }}
     >
       <div
         ref={palcoRef}
-        className="hero-palco sticky top-[10px] h-[calc(100svh-20px)] mx-[10px] rounded-[10px] overflow-hidden bg-primary"
+        /* `dvh` e não `svh`: `svh` é a janela COM a barra do Safari aberta, a
+           menor delas. O cartão nascia desse tamanho e não crescia quando a
+           barra encolhia na rolagem — sobrava uma faixa do fundo da página
+           embaixo dele, que é a borda feia que aparece no celular. */
+        className="hero-palco sticky top-[10px] h-[calc(100dvh-20px)] mx-[10px] rounded-[10px] overflow-hidden bg-primary"
       >
         {/* ---------- Camadas de imagem ---------- */}
         {[slideAbertura, ...slidesTipologia].map((tela, i) => (

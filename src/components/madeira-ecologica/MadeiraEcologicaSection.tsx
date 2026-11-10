@@ -191,10 +191,12 @@ export const MadeiraEcologicaSection = () => {
       className="relative bg-[#DBDBDB] rounded-[10px] mx-[10px] h-[450vh]"
     >
       {/* Palco fixo: aqui a altura precisa ser definida, não mínima, porque o
-          scroll é medido contra ela. `svh` e não `dvh` pelo mesmo motivo que o
-          palco do hero da home usa `svh`: com a altura dinâmica, esconder a
-          barra do navegador mudaria a altura no meio da rolagem e o cálculo do
-          quadro pularia. */}
+          scroll é medido contra ela. Fica em `svh` — a menor das janelas —
+          porque este palco não tem fundo próprio: o que aparece abaixo dele é
+          o #DBDBDB da própria seção, então encolher a barra do navegador não
+          abre faixa nenhuma. É o que o diferencia dos palcos do hero e dos
+          projetos, que têm `bg-primary` e por isso precisaram ir para `dvh`
+          (ver a soma do trilho em HeroSolucoes). */}
       <div className="sticky top-0 h-[100svh] overflow-hidden flex flex-col">
         {/* O título saiu da tela: a peça desmontada e os cinco ícones já dizem
             o que a seção é. Ele fica como marcação — leitor de tela e sumário
