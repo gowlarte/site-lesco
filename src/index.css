@@ -832,6 +832,6 @@ body:has(.hero-novo) .botao-whatsapp {
 
 @media (min-width: 1024px) {
   body:has(.hero-novo) .botao-whatsapp {
-    bottom: 132px;
+    bottom: 148px;
   }
 }

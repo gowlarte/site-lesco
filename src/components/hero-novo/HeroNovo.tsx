@@ -78,9 +78,6 @@ const CORTE_FIM = 0.62;
 /** Quanto o bloco de texto viaja ao sair, em px. */
 const TXT_VIAGEM = 14;
 
-/** Passo entre os pontos à esquerda do cartão, em px. */
-const PONTO_PASSO = 24;
-
 /**
  * As medidas do esqueleto, escritas uma vez só.
  *
@@ -90,7 +87,7 @@ const PONTO_PASSO = 24;
  * caixa — daí as classes virem de constantes e não de literais repetidos.
  */
 const CAIXA = "px-4 pt-[96px] pb-[18px] sm:px-5 sm:pt-[104px] sm:pb-5 lg:px-8 lg:pt-[120px] lg:pb-8";
-const LINHA_NOME = "h-[44px] mt-5 lg:h-[56px] lg:mt-6";
+const LINHA_NOME = "h-[44px] mt-5 lg:h-[72px] lg:mt-7";
 
 /** Raio do cartão, repetido na moldura e na máscara das fotos. */
 const RAIO = "rounded-[16px]";
@@ -305,13 +302,14 @@ export function HeroNovo() {
               {telasProduto.map((tela, i) => (
                 <div
                   key={tela.id}
-                  className="flex items-center justify-center"
-                  style={{ height: PONTO_PASSO }}
+                  className="flex h-6 items-center justify-center lg:h-9"
                 >
                   <span
                     className={
                       "block rounded-full border border-white " +
-                      (i === ativo - 1 ? "w-[9px] h-[9px] bg-white" : "w-[7px] h-[7px]")
+                      (i === ativo - 1
+                        ? "w-[9px] h-[9px] bg-white lg:w-[12px] lg:h-[12px]"
+                        : "w-[7px] h-[7px] lg:w-[9px] lg:h-[9px]")
                     }
                   />
                 </div>
@@ -372,7 +370,7 @@ export function HeroNovo() {
                  e pousa dentro do cartão (ver `body:has(.hero-novo)` em
                  index.css). Sem ele a última linha passa por baixo do botão,
                  e botão de z-60 não se discute: ele ganha. */
-              className="absolute inset-0 flex flex-col justify-around px-4 pb-14 lg:px-8 lg:pb-16"
+              className="absolute inset-0 flex flex-col justify-around px-4 pb-14 lg:px-8 lg:pb-[84px]"
               style={{ color: "#ffffff", mixBlendMode: "difference" }}
             >
               <span className="sr-only">Arquitetura feita para o amanhã.</span>
@@ -380,11 +378,18 @@ export function HeroNovo() {
                 <span
                   key={linha.texto}
                   aria-hidden="true"
-                  className="flex items-center gap-[0.18em] font-display font-light uppercase leading-[1] tracking-[-0.01em] text-[12vw] sm:text-[8vw] lg:text-[clamp(44px,4.6vw,72px)]"
+                  className="flex items-center gap-[0.18em] font-display font-light uppercase leading-[1] tracking-[-0.01em] text-[12vw] sm:text-[8vw] lg:text-[clamp(48px,5.4vw,104px)]"
                 >
                   {linha.regua === "antes" && <Filete />}
                   <span>{linha.texto}</span>
                   {linha.regua === "depois" && <Filete />}
+                  {/* "FEITA PARA" não leva filete no celular: ali a palavra já
+                      ocupa a linha inteira. Numa tela larga ela ocupa um terço
+                      dela, e sem o filete a linha fica com um vão no meio da
+                      composição — nenhum corpo de letra razoável preencheria
+                      1300px com dez caracteres. Então o filete entra a partir
+                      de lg, e aí as cinco linhas se justificam igual. */}
+                  {linha.regua === "nenhuma" && <Filete className="hidden lg:block" />}
                 </span>
               ))}
             </h1>
@@ -415,8 +420,8 @@ export function HeroNovo() {
  * empurrar a palavra para fora. É isso que faz a composição caber em qualquer
  * largura sem larguras fixas.
  */
-function Filete() {
-  return <span className="flex-1 min-w-0 h-px bg-current" />;
+function Filete({ className = "" }: { className?: string }) {
+  return <span className={"flex-1 min-w-0 h-px bg-current " + className} />;
 }
 
 interface TelaDeProdutoProps {
@@ -448,10 +453,10 @@ const TelaDeProduto = forwardRef<HTMLDivElement, TelaDeProdutoProps>(function Te
             filter:
               "drop-shadow(0 0 2px rgba(0,0,0,0.85)) drop-shadow(0 1px 14px rgba(0,0,0,0.7))",
           }}
-          className="pointer-events-auto absolute top-4 right-4 inline-flex items-center gap-3 font-display text-[11px] uppercase tracking-[0.14em] lg:top-6 lg:right-6 lg:text-[12px] hover:opacity-70 transition-opacity duration-300"
+          className="pointer-events-auto absolute top-4 right-4 inline-flex items-center gap-3 font-display text-[11px] uppercase tracking-[0.14em] lg:top-7 lg:right-7 lg:gap-4 lg:text-[13px] hover:opacity-70 transition-opacity duration-300"
         >
           Ver mais
-          <MoveRight size={20} strokeWidth={1.25} />
+          <MoveRight className="w-5 lg:w-7" strokeWidth={1.25} />
         </Link>
       </div>
 
@@ -463,10 +468,10 @@ const TelaDeProduto = forwardRef<HTMLDivElement, TelaDeProdutoProps>(function Te
           mais apertada ali: não é timidez tipográfica, é o que sobra de
           largura depois da etiqueta. */}
       <div className={"shrink-0 flex items-center justify-between gap-3 " + LINHA_NOME}>
-        <h2 className="font-display font-light leading-none whitespace-nowrap text-[26px] sm:text-[32px] lg:text-[44px]">
+        <h2 className="font-display font-light leading-none whitespace-nowrap text-[26px] sm:text-[32px] lg:text-[clamp(44px,3.6vw,68px)]">
           {tela.titulo}
         </h2>
-        <span className="shrink-0 whitespace-nowrap rounded-full border border-white px-3 py-1.5 font-display text-[11px] leading-none sm:px-4 sm:text-[12px] lg:px-5 lg:py-2 lg:text-[14px]">
+        <span className="shrink-0 whitespace-nowrap rounded-full border border-white px-3 py-1.5 font-display text-[11px] leading-none sm:px-4 sm:text-[12px] lg:px-6 lg:py-2.5 lg:text-[15px]">
           {tela.etiqueta}
         </span>
       </div>
