@@ -1,4 +1,4 @@
-import { forwardRef, useCallback, useRef, useState } from "react";
+import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
 import { MoveRight } from "lucide-react";
 import { Link } from "@/components/AppLink";
 import {
@@ -121,6 +121,8 @@ export function HeroNovo() {
   const pontosRef = useRef<HTMLDivElement>(null);
   /** Tela mais próxima, fora do React: o loop roda a cada quadro. */
   const ativoRef = useRef(0);
+  /** Se o cartão ainda cobre a janela. Muda pouco, então guarda o último valor. */
+  const noArRef = useRef<boolean | null>(null);
 
   const medir = useMedidor(trilhoRef, palcoRef, TOPO_PALCO, TOTAL_TELAS);
 
@@ -204,12 +206,36 @@ export function HeroNovo() {
       pontosRef.current.style.opacity = suave(pos, CORTE_INICIO, CORTE_FIM).toFixed(3);
     }
 
+    /*
+     * O BOTÃO DO WHATSAPP SÓ SOBE ENQUANTO O HERO ESTÁ NA TELA.
+     *
+     * Ele é fixo no canto inferior direito da janela, e durante o hero esse
+     * canto é do nome do produto e da etiqueta — por isso ele sobe para
+     * dentro do cartão (ver `body.hero-novo-no-ar` em index.css). Passado o
+     * hero, as seções de baixo são as mesmas da home de produção e o botão
+     * tem de voltar ao canto, senão fica flutuando alto no meio do showroom.
+     *
+     * A classe muda no corpo da página, não aqui dentro, porque o botão mora
+     * na raiz da árvore. E só é tocada na VIRADA: escrever no classList a
+     * cada quadro custaria um recálculo de estilo por quadro para dizer a
+     * mesma coisa.
+     */
+    const noAr = window.scrollY <= m.inicio + m.curso;
+    if (noAr !== noArRef.current) {
+      noArRef.current = noAr;
+      document.body.classList.toggle("hero-novo-no-ar", noAr);
+    }
+
     const proximo = Math.round(pos);
     if (proximo !== ativoRef.current) {
       ativoRef.current = proximo;
       setAtivo(proximo);
     }
   }, [medir, semMovimento]);
+
+  // Sair da rota não pode deixar a marca no corpo da página: o botão ficaria
+  // alto em todas as outras.
+  useEffect(() => () => document.body.classList.remove("hero-novo-no-ar"), []);
 
   useLoopDeScroll(desenhar);
   useSomenteAtivoInterativo(conteudosRef, ativo);

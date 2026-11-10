@@ -824,14 +824,23 @@
    o botão já tem da borda. Mexer nas medidas da CAIXA do hero pede mexer
    aqui junto.
 
-   `:has` em vez de uma classe no <body>: o botão mora na raiz da árvore, fora
-   do <main> da página, então não há ancestral comum para marcar. */
-body:has(.hero-novo) .botao-whatsapp {
+   A classe vai no <body>, e não num ancestral do botão, porque ele mora na
+   raiz da árvore, fora do <main> da página. Quem a liga e desliga é o próprio
+   hero, na virada em que o cartão deixa de cobrir a janela — abaixo dele vêm
+   as mesmas seções da home de produção, e lá o botão volta para o canto.
+
+   A transição é o que falta para a volta não ser um salto: o botão já anima
+   transform e opacity, mas não a posição. */
+.botao-whatsapp {
+  transition-property: transform, opacity, bottom;
+}
+
+body.hero-novo-no-ar .botao-whatsapp {
   bottom: 98px;
 }
 
 @media (min-width: 1024px) {
-  body:has(.hero-novo) .botao-whatsapp {
+  body.hero-novo-no-ar .botao-whatsapp {
     bottom: 148px;
   }
 }
