@@ -810,3 +810,28 @@
     transition: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   /lesco-new — a prova da marca 2.0 (ver src/components/hero-novo/HeroNovo).
+
+   O botão do WhatsApp é fixo no canto inferior direito da JANELA, e nesta
+   página esse canto não é mais da foto: ali ficam o nome do produto e a
+   etiqueta da linha, que o botão cobriria inteiros. Nos mockups ele aparece
+   DENTRO do cartão, e é para lá que ele sobe aqui.
+
+   A conta é a altura do que está embaixo do cartão: o respiro de baixo, a
+   linha do nome, o espaço entre ela e o cartão, e mais uma folga igual à que
+   o botão já tem da borda. Mexer nas medidas da CAIXA do hero pede mexer
+   aqui junto.
+
+   `:has` em vez de uma classe no <body>: o botão mora na raiz da árvore, fora
+   do <main> da página, então não há ancestral comum para marcar. */
+body:has(.hero-novo) .botao-whatsapp {
+  bottom: 98px;
+}
+
+@media (min-width: 1024px) {
+  body:has(.hero-novo) .botao-whatsapp {
+    bottom: 132px;
+  }
+}

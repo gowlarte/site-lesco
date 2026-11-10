@@ -31,5 +31,6 @@
   { "slug": "/live-lesco", "title": "Live Lesco — Madeira Plástica Ecológica de Alto Padrão", "description": "Solicite sua amostra da Lesco. Revestimentos em madeira ecológica Premium que unem sofisticação, tecnologia e sustentabilidade.", "canonical": "https://lesco.com.br/live-lesco" },
   { "slug": "/live-lesco-amostra", "title": "Solicite sua Amostra — Live Lesco | Lesco", "description": "Solicite uma amostra da Lesco. Prioridade para arquitetos e construtoras com projetos em andamento.", "canonical": "https://lesco.com.br/live-lesco-amostra" },
   { "slug": "/politica-de-privacidade", "title": "Política de Privacidade | Lesco", "description": "Política de Privacidade da Lesco. Conheça como tratamos e protegemos suas informações.", "canonical": "https://lesco.com.br/politica-de-privacidade" },
-  { "slug": "/termos-de-servico", "title": "Termos de Serviço | Lesco", "description": "Termos de Serviço da Lesco. Conheça as condições de uso do site e dos nossos serviços.", "canonical": "https://lesco.com.br/termos-de-servico" }
+  { "slug": "/termos-de-servico", "title": "Termos de Serviço | Lesco", "description": "Termos de Serviço da Lesco. Conheça as condições de uso do site e dos nossos serviços.", "canonical": "https://lesco.com.br/termos-de-servico" },
+  { "slug": "/lesco-new", "title": "Hero 2.0 — prova interna | Lesco", "description": "Versão de prova do hero com a marca Lesco 2.0. Não divulgar.", "canonical": "https://lesco.com.br/lesco-new", "semIndice": true }
 ]

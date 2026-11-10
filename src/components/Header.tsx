@@ -9,6 +9,9 @@ import { t } from "@/i18n/t";
 import { isEN } from "@/i18n/locale";
 import logoDark from "@/assets/logo-lesco-dark-2.svg";
 import logoLight from "@/assets/logo-lesco-light.svg";
+import logo2Dark from "@/assets/logo-lesco-2-dark.svg";
+import logo2Light from "@/assets/logo-lesco-2-light.svg";
+import { useMarcaNova } from "@/lib/marca";
 
 /**
  * Navegação por MATERIAL no primeiro nível e por TIPO DE PRODUTO no segundo.
@@ -102,6 +105,8 @@ export function Header({ variant = "default" }: HeaderProps) {
   // mais sobre o topo da página e pede fundo. Na home ele é transparente sobre
   // o hero, e quem sabe dizer quando o hero acabou é o hook.
   const saiuDoHero = useSaiuDoHero();
+  /** Marca de produção ou a 2.0 em prova — ver src/lib/marca.ts. */
+  const marcaNova = useMarcaNova();
   const [rolou, setRolou] = useState(false);
 
   useEffect(() => {
@@ -255,10 +260,28 @@ export function Header({ variant = "default" }: HeaderProps) {
               setMenuOpen(false);
             }}
           >
+            {/* A MARCA DE PRODUÇÃO É O PADRÃO. A 2.0 só entra nas rotas de
+                prova ou quando a aba foi aberta com `?marca=2` — ver
+                src/lib/marca.ts.
+
+                A caixa muda junto com o arquivo porque as duas proporções não
+                se parecem: a de hoje é 3,17:1 e a 2.0 é 5,97:1. Reusar 93x29
+                esticaria a nova; reusar 124x21 achataria a antiga. */}
             <img
-              src={isLight ? logoDark : logoLight}
+              src={
+                marcaNova
+                  ? isLight
+                    ? logo2Dark
+                    : logo2Light
+                  : isLight
+                    ? logoDark
+                    : logoLight
+              }
               alt="Lesco"
-              className="w-[93px] h-[29px] object-contain transition-all duration-300 mt-[10px]"
+              className={cn(
+                "object-contain transition-all duration-300 mt-[10px]",
+                marcaNova ? "w-[124px] h-[21px]" : "w-[93px] h-[29px]",
+              )}
             />
           </Link>
 

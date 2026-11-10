@@ -47,6 +47,31 @@ import a_geo_hero_03 from "../geo-hero/03.jpg";
 import a_geo_hero_03_640 from "./geo-hero/03-640.webp";
 import a_geo_hero_03_1100 from "./geo-hero/03-1100.webp";
 import a_geo_hero_03_1600 from "./geo-hero/03-1600.webp";
+import a_hero_novo_capa from "../hero-novo/capa.webp";
+import a_hero_novo_capa_640 from "./hero-novo/capa-640.webp";
+import a_hero_novo_brise from "../hero-novo/brise.webp";
+import a_hero_novo_brise_640 from "./hero-novo/brise-640.webp";
+import a_hero_novo_brise_1100 from "./hero-novo/brise-1100.webp";
+import a_hero_novo_brise_1600 from "./hero-novo/brise-1600.webp";
+import a_hero_novo_shield from "../hero-novo/shield.webp";
+import a_hero_novo_shield_640 from "./hero-novo/shield-640.webp";
+import a_hero_novo_line from "../hero-novo/line.webp";
+import a_hero_novo_line_640 from "./hero-novo/line-640.webp";
+import a_hero_novo_panel from "../hero-novo/panel.webp";
+import a_hero_novo_panel_640 from "./hero-novo/panel-640.webp";
+import a_hero_novo_panel_1100 from "./hero-novo/panel-1100.webp";
+import a_hero_novo_panel_1600 from "./hero-novo/panel-1600.webp";
+import a_hero_novo_bambu from "../hero-novo/bambu.webp";
+import a_hero_novo_bambu_640 from "./hero-novo/bambu-640.webp";
+import a_hero_novo_bambu_1100 from "./hero-novo/bambu-1100.webp";
+import a_hero_novo_bambu_1600 from "./hero-novo/bambu-1600.webp";
+import a_hero_novo_pedra from "../hero-novo/pedra.webp";
+import a_hero_novo_pedra_640 from "./hero-novo/pedra-640.webp";
+import a_hero_novo_pedra_1100 from "./hero-novo/pedra-1100.webp";
+import a_hero_novo_acustica from "../hero-novo/acustica.webp";
+import a_hero_novo_acustica_640 from "./hero-novo/acustica-640.webp";
+import a_hero_novo_acustica_1100 from "./hero-novo/acustica-1100.webp";
+import a_hero_novo_acustica_1600 from "./hero-novo/acustica-1600.webp";
 import a_projetos_casa_mansa_hero from "../projetos/casa-mansa-hero.webp";
 import a_projetos_casa_mansa_hero_640 from "./projetos/casa-mansa-hero-640.webp";
 import a_projetos_casa_mansa_hero_1100 from "./projetos/casa-mansa-hero-1100.webp";
@@ -112,6 +137,14 @@ export const SRCSET: Record<string, string> = {
   [a_hero_home_zhuzen]: `${a_hero_home_zhuzen_640} 640w, ${a_hero_home_zhuzen_1100} 1100w, ${a_hero_home_zhuzen} 1536w`,
   [a_hero_home_echotex]: `${a_hero_home_echotex_640} 640w, ${a_hero_home_echotex_1100} 1100w, ${a_hero_home_echotex_1600} 1600w, ${a_hero_home_echotex} 1920w`,
   [a_geo_hero_03]: `${a_geo_hero_03_640} 640w, ${a_geo_hero_03_1100} 1100w, ${a_geo_hero_03_1600} 1600w, ${a_geo_hero_03} 1894w`,
+  [a_hero_novo_capa]: `${a_hero_novo_capa_640} 640w, ${a_hero_novo_capa} 817w`,
+  [a_hero_novo_brise]: `${a_hero_novo_brise_640} 640w, ${a_hero_novo_brise_1100} 1100w, ${a_hero_novo_brise_1600} 1600w, ${a_hero_novo_brise} 2200w`,
+  [a_hero_novo_shield]: `${a_hero_novo_shield_640} 640w, ${a_hero_novo_shield} 900w`,
+  [a_hero_novo_line]: `${a_hero_novo_line_640} 640w, ${a_hero_novo_line} 960w`,
+  [a_hero_novo_panel]: `${a_hero_novo_panel_640} 640w, ${a_hero_novo_panel_1100} 1100w, ${a_hero_novo_panel_1600} 1600w, ${a_hero_novo_panel} 2200w`,
+  [a_hero_novo_bambu]: `${a_hero_novo_bambu_640} 640w, ${a_hero_novo_bambu_1100} 1100w, ${a_hero_novo_bambu_1600} 1600w, ${a_hero_novo_bambu} 1866w`,
+  [a_hero_novo_pedra]: `${a_hero_novo_pedra_640} 640w, ${a_hero_novo_pedra_1100} 1100w, ${a_hero_novo_pedra} 1195w`,
+  [a_hero_novo_acustica]: `${a_hero_novo_acustica_640} 640w, ${a_hero_novo_acustica_1100} 1100w, ${a_hero_novo_acustica_1600} 1600w, ${a_hero_novo_acustica} 2200w`,
   [a_projetos_casa_mansa_hero]: `${a_projetos_casa_mansa_hero_640} 640w, ${a_projetos_casa_mansa_hero_1100} 1100w, ${a_projetos_casa_mansa_hero} 1245w`,
   [a_projetos_casa_nh_hero]: `${a_projetos_casa_nh_hero_640} 640w, ${a_projetos_casa_nh_hero_1100} 1100w, ${a_projetos_casa_nh_hero} 1500w`,
   [a_projetos_casa_una_1]: `${a_projetos_casa_una_1_640} 640w, ${a_projetos_casa_una_1_1100} 1100w, ${a_projetos_casa_una_1} 1500w`,

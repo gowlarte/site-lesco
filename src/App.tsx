@@ -54,6 +54,7 @@ import ObrigadoCatalogoZhu from "./pages/ObrigadoCatalogoZhu";
 import PoliticaPrivacidade from "./pages/PoliticaPrivacidade";
 import TermosServico from "./pages/TermosServico";
 import FormularioTeste from "./pages/FormularioTeste";
+import LescoNew from "./pages/LescoNew";
 
 const queryClient = new QueryClient();
 
@@ -61,7 +62,9 @@ const AppContent = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const { isLoading } = usePageAssets(contentRef);
   const location = useLocation();
-  const isHome = location.pathname === "/";
+  /* Páginas cujo hero ocupa a tela inteira e pede cabeçalho transparente
+     por cima. /lesco-new é a prova da marca 2.0 — ver src/pages/LescoNew. */
+  const isHome = location.pathname === "/" || location.pathname === "/lesco-new";
 
   usePageTracking();
   useUtmForwarder();
@@ -131,6 +134,9 @@ const AppContent = () => {
           <Route path={localizePath("/politica-de-privacidade")} element={<PoliticaPrivacidade />} />
           <Route path={localizePath("/termos-de-servico")} element={<TermosServico />} />
           <Route path="/formulario-teste" element={<FormularioTeste />} />
+          {/* Prova interna da marca 2.0. Fora do menu, fora do sitemap e com
+              noindex — ver o cabeçalho de src/pages/LescoNew.tsx. */}
+          <Route path="/lesco-new" element={<LescoNew />} />
 
           {/* No build EN, os slugs PT redirecionam para o slug EN canônico
               (rede de proteção para links/URLs antigos com slug em português). */}

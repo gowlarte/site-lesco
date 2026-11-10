@@ -7,4 +7,9 @@ export interface SsgRoute {
   description?: string;
   canonical?: string;
   ogImage?: string;
+  /** Rota que é pré-renderizada mas NÃO entra no sitemap.xml.
+   *  Para provas internas: o arquivo estático existe (abrir o endereço
+   *  direto funciona), mas nada convida o buscador a ir lá. O `noindex` da
+   *  própria página é a segunda tranca. */
+  semIndice?: boolean;
 }

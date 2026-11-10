@@ -69,6 +69,16 @@ const LOTES = [
       "hero-home-zhuzen.webp",
       "hero-home-echotex.webp",
       "geo-hero/03.jpg",
+      // Hero de /lesco-new — a versão 2.0, ainda não validada. Deck e
+      // muxarabi não aparecem aqui porque reaproveitam os arquivos de cima.
+      "hero-novo/capa.webp",
+      "hero-novo/brise.webp",
+      "hero-novo/shield.webp",
+      "hero-novo/line.webp",
+      "hero-novo/panel.webp",
+      "hero-novo/bambu.webp",
+      "hero-novo/pedra.webp",
+      "hero-novo/acustica.webp",
       // Faixa de projetos da home — a capa de cada obra.
       "projetos/casa-mansa-hero.webp",
       "projetos/casa-nh-hero.webp",

@@ -1,0 +1,90 @@
+/**
+ * A marca Lesco 2.0, em componentes.
+ *
+ * Existe porque três lugares precisam DESENHAR a marca, e não apenas
+ * exibi-la: a abertura varre o logotipo com um clip-path, o loader de
+ * transição pulsa o símbolo, e o loader do hero novo mostra o símbolo parado.
+ * Com um <img src="…svg"> nada disso é possível — o conteúdo do arquivo fica
+ * fora do alcance do CSS da página.
+ *
+ * Quem só precisa mostrar a marca continua importando o .svg direto (é o que
+ * o Header, o rodapé e as páginas de obrigado fazem): custa menos e entra no
+ * cache do navegador como arquivo.
+ *
+ * As duas peças dividem a mesma caixa de 102,24 de altura, então símbolo e
+ * logotipo lado a lado batem a linha de base sem ajuste.
+ *
+ * GERADO a partir de "LESCO - IDV/2.0/lesco-2.0.svg". Para atualizar, rode o
+ * gerador de novo em vez de editar os contornos à mão.
+ */
+
+/** Caixa do logotipo inteiro: símbolo + LESCO + ®. */
+export const CAIXA_LOGOTIPO = "0 0 610.24 102.24";
+
+/** Caixa do símbolo sozinho — as quatro barras, sem as letras. */
+export const CAIXA_SIMBOLO = "0 0 89.53 102.24";
+
+/** As quatro barras. Coordenadas na caixa do logotipo. */
+export const CONTORNOS_SIMBOLO: readonly string[] = [
+  "M.73,80.02h88.08c.27,0,.48.22.48.48v11.56c0,.27-.22.48-.48.48h-27.55s-.11-.04-.15-.06h0c-5.44-5.47-12.84-8.54-20.55-8.54H.73c-.27,0-.48-.22-.48-.48v-2.96c0-.27.22-.48.48-.48Z",
+  "M.48,98.31h88.57c.27,0,.48.22.48.48v2.96c-.01.27-.23.48-.5.48H.49c-.27,0-.48-.22-.48-.48v-2.96c0-.27.21-.48.47-.48Z",
+  "M.97,69.64h24.49c.06,0,.12-.01.18-.03l25.06-9.82c10.9-4.27,22.51-6.46,34.22-6.46h4.38c.27,0,.48-.22.48-.48v-2.82c0-.27-.22-.48-.48-.48H.97c-.27,0-.48.22-.48.48v19.14c0,.27.22.48.48.48Z",
+  "M89.05,5.83h-36.07c-.06.02-.16.05-.23.06L20.02,25.8c-5.74,3.49-12.33,5.34-19.05,5.34h0c-.27,0-.48.22-.48.48v2.82c0,.27.22.48.48.48h88.08c.27,0,.48-.22.48-.48V6.32c0-.27-.22-.48-.48-.48Z",
+];
+
+/** L, E, S, C, O e o ®. Coordenadas na caixa do logotipo. */
+export const CONTORNOS_LETRAS: readonly string[] = [
+  "M121.36,59.52V6.93c0-.61-.49-1.1-1.1-1.1h-7.24c-.61,0-1.1.49-1.1,1.1v34c0,33.85,27.44,61.3,61.3,61.3h16.52c.61,0,1.1-.49,1.1-1.1v-7.24c0-.61-.49-1.1-1.1-1.1h-35.1c-18.37,0-33.27-14.89-33.27-33.27Z",
+  "M193.94,50.14v7.78c0,24.47,19.84,44.31,44.31,44.31h33.51c.61,0,1.1-.49,1.1-1.1v-7.24c0-.61-.49-1.1-1.1-1.1h-51.36c-9.4,0-17.02-7.62-17.02-17.02h0c0-9.4,7.62-17.02,17.02-17.02h41.91c.61,0,1.1-.49,1.1-1.1v-7.24c0-.61-.49-1.1-1.1-1.1h-41.91c-9.4,0-17.02-7.62-17.02-17.02h0c0-9.4,7.62-17.02,17.02-17.02h51.36c.61,0,1.1-.49,1.1-1.1v-7.24c0-.61-.49-1.1-1.1-1.1h-33.51c-24.47,0-44.31,19.84-44.31,44.31Z",
+  "M388.5,54.03h0c0,26.62,21.58,48.2,48.2,48.2h34.75c.61,0,1.1-.49,1.1-1.1v-7.24c0-.61-.49-1.1-1.1-1.1h-55.13c-10.15,0-18.38-8.23-18.38-18.38v-39.54c0-10.82,8.77-19.59,19.59-19.59h53.92c.61,0,1.1-.49,1.1-1.1v-7.24c0-.61-.49-1.1-1.1-1.1h-34.75c-26.62,0-48.2,21.58-48.2,48.2Z",
+  "M348.24,49.31h-38.35c-9.4,0-17.02-7.62-17.02-17.02h0c0-9.4,7.62-17.02,17.02-17.02h60.27c.61,0,1.1-.49,1.1-1.1v-7.24c0-.61-.49-1.1-1.1-1.1h-52.69c-14.62,0-26.46,11.85-26.46,26.46h0c0,14.62,11.85,26.46,26.46,26.46h39.04c9.4,0,17.02,7.62,17.02,17.02h0c0,9.4-7.62,17.02-17.02,17.02h-60.95c-.61,0-1.1.49-1.1,1.1v7.24c0,.61.49,1.1,1.1,1.1h52.69c14.62,0,26.46-11.85,26.46-26.46h0c0-14.62-11.85-26.46-26.46-26.46Z",
+  "M588,11c0-6.49,4.55-11,11.14-11s11.09,4.5,11.09,11-4.55,11.05-11.09,11.05-11.14-4.55-11.14-11.05ZM608.83,11c0-5.76-3.97-9.54-9.69-9.54s-9.74,3.78-9.74,9.54,3.97,9.59,9.74,9.59,9.69-3.78,9.69-9.59ZM595.07,3.83h3.83c2.52,0,5.14,1.02,5.14,4.17,0,2.52-1.84,3.78-3.83,4.12l4.65,5.76h-1.7l-4.55-5.67h-2.13v5.67h-1.4V3.83ZM598.95,10.85c1.99,0,3.68-.82,3.68-2.86s-1.7-2.81-3.68-2.81h-2.47v5.67h2.47Z",
+  "M512.73,92.79c-10.15,0-18.38-8.23-18.38-18.38v-39.54c0-10.82,8.77-19.59,19.59-19.59h20.13V5.83h-.97c-26.62,0-48.2,21.58-48.2,48.2h0c0,26.62,21.58,48.2,48.2,48.2h.97v-9.45h-21.34Z",
+  "M583.24,54.04c0,10.74-3.5,20.65-9.45,28.67-.74,1-1.51,1.96-2.33,2.9-8.83,10.19-21.88,16.64-36.43,16.64h-.96v-9.45h21.34c5.94,0,11.22-2.82,14.58-7.19,2.06-2.68,3.4-5.94,3.72-9.5.06-.56.08-1.12.08-1.69v-39.54c0-10.82-8.77-19.59-19.59-19.59h-20.13V5.83h.96c13.31,0,25.36,5.39,34.09,14.12,8.72,8.72,14.12,20.78,14.12,34.09Z",
+];
+
+interface MarcaProps {
+  className?: string;
+  /** Cor dos contornos. O padrão segue a cor do texto do elemento pai. */
+  fill?: string;
+  /** Marca decorativa: quando já existe um texto do lado dizendo "Lesco". */
+  decorativa?: boolean;
+}
+
+function svgProps({ decorativa }: MarcaProps) {
+  return decorativa
+    ? { "aria-hidden": true as const }
+    : { role: "img" as const, "aria-label": "Lesco" };
+}
+
+/** O símbolo sozinho. */
+export function SimboloLesco({ className, fill = "currentColor", decorativa }: MarcaProps) {
+  return (
+    <svg
+      viewBox={CAIXA_SIMBOLO}
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      {...svgProps({ decorativa })}
+    >
+      {CONTORNOS_SIMBOLO.map((d) => (
+        <path key={d.slice(0, 12)} fill={fill} d={d} />
+      ))}
+    </svg>
+  );
+}
+
+/** O logotipo completo. */
+export function LogotipoLesco({ className, fill = "currentColor", decorativa }: MarcaProps) {
+  return (
+    <svg
+      viewBox={CAIXA_LOGOTIPO}
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      {...svgProps({ decorativa })}
+    >
+      {[...CONTORNOS_SIMBOLO, ...CONTORNOS_LETRAS].map((d) => (
+        <path key={d.slice(0, 12)} fill={fill} d={d} />
+      ))}
+    </svg>
+  );
+}

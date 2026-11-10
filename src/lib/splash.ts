@@ -6,6 +6,8 @@
  * o fast refresh no dev.
  */
 
+import { ROTAS_MARCA_NOVA } from "./marca";
+
 const CHAVE_SESSAO = "lesco_splash_visto";
 
 /**
@@ -22,6 +24,11 @@ const CHAVE_SESSAO = "lesco_splash_visto";
 export function deveMostrarSplash(): boolean {
   if (typeof window === "undefined") return false;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
+  // As rotas de prova da marca 2.0 têm abertura própria (o símbolo novo sobre
+  // o escuro, segurando as fotos). Deixar esta aqui rodar antes significaria
+  // apresentar a marca ANTIGA em cima da página que existe para mostrar a
+  // nova. Ver src/lib/marca.ts e src/components/hero-novo/LoaderMarca.tsx.
+  if (ROTAS_MARCA_NOVA.includes(window.location.pathname)) return false;
   try {
     return !sessionStorage.getItem(CHAVE_SESSAO);
   } catch {

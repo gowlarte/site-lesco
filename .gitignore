@@ -40,3 +40,9 @@ src/assets/hero-2/
 # a saída do script, 830KB. Para acrescentar um modelo: solte o .glb aqui,
 # ponha o nome em PUBLICAR e rode `npm run 3d`.
 src/assets/zhu-3d/
+
+# Originais crus do hero 2.0 (.jfif, PNG de 40 MB, nomes de exportador).
+# São ~59 MB que o git guardaria para sempre; o que o site serve são os WebP
+# normalizados em src/assets/hero-novo/, esses sim versionados. O mapa de qual
+# arquivo virou qual tela está em scripts/hero-novo-fotos.mjs.
+src/assets/new-hero/

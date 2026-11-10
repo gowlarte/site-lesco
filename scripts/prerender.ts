@@ -76,6 +76,8 @@ async function prerender() {
   // sitemap.xml + robots.txt gerados por locale (o domínio muda por build).
   const lastmod = new Date().toISOString().slice(0, 10);
   const urls = routes
+    // Rota de prova não entra no mapa: ver `semIndice` em src/seo/types.ts.
+    .filter((route) => !route.semIndice)
     .map((route) => {
       const loc = `${site.siteUrl}${localizePath(route.slug)}`;
       const isHome = route.slug === "/";
