@@ -11,7 +11,7 @@ import logoDark from "@/assets/logo-lesco-dark-2.svg";
 import logoLight from "@/assets/logo-lesco-light.svg";
 import logo2Dark from "@/assets/logo-lesco-2-dark.svg";
 import logo2Light from "@/assets/logo-lesco-2-light.svg";
-import { useMarcaNova } from "@/lib/marca";
+import { useInicioDaMarca, useMarcaNova } from "@/lib/marca";
 
 /**
  * Navegação por MATERIAL no primeiro nível e por TIPO DE PRODUTO no segundo.
@@ -107,6 +107,8 @@ export function Header({ variant = "default" }: HeaderProps) {
   const saiuDoHero = useSaiuDoHero();
   /** Marca de produção ou a 2.0 em prova — ver src/lib/marca.ts. */
   const marcaNova = useMarcaNova();
+  /** Destino da logo: "/" no site, a própria rota quando se está na prova. */
+  const inicio = useInicioDaMarca();
   const [rolou, setRolou] = useState(false);
 
   useEffect(() => {
@@ -247,13 +249,13 @@ export function Header({ variant = "default" }: HeaderProps) {
               isso, é a logo (e não o menu) que absorve a compressão quando o
               nav não cabe, chegando a sumir por completo. */}
           <Link
-            to="/"
+            to={inicio}
             className="flex items-center shrink-0"
             onClick={(e) => {
-              // Estando já na home o React Router não troca de rota, então nem
-              // o ScrollToTop nem o efeito de [location] rodam: subir ao topo e
-              // fechar o menu ficam por conta daqui.
-              if (location.pathname === "/") {
+              // Estando já no destino o React Router não troca de rota, então
+              // nem o ScrollToTop nem o efeito de [location] rodam: subir ao
+              // topo e fechar o menu ficam por conta daqui.
+              if (location.pathname === inicio) {
                 e.preventDefault();
                 rolarPara(0, true);
               }
@@ -261,8 +263,7 @@ export function Header({ variant = "default" }: HeaderProps) {
             }}
           >
             {/* A MARCA DE PRODUÇÃO É O PADRÃO. A 2.0 só entra nas rotas de
-                prova ou quando a aba foi aberta com `?marca=2` — ver
-                src/lib/marca.ts.
+                prova listadas em src/lib/marca.ts, e em nenhuma outra.
 
                 A caixa muda junto com o arquivo porque as duas proporções não
                 se parecem: a de hoje é 3,17:1 e a 2.0 é 5,97:1. Reusar 93x29

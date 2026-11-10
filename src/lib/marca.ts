@@ -1,52 +1,38 @@
-import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 /**
- * Qual marca o cabeçalho desenha: a que está no ar ou a 2.0, que ainda está em
- * prova.
+ * Qual marca o cabeçalho desenha, e para onde a logo leva.
  *
  * A REGRA É: NO AR CONTINUA O QUE ESTÁ NO AR.
  *
- * O site de produção não enxerga a marca nova. Ela aparece em dois lugares, os
- * dois deliberados:
+ * O site de produção não enxerga a marca 2.0. Ela existe só nas rotas de
+ * prova listadas aqui — e isso é a regra inteira, não um caso particular dela.
  *
- *   1. nas rotas de prova listadas aqui — hoje só /lesco-new;
- *   2. em QUALQUER página, quando se abre uma vez com `?marca=2`.
- *
- * O segundo caso é o que permite percorrer o site inteiro com a marca nova sem
- * que isso valha para mais ninguém: a escolha fica em `sessionStorage`, ou
- * seja, vive dentro daquela aba e morre quando ela fecha. `?marca=1` volta ao
- * normal na hora.
- *
- * Por que não uma variável de ambiente ou um build à parte: porque a pergunta
- * que se quer responder é "como ficaria", e isso se responde abrindo o site e
- * olhando — não publicando uma segunda versão dele em algum lugar.
+ * Houve uma versão com `?marca=2`, que ligava a marca nova em qualquer página
+ * do site pela sessão da aba. Foi descartada a pedido: o que está em prova é
+ * a home nova, não o site atual vestido de novo. Se um dia a pergunta voltar
+ * a ser "como ficariam as outras páginas", ela se responde acrescentando
+ * rotas a esta lista, uma a uma — e não com um interruptor que vale para
+ * todas.
  */
 
-/** Rotas que já nascem com a marca 2.0, sem precisar de chave nenhuma. */
+/** Rotas que desenham a marca 2.0. Fora daqui, a logo é a de produção. */
 export const ROTAS_MARCA_NOVA = ["/lesco-new"];
 
-const CHAVE = "lesco_marca_2";
-
 export function useMarcaNova(): boolean {
-  const { pathname, search } = useLocation();
-  const [ligadaNaAba, setLigadaNaAba] = useState(false);
+  const { pathname } = useLocation();
+  return ROTAS_MARCA_NOVA.includes(pathname);
+}
 
-  useEffect(() => {
-    const pedido = new URLSearchParams(search).get("marca");
-    try {
-      if (pedido === "2") sessionStorage.setItem(CHAVE, "1");
-      if (pedido === "1") sessionStorage.removeItem(CHAVE);
-      setLigadaNaAba(sessionStorage.getItem(CHAVE) === "1");
-    } catch {
-      // Navegação privada com storage bloqueado: fica a marca de produção,
-      // que é o padrão seguro.
-      setLigadaNaAba(false);
-    }
-  }, [search]);
-
-  // A parte por rota é decidida sem tocar no navegador, então ela já vale no
-  // HTML pré-renderizado. A chave de sessão, não — ela só pode ser lida depois
-  // que a página monta, e por isso entra num segundo quadro.
-  return ROTAS_MARCA_NOVA.includes(pathname) || ligadaNaAba;
+/**
+ * Para onde a logo do cabeçalho leva.
+ *
+ * Dentro da prova ela volta para a PRÓPRIA prova, não para a home de
+ * produção: clicar na marca 2.0 e cair na home com a marca antiga é sair do
+ * que se estava avaliando sem pedir para sair. Fora da prova, "/" como sempre.
+ */
+export function useInicioDaMarca(): string {
+  const { pathname } = useLocation();
+  const prova = ROTAS_MARCA_NOVA.find((rota) => rota === pathname);
+  return prova ?? "/";
 }
