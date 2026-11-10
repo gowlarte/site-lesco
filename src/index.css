@@ -831,6 +831,35 @@
 
    A transição é o que falta para a volta não ser um salto: o botão já anima
    transform e opacity, mas não a posição. */
+/* Quanto o cartão recua por baixo nas telas de produto: a altura da linha do
+   nome mais o espaço até ela. Mora no :root porque três lados leem o mesmo
+   número — o cartão, a coluna de pontos e o botão do WhatsApp, que é fixo e
+   vive fora da página. Anda junto com LINHA_NOME em HeroNovo.tsx. */
+:root {
+  --hero-novo-rodape: 64px;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --hero-novo-rodape: 100px;
+  }
+}
+
+/* O recuo em si. `clip-path` e não `height`: altura que muda a cada quadro
+   remediria o cartão e as dez fotos dentro dele, e repintaria todas. O
+   recorte não mexe em layout nenhum, e o `round` mantém o canto arredondado
+   na borda nova. */
+.hero-novo-cartao {
+  clip-path: inset(0 0 calc(var(--hero-novo-rodape) * var(--hero-novo-p, 0)) 0 round 16px);
+}
+
+/* Os pontos sobem junto com a borda, senão ficariam fora do recorte. E só
+   aparecem com ela: na capa não há produto para apontar. */
+.hero-novo-pontos {
+  opacity: var(--hero-novo-p, 0);
+  transform: translate3d(0, calc(-1 * var(--hero-novo-rodape) * var(--hero-novo-p, 0)), 0);
+}
+
 .botao-whatsapp {
   transition-property: transform, opacity, bottom, right;
 }
@@ -841,18 +870,23 @@
    do produto.
 
      direita   16 (margem do cartão) + 16 de folga
-     baixo     18 (respiro) + 44 (linha do nome) + 20 (espaço) + 16 de folga
+     baixo     18 (margem do cartão) + 16 de folga, mais o recuo da vez
+
+   O recuo entra na conta porque a borda de baixo do cartão se mexe: na capa
+   ela está na margem da página e o botão pousa logo acima dela; nas telas de
+   produto ela sobe para abrir a linha do nome, e o botão sobe junto. É o
+   mesmo `--hero-novo-p` que corta o cartão.
 
    Só com `bottom`, o botão encostava na borda direita do cartão: sobravam 4px
    contra os 16 de baixo, e o canto ficava torto. */
 body.hero-novo-no-ar .botao-whatsapp {
   right: 32px;
-  bottom: 98px;
+  bottom: calc(34px + var(--hero-novo-rodape) * var(--hero-novo-p, 0));
 }
 
 @media (min-width: 1024px) {
   body.hero-novo-no-ar .botao-whatsapp {
     right: 52px;
-    bottom: 148px;
+    bottom: calc(48px + var(--hero-novo-rodape) * var(--hero-novo-p, 0));
   }
 }

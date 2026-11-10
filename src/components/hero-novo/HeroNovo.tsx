@@ -89,6 +89,23 @@ const TXT_VIAGEM = 14;
 const CAIXA = "px-4 pt-[96px] pb-[18px] sm:px-5 sm:pt-[104px] sm:pb-5 lg:px-8 lg:pt-[120px] lg:pb-8";
 const LINHA_NOME = "h-[44px] mt-5 lg:h-[72px] lg:mt-7";
 
+/**
+ * O cartão, posicionado à mão em vez de por `flex-1`.
+ *
+ * As quatro distâncias são as MESMAS da CAIXA acima — é a mesma moldura,
+ * escrita do outro jeito. Mexer numa pede mexer na outra.
+ *
+ * Por que não continuar no fluxo: o cartão precisa chegar até a margem de
+ * baixo na capa e recuar nas telas de produto, para a linha do nome aparecer.
+ * No fluxo, isso seria a ALTURA dele mudando a cada quadro — e altura que
+ * muda remede o cartão, remede as dez fotos dentro dele e repinta todas.
+ * Fixo nas quatro bordas, a altura nunca muda: o que encolhe é um recorte
+ * (`clip-path`), que não mexe em layout nenhum. Ver `.hero-novo-cartao` em
+ * index.css.
+ */
+const CARTAO =
+  "left-4 right-4 top-[96px] bottom-[18px] sm:left-5 sm:right-5 sm:top-[104px] sm:bottom-5 lg:left-8 lg:right-8 lg:top-[120px] lg:bottom-8";
+
 /** Raio do cartão, repetido na moldura e na máscara das fotos. */
 const RAIO = "rounded-[16px]";
 
@@ -118,7 +135,6 @@ export function HeroNovo() {
   const conteudosRef = useRef<Array<HTMLDivElement | null>>([]);
   /** A frase da capa, à parte: ela some pela cor, não pela opacidade. */
   const capaRef = useRef<HTMLHeadingElement>(null);
-  const pontosRef = useRef<HTMLDivElement>(null);
   /** Tela mais próxima, fora do React: o loop roda a cada quadro. */
   const ativoRef = useRef(0);
   /** Se o cartão ainda cobre a janela. Muda pouco, então guarda o último valor. */
@@ -200,11 +216,24 @@ export function HeroNovo() {
       palcoRef.current.style.backgroundColor = misturar(CORES[i], CORES[i + 1], mistura);
     }
 
-    // A coluna de pontos só existe para as telas de produto, então ela entra
-    // junto com a primeira delas.
-    if (pontosRef.current) {
-      pontosRef.current.style.opacity = suave(pos, CORTE_INICIO, CORTE_FIM).toFixed(3);
-    }
+    /*
+     * UM NÚMERO SÓ, TRÊS EFEITOS.
+     *
+     * `--hero-novo-p` vai de 0 na capa a 1 na primeira tela de produto, pela
+     * mesma curva do corte da foto. Quem o lê é o CSS:
+     *
+     *   o cartão recua por baixo, abrindo a faixa onde o nome entra;
+     *   a coluna de pontos sobe junto, para não ficar fora do recorte;
+     *   o botão do WhatsApp acompanha a nova borda do cartão.
+     *
+     * Uma escrita por quadro, numa propriedade que ninguém mede: o recuo é
+     * `clip-path` e a subida é `transform`, então nada disso causa layout.
+     * Mora no <html> porque o botão do WhatsApp é fixo e vive fora da página.
+     */
+    document.documentElement.style.setProperty(
+      "--hero-novo-p",
+      suave(pos, CORTE_INICIO, CORTE_FIM).toFixed(4),
+    );
 
     /*
      * O BOTÃO DO WHATSAPP SÓ SOBE ENQUANTO O HERO ESTÁ NA TELA.
@@ -233,9 +262,15 @@ export function HeroNovo() {
     }
   }, [medir, semMovimento]);
 
-  // Sair da rota não pode deixar a marca no corpo da página: o botão ficaria
-  // alto em todas as outras.
-  useEffect(() => () => document.body.classList.remove("hero-novo-no-ar"), []);
+  // Sair da rota não pode deixar rastro: a classe deixaria o botão alto em
+  // todas as outras páginas, e a variável, meio encolhido.
+  useEffect(
+    () => () => {
+      document.body.classList.remove("hero-novo-no-ar");
+      document.documentElement.style.removeProperty("--hero-novo-p");
+    },
+    [],
+  );
 
   useLoopDeScroll(desenhar);
   useSomenteAtivoInterativo(conteudosRef, ativo);
@@ -277,11 +312,11 @@ export function HeroNovo() {
         className="hero-novo-palco sticky top-0 h-[100dvh] overflow-hidden"
         style={{ backgroundColor: telaCapa.fundo }}
       >
-        {/* ---------- Esqueleto: o cartão e a linha do nome ----------
+        {/* ---------- Esqueleto: o cartão ----------
              É esta moldura que define onde tudo cai. As telas desenham por
              cima dela, na mesma caixa. */}
-        <div className={"relative h-full flex flex-col " + CAIXA}>
-          <div className={"relative flex-1 min-h-0 overflow-hidden " + RAIO}>
+        <div className="relative h-full">
+          <div className={"hero-novo-cartao absolute overflow-hidden " + RAIO + " " + CARTAO}>
             {/* Camadas de foto, uma por tela, na ordem de baixo para cima. */}
             {telas.map((tela, i) => (
               <div
@@ -320,10 +355,8 @@ export function HeroNovo() {
                  é a única coisa que ele faz. A capa fica de fora — ela não é
                  produto, e lá a coluna ainda não entrou. */}
             <div
-              ref={pontosRef}
               aria-hidden="true"
-              className="absolute left-3 bottom-3 z-20 lg:left-5 lg:bottom-5"
-              style={{ opacity: 0 }}
+              className="hero-novo-pontos absolute left-3 bottom-3 z-20 lg:left-5 lg:bottom-5"
             >
               {telasProduto.map((tela, i) => (
                 <div
@@ -342,13 +375,6 @@ export function HeroNovo() {
               ))}
             </div>
           </div>
-
-          {/* A linha do nome fica SEMPRE reservada, inclusive na capa, que não
-              tem nome nenhum. Animar a altura do cartão na troca significaria
-              remedir e repintar a foto a cada quadro — o preço de um layout
-              mais fiel ao mockup seria justamente o engasgo que não pode
-              acontecer. Na capa, então, sobram estes 44px de cor embaixo. */}
-          <div className={"shrink-0 " + LINHA_NOME} />
 
           {/* O cabeçalho só fica transparente enquanto não passou do hero, e
               quem diz isso é este marcador (ver hooks/useSaiuDoHero). Fica na
@@ -396,7 +422,7 @@ export function HeroNovo() {
                  e pousa dentro do cartão (ver `body:has(.hero-novo)` em
                  index.css). Sem ele a última linha passa por baixo do botão,
                  e botão de z-60 não se discute: ele ganha. */
-              className="absolute inset-0 flex flex-col justify-around px-4 pb-14 lg:px-8 lg:pb-[84px]"
+              className="absolute inset-0 flex flex-col justify-around px-4 pb-[76px] lg:px-8 lg:pb-[84px]"
               style={{ color: "#ffffff", mixBlendMode: "difference" }}
             >
               <span className="sr-only">Arquitetura feita para o amanhã.</span>
@@ -420,7 +446,8 @@ export function HeroNovo() {
               ))}
             </h1>
           </div>
-          <div className={"shrink-0 " + LINHA_NOME} />
+          {/* Sem linha do nome aqui: a capa não tem nome, e é por isso que o
+              cartão dela desce até a margem de baixo. */}
         </div>
 
         {/* ---------- Telas 02..10 — uma por produto ---------- */}
