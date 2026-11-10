@@ -832,15 +832,27 @@
    A transição é o que falta para a volta não ser um salto: o botão já anima
    transform e opacity, mas não a posição. */
 .botao-whatsapp {
-  transition-property: transform, opacity, bottom;
+  transition-property: transform, opacity, bottom, right;
 }
 
+/* As duas distâncias são a MESMA conta, em eixos diferentes: a margem do
+   cartão mais uma folga. Em baixo entram também a linha do nome e o espaço
+   até ela, que é o que o botão tem de pular para não pousar em cima do nome
+   do produto.
+
+     direita   16 (margem do cartão) + 16 de folga
+     baixo     18 (respiro) + 44 (linha do nome) + 20 (espaço) + 16 de folga
+
+   Só com `bottom`, o botão encostava na borda direita do cartão: sobravam 4px
+   contra os 16 de baixo, e o canto ficava torto. */
 body.hero-novo-no-ar .botao-whatsapp {
+  right: 32px;
   bottom: 98px;
 }
 
 @media (min-width: 1024px) {
   body.hero-novo-no-ar .botao-whatsapp {
+    right: 52px;
     bottom: 148px;
   }
 }
