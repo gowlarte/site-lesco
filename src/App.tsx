@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { localizePath, ROUTE_KEYS } from "@/i18n/routes";
 import { isEN } from "@/i18n/locale";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -55,8 +56,105 @@ import PoliticaPrivacidade from "./pages/PoliticaPrivacidade";
 import TermosServico from "./pages/TermosServico";
 import FormularioTeste from "./pages/FormularioTeste";
 import LescoNew from "./pages/LescoNew";
+import { PREFIXO_PROVA } from "@/lib/marca";
 
 const queryClient = new QueryClient();
+
+/** `/quem-somos` -> `quem-somos`, já no slug do locale ativo. */
+const rel = (pt: string) => localizePath(pt).replace(/^\//, "");
+
+/**
+ * As páginas do site, com caminho RELATIVO.
+ *
+ * Existem duas árvores que as servem: a da raiz, que é o site no ar, e a de
+ * /lesco-new, que é o MESMO site com a marca 2.0 no cabeçalho. Por isso os
+ * caminhos não começam com barra — assim o mesmo <Route> casa em
+ * `/quem-somos` e em `/lesco-new/quem-somos`, sem uma segunda lista para
+ * manter em dia.
+ *
+ * Ficam de fora os redirecionamentos de slug antigo e os de locale: aqueles
+ * são rede de proteção para links que existem no mundo, e link do mundo não
+ * aponta para dentro de uma prova.
+ */
+function paginasDoSite() {
+  return (
+    <>
+      {/* Sobre */}
+      <Route path={rel("/quem-somos")} element={<QuemSomos />} />
+      <Route path={rel("/revestimento-sustentavel")} element={<Sustentabilidade />} />
+
+      {/* Madeira Ecológica — hub e produtos (na raiz) */}
+      <Route path={rel("/madeira-ecologica-lesco")} element={<Manto />} />
+      <Route path={rel("/brise-madeira-ecologica")} element={<MantoBrise />} />
+      <Route path={rel("/madeira-ecologica-para-fachada")} element={<MantoShield />} />
+      <Route path={rel("/madeira-ecologica-para-deck")} element={<MantoDeck />} />
+      <Route path={rel("/forro-line")} element={<MantoLine />} />
+      <Route path={rel("/lesco-panel")} element={<MantoPanel />} />
+      <Route path={rel("/muxarabi-madeira-ecologica")} element={<Muxarabi />} />
+
+      {/* Zhú (bambu) — hub e produtos por família */}
+      <Route path={rel("/painel-bambu")} element={<ZhuPaineis />} />
+      <Route path={rel("/painel-acustico-bambu")} element={<ZhuAcusticos />} />
+      <Route path={rel("/brise-bambu")} element={<ZhuBrises />} />
+      <Route path={rel("/deck-bambu")} element={<ZhuDecks />} />
+
+      {/* Outros */}
+      <Route path={rel("/catalogo-lesco")} element={<Catalogo />} />
+      <Route path={rel("/biblioteca")} element={<Biblioteca />} />
+      <Route path={rel("/orcamento")} element={<Orcamento />} />
+      <Route path={rel("/obrigado")} element={<Obrigado />} />
+      <Route path={rel("/obrigado-orcamento")} element={<ObrigadoOrcamento />} />
+      <Route path={rel("/obrigado-catalogo")} element={<ObrigadoCatalogo />} />
+      <Route path={rel("/obrigado-whats")} element={<ObrigadoWhats />} />
+      <Route path={rel("/obrigado-catalogo-geo")} element={<ObrigadoCatalogoGeo />} />
+      <Route path={rel("/obrigado-catalogo-zhu")} element={<ObrigadoCatalogoZhu />} />
+      <Route path={rel("/portfolio")} element={<Portfolio />} />
+      <Route path={rel("/projetos/:slug")} element={<PortfolioProjeto />} />
+      <Route path={rel("/blog")} element={<Blog />} />
+      <Route path={rel("/blog/:slug")} element={<BlogArtigo />} />
+      <Route path={rel("/linhas")} element={<Linhas />} />
+
+      {/* Linhas */}
+      <Route path={rel("/zhu")} element={<Zhu />} />
+      <Route path={rel("/echo")} element={<LinhaEmBreve />} />
+      <Route path={rel("/geo")} element={<Geo />} />
+      <Route path={rel("/live-lesco")} element={<LiveLesco />} />
+      <Route path={rel("/live-lesco-amostra")} element={<LiveLescoAmostra />} />
+      <Route path={rel("/em-breve/:linha")} element={<LinhaEmBreve />} />
+      <Route path={rel("/politica-de-privacidade")} element={<PoliticaPrivacidade />} />
+      <Route path={rel("/termos-de-servico")} element={<TermosServico />} />
+      <Route path="formulario-teste" element={<FormularioTeste />} />
+    </>
+  );
+}
+
+/**
+ * O site de prova: as mesmas páginas, servidas sob /lesco-new.
+ *
+ * O <Routes> aninhado casa contra o que sobra do caminho depois do prefixo,
+ * e é só isso que faz a prova existir — nenhuma página foi copiada. Quem
+ * troca o logotipo é o cabeçalho, que pergunta pelo caminho (ver
+ * src/lib/marca.ts); quem mantém a navegação dentro da prova é o
+ * <Link> do site (ver src/components/AppLink.tsx).
+ *
+ * O `noindex` vale para a subárvore inteira: as páginas de dentro não são
+ * pré-renderizadas e não emitem robots próprio, então sem isto elas sairiam
+ * com a mesma dica do index.html.
+ */
+function SiteDeProva() {
+  return (
+    <>
+      <Helmet>
+        <meta name="robots" content="noindex" />
+      </Helmet>
+      <Routes>
+        <Route index element={<LescoNew />} />
+        {paginasDoSite()}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
+  );
+}
 
 const AppContent = () => {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -64,7 +162,10 @@ const AppContent = () => {
   const location = useLocation();
   /* Páginas cujo hero ocupa a tela inteira e pede cabeçalho transparente
      por cima. /lesco-new é a prova da marca 2.0 — ver src/pages/LescoNew. */
-  const isHome = location.pathname === "/" || location.pathname === "/lesco-new";
+  /* Cabeçalho transparente sobre o hero: nas DUAS homes, a de produção e a
+     da prova. Dentro da prova, as outras páginas se comportam como as de
+     produção — o que muda ali é só o logotipo. */
+  const isHome = location.pathname === "/" || location.pathname === PREFIXO_PROVA;
 
   usePageTracking();
   useUtmForwarder();
@@ -89,54 +190,12 @@ const AppContent = () => {
               locale ativo (no build EN vira o slug em inglês). */}
           <Route path={localizePath("/")} element={<Index />} />
 
-          {/* Sobre */}
-          <Route path={localizePath("/quem-somos")} element={<QuemSomos />} />
-          <Route path={localizePath("/revestimento-sustentavel")} element={<Sustentabilidade />} />
+          {paginasDoSite()}
 
-          {/* Madeira Ecológica — hub e produtos (na raiz) */}
-          <Route path={localizePath("/madeira-ecologica-lesco")} element={<Manto />} />
-          <Route path={localizePath("/brise-madeira-ecologica")} element={<MantoBrise />} />
-          <Route path={localizePath("/madeira-ecologica-para-fachada")} element={<MantoShield />} />
-          <Route path={localizePath("/madeira-ecologica-para-deck")} element={<MantoDeck />} />
-          <Route path={localizePath("/forro-line")} element={<MantoLine />} />
-          <Route path={localizePath("/lesco-panel")} element={<MantoPanel />} />
-          <Route path={localizePath("/muxarabi-madeira-ecologica")} element={<Muxarabi />} />
-
-          {/* Zhú (bambu) — hub e produtos por família */}
-          <Route path={localizePath("/painel-bambu")} element={<ZhuPaineis />} />
-          <Route path={localizePath("/painel-acustico-bambu")} element={<ZhuAcusticos />} />
-          <Route path={localizePath("/brise-bambu")} element={<ZhuBrises />} />
-          <Route path={localizePath("/deck-bambu")} element={<ZhuDecks />} />
-
-          {/* Outros */}
-          <Route path={localizePath("/catalogo-lesco")} element={<Catalogo />} />
-          <Route path={localizePath("/biblioteca")} element={<Biblioteca />} />
-          <Route path={localizePath("/orcamento")} element={<Orcamento />} />
-          <Route path={localizePath("/obrigado")} element={<Obrigado />} />
-          <Route path={localizePath("/obrigado-orcamento")} element={<ObrigadoOrcamento />} />
-          <Route path={localizePath("/obrigado-catalogo")} element={<ObrigadoCatalogo />} />
-          <Route path={localizePath("/obrigado-whats")} element={<ObrigadoWhats />} />
-          <Route path={localizePath("/obrigado-catalogo-geo")} element={<ObrigadoCatalogoGeo />} />
-          <Route path={localizePath("/obrigado-catalogo-zhu")} element={<ObrigadoCatalogoZhu />} />
-          <Route path={localizePath("/portfolio")} element={<Portfolio />} />
-          <Route path={localizePath("/projetos/:slug")} element={<PortfolioProjeto />} />
-          <Route path={localizePath("/blog")} element={<Blog />} />
-          <Route path={localizePath("/blog/:slug")} element={<BlogArtigo />} />
-          <Route path={localizePath("/linhas")} element={<Linhas />} />
-
-          {/* Linhas */}
-          <Route path={localizePath("/zhu")} element={<Zhu />} />
-          <Route path={localizePath("/echo")} element={<LinhaEmBreve />} />
-          <Route path={localizePath("/geo")} element={<Geo />} />
-          <Route path={localizePath("/live-lesco")} element={<LiveLesco />} />
-          <Route path={localizePath("/live-lesco-amostra")} element={<LiveLescoAmostra />} />
-          <Route path={localizePath("/em-breve/:linha")} element={<LinhaEmBreve />} />
-          <Route path={localizePath("/politica-de-privacidade")} element={<PoliticaPrivacidade />} />
-          <Route path={localizePath("/termos-de-servico")} element={<TermosServico />} />
-          <Route path="/formulario-teste" element={<FormularioTeste />} />
-          {/* Prova interna da marca 2.0. Fora do menu, fora do sitemap e com
-              noindex — ver o cabeçalho de src/pages/LescoNew.tsx. */}
-          <Route path="/lesco-new" element={<LescoNew />} />
+          {/* O site de prova da marca 2.0: as MESMAS páginas sob /lesco-new,
+              com o logotipo novo. Fora do menu, fora do sitemap e com noindex
+              — ver src/pages/LescoNew.tsx e src/lib/marca.ts. */}
+          <Route path={PREFIXO_PROVA + "/*"} element={<SiteDeProva />} />
 
           {/* No build EN, os slugs PT redirecionam para o slug EN canônico
               (rede de proteção para links/URLs antigos com slug em português). */}

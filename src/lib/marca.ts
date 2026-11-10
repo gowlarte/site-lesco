@@ -1,38 +1,72 @@
 import { useLocation } from "react-router-dom";
 
 /**
- * Qual marca o cabeçalho desenha, e para onde a logo leva.
+ * Onde o site de prova mora, e qual marca cada caminho desenha.
  *
- * A REGRA É: NO AR CONTINUA O QUE ESTÁ NO AR.
+ * SÃO DOIS SITES, NÃO DUAS PÁGINAS.
  *
- * O site de produção não enxerga a marca 2.0. Ela existe só nas rotas de
- * prova listadas aqui — e isso é a regra inteira, não um caso particular dela.
+ * O site que está no ar vive na raiz e continua com o logotipo de hoje. Sob
+ * `/lesco-new` vive o MESMO site — as mesmas páginas, os mesmos componentes —
+ * com duas diferenças: a home tem o hero 2.0 e o cabeçalho desenha a marca
+ * 2.0. Clicar numa linha lá dentro leva a `/lesco-new/brise-madeira-ecologica`,
+ * que é a página de sempre com o logotipo novo.
  *
- * Houve uma versão com `?marca=2`, que ligava a marca nova em qualquer página
- * do site pela sessão da aba. Foi descartada a pedido: o que está em prova é
- * a home nova, não o site atual vestido de novo. Se um dia a pergunta voltar
- * a ser "como ficariam as outras páginas", ela se responde acrescentando
- * rotas a esta lista, uma a uma — e não com um interruptor que vale para
- * todas.
+ * Nada disso é cópia. Quem serve as duas árvores com uma lista só de páginas é
+ * `paginasDoSite()` em src/App.tsx; quem mantém a navegação dentro da prova é
+ * o <Link> do site, em src/components/AppLink.tsx; e quem troca o logotipo é o
+ * cabeçalho, perguntando daqui.
+ *
+ * Houve antes uma versão com `?marca=2`, que vestia o site de produção com a
+ * marca nova pela sessão da aba. Foi descartada a pedido: a prova tem de ter
+ * endereço próprio, para ser aberta, mandada por link e fechada sem deixar
+ * rastro em nada.
  */
 
-/** Rotas que desenham a marca 2.0. Fora daqui, a logo é a de produção. */
-export const ROTAS_MARCA_NOVA = ["/lesco-new"];
+/** O caminho onde o site de prova começa. */
+export const PREFIXO_PROVA = "/lesco-new";
 
+/** Se um caminho está dentro do site de prova. A raiz dele conta. */
+export function dentroDaProva(caminho: string): boolean {
+  return caminho === PREFIXO_PROVA || caminho.startsWith(PREFIXO_PROVA + "/");
+}
+
+/** Se a página atual desenha a marca 2.0. */
 export function useMarcaNova(): boolean {
-  const { pathname } = useLocation();
-  return ROTAS_MARCA_NOVA.includes(pathname);
+  return dentroDaProva(useLocation().pathname);
+}
+
+/**
+ * Devolve a função que mantém um destino dentro da prova.
+ *
+ * Fora dela, devolve o caminho intacto — então usar isto não muda nada no
+ * site de produção. Dentro, acrescenta o prefixo, e é o que impede um clique
+ * de jogar o leitor de volta no site antigo no meio da avaliação.
+ *
+ * A query e a âncora ficam de fora da comparação: quem diz se o link já está
+ * dentro da prova é o caminho, não o `?utm_content` que vem colado nele.
+ *
+ * Mora aqui, e não dentro do <Link>, porque há dois jeitos de navegar neste
+ * site: o <Link> de src/components/AppLink.tsx e o <a> cru do BotaoCTA. A
+ * regra tem de ser a mesma nos dois, e uma regra em dois lugares é uma regra
+ * que vai divergir.
+ */
+export function useCaminhoDaProva(): (caminho: string) => string {
+  const dentro = dentroDaProva(useLocation().pathname);
+
+  return (caminho: string) => {
+    if (!dentro || !caminho.startsWith("/")) return caminho;
+    if (dentroDaProva(caminho.split(/[?#]/)[0])) return caminho;
+    return caminho === "/" ? PREFIXO_PROVA : PREFIXO_PROVA + caminho;
+  };
 }
 
 /**
  * Para onde a logo do cabeçalho leva.
  *
- * Dentro da prova ela volta para a PRÓPRIA prova, não para a home de
- * produção: clicar na marca 2.0 e cair na home com a marca antiga é sair do
- * que se estava avaliando sem pedir para sair. Fora da prova, "/" como sempre.
+ * Dentro da prova ela volta para a home DA PROVA, não para a de produção:
+ * clicar na marca 2.0 e cair na home com a marca antiga é sair do que se
+ * estava avaliando sem ter pedido para sair.
  */
 export function useInicioDaMarca(): string {
-  const { pathname } = useLocation();
-  const prova = ROTAS_MARCA_NOVA.find((rota) => rota === pathname);
-  return prova ?? "/";
+  return dentroDaProva(useLocation().pathname) ? PREFIXO_PROVA : "/";
 }

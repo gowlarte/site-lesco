@@ -6,7 +6,7 @@
  * o fast refresh no dev.
  */
 
-import { ROTAS_MARCA_NOVA } from "./marca";
+import { dentroDaProva } from "./marca";
 
 const CHAVE_SESSAO = "lesco_splash_visto";
 
@@ -24,11 +24,12 @@ const CHAVE_SESSAO = "lesco_splash_visto";
 export function deveMostrarSplash(): boolean {
   if (typeof window === "undefined") return false;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
-  // As rotas de prova da marca 2.0 têm abertura própria (o símbolo novo sobre
-  // o escuro, segurando as fotos). Deixar esta aqui rodar antes significaria
-  // apresentar a marca ANTIGA em cima da página que existe para mostrar a
-  // nova. Ver src/lib/marca.ts e src/components/hero-novo/LoaderMarca.tsx.
-  if (ROTAS_MARCA_NOVA.includes(window.location.pathname)) return false;
+  // O site de prova não vê esta abertura. Ela desenha a marca ANTIGA, e
+  // apresentá-la por cima do site que existe para mostrar a nova seria o
+  // contrário do que a prova serve. A home de lá tem abertura própria — o
+  // símbolo novo sobre o escuro, segurando as fotos do hero. Ver
+  // src/lib/marca.ts e src/components/hero-novo/LoaderMarca.tsx.
+  if (dentroDaProva(window.location.pathname)) return false;
   try {
     return !sessionStorage.getItem(CHAVE_SESSAO);
   } catch {

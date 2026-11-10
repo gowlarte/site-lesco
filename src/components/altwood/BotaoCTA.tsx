@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { localizePath } from "@/i18n/routes";
+import { useCaminhoDaProva } from "@/lib/marca";
 
 interface BotaoCTAProps {
   variant?: "primary" | "secondary" | "ghost";
@@ -23,8 +24,13 @@ export const BotaoCTA = ({ variant = "primary", children, onClick, className, hr
 
   const cls = cn(base, styles[variant], className);
 
+  // Este botão navega por <a> cru, e não pelo <Link> do site — o que também
+  // significa recarregar a página inteira. Mantido assim; o que se acrescenta
+  // aqui é só o prefixo do site de prova, que fora dele não muda nada.
+  const manterNaProva = useCaminhoDaProva();
+
   if (href) {
-    return <a href={localizePath(href)} className={cls} onClick={onClick}>{children}{variant === "ghost" && <span>→</span>}</a>;
+    return <a href={manterNaProva(localizePath(href))} className={cls} onClick={onClick}>{children}{variant === "ghost" && <span>→</span>}</a>;
   }
 
   return (
