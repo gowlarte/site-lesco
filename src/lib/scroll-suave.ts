@@ -132,6 +132,44 @@ export function assinarScroll(callback: () => void): () => void {
  * `window.scrollTo({behavior:"smooth"})` nativo brigaria com a interpolação e
  * as duas animações se anulariam no meio do caminho.
  */
+/**
+ * Vai ao topo NA HORA, matando qualquer rolagem suave em curso. É o que a
+ * troca de página usa (ver ScrollToTop).
+ *
+ * Um `window.scrollTo(0, 0)` sozinho não basta, e era esse o defeito de
+ * "clico num projeto e a página abre no fim": enquanto o Lenis está no meio
+ * de uma rolagem suave ele ignora rolagem vinda de fora (só aceita a posição
+ * nativa quando não está animando). A página nova ia ao topo e, no quadro
+ * seguinte, o Lenis seguia rumo ao destino antigo — ~11.000px na home, o que
+ * numa página de projeto mais curta é o rodapé. Basta clicar enquanto a roda
+ * do mouse ainda está deslizando, que é o normal.
+ *
+ * `scrollTo` com `immediate` zera a animação dele; `force`, porque com o
+ * menu mobile aberto o Lenis está parado e recusaria; `resize()` antes,
+ * porque o teto que ele guarda ainda é o da página anterior.
+ */
+export function irAoTopoJa() {
+  if (instancia) {
+    instancia.resize();
+    instancia.scrollTo(0, { immediate: true, force: true });
+  }
+  window.scrollTo(0, 0);
+}
+
+/**
+ * Rola até um elemento (âncora `#id` numa troca de página). Pelo Lenis quando
+ * ele existe, pelo mesmo motivo de `irAoTopoJa`: um `scrollIntoView` nativo
+ * no meio de uma rolagem suave seria desfeito por ele no quadro seguinte.
+ */
+export function rolarAteElemento(el: HTMLElement, suave: boolean) {
+  if (instancia) {
+    instancia.resize();
+    instancia.scrollTo(el, { force: true, ...(suave ? { duration: 1.1 } : { immediate: true }) });
+    return;
+  }
+  el.scrollIntoView({ behavior: suave ? "smooth" : "auto", block: "start" });
+}
+
 export function rolarPara(top: number, suave: boolean, duracao = 1.1) {
   if (instancia) {
     instancia.scrollTo(top, suave ? { duration: duracao } : { immediate: true });
