@@ -93,6 +93,20 @@ const DURACAO_GESTO = 0.75;
 /** Por quanto tempo depois de soltar o dedo uma rolagem ainda é inércia. */
 const JANELA_INERCIA = 2500;
 
+/**
+ * Tira um evento de toque das mãos do Lenis.
+ *
+ * Com o dedo o Lenis não anima nada (`syncTouch` desligado), mas a cada
+ * `touchmove` e `touchend` ele PARA a animação dele que estiver em curso
+ * (`animate.stop()`, em `onVirtualScroll`). A troca de tela do gesto é uma
+ * animação dele — então o movimento seguinte do mesmo dedo a matava depois de
+ * um quadro, e o hero não saía do lugar. `lenisStopPropagation` é a marca que
+ * o próprio Lenis confere logo na entrada para ignorar o evento.
+ */
+function doPalcoSo(e: TouchEvent) {
+  (e as TouchEvent & { lenisStopPropagation?: boolean }).lenisStopPropagation = true;
+}
+
 export function useUmGestoPorTela(
   trilhoRef: React.RefObject<HTMLElement>,
   medir: Medidor,
@@ -185,6 +199,7 @@ export function useUmGestoPorTela(
       }
 
       if (e.cancelable) e.preventDefault();
+      doPalcoSo(e);
       if (disparou || Math.abs(dy) < LIMIAR_GESTO || Math.abs(dy) < Math.abs(dx)) return;
       disparou = true;
       ir(base(m) + (dy > 0 ? 1 : -1));
@@ -194,6 +209,9 @@ export function useUmGestoPorTela(
       if (e.touches.length > 0) return;
       dedo = false;
       const m = medir();
+      // A soltura de um gesto do palco também é do palco: é nela que o Lenis
+      // mataria a troca que o gesto acabou de começar.
+      if (dono === "nosso") doPalcoSo(e);
       if (dono === "nosso" && !disparou && m) {
         // Gesto curto demais para trocar, mas que pode ter deixado o palco
         // fora do lugar se começou no meio de uma animação: assenta.
@@ -203,6 +221,7 @@ export function useUmGestoPorTela(
         if (y > m.inicio + 1 && y < fim(m) - 1) {
           // Uma rolagem nativa (vinda de fora do trilho) deixou o palco no meio
           // de uma troca: leva à tela mais próxima.
+          doPalcoSo(e);
           ir(Math.round(m.pos));
         } else if (y > fim(m)) {
           inerciaAte = performance.now() + JANELA_INERCIA;
@@ -227,16 +246,20 @@ export function useUmGestoPorTela(
       }
     };
 
-    window.addEventListener("touchstart", aoTocar, { passive: true });
-    window.addEventListener("touchmove", aoMover, { passive: false });
-    window.addEventListener("touchend", aoSoltar, { passive: true });
-    window.addEventListener("touchcancel", aoSoltar, { passive: true });
+    // Captura, e não bolha: o Lenis escuta os mesmos eventos na janela, na
+    // bolha. Na captura este hook roda SEMPRE antes dele — inclusive quando o
+    // hero remonta ao voltar para a home, já com o Lenis pendurado antes —, e
+    // a marca de `doPalcoSo` chega a tempo.
+    window.addEventListener("touchstart", aoTocar, { passive: true, capture: true });
+    window.addEventListener("touchmove", aoMover, { passive: false, capture: true });
+    window.addEventListener("touchend", aoSoltar, { passive: true, capture: true });
+    window.addEventListener("touchcancel", aoSoltar, { passive: true, capture: true });
     window.addEventListener("scroll", aoRolar, { passive: true });
     return () => {
-      window.removeEventListener("touchstart", aoTocar);
-      window.removeEventListener("touchmove", aoMover);
-      window.removeEventListener("touchend", aoSoltar);
-      window.removeEventListener("touchcancel", aoSoltar);
+      window.removeEventListener("touchstart", aoTocar, { capture: true });
+      window.removeEventListener("touchmove", aoMover, { capture: true });
+      window.removeEventListener("touchend", aoSoltar, { capture: true });
+      window.removeEventListener("touchcancel", aoSoltar, { capture: true });
       window.removeEventListener("scroll", aoRolar);
     };
   }, [trilhoRef, medir, total, suavizar]);
