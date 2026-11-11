@@ -18,6 +18,10 @@
  * - Aqui a ROLAGEM DA PÁGINA gira a câmera, por `apontar()`. É o gesto
  *   principal da seção: quanto mais se rola, mais a sala vira, e voltar a
  *   página desfaz o giro. Lá nada disso existe — o overlay sela o scroll.
+ * - Aqui o visor pode ser TRAVADO (`travar()`), que é como ele vive no
+ *   celular: nada de dedo, nada de rolagem, nada de porta — só um pan lento e
+ *   constante pela sala. No toque, o dedo que descia a página também girava a
+ *   câmera, e a soma dos dois fazia a sala rodar em torno de si mesma.
  *
  * Este módulo é o único do arquivo que importa three, e entra por import
  * dinâmico: nada disto viaja no bundle de quem só abre a home e não rola.
@@ -85,6 +89,11 @@ const PASSO_TECLA = 0.08;
 const PASSO_ZOOM = 1.18;
 /** Metade do anel da porta, em pixels de tela. Casa com `.porta-360__anel`. */
 const RAIO_MARCA = 13;
+/**
+ * O pan do visor travado, em radianos por segundo. 4º/s é o que lê como
+ * câmera passeando e não como sala rodando: uma volta inteira levaria 90s.
+ */
+const DERIVA = (4 * Math.PI) / 180;
 
 /**
  * Quantos panoramas podem estar na GPU ao mesmo tempo. Um 4096x2048 é 32 MB
@@ -171,6 +180,12 @@ export interface OpcoesVisor {
   /** `nome` já traduzido -> o rótulo do botão de porta. */
   rotuloPorta: (nome: string) => string;
   aoMudar: (estado: EstadoVisor) => void;
+  /**
+   * Quanto tempo cada sala fica na tela com o visor travado. Serve para o pan
+   * começar ANTES do enquadramento autoral e passar por ele no meio da vez, em
+   * vez de partir dele e terminar olhando para outra coisa.
+   */
+  segundosPorCena?: number;
 }
 
 export interface Visor {
@@ -193,13 +208,20 @@ export interface Visor {
    * andado, e escolher na tira é outra coisa.
    */
   irParaCena(id: string): void;
+  /**
+   * Trava e destrava o visor. Travado, ele ignora ponteiro, teclado e rolagem,
+   * esconde as portas e passeia sozinho pela sala.
+   */
+  travar(sim: boolean): void;
+  /** Começa a baixar o panorama de uma sala que vai entrar em breve. */
+  aquecer(id: string): void;
   destruir(): void;
 }
 
 // -------------------------------------------------------------------- visor
 
 export function criarVisor(opcoes: OpcoesVisor): Visor {
-  const { tela, palco, marcas, cenas, rotuloPorta, aoMudar } = opcoes;
+  const { tela, palco, marcas, cenas, rotuloPorta, aoMudar, segundosPorCena = 12 } = opcoes;
   const porId = new Map(cenas.map((c) => [c.id, c]));
 
   let renderizador: WebGLRenderer | null = null;
@@ -318,6 +340,8 @@ export function criarVisor(opcoes: OpcoesVisor): Visor {
   let velPitch = 0;
 
   let travessia: Travessia | null = null;
+  /** Ver `travar()`. */
+  let travado = false;
   /** As salas por onde se passou, e por onde se saiu de cada uma. */
   const trilha: Passo[] = [];
 
@@ -451,8 +475,13 @@ export function criarVisor(opcoes: OpcoesVisor): Visor {
 
   function pintar() {
     if (!renderizador) return;
-    camera.rotation.y = yaw + yawDaRolagem;
-    camera.rotation.x = limita(pitch + pitchDaRolagem, -LIMITE_PITCH, LIMITE_PITCH);
+    // Travado, a rolagem não conta: era justamente ela que girava a sala.
+    camera.rotation.y = yaw + (travado ? 0 : yawDaRolagem);
+    camera.rotation.x = limita(
+      pitch + (travado ? 0 : pitchDaRolagem),
+      -LIMITE_PITCH,
+      LIMITE_PITCH,
+    );
     camera.fov = fov;
     camera.updateProjectionMatrix();
     // Antes de posicionar as marcas, e não depois: quem atualiza a matriz de
@@ -505,6 +534,13 @@ export function criarVisor(opcoes: OpcoesVisor): Visor {
       }
     }
 
+    // O pan do visor travado: a única coisa que se move sozinha nesta tela, e
+    // só com o visor travado e sem pedido de menos movimento.
+    if (travado && !travessia && !menosMovimento.matches) {
+      yaw += DERIVA * dt;
+      mexendo = true;
+    }
+
     if (travessia) {
       travessia.t = Math.min(1, travessia.t + dt / TRAVESSIA);
       const t = suaviza(travessia.t);
@@ -544,8 +580,8 @@ export function criarVisor(opcoes: OpcoesVisor): Visor {
     }
 
     pintar();
-    // Nada nesta tela se move sozinho: uma vista assentada desenha uma vez e
-    // para, que é a diferença entre um visor e um protetor de tela.
+    // Destravado, nada nesta tela se move sozinho: uma vista assentada desenha
+    // uma vez e para, que é a diferença entre um visor e um protetor de tela.
     if (mexendo) pedirQuadro();
     else ultimo = 0;
   }
@@ -655,7 +691,9 @@ export function criarVisor(opcoes: OpcoesVisor): Visor {
     entrando.material.map = null;
 
     if (!manterVista) {
-      yaw = cena.vista.yaw;
+      // Travado, o pan recua meia vez: assim o enquadramento autoral passa
+      // pelo meio da tela no meio do tempo da sala.
+      yaw = cena.vista.yaw - (travado ? (DERIVA * segundosPorCena) / 2 : 0);
       pitch = limita(cena.vista.pitch, -LIMITE_PITCH, LIMITE_PITCH);
       fov = abertura(cena);
     }
@@ -748,7 +786,7 @@ export function criarVisor(opcoes: OpcoesVisor): Visor {
   const porPixel = () => emRad(fov) / Math.max(1, palco.clientHeight);
 
   function aoPressionar(evento: PointerEvent) {
-    if (travessia) return;
+    if (travessia || travado) return;
     dedos.set(evento.pointerId, { x: evento.clientX, y: evento.clientY });
     if (dedos.size === 2) {
       const [a, b] = [...dedos.values()];
@@ -838,7 +876,7 @@ export function criarVisor(opcoes: OpcoesVisor): Visor {
   }
 
   function aoTeclar(evento: KeyboardEvent) {
-    if (travessia) return;
+    if (travessia || travado) return;
     const passos: Record<string, () => void> = {
       ArrowLeft: () => (yaw -= PASSO_TECLA),
       ArrowRight: () => (yaw += PASSO_TECLA),
@@ -918,6 +956,30 @@ export function criarVisor(opcoes: OpcoesVisor): Visor {
       if (!cena || cena === atual || travessia) return;
       trilha.length = 0;
       irPara(cena, false);
+    },
+    travar(sim: boolean) {
+      if (travado === sim) return;
+      travado = sim;
+      if (sim) {
+        palco.dataset.travado = "sim";
+        // Um arrasto em curso não termina sozinho: sem soltar aqui, a sala
+        // ficaria presa no último dedo.
+        arrastando = false;
+        ponteiro = -1;
+        dedos.clear();
+        pinca = 0;
+        velYaw = 0;
+        velPitch = 0;
+        delete palco.dataset.arrastando;
+      } else {
+        delete palco.dataset.travado;
+      }
+      ultimo = 0;
+      pedirQuadro();
+    },
+    aquecer(id: string) {
+      const cena = porId.get(id);
+      if (cena) void texturaDe(cena.src).catch(() => {});
     },
     destruir() {
       vivo = false;

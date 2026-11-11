@@ -452,8 +452,7 @@
    qualquer um deles cria bloco de contenção e prenderia o header (que vira
    `position: fixed` depois de 60px de scroll) dentro do container recortado.
    O parallax anda na <img>, nunca no palco. */
-.hero-palco,
-.projetos-palco {
+.hero-palco {
   isolation: isolate;
 }
 
@@ -552,26 +551,41 @@
   transform: scale(1.14);
 }
 
-.projeto-img {
-  transform: scale(1.16);
+/* A faixa de projetos rola para o lado, mas sem barra: as setas e a borda do
+   cartão seguinte já dizem que há mais, e a barra cinza do sistema brigaria
+   com o fundo escuro. */
+.projetos-faixa {
+  scrollbar-width: none;
+}
+.projetos-faixa::-webkit-scrollbar {
+  display: none;
+}
+/* Arrastar com o mouse (ver ProjetosHorizontal). Só em ponteiro fino: no toque
+   a mãozinha não existe e o deslize é nativo. */
+@media (hover: hover) and (pointer: fine) {
+  .projetos-faixa,
+  .projetos-faixa a {
+    cursor: grab;
+  }
+}
+.projetos-faixa[data-arrastando="sim"] {
+  scroll-snap-type: none;
+  user-select: none;
+}
+.projetos-faixa[data-arrastando="sim"],
+.projetos-faixa[data-arrastando="sim"] a {
+  cursor: grabbing;
 }
 
 /* ---------------------------------------------------------------------------
-   Deslocamento em leque das tipografias. `--tela-d` / `--proj-d` são escritos
-   pelo loop de scroll no bloco de conteúdo (-1 = chegando, 0 = no lugar,
-   1 = já saiu) e `--peso` define quanto cada linha viaja.
-
-   No hero o texto sobe; nos projetos ele avança para o lado, mais rápido que
-   o painel, porque ali é a camada da frente de uma faixa que corre. */
+   Deslocamento em leque das tipografias. `--tela-d` é escrito pelo loop de
+   scroll no bloco de conteúdo (-1 = chegando, 0 = no lugar, 1 = já saiu) e
+   `--peso` define quanto cada linha viaja. */
 /* O texto do hero entra pela esquerda e sai pela direita. Era um movimento
    vertical, mas com a linha do loader fixa no meio da composição os elementos
    passavam por cima dela na troca; na horizontal eles correm paralelos a ela. */
 .hero-mov {
   transform: translate3d(calc(var(--tela-d, 0) * var(--peso, 1) * 48px), 0, 0);
-}
-
-.projeto-mov {
-  transform: translate3d(calc(var(--proj-d, 0) * var(--peso, 1) * -70px), 0, 0);
 }
 
 /* Seta do indicador de scroll — respiro curto, só para sinalizar o gesto. */
@@ -591,6 +605,12 @@
   outline: 2px solid #ffffff;
   outline-offset: 3px;
 }
+/* O cartão inteiro é o link, e o cartão recorta o que passa da borda: o
+   contorno de foco vai para DENTRO, ou seria cortado. */
+.projetos-faixa a:focus-visible {
+  outline-offset: -5px;
+  border-radius: 10px;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -599,9 +619,7 @@
   /* Fica o corte e o fade (nem um nem outro é deslocamento); saem o parallax,
      o leque das tipografias e o respiro da seta. */
   .hero-img,
-  .projeto-img,
-  .hero-mov,
-  .projeto-mov {
+  .hero-mov {
     transform: none;
   }
   .hero-seta {
@@ -649,6 +667,29 @@
 }
 .palco-360[data-arrastando="sim"] canvas {
   cursor: grabbing;
+}
+
+/* TRAVADO (o celular, na home): o painel não é mais controle de nada. O dedo
+   que passa por ele é todo da página — inclusive o horizontal, que antes era
+   da câmera — e as portas somem, porque a troca de sala é da seta. */
+.palco-360[data-travado="sim"] {
+  touch-action: auto;
+}
+.palco-360[data-travado="sim"] canvas {
+  cursor: default;
+}
+.palco-360[data-travado="sim"] .marcas-360 {
+  display: none;
+}
+
+/* O anel em volta da seta de próximo ambiente: esvazia no tempo da sala, e
+   quando acaba a sala troca sozinha. `--tempo` vem do componente. */
+@keyframes anel360Conta {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: 100; }
+}
+.anel-360-conta {
+  animation: anel360Conta var(--tempo, 12s) linear forwards;
 }
 
 /* ---------------------------------------------------------------- as portas */

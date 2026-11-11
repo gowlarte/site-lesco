@@ -1,38 +1,28 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "@/components/AppLink";
 import { t } from "@/i18n/t";
-import { responsiva, SIZES_TELA_CHEIA } from "@/lib/imagem";
+import { responsiva } from "@/lib/imagem";
 /* `projetosDaHome`, e não `projetos`: a lista inteira inclui obras que
    entraram pelo tour 360 e ainda não têm case escrito — ver o comentário na
-   fonte. Aqui cada obra custa uma tela presa de rolagem. */
+   fonte. */
 import { projetosDaHome as projetos } from "@/data/projetos";
-import {
-  irParaTela,
-  limita,
-  numero,
-  pushEventoHome,
-  suave,
-  useLoopDeScroll,
-  useMedidor,
-  useSemMovimento,
-  useSomenteAtivoInterativo,
-} from "./palco";
+import { numero, pushEventoHome, useSemMovimento } from "./palco";
 
 /**
- * Projetos selecionados — palco fixo com navegação HORIZONTAL.
+ * Projetos selecionados — carrossel lateral de cartões.
  *
- * Mesma mecânica do hero (ver ./palco.ts): um trilho alto e um palco `sticky`
- * de uma tela. A diferença é o que a posição faz — aqui ela corre uma faixa de
- * projetos para o lado, um por tela cheia.
+ * Era um palco fixo: a seção prendia a página por oito telas de rolagem e o
+ * scroll vertical corria a faixa para o lado. Funcionava como vitrine, mas era
+ * OBRIGATÓRIO — para passar dos projetos era preciso atravessar todos eles.
  *
- * A seção é a única da home que sangra: sem goteira de 10px, sem canto
- * arredondado, altura de tela inteira. É proposital — a foto de obra é o
- * argumento, e ela pede a tela toda.
+ * Agora a seção tem a altura dela e a página passa direto. Ver os outros
+ * projetos é opcional: desliza-se a faixa para o lado com o dedo (ou trackpad),
+ * ou usam-se as setas. Os cartões não ocupam a largura inteira de propósito —
+ * a borda do seguinte aparecendo ao lado é o que diz que há mais para ver.
  *
- * Três camadas em profundidades diferentes, que é o que dá a leitura de
- * parallax: a foto corre MAIS DEVAGAR que o painel (fica para trás), o painel
- * corre com o scroll, e a tipografia sai MAIS RÁPIDO que o painel.
+ * O encaixe é do próprio navegador (`scroll-snap`): cada gesto termina com um
+ * cartão alinhado à esquerda, sem JS conduzindo a rolagem.
  */
 
 const GA_EVENT_NAV = "projeto_nav_click";
@@ -42,28 +32,10 @@ const GA_EVENT_VIEW = "projeto_view";
 /** Um projeto precisa ficar 1s como ativo para contar como visualização. */
 const VIEW_DWELL_MS = 1000;
 
-/** O palco sangra: gruda no topo da viewport, sem goteira. */
-const TOPO_PALCO = 0;
-
-/** Zoom de overscan da foto: a sobra que o parallax consome sem mostrar borda. */
-const IMG_ESCALA = 1.16;
-/** Atraso da foto em relação ao painel, em % da largura. Menor que a sobra. */
-const IMG_ATRASO = 7;
-
-/**
- * Janelas da transição, em fração de uma tela de scroll. O texto some cedo:
- * em |d| = 0.5 o painel está metade fora da tela, e um título cortado ao meio
- * na borda esquerda fica pior do que título nenhum.
- */
-const TXT_INICIO = 0.15;
-const TXT_FIM = 0.4;
-
-/** Peso do avanço de cada linha — é o que dá o leque na saída e na entrada. */
-const PESO = { eyebrow: 0.6, titulo: 1, acao: 1.4 };
-
-const estilo = (peso: number) => ({ "--peso": peso }) as React.CSSProperties;
-
 const TOTAL = projetos.length;
+
+/** Largura do cartão: casa com as classes `w-[…]` dos <article>. */
+const SIZES_CARTAO = "(min-width: 1024px) 62vw, (min-width: 640px) 72vw, 84vw";
 
 /** "Xangri-Lá, RS · 2024" — o traço em `ano` marca projeto sem data fechada. */
 function legenda(local: string, ano: string) {
@@ -72,73 +44,173 @@ function legenda(local: string, ano: string) {
 
 export function ProjetosHorizontal() {
   const [ativo, setAtivo] = useState(0);
+  const [noInicio, setNoInicio] = useState(true);
+  const [noFim, setNoFim] = useState(TOTAL <= 1);
   const semMovimento = useSemMovimento();
 
-  const trilhoRef = useRef<HTMLDivElement>(null);
-  const palcoRef = useRef<HTMLDivElement>(null);
   const faixaRef = useRef<HTMLDivElement>(null);
-  const imagensRef = useRef<Array<HTMLImageElement | null>>([]);
-  const conteudosRef = useRef<Array<HTMLDivElement | null>>([]);
-  /** Projeto mais próximo, fora do React: o loop roda a cada quadro. */
-  const ativoRef = useRef(0);
+  const cartoesRef = useRef<Array<HTMLElement | null>>([]);
   const jaContadosRef = useRef<Set<number>>(new Set());
 
-  const medir = useMedidor(trilhoRef, palcoRef, TOPO_PALCO, TOTAL);
+  /** Lê da rolagem qual cartão está alinhado e se há para onde ir. */
+  const medir = useCallback(() => {
+    const faixa = faixaRef.current;
+    if (!faixa) return;
+    const inicio = parseFloat(getComputedStyle(faixa).paddingLeft) || 0;
+    const x = faixa.scrollLeft;
+    const max = faixa.scrollWidth - faixa.clientWidth;
+    // O cartão ativo é o de borda esquerda mais perto do ponto de encaixe.
+    let melhor = 0;
+    let menor = Infinity;
+    cartoesRef.current.forEach((el, i) => {
+      if (!el) return;
+      const dist = Math.abs(el.offsetLeft - inicio - x);
+      if (dist < menor) {
+        menor = dist;
+        melhor = i;
+      }
+    });
+    // No fim da faixa o último cartão não consegue encostar na esquerda; se
+    // não há mais para onde rolar, ele é o ativo.
+    if (x >= max - 2) melhor = TOTAL - 1;
+    setAtivo(melhor);
+    setNoInicio(x <= 2);
+    setNoFim(x >= max - 2);
+  }, []);
+
+  useEffect(() => {
+    const faixa = faixaRef.current;
+    if (!faixa) return;
+    let raf = 0;
+    const aoRolar = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(medir);
+    };
+    medir();
+    faixa.addEventListener("scroll", aoRolar, { passive: true });
+    window.addEventListener("resize", aoRolar);
+    return () => {
+      cancelAnimationFrame(raf);
+      faixa.removeEventListener("scroll", aoRolar);
+      window.removeEventListener("resize", aoRolar);
+    };
+  }, [medir]);
 
   const irPara = useCallback(
-    (i: number) => irParaTela(medir, i, TOTAL, !semMovimento),
-    [medir, semMovimento],
+    (i: number) => {
+      const faixa = faixaRef.current;
+      const alvo = cartoesRef.current[Math.max(0, Math.min(TOTAL - 1, i))];
+      if (!faixa || !alvo) return;
+      const inicio = parseFloat(getComputedStyle(faixa).paddingLeft) || 0;
+      faixa.scrollTo({
+        left: alvo.offsetLeft - inicio,
+        behavior: semMovimento ? "auto" : "smooth",
+      });
+    },
+    [semMovimento],
   );
 
-  const desenhar = useCallback(() => {
-    const m = medir();
-    if (!m) return;
-    const pos = m.pos;
+  // ------------------------------------------------- arrastar com o mouse
 
-    // A faixa inteira corre para a esquerda: 100% = a largura do palco.
+  /**
+   * No toque a faixa já desliza sozinha (rolagem nativa). Com mouse não há
+   * gesto nativo de arrastar para o lado, então ele é feito aqui — só para
+   * `pointerType === "mouse"`, para não disputar o dedo com o navegador.
+   *
+   * Durante o arrasto o encaixe do CSS fica desligado (`data-arrastando`): com
+   * `snap-mandatory` ligado, cada `scrollLeft` escrito à mão seria puxado de
+   * volta para o cartão mais próximo. Na soltura a faixa vai ao cartão mais
+   * perto — ou ao seguinte no sentido do arremesso, se o mouse vinha rápido —
+   * e só depois que ela assenta o encaixe volta.
+   *
+   * O cartão inteiro é link: um arrasto que termina sobre ele não pode virar
+   * clique. Daí o `onClickCapture` engolindo o clique que segue um arrasto.
+   */
+  const arrastoRef = useRef<{
+    id: number;
+    x0: number;
+    s0: number;
+    moveu: boolean;
+    ultimoX: number;
+    ultimoT: number;
+    vel: number;
+  } | null>(null);
+  const engolirCliqueRef = useRef(false);
+
+  const aoPressionar = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
     const faixa = faixaRef.current;
-    if (faixa) {
-      faixa.style.transform = "translate3d(" + (-pos * 100).toFixed(4) + "%,0,0)";
+    if (!faixa) return;
+    engolirCliqueRef.current = false;
+    arrastoRef.current = {
+      id: e.pointerId,
+      x0: e.clientX,
+      s0: faixa.scrollLeft,
+      moveu: false,
+      ultimoX: e.clientX,
+      ultimoT: performance.now(),
+      vel: 0,
+    };
+  };
+
+  const aoMover = (e: React.PointerEvent<HTMLDivElement>) => {
+    const a = arrastoRef.current;
+    const faixa = faixaRef.current;
+    if (!a || !faixa || e.pointerId !== a.id) return;
+    const dx = e.clientX - a.x0;
+    if (!a.moveu) {
+      // Abaixo de 6px é clique, não arrasto.
+      if (Math.abs(dx) < 6) return;
+      a.moveu = true;
+      faixa.setPointerCapture(e.pointerId);
+      faixa.dataset.arrastando = "sim";
     }
+    faixa.scrollLeft = a.s0 - dx;
+    const agora = performance.now();
+    const dt = agora - a.ultimoT;
+    if (dt > 0) a.vel = (e.clientX - a.ultimoX) / dt;
+    a.ultimoX = e.clientX;
+    a.ultimoT = agora;
+  };
 
-    for (let i = 0; i < TOTAL; i++) {
-      const d = pos - i;
+  const aoSoltar = (e: React.PointerEvent<HTMLDivElement>) => {
+    const a = arrastoRef.current;
+    arrastoRef.current = null;
+    const faixa = faixaRef.current;
+    if (!a || !faixa || e.pointerId !== a.id || !a.moveu) return;
+    engolirCliqueRef.current = true;
+    if (faixa.hasPointerCapture(e.pointerId)) faixa.releasePointerCapture(e.pointerId);
 
-      const img = imagensRef.current[i];
-      if (img) {
-        // A foto fica PARA TRÁS do painel: deslocamento no mesmo sentido em que
-        // o painel sai, o que a faz parecer mais lenta que o resto.
-        const dx = semMovimento ? 0 : limita(d, -1, 1) * IMG_ATRASO;
-        img.style.transform =
-          "translate3d(" + dx.toFixed(3) + "%,0,0) scale(" + IMG_ESCALA + ")";
-        // Aquece a foto vizinha: o lazy nativo mede a viewport, e um painel que
-        // só se move por transform pode chegar sem ter começado a carregar.
-        if (Math.abs(d) < 1.5 && img.loading === "lazy") img.loading = "eager";
-      }
+    // Posição fracionária na faixa, em cartões.
+    const [c0, c1] = cartoesRef.current;
+    const passoPx = c0 && c1 ? c1.offsetLeft - c0.offsetLeft : faixa.clientWidth;
+    const p = faixa.scrollLeft / (passoPx || 1);
+    // Mouse indo para a esquerda (vel < 0) é avançar a faixa.
+    const parado = performance.now() - a.ultimoT > 120;
+    const destino = parado || Math.abs(a.vel) < 0.3
+      ? Math.round(p)
+      : a.vel < 0
+        ? Math.ceil(p)
+        : Math.floor(p);
+    irPara(destino);
 
-      // Tipografia: fade + avanço. O deslocamento segue a MESMA curva do fade,
-      // então o título fica parado enquanto está legível e só viaja ao sair.
-      const conteudo = conteudosRef.current[i];
-      if (conteudo) {
-        const saida = suave(Math.abs(d), TXT_INICIO, TXT_FIM);
-        conteudo.style.opacity = String(1 - saida);
-        conteudo.style.visibility = saida < 0.999 ? "" : "hidden";
-        conteudo.style.setProperty(
-          "--proj-d",
-          semMovimento ? "0" : String(Math.sign(d) * saida),
-        );
-      }
-    }
+    // O encaixe só volta com a faixa parada; ligado antes, ele brigaria com a
+    // rolagem suave até o cartão.
+    let feito = false;
+    const religar = () => {
+      if (feito) return;
+      feito = true;
+      delete faixa.dataset.arrastando;
+    };
+    faixa.addEventListener("scrollend", religar, { once: true });
+    window.setTimeout(religar, 900);
+  };
 
-    const proximo = Math.round(pos);
-    if (proximo !== ativoRef.current) {
-      ativoRef.current = proximo;
-      setAtivo(proximo);
-    }
-  }, [medir, semMovimento]);
-
-  useLoopDeScroll(desenhar);
-  useSomenteAtivoInterativo(conteudosRef, ativo);
+  const passo = (lado: 1 | -1) => {
+    const destino = Math.max(0, Math.min(TOTAL - 1, ativo + lado));
+    pushEventoHome(GA_EVENT_NAV, projetos[destino].slug, projetos[destino].nome);
+    irPara(destino);
+  };
 
   // projeto_view — uma vez por projeto, por carregamento de página.
   useEffect(() => {
@@ -151,138 +223,113 @@ export function ProjetosHorizontal() {
     return () => window.clearTimeout(id);
   }, [ativo]);
 
-  /** Setas ←→ percorrem os projetos quando o foco está dentro da seção. */
-  const onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
-    let destino: number | null = null;
-    if (e.key === "ArrowRight") destino = Math.min(ativo + 1, TOTAL - 1);
-    if (e.key === "ArrowLeft") destino = Math.max(ativo - 1, 0);
-    if (e.key === "Home") destino = 0;
-    if (e.key === "End") destino = TOTAL - 1;
-    if (destino === null) return;
-    if ((e.target as HTMLElement).closest("input, textarea, select")) return;
-    e.preventDefault();
-    irPara(destino);
-  };
+  const seta =
+    "grid h-11 w-11 place-items-center rounded-full border border-white/50 text-white transition-colors duration-300 hover:bg-white hover:text-[#141414] disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-white disabled:cursor-default";
 
   return (
     <section
-      ref={trilhoRef}
-      onKeyDown={onKeyDown}
       aria-labelledby="projetos-titulo"
-      // -my-[10px] cancela o `gap` do <main>: esta é a única seção que encosta
-      // nas bordas da página, e um respiro de 10px acima e abaixo estragaria o
-      // efeito de tela cheia.
-      className="projetos-h relative -my-[10px]"
-      // Mesma soma do hero (ver HeroSolucoes): o trilho carrega o palco dentro
-      // da própria altura, para que `curso = trilho - palco` fique em `svh` e
-      // não se mexa quando a barra do Safari encolhe. Sem isso, o palco em
-      // `svh` deixava uma faixa do fundo da página aparecendo embaixo dele.
-      style={{ height: "calc(" + (TOTAL - 1) + " * 100svh + 100dvh)" }}
+      className="projetos-h mx-[10px] rounded-[10px] overflow-hidden bg-primary py-12 lg:py-16"
     >
+      {/* ---------- Cabeçalho: rótulo, contador e setas ---------- */}
+      <div className="flex items-end justify-between gap-6 px-6 sm:px-8 lg:px-12">
+        <h2
+          id="projetos-titulo"
+          className="font-display text-[26px] sm:text-[30px] lg:text-[40px] font-light leading-[1.1] tracking-[-0.01em] text-white"
+        >
+          {t("Projetos selecionados")}
+        </h2>
+
+        {/* O contador sai abaixo de 640px: título, contador e duas setas não
+            cabem lado a lado em 375px, e ali a borda do cartão seguinte já
+            diz que há mais. */}
+        <div className="flex shrink-0 items-center gap-3 sm:gap-4">
+          <span className="hidden sm:inline font-mono text-[12px] tracking-[0.1em] text-white tabular-nums">
+            {numero(ativo + 1)} / {numero(TOTAL)}
+          </span>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => passo(-1)}
+              disabled={noInicio}
+              aria-label={t("Projeto anterior")}
+              className={seta}
+            >
+              <ArrowLeft size={18} aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              onClick={() => passo(1)}
+              disabled={noFim}
+              aria-label={t("Próximo projeto")}
+              className={seta}
+            >
+              <ArrowRight size={18} aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* ---------- Faixa de cartões ----------
+           `data-lenis-prevent-horizontal`: o Lenis cuida da roda vertical da
+           página inteira, e sem isto ele engoliria o gesto lateral do trackpad
+           sobre a faixa. Com o atributo, gesto mais lateral que vertical é do
+           navegador; o vertical continua rolando a página. */}
       <div
-        ref={palcoRef}
-        className="projetos-palco sticky top-0 h-[100dvh] overflow-hidden bg-primary"
+        ref={faixaRef}
+        data-lenis-prevent-horizontal
+        onPointerDown={aoPressionar}
+        onPointerMove={aoMover}
+        onPointerUp={aoSoltar}
+        onPointerCancel={aoSoltar}
+        onClickCapture={(e) => {
+          if (!engolirCliqueRef.current) return;
+          engolirCliqueRef.current = false;
+          e.preventDefault();
+          e.stopPropagation();
+        }}
+        // Sem isto o navegador começa a arrastar a <img> ou o link como
+        // arquivo, e o arrasto da faixa nunca recebe o movimento.
+        onDragStart={(e) => e.preventDefault()}
+        className="projetos-faixa relative mt-8 lg:mt-10 flex gap-[10px] overflow-x-auto snap-x snap-mandatory overscroll-x-contain px-6 sm:px-8 lg:px-12 scroll-px-6 sm:scroll-px-8 lg:scroll-px-12"
       >
-        {/* ---------- Faixa horizontal de projetos ---------- */}
-        <div ref={faixaRef} className="flex h-full">
-          {projetos.map((projeto, i) => (
-            <article
-              key={projeto.slug}
-              className="relative h-full w-full shrink-0 overflow-hidden"
+        {projetos.map((projeto, i) => (
+          <article
+            key={projeto.slug}
+            ref={(el) => {
+              cartoesRef.current[i] = el;
+            }}
+            aria-label={`${numero(i + 1)} / ${numero(TOTAL)}`}
+            className="relative shrink-0 snap-start w-[84%] sm:w-[72%] lg:w-[62%] aspect-[4/5] sm:aspect-[4/3] lg:aspect-auto lg:h-[min(70vh,620px)] overflow-hidden rounded-[10px]"
+          >
+            <Link
+              to={"/projetos/" + projeto.slug}
+              onClick={() => pushEventoHome(GA_EVENT_CTA, projeto.slug, projeto.nome)}
+              className="group absolute inset-0 block text-white"
             >
               <img
-                ref={(el) => {
-                  imagensRef.current[i] = el;
-                }}
                 src={projeto.imagem}
-                {...responsiva(projeto.imagem, SIZES_TELA_CHEIA)}
+                {...responsiva(projeto.imagem, SIZES_CARTAO)}
                 alt={projeto.nome}
-                loading={i === 0 ? undefined : "lazy"}
+                loading={i < 2 ? undefined : "lazy"}
                 decoding="async"
-                className="projeto-img absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               />
               <div className="projeto-tint absolute inset-0 pointer-events-none" />
 
-              <div
-                ref={(el) => {
-                  conteudosRef.current[i] = el;
-                }}
-                className="projeto-conteudo absolute inset-x-0 bottom-0 z-10 px-6 pb-10 sm:px-8 lg:px-12 lg:pb-14 text-white"
-                style={{ opacity: i === 0 ? 1 : 0, pointerEvents: i === 0 ? undefined : "none" }}
-              >
-                <p
-                  className="projeto-mov text-caption text-white mb-4"
-                  style={estilo(PESO.eyebrow)}
-                >
-                  {legenda(projeto.local, projeto.ano)}
-                </p>
-                <h3
-                  className="projeto-mov font-display font-light text-[40px] sm:text-[56px] lg:text-[76px] leading-[1.02] tracking-[-0.02em]"
-                  style={estilo(PESO.titulo)}
-                >
+              <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-7 lg:p-9">
+                <p className="text-caption text-white mb-3">{legenda(projeto.local, projeto.ano)}</p>
+                <h3 className="font-display font-light text-[30px] sm:text-[40px] lg:text-[52px] leading-[1.04] tracking-[-0.02em]">
                   {projeto.nome}
                 </h3>
-                <div className="projeto-mov mt-7" style={estilo(PESO.acao)}>
-                  <Link
-                    to={"/projetos/" + projeto.slug}
-                    onClick={() => pushEventoHome(GA_EVENT_CTA, projeto.slug, projeto.nome)}
-                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] hover:bg-white/85 transition-colors duration-300"
-                  >
-                    {t("Ver projeto")}
-                    <ArrowUpRight size={16} />
-                  </Link>
-                </div>
+                <span className="mt-5 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white text-[#141414] font-display text-[12px] uppercase tracking-[0.08em] group-hover:bg-white/85 transition-colors duration-300">
+                  {t("Ver projeto")}
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </span>
               </div>
-            </article>
-          ))}
-        </div>
-
-        {/* ---------- Barra da seção: rótulo, contador e índice ---------- */}
-        <div className="projetos-barra absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-6 px-6 sm:px-8 lg:px-12 pt-[104px] lg:pt-[112px] pointer-events-none">
-          <h2
-            id="projetos-titulo"
-            className="font-display text-[22px] sm:text-[26px] lg:text-[32px] font-light leading-none tracking-[-0.01em] text-white"
-          >
-            {t("Projetos selecionados")}
-          </h2>
-
-          <div className="flex flex-col items-end gap-3 pointer-events-auto">
-            <span className="font-mono text-[12px] tracking-[0.1em] text-white tabular-nums">
-              {numero(ativo + 1)} / {numero(TOTAL)}
-            </span>
-            {/* Botão, e não link: o índice anda pela faixa, não sai da página.
-                Um <a href="/projetos/…"> aqui prometeria uma navegação que o
-                clique cancela. Os links reais para cada obra são os CTAs dos
-                painéis — oito, contra os três da grade anterior.
-
-                Some no mobile: oito marcas não cabem ao lado do rótulo em 375px,
-                e encolhê-las deixaria o alvo de toque em 12px. Lá o contador
-                sozinho já diz a posição, e o dedo rola. */}
-            <div className="hidden sm:flex items-center gap-1.5">
-              {projetos.map((projeto, i) => (
-                <button
-                  key={projeto.slug}
-                  type="button"
-                  aria-label={projeto.nome}
-                  aria-current={i === ativo ? "true" : undefined}
-                  onClick={() => {
-                    pushEventoHome(GA_EVENT_NAV, projeto.slug, projeto.nome);
-                    irPara(i);
-                  }}
-                  className="group flex h-6 items-center"
-                >
-                  <span
-                    aria-hidden="true"
-                    className={
-                      "block h-px transition-all duration-300 group-hover:w-9 group-hover:bg-white " +
-                      (i === ativo ? "w-9 bg-white" : "w-4 bg-white/70")
-                    }
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
+            </Link>
+          </article>
+        ))}
       </div>
     </section>
   );

@@ -48,12 +48,198 @@ function medirTrilho(
 
 export type Medidor = () => MedidaTrilho | null;
 
-/** Rola até a tela `i` do trilho. */
-export function irParaTela(medir: Medidor, i: number, total: number, suavizar: boolean) {
+/** Rola até a tela `i` do trilho. `duracao` em segundos, só com o Lenis. */
+export function irParaTela(
+  medir: Medidor,
+  i: number,
+  total: number,
+  suavizar: boolean,
+  duracao?: number,
+) {
   const m = medir();
   if (!m) return;
   const alvo = limita(i, 0, total - 1) / (total - 1);
-  rolarPara(m.inicio + alvo * m.curso, suavizar);
+  rolarPara(m.inicio + alvo * m.curso, suavizar, duracao);
+}
+
+/**
+ * UM GESTO, UMA TELA — só no toque.
+ *
+ * No celular a rolagem é nativa (o Lenis não interpola o dedo), e uma deslizada
+ * com força carrega inércia de duas ou três alturas de tela. Num trilho em que
+ * cada altura de tela é uma tela do palco, isso pulava slides inteiros.
+ *
+ * Então, com o palco preso, o dedo deixa de rolar a página: o primeiro
+ * `touchmove` do gesto é cancelado, e passado `LIMIAR_GESTO` o palco anda
+ * EXATAMENTE uma tela no sentido do gesto, não importa a força. Gesto novo
+ * durante a animação conta a partir do destino, então duas deslizadas seguidas
+ * dão duas telas, e não uma e meia.
+ *
+ * Nas pontas o gesto é devolvido ao navegador: para cima na primeira tela (a
+ * página está no topo) e para baixo na última — é assim que se sai do módulo.
+ *
+ * O caminho inverso também precisa de freio: quem vem de baixo com inércia
+ * entraria no trilho e o atravessaria de volta. Se uma deslizada nativa
+ * terminou FORA do trilho e a inércia dela entra nele, a página para na tela
+ * em que entrou. Só depois de uma deslizada, e nunca depois de um toque: o
+ * toque na logo rola até o topo de propósito, e não pode ser barrado aqui.
+ *
+ * A roda do mouse não passa por aqui: lá o Lenis já entrega deslocamento
+ * suave e proporcional, e o desktop fica como estava.
+ */
+const LIMIAR_GESTO = 24;
+/** Quanto dura a troca de tela pelo gesto, em segundos. */
+const DURACAO_GESTO = 0.75;
+/** Por quanto tempo depois de soltar o dedo uma rolagem ainda é inércia. */
+const JANELA_INERCIA = 2500;
+
+export function useUmGestoPorTela(
+  trilhoRef: React.RefObject<HTMLElement>,
+  medir: Medidor,
+  total: number,
+  suavizar: boolean,
+) {
+  useEffect(() => {
+    let x0 = 0;
+    let y0 = 0;
+    let dyFinal = 0;
+    /** null = ainda não decidido; "nosso" = o palco conduz; "solto" = nativo. */
+    let dono: "nosso" | "solto" | null = null;
+    let disparou = false;
+    let dedo = false;
+    /** Tela para onde a última troca está indo, e até quando ela é válida. */
+    let alvo = -1;
+    let alvoAte = 0;
+    let inerciaAte = 0;
+    let sentidoInercia = 0;
+
+    const fim = (m: MedidaTrilho) => m.inicio + m.curso;
+    const preso = (m: MedidaTrilho) => {
+      const y = window.scrollY;
+      return y >= m.inicio - 1 && y <= fim(m) + 1;
+    };
+    const base = (m: MedidaTrilho) =>
+      performance.now() < alvoAte && alvo >= 0 ? alvo : Math.round(m.pos);
+
+    const ir = (i: number) => {
+      alvo = limita(i, 0, total - 1);
+      alvoAte = performance.now() + DURACAO_GESTO * 1000 + 150;
+      irParaTela(medir, alvo, total, suavizar, DURACAO_GESTO);
+    };
+
+    /** O gesto começou no palco (ou no header, que fica por cima dele)? */
+    const doPalco = (alvoToque: EventTarget | null) => {
+      if (document.documentElement.dataset.menuAberto === "sim") return false;
+      const el = alvoToque as Element | null;
+      if (!el || typeof el.closest !== "function") return false;
+      return !!trilhoRef.current?.contains(el) || !!el.closest("header");
+    };
+
+    const aoTocar = (e: TouchEvent) => {
+      dedo = true;
+      inerciaAte = 0;
+      disparou = false;
+      dyFinal = 0;
+      const toque = e.touches[0];
+      // Gravado mesmo no gesto solto: é dele que sai `dyFinal`, que diz se a
+      // soltura foi uma deslizada (e se pode haver inércia a frear).
+      if (toque) {
+        x0 = toque.clientX;
+        y0 = toque.clientY;
+      }
+      const m = medir();
+      if (e.touches.length !== 1 || !toque || !m || !preso(m) || !doPalco(e.target)) {
+        dono = "solto";
+        return;
+      }
+      dono = null;
+    };
+
+    const aoMover = (e: TouchEvent) => {
+      const toque = e.touches[0];
+      if (!toque) return;
+      dyFinal = y0 - toque.clientY;
+      if (dono === "solto") return;
+      if (e.touches.length !== 1) {
+        dono = "solto";
+        return;
+      }
+      const m = medir();
+      if (!m) return;
+      // Positivo = o dedo subiu = avançar.
+      const dy = y0 - toque.clientY;
+      const dx = x0 - toque.clientX;
+
+      if (dono === null) {
+        // Decide no PRIMEIRO movimento: depois que o navegador começa a rolar,
+        // o touchmove deixa de ser cancelável e já não há como segurar.
+        const frente = Math.abs(dy) >= Math.abs(dx) ? dy >= 0 : true;
+        const daVez = base(m);
+        const naUltima = daVez >= total - 1 && m.pos >= total - 1 - 0.02;
+        const naPrimeira = daVez <= 0 && m.pos <= 0.02;
+        if ((frente && naUltima) || (!frente && naPrimeira)) {
+          dono = "solto";
+          return;
+        }
+        dono = "nosso";
+      }
+
+      if (e.cancelable) e.preventDefault();
+      if (disparou || Math.abs(dy) < LIMIAR_GESTO || Math.abs(dy) < Math.abs(dx)) return;
+      disparou = true;
+      ir(base(m) + (dy > 0 ? 1 : -1));
+    };
+
+    const aoSoltar = (e: TouchEvent) => {
+      if (e.touches.length > 0) return;
+      dedo = false;
+      const m = medir();
+      if (dono === "nosso" && !disparou && m) {
+        // Gesto curto demais para trocar, mas que pode ter deixado o palco
+        // fora do lugar se começou no meio de uma animação: assenta.
+        if (performance.now() >= alvoAte) ir(Math.round(m.pos));
+      } else if (dono === "solto" && m && Math.abs(dyFinal) > LIMIAR_GESTO) {
+        const y = window.scrollY;
+        if (y > m.inicio + 1 && y < fim(m) - 1) {
+          // Uma rolagem nativa (vinda de fora do trilho) deixou o palco no meio
+          // de uma troca: leva à tela mais próxima.
+          ir(Math.round(m.pos));
+        } else if (y > fim(m)) {
+          inerciaAte = performance.now() + JANELA_INERCIA;
+          sentidoInercia = dyFinal;
+        }
+      }
+      dono = null;
+    };
+
+    const aoRolar = () => {
+      if (dedo || !inerciaAte) return;
+      if (performance.now() > inerciaAte) {
+        inerciaAte = 0;
+        return;
+      }
+      const m = medir();
+      if (!m || sentidoInercia >= 0) return;
+      // Subindo por inércia e já dentro do trilho: para na última tela.
+      if (window.scrollY < fim(m) - 1) {
+        inerciaAte = 0;
+        rolarPara(fim(m), false);
+      }
+    };
+
+    window.addEventListener("touchstart", aoTocar, { passive: true });
+    window.addEventListener("touchmove", aoMover, { passive: false });
+    window.addEventListener("touchend", aoSoltar, { passive: true });
+    window.addEventListener("touchcancel", aoSoltar, { passive: true });
+    window.addEventListener("scroll", aoRolar, { passive: true });
+    return () => {
+      window.removeEventListener("touchstart", aoTocar);
+      window.removeEventListener("touchmove", aoMover);
+      window.removeEventListener("touchend", aoSoltar);
+      window.removeEventListener("touchcancel", aoSoltar);
+      window.removeEventListener("scroll", aoRolar);
+    };
+  }, [trilhoRef, medir, total, suavizar]);
 }
 
 export function useSemMovimento() {

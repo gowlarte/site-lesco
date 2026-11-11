@@ -943,4 +943,11 @@ export const en: Record<string, string> = {
   "Corredor 3": "Corridor 3",
   "Ultimo corredor": "Last Corridor",
   "Sala de reunião": "Meeting Room",
+
+  // Home: a playlist 360 ao lado do manifesto e as setas dos projetos.
+  "Próximo ambiente": "Next space",
+  "A sala gira sozinha e troca de ambiente a cada poucos segundos.":
+    "The room pans on its own and moves to another space every few seconds.",
+  "Projeto anterior": "Previous project",
+  "Próximo projeto": "Next project",
 };

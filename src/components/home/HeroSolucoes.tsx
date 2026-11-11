@@ -11,6 +11,7 @@ import {
   useMedidor,
   useSemMovimento,
   useSomenteAtivoInterativo,
+  useUmGestoPorTela,
 } from "./palco";
 import {
   slideAbertura,
@@ -211,6 +212,8 @@ export function HeroSolucoes() {
 
   useLoopDeScroll(desenhar);
   useSomenteAtivoInterativo(conteudosRef, ativo);
+  // No toque, cada deslizada anda uma tela só — ver o hook em ./palco.ts.
+  useUmGestoPorTela(trilhoRef, medir, TOTAL_TELAS, !semMovimento);
 
   // hero_slide_view — uma vez por tela, por carregamento de página.
   useEffect(() => {

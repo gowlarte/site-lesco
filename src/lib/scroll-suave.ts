@@ -132,9 +132,9 @@ export function assinarScroll(callback: () => void): () => void {
  * `window.scrollTo({behavior:"smooth"})` nativo brigaria com a interpolação e
  * as duas animações se anulariam no meio do caminho.
  */
-export function rolarPara(top: number, suave: boolean) {
+export function rolarPara(top: number, suave: boolean, duracao = 1.1) {
   if (instancia) {
-    instancia.scrollTo(top, suave ? { duration: 1.1 } : { immediate: true });
+    instancia.scrollTo(top, suave ? { duration: duracao } : { immediate: true });
     return;
   }
   window.scrollTo({ top, behavior: suave ? "smooth" : "auto" });
