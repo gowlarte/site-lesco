@@ -9,6 +9,7 @@ import {
   useMedidor,
   useSemMovimento,
   useSomenteAtivoInterativo,
+  useUmGestoPorTela,
 } from "@/components/home/palco";
 import {
   LINHAS_CAPA,
@@ -274,6 +275,9 @@ export function HeroNovo() {
 
   useLoopDeScroll(desenhar);
   useSomenteAtivoInterativo(conteudosRef, ativo);
+  // No toque, cada deslizada anda uma tela só — o mesmo do hero do site no
+  // ar. Ver o hook em src/components/home/palco.ts.
+  useUmGestoPorTela(trilhoRef, medir, TOTAL_TELAS, !semMovimento);
 
   /** Setas ↑↓ percorrem as telas quando o foco está dentro do módulo. */
   const aoTeclar = (e: React.KeyboardEvent<HTMLDivElement>) => {
