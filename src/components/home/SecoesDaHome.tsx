@@ -10,10 +10,6 @@ import partnerLogo2 from "@/assets/partners/logo-2.webp";
 import partnerLogo3 from "@/assets/partners/logo-3.webp";
 import partnerLogo4 from "@/assets/partners/logo-4.webp";
 
-import showroomMain from "@/assets/showroom/showroom-main.webp";
-import showroomDetail1 from "@/assets/showroom/showroom-detail-1.webp";
-import showroomDetail2 from "@/assets/showroom/showroom-detail-2.webp";
-
 import { site } from "@/config/site";
 import { t } from "@/i18n/t";
 
@@ -73,38 +69,22 @@ export function SecoesDaHome() {
       </section>
       */}
 
-      {/* ========== SHOWROOM ========== */}
+      {/* ========== SHOWROOM ==========
+           Só texto: as fotos do showroom saíram a pedido. No desktop o título
+           fica à esquerda e o resto à direita, para a faixa larga não ficar
+           com uma metade vazia; no celular, empilhado. */}
       <section className="mx-[10px] rounded-[10px] overflow-hidden bg-secondary">
         <ScrollReveal>
           <div className="max-w-[1400px] mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] min-h-[500px]">
-              {/* Left — Photo grid */}
-              <div className="grid grid-cols-[1fr_1.6fr] gap-[10px] p-[10px]">
-                {/* Small stacked images */}
-                <div className="flex flex-col gap-[10px]">
-                  <div className="flex-1 rounded-[10px] overflow-hidden">
-                    <img src={showroomDetail1} alt={t("Showroom detalhe")} loading="lazy" className="w-full h-full object-cover" />
-                  </div>
-                  <div className="flex-1 rounded-[10px] overflow-hidden">
-                    <img src={showroomDetail2} alt={t("Showroom detalhe")} loading="lazy" className="w-full h-full object-cover" />
-                  </div>
-                </div>
-                {/* Large image */}
-                <div className="rounded-[10px] overflow-hidden">
-                  <img src={showroomMain} alt={t("Showroom Lesco")} loading="lazy" className="w-full h-full object-cover" />
-                </div>
-              </div>
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-x-16 p-8 md:p-12 lg:p-16">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.1] md:leading-[1.1] text-primary mb-6 lg:mb-0">
+                {t("Te esperamos")}<br />{t("para um")}<br />{t("cafezinho!")}
+              </h2>
 
-              {/* Right — Content */}
-              <div className="flex flex-col justify-between p-8 md:p-12 lg:p-16">
-                <div>
-                  <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.1] text-primary mb-6">
-                    {t("Te esperamos")}<br />{t("para um")}<br />{t("cafezinho!")}
-                  </h2>
-                  <p className="font-body text-[15px] font-light leading-[1.65] text-primary/80 max-w-[420px]">
-                    {t("Visite nosso espaço em São Paulo – SP e conheça nossos materiais. Converse com um representante e adquira o kit de amostras para seus próximos projetos.")}
-                  </p>
-                </div>
+              <div>
+                <p className="font-body text-[15px] font-light leading-[1.65] text-primary/80 max-w-[420px]">
+                  {t("Visite nosso espaço em São Paulo – SP e conheça nossos materiais. Converse com um representante e adquira o kit de amostras para seus próximos projetos.")}
+                </p>
 
                 <div className="mt-10">
                   <div className="flex items-center gap-2 mb-2">
