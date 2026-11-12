@@ -17,7 +17,7 @@ export function Footer() {
           <div>
             <img src={logoLight} alt="Lesco" loading="lazy" decoding="async" className="h-8" />
             <p className="mt-4 font-body text-[13px] font-light text-foreground/70 leading-relaxed max-w-[240px]">
-              {t("Madeira Ecológica")}
+              {t("Arquitetura feita para o amanhã")}
             </p>
             <SocialLinks
               className="mt-6 -ml-[11px]"
