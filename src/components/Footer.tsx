@@ -3,6 +3,7 @@ import logoLight from "@/assets/logo-lesco-light.svg";
 import { site } from "@/config/site";
 import { t } from "@/i18n/t";
 import { isEN } from "@/i18n/locale";
+import { SocialLinks } from "@/components/SocialLinks";
 
 export function Footer() {
   return (
@@ -18,6 +19,10 @@ export function Footer() {
             <p className="mt-4 font-body text-[13px] font-light text-foreground/70 leading-relaxed max-w-[240px]">
               {t("Madeira Ecológica")}
             </p>
+            <SocialLinks
+              className="mt-6 -ml-[11px]"
+              linkClassName="text-foreground/70 hover:text-foreground hover:bg-white/[0.08]"
+            />
           </div>
 
           {/* Col 2 — Linhas */}
