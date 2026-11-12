@@ -8,7 +8,7 @@ import lescoIcon from "@/assets/lesco-icon.webp";
 const socials = [
   { label: "Facebook", href: "https://www.facebook.com/lescorevestimentosbr/", Icon: Facebook },
   { label: "Instagram", href: "https://www.instagram.com/lesco_br/", Icon: Instagram },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/lesco-revestimentos/about/", Icon: Linkedin },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/lescorevestimentos/home/", Icon: Linkedin },
   { label: "YouTube", href: "https://www.youtube.com/@LescoBR", Icon: Youtube },
 ];
 

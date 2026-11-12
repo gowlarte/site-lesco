@@ -11,7 +11,7 @@ const TikTok = ({ className }: { className?: string }) => (
 export const SOCIALS = [
   { label: "Instagram", href: "https://www.instagram.com/lesco_br/", Icon: Instagram },
   { label: "Facebook", href: "https://www.facebook.com/lescorevestimentosbr/", Icon: Facebook },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/lesco-revestimentos/about/", Icon: Linkedin },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/lescorevestimentos/home/", Icon: Linkedin },
   { label: "YouTube", href: "https://www.youtube.com/@LescoBR", Icon: Youtube },
   { label: "TikTok", href: "https://www.tiktok.com/@lescorevestimentos", Icon: TikTok },
 ] as const;
