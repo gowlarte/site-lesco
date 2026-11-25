@@ -46,3 +46,8 @@ src/assets/zhu-3d/
 # normalizados em src/assets/hero-novo/, esses sim versionados. O mapa de qual
 # arquivo virou qual tela está em scripts/hero-novo-fotos.mjs.
 src/assets/new-hero/
+
+# Fotos cruas do Zenith Barigui, como saíram da câmera: 10 PNG de 6192px,
+# 432 MB. O que o site serve são os zenith-*.webp ao lado, 3,4 MB no total.
+# O mapa de qual arquivo virou qual posição está em scripts/zenith-fotos.mjs.
+src/assets/projetos/zenith/

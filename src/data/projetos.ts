@@ -92,6 +92,16 @@ import felipeCama5 from "@/assets/projetos/residencial-felipe-cama-5.webp";
 import felipeCama6 from "@/assets/projetos/residencial-felipe-cama-6.webp";
 import felipeCama7 from "@/assets/projetos/residencial-felipe-cama-7.webp";
 import felipeCama8 from "@/assets/projetos/residencial-felipe-cama-8.webp";
+import zenithHero from "@/assets/projetos/zenith-hero.webp";
+import zenith2 from "@/assets/projetos/zenith-2.webp";
+import zenith3 from "@/assets/projetos/zenith-3.webp";
+import zenith4 from "@/assets/projetos/zenith-4.webp";
+import zenith5 from "@/assets/projetos/zenith-5.webp";
+import zenith6 from "@/assets/projetos/zenith-6.webp";
+import zenith7 from "@/assets/projetos/zenith-7.webp";
+import zenith8 from "@/assets/projetos/zenith-8.webp";
+import zenith9 from "@/assets/projetos/zenith-9.webp";
+import zenith10 from "@/assets/projetos/zenith-10.webp";
 
 /**
  * Tipo de produto que a obra usou. É a chave que liga o projeto à página do
@@ -344,6 +354,32 @@ export const projetos: Projeto[] = [
     ],
   },
 
+  {
+    slug: "zenith-barigui",
+    nome: "Zenith Barigui",
+    imagem: zenithHero,
+    linha: t("Madeira Ecológica"),
+    local: t("Curitiba, PR"),
+    ano: "2026",
+    area: t("225 a 257 m²"),
+    arquitetura: "CGL",
+    tipos: ["shield", "brise"],
+    produtos: [
+      "Lesco Green Shield 217×25",
+      "Lesco Green Brise 50×50 Red Cedar",
+    ],
+    descricao: t(
+      "O Zenith Barigui, empreendimento assinado pela CGL a 1 km do Parque Barigui, elevou o padrão das fachadas residenciais de alto padrão em Curitiba. São seis modelos exclusivos de casas, de 225 a 257 m², com fachadas contemporâneas que dialogam com a natureza ao redor.",
+    ),
+    desafio: t(
+      "Dar textura e definição às fachadas de seis modelos diferentes de casa, com uma superfície que resista ao tempo sem perder a nobreza da madeira, e garantir privacidade a cada uma sem fechar a passagem de luz.",
+    ),
+    solucao: t(
+      "Lesco Green Shield 217×25 nas fachadas, trazendo textura e definição; e Lesco Green Brise 50×50 na tonalidade Red Cedar criando profundidade e ritmo visual, filtrando a luz e reforçando a privacidade de cada casa.",
+    ),
+    galeria: [zenith2, zenith3, zenith4, zenith5, zenith6, zenith7, zenith8, zenith9, zenith10],
+  },
+
   /* ---------------------------------------------------------------------
      Obras que entraram pelo tour 360.
 
@@ -409,6 +445,115 @@ export const projetos: Projeto[] = [
     solucao: "",
     galeria: [],
     tour: "alpha-one",
+  },
+  {
+    slug: "artesano",
+    nome: "Artesano",
+    imagem: "/tours/artesano/capa.webp",
+    linha: "",
+    local: t("Londrina, PR"),
+    ano: "2026",
+    area: "—",
+    arquitetura: "Estúdio 41 Arquitetura",
+    tipos: [],
+    produtos: [],
+    descricao: "",
+    desafio: "",
+    solucao: "",
+    galeria: [],
+    tour: "artesano",
+  },
+  {
+    slug: "residencial-curitiba",
+    nome: "Residencial Curitiba",
+    imagem: "/tours/residencial-curitiba/capa.webp",
+    linha: "",
+    local: t("Curitiba, PR"),
+    ano: "2026",
+    area: "—",
+    arquitetura: "Arquitetare",
+    tipos: [],
+    produtos: [],
+    descricao: "",
+    desafio: "",
+    solucao: "",
+    galeria: [],
+    tour: "residencial-curitiba",
+  },
+  {
+    slug: "casa-campo-largo",
+    nome: "Casa Campo Largo",
+    imagem: "/tours/casa-campo-largo/capa.webp",
+    linha: "",
+    local: t("Campo Largo, PR"),
+    ano: "2026",
+    area: "—",
+    arquitetura: "Arquitetare",
+    tipos: [],
+    produtos: [],
+    descricao: "",
+    desafio: "",
+    solucao: "",
+    galeria: [],
+    tour: "casa-campo-largo",
+  },
+  {
+    slug: "residencial-maringa",
+    nome: "Residencial Maringá",
+    imagem: "/tours/residencial-marcos-marin/capa.webp",
+    linha: "",
+    local: t("Maringá, PR"),
+    ano: "2026",
+    area: "—",
+    arquitetura: "Ao Cubo Arquitetura",
+    tipos: [],
+    produtos: [],
+    descricao: "",
+    desafio: "",
+    solucao: "",
+    galeria: [],
+    tour: "residencial-marcos-marin",
+  },
+  /*
+   * São DUAS obras diferentes em Curitiba, e o Viewer deu às duas o mesmo
+   * `obra` ("Residencial Curitiba"). Quem as separa no portfólio é o
+   * escritório — Arquitetare acima, Solo Arquitetos aqui —, e o algarismo no
+   * nome existe para que a grade não mostre dois cartões iguais. Dentro do
+   * visor a ficha ainda diz o nome do Viewer, que é a fonte.
+   */
+  {
+    slug: "residencial-curitiba-2",
+    nome: "Residencial Curitiba II",
+    imagem: "/tours/residencial-curitiba-2/capa.webp",
+    linha: "",
+    local: t("Curitiba, PR"),
+    ano: "2026",
+    area: "—",
+    arquitetura: "Solo Arquitetos",
+    tipos: [],
+    produtos: [],
+    descricao: "",
+    desafio: "",
+    solucao: "",
+    galeria: [],
+    tour: "residencial-curitiba-2",
+  },
+  {
+    slug: "laguna-kaa",
+    nome: "Laguna KAA",
+    imagem: "/tours/laguna-kaa/capa.webp",
+    linha: "",
+    local: t("Curitiba, PR"),
+    ano: "2026",
+    area: "—",
+    arquitetura: "Bernardes Arquitetura",
+    tipos: [],
+    produtos: [],
+    descricao: "",
+    desafio: "",
+    solucao: "",
+    galeria: [],
+    tour: "laguna-kaa",
   },
 ];
 
